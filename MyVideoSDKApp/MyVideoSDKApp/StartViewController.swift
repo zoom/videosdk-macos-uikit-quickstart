@@ -66,11 +66,11 @@ extension StartViewController: ZMVideoSDKDelegate {
         switch ErrorType {
         case ZMVideoSDKErrors_Success:
             // Your ZMVideoSDK operation was successful.
-            print("Success")
+            print("VSDK onError: ZMVideoSDKErrors_Success")
         default:
             // Your ZMVideoSDK operation raised an error.
             // Refer to error code documentation.
-            print("Error \(ErrorType) \(details)")
+            print("VSDK onError: Error \(ErrorType) \(details)")
             return
         }
     }

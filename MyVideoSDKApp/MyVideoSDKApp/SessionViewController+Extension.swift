@@ -88,12 +88,6 @@ extension SessionViewController {
             alert.informativeText = "An error has occured: \(message)"
             alert.alertStyle = .critical
             alert.addButton(withTitle: "OK")
-            
-            alert.beginSheetModal(for: window) { response in
-                if response == .alertFirstButtonReturn {
-                    print("User selected OK")
-                }
-            }
         }
     }
     

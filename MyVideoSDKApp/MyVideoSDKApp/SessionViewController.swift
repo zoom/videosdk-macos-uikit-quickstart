@@ -172,9 +172,9 @@ extension SessionViewController: ZMVideoSDKDelegate {
         for user in users where user.getID() != myUser.getID() {
             if let currentUserID = user.getID(), let view = remoteUserViews[currentUserID], let isVideoOn = user.getVideoPipe()?.getVideoStatus()?.isOn, let remoteUserVideoCanvas = user.getVideoCanvas() {
                 if isVideoOn {
-                    print(remoteUserVideoCanvas.subscribe(with: view.userView, aspectMode: ZMVideoSDKVideoAspect_PanAndScan, resolution: ZMVideoSDKResolution_Auto))
+                    remoteUserVideoCanvas.subscribe(with: view.userView, aspectMode: ZMVideoSDKVideoAspect_PanAndScan, resolution: ZMVideoSDKResolution_Auto))
                 } else {
-                    print(remoteUserVideoCanvas.unSubscribe(with: view.userView))
+                    remoteUserVideoCanvas.unSubscribe(with: view.userView))
                 }
                 view.placeholder.isHidden = isVideoOn
             }
