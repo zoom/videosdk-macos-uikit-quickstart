@@ -6,7 +6,31 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		5UMndbpLIlp5rAFNnjUF6O+OBVc=
+		7teT9kCXYWvREpEobLQsT/wD6Tc=
+		</data>
+		<key>Resources/afn_mac.mlmodelc/analytics/coremldata.bin</key>
+		<data>
+		csOAsfkreEfuOyWmRvVRPuTGGEU=
+		</data>
+		<key>Resources/afn_mac.mlmodelc/coremldata.bin</key>
+		<data>
+		UuBepIfYi6qPh3NLxqcodwBtKFU=
+		</data>
+		<key>Resources/afn_mac.mlmodelc/metadata.json</key>
+		<data>
+		54i86/EkxqlNfy1weB81Apu6T/o=
+		</data>
+		<key>Resources/afn_mac.mlmodelc/model.espresso.weights</key>
+		<data>
+		wR01CCqGrFxJoXYpGZYXghcNET8=
+		</data>
+		<key>Resources/afn_mac.mlmodelc/model/coremldata.bin</key>
+		<data>
+		9brzNLtTyr6wxUFJNNE25rck8D0=
+		</data>
+		<key>Resources/afn_mac.mlmodelc/neural_network_optionals/coremldata.bin</key>
+		<data>
+		uA3l0Th1hUHF8FJlrRRKufqG0ds=
 		</data>
 		<key>Resources/afn_mac_premium.mlmodelc/analytics/coremldata.bin</key>
 		<data>
@@ -29,6 +53,30 @@
 		jfuTQMzoIDFCvcdbmFT7D/7Uahc=
 		</data>
 		<key>Resources/afn_mac_premium.mlmodelc/neural_network_optionals/coremldata.bin</key>
+		<data>
+		uA3l0Th1hUHF8FJlrRRKufqG0ds=
+		</data>
+		<key>Resources/bgr_mac.mlmodelc/analytics/coremldata.bin</key>
+		<data>
+		WHN+jebDmT1mJ/pKyuDgO4bGcdY=
+		</data>
+		<key>Resources/bgr_mac.mlmodelc/coremldata.bin</key>
+		<data>
+		Xj5gwuS58IL7qmzFEgGeIIiEH0Q=
+		</data>
+		<key>Resources/bgr_mac.mlmodelc/metadata.json</key>
+		<data>
+		RryLVFalGjZsGWKNitD2EZUPZ1E=
+		</data>
+		<key>Resources/bgr_mac.mlmodelc/model.espresso.weights</key>
+		<data>
+		ZJzCR6jwOOwyNh1ntJqUImB2pdA=
+		</data>
+		<key>Resources/bgr_mac.mlmodelc/model/coremldata.bin</key>
+		<data>
+		oo/NZKySpzKvYCI3b4h5KsiH9o4=
+		</data>
+		<key>Resources/bgr_mac.mlmodelc/neural_network_optionals/coremldata.bin</key>
 		<data>
 		uA3l0Th1hUHF8FJlrRRKufqG0ds=
 		</data>
@@ -63,7 +111,49 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			y47cEktyI/6gkQKGiCujOVJP5iZeA8brSGrJTX18EG0=
+			roqS5fhZTnnxeGsMWEPsHg34DOhe6f2i4rr4cA3ScG4=
+			</data>
+		</dict>
+		<key>Resources/afn_mac.mlmodelc/analytics/coremldata.bin</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kTwUgHrU1GtfcKYQjnMaTc+U/+2x350ILdyfPXdA1tI=
+			</data>
+		</dict>
+		<key>Resources/afn_mac.mlmodelc/coremldata.bin</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			E1nAAe8mZgUr7bRYpgKNOULXqxq1qbCsvbkRLxhcqiE=
+			</data>
+		</dict>
+		<key>Resources/afn_mac.mlmodelc/metadata.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LE7bCxATEZ4W15o4BN4qFgVfIq9IT2UHnD0pJZxPwuY=
+			</data>
+		</dict>
+		<key>Resources/afn_mac.mlmodelc/model.espresso.weights</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			WaCrC5b+itMCOTVUS6VBrPONVp+wKFwc+PrmrzVVIwM=
+			</data>
+		</dict>
+		<key>Resources/afn_mac.mlmodelc/model/coremldata.bin</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Mf2VTRP6xAXB09Q5rEX1fy6wZSr9cRZ93LVKgqbMi8E=
+			</data>
+		</dict>
+		<key>Resources/afn_mac.mlmodelc/neural_network_optionals/coremldata.bin</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LDTOHfI7g4xavyp/ZDfMo9MGftUJ/yXxHfaxG1grUes=
 			</data>
 		</dict>
 		<key>Resources/afn_mac_premium.mlmodelc/analytics/coremldata.bin</key>
@@ -102,6 +192,48 @@
 			</data>
 		</dict>
 		<key>Resources/afn_mac_premium.mlmodelc/neural_network_optionals/coremldata.bin</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LDTOHfI7g4xavyp/ZDfMo9MGftUJ/yXxHfaxG1grUes=
+			</data>
+		</dict>
+		<key>Resources/bgr_mac.mlmodelc/analytics/coremldata.bin</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			d8FShKVEgFWO1jVeyiTuHfm931dDuGMDiUDhIQgmd04=
+			</data>
+		</dict>
+		<key>Resources/bgr_mac.mlmodelc/coremldata.bin</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Co8FOgscOnQdjbDGkqzxGYrq5ndB+RIN6qqExCd8ULU=
+			</data>
+		</dict>
+		<key>Resources/bgr_mac.mlmodelc/metadata.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/xU3JIJKmbVUr1ULLmBzrUazv+l+SZb80GEosfolDMo=
+			</data>
+		</dict>
+		<key>Resources/bgr_mac.mlmodelc/model.espresso.weights</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zEuaSjeqySWcWQ5TcSael1MF9EknNlsMCMFoUg0jW34=
+			</data>
+		</dict>
+		<key>Resources/bgr_mac.mlmodelc/model/coremldata.bin</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qyJZQtvdEbvyfYMQmE+zx9EcLlAEE0yOW7z576npMnE=
+			</data>
+		</dict>
+		<key>Resources/bgr_mac.mlmodelc/neural_network_optionals/coremldata.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E5F3FD832E4A28640022504F /* JWTKit in Frameworks */ = {isa = PBXBuildFile; productRef = E5F3FD822E4A28640022504F /* JWTKit */; };
+		E532DF172E84D64300602778 /* JWTKit in Frameworks */ = {isa = PBXBuildFile; productRef = E532DF162E84D64300602778 /* JWTKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,71 +26,63 @@
 		E5F3FC302E4987770022504F /* MyVideoSDKApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVideoSDKApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		E5F3FC972E498CB20022504F /* Exceptions for "MyVideoSDKApp" folder in "MyVideoSDKApp" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				ZoomVideoSDK/cmmbiz.framework,
-				ZoomVideoSDK/cmmlib.framework,
-				ZoomVideoSDK/curl64.framework,
-				ZoomVideoSDK/libcares.dylib,
-				ZoomVideoSDK/liblooper.dylib,
-				ZoomVideoSDK/libzContext.dylib,
-				ZoomVideoSDK/libzoombase_crypto_shared.dylib,
-				ZoomVideoSDK/nydus.framework,
-				ZoomVideoSDK/protobuf.framework,
-				ZoomVideoSDK/tp.framework,
-				ZoomVideoSDK/util.framework,
-				ZoomVideoSDK/VideoSDK.dylib,
-				ZoomVideoSDK/viper.framework,
-				ZoomVideoSDK/xmpp_framework.framework,
-				ZoomVideoSDK/zEventTracker.framework,
-				ZoomVideoSDK/zNetUtils.framework,
-				ZoomVideoSDK/ZoomTask.framework,
-				ZoomVideoSDK/ZoomVideoSDKMeetingBridge.framework,
-			);
-			target = E5F3FC2F2E4987770022504F /* MyVideoSDKApp */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		E5F3FCC72E498D0D0022504F /* Exceptions for "MyVideoSDKApp" folder in "Copy Files" phase from "MyVideoSDKApp" target */ = {
+		E532DF142E84D5B000602778 /* Exceptions for "MyVideoSDKApp" folder in "Copy Files" phase from "MyVideoSDKApp" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			attributesByRelativePath = {
 				ZoomVideoSDK/CptHost.app = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/ZMVideoSDK.framework = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/ZoomTask.framework = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/ZoomTelemetry.bundle = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/ZoomVideoSDKMeetingBridge.framework = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/annoter.bundle = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/aomagent.bundle = (RemoveHeadersOnCopy, );
+				ZoomVideoSDK/Prism.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/SwiftZoomKit.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/VideoSDK.dylib = (CodeSignOnCopy, );
+				ZoomVideoSDK/ZMVideoSDK.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/ZoomKit.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/ZoomTask.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/ZoomTelemetry.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/ZoomUnit.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/ZoomVideoSDKMeetingBridge.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/annoter.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/aomagent.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/aomhost.app = (RemoveHeadersOnCopy, );
 				ZoomVideoSDK/capHost.app = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/cmmbiz.framework = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/cmmlib.framework = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/curl64.framework = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/libmpg123_mac.bundle = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/mcm.bundle = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/nydus.framework = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/protobuf.framework = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/ssb_sdk.bundle = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/tp.framework = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/util.framework = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/viper.framework = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/viperex.bundle = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/xmpp_framework.framework = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/zData.bundle = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/zEventTracker.framework = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/zNet.bundle = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/zNetUtils.framework = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/zPSApp.bundle = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/zVideoApp.bundle = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/zWebService.bundle = (RemoveHeadersOnCopy, );
-				ZoomVideoSDK/zlt.bundle = (RemoveHeadersOnCopy, );
+				ZoomVideoSDK/cmmbiz.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/cmmlib.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/curl64.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/libcares.dylib = (CodeSignOnCopy, );
+				ZoomVideoSDK/libcrypto.dylib = (CodeSignOnCopy, );
+				ZoomVideoSDK/libjson.dylib = (CodeSignOnCopy, );
+				ZoomVideoSDK/liblooper.dylib = (CodeSignOnCopy, );
+				ZoomVideoSDK/libminizip.dylib = (CodeSignOnCopy, );
+				ZoomVideoSDK/libmpg123_mac.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/libssl.dylib = (CodeSignOnCopy, );
+				ZoomVideoSDK/libzContext.dylib = (CodeSignOnCopy, );
+				ZoomVideoSDK/libzoombase_crypto_shared.dylib = (CodeSignOnCopy, );
+				ZoomVideoSDK/live_sdk.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/mcm.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/nydus.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/protobuf.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/ssb_sdk.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/tp.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/util.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/viper.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/viperex.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/xmpp_framework.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/zBusinessUIComponent.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/zData.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/zEventTracker.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/zNet.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/zNetUtils.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/zPSApp.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/zUnifyWebView.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/zVideoApp.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/zVideoUIBridge.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/zWebService.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/zlt.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 			};
 			buildPhase = E5F3FC9F2E498D010022504F /* CopyFiles */;
 			membershipExceptions = (
 				ZoomVideoSDK/annoter.bundle,
 				ZoomVideoSDK/aomagent.bundle,
+				ZoomVideoSDK/aomhost.app,
 				ZoomVideoSDK/capHost.app,
 				ZoomVideoSDK/cmmbiz.framework,
 				ZoomVideoSDK/cmmlib.framework,
@@ -105,27 +97,35 @@
 				ZoomVideoSDK/libssl.dylib,
 				ZoomVideoSDK/libzContext.dylib,
 				ZoomVideoSDK/libzoombase_crypto_shared.dylib,
+				ZoomVideoSDK/live_sdk.framework,
 				ZoomVideoSDK/mcm.bundle,
 				ZoomVideoSDK/nydus.framework,
+				ZoomVideoSDK/Prism.framework,
 				ZoomVideoSDK/protobuf.framework,
 				ZoomVideoSDK/ssb_sdk.bundle,
+				ZoomVideoSDK/SwiftZoomKit.framework,
 				ZoomVideoSDK/tp.framework,
 				ZoomVideoSDK/util.framework,
 				ZoomVideoSDK/VideoSDK.dylib,
 				ZoomVideoSDK/viper.framework,
 				ZoomVideoSDK/viperex.bundle,
 				ZoomVideoSDK/xmpp_framework.framework,
+				ZoomVideoSDK/zBusinessUIComponent.framework,
 				ZoomVideoSDK/zData.bundle,
 				ZoomVideoSDK/zEventTracker.framework,
 				ZoomVideoSDK/zlt.bundle,
 				ZoomVideoSDK/ZMVideoSDK.framework,
 				ZoomVideoSDK/zNet.bundle,
 				ZoomVideoSDK/zNetUtils.framework,
+				ZoomVideoSDK/ZoomKit.framework,
 				ZoomVideoSDK/ZoomTask.framework,
 				ZoomVideoSDK/ZoomTelemetry.bundle,
+				ZoomVideoSDK/ZoomUnit.framework,
 				ZoomVideoSDK/ZoomVideoSDKMeetingBridge.framework,
 				ZoomVideoSDK/zPSApp.bundle,
+				ZoomVideoSDK/zUnifyWebView.framework,
 				ZoomVideoSDK/zVideoApp.bundle,
+				ZoomVideoSDK/zVideoUIBridge.framework,
 				ZoomVideoSDK/zWebService.bundle,
 			);
 		};
@@ -135,8 +135,7 @@
 		E5F3FC322E4987770022504F /* MyVideoSDKApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				E5F3FC972E498CB20022504F /* Exceptions for "MyVideoSDKApp" folder in "MyVideoSDKApp" target */,
-				E5F3FCC72E498D0D0022504F /* Exceptions for "MyVideoSDKApp" folder in "Copy Files" phase from "MyVideoSDKApp" target */,
+				E532DF142E84D5B000602778 /* Exceptions for "MyVideoSDKApp" folder in "Copy Files" phase from "MyVideoSDKApp" target */,
 			);
 			path = MyVideoSDKApp;
 			sourceTree = "<group>";
@@ -148,7 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5F3FD832E4A28640022504F /* JWTKit in Frameworks */,
+				E532DF172E84D64300602778 /* JWTKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +199,7 @@
 			);
 			name = MyVideoSDKApp;
 			packageProductDependencies = (
-				E5F3FD822E4A28640022504F /* JWTKit */,
+				E532DF162E84D64300602778 /* JWTKit */,
 			);
 			productName = MyVideoSDKApp;
 			productReference = E5F3FC302E4987770022504F /* MyVideoSDKApp.app */;
@@ -231,7 +230,7 @@
 			mainGroup = E5F3FC272E4987770022504F;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				E5F3FD812E4A28640022504F /* XCRemoteSwiftPackageReference "jwt-kit" */,
+				E532DF152E84D64300602778 /* XCRemoteSwiftPackageReference "jwt-kit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E5F3FC312E4987770022504F /* Products */;
@@ -398,6 +397,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../ZoomVideoSDK",
 					"$(PROJECT_DIR)/MyVideoSDKApp/ZoomVideoSDK",
+					"$(PROJECT_DIR)/MyVideoSDKApp/VSDKMacOSUIKitQuickStartSample",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Required for Apple Events";
@@ -413,6 +413,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyVideoSDKApp/ZoomVideoSDK",
+					"$(PROJECT_DIR)/MyVideoSDKApp/VSDKMacOSUIKitQuickStartSample",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = us.zoomtest.MyVideoSDKApp;
@@ -440,6 +441,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../ZoomVideoSDK",
 					"$(PROJECT_DIR)/MyVideoSDKApp/ZoomVideoSDK",
+					"$(PROJECT_DIR)/MyVideoSDKApp/VSDKMacOSUIKitQuickStartSample",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Required for Apple Events";
@@ -455,6 +457,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyVideoSDKApp/ZoomVideoSDK",
+					"$(PROJECT_DIR)/MyVideoSDKApp/VSDKMacOSUIKitQuickStartSample",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = us.zoomtest.MyVideoSDKApp;
@@ -490,20 +493,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E5F3FD812E4A28640022504F /* XCRemoteSwiftPackageReference "jwt-kit" */ = {
+		E532DF152E84D64300602778 /* XCRemoteSwiftPackageReference "jwt-kit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vapor/jwt-kit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.2;
+				minimumVersion = 5.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E5F3FD822E4A28640022504F /* JWTKit */ = {
+		E532DF162E84D64300602778 /* JWTKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E5F3FD812E4A28640022504F /* XCRemoteSwiftPackageReference "jwt-kit" */;
+			package = E532DF152E84D64300602778 /* XCRemoteSwiftPackageReference "jwt-kit" */;
 			productName = JWTKit;
 		};
 /* End XCSwiftPackageProductDependency section */

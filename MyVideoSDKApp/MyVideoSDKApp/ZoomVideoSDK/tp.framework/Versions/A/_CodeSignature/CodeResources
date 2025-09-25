@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		Z/PX8COO+rEW0KbSxm7lYMQOmm8=
+		LHz9LDIqNzWUFB0zph341g2VrKM=
 		</data>
 		<key>Resources/en.lproj/InfoPlist.strings</key>
 		<dict>
@@ -22,13 +22,21 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			LHz9LDIqNzWUFB0zph341g2VrKM=
+			</data>
 			<key>hash2</key>
 			<data>
-			c47v9K1RBtQ3RGaFkRbqOoWdy+SvBtEs0AogWzXhOzY=
+			mvb420+TQBP65GahJI/uxScqdJk6qQ7ZR5HWSzLrrxc=
 			</data>
 		</dict>
 		<key>Resources/en.lproj/InfoPlist.strings</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			MiLKDDnrUKr4EmuvhS5VQwxHGK8=
+			</data>
 			<key>hash2</key>
 			<data>
 			Oc8u4Ht7Mz58F50L9NeYpbcq9qTlhPUeZCcDu/pPyCg=

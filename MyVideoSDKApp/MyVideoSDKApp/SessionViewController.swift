@@ -6,11 +6,13 @@ import Cocoa
 import ZMVideoSDK
 
 class SessionViewController: NSViewController {
-    // You should sign your JWT with a backend service in a production use-case
     let sdkKey = <#SDK Key#>
     let sdkSecret = <#SDK Secret#>
     let sessionName = <#Session Name#>
     let userName = <#Username#>
+    // MARK: Session Information
+    // TODO: Ensure that you do not hard code JWT or any other confidential credentials in your production app.
+    // Details: https://developers.zoom.us/docs/video-sdk/macos/sessions/#create-and-join-a-session
     
     // MARK: - Properties
     
@@ -104,7 +106,7 @@ class SessionViewController: NSViewController {
     
     @objc public func leaveSession() {
         showLoadingView(visible: true)
-        ZMVideoSDK.shared().leaveSession(false)
+        ZMVideoSDK.shared().leaveSession(true) // If the local user is the last user to leave, a true here will end the entire session and a false is simply just to keep the session and leave it.
     }
     
 }
@@ -172,9 +174,9 @@ extension SessionViewController: ZMVideoSDKDelegate {
         for user in users where user.getID() != myUser.getID() {
             if let currentUserID = user.getID(), let view = remoteUserViews[currentUserID], let isVideoOn = user.getVideoPipe()?.getVideoStatus()?.isOn, let remoteUserVideoCanvas = user.getVideoCanvas() {
                 if isVideoOn {
-                    remoteUserVideoCanvas.subscribe(with: view.userView, aspectMode: ZMVideoSDKVideoAspect_PanAndScan, resolution: ZMVideoSDKResolution_Auto))
+                    remoteUserVideoCanvas.subscribe(with: view.userView, aspectMode: ZMVideoSDKVideoAspect_PanAndScan, resolution: ZMVideoSDKResolution_Auto)
                 } else {
-                    remoteUserVideoCanvas.unSubscribe(with: view.userView))
+                    remoteUserVideoCanvas.unSubscribe(with: view.userView)
                 }
                 view.placeholder.isHidden = isVideoOn
             }

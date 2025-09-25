@@ -25,6 +25,10 @@
 	<dict>
 		<key>Resources/op/lipsync_op_avx.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			efXJhCt9I95DLPzKRMtRz+erx+k=
+			</data>
 			<key>hash2</key>
 			<data>
 			c1xKZTHVtLZJTfHsGZCx0cCADoTlCTx5bT01Y1lxhb8=
@@ -32,6 +36,10 @@
 		</dict>
 		<key>Resources/op/lipsync_op_c.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			zLNqpJHcdCRgOz2u3qNjvl27/YM=
+			</data>
 			<key>hash2</key>
 			<data>
 			+gjFW2BUWIs3HePpDUuY9tznrDW8kj0aJsB34dd2vY0=
@@ -39,6 +47,10 @@
 		</dict>
 		<key>Resources/op/lipsync_op_neon.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			9F0tLuW6LRKwqBTRaS24Ume9Lc0=
+			</data>
 			<key>hash2</key>
 			<data>
 			rLlUeXXwQ1W99wOPSuszZo2SwAGg5q8WA0k99LPlwmc=
@@ -46,6 +58,10 @@
 		</dict>
 		<key>Resources/op/lipsync_op_sse3.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			ILt8UmMH9fYznrWY85qdx8CJROQ=
+			</data>
 			<key>hash2</key>
 			<data>
 			lsL4b1f7oLdC+EG5McsWcbOnXObt+I7PHBVr/vI1GA8=

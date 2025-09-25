@@ -6,16 +6,20 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		d6f/y9ZffxY6BztlBJCg83SQHwo=
+		nFvcpmYrkU7x5zvtMAFc82o6Hrs=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
 		<key>Resources/Info.plist</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			nFvcpmYrkU7x5zvtMAFc82o6Hrs=
+			</data>
 			<key>hash2</key>
 			<data>
-			w1tcF4ZsxBidWzjG7xVFW5z6snNk+X5TSTc3LJ1cjac=
+			RjvKnhJUpXUm/f+uRsnx3irt9hLkR6DFAqw6oUgZA5Q=
 			</data>
 		</dict>
 	</dict>

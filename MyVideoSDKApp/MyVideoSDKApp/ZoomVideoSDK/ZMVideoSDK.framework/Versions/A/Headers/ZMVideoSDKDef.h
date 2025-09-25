@@ -1,3 +1,7 @@
+/**
+ * @file ZMVideoSDKDef.h
+ * @brief This file defines the enumeration of Zoom Video SDK.
+ */
 
 /**
  * @brief Enumerates all  errors in the VideoSDK.
@@ -98,6 +102,8 @@ typedef enum
     ZMVideoSDKErrors_Session_Client_Incompatible,
     /** Free minutes exceeded. */
     ZMVideoSDKErrors_Session_Account_FreeMinutesExceeded,
+    /** Join session failed because the account's free credit has been exceeded. */
+    ZMVideoSDKErrors_Session_Account_FreeCreditExceeded,
     
     /** Audio errors */
     /** General audio error. */
@@ -106,6 +112,8 @@ typedef enum
     ZMVideoSDKErrors_Session_Audio_No_Microphone,
     /** No speaker detected. */
     ZMVideoSDKErrors_Session_Audio_No_Speaker,
+    /** Bluetooth sco connect fail. Android Only. */
+    ZMVideoSDKErrors_Session_Bluetooth_SCO_Connection_Failed,
     
     /** Video errors. */
     /** General video error. */
@@ -187,13 +195,17 @@ typedef enum
     ZMVideoSDKErrors_Fail_Assign_User_Privilege,
     /** No recording in progress. */
     ZMVideoSDKErrors_No_Recording_In_Process,
+    /** Recording is connecting. */
+    ZMVideoSDKErrors_Recording_Is_Connecting,
     /** Failed to set virtual background. */
     ZMVideoSDKErrors_Set_Virtual_Background_Fail,
     /** Camera video not started for share. */
     ZMVideoSDKErrors_Session_Share_Camera_Video_Not_Start,
     /** Camera conflicts with video effects. */
     ZMVideoSDKErrors_Session_Share_Camera_Conflict_With_Video_Effects,
-    
+    /** Share conflicts with whiteboard share. */
+	ZMVideoSDKErrors_Session_Share_Conflict_With_Whiteboard,
+
     /** File transfer errors. */
     /** Unknown file transfer error. */
     ZMVideoSDKErrors_Filetransfer_UnknowError = 7500,
@@ -359,7 +371,9 @@ typedef enum
     /** Recording is unsuccessful due to insufficient storage space. Please try to free up storage space or purchase additional storage space. */
     ZMRecording_DiskFull,
     /** The recording has paused. */
-    ZMRecording_Pause
+    ZMRecording_Pause,
+    /** The recording is connecting. */
+    ZMRecording_Connecting
 }ZMRecordingStatus;
 
 
@@ -453,7 +467,9 @@ typedef enum {
     /** Automatically adjust echo cancellation, balancing CPU and performance. */
     ZMVideoSDKEchoCancellationLevel_Default = 0,
     /** Better echo limitation, taking into account multiple people talking at the same time, low CPU utilization. */
-    ZMVideoSDKEchoCancellationLevel_Aggressive
+    ZMVideoSDKEchoCancellationLevel_Low,
+    /** Best experience when multiple people are talking at the same time. Enabling this option may increase CPU utilization. */
+    ZMVideoSDKEchoCancellationLevel_High
 }ZMVideoSDKEchoCancellationLevel;
 
 
@@ -531,6 +547,20 @@ typedef enum
     ZMVideoSDKShareType_Camera
 }ZMVideoSDKShareType;
 
+/**
+ * @brief Enumeration of reasons why screen sharing capture is paused in the Zoom Video SDK.
+ */
+typedef enum
+{
+    /** No pause reason; used for initialization. */
+    ZMVideoSDKShare_Capture_Pause_None,
+    /** Sharing is paused because the shared window is being moved. */
+    ZMVideoSDKShare_Capture_Pause_WindowMoving,
+    /** Sharing is paused because the shared window is covered by another window. */
+    ZMVideoSDKShare_Capture_Pause_WindowCovered,
+    /** Sharing is paused because the shared window is minimized. */
+    ZMVideoSDKShare_Capture_Pause_WindowMinimized
+}ZMVideoSDKShareCapturePauseReason;
 
 /**
  * @brief Enumerates the data modes for video source frames.
@@ -819,12 +849,16 @@ typedef enum{
     ZMVideoSDKAnnotationToolType_AutoStampQm,
     /** Vanishing pen. */
     ZMVideoSDKAnnotationToolType_VanishingPen,
-    /** Vanishing square. */
-    ZMVideoSDKAnnotationToolType_VanishingSquare,
     /** Vanishing arrow. */
     ZMVideoSDKAnnotationToolType_VanishingArrow,
     /** Vanishing double arrow. */
-    ZMVideoSDKAnnotationToolType_VanishingDoubleArrow
+    ZMVideoSDKAnnotationToolType_VanishingDoubleArrow,
+    /** Vanishing diamond. */
+    ZMVideoSDKAnnotationToolType_VanishingDiamond,
+    /** Vanishing ellipse. */
+    ZMVideoSDKAnnotationToolType_VanishingEllipse,
+    /** Vanishing rectangle. */
+    ZMVideoSDKAnnotationToolType_VanishingRectangle
 }ZMVideoSDKAnnotationToolType;
 
 /**
@@ -977,11 +1011,125 @@ typedef enum
     /** For share screen(monitor). */
     ZMVideoSDKSharePreprocessType_Screen,
     /** For share view(application window). */
-    ZMVideoSDKSharePreprocessType_View
+    ZMVideoSDKSharePreprocessType_View,
+    /** For share process(application). */
+    ZMVideoSDKSharePreprocessType_Process
 }ZMVideoSDKSharePreprocessType;
 
 /**
- * @brief Enumeration of data type for network quality.
+ * @brief Enumeration of Zoom Video SDK share setting types.
+ */
+typedef enum
+{
+    /** For initialization. */
+    ZMVideoSDKShareSetting_None = 0,
+    /** Only host and manager can share. */
+    ZMVideoSDKShareSetting_LockedShare,
+    /** Anyone can share, but only one at a time. Only host and manager can take over. */
+    ZMVideoSDKShareSetting_SingleShare,
+    /** Multiple participants can share simultaneously. */
+    ZMVideoSDKShareSetting_MultiShare
+}ZMVideoSDKShareSetting;
+
+/**
+ * @brief Enumeration of preferred video resolution in Zoom Video SDK.
+ */
+typedef enum
+{
+    /** Invalid value. */
+    ZMVideoSDKPreferVideoResolution_None,
+    /** The camera opens in 360p by default. */
+    ZMVideoSDKPreferVideoResolution_360P,
+    /** The camera opens in 720p by default. */
+    ZMVideoSDKPreferVideoResolution_720P,
+    /** The camera opens in 1080p by default. */
+    ZMVideoSDKPreferVideoResolution_1080P
+}ZMVideoSDKPreferVideoResolution;
+
+/**
+ * @brief Enumeration of the status of whiteboard sharing.
+ */
+typedef enum
+{
+    /** The whiteboard has started.*/
+    ZMVideoSDKWhiteboardStatus_Started,
+    /** The whiteboard has stopped.*/
+    ZMVideoSDKWhiteboardStatus_Stopped
+}ZMVideoSDKWhiteboardStatus;
+
+/**
+ * @brief Enumeration of supported export formats for content, like whiteboard.
+ */
+typedef enum
+{
+    /** Export the content as a PDF document. */
+    ZMVideoSDKExportFormat_PDF,
+}ZMVideoSDKExportFormat;
+
+/**
+ * @brief Enumerations of broadcast control status.
+ */
+typedef enum
+{
+    /** Initialized status. */
+    ZMVideoSDKBroadcastControlStatus_None,
+    /** Broadcast is starting. */
+    ZMVideoSDKBroadcastControlStatus_Starting,
+    /** Broadcast is started. */
+    ZMVideoSDKBroadcastControlStatus_Started,
+    /** Broadcast is stopping. */
+    ZMVideoSDKBroadcastControlStatus_Stopping,
+    /** Broadcast is stopped. */
+    ZMVideoSDKBroadcastControlStatus_Stopped
+}ZMVideoSDKBroadcastControlStatus;
+
+/**
+ * @brief Enumerations of streaming join status.
+ */
+typedef enum
+{
+    /** Initialized status. */
+    ZMVideoSDKStreamingJoinStatus_None,
+    /** Connecting to streaming. */
+    ZMVideoSDKStreamingJoinStatus_Connecting,
+    /** Joined streaming. */
+    ZMVideoSDKStreamingJoinStatus_Joined,
+    /** Disconnecting from streaming. */
+    ZMVideoSDKStreamingJoinStatus_Disconnecting,
+    /** Reconnecting to streaming. */
+    ZMVideoSDKStreamingJoinStatus_Reconnecting,
+    /** Join failed. */
+    ZMVideoSDKStreamingJoinStatus_Failed,
+    /** Left streaming. */
+    ZMVideoSDKStreamingJoinStatus_Left
+}ZMVideoSDKStreamingJoinStatus;
+
+/**
+ * @brief Enumeration of live stream layout types.
+ */
+typedef enum
+{
+    /** Speaker view layout for live stream. */
+    ZMVideoSDKLiveStreamLayout_SpeakerView,
+    /** Gallery view layout for live stream. */
+    ZMVideoSDKLiveStreamLayout_GalleryView
+}ZMVideoSDKLiveStreamLayout;
+
+/**
+ * @brief Enumeration of live stream close caption options.
+ */
+typedef enum
+{
+    /** Close caption is disabled. */
+    ZMVideoSDKLiveStreamCloseCaption_OFF,
+    /** Close caption is burnt into the video stream. */
+    ZMVideoSDKLiveStreamCloseCaption_BurntIn,
+    /** Close caption is embedded in the stream data. */
+    ZMVideoSDKLiveStreamCloseCaption_Embedded
+}ZMVideoSDKLiveStreamCloseCaption;
+
+/**
+ * @brief Enumeration of the data type for network quality monitoring.
  */
 typedef enum
 {
