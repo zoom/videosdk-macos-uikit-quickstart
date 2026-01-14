@@ -43,6 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)closeFloatPlistPanel;
 - (NSWindow *)window;
 - (void)updatePlistUI;
+
+- (void)userFeedbackChangedWithUser:(ZMUser *)theUser;
+
 @end
 
 NS_ASSUME_NONNULL_END

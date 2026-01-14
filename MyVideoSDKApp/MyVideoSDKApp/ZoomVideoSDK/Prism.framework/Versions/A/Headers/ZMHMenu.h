@@ -30,11 +30,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)menu:(ZMHMenu *)menu viewDidCreatedWithMenuItem:(ZMBaseMenuItem *)item;
 @end
 
-@interface ZMHMenu : NSObject <ZMObjectDispose> //Tree Menu
+@interface ZMHMenu : NSObject <ZMObjectDispose, NSAppearanceCustomization>
 
 @property (weak, nullable) id <ZMHMenuDelegate> delegate;
 
-@property (nonatomic, retain,nullable) ZMMenuConfig *config;
+@property (nonatomic, retain, nullable) ZMMenuConfig *config;
 
 @property (copy, nonatomic, nullable) NSArray <__kindof ZMBaseMenuItem *> *items;
 
@@ -67,6 +67,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy,nullable) NSDictionary *shadowParameters;
 
 @property (nonatomic, assign) NSWindowStyleMask windowStyleMask;
+
+@property(nonatomic, weak) ZMHMenu *attachedMenu;
 
 + (Class)menuWindowClass;
 + (Class)menuSubWindowClass;

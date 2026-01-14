@@ -97,14 +97,11 @@ extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_UnmuteAudio;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Audio_Error_No_Callback;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_PTRequestConfExitFullScreen;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_PT_Checked_Fit2Window_Button;
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Always_Show_User_Name;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Auto_Join_Audio;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Host_Not_Join;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Host_Join;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Meeting_Request_Password;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_HideNoVideoUser;
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_SpotlightSelf;
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_DualMonitor;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Open_Browser;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Logitech_Audio_Status_Changed;//ZOOM-4319
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Switch_Topbanner_in_meeting;
@@ -144,9 +141,9 @@ extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kIMUserStatus;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kIMUserCustomMessage;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kIMUserStatusChanged;
 
-static _ZP_MODULE_EXPORT_SYMBOL_ NSString* const kZoomAppearanceDidChange = @"ZoomAppearanceDidChange";
-static _ZP_MODULE_EXPORT_SYMBOL_ NSString* const kZoomProcessAppearanceDidChange = @"ZoomProcessAppearanceDidChange";
-static _ZP_MODULE_EXPORT_SYMBOL_ NSString* const kZoomProcessUserAppearance = @"ZoomProcessUserAppearance";
+#define kZoomAppearanceDidChange @"ZoomAppearanceDidChange"
+#define kZoomProcessAppearanceDidChange @"ZoomProcessAppearanceDidChange"
+#define kZoomProcessUserAppearance @"ZoomProcessUserAppearance"
 
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString* kNoti_Components_Download_Finished;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString* kNoti_Components_Download_Failed;

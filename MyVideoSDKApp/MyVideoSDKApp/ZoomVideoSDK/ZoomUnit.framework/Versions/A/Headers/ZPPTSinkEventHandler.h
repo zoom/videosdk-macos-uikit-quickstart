@@ -9,25 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <ZoomKit/zoom_client_conf.h>
 extern NSString* kNoti_StartLogin;  //for show NotifyIcon animation
-extern NSString* kNoti_Login_FBPage_Ready;
-extern NSString* kNoti_Login_FB_AuthPage_Ready;
-extern NSString* kNoti_Login_FB_Cancel;
 extern NSString* kNoti_FB_RosterReady;
-extern NSString* kNoti_FB_IM_LogOut;
-
-extern NSString* kNoti_SB_Register;
-extern NSString* kNoti_ListMeeting;
 
 extern NSString* kNoti_IMCmd_Invitation;//Call invitation incoming. param1 InviteItem; param2
 extern NSString* kNoti_IMCmd_Accept;//Call was accepted. param1 ; param2 
 extern NSString* kNoti_IMCmd_Decline;//call was declined. param1 ; param2 
-extern NSString* kNoti_IMCmd_Hangup;//caller hang up. param1 ; param2 
 
 //Asyn Notify
 extern NSString* kNoti_InviteBuddyFromConference; // param1 HWND; param2 MeetingItem
 extern NSString* kNoti_IPC_InCall;//param1 pMeetingID
-extern NSString* kNoti_IPC_CallEnded;//Param1 pMeetingID
-extern NSString* kNoti_IPC_CallPListChange;
 extern NSString* kNoti_IPC_Web_Start_LaunchCall;
 extern NSString* kNoti_IPC_Event_WebstartNeedForceUpdate;
 
@@ -62,15 +52,15 @@ extern NSString* kNoti_PT_ScheduleParam_MeetingMasterEventId;
 extern NSString* kNoti_PT_UpdateOutlookAttachments;
 extern NSString* kNoti_PT_VBSettingChange;
 
-extern NSString* kNoti_Setting_Changed;
 extern NSString* kNoti_OnCmdReturn_MsgDlg;//MessageDialog Cmd Return param1 CmdCode, //Not used on Mac yet
 extern NSString* kNoti_AutoLogin_WhenLaunch;
 extern NSString* kNoti_PT_Minimized;
 extern NSString* kNoti_PT_NewVersionReady;
 
 extern NSString* kNoti_PT_AutoUpdate_CheckFailed;
-extern NSString* kNoti_PT_Download_Progress_Updated;
 extern NSString* kNoti_PT_No_NewVersion;
+extern NSString* kNoti_PT_Download_Pause;
+extern NSString* kNoti_PT_Download_Resume;
 extern NSString* kNoti_PT_URLAction_PBXCall_NoCapabiltite;
 
 extern NSString* kNoti_ProxyServerAuthenticationRequest;

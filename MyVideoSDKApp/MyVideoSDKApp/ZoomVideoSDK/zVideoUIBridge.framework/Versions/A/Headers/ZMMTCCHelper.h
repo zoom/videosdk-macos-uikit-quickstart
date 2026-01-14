@@ -84,7 +84,7 @@ ZMConfSession *ZMMTCCGetCurrentConfSession(void);
 - (BOOL)approveStartLTTRequest;
 
 // ZOOM-561362
-- (BOOL)isSupportLockCaptionLanguage;
+- (BOOL)isSupportLockSpeakingLanguage;
 - (BOOL)hostLockSpeakingLanguage:(BOOL)locked;
 - (BOOL)isSpeakingLanguageLockedByHost;
 
@@ -141,6 +141,7 @@ ZMConfSession *ZMMTCCGetCurrentConfSession(void);
 - (nullable ICmmUser *)getCmmUserByMsgId:(NSString *)msgId;
 - (void)addOrUpdateSpeakerNameByInfo:(const void *)info;
 #endif
+- (BOOL)canEditSpkearTagWithMsgId:(NSString *)msgId;
 @end
 
 @interface ZMMTCCColorItem : NSObject
@@ -165,6 +166,7 @@ ZMConfSession *ZMMTCCGetCurrentConfSession(void);
 - (void)setBackgroundColorItem:(ZMMTCCColorItem *)colorItem;
 - (ZMMTCaptionDisplayMode)captionDisplayMode;
 - (void)setCaptionDisplayMode:(ZMMTCaptionDisplayMode)captionDisplayMode;
++ (NSArray<NSString *> *)fontTypes;
 @end
 
 NS_ASSUME_NONNULL_END

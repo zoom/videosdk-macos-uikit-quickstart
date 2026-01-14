@@ -31,6 +31,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSRange)appendAttributedString:(NSAttributedString *)attributedString;
 
+//MARK: - near Range
+@property (nonatomic, assign) NSRange nearRange;
+
+- (NSRange)inputNearFieldSelectionStringRange;
+- (NSString *)inputNearFieldSelectionString;
+
 @end
 
 NS_ASSUME_NONNULL_END

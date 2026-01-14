@@ -46,9 +46,9 @@ APPKIT_EXTERN CGColorRef CGColorRGBA(NSInteger r, NSInteger g, NSInteger b, CGFl
  @param rgbValue hex value like 0xffffff
  @return Calibrated RGB color
  */
-APPKIT_EXTERN NSColor * NSColorFromHex(NSInteger rgbValue);
+APPKIT_EXTERN NSColor * NSColorFromHex(NSUInteger rgbValue);
 APPKIT_EXTERN NSColor * NSColorFromRGBAHex(NSUInteger rgbaValue);
-APPKIT_EXTERN CGColorRef CGColorFromHex(NSInteger rgbValue);
+APPKIT_EXTERN CGColorRef CGColorFromHex(NSUInteger rgbValue);
 
 APPKIT_EXTERN NSColor * NSColorFromHexString(NSString *hexValue);
 
@@ -77,7 +77,7 @@ APPKIT_EXTERN NSColor * ZMHexColorWithAlpha(NSUInteger light, CGFloat lightAlpha
  @param alpha 0 ~ 1
  @return Calibrated RGB color
  */
-APPKIT_EXTERN NSColor * NSColorFromHexWithAlpha(NSInteger rgbValue,float alpha);
+APPKIT_EXTERN NSColor * NSColorFromHexWithAlpha(NSUInteger rgbValue, CGFloat alpha);
 
 @interface NSColor (ZoomKit)
 
@@ -123,7 +123,7 @@ APPKIT_EXTERN NSColor * NSColorFromHexWithAlpha(NSInteger rgbValue,float alpha);
 
 @property (class, readonly) NSColor *zmLineColor;
 
-- (nullable NSString *)hexString;
+- (NSString *)hexString;
 //- (NSInteger)hexRGB;
 
 @end

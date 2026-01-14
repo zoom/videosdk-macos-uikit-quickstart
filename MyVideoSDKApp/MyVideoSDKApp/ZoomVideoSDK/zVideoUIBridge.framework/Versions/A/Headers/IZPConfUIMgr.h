@@ -16,6 +16,8 @@ typedef NS_ENUM(NSUInteger, ZMMTLeaveMeetingAction) {
 
 @class ZMToast;
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef void (^ZMMTLeaveMeetingCompletion)(ZMMTLeaveMeetingAction action);
 
 @protocol IZPConfUIMgr <ZMRoutableObject>
@@ -26,9 +28,13 @@ typedef void (^ZMMTLeaveMeetingCompletion)(ZMMTLeaveMeetingAction action);
 - (void)askConfLeaveWithConfirm:(BOOL)confirm completion:(ZMMTLeaveMeetingCompletion)completion;
 
 - (void)addToast:(ZMToast *)toast;
+- (void)removeToast:(ZMToast *)toast;
+- (nullable ZMToast *)fetchToastWithIdentifier:(NSString *)identifier;
 
 - (__kindof NSWindow *)confWindow;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif /* IZPConfUIMgr_h */

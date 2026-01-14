@@ -3,14 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>files</key>
-	<dict/>
+	<dict>
+		<key>Resources/default.metallib</key>
+		<data>
+		8JTR207e9dHDxIAjphJ/KuGoIIc=
+		</data>
+	</dict>
 	<key>files2</key>
 	<dict>
 		<key>Frameworks/libavcodec.59.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			hH2g1F/AmXGad+w8CBlKOPo2Yog=
+			y8nIhjKZbkpVVUYxJvoQk/eol1E=
 			</data>
 			<key>requirement</key>
 			<string>identifier "libavcodec.59" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
@@ -19,7 +24,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			XUcgA5nZJbpyzyFMc/zVJ/P4qsI=
+			6fNpXeEldtTZY8apJmaAVD9m9zw=
 			</data>
 			<key>requirement</key>
 			<string>identifier "libavformat.59" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
@@ -28,7 +33,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			I8dcVU6uMdTuzHvSDj6nifD7yw4=
+			aGBqgyA8/U2NRW8PSITbMdOwudc=
 			</data>
 			<key>requirement</key>
 			<string>identifier "libavutil.57" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
@@ -37,7 +42,7 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			KTXNzEheCKT70ldkEDFJIr/3J9Y=
+			wu1Y+QoUvxx1G2cnOVivC7aqlp4=
 			</data>
 			<key>requirement</key>
 			<string>identifier "libswresample.4" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
@@ -46,10 +51,17 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			pUpr/pa4avSf5f+w7Ayneu7/0CE=
+			ybdF7ybgpCzkiEtQ+LqUuhq0TBY=
 			</data>
 			<key>requirement</key>
 			<string>identifier "libswscale.6" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
+		</dict>
+		<key>Resources/default.metallib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			J3mJEroGi5eZoBPXY4Q3SIpXgG1O17/ohfrjrKL+REU=
+			</data>
 		</dict>
 	</dict>
 	<key>rules</key>

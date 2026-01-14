@@ -90,6 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setNeedPromptStopShareWhenSwitchRoom:(BOOL)needPrompt;
 
 - (BOOL)isAllowChangeBOConfigWhileBOInActionEnabled;
+- (BOOL)canMoveUserFromWaitingRoom;
 
 #pragma mark - SpotsBO
 #ifdef ENABLE_ZAPP

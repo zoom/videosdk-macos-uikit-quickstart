@@ -19,11 +19,14 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface NSBundle (ZoomKit)
+- (BOOL)isPrivateBundle;//private bundle no need Valid Zoom CodeSign, but ondemand need
 + (BOOL)loadBundleWithComponentName:(NSString*)componentName;
 + (BOOL)loadBundleWithComponentName:(NSString*)componentName checkVersion:(BOOL)check;
 + (BOOL)loadBundleWithComponentName:(NSString*)componentName checkVersion:(BOOL)check outBundle:(NSBundle*_Nullable*_Nullable)outBundle;
 + (BOOL)loadFrameworkBundleWithComponentName:(NSString*)componentName outBundle:(NSBundle*_Nullable*_Nullable)outBundle;
-+ (void)loadOnDemandBundleWithComponentName:(NSString*)componentName checkVersion:(BOOL)check completion:(void (^)(BOOL result))completion;
++ (void)loadOnDemandBundleWithComponentName:(NSString*)componentName checkVersion:(BOOL)check completion:(void (^)(BOOL result, NSBundle* bundle))completion;
+
++ (void)loadBundleWithComponentName:(NSString*)componentName checkVersion:(BOOL)check completion:(void (^)(BOOL result, NSBundle* bundle))completion;
 
 + (nullable NSBundle *)getBundleWithComponentName:(NSString *)componentName checkVersion:(BOOL)check;
 

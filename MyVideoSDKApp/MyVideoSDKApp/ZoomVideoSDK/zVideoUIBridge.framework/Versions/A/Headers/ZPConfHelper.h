@@ -12,8 +12,9 @@
 #import <ZoomUnit/ZMGalleryPlusWallpaperModel.h>
 #ifdef __cplusplus
 #import <zm_conf_universal_ui/zm_conf_universal_ui_api.h>
-#import <zm_conf_universal_ui/zm_conf_universal_ui_online_business_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_online_business_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_watermark_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_aic_interface.h>
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
@@ -28,6 +29,8 @@ extern ZCV const ZCV6_4_10;
 extern ZCV const ZCV6_5_10;
 extern ZCV const ZCV6_6_0;
 extern ZCV const ZCV6_6_10;
+extern ZCV const ZCV6_7_0;
+extern ZCV const ZCV6_8_0;
 
 @class ZMUser;
 
@@ -51,7 +54,6 @@ extern ZCV const ZCV6_6_10;
 - (nullable NSString *)getLocalMeetingNumber;
 - (nullable NSString *)getHostJoinZak;
 - (nullable NSString *)getZoomSessionId;
-- (nullable NSString*)getUserNameByID:(int)userID;
 
 - (BOOL)isWebinar;
 - (BOOL)isSimuliveWebinar;
@@ -108,12 +110,13 @@ extern ZCV const ZCV6_6_10;
 - (BOOL)canShowInviteeList;
 /// Return true if allowed to show invitee never joined.
 - (BOOL)shouldShowInviteeList;
-
+- (BOOL)isProactiveActionRecapMeetingEnabled;
 - (BOOL)isMeetingBillableHoursEnabled;
 - (BOOL)isAutoTrackMeetingBillableHoursEnabled;
 - (BOOL)isAudioSessionOff;
 - (BOOL)isDisableAudioForInSipCall;//zoom-14478 sip
 - (BOOL)isTurnoffComputerAudioInSipCall;//zoom-14478 ZOOM-20377 sip
+- (BOOL)isFailoverJoin;
 - (BOOL)isCurrentConferenceAudioOn;
 - (BOOL)isUserAudioMuted:(int)userID;
 - (int)getUserAudioType:(int)userID;
@@ -157,6 +160,8 @@ extern ZCV const ZCV6_6_10;
 - (nullable ZMUser*)getRealActiveVideoUser;
 - (nullable ZMUser*)getActiveSpeakerUser;
 
+- (BOOL)canShowBorderForUser:(ZMUser*)user;
+
 - (BOOL)isAudioWatermarkEnabled;
 - (BOOL)isE2EEncMeeting;
 - (BOOL)isInstantMeeting;
@@ -195,6 +200,8 @@ extern ZCV const ZCV6_6_10;
 - (int)getLiveStreamCapacityPromptThreshold;
 - (int)getParticpantCountLimitation;
 - (int)getViewOnlyCountLimitation;
+
+- (BOOL)isNewLiveStreamIndicatorStringPrefixEnabled;
 
 - (NSString*)getGiftUpgradeUrl;
 
@@ -255,6 +262,7 @@ extern ZCV const ZCV6_6_10;
 - (BOOL)isRaiseHandImprovementsAvaiable;
 
 - (BOOL)needPromptSmartSummaryDisclaimer;
+- (BOOL)isDeleteAICompanionAssetsNeedHide;
 
 //[ZOOM-458717] Proctoring Mode
 - (BOOL)isEnableProctoringMode;
@@ -279,6 +287,12 @@ extern ZCV const ZCV6_6_10;
 - (void)agreeSmartSummaryDisclaimer:(BOOL)bAgree;
 
 - (void)logUIWindowSize:(NSSize)meetingWindowSize activeSize:(NSSize)activeSize;
+
+// ZOOM-1001627
+- (BOOL)removeMyWatchOnlyMode;
+- (BOOL)hasAicRegulatedUserInMeeting;
+- (BOOL)isAicOutOfComplianceNotifyOnlyEnabled;
+- (BOOL)isAicOutOfComplianceNotifyAndDisableEnabled;
 
 //[ZOOM-528112] BasicPlus
 - (BOOL)isBasicPlusHostEnabled;
@@ -321,6 +335,7 @@ extern ZCV const ZCV6_6_10;
 - (BOOL)isFirstTimeUsePPM;
 - (BOOL)isInPPMeeting;
 
+- (BOOL)isMeetingSimplificationEnabled;
 //[ZOOM-634357]
 - (BOOL)isToolbarPinEnabled;
 - (BOOL)isToolbarSimplificationEnabled;
@@ -411,6 +426,19 @@ extern ZCV const ZCV6_6_10;
 - (NSString *)getE2EMeetingSecurityCode;
 - (NSInteger)getE2EMeetingSecurityCodePassedSeconds;
 - (BOOL)isNewEndLeavingUIEnabled;
+- (BOOL)isCertificationAppBtnCanShowInToolBar;
+
+//check feature toggle
+- (BOOL)enableShowFeature:(NSString*)featureName;
+
+#pragma mark - Notes Transcription Management
+- (BOOL)hasActiveNotesTranscriptions;
+- (BOOL)stopNotesTranscriptionForUser:(ZMUser *)user;
+- (BOOL)stopAllNotesTranscriptions;
+- (BOOL)isMyNotesEnabledForAll;
+- (BOOL)isMyNotesEnabled;
+- (BOOL)isMyNotesEntranceEnabled;
+
 @end
 
 NS_ASSUME_NONNULL_END

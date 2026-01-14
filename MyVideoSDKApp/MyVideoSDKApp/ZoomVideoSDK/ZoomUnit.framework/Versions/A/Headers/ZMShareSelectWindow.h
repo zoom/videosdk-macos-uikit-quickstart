@@ -102,6 +102,7 @@ typedef NS_ENUM(NSInteger, ZMShareSelectOptionsDesign) {
 @property (nonatomic, assign) BOOL audioMoreButtonHidden;
 @property (nonatomic, assign) BOOL boCheckButtonHidden;
 @property (nonatomic, assign) BOOL showZoomWindowDefaultEnabled;
+@property (nonatomic, readonly) BOOL showZoomWindowEnabled;
 @property (nonatomic, assign) BOOL showToolBarDefaultEnabled;
 @property (nonatomic, assign) BOOL hideRepeatWindowDefaultEnabled;
 @property (nonatomic, assign) BOOL showWatermark;
@@ -142,7 +143,6 @@ typedef NS_ENUM(NSInteger, ZMShareSelectOptionsDesign) {
 - (void)closeSidePanelAnimation;
 - (void)showSidePanelAnimation;
 - (void)showWithPostion:(NSPoint)position;
-- (void)invisibleInSharing;
 - (void)switchNormalWindowLevel:(BOOL)bNormal;
 
 - (void)updateCheckBoxForZapp:(ZMZAppShareScreenInfo *)shareInfo;
@@ -152,6 +152,7 @@ typedef NS_ENUM(NSInteger, ZMShareSelectOptionsDesign) {
 - (void)unbindCollectionOverlayView:(NSUInteger)segmentId;
 
 - (void)updateCheckBox;
+- (void)setCollectionViewSelectedIndexPathsSilently:(NSSet<NSIndexPath *> *)indexPaths;
 @end
 
 NS_ASSUME_NONNULL_END

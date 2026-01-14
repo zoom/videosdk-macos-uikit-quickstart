@@ -27,6 +27,7 @@ extern NSString *const KZMJoinMeetingFlowAnchor;
 - (NSDictionary *)shadowParameters;
 + (BOOL)_shouldFillOnDoubleClick;
 - (void)_zoomFill:(nullable id)sender;
++ (Class)frameViewClassForStyleMask:(NSUInteger)windowStyle;
 @end
 
 @interface NSWindow (ZoomKit)
@@ -97,6 +98,12 @@ APPKIT_EXTERN NSString * const kNSWindowAlertViewWillBeReplace;
 - (void)zm_windowEndLiveResize;
 - (void)zm_zoomFill:(nullable id)sender;
 - (void)zm_onDoubleClickTitleBar;
+
+#pragma mark - standard button
+@property (readonly) NSButton *zmCloseButton;//_NSThemeWidget
+@property (readonly) NSButton *zmMiniaturizeButton;//
+@property (readonly) NSButton *zmZoomButton;//_NSThemeZoomWidget
+
 @end
 
 @interface NSWindow (ZoomKit_RTL)
@@ -109,4 +116,14 @@ APPKIT_EXTERN NSString * const kNSWindowAlertViewWillBeReplace;
 - (void)setAutoFrameSize:(NSSize)size anchorCorner:(NSRectCorner)corner animate:(BOOL)animate;
 
 @end
+
+// only for ZMBaseWindow and ZMBasePanel
+@interface NSWindow (ZMBaseWindow)
+
+@property (assign, nonatomic) CGFloat zmWidgetMinX; //default value 13
+@property (assign, nonatomic) CGFloat zmTitleHeight; //default value 44
+@property (assign, nonatomic) CGFloat zmCornerRadius; //default value 12, work for macOS 26+
+
+@end
+
 NS_ASSUME_NONNULL_END

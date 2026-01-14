@@ -18,6 +18,7 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #ifdef __OBJC__
 
 #import <zVideoUIBridge/ZMUIConstants.h>
+#import <zVideoUIBridge/ZMMTViewType.h>
 #import <zVideoUIBridge/ZMMTTransitionModel.h>
 #import <zVideoUIBridge/ZMConfSession.h>
 #import <zVideoUIBridge/ZMHelperMgr.h>
@@ -27,6 +28,7 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/ZMNsMenu.h>
 #import <zVideoUIBridge/ZMConfAPI.h>
 #import <zVideoUIBridge/ZMMTInterpretHelper.h>
+#import <zVideoUIBridge/ZMMTVoiceTranslationHelper.h>
 #import <zVideoUIBridge/ZMIQConstant.h>
 #import <zVideoUIBridge/ZMMTQueriesHelper.h>
 #import <zVideoUIBridge/ZMQuerySettingOptions.h>
@@ -39,7 +41,12 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/NSWindow+ZmmtKit.h>
 #import <zVideoUIBridge/NSColor+ZmmtKit.h>
 #import <zVideoUIBridge/NSString+ZmmtKit.h>
+#import <zVideoUIBridge/NSAppearance+ZmmtKit.h>
 #import <zVideoUIBridge/NSMutableArray+ZMUserHelper.h>
+#import <zVideoUIBridge/NSAppearance+ZmmtKit.h>
+
+// Universal UI
+#import <zVideoUIBridge/ZMMTAudioUUIHelper.h>
 
 // CommonUI
 
@@ -96,9 +103,10 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/ZMMTShareHelper.h>
 #import <zVideoUIBridge/ZMMTSummaryHelper.h>
 #import <zVideoUIBridge/ZMMEventTracker.h>
-#import <zVideoUIBridge/ZMMTEventV2Tracker.h>
 #pragma clang diagnostic pop
 #endif
+
+#import <zVideoUIBridge/ZMMTEventV2Tracker.h>
 
 #import <zVideoUIBridge/ZMUser.h>
 #import <zVideoUIBridge/ZMUser+Clips.h>
@@ -112,6 +120,10 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/ZMMTGRHelper.h>
 #import <zVideoUIBridge/ZMMTOnlineBusinessHelper.h>
 #import <zVideoUIBridge/ZMMTWindow.h>
+#import <zVideoUIBridge/ZMMTStudioScene.h>
+
+#import <zVideoUIBridge/ZMMTSidePanel.h>
+#import <zVideoUIBridge/ZMMTSidePanelItem.h>
 
 //protocols
 #import <zVideoUIBridge/IZPConfUIMgr.h>
@@ -148,6 +160,7 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/ZMMTAvatarProtocol.h>
 #import <zVideoUIBridge/IZMMTNewMeetingInfoMgr.h>
 #import <zVideoUIBridge/ZMMTBaseView.h>
+#import <zVideoUIBridge/IZMMTVoiceTranslationMgr.h>
 #import <zVideoUIBridge/IZMMTToastMgr.h>
 #import <zVideoUIBridge/ZMMTWindow.h>
 #import <zVideoUIBridge/IZMMTWizardMgr.h>
@@ -157,6 +170,8 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/IZMLeaveMeetingMgr.h>
 #import <zVideoUIBridge/IZMAuxUIMgr.h>
 #import <zVideoUIBridge/IZMMTToolbarMgr.h>
+#import <zVideoUIBridge/IZMMTAudioMgr.h>
+#import <zVideoUIBridge/IZMLipsyncMgr.h>
 
 #ifdef __cplusplus
 #import <zVideoUIBridge/IZMMTPolicyUpdateProtocol.h>

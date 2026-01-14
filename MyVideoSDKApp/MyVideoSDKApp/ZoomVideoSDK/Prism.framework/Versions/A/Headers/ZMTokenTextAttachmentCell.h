@@ -7,8 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Prism/ZMPTBaseTextAttachmentCell.h>
 
-@interface ZMTokenTextAttachmentCell : NSTextAttachmentCell
+@interface ZMTokenTextAttachmentCell : NSTextAttachmentCell <ZMTrackingTextAttachmentCell>
 
 @property(nonatomic, copy) NSString *name;
 
@@ -18,8 +19,10 @@
 
 @property (nonatomic,copy) void (^expand)(ZMTokenTextAttachmentCell *cell, NSUInteger atCharacterIndex);
 
-@property (nonatomic, assign) BOOL isShowExternal;
+@property (nonatomic,copy) void (^hoverAvatar)(ZMTokenTextAttachmentCell *cell,BOOL isKeyPress);
 
+@property (nonatomic, assign) BOOL isShowExternal;
+@property (nonatomic, assign) BOOL isShowPending;
 @property (nonatomic, assign) BOOL isShowAdded;
 
 //default YES
@@ -32,18 +35,37 @@
 
 @property (readonly) NSRect expandIconRect;
 
+@property (readonly) NSRect frame;
+
+@property (readonly) NSRect avatarRect;
+
+@property (readonly) NSView *drawControlView;
+
 @property (nonatomic, assign) BOOL expandEnable;
 
-@property (nonatomic, retain) NSColor *borderColor;
+@property (nonatomic, strong) NSColor *borderColor;
 
-@property (nonatomic, retain) NSColor *backgroundColor;
+@property (nonatomic, strong) NSColor *backgroundColor;
 
-@property (nonatomic, retain) NSColor *highlightBackgroundColor;
+@property (nonatomic, strong) NSColor *highlightBackgroundColor;
 
-@property (nonatomic, retain) NSString *accessibilityDescription;
+@property (nonatomic, strong) NSString *accessibilityDescription;
 
-@property (nonatomic, retain) NSColor *textColor;
+@property (nonatomic, strong) NSColor *textColor;
 
+@property (nonatomic, copy) NSString *closeButtonLabel;
+
+@property (nonatomic, assign) BOOL isNeedShowAvatar;
+
+@property (nonatomic, assign) BOOL isNeedShowAvatarAX;
+
+@property (nonatomic, strong) NSImage *avatar;
+
+@property (nonatomic, strong) NSColor *avatarBackgroundColor;
+
+@property (nonatomic, assign) NSEdgeInsets avatarEdgeInset;
+
+@property (nonatomic, assign) BOOL isNeedInverserAvatarWhenHighlight;
 
 - (NSAttributedString *)attributedString;
 

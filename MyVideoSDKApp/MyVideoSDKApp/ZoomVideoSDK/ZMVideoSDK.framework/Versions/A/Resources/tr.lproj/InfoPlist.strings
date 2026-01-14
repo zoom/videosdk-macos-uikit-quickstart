@@ -5,3 +5,4 @@ NSCameraUsageDescription = "Katılımcıların sizi görebilmesi için Zoom'un k
 NSCalendarsFullAccessUsageDescription= "Etkinliklerinizi gösterebilmek için Zoom Workplace'in takviminize erişmesi gerekir.";
 NSLocalNetworkUsageDescription= "Bu işlem, Zoom istemcisinde AirPlay'i ve eşler arası toplantıları etkinleştirmek için gereklidir.";
 NSBluetoothAlwaysUsageDescription= "Bu, Zoom Workplace'in yakındaki Zoom Rooms ögelerini bulmasını sağlar.";
+NSAudioCaptureUsageDescription = "Diğer uygulamalardan ses kaydı almak için lütfen erişime izin verin.";

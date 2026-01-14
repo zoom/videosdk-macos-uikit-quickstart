@@ -40,6 +40,7 @@ extern ZMHotkeyName const kZMHotkeyStopRemoteControl;
 //extern ZMHotkeyName const kZMHotkeyJumpToChat;
 extern ZMHotkeyName const kZMHotkeyCloseWindow;
 extern ZMHotkeyName const kZMHotkeyScreenShot;
+extern ZMHotkeyName const kZMHotkeyScreenShotRecord;
 extern ZMHotkeyName const kZMHotkeyCreateClip;
 extern ZMHotkeyName const kZMHotkeySwitchPortraitView;
 extern ZMHotkeyName const kZMHotkeyShowHideFitbar;
@@ -95,6 +96,7 @@ extern ZMHotkeyName const kZMHotkeyShowHideCalendarSidePanel;
 extern ZMHotkeyName const kZMHotkeyInspectWebView;
 extern ZMHotkeyName const kZMHotkeySearchInMessages;
 extern ZMHotkeyName const kZMHotkeyReloadHomeTab;
+extern ZMHotkeyName const kZMHotkeyPasteAsPlainText;
 
 @interface ZMHotkeyConfiguration (ZoomUnit)
 + (NSArray<NSDictionary*>*)defaultHotkeyArray;

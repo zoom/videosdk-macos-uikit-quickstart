@@ -46,10 +46,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZMMEventTracker : NSObject
 
-#ifdef ENABLE_ZAPP
-+ (void)trackZappFunnelWithInfo:(ZMZAppsInteractInfo *)info;
-#endif
-
 + (void)trackMeetingEvent:(ZMMTTelemetry *)meetingEvent;
 
 + (void)trackMeetingInteractionWithSource:(e_meetings_MeetingInteractV2_event_source)eventSource

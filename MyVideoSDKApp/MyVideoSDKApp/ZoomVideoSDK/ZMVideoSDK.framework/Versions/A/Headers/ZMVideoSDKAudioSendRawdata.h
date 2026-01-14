@@ -17,14 +17,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKAudioSender : NSObject
 /**
- * @brief Send audio raw data, and sampling bits must be 16.
+ * @brief Sends audio raw data, and sampling bits must be 16.
  * @param data Data Pointer to the audio data buffer.
  * @param length The length of audio data in bytes (must be an even number).
  * @param rate Sampling rate of the audio data. Supported rates depend on the channel count:
  *             - Mono: 8000, 11025, 16000, 32000, 44100, 48000, 50000, 50400, 96000, 192000, 2822400
  *             - Stereo: 8000, 16000, 32000, 44100, 48000, 50000, 50400, 96000, 192000
  * @param channel Identifies the audio data channel type. default is ZMVideoSDKAudioChannel_Mono.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)send:(char*)data dataLength:(unsigned int)length sampleRate:(int)rate channel:(ZMVideoSDKAudioChannel)channel;
 @end

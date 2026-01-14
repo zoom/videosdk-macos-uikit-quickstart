@@ -7,18 +7,9 @@
 
 #import <Foundation/Foundation.h>
 #import <ZoomKit/ZoomKit.h>
+#import <Prism/Prism-Swift.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
-typedef NS_ENUM(NSInteger, ZMThemeName){
-    ZMThemeName_Bloom,
-    ZMThemeName_Rose,
-    ZMThemeName_Agave,
-    ZMThemeName_Classic,
-    ZMThemeName_Dark,//only for IM
-    ZMThemeName_Custom,//only for meeting
-    ZMThemeName_Backstage,//only for meeting
-};
 
 @protocol ZMThemeObject <NSObject>
 @property(assign) ZMThemeName name;

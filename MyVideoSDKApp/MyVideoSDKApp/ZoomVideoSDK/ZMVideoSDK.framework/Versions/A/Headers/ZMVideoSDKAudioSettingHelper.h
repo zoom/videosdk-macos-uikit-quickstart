@@ -13,43 +13,43 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKAudioDeviceTestHelper : NSObject
 /**
- * @brief Start the microphone test. This will start recording the input from the mic. Once the recording is complete, stopMicTestRecording must be called to finish the recording.
- * @param deviceID Specify to test a microphone device. If the param is a wrong microphone ID, the SDK will return an error. Otherwise the SDK tests the specified device and sets it as selected.
- * @return If the function succeeds, it will return @c ZMVideoSDKErrors_Success, otherwise failed.
+ * @brief Starts the microphone test. This starts recording the input from the mic. Once the recording is complete, stopMicTestRecording must be called to finish the recording.
+ * @param deviceID Specify to test a microphone device. If the param is a wrong microphone ID, the SDK returns an error, otherwise the SDK tests the specified device and sets it as selected.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @note The SDK will test the default device if no parameter is input.
  */
 - (ZMVideoSDKErrors)startMicTestRecording:(NSString *)deviceID;
     
 /**
- * @brief Stop the microphone test. Before calling this, you must have successfully started the microphone test by calling startMicTestRecording. Otherwise this returns an error.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Stops the microphone test. Before calling this, successfully start the microphone test by calling startMicTestRecording. Otherwise this returns an error.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)stopMicTestRecording;
     
 /**
- * @brief Play the microphone recorded sound. You must complete a microphone test by successfully executing startMicTestRecording and stopMicTestRecording before calling this. Otherwise this returns an error.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Plays the microphone recorded sound. Complete a microphone test by successfully executing startMicTestRecording and stopMicTestRecording before calling this. Otherwise this returns an error.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)playMicTestRecording;
 
 /**
- * @brief Start the speaker test.
- * @param deviceID Specify to test a speaker device. If the param is a wrong speaker ID, the SDK will return an error. Otherwise the SDK tests the specified device and sets it as selected.
- * @return If the function succeeds, it will return @c ZMVideoSDKErrors_Success, otherwise failed.
+ * @brief Starts the speaker test.
+ * @param deviceID Specify to test a speaker device. If the param is a wrong speaker ID, the SDK returns an error, otherwise the SDK tests the specified device and sets it as selected.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @note The SDK will test the default device if no parameter is input.
  */
 - (ZMVideoSDKErrors)startSpeakerTest:(nullable NSString *)deviceID;
     
 /**
- * @brief Stop the speaker test. Before calling this, you must have successfully started the speaker test by calling startSpeakerTest. Otherwise this returns an error.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Stops the speaker test. Before calling this, successfully start the speaker test by calling startSpeakerTest. Otherwise this returns an error.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)stopSpeakerTest;
     
 /**
- * @brief Set the time interval for the audio test.
- * @param timerInterval Usually the SDK sends the mic and speaker volumes every 200 ms by default via onMicSpeakerVolumeChanged:(unsigned int)micVolume speakerVolume:. With this function, the user can modify the time interval instead of 200, default is 200 ms. Accepted values between 50 to 1000 milliseconds.
- * @return If the function succeeds, it will return @c ZMVideoSDKErrors_Success, otherwise failed.
+ * @brief Sets the time interval for the audio test.
+ * @param timerInterval Usually the SDK sends the mic and speaker volumes every 200 ms by default via onMicSpeakerVolumeChanged:(unsigned int)micVolume speakerVolume:. This function modifies the time interval instead of 200, default is 200 ms. Accepted values between 50 to 1000 milliseconds.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @note This interface will stop the mic or speaker test (if there is on ongoing). As a best practice, call it before the audio test.
  */
 - (ZMVideoSDKErrors)setTimerInterval:(unsigned int)timerInterval;
@@ -62,100 +62,100 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKAudioSettingHelper : NSObject
     
 /**
- * @brief Get the suppress background noise level.
+ * @brief Gets the suppress background noise level.
  * @param level The suppress background noise level.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)getSuppressBackgroundNoiseLevel:(ZMVideoSDKSuppressBackgroundNoiseLevel*)level;
     
 /**
- * @brief Set the suppress background noise level.
+ * @brief Sets the suppress background noise level.
  * @param level The suppress background noise level.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)setSuppressBackgroundNoiseLevel:(ZMVideoSDKSuppressBackgroundNoiseLevel)level;
     
 /**
- * @brief Call this method to enable or disable the original input of mic.
- * @param bEnable YES to enable the original input of the microphone or NO to disable it.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Enables or disables the original input of mic.
+ * @param bEnable YES to enable the microphone's original input or NO to disable it.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)enableMicOriginalInput:(BOOL)bEnable;
     
 /**
- * @brief Determine whether the original input of the microphone is enabled.
- * @param bEnable YES means enabled.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Determines whether the microphone's original input is enabled.
+ * @param bEnable YES to enable, NO to disable.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)isMicOriginalInputEnable:(BOOL*)bEnable;
     
 /**
- * @brief Set whether to enable the function of high fidelity music mode or not.
- * @param bEnable YES means to enable.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Sets whether to enable the function of high fidelity music mode or not.
+ * @param bEnable YES to enable, NO to disable.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)enableHighFidelityMusicMode:(BOOL)bEnable;
 
 /**
- * @brief Check whether the high fidelity music mode is enabled or not.
- * @param bEnable YES means enabled.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Checks whether the high fidelity music mode is enabled or not.
+ * @param bEnable YES to enable, NO to disable.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)isHighFidelityMusicModeEnable:(BOOL*)bEnable;
 
 /**
- * @brief Set whether to disable the function of echo cancellation or not.
- * @param bEnable YES means to enable.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Sets whether to disable the function of echo cancellation or not.
+ * @param bEnable YES to enable, NO to disable.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)enableEchoCancellation:(BOOL)bEnable;
 
 /**
- * @brief Check whether the echo cancellation is enabled or not.
- * @param bEnable YES means enabled.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Checks whether the echo cancellation is enabled or not.
+ * @param bEnable YES to enable, NO to disable.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)isEchoCancellationEnable:(BOOL*)bEnable;
 
 /**
- * @brief Set whether to enable stereo audio.
- * @param bEnable YES means to enable.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Sets whether to enable stereo audio.
+ * @param bEnable YES to enable, NO to disable.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)enableStereoAudio:(BOOL)bEnable;
 
 /**
- * @brief Check whether the stereo audio is enabled or not.
- * @param bEnable YES means enabled.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Checks whether the stereo audio is enabled or not.
+ * @param bEnable YES to enable, NO to disable.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)isStereoAudioEnable:(BOOL*)bEnable;
 
 /**
- * @brief Get the echo cancellation level.
+ * @brief Gets the echo cancellation level.
  * @param level The echo cancellation level.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)getEchoCancellationLevel:(ZMVideoSDKEchoCancellationLevel*)level;
 
 /**
- * @brief Set the echo cancellation level.
+ * @brief Sets the echo cancellation level.
  * @param level The echo cancellation level to be set.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)setEchoCancellationLevel:(ZMVideoSDKEchoCancellationLevel)level;
 
 /**
- * @brief Call this method to enable or disable the auto adjust input of microphone volume.
- * @param bEnable YES to enable auto adjust input. NO to disable it.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Enables or disables the auto adjust input of microphone volume.
+ * @param bEnable YES to enable auto adjust input, NO to disable it.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)enableAutoAdjustMicVolume:(BOOL)bEnable;
 
 /**
- * @brief Determine whether the original input of the microphone volume is enabled.
- * @param bEnable YES means enabled, otherwise NO.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Determines whether the microphone's original input volume is enabled.
+ * @param bEnable YES if enabled, NO otherwise.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)isAutoAdjustMicVolumeEnabled:(BOOL*)bEnable;
 

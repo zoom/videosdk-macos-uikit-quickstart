@@ -21,9 +21,9 @@ typedef NS_ENUM(NSUInteger, ZMUserNotificationActivationType)
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSString * const ZMUserNotificationThreadIdentifierChat = @"ZMUserNotificationThreadIdentifierChat";
-static NSString * const ZMUserNotificationThreadIdentifierMail = @"ZMUserNotificationThreadIdentifierMail";
-static NSString * const ZMUserNotificationThreadIdentifierUpcomingMeetingReminder = @"ZMUserNotificationThreadIdentifierUpcomingMeetingReminder";
+#define ZMUserNotificationThreadIdentifierChat @"ZMUserNotificationThreadIdentifierChat"
+#define ZMUserNotificationThreadIdentifierMail @"ZMUserNotificationThreadIdentifierMail"
+#define ZMUserNotificationThreadIdentifierUpcomingMeetingReminder @"ZMUserNotificationThreadIdentifierUpcomingMeetingReminder"
 
 extern NSString *kZMUserNotificationClickContentNoticiation;
 

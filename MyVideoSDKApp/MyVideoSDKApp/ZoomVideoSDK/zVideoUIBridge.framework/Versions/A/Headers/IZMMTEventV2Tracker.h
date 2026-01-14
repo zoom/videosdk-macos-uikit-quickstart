@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (MeetingsV2MeetingWallpaperEntityParams)getWallpaperEntity;
 - (MeetingsV2ShareOptionsEntityParams)getShareOptionsEntity;
 - (MeetingsV2ShareOptionsEntityParams)getShareOptionsEntity:(e_meetings_v2_ShareOptionsEntity_share_content_type)shareContentType;
+- (MeetingsV2ShareOptionsEntityParams)getClipsShareOptionsEntity;
 - (MeetingsV2VideoLayoutPreferenceEntityParams)getVideoLayoutPreferenceEntity;
 - (MeetingsV2PsSceneEntityParams)getPSSceneEntity;
 #pragma mark - UUI

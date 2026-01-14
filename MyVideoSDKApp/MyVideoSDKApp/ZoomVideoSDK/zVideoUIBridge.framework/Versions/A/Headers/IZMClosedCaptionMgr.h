@@ -134,10 +134,8 @@ typedef NS_ENUM(int, ZMCCOperationType) {
 - (void)closeAllWindow;
 - (void)openCloseCaptionPanel;
 - (void)closeCloseCaptionPanel;
-- (void)setSidePanelItemNoNeedRestore;
 - (BOOL)isCloseCaptionPanelVisible;
 - (BOOL)isCloseCaptionPanelInSidePanel;
-- (void)mergeCloseCaptionPanelToMainWindow;
 
 - (void)updateUIWithFontName:(nullable NSString *)fontName;
 - (void)updateUIWithFontSize:(int)inFontSize;

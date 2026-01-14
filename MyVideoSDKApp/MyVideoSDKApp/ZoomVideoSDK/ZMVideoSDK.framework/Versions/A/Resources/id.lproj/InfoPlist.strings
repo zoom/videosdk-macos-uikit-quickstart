@@ -6,3 +6,4 @@ NSCameraUsageDescription = "Agar peserta dapat melihat Anda, Zoom membutuhkan ak
 NSCalendarsFullAccessUsageDescription= "Untuk dapat menampilkan acara Anda, Zoom Workplace perlu mengakses Kalender Anda.";
 NSLocalNetworkUsageDescription= "Proses ini diperlukan untuk mengaktifkan AirPlay dan rapat peer-to-peer di klien Zoom.";
 NSBluetoothAlwaysUsageDescription= "Ini akan memungkinkan Zoom Workplace untuk menemukan Zoom Rooms terdekat.";
+NSAudioCaptureUsageDescription = "Izinkan akses untuk menangkap audio dari aplikasi lain.";

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSString (ZmmtKit)
 
 - (NSString *)changeTWFlagEmojiIfNeed;
+- (NSImage *)zmmt_avatarImageBySize:(NSSize)size;
 
 @end
 

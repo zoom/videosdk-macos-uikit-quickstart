@@ -17,4 +17,6 @@
     #import <ZoomKit/ZoomKit.h>
 #endif
 
+#define ZoomUnit_CString2NSString(c_string)  c_string.IsEmpty() ? @"" : [NSString stringWithUTF8String:c_string.c_str()];
+
 #endif /* PrefixHeader_pch */

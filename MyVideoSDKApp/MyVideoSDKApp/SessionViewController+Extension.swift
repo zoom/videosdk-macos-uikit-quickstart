@@ -88,6 +88,9 @@ extension SessionViewController {
             alert.informativeText = "An error has occured: \(message)"
             alert.alertStyle = .critical
             alert.addButton(withTitle: "OK")
+            DispatchQueue.main.async {
+                alert.beginSheetModal(for: window)
+            }
         }
     }
     

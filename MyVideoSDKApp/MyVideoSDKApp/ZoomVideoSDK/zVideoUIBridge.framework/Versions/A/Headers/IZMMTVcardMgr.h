@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showVCard:(ZMUser*)user;
 - (void)closeVCard;
 - (BOOL)enableShowVcard:(ZMUser*)user;
+- (BOOL)enableShowVCardByJid:(NSString*)jid;
 - (BOOL)isUserLeft:(ZMUser *)user;
 
 @property (nonatomic, strong) ZMWKWebUserProfileViewController *webProfileVC;

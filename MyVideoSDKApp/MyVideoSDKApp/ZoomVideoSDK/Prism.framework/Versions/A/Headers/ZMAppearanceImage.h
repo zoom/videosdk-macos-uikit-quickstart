@@ -1,5 +1,5 @@
 //
-//  ZMAppearanceImage.h
+//  PrismImage.h
 //  ZCommonUI
 //
 //  Created by javenlee on 2019/4/22.
@@ -8,7 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ZMAppearanceImage : NSImage
+NS_ASSUME_NONNULL_BEGIN
+@interface PrismImage : NSImage
 
 @property (nonatomic, strong) NSImage *lightImg;
 @property (nonatomic, strong) NSImage *darkImg;
@@ -16,11 +17,15 @@
 + (NSImage*)imageNamed:(NSImageName)name;
 + (NSImage*)imageNamed:(NSImageName)lightName darkName:(NSImageName)darkName;
 
-- (ZMAppearanceImage *)initImageWithLight:(NSImage *)lightImg darkImg:(NSImage *)darkImg;
+- (PrismImage *)initImageWithLight:(NSImage *)lightImg darkImg:(NSImage *)darkImg;
 
+- (NSImage *)currentAppearanceImage;
 @end
+typedef PrismImage ZMAppearanceImage NS_SWIFT_NAME(Image);
 
-@interface NSImage(ZMAppearanceImage)
+@interface NSImage(PrismImage)
 /// support dark and light mode
 + (instancetype)zmImageWithSize:(NSSize)size drawingHandler:(void (^)(NSRect rect))drawingHandler;
 @end
+
+NS_ASSUME_NONNULL_END

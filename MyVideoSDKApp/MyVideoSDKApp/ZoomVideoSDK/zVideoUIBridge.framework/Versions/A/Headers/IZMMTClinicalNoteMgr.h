@@ -31,7 +31,6 @@
 - (BOOL)isPatientDataSidepanelShowing;
 - (void)openPatientDataSidepanel;
 - (void)closePatientDataSidepanel;
-- (void)mergeToMeetingWindow;
 - (void)popupWindowEnabled:(BOOL)enable;
 - (BOOL)isPopupWindowEnabled;
 - (BOOL)needRestorePatientDataPanel;
@@ -45,7 +44,7 @@
 - (void)onReceiveSwitchClinicalNoteResponseMsg:(BOOL)timeout isDecline:(BOOL)decline switchAction:(NSInteger)switchAction;
 - (void)onClinicalNoteChanged;
 - (void)onCNPatientDataSaved:(BOOL)isSuccess;
-- (void)onCreateClinicalNoteSessionFailed;
+- (void)onCreateClinicalNoteSessionFailed:(NSInteger)errCode;
 - (void)onAICompanionTokenReceived:(BOOL)isSuccess reqId:(NSString*)reqId token:(NSString *)token;
 
 @end

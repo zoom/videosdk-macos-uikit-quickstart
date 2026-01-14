@@ -26,9 +26,12 @@ typedef enum : NSUInteger {
 
 @end
 
+@class ZMAppearance;
 @interface ZMPopoverController : NSObject
 
 @property (weak) id <ZMPopoverControllerDelegate> delegate;
+
+@property (nullable,nonatomic,retain) ZMAppearance* zmAppearance;
 
 @property (nullable,retain) ZMBaseViewController *contentViewController;
 

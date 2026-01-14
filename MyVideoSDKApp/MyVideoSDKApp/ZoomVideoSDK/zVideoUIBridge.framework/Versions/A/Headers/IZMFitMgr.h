@@ -22,6 +22,12 @@ NS_ASSUME_NONNULL_BEGIN
 // ToolSuite
 - (void)showToolbarWindow;
 - (void)hideToolbarWindow;
+
+- (BOOL)isToolbarShowing;
+- (void)closeReactionsMenu;
+- (BOOL)isReactionsMenuShowing;
+- (void)showMoreEmojiMenu;
+
 @end
 
 NS_ASSUME_NONNULL_END

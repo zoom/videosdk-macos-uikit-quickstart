@@ -46,9 +46,9 @@ APPKIT_EXTERN NSImage * NSTemplateImage(NSString * name);//!<Images provided by 
 + (nullable NSImage *)imageWithIndentifier:(NSImageIndentifier)indentifier tintColor:(NSColor *_Nullable)tintColor size:(CGFloat)size;
 + (nullable NSImage *)imageWithIndentifier:(NSImageIndentifier)indentifier tintColor:(NSColor *)tintColor width:(CGFloat)width height:(CGFloat)height;
 - (void)drawInBounds:(NSRect)bounds;
-- (nullable NSImage *)newImageWithTintColor:(NSColor *_Nullable)tintColor;
-- (nullable NSImage *)newImageWithTintColor:(NSColor *_Nullable)tintColor operation:(NSCompositingOperation)operation;
-- (nullable NSImage *)zmImageWithTintColor:(NSColor * _Nullable)tintColor;
+- (NSImage *)newImageWithTintColor:(NSColor *_Nullable)tintColor;
+- (NSImage *)newImageWithTintColor:(NSColor *_Nullable)tintColor operation:(NSCompositingOperation)operation;
+- (NSImage *)zmImageWithTintColor:(NSColor * _Nullable)tintColor;
 - (NSImage *)zmImageWithTintColor:(NSColor * _Nullable)tintColor operation:(NSCompositingOperation)operation;
 
 + (nullable NSImage*)triangleImage:(NSInteger)length width:(int)lineWidth angle:(CGFloat)angle direction:(ZMDirection)dirction tintColor:(NSColor*)tintColor;

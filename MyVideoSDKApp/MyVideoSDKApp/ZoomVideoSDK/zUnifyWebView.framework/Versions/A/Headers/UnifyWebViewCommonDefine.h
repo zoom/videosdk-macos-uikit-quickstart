@@ -14,6 +14,9 @@
 #define HybridAppIndex_Mail            46
 #define HybridAppIndex_FilePickerMenu  50    // dev env local load test app
 #define HybridAppIndex_AiAdoption      53
+#define HybridAppIndex_WebViewPolicy   56
+#define HybridAppIndex_Certification   58
+#define HybridAppIndex_StudioRecording 59
 
 #define IS_INVALID_HYBRID_APP_IDX(index) ((index) < 0)
 
@@ -86,6 +89,16 @@ enum UnifyWebViewAppType
     UnifyWebViewAppType_Videos = 54,
     UnifyWebViewAppType_ForgotPasswd = 55,
     UnifyWebViewAppType_UnifyWebView = 56,
+    UnifyWebViewAppType_ThirdPartyPopupWindow = 57,
+    UnifyWebViewAppType_CommonZoomPopupWindow = 58,
+    UnifyWebViewAppType_SharedNavTabWebView = 59,
+    UnifyWebViewAppType_BookingScheduler = 60,
+    UnifyWebViewAppType_MarketplaceOAuthLogin = 61,
+    UnifyWebviewAppType_CustomizedURL = 62,
+    UnifyWebviewAppType_Certifications = 63,
+    UnifyWebviewAppType_InClientBrowser = 64,
+    UnifyWebViewAppType_PreVoiceNotes = 65,
+    UnifyWebViewAppType_StudioRecording = 66,
 };
 
 enum UnifyWebViewType
@@ -99,9 +112,17 @@ enum UnifyWebViewType
 };
 
 enum UnifyWebViewIdleRecycleType {
-    UnifyWebViewIdleRecycleType_Disabled = 0,
-    UnifyWebViewIdleRecycleType_Enabled,
-    UnifyWebViewIdleRecycleType_NoResponseEnabled,
+    UnifyWebViewIdleRecycleType_Default = 0,  // default
+    UnifyWebViewIdleRecycleType_Enabled = 1 << 0,
+    UnifyWebViewIdleRecycleType_NoResponseEnabled = 1 << 1,
+    UnifyWebViewIdleRecycleType_ForceDisabled = 1 << 2,  // business forced disable, highest priority
+};
+
+enum UnifyWebViewWindowType {
+    UnifyWebViewWindowType_Unknown,
+    UnifyWebViewWindowType_Popup,
+    UnifyWebViewWindowType_MT,
+    UnifyWebViewWindowType_PT,
 };
 
 enum UnifyWebviewCrashType
@@ -123,7 +144,9 @@ enum UnifyWebviewCrashType
     UnifyWebviewCrashType_PpapiBrokerProcessExited,
     UnifyWebviewCrashType_UnknownProcessExited,
     UnifyWebviewCrashType_ExceededCPULimit,
-    UnifyWebviewCrashType_RequestedByClient
+    UnifyWebviewCrashType_RequestedByClient,
+    UnifyWebviewCrashType_WebViewAgent_Unresponsive,
+    UnifyWebviewCrashType_ExceededSharedProcessCrashLimit,
 };
 
 enum UnifyWebViewOperateState
@@ -131,6 +154,13 @@ enum UnifyWebViewOperateState
     UnifyWebViewOperateState_Deny,
     UnifyWebViewOperateState_Allow,
     UnifyWebViewOperateState_Hold
+};
+
+enum UnifyWebviewMeetingState
+{
+    UnifyWebviewMeetingState_Unknown = -1,
+    UnifyWebviewMeetingState_PreMeeting,
+    UnifyWebviewMeetingState_InMeeting
 };
 
 enum UnifyWebViewError
@@ -166,17 +196,47 @@ enum UnifyWebViewError
     UnifyWebViewError_JsUnanswered                      = 28,
     UnifyWebViewError_HugeMemoryUsage                   = 29,
     UnifyWebViewError_SystemUnsupportCEF                = 30,
-    UnifyWebViewError_CEFPluginDownloadFail             = 31,
+    UnifyWebViewError_WebViewEngineDownloadFailed       = 31,
     UnifyWebViewError_TypeIllegal                       = 32,
     UnifyWebViewError_RecordNotFound                    = 33,
     UnifyWebViewError_CEFPluginNotExist                 = 34,
     UnifyWebViewError_RenderProcessUnresponsive         = 35,
     UnifyWebViewError_RenderProcessTerminated           = 36,
     UnifyWebViewError_WebView2RuntimeOutDated           = 37,
-    UnifyWebViewError_CreateCEFTimeout                  = 38,
-    UnifyWebViewError_CreateCEFTimeoutUnInited          = 39,
-    UnifyWebViewError_CreateCEFTimeoutUnCreated         = 40,
-    UnifyWebViewError_CreateCEFTimeoutUnLoading         = 41,
+    UnifyWebViewError_WebViewCreateFailed               = 38,
+    UnifyWebViewError_WebViewEngineLoadTimeout          = 39,
+    UnifyWebViewError_WebViewCreateTimeout              = 40,
+    UnifyWebViewError_NavigateTimeout                   = 41,
+    UnifyWebViewError_ComposeResultCancelled            = 42,
+    UnifyWebViewError_ComposeResultSaved                = 43,
+    UnifyWebViewError_ComposeResultSent                 = 44,
+    UnifyWebViewError_ComposeResultFailed               = 45,
+    UnifyWebViewError_BrowserProcessCrashed             = 46,
+    UnifyWebViewError_AgentProcessCrashed               = 47,
+    UnifyWebViewError_LocalLoadUnzipFailed              = 48,
+    UnifyWebViewError_WebViewEngineLoadFailed           = 49,
+    UnifyWebViewError_WebViewRestoreFailed              = 50,
+    UnifyWebViewError_UrlCancelled                      = 51,
+    UnifyWebViewError_NavigationCanceledForDownload     = 52,
+    UnifyWebViewError_RecoveryFailed                    = 53,
+    UnifyWebViewError_NavigationStaysInvalid            = 54,
+    UnifyWebViewError_OpenAppFailed                     = 55,
+};
+
+enum UnifyWebViewWarning
+{
+    UnifyWebViewWarning_NoWarning                       = 0,
+    UnifyWebViewWarning_ResourceFailed                  = 1 << 0,
+    UnifyWebViewWarning_JavascriptError                 = 1 << 1,
+    UnifyWebViewWarning_GpuCrashed                      = 1 << 2,
+    UnifyWebViewWarning_AboutBlank                      = 1 << 3,
+    UnifyWebViewWarning_HttpAuthFailed                  = 1 << 4,
+    UnifyWebViewWarning_JsMessageIpcFailed              = 1 << 5,
+    UnifyWebViewWarning_DiskSpaceLow                    = 1 << 6,
+    UnifyWebViewWarning_CpuOveruse                      = 1 << 7,
+    UnifyWebViewWarning_LowPower                        = 1 << 8,
+    UnifyWebViewWarning_HugeMemoryUsage                 = 1 << 9,
+    UnifyWebViewWarning_SharedProcessCrashOverLimit     = 1 << 10,
 };
 
 enum UnifyWebviewHybridAppError
@@ -189,6 +249,7 @@ enum UnifyWebviewHybridAppError
     UnifyWebviewHybridAppError_NoRemoteCdnUrl              = 7005,
     UnifyWebviewHybridAppError_NotUseLocalResource         = 7006,
     UnifyWebviewHybridAppError_DownloadPkgTimeout          = 7007,
+    UnifyWebviewHybridAppError_AppDisabled                 = 7008,
 };
 
 enum UnifyWebviewAPMError
@@ -197,6 +258,7 @@ enum UnifyWebviewAPMError
     UnifyWebviewAPMError_ApiVerificationFailed,
     UnifyWebviewAPMError_CreateBrowserFailed,
     UnifyWebviewAPMError_CreateAgentProcessFailed,
+    UnifyWebviewAPMError_NavigationTimeout,
 };
 
 enum UnifyWebViewPermissionState
@@ -212,6 +274,19 @@ enum UnifyWebViewBlankCheckResult
     Invisible,
     Blank,
     Normal,
+};
+
+enum UnifyWebViewBlankCheckType
+{
+    WindowShot     = 1,
+    ViewShot       = 2,
+    Api            = 4,
+}; 
+
+enum UnifyWebViewBlankCheckReason
+{
+    BlankCheckReason_Default = 0,
+    BlankCheckReason_AppWillEnterForeGround,
 };
 
 enum UnifyWebViewProcessType
@@ -254,6 +329,73 @@ enum UnifyWebViewNavigationType {
     NavigationType_API,
     NavigationType_Script,
     NavigationType_Redirect,
+    NavigationType_LinkActivated,
+};
+
+enum UnifyWebViewZAppState
+{
+    UnifyWebViewZAppState_Initial                               = 0,
+    UnifyWebViewZAppState_InstCreated                           = 1,
+    UnifyWebViewZAppState_LocalInstCreated                      = 2,
+    UnifyWebViewZAppState_LocalDownloadingPkg                   = 3,
+    UnifyWebViewZAppState_LocalDownloadFailed                   = 4,
+    UnifyWebViewZAppState_LocalDownloadTimeout                  = 5,
+    UnifyWebViewZAppState_LocalPkgHashMismatch                  = 6,
+    UnifyWebViewZAppState_LocalPkgReady                         = 7,
+    UnifyWebViewZAppState_LocalPkgLoaded                        = 8,
+    UnifyWebViewZAppState_LocalPkgLoadFailed                    = 9,
+    UnifyWebViewZAppState_LocalCdnUrlLoaded                     = 10, // 0xa
+    UnifyWebViewZAppState_MpGettingAppContext                   = 11, // 0xb
+    UnifyWebViewZAppState_MpGetAppContextFailed                 = 12, // 0xc
+    UnifyWebViewZAppState_MpHomeUrlLoaded                       = 13, // 0xd
+};
+
+enum UnifyWebViewLifecycleState
+{
+    UnifyWebViewLifecycleState_Initial                          = 0,
+    UnifyWebViewLifecycleState_EngineDownloading                = 1,
+    UnifyWebViewLifecycleState_EngineDownloadFailed             = 2,
+    UnifyWebViewLifecycleState_EngineDownloaded                 = 3,
+    UnifyWebViewLifecycleState_EngineAvailabled                 = 4,
+    UnifyWebViewLifecycleState_EngineLoaded                     = 5,
+    UnifyWebViewLifecycleState_EngineLoadFailed                 = 6,
+    UnifyWebViewLifecycleState_Creating                         = 7,
+    UnifyWebViewLifecycleState_CreateFailed                     = 8,
+    UnifyWebViewLifecycleState_CreateTimeout                    = 9,
+    UnifyWebViewLifecycleState_Ready                            = 10, // 0xa
+    UnifyWebViewLifecycleState_Recycling                        = 11, // 0xb
+    UnifyWebViewLifecycleState_Recycled                         = 12, // 0xc
+    UnifyWebViewLifecycleState_Restoring                        = 13, // 0xd
+    UnifyWebViewLifecycleState_RestoreTimeout                   = 14, // 0xe
+    UnifyWebViewLifecycleState_Closing                          = 15, // 0xf
+};
+
+enum UnifyWebViewNavigationState
+{
+    UnifyWebViewNavigationState_Initial                         = 0,
+    UnifyWebViewNavigationState_Started                         = 1,
+    UnifyWebViewNavigationState_Redirecting                     = 2,
+    UnifyWebViewNavigationState_Fetching                        = 3,
+    UnifyWebViewNavigationState_DOMContentLoaded                = 4,
+    UnifyWebViewNavigationState_Canceled                        = 5,
+    UnifyWebViewNavigationState_Finished                        = 6,
+    UnifyWebViewNavigationState_Error                           = 7,
+    UnifyWebViewNavigationState_Timeout                         = 8,
+};
+
+enum UnifyWebviewDownloadType {
+    UnifyWebviewDownloadType_None = 0,
+    UnifyWebviewDownloadType_Cancel = 1,
+    UnifyWebviewDownloadType_ShowDialog = 2,
+    UnifyWebviewDownloadType_SystemDownloadPath = 3
+};
+
+enum UnifyWebViewEventBusTopic
+{
+    UnifyWebViewEventBusTopic_CollectProcessInfo    = 101,
+    UnifyWebViewEventBusTopic_PolicyCheckRequest    = 102,
+    UnifyWebViewEventBusTopic_PolicyCheckResponse   = 103,
+    UnifyWebViewEventBusTopic_PolicyDebugNotify     = 104,
 };
 
 #endif

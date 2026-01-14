@@ -15,12 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKLiveTranscriptionLanguage : NSObject
 
 /**
- * @brief The id of the language.
+ * @brief The language's ID.
  */
 @property (nonatomic, assign, readonly)int languageID;
 
 /**
- * @brief The name of the language.
+ * @brief The language's name.
  */
 @property (nonatomic, copy, readonly)NSString *languageName;
 
@@ -34,32 +34,32 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKLiveTranscriptionMessageInfo : NSObject
 /**
- * @brief Get the message ID of the current message.
+ * @brief Gets the message ID of the current message.
  */
 @property (nonatomic, copy, readonly) NSString *messageID;
 
 /**
- * @brief Get the speaker's ID.
+ * @brief Gets the speaker's ID.
  */
 @property (nonatomic, copy, readonly) NSString *speakerID;
 
 /**
- * @brief Get the speaker's name.
+ * @brief Gets the speaker's name.
  */
 @property (nonatomic, copy, readonly) NSString *speakerName;
 
 /**
- * @brief Get the content of the current message.
+ * @brief Gets the current message's content.
  */
 @property (nonatomic, copy, readonly) NSString *messageContent;
 
 /**
- * @brief Get the time stamp of the current message.
+ * @brief Gets the time stamp of the current message.
  */
 @property (nonatomic, assign, readonly) time_t timeStamp;
 
 /**
- * @brief Get the type of the current message.
+ * @brief Gets the current message's type.
  */
 @property (nonatomic, assign, readonly) ZMVideoSDKLiveTranscriptionOperationType messageType;
 @end
@@ -73,90 +73,90 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * @brief Query if the user can start live transcription.
- * @return YES if the user can start live transcription. NO otherwise.
+ * @return YES if the user can start live transcription. Otherwise, NO.
  */
 - (BOOL)canStartLiveTranscription;
 
 /**
- * @brief Get the current live transcription status.
- * @return If the function succeeds, the return value is the current live transcription status.
+ * @brief Gets the current live transcription status.
+ * @return The current live transcription status.
  */
 - (ZMVideoSDKLiveTranscriptionStatus)getLiveTranscriptionStatus;
 
 /**
- * @brief Start live transcription.
- * @return If the function succeeds, it will return @c ZMVideoSDKErrors_Success, otherwise failed.
+ * @brief Starts live transcription.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @note If the session allows multi-language transcription, all user can start live transcription. Otherwise only the host can start it.
  */
 - (ZMVideoSDKErrors)startLiveTranscription;
 
 /**
- * @brief Stop live transcription.
- * @return If the function succeeds, it will return @c ZMVideoSDKErrors_Success, otherwise failed.
+ * @brief Stops live transcription.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @note If the session allows multi-language transcription, all user can stop live transcription. Otherwise only the host can stop it.
  */
 - (ZMVideoSDKErrors)stopLiveTranscription;
 
 /**
- * @brief Get the list of all available spoken languages in session.
- * @return If the function succeeds, the return value is the list of the available spoken languages in a session.
+ * @brief Gets the available spoken language list in session.
+ * @return If the function succeeds, it returns the available spoken language list in a session. Otherwise, this function fails and returns nil.
  */
 - (NSArray<ZMVideoSDKLiveTranscriptionLanguage*> * _Nullable)getAvailableSpokenLanguages;
 
 /**
- * @brief Set the spoken language of the current user.
+ * @brief Sets the current user's spoken language.
  * @param languageID The spoken language ID.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)setSpokenLanguage:(int)languageID;
 
 /**
- * @brief Get the spoken language of the current user.
- * @return The spoken language of the current user. Otherwise returns nil.
+ * @brief Gets the current user's spoken language.
+ * @return The current's spoken language user. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKLiveTranscriptionLanguage* _Nullable)getSpokenLanguage;
 
 /**
- * @brief Get the list of all available translation languages in a session.
- * @return If the function succeeds, the return value is the list of all available translation languages in a session.
+ * @brief Gets the list of all available translation languages in a session.
+ * @return If the function succeeds, it returns the list of all available translation languages in a session. Otherwise, this function fails and returns nil.
  */
 - (NSArray<ZMVideoSDKLiveTranscriptionLanguage*> * _Nullable)getAvailableTranslationLanguages;
 
 /**
- * @brief Set the translation language of the current user.
- * @param languageID The translation language ID. If the language id is set to -1, live translation will be disabled.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Sets the current user's translation language.
+ * @param languageID The translation language ID. If the language ID is set to -1, live translation will be disabled.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)setTranslationLanguage:(int)languageID;
 
 /**
- * @brief Get the translation language of the current user.
- * @return The translation language of the current user. Otherwise returns nil.
+ * @brief Gets the current user's translation language.
+ * @return The current's translation language user. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKLiveTranscriptionLanguage* _Nullable)getTranslationLanguage;
 
 /**
- * @brief Enable or disable to receive original and translated content. If you enable this feature, you must start live transcription.
- * @param enable Set to YES to receive both spoken language content. NO to disable.
- * @return If the function succeeds, the return value is ZMVideoSDKErrors_Success. Otherwise not.
+ * @brief Enables or disables to receive original and translated content. If enabled, start live transcription.
+ * @param enable Set to YES to receive both spoken language content, NO to disable.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)enableReceiveSpokenLanguageContent:(BOOL)enable;
 
 /**
- * @brief Determine whether the feature to receive original and translated is available.
- * @return YES indicates that the feature to receive original and translated is available. Otherwise NO.
+ * @brief Determines whether the feature to receive original and translated is available.
+ * @return YES if the feature to receive original and translated is available. Otherwise, NO.
  */
 - (BOOL)isReceiveSpokenLanguageContentEnabled;
 
 /**
- * @brief Determine whether the view history translation message is available.
- * @return YES indicates that the view history transcription message is available. Otherwise NO.
+ * @brief Determines whether the view history translation message is available.
+ * @return YES if the view history transcription message is available. Otherwise, NO.
  */
 - (BOOL)isAllowViewHistoryTranslationMessageEnabled;
 
 /**
- * @brief Get the list of all history translation messages in a session.
- * @return If the function succeeds, the return value is a array of all history translation messages in a session. Otherwise it fails, and the return value is nil.
+ * @brief Gets the list of all history translation messages in a session.
+ * @return If the function succeeds, it returns a array of all history translation messages in a session. Otherwise it fails, and it returns nil.
  */
 - (NSArray<ZMVideoSDKLiveTranscriptionMessageInfo*>* _Nullable)getHistoryTranslationMessageList;
 @end

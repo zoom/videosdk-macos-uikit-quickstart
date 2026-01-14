@@ -41,7 +41,7 @@
 #define Strong(o) __strong __typeof(o) o = weak##o;
 #endif
 
-static const NSUInteger ZMByteUnit = 1000; // keep the same with system's unit of calculation
+#define ZMByteUnit 1000 // keep the same with system's unit of calculation
 
 NS_ASSUME_NONNULL_BEGIN
 

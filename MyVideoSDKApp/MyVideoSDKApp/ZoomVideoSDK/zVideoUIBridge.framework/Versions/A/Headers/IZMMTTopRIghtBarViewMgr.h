@@ -28,7 +28,6 @@ typedef NS_OPTIONS(NSUInteger, ZMMTTopRightBarContentType)
 
 - (void)updateContent;
 - (void)updateContentItems:(ZMMTTopRightBarContentType)type;
-- (void)hideMultipleSpeakersToolbarTip;
 
 @end
 

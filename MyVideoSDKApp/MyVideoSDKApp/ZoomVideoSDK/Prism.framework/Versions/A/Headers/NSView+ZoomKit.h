@@ -201,6 +201,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) void (^viewHiddenDidChanged)(NSView *view);
 @property (nonatomic, copy, nullable) void (^rectInWindowDidChanged)(NSView *view);
 @property (nonatomic, copy, nullable) void (^viewDidMoveToWindowBlock)(NSWindow *_Nullable window);
+- (void)setNeedsUpdateRectInWindow:(BOOL)needed;
 #pragma mark - Appearance
 @property (nonatomic, copy, nullable) void (^viewEffectiveAppearanceDidChanged)(NSView* view);
 
@@ -208,6 +209,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(assign) BOOL zm_inLiveResize;
 - (void)zm_viewWillStartLiveResize;
 - (void)zm_viewDidEndLiveResize;
+
+#pragma mark - tooltip
+@property (nonatomic, assign) BOOL showTooltipReplaceExpansion;//default is YES, and only work for NSTextField
 @end
 
 //ZOOM-71195
@@ -241,4 +245,3 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
-

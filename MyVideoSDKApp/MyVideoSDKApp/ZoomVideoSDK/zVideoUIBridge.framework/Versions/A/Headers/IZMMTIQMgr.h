@@ -18,6 +18,8 @@
 - (BOOL)isBtnAiCNeedShow;
 - (BOOL)isAicRemindStartNeedShow;
 - (BOOL)isAicCatchUpNeedShow;
+- (BOOL)shouldShowRecapTip;
+- (void)sendRecapActionToWeb;
 - (BOOL)canShowAicStartWithRecordingStartCoachMark;
 - (BOOL)isRemindTurnOnAICompanionLocked;
 - (void)requestToSaveRemindHostTurnOnAICWebSetting:(BOOL)value;
@@ -26,9 +28,13 @@
 - (void)startSummaryQuestionsWithAccess;
 - (void)onShowRecordingWithAicCoachMark;
 - (void)onHideRecordingWithAicCoachMark;
+- (void)onShowRemindTurnOnAicCoachMark;
+- (void)onClickTurnOnRemindTurnOnAicCoachMark;
+- (void)onClickCloseRemindTurnOnAicCoachMark:(BOOL)check;
 - (BOOL)canShowBackWithCatchMeUp;
 - (void)onShowReactionWithAicAction;
 - (void)onReactionWithAicActionClicked:(NSString *)msg;
+- (void)onRecapAicActionClicked:(NSString *)msg;
 - (void)updateStartByselfStatus;
 - (void)openQueriesPanel;
 - (void)closeQueriesPanel;
@@ -45,7 +51,8 @@
 - (void)showRequestEnableQueriesPanelIfNeed:(ZMMTAICFeatureType)featureType;
 - (void)showAttendeeRequestStartPanelIfNeed:(ZMMTAICFeatureType)featureType isAccessRequest:(BOOL)isAccessRequest;
 - (void)showHostStartConfirmPanelIfNeed:(ZMMTAICFeatureType)featureType;
-- (void)showRequestStartPanelIfNeed:(NSString *)reqId 
+- (void)showHostStartConfirmPanelIfNeed:(ZMMTAICFeatureType)featureType onStartButton:(void (^)(void))startHandler onCancelButton:(void (^)(void))cancelHandler;
+- (void)showRequestStartPanelIfNeed:(NSString *)reqId
                            senderId:(ZMUserID)senderId
                         featureType:(ZMMTAICFeatureType)featureType
                     isAccessRequest:(BOOL)isAccessRequest;
@@ -53,6 +60,7 @@
                            senderId:(ZMUserID)senderId
                         featureType:(ZMMTAICFeatureType)featureType;
 - (void)closeRequestStartQueriesPanel;
+- (BOOL)closeAttendeeRequestTurnOnPanel;
 - (void)closeRequestStartLiveSummaryPanel;
 - (void)closeHostStartConfirmPanelIfNeed;
 - (void)showAdminReceiveRequestEnableAICIfNeed:(ZMUserID)senderId enableBySelf:(BOOL)isBySelf;
@@ -80,9 +88,6 @@
 - (void)showAttendeeRequestTurnOffPanelIfNeed;
 - (void)updatePopoutButton;
 - (void)makeFirstResponderIfPossible;
-- (void)try2ShowAICSidePanelCoachMark;
-- (void)showAICSidePanelCoachMark;
-- (void)AICSidePanelCoachMarkShown;
 - (void)writeMonitorLog:(NSInteger)eventType
             initiatorId:(unsigned int)initiatorId
             requesterId:(unsigned int)requesterId
@@ -91,6 +96,23 @@
                   reqId:(NSString *)reqId
          isDeleteAssets:(BOOL)isDeleteAssets;
 - (void)showStartWebinarPanelIfNeed;
+- (void)refreshRegulatedStartPanelsIfNeed;
+- (void)onAttendeeRequestTurnOffIncludeAll:(BOOL)includeAll;
+- (void)onUserWatchOnlyStatusChanged:(ZMUser*)zmUser;
+- (void)onConfSessionReadyChanged;
+- (void)showZoomIQDisclaimerIfNeed;
+- (void)showWatchOnlyDisclaimer;
+- (void)showCustomWatchOnlyDisclaimer;
+- (void)closeZoomRestrictIQDisclaimer;
+- (void)closeWatchOnlyDisclaimer;
+- (void)closeCustomWatchOnlyDisclaimer;
+- (BOOL)isStopAiBtnOfAicCustomizedDisclaimerVisible;
+- (BOOL)isExplicitConsentForAicRequired;
+- (BOOL)isAskHostStopAiBtnOfAicCustomizedDisclaimerVisible;
+- (BOOL)isNeedShowCustomizedDisclaimerForStartAiUser;
+- (BOOL)canShowRequestHostStartAICHostToolMenu;
+- (BOOL)canNotOpenAicPanelDueNonConsent;
+- (void)stopAICByself:(BOOL)deleteAssets;
 
 @end
 

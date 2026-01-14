@@ -10,8 +10,8 @@
 #define ZMAppProtocol_h
 #import <Appkit/Appkit.h>
 
-static NSString *const kAppStartTime = @"kAppStartTime";
-static NSString *const kAppLaunchTimeCost = @"kAppLaunchTimeCost";
+#define kAppStartTime @"kAppStartTime"
+#define kAppLaunchTimeCost @"kAppLaunchTimeCost"
 
 @protocol ZMAppProtocol <NSObject>
 
@@ -19,6 +19,8 @@ static NSString *const kAppLaunchTimeCost = @"kAppLaunchTimeCost";
 - (void)applicationDidFinishLaunching:(NSDictionary *)launchingInfo;
 - (void)applicationWillTerminate:(NSApplication *)application;
 
+- (BOOL)applicationShouldTerminateNow:(NSApplication *)application;
+- (void)applicationAppearanceDidChanged:(NSApplication *)application;
 @end
 
 #endif /* ZMAppProtocol_h */

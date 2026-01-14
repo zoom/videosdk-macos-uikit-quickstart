@@ -17,7 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)openNewMeetingInfo;
 - (void)closeNewMeetingInfo;
 - (BOOL)isNewMeetingInfoShowing;
-- (void)mergeToMeetingWindow;
 - (BOOL)shouldShowMeetingDetailsOnToolbar;
 
 - (void)onHandleJSBridgeGetMeetingInfo:(NSString *)jsCallId;
@@ -46,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onMeetingDetailStartExistedWB:(NSDictionary *)dic;
 - (void)onMeetingDetailStartShareDoc:(NSDictionary *)dic;
 - (void)onMeetingDetailsSettingChanged;
-
+- (void)onMeetingDetailsSettingChangedWithCancelLiveSummary:(BOOL)isCancelStartLiveSummary;
 
 - (void)onMeetingDetailWBStatusStarted:(NSString *)docID;
 - (void)onMeetingDetailWBStatusEnded:(NSString *)docID;

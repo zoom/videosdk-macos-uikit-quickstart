@@ -83,6 +83,12 @@ typedef NS_ENUM(NSInteger, ZMSendingShareType){
 - (void)shareCameraWithDeviceId:(NSString*)deviceId;
 
 - (void)onWatermarkStatusChanged;
+
+- (BOOL)mainWindowVisible;
+- (BOOL)mainWindowVisibleInSendingShare;
+
+- (NSScreen*)getSharedScreen;
+
 @end
 
 @protocol ZMShareMgrProcotol <NSObject>

@@ -15,10 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKCmdChannel : NSObject
 /**
- * @brief Send custom commands or data to other users in the current session.
- * @param commandContent the custom commands or data, represented in string format.
+ * @brief Sends custom commands or data to other users in the current session.
+ * @param commandContent The custom commands or data, represented in string format.
  * @param user The target user to receive the command. If nil, the command is broadcast to all users.
- * @return If the function succeeds, it will return @c ZMVideoSDKErrors_Success, otherwise failed.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @note Limit up to 60 custom commands per second.
  */
 - (ZMVideoSDKErrors)sendCommand:(NSString *)commandContent receiveUser:(nullable ZMVideoSDKUser *)user;

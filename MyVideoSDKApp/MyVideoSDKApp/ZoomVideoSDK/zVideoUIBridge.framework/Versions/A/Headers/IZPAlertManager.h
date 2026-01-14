@@ -70,9 +70,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showRequestAudioControlAlert:(ZMUser *)user;
 - (void)showForbidUnmuteAudioWhenAudioSharingAlert;
 
-//voice record
-- (void)showDeleteVoiceRecordAlert;
-- (void)showEndVoiceRecordAlert;
+- (void)showBindAudioBeforRaiseHandAlert;
+
+- (void)showWebinarReactionsEnabledAlertConfirmBlock:(void (^)())confirmAction;
+
+- (void)showAddToMeetingChannelAlert:(NSString*)content moreUrl:(nullable NSString *)moreUrl actionBlock:(void (^)(BOOL))actionBlock;
+- (void)closeAddToMeetingChannelAlert;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -6,20 +6,23 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		rWS82kToy/CSWy9RMwZYDb/dt3Y=
-		</data>
-		<key>Resources/ZMDialogue.nib</key>
-		<data>
-		npPTvOzbfOTv296l1gCCsuhLRV0=
+		koCx4wtn5GOsp3D5CRjVlebrzVI=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Headers/CmmModuleProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3iHp507/iDnSApFjIh7DXu90knpL4Jz8uJ7QEJzi7Dk=
+			</data>
+		</dict>
 		<key>Headers/IZMAudioSettingViewProtocol.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HPLaToPcJb8aTBywaMWKAl29Ni1+BvrPH2fSBdUiHmU=
+			Q2mF7wIxjh4jG2BdemAQd13d1BHjuS6MbOEMTTd6pTw=
 			</data>
 		</dict>
 		<key>Headers/IZMDeviceProtocol.h</key>
@@ -29,11 +32,53 @@
 			AQq4q6dGJr4Kh26sY7/OPjLvw0tSsoyoG5e8GvQ4ST0=
 			</data>
 		</dict>
+		<key>Headers/IZMInviteChatUIProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			fMo/5+IK4ZV/xce0CjHVGC57WAnV0mRb24/MTo8wPtM=
+			</data>
+		</dict>
+		<key>Headers/IZMLoggingMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			mapG+A71482D4EKaQuKfsVqWtDImIMMoWlXWezh0zz8=
+			</data>
+		</dict>
+		<key>Headers/IZMLottieProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			m+rd9dWTA5R8r7zhRKOUfhkXA66lBk7aWxkhhYZ8fd4=
+			</data>
+		</dict>
+		<key>Headers/IZMMTUserChatProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			M3p2g2TMcel8tUM0q5KZApw5ByxiacFFq9MG7ZGnWlQ=
+			</data>
+		</dict>
+		<key>Headers/IZMPTAlertMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bI5Mz1lE3QMJkgmvpq2X+Uvf+WyBMwZ7gvy/BEchhaY=
+			</data>
+		</dict>
 		<key>Headers/IZMThemeMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JUwUSdHjcfmRkPBB1AyAtZyMaQK0Hi0gb4El4D+IDSY=
+			urqN0WL4MsFexTQYwezkTcML1WRcC2dvLE86oOBxOjk=
+			</data>
+		</dict>
+		<key>Headers/IZMVoiceNotesMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			YvTpodwzLQJQC0DakydqTVCXqTHTtEfBcNUWbersOT8=
 			</data>
 		</dict>
 		<key>Headers/IZMWallpaperDownloadProtocol.h</key>
@@ -85,6 +130,20 @@
 			uLzrjZxEk0iSk3rAxNMXw6KE0d8gQIdfXFqNpu/EvHc=
 			</data>
 		</dict>
+		<key>Headers/ZMAlertInfo.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qqVdnuWWGDqPR4NCqofZGggd3CgEiqy1jlO3pq/iniI=
+			</data>
+		</dict>
+		<key>Headers/ZMAlertMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			iULfA8uA1DuDQLxgJCW1V3vAar7Uf09QKl612RiqUZY=
+			</data>
+		</dict>
 		<key>Headers/ZMAlertObject.h</key>
 		<dict>
 			<key>hash2</key>
@@ -110,7 +169,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6CKSXV3SZT2FZclR/3yJ2AUxuhTTBPGYyK+4kTeTuck=
+			YRyJWMZVcdfgGRrm/C9xbtTx8HLPoDC8VzSwy28LW+Q=
 			</data>
 		</dict>
 		<key>Headers/ZMAssignedGroupResult.h</key>
@@ -139,6 +198,13 @@
 			<key>hash2</key>
 			<data>
 			jLTutdP5TcX+/0gP0hlXTH+XeWD7bOFe25Z8cPhFdCA=
+			</data>
+		</dict>
+		<key>Headers/ZMBannerType.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hmqreBk+sY0aXIwi/dL9THhqc2jcAROEKtF6OHgrKho=
 			</data>
 		</dict>
 		<key>Headers/ZMBaseAvatarView.h</key>
@@ -197,6 +263,13 @@
 			/mH22U+lzjwelUFWSMFeKutXXs8PyuEMHEpoFRrjSM4=
 			</data>
 		</dict>
+		<key>Headers/ZMCertificateViewer.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			19F2DBHcI3lznlnCet/3Kf6pHK320BCl15OBkMqHFXY=
+			</data>
+		</dict>
 		<key>Headers/ZMChatButton.h</key>
 		<dict>
 			<key>hash2</key>
@@ -211,11 +284,32 @@
 			wF/IQHVDNed/eUOs6/GYkkTPqz0ZviUVDpy4sF8CtNE=
 			</data>
 		</dict>
+		<key>Headers/ZMChatFileAnnotationDelegate.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			PQ+fAZj0AIBlMhw2Z0qVmVaNuTabwspnk3DKJqvd5/U=
+			</data>
+		</dict>
+		<key>Headers/ZMChatFileAnnotationFactory.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			TbuOFMSlX492dQ1tiji1BRIyhHJWgS4vA/oQ5gvk3po=
+			</data>
+		</dict>
+		<key>Headers/ZMChatFileAnnotationProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			J2RK5JWr1WEPnlS5M8kLvCag4YY5LrnVnM2wV25OFuw=
+			</data>
+		</dict>
 		<key>Headers/ZMClientV2EventTelemetry.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			uu30ZPb98zB2Nd4l6iIhY9N6Yto+aOAQ7xZ/idHqusk=
+			tQCWWCYCHrPDrWXVRq5uut+wW794YNtB/a6Zy2pp8lI=
 			</data>
 		</dict>
 		<key>Headers/ZMCustomMenu.h</key>
@@ -237,6 +331,20 @@
 			<key>hash2</key>
 			<data>
 			9LW0Zz8lUgorRVN/0fSVT21FBlBsFZfRwWHyShERqWE=
+			</data>
+		</dict>
+		<key>Headers/ZMDebugToolProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hVls3imGvhxCjeesrfaL9lC8KGT2HOJTwmzSfbYBgYs=
+			</data>
+		</dict>
+		<key>Headers/ZMDeepLinkAdapter.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VJJ+Ip3cG9u7kvixaB7APDUZK4snFBm0tolw9HXvL90=
 			</data>
 		</dict>
 		<key>Headers/ZMDialogue.h</key>
@@ -278,7 +386,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			S/x9XBNQfjqd+IzKVhGseh9URuljpDfwuwXQt6Ot14s=
+			vjG2uDzU0QYOYxBTxvEEkkzf3gWlGQwUVSQZJFVl7J0=
 			</data>
 		</dict>
 		<key>Headers/ZMExtendMeetingBasicPlusCredits.h</key>
@@ -292,7 +400,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Bs3SWVIFA3oKgB7qS8kwcK11nIxoRf9VmYGRrHLZXHc=
+			BnAG7U7vwPEmvO2WUVtITdV/Md86iSmobxUF0zarEDQ=
 			</data>
 		</dict>
 		<key>Headers/ZMFileCopyMgr.h</key>
@@ -362,7 +470,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KD3LUeZUYntJZZBwQVWt6PZoCUTBqNiMUBJ8k6zZY/Q=
+			sFPY275KAPR2ntvP0/actkEOx+l512VHsVCS4VgjxWw=
 			</data>
 		</dict>
 		<key>Headers/ZMIMOnlyImageButton.h</key>
@@ -383,7 +491,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Qusz8+yi1b7GeUfHYzAykknPbZf8PS8dtgVLi2LAX+8=
+			Av0+0mCy6J8m+EFHHguPjHtfxPDYTho8IvZikHmW95c=
 			</data>
 		</dict>
 		<key>Headers/ZMImageView.h</key>
@@ -393,11 +501,25 @@
 			V8kp2Q2HkvWP3w9IaIydUKzDvNnkOR9F1HKnKpy41CU=
 			</data>
 		</dict>
+		<key>Headers/ZMInClientTypeView.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			st5Ay6n59DTRLOEDzXylIH0RSXMBTQ6a0ZEOG7Mlzxc=
+			</data>
+		</dict>
 		<key>Headers/ZMInteractiveEnum.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zEIAKJF7+d1YQSkAcOptHsS3ShSSR5OnbB5Kzl+oZzk=
+			54UaoNSaazviLDL3Jsts4Kt32ROldWpQjbgg7aSh+iE=
+			</data>
+		</dict>
+		<key>Headers/ZMInviteCoordinatorProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			69Ix9orqGIX0aHZjSmMa139SSd9aV+flhM2Dho5il9I=
 			</data>
 		</dict>
 		<key>Headers/ZMLabelIconTextView.h</key>
@@ -405,6 +527,13 @@
 			<key>hash2</key>
 			<data>
 			hdnn604utCuvhk9fIUzZM3Q81sQXtbPcv/5Ybmamx7w=
+			</data>
+		</dict>
+		<key>Headers/ZMLanguageManager.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			eXJnaO25sX7moEcpJ3sAL6iv3MwsEBi6L1WamxdytsA=
 			</data>
 		</dict>
 		<key>Headers/ZMLoadingAnimationView.h</key>
@@ -418,7 +547,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			2ReJ4RddD5h2Qzw+jgCvhLc8bpL1J1ot66iVRVqXVNw=
+			eqOO0NpdJOT5kenlCGKpouYfyU8k0rBRivWlTgAI7Sk=
+			</data>
+		</dict>
+		<key>Headers/ZMMTMgrInterface.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			iMnqEMI43nVsYP2fw6ZGuNtN35UdD0ytz+EITDfJxTE=
 			</data>
 		</dict>
 		<key>Headers/ZMMTNoticeInfoModel.h</key>
@@ -446,7 +582,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			TbGngbAaMHx/euXmTFQGRRHnb4DWQiQmLkReD2yNKy8=
+			t4LAAhzC2za8LlOBwursdCmXBFz3JfvCrCjEKxpbjTE=
 			</data>
 		</dict>
 		<key>Headers/ZMMemLogAdapter.h</key>
@@ -454,6 +590,13 @@
 			<key>hash2</key>
 			<data>
 			1f30FCYqQBjRnBG20tXCBSNdDFYY0DZyjguzVBTElZM=
+			</data>
+		</dict>
+		<key>Headers/ZMMenuItemProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Dr1rgSSUuYIEEnY1XWdmOHPYkHve/rx769J03mZqsbk=
 			</data>
 		</dict>
 		<key>Headers/ZMMetalHelper.h</key>
@@ -481,14 +624,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6K1iK4JUNVOCbWgv357ZtJt5WZaDPpctAN3bbrRwbWE=
+			477xeFVtl6ZMsTQhQNiOXB3mmFa0lbpjzEF9cASDuSU=
 			</data>
 		</dict>
 		<key>Headers/ZMPPTDataProtocol.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			dpYTNfW2fG3B/v2vrz5fVtvP091CACKjKr5YQwpVCcw=
+			OXB+MIrg8zeUHkzJYr0gOpxBW0GVPxTbnlYUzKAs4oc=
+			</data>
+		</dict>
+		<key>Headers/ZMPTAlertMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8Mg98pJpI93r4re8CdLeM5/Biah57xqwc0jUJiKeOuo=
+			</data>
+		</dict>
+		<key>Headers/ZMPTAlertType.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			TtfXGFkNetyGbIiMR97NvU7KufS4kkmqrxdcM+XcfQ4=
+			</data>
+		</dict>
+		<key>Headers/ZMPTMgrInterface.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			S59RLzOIKJZT3rZZIBqCxS54EAj1NeiAXQYMGfSRxnw=
 			</data>
 		</dict>
 		<key>Headers/ZMPTRoundImageView.h</key>
@@ -503,6 +667,13 @@
 			<key>hash2</key>
 			<data>
 			3/RkmWetYELSo8/uXH8zQdPwUw5gAQHQgussdlaBuI0=
+			</data>
+		</dict>
+		<key>Headers/ZMPassKeyManager.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			XsmQxOmFHD4n/h91RvHGKjckhEf6M7aum5mc65LBc6E=
 			</data>
 		</dict>
 		<key>Headers/ZMPersonalWallpaperConfigModel.h</key>
@@ -523,7 +694,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ndZV68Fec7V6V+PacZPRlsE6c0CuqRsP9IFhUp+B2Bk=
+			dFdP8nIbVQZlHu8MDOjcuxwFvd1PqON1q0O3iyOG5nM=
 			</data>
 		</dict>
 		<key>Headers/ZMPopoverManager.h</key>
@@ -589,18 +760,46 @@
 			Kiusg6FvNiS9KWJfnEfsi8dsUodkdDGdIfQ0gZJhuaU=
 			</data>
 		</dict>
+		<key>Headers/ZMReportWindowAdapter.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ELKUwCqhTMQOXL131qq2etK0YQn81c7dvsA47/g+F2E=
+			</data>
+		</dict>
+		<key>Headers/ZMRoomCalloutDevice.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Wd9qzHjoB6AVpalVqy8crV6iw8zck1FCx0GFsOmqteU=
+			</data>
+		</dict>
 		<key>Headers/ZMScenarioTelemetryTracker.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hv1fHikMAYIVpk4S4P0AdUlE1kpjBzEG+elGKJ8xw+E=
+			XwqYmfu+M80fPM/NADDCCLPO7Itb23jHFusruY+rPPE=
+			</data>
+		</dict>
+		<key>Headers/ZMScreenShotItem.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DWZCDNDn18fql/Otz8mc0a9l/6kVVAnHR2DrHdEGQ7o=
+			</data>
+		</dict>
+		<key>Headers/ZMScreenshotCallback.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			EPcq4M2ef/NzVIo6H8aW8KXgNjg3Zo5V06bWZR61AYQ=
 			</data>
 		</dict>
 		<key>Headers/ZMSearchTextView.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4p64m2I+tOUFiHgH2zuXNaOcD2laarePqgAsvDK1OzA=
+			vJc1cTkqUsZfgXziSerAxhvN0mH5wM+wDBItQ68uf0E=
 			</data>
 		</dict>
 		<key>Headers/ZMSecureInputView.h</key>
@@ -615,6 +814,13 @@
 			<key>hash2</key>
 			<data>
 			Iq1LN31mslEtWwiHQBNPaYfpanU/0g6enLKuuinNT+s=
+			</data>
+		</dict>
+		<key>Headers/ZMSecurityMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			IkdZBBm4N8jPAQuSB/p9nj+T9zlbYy9AH57NE3nEb8M=
 			</data>
 		</dict>
 		<key>Headers/ZMSegmentedControl.h</key>
@@ -635,7 +841,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			a9reSnrs4+pKLafeWvIlIqGdztGzZrq18bBbwMYQdfI=
+			jQ1RElssxSfc1T8hIbeDLGpyUINy1YfswgGxcKmVE9I=
 			</data>
 		</dict>
 		<key>Headers/ZMShareSelectDef.h</key>
@@ -656,7 +862,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bd2VTCNeqHy6QYjmCVPXKmPGiB+zSW0L6pQgu0kM+AQ=
+			2D7jOgOlU/1vZJ4APrM1tMGpCXkXrmCk7WI5yG7IjhI=
 			</data>
 		</dict>
 		<key>Headers/ZMShareSelectWindowModelGroup.h</key>
@@ -684,7 +890,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			kPmVYLUsvsjEcBxemf4wsWoC2uSXN9Ji8zMXn3kF8rM=
+			R3k9pQ8N2Cu3IzQGijkJuDMGb4MWOnGoSprxqYOZseE=
 			</data>
 		</dict>
 		<key>Headers/ZMSidePanelViewController.h</key>
@@ -694,11 +900,18 @@
 			c56+3IOZix88A2reml0LsvU4kcT/lcx51bFItv4p6Ys=
 			</data>
 		</dict>
+		<key>Headers/ZMSignOutModel.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			YoOluJStkLxFupYUs0xZzxNSiRXMzhz67h+MbiE84sw=
+			</data>
+		</dict>
 		<key>Headers/ZMSipCallProtocol.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			K1qJAAjS6ZNTi0gbA+cn0upQN4s7nxRzVoc3n3Zk924=
+			2bidPSpXzB37KunaaYjlXDeI+siLjBndG+zMaWe0Bpw=
 			</data>
 		</dict>
 		<key>Headers/ZMSipContactItemProtocol.h</key>
@@ -706,6 +919,41 @@
 			<key>hash2</key>
 			<data>
 			JeiVPBB0+dokJkP77apzpiZmbXQTzejqI7Pqpuw2i9M=
+			</data>
+		</dict>
+		<key>Headers/ZMSipEntityCallerID.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			5sPXHhrmxj6Z193nyvtLpONe6gjOGBEPM6LuhF0eAcE=
+			</data>
+		</dict>
+		<key>Headers/ZMSipFeatureOption.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vsKUD5cEuYNGkGVIfcI9Y1L2OVBQKLj7j2r8GJr9y4I=
+			</data>
+		</dict>
+		<key>Headers/ZMSipLanguageListProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Ei5bvA9A++XSlhiOFe79+Bv5QZjsOi+VtuXtuWk2aXU=
+			</data>
+		</dict>
+		<key>Headers/ZMSipNumberFormat.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			uNPLqutVz3+kHNXKxmuxqDbKMkbRaw7T7LZe048M3lE=
+			</data>
+		</dict>
+		<key>Headers/ZMSipRingtoneCallerIDSettings.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VOAOiB9p7iJPa6TC39pviSSlxyMVVtLZirTDJKZmMcA=
 			</data>
 		</dict>
 		<key>Headers/ZMTabView.h</key>
@@ -734,6 +982,13 @@
 			<key>hash2</key>
 			<data>
 			ykI8nfWysSLa6+aXkq1iSjzZVdeeqih71jr9Eupnc/Y=
+			</data>
+		</dict>
+		<key>Headers/ZMTerminateProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oL+sxhdFxn1bS/4Pwux82OBBNRFp32yynWx4QiGrEX4=
 			</data>
 		</dict>
 		<key>Headers/ZMTipWindow.h</key>
@@ -771,6 +1026,13 @@
 			4dH7M36ow/NgYwFYMIz9JSSrr0bG9oAFQ0e0SKUPjjY=
 			</data>
 		</dict>
+		<key>Headers/ZMZUISettingProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			i4KV+mBiBwuubG+z3QXXM9JVsCC9he+Vr2jhJ/0nXQU=
+			</data>
+		</dict>
 		<key>Headers/ZMZipArchive.h</key>
 		<dict>
 			<key>hash2</key>
@@ -792,6 +1054,13 @@
 			p+UAAc0h3jnOXyDWsoY5YzvT4ZYcPqNjMmrC0d+vhvU=
 			</data>
 		</dict>
+		<key>Headers/ZPCMDWindowProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			fDYZ1XQraVeESlUjOimMgQOx4WxmSK63eyRq8T5KgC8=
+			</data>
+		</dict>
 		<key>Headers/ZPKeyupSecureTextField.h</key>
 		<dict>
 			<key>hash2</key>
@@ -804,6 +1073,13 @@
 			<key>hash2</key>
 			<data>
 			ejK+rTsXXylWeo6adglcnEWNCiiQ6Sh4mzuLAwhl3zI=
+			</data>
+		</dict>
+		<key>Headers/ZPLanguageForCookie.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zTQLhclcKDIMAtVs0G3j0TjEVdNG7SRGldb87AeVKIE=
 			</data>
 		</dict>
 		<key>Headers/ZPMaxLengthFormatter.h</key>
@@ -824,14 +1100,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			wVM5JMkh4rNgDbGh3olsDVg8aFKOnwVcaz+SRjl3ADo=
+			tRo6rHZuq9M1gKyj8dsoP3Pny9f5TbxVtCzq+ee6CtM=
 			</data>
 		</dict>
 		<key>Headers/ZPShareSelectCollectionView.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ny64yiCRop5/jE1f6shU+B5EE5zh2bEyVIC8kAwHBK4=
+			ZPkPnGAkXTkC2vodpjflBLYn6JSogmRxayLpkivk5oY=
 			</data>
 		</dict>
 		<key>Headers/ZPShareSelectCollectionViewItem.h</key>
@@ -852,7 +1128,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			cZ9A1hmWjExclzfLsjfo/t1U6f/mb6Qlkxm22+WECqo=
+			y6911QuChvbdWmQJIpMVaI3a6F3UUJO9Iujjz9fg8SI=
 			</data>
 		</dict>
 		<key>Headers/ZPUICommonDef.h</key>
@@ -866,7 +1142,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			snlHtL+FHZEgE6AfOBUL+93rUFowhJr5XmEKNh356bk=
+			OrKyzgUK4DG3OrvkxLCJrh0d6cKdaUSbVxnjkgloeio=
 			</data>
 		</dict>
 		<key>Headers/ZPZMailAdapter.h</key>
@@ -880,21 +1156,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CwOjaFZYJCjj3/3ZXlyP5QlAKG6Z6c+uOXQsXHNpzDc=
+			VS6BW7eK7BZHK9T3ZBGHXIInrBTF7bMK3kGBokg8sGg=
 			</data>
 		</dict>
 		<key>Headers/ZoomUnit-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ht6VBHBGfV9XxYxsE133aox1/BdazLfCjBY5+ZIWjIw=
+			kNxWPJ3DuZvHdGnrnv8obP8u8VGZyeL/Zb6QA6hR0jA=
 			</data>
 		</dict>
 		<key>Headers/ZoomUnit.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			unRw3zhuBQWXm0Hp4EtLQKX15PY91o1T+ItcFMzTrp0=
+			+qXcUv+mQRbkc6+u0QFS2dB99TiEsDCZFmqfAJxtdoc=
 			</data>
 		</dict>
 		<key>Modules/ZoomUnit.swiftmodule/x86_64-apple-macos.abi.json</key>
@@ -908,14 +1184,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5of2YaFHVtNRdYRtuAiIZXFBF8WGWESeVrqXK1R2PUg=
+			Kaj0ZoC/TS2vVV5nLXRfZzlJiSt7O+ZbhbLPWmoojyg=
 			</data>
 		</dict>
 		<key>Modules/ZoomUnit.swiftmodule/x86_64-apple-macos.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pgcYhaV/UBudfk3mLNAeeClqUkCOn5Eu/JlXkQn9sH0=
+			DPKICcmY+DxtRN41b0PejyV74mBUfzoq3QEISUI1atU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -964,14 +1240,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tbdtwzwM/oZLc20otxFeDLh6lpgXU7eEGMFmxOfGvmk=
-			</data>
-		</dict>
-		<key>Resources/ZMDialogue.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			BfNCaZjNtLm70KkruqA0d6/QEI8LU/P0ySKF0pRYJkU=
+			swyovL1S9979ZVR12n6Zx7B+qDv8DQd3mnZAON5orc4=
 			</data>
 		</dict>
 	</dict>

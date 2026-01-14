@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) ZMShareZoomWindowsOptions *shareZoomWindowsOptions;
 @property (nonatomic, strong) ZMMTShareWatermarkOption *watermarkOption;
+@property (nonatomic, assign, getter=isSharingZoomWindow) BOOL sharingZoomWindow;
 
 - (BOOL)requestToEnableMultiShare;
 - (BOOL)respondToEnableMultiShareRequest:(NSString *)requestID requestUserID:(ZMUserID)requestUserID status:(CmmEnableMultiShareResponseStatus)status;

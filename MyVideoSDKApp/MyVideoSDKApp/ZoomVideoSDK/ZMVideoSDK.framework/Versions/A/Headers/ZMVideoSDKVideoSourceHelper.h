@@ -12,58 +12,58 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKYUVProcessDataI420 : NSObject
 
 /**
- * @brief Get the stream width.
+ * @brief Gets the stream width.
  */
 @property (nonatomic, assign, readonly) unsigned int width;
 
 /**
- * @brief Get the stream height.
+ * @brief Gets the stream height.
  */
 @property (nonatomic, assign, readonly) unsigned int height;
 
 /**
- * @brief Get the Y stride.
+ * @brief Gets the Y stride.
  */
 @property (nonatomic, assign, readonly) unsigned int yStride;
 
 /**
- * @brief Get the U stride.
+ * @brief Gets the U stride.
  */
 @property (nonatomic, assign, readonly) unsigned int uStride;
 
 /**
- * @brief Get the V stride.
+ * @brief Gets the V stride.
  */
 @property (nonatomic, assign, readonly) unsigned int vStride;
 
 /**
- * @brief Get the video raw data rotation.
+ * @brief Gets the video raw data rotation.
  */
 @property (nonatomic, assign, readonly) unsigned int rotation;
 
 /**
- * @brief Determine if video raw data is limited.
+ * @brief Determines if video raw data is limited.
  */
 @property (nonatomic, assign, readonly) BOOL isLimitedI420;
 
 /**
- * @brief Get the YUVI420 Y buffer.
+ * @brief Gets the YUVI420 Y buffer.
  * @param lineNum The Y component represents the luma or brightness value of the color.
- * @return Y buffer.
+ * @return If the function succeeds, it returns the Y buffer. Otherwise, this function fails and returns nil.
  */
 - (char* _Nullable)getYBuffer:(unsigned int)lineNum;
 
 /**
- * @brief Get the YUVI420 U.
+ * @brief Gets the YUVI420 U.
  * @param lineNum The U component represents the chroma value.
- * @return U buffer.
+ * @return If the function succeeds, it returns the U buffer. Otherwise, this function fails and returns nil.
  */
 - (char* _Nullable)getUBuffer:(unsigned int)lineNum;
 
 /**
- * @brief Get the YUVI420 V buffer.
+ * @brief Gets the YUVI420 V buffer.
  * @param lineNum The V component represents the chroma value.
- * @return V buffer.
+ * @return If the function succeeds, it returns the V buffer. Otherwise, this function fails and returns nil.
  */
 - (char* _Nullable)getVBuffer:(unsigned int)lineNum;
 @end

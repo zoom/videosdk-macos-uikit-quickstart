@@ -45,6 +45,7 @@
 
 //ZMConfUpdateStrategy_Share_Content_Received
 - (void)onShareSourceReceivingStatusBecomeActive:(ZMShareSource *)shareSource;
+- (void)onShareSourceReceivingStatusBecomeInactive:(ZMShareSource *)shareSource;
 
 //ZMConfUpdateStrategy_Share_Content_First_Frame_Received
 - (void)onShareSourceFirstFrameRendered:(ZMShareSource *)shareSource;

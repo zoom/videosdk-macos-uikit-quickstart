@@ -16,6 +16,7 @@
 #import <Prism/NSTouchBar+ZoomKit.h>
 #import <Prism/NSImage+ZoomKit.h>
 #import <Prism/NSView+ZoomKit.h>
+#import <Prism/NSView+Bubble.h>
 #import <Prism/NSPopover+ZoomKit.h>
 #import <Prism/NSTableView+ZoomKit.h>
 #import <Prism/NSFont+ZoomKit.h>

@@ -56,6 +56,11 @@
 - (void)userAllowTalkStatusChanged:(ZMUser *)user;
 - (void)onUserRosterChanged:(ZMMTRosterList *)roster session:(ZMConfSession*)session;
 
+- (void)onMasterUserLeft:(ZMConfSession*)session;
+
+// Notes Transcription
+- (void)userNotesTranscriptStatusChanged:(ZMUser *)user;
+
 @end
 
 

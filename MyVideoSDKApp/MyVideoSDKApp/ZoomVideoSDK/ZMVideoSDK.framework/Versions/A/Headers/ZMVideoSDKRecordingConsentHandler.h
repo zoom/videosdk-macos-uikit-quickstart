@@ -21,13 +21,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * @brief Accept the clound record.
- * @return YES if the action is accepted successfully. Otherwise NO.
+ * @return YES if the action is accepted successfully. Otherwise, NO.
  */
 - (BOOL)accept;
 
 /**
  * @brief Decline the clound record.
- * @return YES if the action is declined successfully. Otherwise NO.
+ * @return YES if the action is declined successfully. Otherwise, NO.
  */
 - (BOOL)decline;
 

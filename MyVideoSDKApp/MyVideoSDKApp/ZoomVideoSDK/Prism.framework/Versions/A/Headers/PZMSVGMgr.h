@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (nonnull instancetype)sharedMgr;
 - (void)registerResBundleName:(NSString *)bundleName;
+- (void)registerOndemandResBundleName:(NSString *)ondemandResBundleName;
 - (void)registerParentBundlePath:(NSString *)parentBundlePath;
 - (void)registerPluginsFrameworksPath:(NSString *)pluginsFrameworksPath;
 - (nonnull instancetype)parserWithFileURL:(NSURL*_Nonnull)fileURL;

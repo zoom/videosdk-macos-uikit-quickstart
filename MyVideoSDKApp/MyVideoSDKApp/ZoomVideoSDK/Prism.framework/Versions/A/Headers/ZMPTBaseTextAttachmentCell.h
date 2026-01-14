@@ -9,6 +9,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol ZMTrackingTextAttachmentCell <NSTextAttachmentCell>
+
+- (void)mouseOnPoint:(NSPoint)point;
+
+@end
+
 @interface ZMPTBaseTextAttachmentCell : NSTextAttachmentCell
 
 @property (assign) BOOL shouldUpdateWhenExit;

@@ -37,7 +37,6 @@ APPKIT_EXTERN struct ZMVoiceOverInfo globalZMVoiceOverInfo;
 @interface NSApplication (ZoomKit)
 @property (nonatomic, readonly, assign) BOOL isDebuggerAttached;
 
-@property (assign) BOOL canTerminateNow;
 @property (assign, readonly) BOOL isSupportDarkMode;
 
 @property (readonly, assign) BOOL isSupportUserAppearance;

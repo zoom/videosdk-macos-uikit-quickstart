@@ -17,9 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign) e_Interaction_event_name eventName;
 
 @property(nonatomic, assign) e_Interaction_sub_feature_name subFeatureName;
+
 @property(nonatomic, copy, nullable) NSString * eventTraceSource;
 @property(nonatomic, copy, nullable) NSString * errorReason;
 
+- (void)setRawNoticeEntity:(ns_zoom_telemetry::ClientV2NoticeEntityParams)noticeEntity;
+- (void)setRawClientPreferencesEntity:(ns_zoom_telemetry::ClientV2ClientPreferencesEntityParams)clientPreferencesEntity;
 @end
 
 @interface ZMClientV2EventTracker : NSObject

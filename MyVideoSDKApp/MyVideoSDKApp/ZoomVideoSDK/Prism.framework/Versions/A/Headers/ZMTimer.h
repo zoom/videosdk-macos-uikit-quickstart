@@ -15,11 +15,11 @@ typedef NSString* ZMTimerName;
 @interface ZMTimer : NSObject
 - (id)initWithInterval:(CGFloat)interval;
 - (void)cleanUp;
-- (BOOL)addTimer:(id)target forTimerName:(ZMTimerName)name interval:(CGFloat)interval repeatNumber:(NSUInteger)repeatNumber handler:(ZMTimerHandler)handler;
+- (BOOL)addTimer:(NSObject *)target forTimerName:(ZMTimerName)name interval:(CGFloat)interval repeatNumber:(NSUInteger)repeatNumber handler:(ZMTimerHandler)handler;
 - (void)removeAllTimers;
-- (void)removeTimerWithTarget:(id)target;
+- (void)removeTimerWithTarget:(NSObject *)target;
 - (void)removeTimerWithName:(ZMTimerName)name;
-- (void)removeTimer:(id)target forTimerName:(ZMTimerName)name;
-- (BOOL)isExistTimer:(id)target forTimerName:(ZMTimerName)name;
+- (void)removeTimer:(NSObject *)target forTimerName:(ZMTimerName)name;
+- (BOOL)isExistTimer:(NSObject *)target forTimerName:(ZMTimerName)name;
 @end
 NS_ASSUME_NONNULL_END

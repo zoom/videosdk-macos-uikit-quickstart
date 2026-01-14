@@ -25,7 +25,6 @@ typedef NS_ENUM(NSUInteger, AICStatus) {
 
 @interface ZMMTMeetingInfoHelper : ZMBaseHelper
 - (NSString*)getLiveSummaryDocId;
-- (long long)getMeetingSummaryShareLevel;
 - (BOOL)isPopupNewMeetingInfoWindowEnabled;
 - (void)setPopupNewMeetingInfoWindowEnable:(BOOL)enabled;
 - (BOOL)isMeetingDetailEnabled;
@@ -37,7 +36,7 @@ typedef NS_ENUM(NSUInteger, AICStatus) {
 - (BOOL)changeLiveSummaryStatus:(LiveSummaryStatus)action;
 - (ZMSmartAgendaDocInfo *)getSmartAgendaDocInfo;
 - (AICStatus)getAICStatus;
-- (BOOL)updateSummaryShareLevel:(long long)shareLevel;
+- (BOOL)updateSummaryShareLevel;
 - (BOOL)requestToSwitchAICompanionWithLiveSummary:(long long)aicOption switchAction:(NSInteger)switchAction;
 - (BOOL)respondToSwitchAICompanionWithLiveSummary:(NSString *)reqId senderId:(ZMUserID)senderId switchAction:(NSInteger)switchAction agree:(BOOL)agree;
 

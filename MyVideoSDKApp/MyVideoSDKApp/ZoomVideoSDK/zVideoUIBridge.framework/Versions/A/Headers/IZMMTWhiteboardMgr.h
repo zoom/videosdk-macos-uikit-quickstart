@@ -69,6 +69,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)stopShareWhiteboard;
 - (void)stopAllWhiteboards;
 - (BOOL)canStartWB:(ZMCannotWBShareReason *)reason;
+- (void)closeAllPanels;
 
 - (void)closeBack2ClassicWBToast;
 //Sink

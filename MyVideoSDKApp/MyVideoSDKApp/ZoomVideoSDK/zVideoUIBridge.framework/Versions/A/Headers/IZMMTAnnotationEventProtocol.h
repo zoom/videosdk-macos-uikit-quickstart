@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showSavedInfo:(nullable NSView *)renderView data:(nullable NSValue *)data;
 - (void)startedUp:(nullable NSView *)renderView;
 - (void)onToolbarClosed:(nullable NSView *)renderView;
+- (void)onEntryPointLocationChanged:(nullable NSView *)renderView;
 
 @end
 

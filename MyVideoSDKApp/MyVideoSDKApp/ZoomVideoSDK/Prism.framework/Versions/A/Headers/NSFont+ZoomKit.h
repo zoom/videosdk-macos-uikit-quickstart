@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-static CGFloat const ZMBaseReferenceFontSize = 14.0;
+#define ZMBaseReferenceFontSize 14.0
 
 static inline CGFloat ZMDisplayFontSize(void) {
     return floor(ZMBaseReferenceFontSize * NSApp.fontSizeRate / 100);

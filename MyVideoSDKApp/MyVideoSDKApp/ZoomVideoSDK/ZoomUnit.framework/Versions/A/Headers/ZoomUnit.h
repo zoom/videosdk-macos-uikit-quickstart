@@ -14,6 +14,12 @@
 #import <ZoomUnit/ZMPConfDataProtocol.h>
 #import <ZoomUnit/ZPUICommonDef.h>
 #import <ZoomUnit/ZMInteractiveEnum.h>
+#import <ZoomUnit/ZMLanguageManager.h>
+#import <ZoomUnit/ZPLanguageForCookie.h>
+#import <ZoomUnit/ZMPTMgrInterface.h>
+
+//Logging
+#import <ZoomUnit/IZMLoggingMgr.h>
 
 //Button
 #import <ZoomUnit/ZMSegmentedControl.h>
@@ -67,10 +73,16 @@
 //Other
 #import <ZoomUnit/NSView+Create.h>
 #import <ZoomUnit/ZMFileCopyMgr.h>
+#import <ZoomUnit/IZMLottieProtocol.h>
+#import <ZoomUnit/ZMMenuItemProtocol.h>
 
 //Sip
 #import <ZoomUnit/ZMSipContactItemProtocol.h>
+#import <ZoomUnit/ZMSipLanguageListProtocol.h>
 #import <ZoomUnit/ZMSipCallProtocol.h>
+#import <ZoomUnit/ZMSipNumberFormat.h>
+#import <ZoomUnit/ZMSipEntityCallerID.h>
+#import <ZoomUnit/ZMSipRingtoneCallerIDSettings.h>
 
 //Popover
 #import <ZoomUnit/ZMTipWindow.h>
@@ -85,6 +97,7 @@
 #import <ZoomUnit/ZMAlertObject.h>
 #import <ZoomUnit/ZPAlert.h>
 #import <ZoomUnit/ZMTableViewMenu.h>
+#import <ZoomUnit/ZMPTAlertType.h>
 
 //ShareSelect
 #import <ZoomUnit/ZMSharePaddingMgr.h>
@@ -196,12 +209,16 @@
 //MeetingSDK
 #import <ZoomUnit/IZoomSDKMemoryHelper.h>
 
+#import <ZoomUnit/ZMAppProtocol.h>
 #import <ZoomUnit/ZMBuddyUpdateProtocol.h>
 #import <ZoomUnit/IZMAudioSettingViewProtocol.h>
 #import <ZoomUnit/ZMLoginProtocol.h>
+#import <ZoomUnit/ZMInviteCoordinatorProtocol.h>
+#import <ZoomUnit/IZMMTUserChatProtocol.h>
 #import <ZoomUnit/IZMDeviceProtocol.h>
 #import <ZoomUnit/ZMMeetingProtocol.h>
 #import <ZoomUnit/ZMMemLogAdapter.h>
+#import <ZoomUnit/ZMZUISettingProtocol.h>
 
 #import <ZoomUnit/ZMAlertPanel.h>
 #import <ZoomUnit/ZMGroupedElementOnlyImageButton.h>
@@ -215,3 +232,21 @@
 #import <ZoomUnit/NSString+ZoomUnit.h>
 #import <ZoomUnit/NSApplication+ZoomUnit.h>
 #import <ZoomUnit/ZMHotkeyConfiguration+ZoomUnit.h>
+#import <ZoomUnit/ZMTerminateProtocol.h>
+#import <ZoomUnit/ZMDeepLinkAdapter.h>
+#import <ZoomUnit/ZMBannerType.h>
+#import <ZoomUnit/ZMInClientTypeView.h>
+#import <ZoomUnit/IZMPTAlertMgr.h>
+#import <ZoomUnit/ZMPTAlertMgr.h>
+#import <ZoomUnit/ZMScreenShotItem.h>
+#import <ZoomUnit/ZMScreenshotCallback.h>
+#import <ZoomUnit/ZMReportWindowAdapter.h>
+
+//Debug
+#import <ZoomUnit/ZMDebugToolProtocol.h>
+
+#import <ZoomUnit/ZMAppProtocol.h>
+#import <ZoomUnit/CmmModuleProtocol.h>
+#import <ZoomUnit/ZMMTMgrInterface.h>
+#import <ZoomUnit/IZMVoiceNotesMgr.h>
+

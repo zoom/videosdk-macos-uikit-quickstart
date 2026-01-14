@@ -13,9 +13,6 @@
 
 @protocol ZMMTSettingProtocol <ZMRoutableObject>
 @optional
-- (void)onStopIncomingVideoFeatureStatusChanged;
-- (void)onShowMeetingChatAvatarStatusChanged;
-- (void)onShowMeetingTimersStatusChanged;
 
 - (BOOL)isImmersiveDisableVB;
 - (BOOL)shouldDisableMirror;
@@ -29,8 +26,6 @@
 
 - (void)onLottieStatusChanged:(BOOL)isEnable;
 
-- (void)onToggleMeetingControls;
-
 - (void)onCaptionColorChanged:(NSColor *)color;
 - (void)onTranslationColorChanged:(NSColor *)color;
 - (void)onBackgroundColorChanged:(NSColor *)color;
@@ -38,6 +33,10 @@
 - (void)openSettingWithSettingsOption:(NSInteger)setting;
 - (void)openSettingWithType:(int)type;
 - (void)openSettingWithType:(int)type context:(id)context;
+- (void)closePTSetting;
+- (void)closePTSettingWithContext:(id)context;
+
+- (void)ptWindowStatusChange:(BOOL)status;
 
 - (BOOL)isVideoCutout;
 - (BOOL)isVideoEnableAlphaMask;

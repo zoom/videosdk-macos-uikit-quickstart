@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)hideToolbarChatTip;
 - (void)showToolbarEnableChatTip;
 - (void)hideToolbarEnableChatTip;
+- (void)onChatTipsStateChange:(BOOL)preview;
 
 // source: 0 toolBar, 1 fitBar
 - (void)showCCTipWithTipString:(NSString *)tipString source:(int)source;
@@ -38,9 +39,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showCCChangeLanguageTip;
 - (void)hideCCChangeLanguageTip;
 - (void)showCCOptionMenu;
-
-- (void)showCCFreeTrialTip;
-- (void)hideCCFreeTrialTip;
 
 - (void)showToolbarBOTip:(NSString*)inTip force:(BOOL)force;
 - (void)hideToolbarBOTip;
@@ -61,15 +59,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showSidecarTip:(NSString*)tip;
 - (void)hideSidecarTip;
 
-- (BOOL)isToolbarReactionsNewTipShowing;
-- (void)showToolbarReactionsGestureNewTip;
-- (void)hideToolbarReactionsGestureNewTip;
-
 - (void)showToolbarAICRemindTip;
 - (void)hideToolbarAICRemindTip;
 
-- (void)showToolbarAICCatchUpTip;
-- (void)hideToolbarAICCatchUpTip;
+- (void)showToolbarAICRecapTip;
+- (void)hideToolbarAICRecapTip;
 
 - (void)onAICButtonClicked;
 
@@ -79,9 +73,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showToolbarSummaryAccessTip;
 - (void)hideToolbarSummaryAccessTip;
 
-- (void)showToolbarNotesNewTip;
-- (void)hideToolbarNotesNewTip;
-
 - (void)hideRaiseHandTip;
 
 
@@ -89,20 +80,15 @@ NS_ASSUME_NONNULL_BEGIN
                         mouseEventAction:(nullable BOOL(^)(ZMBubbleObject *bubbleObj, NSEvent *event))mouseEventAction;
 - (void)hideToolbarNewBOTip;
 
-- (void)showSimplifiedToolbarTip;
-- (void)hideSimplifiedToolbarTip;
-
 - (void)showToolbarCompanionModeTipWithTipString:(NSString *)tipString
                                 mouseEventAction:(nullable BOOL(^)(ZMBubbleObject *bubbleObj, NSEvent *event))mouseEventAction;
 - (void)hideToolbarCompanionModeTip;
 
-- (void)showRoomControllerTipIfNeeded;
-
-- (void)showDocTipIfNeeded;
-
-- (void)showClinicalNoteNewTip;
-- (void)hideClinicalNoteNewTip;
 - (void)hideToolbarClinicalNoteButtonBubbleTip;
+
+// Clips Share
+- (void)showClipsShareTip;
+- (void)hideClipsShareTip;
 
 - (void)showAudioCompanionMicFTETip;
 - (void)showAudioCompanionMicErrorTip:(NSString *)title
@@ -116,15 +102,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showLiveSummaryNewTip;
 - (void)hideLiveSummaryNewTip;
 
-- (void)showAICFreeTrialToolbarTipWithCoachmarkId:(NSString *)coachmarkId;
-- (void)hideAICFreeTrialToolbarTip;
-- (void)showAIVBFreeTrialToolbarTip;
-- (void)hideAIVBFreeTrialToolbarTip;
-
 - (void)showUpSellTip;
 - (void)hideUpSellTip;
 
-- (void)showTrackBillableTipIfNeeded;
 @end
 
 NS_ASSUME_NONNULL_END

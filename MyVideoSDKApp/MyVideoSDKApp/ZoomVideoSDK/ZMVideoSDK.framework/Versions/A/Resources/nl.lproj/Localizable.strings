@@ -733,6 +733,7 @@
 
 "Zoom Logo" = "Zoom logo";
 "button" = "knop";
+"LN_Zoom_Place_664309" = "Workplace";
 "LN_Zoom_Workplace_Logo_664309" = "Zoom Workplace, logo";
 "LN_Zoom_Workplace_664309" = "Zoom Workplace";
 
@@ -1429,6 +1430,8 @@
 "LN_Livestream_did_not_connect_to_Zoom_Events_Lobby._335915" = "Livestream is niet verbonden met %@.";
 "LN_Zoom_Events_Lobby_Livestream_stopped_335915" = "%@ livestream gestopt";
 "LN_An_unknown_error_occured._Error_code:_%@_335915" = "Er is een onbekende fout opgetreden. Foutcode: %@";
+"LN_Direct_Share_Prompt_Placehoder_Title_999739" = "Ruimtecode of vergadering-ID";
+"LN_Direct_Share_Prompt_Error_String_999739" = "Voer een geldige ruimtecode of vergadering-ID in";
 "LN_Start_Livestream_To_Zoom_Events_Permission_Denied_335915" = "U hebt geen toestemming om de livestream naar %@ te starten.";
 "LN_Stop_Livestream_To_Zoom_Events_Permission_Denied_335915" = "U hebt geen toestemming om de livestream naar de %@ te stoppen.";
 "LN_Meeting_is_now_streaming_live_to_Zoom_Events_Lobby_335915" = "Vergadering wordt gelivestreamd naar %@";
@@ -1528,6 +1531,7 @@
 "LN_Billing_unknown_contact_alert_833575" = "Onbekende contact. Factureerbare vergaderingen met onbekende contacten worden niet weergegeven in uw rapport, tenzij u deze toevoegt.";
 "LN_Billing_track_here_833575" = "Start, pauzeer of hervat hier het bijhouden.";
 "LN_Billing_choose_contacts_or_create_833575" = "Kies uit uw contacten of maak een nieuwe.";
+"LN_Billing_add_personal_contact_1034570" = "Deze deelnemer staat niet in je lijst met persoonlijke contactpersonen. Voeg deze deelnemer toe aan je persoonlijke contactpersonen om factureerbare uren toe te wijzen.";
 
 "LN_Billing_contacts_found_833575" = "Gevonden contacten";
 "LN_Billing_track_billable_hours_833575" = "U kunt nu uw factureerbare uren bijhouden";
@@ -1599,6 +1603,7 @@
 
 "Pause/Stop Recording" = "Opname pauzeren/stoppen";
 "Resume/Stop Recording" = "Opname hervatten/stoppen";
+"LN_Limit_Reached_User_Minutes_997504" = "Zoom kan je gratis vergadering op dit moment niet verlengen. Je vergadering eindigt op het moment dat deze %@ minuten duurt.\n\n(FOUT: %d)";
 
 "The meeting has been locked by the host" = "De host heeft de vergadering vergrendeld";
 "You cannot chat with %@ during this meeting" = "U kunt niet chatten met %@ tijdens deze vergadering";
@@ -2145,7 +2150,13 @@
 "LN_Meeting_RemoteControl_Select_Which_Screen_To_Control_47315" = "Selecteer een scherm om te bedienen";//[ZOOM-47315]
 "LN_Meeting_FitStatus_Select_Screen_To_Control_47315" = "Selecteer een scherm om te bedienen...";//[ZOOM-47315]
 
+"LN_Meeting_Live_Stream_LiveOn_1049044" = "De inhoud van deze vergadering wordt verstuurd naar <zmview key=$1>";
+"LN_LiveStream_Meeting_LiveOn_1049044" = "De gegevens van de vergadering worden verstuurd naar <zmview key=$1>";
 "LN_Switch_Language_Alert_System_24821" = "systeemtaal";
+"LN_LiveStream_Webinar_LiveOn_1049044" = "De gegevens van de webinar worden verstuurd naar <zmview key=$1>";
+"LN_LiveStream_Meeting_LiveOn_1017615" = "Vergaderingsgegevens worden verzonden naar %@";
+"LN_LiveStream_Webinar_LiveOn_1017615" = "Webinargegevens worden verzonden naar %@";
+"LN_Webinar_Live_Stream_LiveOn_1049044" = "De inhoud van deze webinar wordt verstuurd naar <zmview key=$1>";
 "LN_DockMenu_System_LanguageItem_24821" = "Systeemtaal gebruiken";
 "LN_Switch_Language_Alert_Change_24821" = "Overschakelen naar %@";
 "LN_Switch_Language_Alert_Keep_24821" = "%@ behouden";     //ZOOM-24821
@@ -2392,8 +2403,8 @@
 
 "LN_Do_You_Hear_A_Ringtone_38961" = "Hoort u een beltoon?";
 "LN_Speak_And_Pause_Do_You_Hear_Replay_38961" = "Spreek en pauzeer. Hoort u uw eigen stem?";
-"LN_Troubleshoot_Speaker_Mic_38961" = "Luidspreker en microfoon testen...";
-"LN_Swithch_To_Phone_Audio_38961" = "Overschakelen naar telefoonaudio...";
+"LN_Troubleshoot_Speaker_Mic_38961" = "Luidspreker en microfoon testen";
+"LN_Swithch_To_Phone_Audio_38961" = "Overschakelen naar telefoonaudio";
 
 "LN_Install_AirHost_With_AdminPrivileges_43112" = "Om AirHost te gebruiken, moet u de installatie met beheerdersrechten uitvoeren.";
 "LN_Install_CodeSnippet_With_AdminPrivileges_43112" = "Om Codefragment te gebruiken, moet u de installatie met beheerdersrechten uitvoeren.";
@@ -2849,7 +2860,9 @@
 "LN_Annotate_StampQM_45810" = "Stempel vraagteken";
 "LN_Annotate_Stamp_45810" = "Stempel";
 
+"LN_SMS_Delegation_View_Settings_1042922" = "Instellingen weergeven";
 "LN_Back_To_Revious_41410" = "Terug naar vorig venster";
+"LN_SMS_Delegation_Banner_Message_1042922" = "Sms-delegatie is momenteel ingeschakeld. Berichten worden naar jou en %d gedelegeerden gestuurd.";
 "LN_Incorrect_Email_Password_Alert_41410" = "Waarschuwing";
 "LN_Incorrect_Email_Password_41410" = "Onjuist e-mailadres of wachtwoord";
 "LN_Signed_Out_Security_Policy_41410" = "U bent afgemeld omdat u %d inactief was, overeenkomstig het veiligheidsbeleid van uw account.";
@@ -2904,6 +2917,8 @@
 "LN_Setting_feedback_result_title_NewIM" = "Bedankt voor uw feedback!";
 "LN_Setting_feedback_result_des_NewIM" = "We houden rekening met alle feedback en doen er alles aan om u tevreden te stellen.";
 "LN_Setting_AddZoomToMenuBar_NewIM_664309" = "Zoom Workplace toevoegen aan de macOS-menubalk";
+"LN_Direct_Share_Prompt_Rename_Room_Code_999739" = "De deeltoets wordt nu de ruimtecode genoemd";
+"LN_Direct_Share_Prompt_New_Code_999739" = "Nieuwe ruimtecode invoeren";
 "LN_Setting_AddZoomToMenuBar_NewIM" = "Zoom toevoegen aan de macOS-menubalk";
 "LN_Setting_FullScreenStartMeeting_NewIM" = "Volledig scherm openen bij het starten of deelnemen aan een vergadering";
 "LN_Setting_ScaleToFit_NewIM" = "Gedeelde inhoud aanpassen aan Zoom-venster";
@@ -3025,8 +3040,10 @@
 "LN_Who_Can_Add_Members_387575" = "Wie kan leden toevoegen";
 "LN_Members_From_Outside_the_Org_387575" = "Leden buiten de organisatie";
 "LN_Who_Can_Send_Messages_387575" = "Wie kan berichten verzenden";
+"LN_Separate_Chats_And_Channels_1058163" = "Aparte chats en kanalen";
 "LN_All_Channel_Members_387575" = "Iedereen";
 "LN_Channel_Owner_and_Admin_Only_387575" = "Alleen eigenaar en beheerders";
+"LN_Chats_And_Channels_1058163" = "Chats en kanalen";
 "LN_By_Channel_Owners_and_Admins_387575" = "Door de kanaaleigenaar en -beheerders";
 "LN_Message_and_History_File_387575" = "Bericht- en bestandsgeschiedenis";
 "LN_Add_Member_to_Channel_Is_Restricted_387575" = "Alleen de kanaaleigenaar of -beheerders kunnen leden toevoegen";
@@ -3323,6 +3340,7 @@
 "LN_%@_Join_Muc_61519" = "%@ neemt deel aan deze groepschat";
 
 "LN_You_Remove_%@_From_Channel_61519" = "U hebt %@ verwijderd uit dit kanaal";
+"LN_Your_Voicemail_Sent_1028435" = "Je voicemail is verzonden";
 "LN_You_Remove_%@_From_Muc_61519" = "U hebt %@ uit deze groepschat verwijderd";
 
 "LN_%@_Remove_From_Channel_61519" = "%@ heeft u uit dit kanaal verwijderd";
@@ -3367,6 +3385,7 @@
 "LN_%@'s_Account_Deleted_147321" = "Het account van %@ is verwijderd door de accountbeheerder";
 
 "LN_Contact_Deactivated_62073" = "Gedeactiveerd";
+"LN_Sidepanel_Tip_Back_529219" = "Terug";
 "LN_Contact_Terminated_62073" = "Verwijderd";
 
 "LN_Contact_Deactivated_147321" = "GEDEACTIVEERD";
@@ -3580,6 +3599,7 @@
 
 //ZOOM-65418
 "LN_TurnOffAlert_65418" = "Geen melding verzenden indien beschikbaar";
+"LN_HideThisChannel_NewIM" = "Dit kanaal verbergen";
 "LN_AlertWhenAvailable_65418" = "Melding verzenden indien beschikbaar";
 "LN_TurnedOffAlertFormat_65418" = "U ontvangt geen melding als %@ beschikbaar is";
 "LN_TurnedOnAlertFormat_65418" = "U ontvangt een melding als %@ beschikbaar is";
@@ -3717,6 +3737,9 @@
 "LN_Hotkey_Send_Joy_713530" = "Vergaderreactie verzenden [haha]";
 "LN_Hotkey_Send_Celebrate_713530" = "Vergaderreactie verzenden [feest]";
 "LN_Hotkey_Send_Heart_713530" = "Vergaderreactie verzenden [hart]";
+"LN_Certification_Topbar_Title_1062770" = "Certificering";
+"LN_Certification_Accessibility_1062770" = "Certificering ingeschakeld";
+"LN_Certification_Window_Title_1062770" = "Certificering";
 "LN_Hotkey_Send_Wow_713530" = "Vergaderreactie verzenden [verbaasd]";
 "LN_Hotkey_Start_Network_Diagnostic_424833" = "Netwerkdiagnose starten";
 "LN_Hotkey_Start_Network_Diagnostic_Title_424833" = "Netwerkdiagnose";
@@ -3808,11 +3831,14 @@
 "LN_Simplify_Disclamier_Recoding_Livestream_Desc_671700" = "Iedereen met toegang tot de opname of livestream kan deze bekijken of met anderen delen.";
 "LN_Simplify_Disclamier_ZRA_Recoding_Livestream_Desc_671700" = "De host gebruikt Zoom Revenue Accelerator om de vergadering te analyseren, inclusief de audio, om de sprekers van elkaar te kunnen onderscheiden voor transcriptiedoeleinden. De audio-analyse wordt verwijderd nadat het transcript is gegenereerd. Iedereen met toegang tot de opname of livestream kan deze bekijken of met anderen delen.";
 "LN_Simplify_Disclamier_Recoding_Livestream_AI_Title_671700" = "Deze vergadering wordt opgenomen en gelivestreamd. Deze wordt ook getranscribeerd voor AI Companion.";
+"LN_Host_Allow_Attendee_To_Talk_Content_1067517" = "Als je het dempen opheft, kunnen anderen in de webinar je horen. Als de host of panelleden besluiten de webinar op te nemen, te livestreamen, te archiveren of te delen met apps en/of anderen nadat je het dempen hebt opgeheven, omvat dit ook jouw stem. De opname kan worden gedeeld met de functie Slimme opname. Deze functie maakt gebruik van AI-technologie, waaronder mogelijk modellen van derden. Zoom gebruikt geen audio, video, chats, scherm delen, bijlagen of andere vormen van communicatie (zoals resultaten van peilingen, whiteboards en reacties) om AI-modellen van Zoom of derden te trainen.\n\nDeelnemers met de relevante toestemmingen kunnen het webinartranscript ook opslaan en delen.";
 "LN_Simplify_Disclamier_Recoding_Livestream_AI_Desc_671700" = "Iedereen met toegang tot de opname of livestream kan deze bekijken of met anderen delen.";
 "LN_Simplify_Disclamier_ZRA_Recoding_Livestream_AI_Desc_671700" = "De host gebruikt Zoom Revenue Accelerator om de vergadering te analyseren, inclusief de audio, om de sprekers van elkaar te kunnen onderscheiden voor transcriptiedoeleinden. De audio-analyse wordt verwijderd nadat het transcript is gegenereerd. Iedereen met toegang tot de opname of livestream kan deze bekijken of met anderen delen.";
 "LN_Simplify_Disclamier_Recoding_AI_Title_671700" = "Deze vergadering wordt opgenomen. Deze wordt ook getranscribeerd voor AI Companion.";
 "LN_Simplify_Disclamier_Recoding_AI_Desc_671700" = "Iedereen met toegang tot de opname kan deze bekijken of met anderen delen.";
 "LN_Simplify_Disclamier_ZRA_Recoding_AI_Desc_671700" = "De host gebruikt Zoom Revenue Accelerator om de vergadering te analyseren, inclusief de audio, om de sprekers van elkaar te kunnen onderscheiden voor transcriptiedoeleinden. De audio-analyse wordt verwijderd nadat het transcript is gegenereerd. Iedereen met toegang tot de opname kan deze bekijken of met anderen delen.";
+"LN_Join_Webinar_Consent_Content_1067517" = "De webinar kan worden opgenomen, gelivestreamd of gearchiveerd door de host, of worden gedeeld met apps en anderen. De opname kan worden gedeeld met de functie Slimme opname. Deze functie maakt gebruik van AI-technologie, waaronder mogelijk modellen van derden. Zoom gebruikt geen audio, video, chats, scherm delen, bijlagen of andere vormen van communicatie (zoals resultaten van peilingen, whiteboards en reacties) om AI-modellen van Zoom of derden te trainen.\n\nDeelnemers met de relevante toestemmingen kunnen het webinartranscript ook opslaan en delen.\n\nDoor als panellid aan deze webinar deel te nemen, stem je ermee in dat dit ook jouw deelname omvat.";
+"LN_Attendee_Promoted_To_Panelist_Content_1067517" = "Als panellid kun je het dempen opheffen en de video starten, wat betekent dat je zichtbaar bent voor anderen in de webinar.\n\nAls de host of panelleden besluiten de webinar op te nemen, te livestreamen, te archiveren of te delen met apps en/of anderen nadat je het dempen hebt opgeheven, omvat dit ook jouw deelname. De opname kan worden gedeeld met de functie Slimme opname. Deze functie maakt gebruik van AI-technologie, waaronder mogelijk modellen van derden. Zoom gebruikt geen audio, video, chats, scherm delen, bijlagen of andere vormen van communicatie (zoals resultaten van peilingen, whiteboards en reacties) om AI-modellen van Zoom of derden te trainen.\n\nDeelnemers met de relevante toestemmingen kunnen het webinartranscript ook opslaan en delen.";
 "LN_Simplify_Disclamier_Livestream_AI_Title_671700" = "Deze vergadering wordt gelivestreamd. Deze wordt ook getranscribeerd voor AI Companion.";
 "LN_Simplify_Disclamier_Livestream_AI_Desc_671700" = "Iedereen met toegang tot de livestream kan deze bekijken of met anderen delen.";
 "LN_Simplify_Disclamier_Recoding_Livestream_AI_CC_Title_671700" = "Deze vergadering wordt opgenomen en gelivestreamd. Deze wordt ook getranscribeerd voor AI Companion.";
@@ -4031,6 +4057,7 @@
 "LN_Audio_Howling_82046" = "Demp uw microfoon om echo's door andere deelnemers die in de buurt zijn te voorkomen.";
 "LN_BasicInfo_Extend_997504" = "Vergaderingen die je host, zijn beperkt tot 60 minuten.";
 
+"LN_BasicInfo_Trial_Extend_997504" = "Vergaderingen die je host, zijn beperkt tot %@ minuten.";
 //ZOOM-92048
 "LN_Room_Systems_92048" = "Ruimtesystemen";
 "LN_Join_The_Meeting_87404" = "Neem deel aan de vergadering";
@@ -4116,6 +4143,7 @@
 "LN_Interpretation_InpterpreterLanguageChangedTip_73504" = "De host heeft uw tolktaal gewijzigd.";
 "LN_Interpretation_ManagerInterpretation_73504" = "Tolkdienst beheren...";
 
+"LN_Menu_Uninstall_Place_95001" = "Workplace verwijderen";
 "LN_Interpretation_Schedule_Error_Email_Invalid_73504" = "Dit e-mailadres is ongeldig. Voer een geldig e-mailadres in.";
 "LN_Interpretation_Schedule_Error_Email_Repeated_73504" = "Dit e-mailadres is toegevoegd. Voer een nieuw e-mailadres in.";
 "LN_Interpretation_Schedule_Error_Language_Empty_73504" = "Selecteer een taal";
@@ -4189,6 +4217,7 @@
 "LN_72640_Transcript" = "Transcript";
 "LN_Your_Video_Is_Now_Broadcasting_In_The_%@_Channel_And_Main_Meeting_330475" = "Uw video wordt nu uitgezonden in het %@-kanaal en de hoofdvergadering";
 "LN_72640_Live Transcript is turned on" = "Live transcript is ingeschakeld";
+"LN_Host_Allow_SLI_To_Talk_Content_Webinar_1067517" = "Als je het dempen opheft, kunnen anderen in de webinar je horen. Als de host of panelleden besluiten de webinar op te nemen, te livestreamen, te archiveren of te delen met apps en/of anderen nadat je het dempen hebt opgeheven, omvat dit ook jouw stem. De opname kan worden gedeeld met de functie Slimme opname. Deze functie maakt gebruik van AI-technologie, waaronder mogelijk modellen van derden. Zoom gebruikt geen audio, video, chats, scherm delen, bijlagen of andere vormen van communicatie (zoals resultaten van peilingen, whiteboards en reacties) om AI-modellen van Zoom of derden te trainen.";
 "LN_72640_Captioner" = "Ondertitelaar";
 "LN_72640_Live Transcript" = "Live transcript";
 "LN_72640_Copy the API token" = "Het API-token kopiëren";
@@ -4495,8 +4524,12 @@
 "LN_Merge_Merge_Audio_With_Video_115938" = "%@ samenvoegen met audio";
 "LN_Merge_Separate_Audio_From_Video_115938" = "Audio van de video van %@ scheiden?";
 
+"LN_Remote_Support_Restart_Computer_Receive_Normal_Title_938601" = "Een gebruiker met de naam \"%@\" wil uw computer opnieuw starten";
+"LN_Remote_Support_Restart_Computer_Receive_Suspicious_Title_938601" = "Een verdachte gebruiker met de naam \"%@\" wil uw computer opnieuw starten";
 "LN_Merge_Merged_By_Host_115938" = "De host heeft de audio voor u samengevoegd";
 "LN_Merge_Merged_By_Cohost_115938" = "%@(co-host) heeft de audio voor u samengevoegd";
+"LN_Remote_Support_Restart_Computer_Receive_Double_Confirm_Description_938601" = "Bevestig dat u deze gebruiker vertrouwt voordat u toestemming verleent om de computer opnieuw te starten.";
+"LN_Remote_Support_Restart_Computer_Receive_Description_First_Line_938601" = "U neemt automatisch opnieuw deel aan deze vergadering na het opnieuw starten van uw computer.";
 "LN_Merge_Separated_By_Host_115938" = "Uw audio is gescheiden door de host";
 "LN_Merge_Separated_By_Cohost_115938" = "Uw audio is gescheiden door %@(co-host)";
 
@@ -4838,9 +4871,7 @@
 
 "LN_IB_AddContact_Error_115067" = "Deze gebruiker kon niet worden toegevoegd, omdat uw beheerder de communicatie tussen bepaalde gebruikers heeft beperkt";
 "LN_Learn_More_809581" = "Meer informatie";
-"LN_Update_Client_Desc_506188" = "Om post-quantum beveiligde versleuteling te ondersteunen, moet dit apparaat worden bijgewerkt naar de nieuwste clientversie. %@";
 "LN_Update_Client_809581" = "Client bijwerken";
-"LN_Add_BackupKey_809581" = "Nieuwe back-upsleutel toevoegen";
 "LN_IB_Login_Alert_Title_115067" = "Beperkte communicatie";
 "LN_IB_Login_Alert_Content_115067" = "U kunt sommige gebruikers of chats niet zien wegens beperkingen die door uw beheerder zijn ingesteld.";
 "LN_IB_LearnMore_115067" = "Meer informatie";
@@ -4851,15 +4882,20 @@
 
 "LN_IB_%@_Not_Allowed_Invited_MUC_115067" = "%@ kan niet worden uitgenodigd voor deze groepschat, omdat uw beheerder de communicatie tussen bepaalde gebruikers of groepen heeft beperkt";
 
-"LN_Add_BackupKey_Desc_809581" = "Voeg een nieuwe back-upsleutel toe om post-quantum beveiligde versleuteling te ondersteunen. Sleutels die zijn gemaakt zonder ondersteuning voor post-quantum beveiligde versleuteling kunnen niet worden geconverteerd. %@";
 "LN_IB_Not_Allowed_Join_Channel_115067" = "U kunt niet deelnemen aan dit kanaal, omdat uw beheerder de communicatie tussen bepaalde gebruikers of groepen heeft beperkt.";
 
 "LN_IB_Remove_Channel_115067" = "%@ is verwijderd uit dit kanaal, omdat uw beheerder de communicatie tussen bepaalde gebruikers of groepen heeft beperkt.";
+"LN_Regain_Data_Tip_1019138" = "Neem contact op met %@ om weer toegang te krijgen tot je gegevens.";
 
+"LN_Your_Admin_1019138" = "je beheerder";
 "LN_IB_Remove_MUC_115067" = "%@ is verwijderd uit deze groepschat, omdat uw beheerder de communicatie tussen bepaalde gebruikers en groepen heeft beperkt.";
+"LN_Admin_Device_Desc_1019138" = "Om post-quantumencryptie te ondersteunen, moet je beheerder worden bijgewerkt naar de nieuwste clientversie.";
 "LN_Invalid_ClientVersion_756698" = "Upgrade Zoom Workplace om deze functie te gebruiken.";
 
+"LN_Add_BackupKey_Desc_809581" = "Verwijder deze back-upsleutel om post-quantumencryptie te ondersteunen. Je kunt een nieuwe sleutel toevoegen die voldoet aan de post-quantumveiligheidsstandaarden.";
 "LN_IB_%@_Not_Chat_115067" = "U kunt niet chatten met %@, omdat uw beheerder de communicatie tussen bepaalde gebruikers of groepen heeft beperkt.";
+"LN_Add_BackupKey_809581" = "Nieuwe back-upsleutel";
+"LN_Update_Client_Desc_506188" = "Als je post-quantumencryptie wilt ondersteunen, moet dit apparaat worden bijgewerkt naar de nieuwste clientversie. Als je het niet herkent of niet meer gebruikt, moet het worden verwijderd.";
 
 "LN_Channel_Over_Limit_%ld_115067" = "U hebt het maximale aantal van %ld groepsleden bereikt";
 
@@ -5576,6 +5612,7 @@
 "LN_SettingsJoinAudioWhenJoinMeeting_167323" = "Bij deelname aan een vergadering de audio van de computer automatisch verbinden";
 "LN_Report_Clips_Recorder_598501" = "Tijdens clipopname";
 "LN_SettingsEnablePushToTalk_167323" = "Houd de 'spatiebalk' ingedrukt om tijdelijk het dempen op te heffen";
+"LN_Always_Chow_Captions_Desc_900292" = "Geef automatisch ondertiteling weer wanneer deze beschikbaar is, zonder dat je dit elke keer hoeft in te schakelen.";
 "LN_Generate_AIAvatar_Fail_741591" = "Het maken van uw avatar is mislukt.";
 "LN_SettingsSuppressBackgroundDownloadTip_167323" = "Om achtergrondgeluid te onderdrukken bij 'Hoog', kunt u het pakket voor audioverbetering downloaden. U hoeft dit maar één keer te doen.\n\nDit verhoogt uw CPU-gebruik.";
 "LN_SettingsSuppressBackgroundDownloadPrivileges_167323" = "Om achtergrondgeluid te onderdrukken bij 'Hoog', moet u de installatie met beheerdersrechten uitvoeren.";
@@ -5645,6 +5682,7 @@
 "LN_Black" = "zwart";
 "LN_Human_Avatar_Create_Your_Avatar_351270" = "Maak uw avatar";
 "LN_Human_Avatar_Create_Avatar_Description_351270" = "Maak een avatar om in uw komende vergaderingen te gebruiken.";
+"LN_VirtualBackgroundsList_1037483" = "Lijst met virtuele achtergronden";
 "LN_Human_Avatar_Exit_Without_Saving_464490" = "Afsluiten zonder op te slaan";
 "LN_SettingsHigh_167323" = "Hoog";
 "LN_Human_Avatar_Keep_Editing_464490" = "Nee, doorgaan met bewerken";
@@ -5674,12 +5712,19 @@
 "LN_Schedule_PMI_Disabled_Self_EditTip_153605" = "Uw persoonlijke vergadering-ID is uitgeschakeld. Door deze vergadering op te slaan, wordt er automatisch een nieuwe vergadering-ID gegenereerd.";
 "LN_Schedule_PMI_Disabled_%@s_EditTip_153605" = "Persoonlijke vergadering-ID van %@ is uitgeschakeld. Door deze vergadering op te slaan, wordt er automatisch een nieuwe vergadering-ID gegenereerd.";
 "LN_Schedule_PMI_Disabled_%@_EditTip_153605" = "Persoonlijke vergadering-ID van %@ is uitgeschakeld. Door deze vergadering op te slaan, wordt er automatisch een nieuwe vergadering-ID gegenereerd.";
+"LN_Poll_Scheduled_1012736" = "Gepland";
 "LN_Schedule_PMI_Disabled_Select_%@_ErrorTip_153605" = "Uw persoonlijke vergadering-ID is uitgeschakeld. Om deze vergadering te plannen, selecteert u de optie \"%@\" in de sectie Vergadering-ID.";
 "LN_Edit_PMI_Disabled_Error_Tip_153605" = "Opslaan mislukt omdat uw persoonlijke vergadering-ID is uitgeschakeld";
+"LN_Remove_Schedule_Time_1012736" = "Planningstijd verwijderen";
+"LN_Poll_Scheduled_Remove_1012736" = "Verwijderen";
 "LN_Schedule_PMI_Disabled_%@s_Select_%@_ErrorTip_153605" = "Persoonlijke vergadering-ID van %@ is uitgeschakeld. Om deze vergadering te plannen, selecteert u de optie \"%@\" in de sectie Vergadering-ID.";
 "LN_Schedule_PMI_Disabled_%@_Select_%@_ErrorTip_153605" = "Persoonlijke vergadering-ID van %@ is uitgeschakeld. Om deze vergadering te plannen, selecteert u de optie \"%@\" in de sectie Vergadering-ID.";
+"LN_Poll_Scheduled_Launch_1012736" = "Start peiling:";
+"LN_AIC_Ask_Host_Stop_1041052" = "Vraag de host om AI Companion te stoppen";
 
+"LN_Poll_Scheduled_Share_1012736" = "Resultaat delen:";
 "LN_Give_Feedback_130995" = "Feedback geven";
+"LN_Poll_Scheduled_Timeline_1012736" = "Gepland in opname-tijdlijn:";
 "LN_Keep_Phone_Connected_130995" = "Telefoon verbonden houden";
 "LN_Additional_Comments_130995" = "Aanvullende opmerkingen";
 "LN_How_Was_Your_Experience_130995" = "Hoe was uw ervaring?";
@@ -6667,14 +6712,26 @@
 "LN_AIC_Manage_Setting_738866" = "Alle instellingen beheren";
 "LN_AIC_Features_Disable_Tip_738866" = "Een of meerdere AI Companion-functies zijn uitgeschakeld in uw instellingen.";
 "LN_Whiteboards_194175" = "Whiteboards";
+"LN_AIC_Request_Host_Start_976513" = "Host verzoeken om AI Companion te starten";
+"LN_AIC_Request_Host_Start_Turn_Off_Tip_976513" = "Deelnemers mogen voor deze vergadering AI Companion niet aanvragen. Je kunt deze inschakelen in Host-tools.";
 "LN_MeetWith_%@_194175" = "Vergaderen met %@";
 "LN_AIC_Auto_Enable_Tip_Title_738866" = "AI Companion-functies zijn ingeschakeld voor uw account";
+"LN_AIC_Can_Not_Requeste_Tip_976513" = "AI Companion kan niet worden aangevraagd vanwege beheerdersinstellingen.";
+"LN_AIC_Can_Not_Requeste_External_Tip_976513" = "AI Companion kan niet worden aangevraagd vanwege het organisatiebeleid.";
+"LN_AIC_Request_Disabled_976513" = "De host heeft verzoeken om AI Companion te starten, uitgeschakeld.";
+"LN_AIC_Can_Not_Requeste_Participant_Tips_976513" = "AI Companion kan niet worden aangevraagd vanwege de instellingen van je organisatie.";
+"LN_AIC_Turn_Off_Reason_Host_Tip_976513" = "AI Companion is uitgeschakeld omdat een of meer externe gebruikers deelnemen aan de vergadering.";
+"LN_AIC_Can_Not_Start_Reason_Host_Tip_976513" = "AI Companion kan niet worden gestart omdat een of meer externe gebruikers deelnemen aan de vergadering.";
+"LN_AIC_Turn_Off_Reason_Participant_Tip_976513" = "AI Companion is uitgeschakeld vanwege het organisatiebeleid.";
 "LN_AIC_Auto_Enable_Tip_Desc_738866" = "AI Companion kan vergaderingen samenvatten en u helpen bij het uitvoeren van veel andere dagelijkse taken in Zoom.";
 "LN_Invite_%@_toMeeting_194175" = "%@ uitnodigen voor de vergadering";
 "LN_AIC_Summary_Tip_738866" = "Ontvang samenvattingen van het gesprek.";
+"LN_AIC_Turn_Off_Reason_Host_Tip2_976513" = "AI Companion is gestopt omdat een of meer externe gebruikers deelnemen aan de vergadering.";
 "LN_ViewAllWhiteboards_194175" = "Alle whiteboards weergeven";
+"LN_AIC_Turn_Off_Reason_Participant_Tips_976513" = "AI Companion is gestopt vanwege de instellingen van je organisatie.";
 "LN_No_Whiteboard_Content_194175" = "Whiteboards die zijn gedeeld in de chat verschijnen hier";
 "LN_Older_%@_Whiteboards_Removed_194175" = "Whiteboards die ouder zijn dan %@ zijn verwijderd";
+"LN_AIC_Can_Not_Requeste_External_Tips_976513" = "AI Companion kan niet worden aangevraagd vanwege de instellingen van deze vergadering.";
 "LN_File_AllImage_ShareIn_%@_194175" = "Alle afbeeldingen die zijn gedeeld in %@";
 "LN_AIC_Can_Not_Start_740048" = "AI Companion-functies kunnen pas worden gestart wanneer de host deelneemt.";
 "LN_AIC_Can_Not_Start_Host_740048" = "AI Companion-functies kunnen niet worden gestart, omdat de host niet heeft geüpgraded naar een ondersteunde versie van de app.";
@@ -6726,6 +6783,8 @@
 "LN_RemoveFromHistory_196620" = "Verwijderen uit geschiedenis";
 "LN_AIC__Questions_Can_Not_Start_740048" = "Vergadervragen kan pas worden gestart wanneer de host deelneemt.";
 "LN_RemovePIN_Info_196620" = "Hierdoor wordt het bericht voor iedereen verwijderd uit de geschiedenis van vastgemaakte items. Weet u zeker dat u het wilt verwijderen?";
+"LN_AI_Companion_BRB_Catch_Me_Up_Last_2_Mins_n_1025336" = "Praat me bij over de laatste 2 minuten van de vergadering";
+"LN_AI_Companion_BRB_Catch_Me_Up_Last_Mins_n_1025336" = "Praat me bij over de laatste %d minuten van de vergadering";
 "LN_Remove_TopPIN_Info_196620" = "U gaat dit bericht losmaken en het voor iedereen uit de geschiedenis van vastgemaakte items verwijderen. Weet u zeker dat u het wilt verwijderen?";
 "LN_AIC_Start_Using_Desc_738866" = "Genereer een samenvatting van een vergadering of stel AI Companion vragen over het gesprek.";
 "LN_Delete_Top_Pin_196620" = "Vastgemaakt bericht verwijderen";
@@ -6733,6 +6792,8 @@
 "LN_Delete_Top_Pin_Info_In_Chat_196620" = "Dit bericht is momenteel vastgemaakt aan de chat. Als u het verwijdert, wordt het bericht voor iedereen losgemaakt.";
 "LN_Replace_196620" = "Vervangen";
 "LN_Replace_Current_Pin_196620" = "Huidige vastgemaakte item vervangen";
+"LN_AI_Companion_Recap_Prepare_Recap_1043472" = "Stel een korte samenvatting en actiepunten van deze vergadering op voor mij.";
+"LN_AI_Companion_Recap_Tooltip_Desc_1043472" = "Je vergadering duurt nog vijf minuten. Bekijk de belangrijkste punten en je actiepunten.";
 "LN_AI_Companion_Tip_Content2_664338" = "Stel vragen over belangrijke updates van uw chats, maak concepten en samenvattingen van berichten of documenten en bereid u voor op komende vergaderingen.";
 "LN_AI_Companion_Tip_Title2_664338" = "Krijg op elk moment hulp met AI Companion";
 "LN_Replace_Current_Pin_Info_196620" = "Er is al een bericht vastgemaakt aan het kanaal. Weet u zeker dat u het wilt vervangen?";
@@ -6896,6 +6957,7 @@
 "LN_AIC_Start_Meeting_Summary_695050" = "Samenvatting van vergadering starten.";
 "LN_AIC_Start_AIC_695050" = "Start AI Companion voor deze vergadering.";
 
+"LN_A_Participant_1060084" = "Een deelnemer";
 
 "LN_Connected_Voip_224845" = "U bent verbonden met de computeraudio";
 "LN_Setup_Professional_%@_213253" = "Stel professionele audio in via %@";
@@ -6971,19 +7033,26 @@
 "LN_AIC_Hide_AIC_Panel_976183" = "Deelvenster AI Companion verbergen";
 "LN_Images_Shared_In_Channel_209755" = "Afbeeldingen die in dit kanaal zijn gedeeld, worden hier weergegeven";
 "LN_AIC_Stop_Title_695050" = "AI Companion-functies stoppen";
+"LN_AIC_Ask_Host_Turn_Off_1001627" = "Vraag de host om uit te schakelen";
 "LN_AIC_Open_AIC_Panel_976183" = "Deelvenster AI Companion openen";
 "LN_Images_Shared_In_Chat_209755" = "Afbeeldingen die in deze chat zijn gedeeld, worden hier weergegeven";
+"LN_AIC_Turn_On_Anyway_1001627" = "Toch inschakelen";
 "LN_AIC_Host_Decline_Access_Request_695050" = "De host heeft uw verzoek om toegang tot Vergadervragen afgewezen.";
 "LN_Files_Shared_In_Channel_209755" = "Bestanden die in dit kanaal zijn gedeeld, worden hier weergegeven";
 "LN_Files_Shared_In_Chat_209755" = "Bestanden die in deze chat zijn gedeeld, worden hier weergegeven";
+"LN_AIC_Start_Restrict_Title_1001627" = "Deelnemers kunnen de vergadering verlaten als AI Companion-functies worden ingeschakeld";
+"LN_AIC_Turned_On_1001627" = "AI Companion is voor deze vergadering ingeschakeld";
 "LN_Webinar_AIC_Stop_Panel_Title_792041" = "AI Companion stoppen voor deze webinar";
+"LN_AIC_Stay_Anyway_1001627" = "Toch blijven";
 "LN_SharePoint_Files_Shared_In_Channel_209755" = "SharePoint-bestanden die in dit kanaal zijn gedeeld, worden hier weergegeven";
 "LN_SharePoint_Files_Shared_In_Chat_209755" = "SharePoint-bestanden die in deze chat zijn gedeeld, worden hier weergegeven";
 "LN_AIC_Start_Questions_Desc_827302" = "Start de vergadervragen voor iedereen in deze vergadering.";
 "LN_AIC_Start_Using_Desc_695050" = "Gebruik AI Companion om vragen te stellen over uw vergadering, voor een samenvatting, actiepunten en meer.";
 "LN_AIC_Stop_Panel_Title_695050" = "AI Companion-functies stoppen voor deze vergadering";
+"LN_AIC_Start_Request_Title_1001627" = "Een deelnemer heeft je gevraagd om AI Companion te starten, maar deelnemers kunnen de vergadering verlaten";
 "LN_AIC_Start_Desc_827302" = "Start de vergadervragen en samenvatting van de vergadering voor iedereen in deze vergadering.";
 "LN_AIC_Donot_Remind_827302" = "Niet opnieuw aan herinneren";
+"LN_AIC_Request_To_Stop_Or_Drop_1001627" = "%@ vraagt je om AI Companion te stoppen, anders kan diegene de vergadering verlaten";
 "LN_AIC_Ask_Start_AIC_695050" = "Een deelnemer vraagt u om AI Companion te starten";
 "LN_AIC_Start_summary_827302" = "Start de samenvatting van de vergadering voor iedereen in deze vergadering.";
 "LN_AIC_Start_Title_827302" = "Start AI Companion om u te helpen met uw vergadering.";
@@ -6997,16 +7066,22 @@
 "LN_AIC_Stop_Subtitle_695050" = "Deze functies worden gestopt:";
 "LN_Whiteboards_Shared_In_Channel_209755" = "Whiteboards die in dit kanaal zijn gedeeld, worden hier weergegeven";
 "LN_AIC_Request_Start_AIC_Host_Content_695050" = "Alle deelnemers en genodigden krijgen toegang tot AI Companion. U kunt de toegangsinstellingen wijzigen in het deelvenster AI Companion.";
+"LN_Webinar_AIC_Start_Desc2_792041" = "Webinarvragen en samenvatting van webinar starten.";
 "LN_Whiteboards_Shared_In_Chat_209755" = "Whiteboards die in deze chat zijn gedeeld, worden hier weergegeven";
 "LN_Videos_Shared_In_Channel_209755" = "Video's die in dit kanaal zijn gedeeld, worden hier weergegeven";
+"LN_AIC_Start_Desc2_827302" = "Vergadervragen en samenvatting van vergadering starten.";
 "LN_AIC_Ask_Start_Deny_All_695050" = "Alles weigeren";
 "LN_Videos_Shared_In_Chat_209755" = "Video's die in deze chat zijn gedeeld, worden hier weergegeven";
+"LN_Webinar_AIC_Start_summary2_792041" = "Samenvatting van webinar starten.";
 "LN_AI_Requesting_AIC_Content_695050" = "Door op \"Inschakelen\" te klikken, worden de webinstellingen van deze functie ingeschakeld voor uw account. De functie wordt ingeschakeld voor deze vergadering en hosts kunnen deze inschakelen in toekomstige vergaderingen. U kunt dit op elk moment wijzigen via Instellingen.";
 
+"LN_Webinar_AIC_Start_Questions_Desc2_792041" = "Webinarvragen starten.";
 "LN_SentFromZR_194175" = "(Verzonden vanuit een Zoom Room)";
 "LN_OpenWhiteboard_194175" = "Whiteboard openen";
+"LN_AIC_Start_Questions_Desc2_827302" = "Vergadervragen starten.";
 "LN_AI_Ask_Summary_Enable_695050" = "Beheerder vragen om Samenvatting van vergadering in te schakelen";
 "LN_AIC_Start_Meeting_Summary_Button_695050" = "Samenvatting van vergadering starten";
+"LN_AIC_Start_summary2_827302" = "Samenvatting van vergadering starten.";
 "LN_AIC_Enable_Questions_For_Account_Info_695050" = "Schakel Vergadervragen voor uw account in via de vergaderinstellingen voor beheerders.";
 "LN_AIC_Host_Client_Older_695050" = "De host kan AI Companion niet uitschakelen. Probeer het later opnieuw.";
 
@@ -7046,6 +7121,7 @@
 "LN_Meeting_Reaction_Heart_211851" = "Hart";
 "LN_CN_Unable_To_Start_881415" = "Kan klinische notitie niet starten";
 "LN_Meeting_Reaction_Joy_211851" = "Vreugde";
+"LN_CN_Available_Notes_Used_Error_1030925" = "Je hebt al je beschikbare notities voor de huidige abonnementsperiode al verbruikt. Neem contact op met je beheerder voor ondersteuning.";
 "LN_CN_Please_Contact_Support_881415" = "Klinische notities zijn uitgeschakeld in je internetinstellingen. Neem contact op met je beheerder voor ondersteuning.";
 "LN_Meeting_Reaction_Open_Mouth_211851" = "Open mond";
 "LN_Meeting_Reaction_Tada_211851" = "Tada";
@@ -7053,17 +7129,35 @@
 "LN_Meeting_Reaction_Accessibility_User_Send_Reaction_211851" = "%1$@ verzendt %2$@";
 "LN_AIC_Unable_Load_Desc_695050" = "AI Companion heeft momenteel problemen om verbinding te maken.";
 "LN_AIC_Remind_Start_For_Meetings_Tip_902567" = "U wordt eraan herinnerd om AI Companion te starten voor vergaderingen die u host.";
+"LN_CN_Network_Connection_Error_1030925" = "Er is een tijdelijk probleem met je internetverbinding. Controleer je internetverbinding en probeer het opnieuw.";
 "LN_Better_Performance_for_M1_223584" = "Update Zoom Workplace naar een versie die compatibel is met uw apparaat voor betere prestaties op uw Mac met Apple Silicon-chip.";
 
+"LN_Stop_Translator_For_Me_961527" = "De vertaler stoppen voor mij";
+"LN_Voice_Translator_961527" = "Spraakvertaler";
 "LN_Meeting_Share_Participants_Can_Now_See_225616" = "Deelnemers kunnen nu uw scherm zien";
+"LN_Live_Voice_Translator_Others_On_961527" = "De live-spraakvertaler staat aan voor anderen";
 "LN_Meeting_Share_Participants_Can_Now_See_WB_250969" = "Deelnemers kunnen nu uw whiteboard zien";
+"LN_Start_Translator_For_Me_961527" = "De vertaler starten voor mij";
+"LN_Using_Voice_Translator_Content_961527" = "Je gebruikt de spraakvertaler. Deze vergadering wordt voor je vertaald in het %@.";
+"LN_Live_Voice_Translator_On_961527" = "De live-spraakvertaler staat aan";
+"LN_Voice_Translation_Delay_Warning_961527" = "De vertaling kan vertragingen in gesprekken veroorzaken.";
 "LN_Meeting_Share_Participants_Can_Now_See_Application_250969" = "Deelnemers kunnen nu uw toepassing zien";
 "LN_AIC_Auto_Start_For_Meetings_Tip_902567" = "AI Companion wordt automatisch gestart voor vergaderingen die u host.";
+"LN_Translated_961527" = "Vertaald";
 "LN_Meeting_Share_Participants_Can_Now_See_Applications_250969" = "Deelnemers kunnen nu uw toepassingen zien";
+"LN_Voice_Translator_Settings_961527" = "Instellingen voor spraakvertaler";
+"LN_Language_You_Want_To_Hear_961527" = "Taal die je wilt horen";
 "LN_CN_Request_To_Cancel_Declined_779477" = "Het verzoek om Klinische notitie te annuleren, is afgewezen door de host.";
+"LN_Test_Voice_961527" = "Stem testen";
+"LN_Can_Turn_On_Voice_Translator_Content_961527" = "Je kunt de vertaler in je voorkeurstaal inschakelen om het gesprek beter te begrijpen.";
 "LN_Meeting_Share_Participants_Can_Now_See_Slides_250969" = "Deelnemers kunnen nu uw dia's zien";
+"LN_Balance_Volume_Audio_961527" = "Balans van audiovolume";
 
+"LN_Voice_Translator_Turned_On_961527" = "De spraakvertaler is ingeschakeld.";
+"LN_Original_961527" = "Oorspronkelijk";
 "LN_Meeting_Share_WirediOS_Sync_Alert_Content_Bolder_String_214515" = "Finder > Locaties";
+"LN_My_Spoken_Language_961527" = "Mijn gesproken taal";
+"LN_Voice_Translator_Set_Language_961527" = "De spraakvertaler is ingeschakeld. Stel in in welke taal je tijdens deze vergadering spreekt.";
 "LN_Meeting_Share_WirediOS_Sync_Alert_Content_214515" = "Open %@ om uw apparaten te synchroniseren";
 "LN_Meeting_Share_WirediOS_Sync_Alert_Open_Button_214515" = "Finder openen";
 "LN_CN_Approve_To_Cancel_Note_779477" = "Als u het annuleren van Klinische notitie goedkeurt, wordt er geen notitie gegenereerd op basis van deze stream.";
@@ -7071,6 +7165,7 @@
 "LN_CN_Patient_Data_Saved_903500" = "Patiëntgegevens opgeslagen";
 "LN_Turn_Off_CN_Decline_779477" = "Afwijzen";
 "LN_Clinical_Notes_779477" = "Klinische notities";
+"LN_Select_Translated_Voice_Style_961527" = "Selecteer de stijl van je vertaalde stem:";
 "LN_CN_Unable_Save_Patient_Data_903500" = "Kan patiëntgegevens niet opslaan";
 "LN_CN_Edit_Patient_Data_903500" = "Patiëntgegevens bewerken";
 "LN_Clinical_Note_779477" = "Klinische notitie";
@@ -7755,25 +7850,40 @@
 "LN_Audio_Device_Type_Aggregate_751220" = "Samengesteld";
 "LN_See_Yourself_239942" = "Kunt u uzelf zien?";
 "LN_Select_Camera_239942" = "Selecteer camera";
+"LN_On_For_External_Meeting_1044325" = "Externe vergaderingen";
+"LN_On_For_Internal_Meeting_Set_By_Admin_1044325" = "Interne vergaderingen (ingesteld door de beheerder)";
 "LN_Audio_Device_Type_Thunderbolt_751220" = "Thunderbolt";
 "LN_Select_Speaker_239942" = "Selecteer luidspreker";
+"LN_You_Have_No_Added_Apps_1044325" = "Je hebt geen apps toegevoegd.";
 "LN_Select_Microphone_239942" = "Selecteer microfoon";
+"LN_On_For_External_Meeting_Locked_By_Admin_1044325" = "Externe vergaderingen (vergrendeld door de beheerder)";
 "LN_Testing_%d/%d_239942" = "%1$d/%2$d worden getest";
 "LN_Output_Level_239942" = "Outputniveau";
+"LN_On_For_Internal_Meeting_Locked_By_Admin_1044325" = "Interne vergaderingen (vergrendeld door de beheerder)";
+"LN_Auto_Open_Settings_1044325" = "Instellingen voor automatisch openen";
 "LN_Another_Speaker_239942" = "Nee, andere luidspreker proberen";
 "LN_Join_by_Phone_239942" = "Deelnemen per telefoon";
+"LN_On_For_Internal_Meeting_1044325" = "Interne vergaderingen";
+"LN_On_For_All_Meeting_1044325" = "Alle vergaderingen";
+"LN_Auto_Open_Limit_Reached_1044325" = "Limiet voor automatisch openen bereikt";
 "LN_Next_Test_239942" = "Volgende test";
 "LN_Audio_Device_Type_DisplayPort_751220" = "DisplayPort";
 "LN_Audio_Device_Type_Network_751220" = "Netwerk";
 "LN_Another_Mic_239942" = "Nee, probeer een andere microfoon";
+"LN_Max_Reached_1044325" = "Max. bereikt";
+"LN_Added_Apps_1044325" = "Toegevoegde apps";
 "LN_Audio_Device_Mic_Speaker_751220" = "Microfoon en luidspreker";
 "LN_Another_Camera_239942" = "Nee, probeer een andere camera";
+"LN_On_For_External_Meeting_Set_By_Admin_1044325" = "Externe vergaderingen (ingesteld door de beheerder)";
 "LN_Device_Working_239942" = "Uw apparaat werkt goed.";
 "LN_Device_Not_Working_239942" = "Uw apparaat werkt niet goed";
 "LN_Audio_Device_Type_Builtin_751220" = "Ingebouwd";
 "LN_Contact_Support_Help_239942" = "Als u hulp nodig hebt met uw apparaat, %@.";
+"LN_Locked_By_Admin_1044325" = "Vergrendeld door de beheerder";
+"LN_Reach_Maximum_Number_For_Auto_Open_1044325" = "Je hebt het maximale aantal apps bereikt dat automatisch mag worden geopend.";
 "LN_Contact_Support_239942" = "neem contact op met ondersteuning";
 "LN_End_Test_239942" = "Test beëindigen";
+"LN_Set_By_Admin_1044325" = "Ingesteld door beheerder";
 "LN_All_Cameras_Tested_239942" = "Alle camera's zijn getest";
 "LN_Audio_Device_Type_AirPlay_751220" = "AirPlay";
 "LN_All_Speakers_Tested_239942" = "Alle luidsprekers zijn getest";
@@ -7781,6 +7891,7 @@
 "LN_ALL_Mic_Tested_239942" = "Alle microfoons zijn getest";
 "LN_%@_Test_Passed_239942" = "%@ test geslaagd";
 "LN_%@_Test_Failed_239942" = "%@ test mislukt";
+"LN_Modified_1044325" = "Aangepast";
 "LN_Start_Video_250352" = "Start uw video om de camera te testen";
 "LN_Skip_Test_250352" = "Test overslaan";
 
@@ -7791,6 +7902,7 @@
 "LN_Phone_PowerUser_Mute_Disable_Accessibility_230160" = "knop, gedimd";
 "LN_Phone_PowerUser_Calllist_Accessibility_230160" = "oproeplijst";
 "LN_Phone_PowerUser_Unmute_Accessibility_230160" = "dempen opheffen, momenteel gedempt";
+"LN_Auto_Open_Selected_Zoom_Apps_1044325" = "Geselecteerde apps automatisch openen";
 "LN_Phone_PowerUser_Mute_Accessibility_230160" = "dempen, momenteel niet gedempt";
 "LN_Phone_PowerUser_Incoming_Accessibility_230160" = "%@ belt u";
 
@@ -7799,6 +7911,7 @@
 "LN_Audio_Device_Type_Continuity_751220" = "Doorlopend";
 "LN_Accessibility_Search_Label_229922" = "Ga naar contact, groepschat of kanaal";
 "LN_Audio_Device_Type_Virtual_751220" = "Virtueel";
+"LN_Add_Apps_From_Marketplace_1044325" = "Apps toevoegen vanuit Marketplace";
 
 "LN_Recording_Disable_Barrier_Alert_Title_240270" = "Deze vergadering kan niet worden opgenomen";
 "LN_Recording_Disable_Barrier_Alert_Content_240270" = "Uw beheerder heeft opnames in vergaderingen met bepaalde groepen en gebruikers uitgeschakeld.";
@@ -7977,7 +8090,6 @@
 "LN_Main_Tab_ZRC_Inquiry_View_Start_From_Room_Button_Title_179546" = "Starten vanuit ruimte";
 "LN_Apps_Push_App_Close_Attendees_Only_769589" = "Alleen deelnemers";
 "LN_Apps_Stop_Play_Together_And_Share_Audio_769589" = "De speelsessie stoppen om audio te delen";
-"LN_Apps_RTMS_AAN_Brought_By_862885" = "Gestart door hostaccount";
 "LN_Apps_RTMS_AAN_Deny_By_Host_862885" = "Geweigerd door host";
 "LN_Apps_End_Collaborate_And_Change_Host_Title_769589" = "De samenwerking stoppen om de host te wijzigen";
 "LN_Apps_RTMS_AAN_Deny_By_You_862885" = "Door jou geweigerd";
@@ -8010,14 +8122,17 @@
 
 "LN_Apps_RTMS_AAN_Sharing_862885" = "Toegang";
 "LN_Apps_RTMS_Host_Tool_951404" = "Deel realtime vergaderinhoud met apps";
-"LN_MIL_DoD_Title_1012212" = "Je bent verbonden met Zoom voor de overheid - Defensie";
+"LN_MIL_DoD_Title_1012212" = "U bent verbonden met Zoom voor Defensie";
+"LN_Apps_RTMS_AAN_Brought_By_OBF_1002666" = "Aangebracht door %@";
 "LN_Apps_RTMS_Disable_All_Tips_862885" = "Het delen van realtime inhoud van vergaderingen met apps is uitgeschakeld voor deelnemers.";
 "LN_Legal_Notice_Feedback_Title_260584" = "Wie kan uw feedback zien?";
 "LN_Apps_RTMS_AAN_Disable_By_Host_862885" = "Uitgeschakeld door host";
 "LN_Apps_RTMS_Disable_Alert_Desc_1_862885" = "voorkom je nieuwe verzoeken van deelnemers om apps te delen;";
 "LN_App_Share_Background_745455" = "Achtergrond delen";
 "LN_Apps_RTMS_AAN_Enable_By_You_862885" = "Door jou ingeschakeld";
-"LN_MIL_DoD_Tooltip_1012212" = "Zoom voor de overheid - Defensie";
+"LN_Apps_RTMS_Not_In_Meeting_1050803" = "niet in vergadering";
+"LN_Apps_RTMS_Not_In_Webinar_1050803" = "niet in webinar";
+"LN_MIL_DoD_Tooltip_1012212" = "Zoom voor Defensie";
 "LN_Legal_Notice_Feedback_Content_260584" = "De accounteigenaar kan zien wie u bent, uw contactinformatie (als u bent aangemeld of deze heeft verstrekt) en uw feedback, en kunnen deze informatie delen met apps en anderen.";
 
 "LN_Legal_Notice_Close_Caption_Enabled_260553" = "Live transcriptie (ondertiteling) is ingeschakeld";
@@ -8045,6 +8160,7 @@
 "LN_Apps_RTMS_Remove_%@_Title_862885" = "'%@' verwijderen";
 "LN_Apps_RTMS_Pause_Access_862885" = "Toegang pauzeren";
 "LN_Manager_NewIM_255206" = "MANAGER";
+"LN_Join_Space_Rejected_For_Restrictions_1025496" = "Je kunt niet deelnemen aan de gedeelde ruimte waaraan %@ je heeft toegevoegd omdat de beheerder van de gedeelde ruimte heeft beperkt wie eraan kan deelnemen";
 "LN_Apps_RTMS_Resume_Access_862885" = "Toegang hervatten";
 "LN_Search_856135" = "Zoeken...";
 "LN_Apps_RTMS_Host_Not_Support_RTMS_862885" = "De host kan de toegang van je app tot de inhoud van de vergadering niet goedkeuren.";
@@ -8238,6 +8354,7 @@
 "LN_Focus_Mode_Host_Tip_284044" = "Deelnemers kunnen alleen de host, co-hosts en gespotlighte gebruikers zien";
 "LN_Focus_Mode_Pariticipants_Tip_284044" = "De vergadering staat in focusmodus: Alleen de host en co-hosts kunnen uw video zien.";
 "LN_Simulive_Start_Live_748835" = "Live sessie starten";
+"LN_Simulive_Remind_Video_And_Audio_Available_Content_1007388" = "De opname wordt momenteel afgespeeld en is zichtbaar en hoorbaar voor alle deelnemers aan de webinar.\n\n De audio en video van de host en de panelleden worden pas beschikbaar nadat de webinar live is gegaan.";
 "LN_Simulive_Remind_Webinar_End_Content_748835" = "De webinar wordt automatisch beëindigd nadat de opname is afgespeeld.";
 "LN_Simulive_748835" = "Simulive";
 "LN_Fcous_Mode_Spotlight_Tip_284044" = "Iedereen kan uw video zien omdat de host u heeft gespotlight";
@@ -8281,6 +8398,7 @@
 "LN_MTChat_Message_%@_748343" = "Bericht verzenden naar %@";
 "LN_IM_Session_List_View_All_288353" = "Alles weergeven";
 "LN_IM_Session_List_View_Less_288353" = "Minder weergeven";
+"LN_Simulive_Feature_Not_Available_1075603" = "Deze functie is momenteel niet beschikbaar. en wordt later in de sessie ingeschakeld.";
 "LN_MTChat_Message_Direct_WR_%@_748343" = "Bericht verzenden naar %@ (wachtruimte)";
 "LN_Simulive_Not_Auto_Start_967444" = "niet automatisch starten";
 "LN_Simulive_Failed_Need_Manually_Start_967444" = "Simulive is niet automatisch gestart op het geplande tijdstip.\nStart de sessie handmatig.";
@@ -8309,6 +8427,7 @@
 "LN_MTChat_CMC_DM_Ready_100946" = "Berichten die hier worden verzonden, verschijnen ook in de Team Chat als privéberichten beschikbaar zijn.";
 "LN_Emoji_Was_Deleted_719177" = "Deze emoji is verwijderd";
 "LN_Simulive_Started_967444" = "De simulive is gestart.";
+"LN_MTChat_Unsupported_%@_1057789" = "Je kunt geen bericht sturen naar %@ omdat deze functie niet beschikbaar is voor dat account.";
 "LN_MTChat_CMC_DM_Failed_100946" = "Berichten kunnen niet worden gesynchroniseerd met deze vergaderchat vanwege instellingen of omdat de Zoom Workplace-app van sommige deelnemers deze functie niet ondersteunt.";
 "LN_Chat_Legal_PMC_Record_Tips_855079" = "Opnemen staat aan, dus de accounteigenaar en iedereen in de vergadering kan de berichten die zijn verzonden naar de groepschat van de vergadering, zien en opslaan, en ze delen met apps en anderen. Deze berichten worden ook gepost in de speciale groepschat van de vergadering in teamchat. Iedereen, inclusief degenen die niet in de vergadering zitten, kunnen deze zien, opslaan en delen.";
 "LN_Unrecognized_Emoji_719177" = "Niet-herkende emoji";
@@ -8338,12 +8457,14 @@
 "LN_MTChat_Not_In_Meeting_736262" = "Niet in vergadering";
 "LN_MTChat_Restrict_DLP_%@_859479" = "%@ heeft geen toestemming om rechtstreekse berichten te ontvangen. (Wegens DLP)";
 "LN_Upload_custom_emojis_will_be_accessible_to_all_505877" = "Geüploade emoji's zijn toegankelijk voor alle gebruikers in uw account.";
+"LN_Notes_Tip_Title_1045743" = "Maak aantekeningen op jouw manier";
 "LN_MTChat_New_Chat_Tip_748343" = "Verzend een rechtstreeks bericht naar iemand of start groepschats met twee of meer deelnemers.";
 "LN_Notes_Tip_Title_996840" = "Eenvoudig aantekeningen maken";
 "LN_Select_Or_Upload_Custom_Emoji_505877" = "Selecteer of upload uw aangepaste emoji";
 "LN_Select_Or_Upload_An_Image_505877" = "1. Upload een afbeelding";
 "LN_Select_Or_Upload_An_Image_description_505877" = "• Geaccepteerde bestandsindelingen: JPG, JPEG, PNG and GIF\n• Vierkante afbeeldingen van 256 KB met een transparante achtergrond worden aanbevolen";
 "LN_MTChat_Outdated_Version_748343" = "Deze deelnemer gebruikt een oudere versie van Zoom Workplace en kan niet worden toegevoegd aan een groepschat";
+"LN_Notes_Tip_Content_1045743" = "Leg je gedachten tijdens je vergaderingen vast en laat AI Companion ze verfijnen. Beschikbaarheid is afhankelijk van je Zoom-abonnement.";
 "LN_You_Selected_1_Custom_Emoji_505877" = "U hebt 1 aangepaste emoji geselecteerd";
 "LN_Drag_And_Drop_File_505877" = "Sleep bestanden hierheen of %@";
 "LN_Choose_files_505877" = "Kies bestanden";
@@ -8354,20 +8475,27 @@
 "LN_MTChat_Legal_Normal_859479" = "Deelnemers aan de vergadering kunnen chats zien, opslaan en delen.";
 "LN_Give_Your_Emoji_A_Name_581759" = "Geef uw emoji een naam";
 "LN_Give_Your_Emoji_A_Name_Description_581759" = "Kies een eenvoudige naam waarmee anderen uw emoji kunnen vinden. U kunt letters, cijfers en onderstrepingstekens gebruiken.";
+"LN_MTChat_UnPin_Content_1013473" = "Weet je zeker dat je dit bericht wilt losmaken?";
 "LN_MTChat_CMC_DM_Title_950219" = "Aan het wachten op deelnemer om deel te nemen...";
 "LN_MTChat_Legal_DLP_859479" = "Een of meerdere deelnemers zijn onderworpen aan preventie van gegevensverlies (DLP), inclusief hun rechtstreekse berichten. Berichten die in conflict zijn met hun DLP-beleid worden verwijderd. Hun accounteigenaren hebben toegang tot berichten die zijn onderworpen aan DLP.";
 "LN_Name_your_emoji_505877" = "2. Geef uw emoji een naam";
+"LN_Gift_Limit_Extend_First_End_Message_997504" = "Je vergadering duurde %1$@. Je vergaderabonnement biedt %2$@ minuten. Overweeg om je abonnement te upgraden, zodat je onbeperkt kunt vergaderen.";
+"LN_MTChat_Add_App_Title_1029818" = "Toevoegen aan vergaderkanaal";
 "LN_Use_This_Name_to_Search_505877" = "• U kunt uw emoji zoeken met deze tekst.\n• U kunt letters, cijfers en onderstrepingstekens gebruiken.";
 "LN_MTChat_Rec_Archive_DLP_Conflict_859479" = "Wie kan uw berichten zien? Opname, archiveren aan en DLP-conflict";
+"LN_MTChat_Other_Pin_Message_1013473" = "%1$@ heeft <a href='%2$@'>een bericht</a> vastgemaakt aan deze chat.";
 "LN_Name_Has_Been_Used_505877" = "Naam \"%@\" is al in gebruik";
 "LN_Emoji_Ready_To_Be_Used_581759" = "De emoji is toegevoegd en klaar voor gebruik.";
 "LN_MTChat_To_Me_748343" = "Van %@ aan mij";
 "LN_File_Size_Limit_505877" = "Het bestand mag niet groter zijn dan 256 KB.";
 "LN_Custom_Emoji_Created_505877" = "Uw aangepaste emoji is gemaakt, uw team kan het nu gebruiken.";
+"LN_MTChat_Fusion_Title_1029818" = "Meer apps en tools";
 "LN_Custom_Emoji_Message_Limit_505877" = "Er kunnen maximaal 20 aangepaste emoji's worden toegevoegd aan een bericht.";
 "LN_Gift_Extend_First_End_Message_997504" = "Je vergadering duurde %@. Je vergaderabonnement biedt 60 minuten. Overweeg om je abonnement te upgraden, zodat je onbeperkt kunt vergaderen.";
 "LN_Custom_Emoji_Access_505877" = "Alleen accountbeheerders en specifieke gebruikers kunnen aangepaste emoji's toevoegen. Vraag uw accountbeheerder om toegang.";
 "LN_Gift_Extend_Second_End_Message_997504" = "Je vergadering duurde %@. Je vergaderabonnement biedt 60 minuten. Overweeg om je abonnement te upgraden, zodat je onbeperkt kunt vergaderen.";
+"LN_MTChat_You_Pin_Message_1013473" = "Je hebt <a href='%1$@'>een bericht</a> vastgemaakt aan deze chat.";
+"LN_Gift_Limit_Extend_Second_End_Message_997504" = "Je vergadering duurde %1$@. Je vergaderabonnement biedt %2$@ minuten. Overweeg om je abonnement te upgraden, zodat je onbeperkt kunt vergaderen.";
 "LN_MTChat_Rec_DLP_Conflict_859479" = "Wie kan uw berichten zien? Opname aan en DLP-conflict";
 "LN_Custom_Emoji_Name_Has_Been_Used_505877" = "Naam \"%@\" is al in gebruik";
 "LN_Custom_Emoji_No_Longer_Authorized_505877" = "U kunt geen aangepaste emoji's meer bewerken.";
@@ -8576,6 +8704,7 @@
 "LN_Font_Mark_More_268211" = "Meer";
 "LN_Font_Mark_Underline_268211" = "Onderstrepen";
 "LN_Toolbar_Audio_Companion_FTE_Tip_Content_750362" = "Gebruik %@ om de spraakkwaliteit in deze vergadering te verbeteren zonder echo of audiofeedback.";
+"LN_Main_Tab_ZRC_Keep_Pair_Alert_Title_1033710" = "Je sessie is afgelopen. Wil je gekoppeld blijven met %@?";
 "LN_Font_Mark_Color_268211" = "Kleur";
 "LN_Font_Mark_Size_268211" = "Grootte";
 "LN_Main_Tab_ZRC_Inquiry_View_Start_From_Room_Companion_Button_Tooltip_775584" = "De vergadering starten op de Zoom Room; uw persoonlijke apparaat neemt ook deel om te chatten en het scherm te delen.";
@@ -8585,16 +8714,22 @@
 "LN_Font_Mark_Add_Link_268211" = "Link toevoegen";
 "LN_Font_Mark_Paragraph_268211" = "Paragraaf";
 "LN_Font_Mark_Increase_Indent_268211" = "Inspringing vergroten";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Desc_1024205" = "Je apparaat verbinden met Zoom Room voor chat en scherm delen?";
 "LN_Main_Tab_ZRC_Pair_Move_Meeting_Error_Others_995355" = "Kan Zoom Room niet koppelen. Probeer het opnieuw.";
+"LN_Main_TAB_ZRC_Companion_Disconnected_1024205" = "De verbinding tussen je apparaat en %@ is verbroken.";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Title_1024205" = "Vergadering overgezet";
 "LN_Font_Mark_Decrease_Indent_268211" = "Inspringing verkleinen";
+"LN_Main_TAB_ZRC_Companion_Connected_1024205" = "Je apparaat is verbonden met %@ voor chat en scherm delen.";
 "LN_Main_Tab_ZRC_Inquiry_View_Start_From_Room_Companion_Button_Title_775584" = "Starten vanaf ruimte en als companion";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Room_Companion_Button_Title_775584" = "Deelnemen vanaf ruimte en als companion";
 "LN_Font_Mark_Number_List_268211" = "Genummerde lijst";
 "LN_Font_Mark_Quote_268211" = "Citeren";
 "LN_Font_Mark_Clear_style_268211" = "Opmaak wissen";
 
+"LN_Main_Tab_ZRC_Join_From_Room_Client_In_Meeting_937231" = "Je bent momenteel in een vergadering. Je moet deze eerst verlaten voordat je vanuit de ruimte een vergadering kunt starten of er aan een kunt deelnemen.";
 "LN_Toolbar_Audio_Companion_Speaker_Menu_Title_750362" = "Selecteer een luisterapparaat";
 "LN_Toolbar_Audio_Companion_Poor_Quality_Detected_Tip_Content_750362" = "Wilt u %@ inschakelen om de spraakkwaliteit in deze vergadering te verbeteren zonder echo of audiofeedback?";
+"LN_Main_TAB_ZRC_ZR_IN_USE_1024205" = "De ruimte is momenteel in gebruik. Overzetten van vergadering is niet beschikbaar.";
 "LN_Toolbar_Audio_Companion_Mic_Button_Unmute_Tooltip_879423" = "Begeleidende microfoon activeren";
 "LN_Toolbar_Audio_Companion_Mic_Error_Device_Issue_Tip_Title_750362" = "Begeleidende microfoon niet verbonden";
 "LN_Toolbar_Audio_Companion_Room_Setting_Auto_Join_Title_750362" = "Begeleidende microfoon automatisch inschakelen bij deelname als companion";
@@ -8602,9 +8737,12 @@
 "LN_Toolbar_Audio_Companion_Mic_Button_Mute_Tooltip_879423" = "Begeleidende microfoon dempen";
 "LN_Toolbar_Audio_Companion_Mic_Error_Cannot_Turn_On_Tip_Title_750362" = "Kan begeleidende microfoon niet inschakelen";
 "LN_Main_Tab_ZRC_Inquiry_View_Start_From_Room_Only_Button_Disabled_Tooltip_832028" = "Probeer een andere methode om de vergadering te starten.";
+"LN_Main_Tab_ZRC_Connect_To_Room_Error_ZR_Idle_937231" = "Deze optie is alleen beschikbaar als er een vergadering bezig is in de Zoom Room.";
 "LN_Meeting_Summary_Lowercase_890360" = "samenvatting van vergadering";
+"LN_Main_TAB_ZRC_Connect_1024205" = "Verbinden";
 "LN_Paragraph_Mark_Heading1_268211" = "Kop 1";
 "LN_Whiteboard_Lowercase_890360" = "whiteboard";
+"LN_Main_Tab_ZRC_Connect_To_Room_Error_Title_937231" = "Kan geen verbinding maken met de ruimte";
 "LN_Paragraph_Mark_Heading2_268211" = "Kop 2";
 "LN_Main_Tab_ZRC_Claim_Single_Asset_Failed_Message_890360" = "Uw %@ is uitgeschakeld, u ontvangt een e-mail met de/het %@ wanneer de vergadering is beëindigd.";
 "LN_Main_Tab_ZRC_Claim_Assets_Toast_890360" = "Met succes geclaimd.";
@@ -8616,16 +8754,23 @@
 "LN_Main_Tab_ZRC_Claim_Multi_Asset_Failed_Message_890360" = "De volgende items zijn uitgeschakeld en konden niet worden opgeslagen, u ontvangt een e-mail met deze activa wanneer de vergadering is beëindigd.";
 "LN_Toolbar_Audio_Companion_Mic_Error_No_Device_Tip_Content_750362" = "Geen ondersteund audioapparaat. Verbind een apparaat.";
 "LN_Main_TAB_ZRC_CLaim_Assets_Failed_Across_Account_1000857" = "Je kunt geen vergaderactiva claimen en opslaan in verschillende accounts. Neem contact op met je beheerder voor hulp.";
+"LN_Main_TAB_ZRC_AIC_Record_Failed_937231" = "Kan niet opnemen met AI Companion. Probeer het opnieuw.";
+"LN_Main_Tab_ZRC_Claim_Assets_Toast_937231" = "De assets zijn geclaimd en opgeslagen vanuit de ruimte.";
+"LN_Main_TAB_ZRC_ZR_Busy_Toast_937231" = "De ruimte is momenteel in gebruik. Probeer het later opnieuw.";
 "LN_Main_TAB_ZRC_CLaim_Assets_Failed_Permission_890360" = "Opslaan mislukt. U hebt geen toestemming om de activa op te slaan. Vraag uw beheerder om hulp.";
 "LN_Toolbar_Audio_Companion_FTE_Tip_Title_750362" = "Begeleidende microfoon ingeschakeld";
 "LN_Main_TAB_ZRC_CLaim_Assets_Failed_890360" = "Opslaan mislukt.";
+"LN_Main_TAB_ZRC_CLaim_Assets_Timeout_937231" = "Kan assets uit de ruimte niet opslaan. Probeer het opnieuw.";
 "LN_Main_Tab_ZRC_Loading_View_Description_775584" = "Deelnemen vanaf ruimte...";
 "LN_Paragraph_Mark_Heading3_268211" = "Kop 3";
 "LN_Toolbar_Audio_Companion_FTE_Tip_Title_879423" = "Begeleidende microfoon geactiveerd";
 "LN_Paragraph_Mark_Normal_268211" = "Paragraaf";
 "LN_Toolbar_Audio_Companion_Speaker_Button_Off_Tooltip_879423" = "Luisteren in ruimte activeren";
 "LN_Toolbar_Audio_Companion_Speaker_Button_On_Tooltip_879423" = "Luisteren in ruimte dempen";
+"LN_Main_TAB_ZRC_AIC_Record_Failed_Client_Not_Support_937231" = "Opnemen met AI Companion is uitgeschakeld voor deze ruimte. Neem contact op met je IT-beheerder voor hulp.";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Join_Title_Period_937231" = "Deelgenomen aan de vergadering vanuit Zoom Room.";
 "LN_Toolbar_Audio_Companion_Speaker_Button_Title_750362" = "Luisteren";
+"LN_Main_TAB_ZRC_Remember_My_Choice_937231" = "Mijn keuze onthouden";
 
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Room_Only_Button_Disabled_Tooltip_832028" = "Probeer een andere methode om deel te nemen aan de vergadering.";
 "LN_Toolbar_Audio_Companion_Mic_Error_Generic_Tip_Content_750362" = "Uw begeleidende microfoon is momenteel niet beschikbaar. Probeer het later opnieuw.";
@@ -8634,27 +8779,42 @@
 "LN_Toolbar_Audio_Companion_Mic_Error_Cannot_Turn_On_Tip_Title_879423" = "Kan begeleidende microfoon niet activeren";
 "LN_Display_Time_287598" = "Tijd weergeven";
 "LN_Custom_287598" = "Aangepast";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Start_Title_Period_937231" = "De vergadering is gestart vanuit Zoom Room.";
 "LN_Hour_287598" = "uur";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Transfer_Title_Period_937231" = "De vergadering is verplaatst naar Zoom Room.";
 "LN_Toolbar_Audio_Companion_Speaker_Error_No_Device_Tip_Content_750362" = "Geen ondersteund audioapparaat. Verbind een apparaat.";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Join_Title_937231" = "Deelgenomen aan de vergadering vanuit Zoom Room";
+"LN_Main_TAB_ZRC_Companion_Connected_937231" = "Je apparaat is verbonden met %@ om te chatten en content te bekijken.";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Device_Issue_Tip_Content_750362" = "%@ speelt geen audio meer af vanuit de ruimte. Neem opnieuw deel aan de ruimte in companion-modus om opnieuw verbinding te maken.";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Cannot_Turn_On_Tip_Title_750362" = "Kan luisteren in ruimte niet inschakelen";
+"LN_Toolbar_Paired_Zr_Action_Menu_Transfer_To_Room_Title_1024686" = "Vergadering overzetten naar ruimte";
 "LN_Toolbar_Audio_Companion_Mic_Error_Generic_Tip_Title_750362" = "Kan geen verbinding maken met Zoom Room";
+"LN_Toolbar_Paired_Zr_Action_Menu_Connect_To_Room_Help_String_1024686" = "Je apparaat wordt verbonden met Zoom Room voor chat en scherm delen.";
+"LN_Toolbar_Paired_Zr_Action_Menu_Connect_To_Room_Title_1024686" = "Verbinden met ruimte";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Desc_937231" = "Je apparaat verbinden met Zoom Room om te chatten en content te bekijken?";
+"LN_Main_TAB_ZRC_AIC_Record_Failed_ZR_Busy_937231" = "De Zoom Room is momenteel bezet. Probeer later op te nemen met AI Companion.";
 "LN_Toolbar_Audio_Companion_Mic_Error_Zr_Muted_Tip_Content_879423" = "Uw kunt uw begeleidende microfoon niet inschakelen wanneer de ruimte is gedempt.";
 "LN_Hours_287598" = "uur";
+"LN_Main_TAB_ZRC_Room_Detected_937231" = "Ruimte gedetecteerd";
 "LN_Toolbar_Audio_Companion_Mic_Error_Exceed_Maximum_Tip_Content_750362" = "Het maximale aantal begeleidende microfoons is aangesloten in deze Zoom Room.";
 "LN_Date_&_Time_287598" = "Datum en tijd";
+"LN_Toolbar_Paired_Zr_Action_Menu_Connect_To_My_Device_Title_1024686" = "Vergadering overzetten naar mijn apparaat";
 "LN_Suggestions_287598" = "SUGGESTIES";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Start_Title_937231" = "Vergadering gestart vanuit Zoom Room";
 "LN_OOO_287598" = "OOO 06/10-08/20";
 "LN_Toolbar_Audio_Companion_Mic_Error_Zr_Muted_Tip_Title_750362" = "Zoom Room is gedempt";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Disconnect_Tip_Title_750362" = "Luisteren in ruimte niet verbonden";
 "LN_Toolbar_Audio_Companion_Mic_Error_Disconnected_Tip_Title_750362" = "De verbinding tussen de microfoon en uw apparaat is verbroken";
 "LN_On_Vacation_287598" = "Met vakantie";
+"LN_Main_TAB_ZRC_Room_Connected_937231" = "Verbonden met de ruimte";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Transfer_Title_937231" = "Vergadering verplaatst naar Zoom Room";
 "LN_Toolbar_Audio_Companion_Speaker_Error_No_Device_Tip_Content_879423" = "Verbind een begeleidend luisterapparaat om luisteren in de ruimte mogelijk te maken.";
 "LN_Brainstorming_Not_Disturb_287598" = "Aan het brainstormen, niet storen";
 "LN_Display_Until_%@_287598" = "Weergeven tot %@";
 "LN_%@_And_%@_Have_A_Status_Message_460683" = "%@ en %@ hebben een actief statusbericht";
 "LN_Toolbar_Audio_Companion_FTE_Tip_LeaveOn_Button_750362" = "Ingeschakeld houden";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Computer_Button_Title_775584" = "Alleen deelnemen vanaf computer";
+"LN_Main_TAB_ZRC_Connect_To_Room_ZR_IN_USE_937231" = "Je moet in dezelfde vergadering als de ruimte zijn om verbinding te maken.";
 "LN_Toolbar_Audio_Companion_Speaker_Error_No_Device_Tip_Title_879423" = "Verbind een ondersteund audioapparaat";
 "LN_%@_And_%ld_Others_Have_A_Status_Message_460683" = "%@ en %ld anderen hebben een actief statusbericht";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Generic_Tip_Title_750362" = "Kan geen verbinding maken met Zoom Room";
@@ -8678,21 +8838,31 @@
 "LN_Set_time_and_date_460683" = "Datum en tijd instellen";
 "LN_Set_Status_Message_460683" = "Statusbericht instellen";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Computer_Button_Tooltip_775584" = "Deelnemen aan de vergadering op uw persoonlijke apparaat; de Zoom Room neemt niet deel.";
+"LN_Pin_To_Toolbar_1060379" = "Vastmaken aan werkbalk";
 "LN_Toolbar_Audio_Companion_Speak_Error_Not_Same_Meeting_Tip_Content_975235" = "Luisteren in ruimte kan niet gebruikt worden. Je bevindt je niet in dezelfde vergadering als de Zoom Room.";
 "LN_Status_Message_460683" = "Statusbericht";
 "LN_Toolbar_Audio_Companion_Mic_Error_Zr_Muted_Tip_Content_750362" = "U kunt uw begeleidende microfoon niet inschakelen wanneer de ruimte is gedempt.";
 "LN_Status_Message_is_Active_460683" = "Uw statusbericht is actief";
+"LN_Host_Tools_For_BO_1060379" = "Host-tools voor aparte vergaderruimtes";
 "LN_Toolbar_Audio_Companion_Mic_Error_Device_Issue_Tip_Content_750362" = "%@ streamt geen audio meer naar de ruimte. Neem opnieuw deel aan de ruimte in companion-modus om opnieuw verbinding te maken.";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Network_Issue_Tip_Content_975235" = "Kan geen verbinding maken met het Zoom Room-netwerk om luisteren in ruimte in te schakelen. Probeer over te schakelen naar een netwerk dat verbinding heeft met de Zoom Room.";
 "LN_Toolbar_Audio_Companion_Poor_Quality_Detected_Tip_Title_750362" = "Slechte spraakkwaliteit gedetecteerd";
 "LN_Toolbar_Audio_Companion_Speaker_Button_On_Tooltip_750362" = "Luisteren in ruimte uitschakelen";
+"LN_Transfer_To_Zoom_Room_1060379" = "Verplaatsen naar ruimte";
+"LN_Host_Tools_For_Apps_1060379" = "Host-tools voor apps";
+"LN_Chat_settings_1060379" = "Chatinstellingen";
+"LN_Share_Screen_Settings_1060379" = "Deelinstellingen";
 "LN_Main_Tab_ZRC_Pair_View_Error_Admin_Disable_Msg_917924" = "De beheerder heeft koppelen uitgeschakeld voor deze Zoom Room. Neem contact op met uw IT-beheerder voor hulp of koppel met een andere ruimte.";
 "LN_Main_Tab_ZRC_Inquiry_View_Description_775584" = "Hoe wilt u vergaderen?";
 "LN_Accessibility_Status_Message_Menu_460683" = "Opties statusbericht";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Room_Only_Button_Disabled_Tooltip_ZR_Not_Support_833695" = "Kan niet deelnemen vanaf ruimte, omdat de Zoom Rooms-versie verouderd is. Neem contact op met de beheerder om bij te werken naar de nieuwste Zoom Rooms-versie.";
+"LN_Host_Tools_For_Docs_1060379" = "Host-tools voor documentatie";
 "LN_Status_Message_Clears_%@_460683" = "Wist %@";
+"LN_Transfer_To_Device_1060379" = "Verplaatsen naar apparaat";
+"LN_Remove_From_Toolbar_1060379" = "Verwijderen uit de werkbalk";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Disconnected_Tip_Content_750362" = "%@ is niet meer verbonden met uw apparaat en kan geen audio afspelen.";
 "LN_Toolbar_Audio_Companion_Speaker_Button_Off_Tooltip_750362" = "Luisteren in ruimte inschakelen";
+"LN_Reaction_Settings_1060379" = "Reactie-instellingen";
 "LN_Main_Tab_ZRC_Pair_View_Error_Admin_Disable_Title_917924" = "Koppelen uitgeschakeld";
 "LN_Main_Tab_ZRC_Pair_View_Pair_Another_917924" = "Koppelen met een andere ruimte";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Room_Only_Button_Tooltip_775584" = "Deelnemen aan de vergadering op de Zoom Room; uw persoonlijke apparaat neemt niet deel.";
@@ -8700,10 +8870,13 @@
 "LN_Main_Tab_ZRC_Setting_Auto_Detect_Button_Title_775584" = "Zoom Rooms automatisch detecteren";
 "LN_Status_Message_Clears_After_Today_460683" = "Gewist na vandaag";
 "LN_Status_Message_Clears_After_This_Week_460683" = "Gewist na deze week";
+"LN_Host_Tools_For_Whiteboards_1060379" = "Host-tools voor whiteboards";
 
+"LN_Host_Tools_For_Share_1060379" = "Host-tools voor delen";
 "LN_Font_Mark_Text_Color_268211" = "Tekstkleur";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Disable_Tip_Title_975235" = "Luisteren in ruimte uitgeschakeld";
 "LN_Font_Mark_Background_Color_268211" = "Achtergrondkleur";
+"LN_Connect_To_Room_1060379" = "Verbinden met ruimte";
 "LN_Size_Mark_Small_268211" = "Klein";
 "LN_Size_Mark_Medium_268211" = "Getint";
 "LN_Toolbar_Audio_Companion_Mic_Error_Not_Same_Meeting_Tip_Content_975235" = "Kan de begeleidende microfoon niet gebruiken. Je bevindt je niet in dezelfde vergadering als de Zoom Room.";
@@ -8719,6 +8892,7 @@
 "LN_Visit_Link_268211" = "Bezoeken";
 "LN_Suspicious_Link_268211" = "Verdachte link";
 "LN_Main_TAB_ZRC_AIC_Record_Not_Support_Msg_951610" = "Samenvatting of opname van je vergadering is uitgeschakeld. Neem contact op met je IT-beheerder voor hulp.";
+"LN_Host_Tools_For_Captions_1060379" = "Host-tools voor ondertiteling";
 "LN_Do_Not_Remind_Me_Again" = "Niet opnieuw aan herinneren";
 "LN_Suspicious_Link_Description_DisplayLink_%@_SuspiciousLink_%@_268211" = "De link %@ leidt u naar %@. Weet u zeker dat u deze website wilt bezoeken?";
 "LN_Main_TAB_ZRC_AIC_Record_Not_Support_Title_951610" = "Kon niet opnemen met AI Companion";
@@ -8729,6 +8903,7 @@
 "LN_Tooltip_CmdSendMessage_572186" = "⌘+enter om te verzenden";
 "LN_Tooltip_SendMessage_With_Only_ChatApp_416297" = "Er is een bericht vereist vóór het verzenden van deze bijlagen";
 "LN_Tooltip_Max_Count_%ld_With_Chat_App_Item_416297" = "U kunt maximaal %ld items delen in een bericht.";
+"LN_Recording_settings_1060379" = "Opname-instellingen";
 "LN_Main_Tab_ZRC_Pair_Join_From_Room_Error_Description_775584" = "Foutcode: %lu";
 "LN_Main_Tab_ZRC_Inquiry_View_Start_From_Room_Only_Button_Title_775584" = "Alleen starten vanaf ruimte";
 "LN_Main_Tab_ZRC_Setting_Auto_Detect_Tooltip_775584" = "Uw persoonlijke apparaat toestaan om Zoom Rooms in de buurt te detecteren met behulp van Bluetooth en Wi-Fi. Hiermee kunt u rechtstreeks vanaf een Zoom Room vergaderingen starten, een whiteboard openen en apps starten.";
@@ -8842,6 +9017,7 @@
 "LN_Welcome_Play_Accessibility_201098" = "momenteel aan het afspelen";
 "LN_Welcome_Pause_Accessibility_201098" = "momenteel gepauzeerd";
 "LN_AX_Welcome_previous_sliders_201098" = "vorige dia's";
+"LN_Plist_Audio_Only_1022426" = "Alleen audio";
 "LN_AX_Welcome_next_sliders_201098" = "volgende dia's";
 "LN_AX_Welcome_press_button_201098" = "druk op %@, knop";
 
@@ -9119,6 +9295,7 @@
 "LN_Meeting_Share_Fitbar_View_Backstage_302951" = "U bekijkt het scherm van %@ in de backstage";
 "LN_Meeting_Share_Fitbar_View_Slide_Backstage_302951" = "U bekijkt het scherm van %@ in de backstage";
 "LN_Meeting_Share_Fit_Toolbar_Backstage_302951" = "U deelt uw scherm in de backstage";
+"LN_Tooltip_EnterSendMessage_572186" = "Invoeren om te verzenden";
 "LN_Meeting_Share_Doc_Fit_Toolbar_Backstage_302951" = "U deelt dia's in de backstage";
 "LN_Meeting_Share_Fit_Audio_302951" = "U deelt computergeluid in de backstage";
 "LN_Meeting_share_View_Fit_Audio_302951" = "%@ deelt computergeluid in de backstage";
@@ -9203,6 +9380,7 @@
 "LN_Invite_to_join_436997" = "Deelnemer uitnodigen om deel te nemen";
 "LN_SMS_Content_436997" = "%@ nodigt u uit voor een Zoom-vergadering.\nNeem deel via de link:\n%@\nVerzend STOP om u af te melden";
 "LN_MeetingList_Calendar_Policy_Changed_834457" = "Een beleidswijziging vereist dat u uw agenda opnieuw autoriseert. Verifieer opnieuw.";
+"LN_Simulive_Will_Start_At_%@_1042795" = "Deze simulive webinar begint om %@";
 "LN_SMS_Result_Sending_436997" = "Verzenden";
 "LN_SMS_Result_Success_436997" = "Tekstbericht verzonden";
 "LN_SMS_Result_Invalid_number_436997" = "Ongeldig nummer";
@@ -9213,6 +9391,7 @@
 "LN_SMS_Result_Failed_delivery_436997" = "Bezorging mislukt";
 "LN_Home_Transfer_PairedZR_Description_716795" = "In gekoppelde ruimte: %@";
 "LN_Check_Link_788190" = "Controleer deze link";
+"LN_Webinar_Will_Start_At_%@_1042795" = "Deze webinar begint om %@";
 "LN_SMS_Input_the_number_436997" = " Voer het nummer in waarnaar u een tekstbericht wilt verzenden";
 "LN_The_host_436997" = "De host";
 "LN_Text_message_failed_436997" = "Tekstbericht mislukt.";
@@ -9418,7 +9597,9 @@
 "LN_%@_Is_Not_Support_In_Webinars_329859" = "%@ wordt niet ondersteund in webinars";
 "LN_Do_Not_Support_In_Webinar_Without_name_329859" = "Deze app wordt niet ondersteund in webinars.";
 
+"LN_IM_ShowOriginalThread_826743" = "Originele thread weergeven";
 "LN_IM_Join_Only_User_Tip_315799" = "Het hosten en plannen van vergaderingen is niet toegestaan voor uw gebruikersaccount.";
+"LN_IM_ShowTranslation_826743" = "Vertaling weergeven";
 
 "LN_Menu_Press_Space_To_Show_Submenu_319316" = "druk op spatie om het submenu weer te geven";
 
@@ -9488,13 +9669,18 @@
 "LN_CHAT_%@_BOTS_ERROR_EXISTING_BOT_IN_CHAT_336429" = "%@ zit al in deze chat.";
 
 "LN_CHAT_ADD_BOTS_ERROR_NO_BOTS_336429" = "Geen bots gevonden. Ontdek bots in de App Marketplace.";
+"LN_Are_You_Sure_You_Want_To_Change_The_Speaking_Language_1058374" = "Weet je zeker dat je de spreektaal wilt wijzigen?";
+"LN_Speaking_Language_%@_1058374" = "Spreektaal: %@";
 "LN_CHAT_ADD_BOTS_VIEW_MARKETPLACE_336429" = "Marketplace weergeven";
 
+"LN_Lock_Speaking_Language_Tip_1058374" = "De spreektaal wordt voor iedereen gewijzigd in deze taal.";
 "LN_CHAT_REMOVE_BOT_SERVER_ERROR_336429" = "Bot verwijderen mislukt. Probeer het later opnieuw.";
 "LN_CHAT_REMOVE_BOT_ERROR_336429" = "Bot verwijderen mislukt.";
 "LN_%@_wasRemoved_AsAdminChanged" = "%@ is verwijderd, omdat deze was verbonden met het vorige account van de kanaalbeheerder";
 //end ZOOM-336429
 
+"LN_Lock_Speaking_Language_For_This_Meeting_1058374" = "Spreektaal voor deze vergadering vergrendelen";
+"LN_Lock_Speaking_Language_For_This_Meeting_Desc_1058374" = "Wanneer deze instelling is ingeschakeld, kan alleen de host de spreektaal van de vergadering wijzigen.";
 //Workstream collaboration ZOOM-310920
 "LN_%ld_MEMBERS_310920" = "%ld LEDEN";
 "LN_Position_875284" = "Positie";
@@ -9752,11 +9938,6 @@
 "LN_WB_Existing_Whiteboards_609586" = "Bestaande whiteboards";
 "LN_WB_Allow_Access_After_296305" = "Deelnemers toegang geven na de vergadering";
 "LN_WB_Allow_Access_After_Tip_296305" = "Uw accountbeheerder heeft het delen van whiteboards beperkt. Sommige deelnemers hebben mogelijk geen toegang.";
-"LN_WB_Open_And_Collaborate_296305" = "Openen en samenwerken";
-"LN_WB_All_Participants_Can_Edit_296305" = "Alle deelnemers kunnen bewerken";
-"LN_WB_All_Participants_Can_View_296305" = "Alle deelnemers kunnen weergeven";
-"LN_WB_Loading_Failed_296305" = "Laden mislukt";
-"LN_WB_No_Results_Matching_296305" = "Geen zoekresultaten die overeenkomen met '%@'";
 
 "LN_WB_Close_Whiteboard_296305" = "Whiteboard sluiten";
 "LN_WB_You_Are_Collaborating_296305" = "U werkt samen op dit whiteboard";
@@ -9780,15 +9961,7 @@
 "LN_WB_BO_Whiteboard_Session_Ended_367558" = "Uw whiteboard wordt niet langer gedeeld, omdat er iemand aan het delen is vanuit de hoofdsessie";
 "LN_WB_Cannot_Start_Whiteboard_Proctoring_Mode_647030" = "U kunt whiteboards niet openen in de modus Alle schermen.";
 "LN_PAC_Meeting_Tip_369419" = "U zit in een persoonlijke audiovergadering.";
-"LN_WB_Allow_Access_Meeting_385632" = "Deelnemers toegang geven na de vergadering";
-"LN_WB_Allow_Access_Meeting_Tip_385632" = "Uw accountbeheerder heeft het delen van whiteboards beperkt. Sommige deelnemers hebben mogelijk geen toegang.";
-"LN_WB_Allow_Access_Webinar_385632" = "Panelleden toegang geven na de webinar";
-"LN_WB_Allow_Access_Webinar_Tip_385632" = "Uw accountbeheerder heeft het delen van whiteboards beperkt. Sommige panelleden hebben mogelijk geen toegang.";
-"LN_WB_All_Panelists_Can_Edit_385632" = "Alle panelleden kunnen bewerken";
-"LN_WB_All_Panelists_Can_View_385632" = "Alle panelleden kunnen weergeven";
-"LN_WB_Advanced_Options_385632" = "Opties voor geavanceerd delen van whiteboard";
 "LN_WB_Grab_Share_385632" = "Wie kan starten met delen wanneer iemand anders aan het delen is?";
-"LN_WB_Whiteboard_Deleted_385632" = "%@ is naar de prullenbak verplaatst";
 "LN_WB_Whiteboard_Options_385632" = "Opties voor delen van whiteboards";
 "LN_WB_Submenu_385632" = "submenu";
 "LN_WB_Loading_Whiteboard_448903" = "Uw whiteboard-ervaring wordt geladen";
@@ -9816,7 +9989,6 @@
 "LN_WB_Setting_Administrator_Has_Locked_M_487798" = "De beheerder heeft deze instelling vergrendeld en u kunt deze niet wijzigen. Al uw whiteboards zullen deze instelling gebruiken tijdens vergaderingen.";
 "LN_WB_Setting_Administrator_Has_Locked_W_487798" = "De beheerder heeft deze instelling vergrendeld en u kunt deze niet wijzigen. Al uw whiteboards zullen deze instelling gebruiken tijdens webinars.";
 "LN_WB_Setting_Is_Disabled_487798" = "Deze optie is uitgeschakeld, omdat u \"%@\" hebt uitgeschakeld";
-"LN_WB_This_Option_Is_Disabled_487798" = "Deze optie is uitgeschakeld, omdat u \"Alleen de host kan een nieuw whiteboard starten tijdens de vergadering\" hebt gekozen";
 "LN_WB_Classic_Whiteboard_623176" = "Whiteboard (klassiek)";
 "LN_WB_Back2_ClassicWB_Content_623176" = "Ons nieuwe whiteboard slaat uw werk op en biedt de nieuwste functies. U kunt Whiteboard (klassiek) als board gebruiken en als standaard instellen in Instellingen.";
 "LN_WB_Use_Classic_Whiteboard_623176" = "Whiteboard (klassiek) gebruiken";
@@ -9833,8 +10005,6 @@
 "LN_NT_Start_Collaborating_522963" = "Begin met samenwerken";
 "LN_NT_Collaboration_Session_Ended_522963" = "Samenwerkingssessie beëindigd";
 "LN_NT_Has_Closed_Meeting_Note_522963" = "%@ heeft de vergadernotitie gesloten";
-"LN_NT_Zoom_Notes_522963" = "Zoom Notes";
-"LN_NT_Take_Notes_522963" = "Maak notities, deel en werk samen met anderen voor, tijdens en na vergaderingen.";
 "LN_CCI_Incoming_Call_Assignedby_915209" = "Toegewezen door";
 "LN_NT_Loading_Your_Notes_522963" = "Uw notities laden...";
 "LN_NT_Error_Occurred_522963" = "Er is een fout opgetreden met de notities (%@)";
@@ -9939,6 +10109,7 @@
 "LN_WBUI_Shape_300151" = "Vorm";
 "LN_WBUI_Line_300151" = "Lijn";
 "LN_WBUI_Text_300151" = "Tekst";
+"LN_Webinar_Reaction_Intensity_318269" = "Intensiteit van reactie";
 "LN_WBUI_Note_300151" = "Plaknotitie";
 "LN_WBUI_Erase_300151" = "Wissen";
 "LN_WBUI_Color_300151" = "Kleur";
@@ -9951,6 +10122,7 @@
 "LN_WBUI_Thin_300151" = "Licht";
 "LN_WBUI_Regular_300151" = "Normaal";
 "LN_WBUI_Thick_300151" = "Vet";
+"LN_Webinar_Reaction_Medium_318269" = "Gemiddeld";
 "LN_WBUI_Rectangle_300151" = "Rechthoek";
 "LN_WBUI_Circle_300151" = "Ovaal";
 "LN_WBUI_Diamond_300151" = "Ruit";
@@ -10219,7 +10391,6 @@
 "LN_WBUI_Flowchart_Manual_Input_401897" = "Handmatige invoer";
 "LN_ZUIST_When_Using_The_Outlook_819462" = "Wanneer u de Outlook-toepassing gebruikt op uw apparaat, staat u Zoom toe om uw Outlook-status in te stellen op basis van uw huidige Zoom Workplace-aanwezigheidsstatus.";
 "LN_WBUI_Flowchart_Merge_401897" = "Samenvoegen";
-"LN_ZUIST_Pin_Zoom_Workplace_819462" = "Zoom Workplace vastmaken aan het Dock van macOS";
 "LN_WBUI_Flowchart_Multiple_Document_401897" = "Meerdere documenten";
 "LN_ZUIST_When_Closing_The_Zoom_819462" = "Wanneer u de Zoom Workplace-app sluit, wordt deze verplaatst naar het systeemvak in plaats van naar de taakbalk.";
 "LN_ZUIST_Fast_More_819462" = "Snel (meer updates, toegang tot de nieuwste functies)";
@@ -10232,6 +10403,7 @@
 "LN_ZUIST_Uses_Up_To_200_MB_819462" = "Gebruikt maximaal 200 MB harde schijfruimte.";
 "LN_WBUI_Flowchart_Terminator_401897" = "Afsluitteken";
 "LN_WBUI_Flowchart_Or_401897" = "Of";
+"LN_ZUIST_Show_Zoom_Workplace_819462" = "Zoom Workplace weergeven in de macOS-menubalk";
 "LN_ZUIST_Show_A_Desktop_Widget_Features_819462" = "Een desktopwidget weergeven die toegang biedt tot zoeken en snelkiezen. Gebruikers van Zoom Powerpack hebben toegang tot extra functies.";
 "LN_WBUI_Flowchart_Summing_Junction_401897" = "Sommeerpunt";
 "LN_ZUIST_Sample_Music_Playing_819462" = "Voorbeeldmuziek afspelen...";
@@ -10259,12 +10431,14 @@
 "LN_ZUIST_Emoji_And_Reactions_Skin_Tone_819462" = "Huidskleur emoji's en reacties";
 "LN_ZUIST_Recording_Playing_819462" = "Opname afspelen...";
 "LN_ZUIST_Voices_Will_Sound_Like_819462" = "Stemmen klinken alsof ze afkomstig zijn van de positie van elke persoon op het scherm.";
+"LN_ZUIST_Device_Connection_Behavior_1057705" = "Hoe je apparaat verbinding maakt bij het starten of verplaatsen van een vergadering in de ruimte";
 "LN_ZUIST_Color_Mode_819462" = "Kleurmodus";
 "LN_ZUIST_Turns_On_System_Audio_819462" = "Audioverbeteringen van het systeem inschakelen voor de luidspreker en microfoon die in gebruik zijn.";
 "LN_ZUIST_Check_Spell_While_Typing_1006730" = "Spelling controleren tijdens het typen";
 "LN_WBUI_ACC_Edit_L_409250" = "bewerken";
 "LN_ZUIST_Spelling_and_Grammar_1006730" = "Spelling en grammatica";
 "LN_ZUIST_Team_Chat_sidebar_973313" = "Zijbalk Team Chat";
+"LN_ZUIST_ZR_Use_Auto_Detection_Title_1057705" = "Zoom Rooms automatisch detecteren";
 "LN_ZUIST_Use_Zoom_Assistant_Phone_819462" = "Zoom Assistent voor Phone gebruiken";
 "LN_WBUI_ACC_Results_409250" = "%@ resultaten";
 "LN_WBUI_You_Are_Following_383776" = "U volgt %@";
@@ -10290,7 +10464,9 @@
 "LN_WBUI_Show_%@_More_385362" = "Nog %@ meer weergeven";
 "LN_WBUI_People_385362" = "%d personen";
 "LN_ZUIST_Join_Method_When_Paired_819462" = "Deelnamemethode indien gekoppeld met Zoom Rooms";
+"LN_ZUIST_ZR_Use_Auto_Detection_Tip_1057705" = "Gebruik je apparaat om Zoom Rooms in de buurt te vinden via Bluetooth en Wi-Fi. Zo kun je vergaderingen starten of verplaatsen, je scherm delen, verbinding maken met een Zoom Room en meer opties verkennen.";
 "LN_ZUIST_Turn_On_Live_Performance_Audio_Describe_986294" = "Als je deze schakelaar activeert, wordt een eerder geselecteerde microfoonmodus overschreven. Weet je zeker dat je deze wilt inschakelen?";
+"LN_ZUIST_Automatically_Connect_To_Zoom_Room_1057705" = "Automatisch verbinden met Zoom Room";
 "LN_WBUI_Are_Following_You_385362" = "volgen u";
 "LN_ZUIST_IM_Dark_Contrast_973313" = "Donker contrast";
 "LN_WBUI_Follow_Request_Rejected_385362" = "Uw volgverzoek is geweigerd";
@@ -10298,6 +10474,7 @@
 "LN_ZUIST_Selecting_High_819462" = "Als u \"Hoog\" selecteert, kan het CPU-gebruik toenemen.";
 "LN_ZUIST_Sounds_819462" = "Geluiden";
 "LN_ZUIST_Use_Zoom_Assistant_Meeting_819462" = "Zoom Assistent voor vergaderingen gebruiken";
+"LN_ZUIST_Show_Zoom_Room_Icon_1057705" = "Het pictogram 'Zoom Room' weergeven in de app";
 "LN_WB_Facilitate_Content_W_770231" = "Als u deze instelling uitschakelt, kunnen alleen de hosts, boardeigenaren en editors whiteboards faciliteren tijdens de webinar. Faciliterende functies, zoals timer, laserpointer, enz.";
 "LN_ZUIST_Use_Your_Voiceprint_986294" = "Gebruik je stemafdruk om de audio te optimaliseren om voor een heldere stem te zorgen en om achtergrondgeluid te onderdrukken in je vergaderingen.";
 "LN_ZUIST_Noise_Removal_Default_986294" = "Ruisonderdrukking (standaard)";
@@ -10305,11 +10482,13 @@
 "LN_WBUI_Summon_Request_Rejected_385362" = "Uw vraag om bijeen te komen is geweigerd";
 "LN_ZUIST_Show_Desktop_Notifications_819462" = "Desktopkennisgevingen weergeven totdat ze worden gesloten";
 "LN_WBUI_%@_Summoned_Everyone_385362" = "%@ heeft iedereen bijeengeroepen. U kunt zich verplaatsen zodra ze u vrijgeven.";
+"LN_ZUIST_Dont_Connect_To_Zoom_Room_1057705" = "Geen verbinding maken met Zoom Room";
 "LN_ZUIST_Open_New_Chat_Window_819462" = "Nieuw chatvenster openen bij het selecteren van een pushmelding";
 "LN_ZUIST_Automatically_Applies_819462" = "Past automatisch de audioverwerkingssoftware van Zoom toe om geluid van de hoogste kwaliteit te bieden aan de meeste gebruikers.";
 "LN_ZUIST_Hear_Incoming_Call_819462" = "Beltonen voor binnenkomende oproepen op een extra apparaat horen";
 "LN_ZUIST_Turn_On_Live_Performance_Audio_986294" = "Live audio inschakelen";
 "LN_ZUIST_Reduces_Lag_During_819462" = "Beperkt vertraging tijdens liveoptredens wanneer muzikanten afzonderlijke Zoom Workplace-apps gebruiken. Vereist een snelle internetverbinding.";
+"LN_ZUIST_Ask_Me_Every_Time_1057705" = "Elke keer vragen";
 "LN_ZUIST_Show Pair_With_Room_Icon_819462" = "Het pictogram \"Koppelen met ruimte\" weergeven in de navigatiebalk van de app";
 "LN_WBUI_Stop_385362" = "Stoppen";
 "LN_WBUI_Stop_Following_385362" = "Stoppen met volgen";
@@ -10366,8 +10545,10 @@
 "LN_WBUI_Object_Fill_431972" = "Object opvullen";
 "LN_ZUIST_When_Joining_Meetings_And_Webinars_819462" = "Bij deelname aan vergaderingen en webinars:";
 "LN_ZUIST_Create_Recording_Further_819462" = "Maak een spraakopname om de gepersonaliseerde audio-isolatie verder te verbeteren";
+"LN_ZUIST_After_Selecting_819462" = "Nadat u \"Vergadering verlaten\" of \"Webinar verlaten\" hebt geselecteerd, vraagt Zoom u om het verlaten te bevestigen.";
 "LN_WBUI_Object_Outline_431972" = "Object contouren";
 "LN_ZUIST_Send_Desktop_Notifications_819462" = "Desktopkennisgevingen verzenden voor:";
+"LN_ZUIST_After_A_Meeting_End_819462" = "Nadat een vergadering is beëindigd, blijft u alle Zoom Apps gebruiken die tijdens de vergadering zijn geopend.";
 "LN_ZUIST_Note_Shared_With_Me_819462" = "Notitie met mij gedeeld";
 "LN_WBUI_Text_Format_431972" = "Tekstopmaak";
 "LN_ZUIST_Recommended_For_Crowded_Environments_819462" = "Aanbevolen voor drukke omgevingen.";
@@ -10393,6 +10574,7 @@
 "LN_ZUIST_Send_Activity_Center_819462" = "Kennisgevingen van het activiteitencentrum verzenden voor:";
 "LN_ZUIST_Activity_Center_Notifications_819462" = "Kennisgevingen van het activiteitencentrum";
 "LN_ZUIST_Desktop_Notifications_819462" = "Desktopkennisgevingen";
+"LN_ZUIST_Activate_The_Thumbs_819462" = "Activeer op gebaren gebaseerde reacties door het bijbehorende handgebaar 2 seconden voor de camera te houden.";
 "LN_ZUIST_Extension_Insert_819462" = "Extensie: [toestelnummer gebruiker invoegen]";
 "LN_Error_WB_In_Meeting_491015" = "In vergadering";
 "LN_ZUIST_Navigation_Bar_Reset_819462" = "De volgorde van de navigatiebalk van Zoom Workplace is teruggezet naar standaard.";
@@ -10411,6 +10593,7 @@
 "LN_JoinMeeting_PutIn_Waiting_Auto_401255" = "De host neemt deel. We hebben hen laten weten dat u er bent.";
 "LN_JoinMeeting_PutIn_Waiting_Manual_401255" = "De host laat u toe als ze klaar zijn.";
 "LN_JoinMeeting_Report_Incident_401255" = "Incident melden";
+"LN_ZUIST_Dont_Notify_Me_When_Voice_Activity_ZOOM_1035096" = "Stel me niet op de hoogte wanneer er spraakactiviteit wordt gedetecteerd in deze apps:";
 "LN_Join_Flow_Countdown_463407" = "U gaat deelnemen aan de vergadering";
 
 "LN_ZUIST_Maximum_Participant_819462" = "Maximale aantal deelnemers per scherm";
@@ -10429,6 +10612,7 @@
 "LN_ZUIST_Except_These_Group_819462" = "Behalve deze groepschats en kanalen";
 "LN_ZUIST_Keep_Meeting_Controls_819462" = "Besturingselementen van de vergadering zichtbaar houden";
 "LN_Can_Not_Be_Seen_344425" = "U bent niet zichtbaar of hoorbaar in de hoofdwebinar.";
+"LN_ZUIST_Auto_Detected_Voice_ZOOM_1035096" = "Automatisch gedetecteerde spraakactiviteit om op te nemen en aantekeningen te maken";
 "LN_ZUIST_Skip_Audio_Prompts_819462" = "Audioboodschappen in vergaderingen van derden overslaan";
 "LN_ZUIST_Leave_Experience_819462" = "Ervaring bij het verlaten";
 "LN_ZUIST_Optimize_Incoming_Video_819462" = "De kwaliteit van binnenkomende video's optimaliseren met hogere resolutie";
@@ -10483,7 +10667,6 @@
 "LN_ZUIST_Play_Chime_With_Hand_819462" = "Geluidssignaal afspelen bij opgestoken hand";
 //ZOOM-351547
 "LN_ZUIST_Show_Stop_Incoming_Video_819462" = "\"Binnenkomende video stoppen\" weergeven in de besturingselementen van de host";
-"LN_ZUIST_Activate_The_Thumbs_819462" = "Activeer de emoji Duim omhoog of de functie Hand opsteken door gedurende 5 seconden uw duim omhoog te steken of uw hand op te steken voor de camera.";
 "LN_ZUIST_Only_You_Can_819462" = "Alleen u kunt de timer zien.";
 "LN_Invite_To_My_Meeting_351547" = "Uitnodigen voor mijn vergadering";
 "LN_ZUIST_Display_819462" = "Weergave";
@@ -10611,39 +10794,60 @@
 "LN_ZUIST_Enter_Into_Fullscreen_819462" = "Volledig scherm weergeven";
 "LN_ZUIST_Downstream_Max_819462" = " \n· Downstream (Max.): %2 kbps";
 "LN_ZUIST_Time_Begin_To_End_961188" = "%1$@ tot %2$@";
+"LN_ZUIST_Amazon_Polly_SSML_961188" = "Met de Speech Synthesis Markup Language (SSML) van Amazon Polly heb je meer controle over hoe je tekst wordt omgezet naar spraak.";
 "LN_IM_Chats_Move_To_Folder_Tooltip_331214" = "Verplaatsen naar map";
+"LN_ZUIST_Delegation_Title_1042922" = "Delegatie";
 "LN_ZUIST_Sun_961188" = "Zo";
 "LN_ZUIST_Click_The_Play_Button_961188" = "Klik op de afspeelknop voor een voorbeeld.";
 "LN_ZUIST_IVR_Allows_Routing_961188" = "Met een Interactive Voice Response (IVR)-systeem kunnen bellers routeringsopties selecteren met behulp van hun toetsenblok.";
 "LN_ZUIST_Enter_Number_961188" = "Voer een nummer in";
+"LN_ZUIST_No_Hours_All_Weekdays_Closed_Hours_961188" = "Je hebt niet voor alle weekdagen uren geselecteerd. Als je wordt gebeld, gaan geen van je telefoons over. Deze binnenkomende oproepen worden afgehandeld volgens de instellingen voor sluitingstijden.";
 
 "LN_ZUIST_24_Hours_961188" = "24 uur";
 "LN_ZUIST_Voicemail_And_Forwarding_961188" = "Voicemail en doorschakelen";
+"LN_ZUIST_SMS_Delegation_Title_1042922" = "Sms-delegatie";
+"LN_ZUIST_Delegates_1042922" = "Gedelegeerden";
 "LN_ZUIST_Mon_961188" = "Ma";
+"LN_ZUIST_Forward_To_External_Contact_961188" = "Doorschakelen naar externe contactpersoon";
 "LN_ZUIST_Choose_Individual_Windows_819462" = "Afzonderlijke vensters kiezen";
 "LN_IM_Chats_Folder_FT_Tittle_331214" = "Nieuw: Mappen";
 "LN_IM_Chats_Folder_FT_Message_331214" = "Organiseer chats en kanalen in uw zijbalk. Maak een map en plaats er vervolgens een gesprek in door het ernaartoe te slepen en neer te zetten.";
+"LN_ZUIST_Move_Up_961188" = "Omhoog verplaatsen";
+"LN_ZUIST_Play_Busy_Signal_961188" = "Een bezet-signaal afspelen";
+"LN_ZUIST_Delegation_Desc_1042922" = "De selectie en bevoegdheden van gedelegeerden kunnen worden beheerd in [Mijn Phone-instellingen.]";
 "LN_ZUIST_Click_To_Upload_Or_Drop_961188" = "Klik om te uploaden of zet hier een bestand neer";
 "LN_ZUIST_Upstream_Max_819462" = " \n\n· Upstream (Max.): %1 kbps";
 "LN_ZUIST_When_I_Share_819462" = "Wanneer ik deel";
 "LN_ZUIST_Time_PM_961188" = "%@ PM";
 "LN_ZUIST_Select_Extension_961188" = "Selecteer een toestelnummer";
 "LN_IM_Chats_Folder_MarkAllRead_627662" = "Alles markeren als gelezen";
+"LN_ZUIST_Character_Limit_961188" = "Tekenlimiet, %1$@/%2$@";
 "LN_ZUIST_Click_The_Record_Button_961188" = "Klik op de knop opnemen om de opname te beginnen.";
+"LN_ZUIST_Call_Waiting_961188" = "Oproep in de wacht";
 "LN_ZUIST_Recorded_Audio_961188" = "Opgenomen audio";
 "LN_ZUIST_Data_Center_819462" = "Datacenter:";
+"LN_ZUIST_Add_IVR_Greeting_Audio_961188" = "IVR-begroetingsaudio toevoegen";
+"LN_ZUIST_Move_Down_961188" = "Omlaag verplaatsen";
+"LN_ZUIST_Add_Disconnect_Greeting_Audio_961188" = "Begroetingsaudio voor verbroken verbinding toevoegen";
 "LN_IM_Chats_Mark_All_Read_Tip_682837" = "%ld berichten worden gemarkeerd als gelezen. U kunt deze actie niet ongedaan maken.";
+"LN_ZUIST_Forward_To_External_Number_961188" = "Doorschakelen naar extern nummer";
 "LN_IM_Chats_Mark_All_Read_Error_682837" = "De berichten kunnen niet als gelezen worden gemarkeerd wegens een probleem met de netwerkverbinding.";
 "LN_ZUIST_Separate_Direct_Messages_819462" = "Rechtstreekse berichten, kanalen en vergaderchats scheiden";
+"LN_ZUIST_SMS_Delegation_Desc_1042922" = "Laat gedelegeerden sms-berichten namens jou afhandelen.";
+"LN_ZUIST_Character_Limit_Reached_961188" = "Tekenlimiet van %@ tekens bereikt, waarschuwing";
 
 "LN_ZUIST_Tue_961188" = "Di";
 "LN_With_Zoom_IQ_340709" = "Met Revenue Accelerator";
 
 // ZOOM-340072
+"LN_ZUIST_Forward_To_Voicemail_961188" = "Doorschakelen naar voicemail";
 "LN_ZUIST_Time_AM_961188" = "%@ AM";
+"LN_ZUIST_Duration_961188" = "duur";
+"LN_ZUIST_Play_Message_Then_Disconnect_961188" = "Een bericht afspelen en dan de verbinding verbreken";
 "LN_ZUIST_Sat_961188" = "Za";
 "LN_ZUIST_Automatically_Dim_819462" = "Video automatisch dimmen wanneer knipperende visuele patronen worden gedetecteerd";
 "LN_ZUIST_Record_Again_961188" = "Opnieuw opnemen";
+"LN_ZUIST_Add_New_Greeting_961188" = "Nieuwe begroeting toevoegen";
 "LN_New_Chat_Contact_Results" = "Resultaten";
 "LN_ZUIST_Wed_961188" = "Wo";
 "LN_ZUIST_24_Hours_7_Days_961188" = "24 uur per dag, 7 dagen per week";
@@ -10660,6 +10864,7 @@
 "LN_Meeting_Controls_331442" = "druk op CMD + Tilde om terug te keren naar de besturingselementen voor vergaderingen";
 "LN_ZUIST_Window_Size_When_Viewing_819462" = "Venstergrootte bij het bekijken van een gedeeld scherm";
 "LN_ZUIST_Open_A_Webpage_Calls_819462" = "Een webpagina openen of een app starten wanneer iemand belt om te helpen bij het beheren of opslaan van informatie van uw binnenkomende bellers.";
+"LN_ZUIST_Show_Phone_Webview_819462" = "Webweergave weergeven";
 
 "LN_Accessibility_ReactionsSubMenu_318269" = "Submenu reacties";
 "LN_ZUIST_Open_One_Section_819462" = "Open één sectie tegelijk";
@@ -10684,7 +10889,7 @@
 "LN_ZUIST_THEME_975638" = "Thema (uiterlijk)";
 "LN_ZUIST_Scale_Shared_Conten_819462" = "Gedeelde inhoud passend maken zodat deze past bij de grootte van het huidige vergadervenster.";
 "LN_ZUIST_COLOR_MODE_975638" = "Kleurmodus (uiterlijk)";
-"LN_ZUIST_BG_NOISE_REMOVAL_975638" = "Achtergrondgeluid verwijderen (audioprofiel)";
+"LN_ZUIST_BG_NOISE_REMOVAL_975638" = "Achtergrondgeluid verwijderen (microfoonmodi)";
 "LN_ZUIST_Optimize_For_Third_819462" = "Optimaliseren voor video-editors van derden";
 "LN_ZUIST_HUDDLES_975638" = "Huddle-instellingen";
 "LN_ZUIST_ZOOM_ROOMS_975638" = "Zoom Rooms-instellingen";
@@ -10707,7 +10912,8 @@
 "LN_ZUIST_MEET_JOIN_EXP_975638" = "Ervaring bij deelnemen aan vergaderingen";
 "LN_RemindUpcomingEvents_642717" = "Herinner me aan komende evenementen:";
 "LN_ZUIST_CHAT_CONTACTS_975638" = "Vermelde chatcontactpersonen (meldingen)";
-"LN_ZUIST_PERS_AUDIO_ISO_975638" = "Gepersonaliseerde audio-isolatie (audioprofiel)";
+"LN_ZUIST_Separate_Direct_Messages_1073426" = "Aparte chats, kanalen en vergaderchats";
+"LN_ZUIST_PERS_AUDIO_ISO_975638" = "Gepersonaliseerde audio-isolatie (microfoonmodi)";
 "LN_ZUIST_Dial_Local_Calls_819462" = "Bel lokale nummers zonder land- en netnummer te gebruiken.";
 "LN_AtEventTime_642717" = "Wanneer het evenement begint";
 "LN_ZUIST_Enables_Software_Based_819462" = "Schakelt softwarematige verbeteringen in om de resolutie van ontvangen video's te verhogen.";
@@ -10725,7 +10931,7 @@
 "LN_ZUIST_OUTPUT_VOLUME_975638" = "Outputvolume (speaker)";
 "LN_ZUIST_PLAY_CHIME_MUTE_975638" = "Geluid afspelen bij dempen/dempen opheffen (vergaderingen)";
 "LN_ZUIST_MEET_CONTROLS_975638" = "Bedieningselementen voor vergaderingen";
-"LN_ZUIST_ORIG_SOUND_MUS_975638" = "Origineel geluid voor muzikanten (audioprofiel)";
+"LN_ZUIST_ORIG_SOUND_MUS_975638" = "Origineel geluid voor muzikanten (microfoonmodi)";
 "LN_ZUIST_KEEP_MIC_MUTE_975638" = "Mijn microfoon gedempt houden (vergaderingen)";
 "LN_ZUIST_Record_A_Separate_Audio_819462" = "Een afzonderlijk audiobestand voor maximaal 80 deelnemers opnemen. De audio van de gebruikers die telefonisch deelnemen, wordt samengevoegd in één audiobestand.";
 "LN_ZUIST_OPEN_ZOOM_APPS_975638" = "Geselecteerde Zoom Apps openen (vergaderingen)";
@@ -10812,14 +11018,17 @@
 "LN_ZUIST_MNG_TAB_BADGE_975638" = "Badges op tabbladen beheren (teamchat)";
 "LN_Meetinglist_Passcode_Colon_Space_Parameter_171909" = "Wachtwoordcode: %@";
 "LN_ZUIST_Auto_Answer_819462" = "Gesprekken uit de wachtrij automatisch beantwoorden";
+"LN_ZUI_Uploading_Desc_1066814" = "Zoom uploadt je eigen opname van de vergadering naar de cloud. Zet je computer niet uit en verbreek de verbinding met internet niet.";
 "LN_ZUIST_STOP_INCOMING_VIDEO_975638" = "De functie 'Binnenkomende video stoppen' inschakelen (geavanceerde vergaderingen)";
 "LN_ZUIST_SCALE_TO_FIT_975638" = "Inhoud passend maken (wanneer anderen delen)";
 "LN_ZUIST_Busy_On_Another_Call_917148" = "Wanneer ik bezig ben met een ander gesprek";
 "LN_ZUIST_REC_VIDEO_SHARE_975638" = "Video opnemen tijdens scherm delen (opnames)";
 "LN_ZUIST_ANIMATE_EMOJIS_975638" = "Emoji's animeren (vergaderingen)";
+"LN_ZUI_Uploading_Title_1066814" = "Je eigen opname uploaden";
 "LN_ZUIST_Forward_To_An_Operator_917148" = "Doorschakelen naar een operator:";
 "LN_ZUIST_Auto_Answer_Functionality_819462" = "De functie voor automatische beantwoording wordt alleen geactiveerd wanneer deze is ingeschakeld door de beheerder van de wachtrij.\nOproepen worden niet automatisch beantwoord wanneer u in actieve oproepen of vergaderingen zit of wanneer u bij meerdere applicaties of apparaten tegelijk bent aangemeld.";
 
+"LN_ZUI_Upload_Failed_Title_1066814" = "Het uploaden van je eigen opname is mislukt";
 "LN_PowerUser_Accessibility_Meeting_And_Call_List_353597" = "Vergader- en oproeplijst";
 "LN_ZUIST_PHONE_LOC_PERM_975638" = "Locatietoestemming telefoon";
 "LN_ZUIST_PLAY_CHIME_HAND_975638" = "Geluidssignaal afspelen wanneer iemand de hand heeft opgestoken (vergaderingen)";
@@ -10830,20 +11039,32 @@
 "LN_ZUIST_Combine_All_Chats_819462" = "Alle chats combineren in de map Recent";
 "LN_ZUIST_Setup_Ringtone_In_819462" = "Beltoon instellen in de audio-instellingen";
 "LN_ZUIST_REC_SEP_AUDIO_975638" = "Afzonderlijke audiobestanden van deelnemers opnemen (geavanceerde opname)";
+"LN_ZUI_Upload_Failed_Desc_1066814" = "Zoom kan je eigen opname niet uploaden. Neem contact op met Zoom-ondersteuning om de bestanden te verkrijgen en te uploaden.";
 "LN_ZUIST_OPEN_SECTIONS_975638" = "Secties of mappen openen (teamchat)";
+"LN_ZUI_Resume_Upload_1066814" = "Upload hervatten";
 "LN_ZUIST_DEF_LANG_PHONE_975638" = "Standaardtaal (telefoon)";
 "LN_ZUIST_RESET_MEET_DISC_975638" = "Disclaimers van vergaderingen opnieuw instellen (geavanceerde vergaderingen)";
 "LN_ZUIST_Custom_Hours_917148" = "Aangepaste uren";
+"LN_ZUI_Upload_Success_Desc_1066814" = "Zoom heeft je eigen opname naar de cloud geüpload.";
+"LN_ZUI_Uploading_Not_In_Meeting_Desc_1066814" = "Zoom hervat het uploaden van je opname wanneer je niet in een vergadering bent.";
+"LN_ZUI_Upload_Paused_1066814" = "Gepauzeerd";
+"LN_ZUI_Pause_Upload_1066814" = "Upload pauzeren";
 "LN_More_Button_Accessibility_209755" = "meer opties, samengevouwen";
 "LN_ZUIST_Forward_To_External_Contact_917148" = "Doorschakelen naar een externe contact";
 "LN_ZUIST_Immediately_819462" = "Onmiddellijk";
 "LN_ZUIST_SCREEN_SHARE_SET_975638" = "Instellingen voor gedeeld scherm (wanneer anderen delen)";
 "LN_ZUIST_Only_Internal_Callers_See_Video_Greeting_917148" = "Alleen interne beller zien deze videobegroeting. Externe bellers horen uw voicemailbegroeting.";
+"LN_TB_Schedule_event_1043046" = "Evenement plannen";
 "LN_ZUIST_Manage_Badge_Settings_819462" = "Badge-instellingen beheren";
+"LN_ZUI_Upload_Success_Title_1066814" = "Je eigen opname is geüpload";
 "LN_ZUIST_Voice_917148" = "Spraak";
+"LN_StudioRecording_Start_Tip_1005566" = "De host heeft Opnamestudio ingeschakeld. Hiermee neemt je camera lokaal op je systeem op, waarna de opname naar onze beveiligde cloudopslag wordt geüpload.";
+"LN_StudioRecording_Title_1005566" = "Opnamestudio";
+"LN_ZUI_Upload_Retry_1066814" = "Nu opnieuw proberen";
 "LN_ZUIST_IVR_Menu_917148" = "IVR-menu";
 "LN_ZUIST_KEEP_UNCONV_REC_975638" = "Niet-geconverteerde opnamebestanden bewaren voor probleemoplossing (geavanceerde opname)";
 "LN_ZUIST_Select_This_Option_819462" = "Selecteer deze optie wanneer u geen inhoud op het gedeelde scherm kunt zien of wanneer anderen uw gedeelde inhoud niet kunnen zien.";
+"LN_ZUI_Upload_Failed_Desc_Retry_1066814" = "Zoom kan je eigen opname niet uploaden en probeert het bij de volgende gelegenheid automatisch opnieuw.";
 "LN_ZUIST_MSG_TRANSLATION_975638" = "Berichten vertalen (teamchat)";
 "LN_ZUIST_Call_Queue_917148" = "Oproepwachtrij";
 "LN_ZUIST_VIDEO_HW_ACCEL_975638" = "Instellingen voor videohardwareversnelling";
@@ -10851,12 +11072,16 @@
 "LN_ZUIST_RESET_LEFT_SIDEBAR_975638" = "Linkerzijbalk terugzetten naar standaard (teamchat)";
 "LN_ZUIST_Play_Voicemail_Greeting_At_End_917148" = "Voicemailbegroeting van de beller afspelen na het doorschakelen";
 "LN_PowerUser_Wizard_Step1_Title_437035" = "Uw nieuwe assistent";
+"LN_TB_New_SMS_message" = "Nieuw sms-bericht";
+"LN_WB_Visualize_This_Meeting_Detail" = "AI Companion heeft een whiteboard gemaakt op basis van deze vergadering. Wil je dit gebruiken?";
+"LN_TB_Press_to_search" = "Druk op %@ om te zoeken";
 "LN_ZUIST_Require_Press1_To_Connect_Option_Description_917148" = "Schakel deze optie in als u wilt dat uw contact op 1 moet drukken voordat de oproep wordt verbonden. Onbeantwoorde oproepen worden na het doorschakelen naar uw voicemail doorgestuurd. Schakel deze optie uit als u wilt dat bellers de voicemail van uw contact kunnen bereiken.";
 "LN_ZUIST_Webpage_Example_819462" = "Voorbeeld webpagina";
 "LN_ZUIST_Manage_Topics_917148" = "Onderwerpen beheren";
 "LN_ZUIST_Call_Unanswered_917148" = "Wanneer een oproep niet wordt beantwoord";
 "LN_ZUIST_Allow_Check_Voicemail_917148" = "Gebruikers toestaan om hun voicemail te controleren";
 "LN_ZUIST_Default_Language_917148" = "Standaardtaal";
+"LN_TB_New_chat_messgae" = "Nieuw chatbericht";
 "LN_ZUIST_Advanced_Share_Screen_819462" = "Geavanceerd scherm delen";
 "LN_PowerUser_Wizard_Step1_Description_437035" = "Met Zoom Assistant krijgt u eenvoudig toegang tot de zaken die u het belangrijkst vindt.";
 "LN_ZUIST_Show_My_Zoom_Workplace_819462" = "Mijn Zoom Workplace-toepassing en vergadervensters weergeven";
@@ -10864,6 +11089,7 @@
 "LN_ZUIST_Live_Transcription_819462" = "Instellingen voor livetranscriptie";
 "LN_ZUIST_USE_HW_ACCEL_SHARE_975638" = "Hardwareversnelling gebruiken (geavanceerd gedeeld scherm)";
 "LN_ZUIST_MOVE_MSG_REPLY_975638" = "Berichten met nieuwe antwoorden naar de onderkant van de chat verplaatsen (teamchat)";
+"LN_TB_New_task" = "Nieuwe taak";
 "LN_PowerUser_Wizard_Step2_Title_437035" = "Altijd hier";
 "LN_PowerUser_Wizard_Step2_Phone_Description_437035" = "Uw assistent wordt uitgeschoven als u er de muisaanwijzer overheen beweegt of wanneer u een oproep ontvangt.";
 "LN_ZUIST_Share_Desktop_819462" = "Desktop delen";
@@ -10878,11 +11104,14 @@
 "LN_PowerUser_Wizard_Step2_Both_Description_437035" = "Uw assistent wordt uitgeschoven als u er de muisaanwijzer overheen beweegt of wanneer u een oproep ontvangt of een komende vergadering hebt.";
 "LN_ZUIST_Auto_Receptionist_917148" = "Automatische receptionist";
 "LN_PowerUser_Wizard_Step3_Title_437035" = "Wilt u de assistent niet gebruiken?";
+"LN_TB_New_whiteboard" = "Nieuw whiteboard";
 "LN_ZUIST_Send_Unanswered_Calls_To_My_Voicemail_917148" = "Niet-beantwoorde oproepen verzenden naar mijn voicemail";
 "LN_ZUIST_Cisco_Polycom_Room_917148" = "Cisco/Polycom-ruimte";
 "LN_ZUIST_Conserve_CPU_Usage_819462" = "Het CPU-gebruik besparen bij het gebruik van een hardwarematige videodecoder van de grafische kaart.";
+"LN_TB_New_doc" = "Nieuw document";
 "LN_ZUIST_SHOW_LINK_PREV_975638" = "Linkvoorbeeld weergeven (teamchat)";
 "LN_ZUIST_Participant_Video_819462" = "Video van deelnemer";
+"LN_TB_New_email" = "Nieuwe e-mail";
 "LN_ZUIST_Sending_Video_819462" = "Video verzenden...";
 "LN_PowerUser_Wizard_Step3_Description_437035" = "U kunt uw assistent van hieruit sluiten.";
 "LN_PowerUser_Wizard_Step4_Title_437035" = "Agenda integreren";
@@ -10911,15 +11140,18 @@
 "LN_ZUIST_Message_To_Play_917148" = "Af te spelen bericht";
 "LN_IM_Start_Chat_Guide_332947" = "Typ een naam of e-mailadres om met uw team te chatten.";
 "LN_ZUIST_Enter_Name_917148" = "Voer een naam in";
+"LN_TB_Record_clip" = "Clip opnemen";
 "LN_ZUIST_Network_Switch_819462" = "Netwerkswitch";
 "LN_IM_Chat_After_Meeting_332947" = "Chatten na uw vergadering";
 "LN_ZUIST_Text_To_Speech_917148" = "Tekst-naar-spraak";
 "LN_ZUIST_Search_By_Name_Email_Extension_917148" = "Zoeken op naam, e-mailadres of extensie";
 "LN_ZUIST_Shared_Line_Group_917148" = "Gedeelde lijngroep";
 "LN_ZUIST_Register_ID_819462" = "Registratie-ID:";
+"LN_TB_New_phone_call" = "Nieuw telefoongesprek";
 "LN_ZUIST_Webpage_Example_This_819462" = "Voorbeeld webpagina: Dit voorbeeld start een browser wanneer iemand belt.";
 "LN_IM_Chat_After_Meeting_Guide_Info_332947" = "Ga verder in de teamchat. Verzend berichten, bestanden en afbeeldingen naar uw teamleden.";
 "LN_ZUIST_Cores_819462" = "Kernen: %d";
+"LN_TB_Meet_now_1043046" = "Nu vergaderen";
 "LN_ZUIST_Always_Show_Caption_819462" = "Ondertiteling altijd weergeven in vergaderingen en webinar";
 "LN_IM_Start_a_Chat_332947" = "Een chat starten";
 
@@ -10933,6 +11165,7 @@
 "LN_ZUIST_E2E_819462" = "(End-to-endversleuteling)";
 "LN_ZUIST_Recording_Preferences_819462" = "Opnamevoorkeuren";
 "LN_ZUIST_Forward_To_Another_Extension_917148" = "Doorschakelen naar een andere extensie";
+"LN_WB_Visualize_This_Meeting" = "Visualiseer deze vergadering";
 "LN_ZUIST_You_Are_Connected_22_819462" = "U bent verbonden met het @1 in @2 via een datacenter dat wordt beheerd door de eigenaar van uw Zoom-account.";
 "LN_ZUIST_Video_A_Effects_819462" = "Video en effecten";
 "LN_ZUIST_You_Are_Connected_3_819462" = "U bent verbonden met @1 via datacenters in @2 en @3";
@@ -11316,6 +11549,7 @@
 "LN_ZoomOnePro_478007" = "Zoom One Pro";
 "LN_Meeting_478007" = "Vergaderingen";
 "LN_MeetingDes_478007" = "• Host tot 100 deelnemers\n• Onbeperkt vergaderen met tot 30 uur per vergadering\n• 5 GB opslag voor cloudopnames (per licentie)\n• Automatische ondertitels\n• Co-hosting";
+"LN_Tip_Using_Avatars_GreenScreenDisable_1063103" = "Green-screen is niet beschikbaar tijdens het gebruik van avatars";
 "LN_TeamChat_478007" = "Teamchat";
 "LN_TeamChatDes_478007" = "• Chats en kanalen voor samenwerking, delen van bestanden en meer";
 "LN_CloudStorage_478007" = "Cloudopslag";
@@ -11436,6 +11670,7 @@
 "LN_MentionGroups_456066" = "Vermeldingsgroepen (%lu)";
 "LN_MentionGroups_Delete_Message_354921" = "De vermeldingsgroep @%@ wordt verwijderd uit dit kanaal. Dit heeft geen invloed op het kanaallidmaatschap.";
 "LN_MentionGroups_Delete_Title_354921" = "Verwijder @%@";
+"LN_AuthenticateLabel_learnmore_1071909" = "Authenticeer om berichten in versleutelde chats en kanalen te bekijken en te verzenden. <a href='%@'>Meer informatie</a>";
 "LN_MentionGroups_View_Edit_Mention_Group_354921" = "Vermeldingsgroep weergeven/bewerken";
 "LN_MentionGroups_View_Mention_Group_354921" = "Vermeldingsgroep weergeven";
 "LN_MentionGroups_Mention_Group_Name_354921" = "Naam vermeldingsgroep";
@@ -11993,6 +12228,7 @@
 "LN_Language_Interpretation_Audio_330475" = "Tolkdienst (audio)";
 "LN_Language_Interpretation_Video_330475" = "Tolkdienst voor gebarentaal (video)";
 "LN_Channel_Members_936548" = "Kanaalleden";
+"LN_IM_Chats_Set_reminder_1043637" = "Herinnering instellen";
 "LN_Add_Description_936548" = "Voeg beschrijving toe";
 "LN_Lipsync_Description_376218" = "Uw stem blijft uw avatar animeren wanneer uw video is uitgeschakeld.";
 "LN_Lipsync_Title_376218" = "Wanneer mijn video is uitgeschakeld:";
@@ -12021,6 +12257,7 @@
 "LN_Security_Code_Change_Tip_331603" = "De beveiligingscode van de vergadering is bijgewerkt";
 "LN_Select_Sign_Language_330475" = "Selecteer gebarentaal";
 "LN_Set_Up_A_Calendar_311991" = "Een agenda instellen";
+"LN_IM_Chats_Custom_Reminder_1043637" = "Herinnering op maat instellen";
 "LN_Set_Up_A_Calendar_Tip_311991" = "Om een vergadering te plannen, stel een nieuwe agenda en contactintegratie in met lees- en schrijftoestemming via uw profielinstellingen.";
 "LN_Set_Up_New_Calendar_311991" = "Een nieuwe agenda instellen";
 "LN_Set_Up_New_Calendar_Tip_311991" = "Uw agenda-integratie wordt momenteel niet ondersteund voor het plannen van vergaderingen. Stel een nieuwe agenda en contactintegratie in met lees- en schrijftoestemming via uw profielinstellingen.";
@@ -12395,13 +12632,17 @@
 "LN_Studio_Alert_JoinWBO_Desc_513825" = "U gebruikt momenteel Production Studio. Als u deelneemt aan een aparte vergaderruimte, dan wordt uw venster van Production Studio gesloten om te voorkomen dat de ervaring van deelnemers wordt verstoord terwijl u in een aparte vergaderruimte zit.";
 "LN_Studio_Alert_JoinWBO_Button_513825" = "Deelnemen en sluiten";
 "LN_Studio_ProgramStatus_%@Sending_507768" = "%@ verzendt live";
+"LN_Clips_Share_coachmark_content_meeting_1018995" = "Je kunt nu Zoom Clips delen tijdens een vergadering via het tabblad Geavanceerd in het scherm Delen. <a href = '%@'> Meer informatie </a>";
 "LN_Studio_Preview_ShareContent_391545" = "De inhoud die de spreker deelt, wordt hier weergegeven";
 "LN_Studio_Preview_AddSpeaker_391545" = "Spreker toevoegen";
+"LN_Clips_Share_coachmark_title_meeting_1018995" = "Clips afspelen in vergaderingen";
 "LN_Studio_Preview_ReplaceSpeaker_391545" = "Spreker vervangen";
+"LN_Clips_Share_coachmark_content_webinar_1018995" = "Je kunt nu Zoom Clips delen tijdens een webinar via het tabblad Geavanceerd in het scherm Delen. <a href = '%@'> Meer informatie </a>";
 "LN_Studio_Preview_ChooseSpeaderReplace_391545" = "Kies de spreker die u in de scène wilt gebruiken.";
 "LN_Studio_Preview_ChooseSpeaderAdd_391545" = "Kies de spreker die u in de scène wilt toevoegen.";
 "LN_Studio_Preview_NoParticipantReplace_391545" = "Er kunnen geen deelnemers worden vervangen";
 "LN_Studio_Preview_NoParticipantAdd_391545" = "Er kunnen geen deelnemers worden toegevoegd";
+"LN_Clips_Share_coachmark_title_webinar_1018995" = "Clips afspelen in webinars";
 "LN_Studio_Preview_AddPresenter_391545" = "Presentator toevoegen";
 "LN_Studio_Preview_ChoosePresenterAdd_391545" = "Kies de presentator die u aan de scène wilt toevoegen.";
 "LN_Studio_Preview_ChoosePresenterReplace_391545" = "Kies de presentator die u aan de scène wilt toevoegen.";
@@ -12514,6 +12755,7 @@
 "LN_leave_a_message_388560" = "(Optioneel) Laat een bericht achter... ";
 "LN_share_email_457994" = "Verzenden naar teamchat";
 "LN_share_email_send_to_457994" = "Verzenden naar";
+"LN_IM_SharedSpace_ChannelTypeDisabledByAddMember_1015266" = "Kan het kanaaltype niet wijzigen. Het toevoegen van leden wordt beperkt door de beheerder van de gedeelde ruimte.";
 "LN_Decrypted_Email_Confirm_457994" = "Er wordt een ontsleutelde kopie van deze e-mail verzonden";
 "LN_share_email_388560" = "E-mail delen";
 "LN_Decrypted_Email_Confirm_449039" = "Als u op \"E-mail delen\" klikt, wordt een ontsleutelde kopie van deze e-mail naar teamchat verzonden.";
@@ -12636,9 +12878,11 @@
 "LN_Is_Invite_To_ShareScreen_512842" = "Wil het scherm met u delen. Uw huidige vergadering verlaten en aan deze deelnemen?";
 "LN_Accept_Share_Screen_512842" = "Scherm delen accepteren";
 "LN_Outgoing_ShareScreen_Call_512842" = "Uitgaande oproep met gedeeld scherm";
+"LN_Studio_Preview_NoScene_1056018" = "Geen scène";
 "LN_Incoming_ShareScreen_Call_Declined_512842" = "Binnenkomende oproep met gedeeld scherm - afgewezen";
 "LN_Incoming_ShareScreen_Call_Accepted_512842" = "Binnenkomende oproep met gedeeld scherm - geaccepteerd";
 "LN_Incoming_ShareScreen_Call_512842" = "Binnenkomende oproep met gedeeld scherm";
+"LN_IM_SharedSpace_RemovePendingMember_1082062_%@" = "%@ wordt niet toegevoegd aan deze gedeelde ruimte.";
 "LN_Missed_ShareScreen_Call_512842" = "Oproep met gedeeld scherm gemist";
 "LN_Incoming_ShareScreen_Call_Canceled_512842" = "Binnenkomende oproep met gedeeld scherm - geannuleerd";
 "LN_IM_PMC_MettingStarted_525609" = "Vergadering gestart";
@@ -12648,6 +12892,7 @@
 "LN_IM_PMC_LegalCopy_525609" = "Berichten verzonden tijdens de vergadering zijn zichtbaar voor alle deelnemers aan de vergadering";
 "LN_IM_PMC_Continuous_525609" = "Dit is een doorlopende vergaderchat";
 "LN_Studio_Video_LoadFailed_969678" = "Video laden mislukt";
+"LN_Studio_SceneList_Empty_1056018" = "Geen scène toegevoegd";
 "LN_IM_PMC_NoLonger_Continuous_525609" = "Dit is niet langer een doorlopende vergaderchat";
 "LN_IM_PMC_Hour_525609" = "u.";
 "LN_IM_PMC_Minute_525609" = "min.";
@@ -12840,6 +13085,7 @@
 "LN_No_More_Files_613965" = "Geen bestanden meer gevonden";
 "LN_Preview_In_Zoom_643446" = "Voorbeeld bekijken in Zoom";
 "LN_Studio_Video_Setting_GoNext_840309" = "Ga naar de volgende scène in het voorbeeld";
+"LN_Can_Not_Start_Old_Version_990843" = "%@ kan niet worden gestart voor deze vergadering omdat de host niet heeft bijgewerkt naar een ondersteunde versie van de app.";
 "LN_Click_To_Preview_502373" = "Klik voor een voorbeeld";
 "LN_Voice_Isolation_490155" = "Stemisolatie uitschakelen";
 "LN_Voice_Isolation_Original_Sound_490155" = "Oorspronkelijk geluid werkt optimaal wanneer \"Stemisolatie\" is uitgeschakeld. Als u \"Stemisolatie\" wilt uitschakelen, ga dan naar het bedieningspaneel in de menubalk, klik op Microfoonmodus en selecteer \"Standaard\".";
@@ -12852,9 +13098,11 @@
 "LN_Activity_Center_Closed_511366" = "Activiteitencentrum gesloten";
 "LN_Add_To_Dock_476653" = "Aan dock toevoegen";
 "LN_Remove_From_Dock_476653" = "Uit dock verwijderen";
+"LN_Start_Summary_With_Live_Summary_Original_Host_Info_990843" = "Door samenvatting van vergadering in te schakelen, wordt ook live samenvatting ingeschakeld. Alle genodigden hebben er toegang toe. Je kunt de toegangsinstellingen wijzigen in het deelvenster AI Companion.";
 "LN_Setting_Turn_On_Avatar_444321" = "Mijn avatar inschakelen wanneer ik deelneem aan de vergadering";
 "LN_Failed_To_Update_The_Dynamic_Indicator_464036" = "Dynamische indicator bijwerken mislukt.";
 "LN_Studio_Video_Setting_WhenEnd_840309" = "Wanneer de video eindigt";
+"LN_Start_Live_Summary_Original_Host_Info_990843" = "Alle genodigden hebben toegang tot de live samenvatting. Je kunt de toegangsinstellingen wijzigen in het deelvenster AI Companion.";
 "LN_Failed_To_Set_The_Dynamic_Indicator_464036" = "Dynamische indicator instellen mislukt.";
 "LN_Failed_To_Remvoe_The_Dynamic_Indicator_464036" = "Dynamische indicator verwijderen mislukt.";
 "LN_Zoom_Apps_Time_464036" = "Zoom Apps-tijd";
@@ -12862,6 +13110,7 @@
 "LN_My_Zoom_App_Time_464036" = "De tijd van mijn Zoom App is %@";
 "LN_Meeting_Dropdown_Open_App_464036" = "App openen";
 "LN_Meeting_Dropdown_Hide_Meeting_Timer_464036" = "Timers voor vergadering verbergen";
+"LN_AIC_Request_Start_Live_Summary_Tip_990843" = "Verzoek om live samenvatting te starten is naar de host gestuurd.";
 
 "LN_Avatar_Legal_Alert_Title_510018" = "Avatars gebruiken";
 "LN_Avatar_Legal_Alert_Content_510018" = "Door op \"OK\" te klikken, staat u Zoom Workplace toe om de positie en bewegingen van uw gezicht te analyseren op uw apparaat. Deze gegevens verlaten uw apparaat niet, worden niet bewaard, en worden alleen gebruikt om de gekozen effecten te genereren.";
@@ -12873,6 +13122,7 @@
 "LN_Profile_Menu_Call_Queue_Title_507601" = "Oproepwachtrijen";
 "LN_Profile_Menu_SLA_Title_507601" = "Gedeelde lijnweergaves";
 "LN_Profile_Menu_SLA_NotAllow_TurnOff_507601" = "Uitschakelen niet toegestaan.";
+"LN_Can_Not_Start_Host_990843" = "%@ kan voor deze vergadering pas worden gestart als de host deelneemt.";
 "LN_Profile_Menu_SLA_NotAllow_TurnOn_507601" = "Inschakelen niet toegestaan.";
 "LN_Profile_Menu_SharedGroup_Title_507601" = "Gedeelde lijngroepen";
 "LN_FECC_AddToCameraControlGroup_461789" = "Toevoegen aan camerabedieningsgroep";
@@ -13228,6 +13478,7 @@
 "LN_Multi_Share_Change_Single_Alert_Title_522426" = "Er zijn meerdere deelnemers aan het delen. Als u deze instelling wijzigt, wordt het delen voor deze deelnemers beëindigd. Wilt u doorgaan?";
 "LN_Personalized_Voice_Isolation_561547" = "Gepersonaliseerde audio-isolatie";
 "LN_PSE_Help_Infomation_631613" = "De software op uw apparaat legt een stemafdruk vast op basis van uw vergaderaudio en analyseert deze om de helderheid van uw stem te verbeteren en om achtergrondgeluid in vergaderingen te verwijderen. Het opnemen van een stemafdruk kan de prestaties nog verbeteren.";
+"LN_Certifications_Toolbar_Error_Desc_1059967" = "De certificeringsapp kan nu geen verbinding maken.";
 "LN_PVI_Description_561547" = "(aanbevolen voor headsets met microfoon)";
 "LN_PVI_Help_Info_561547" = "De software op uw apparaat legt een clip van uw audio uit vergaderingen vast en analyseert deze om uw stem te kunnen onderscheiden en achtergrondgeluid te onderdrukken tijdens vergaderingen. Zoom ontvangt of bewaart deze clip of analyse niet. Het blijft op uw apparaat staan en wordt alleen gebruikt om geluid te onderdrukken in vergaderingen waar u aan deelneemt.";
 "LN_PVI_Help_Info_631613" = "De software op uw apparaat legt een stemafdruk vast op basis van uw vergaderaudio en analyseert deze om de helderheid van uw stem in vergaderingen te verbeteren. Het opnemen van een stemafdruk kan de prestaties nog verbeteren.";
@@ -13239,6 +13490,7 @@
 "LN_Delete_Voice_Signature_561547" = "Audiohandtekening uitschakelen en verwijderen";
 "LN_Delete_Info_561547" = "Als u de functie voor gepersonaliseerde audio-isolatie verwijderd en opnieuw inschakelt, dan moet de audiohandtekening opnieuw worden gegenereerd in een vergadering om opnieuw te kunnen werken.";
 "LN_Delete_Use_Default_Audio_561547" = "Verwijderen en standaardaudio gebruiken";
+"LN_Certifications_Unable_to_load_Desc_1059967" = "Laden mislukt";
 "LN_Share_Select_Layouts_Mode_Button_As_Background_965706" = "Als achtergrond";
 "LN_Personalized_Voice_Isolation_Privicy_561547" = "Door deze functie in te schakelen, gaat u ermee akkoord dat Zoom uw stem analyseert en een audiohandtekening maakt die wordt gebruikt om uw stem te onderscheiden en achtergrondgeluid tijdens vergaderingen te onderdrukken.  Uw audiohandtekening blijft op uw apparaat. Het wordt alleen gebruikt om geluid te onderdrukken en u kunt het op elk moment verwijderen.";
 "LN_Personal_Voice_Audio_On_561547" = "Gepersonaliseerde audio: aan";
@@ -13253,6 +13505,7 @@
 "LN_BuddyNotAllowedError_ZoomRoom_969484" = "Kan Zoom Rooms niet toevoegen aan dit kanaal.";
 "LN_BuddyNotAllowedError_PrivateCseChannelAddExt_969484_%@" = "Kan %@ niet toevoegen omdat externe gebruikers niet zijn toegestaan in dit kanaal.";
 "LN_TabsResources_648531" = "Tabbladen en bronnen";
+"LN_Certifications_Toolbar_Title_1059967" = "Certificering";
 "LN_TabsResourcesTip_648531" = "Organiseer belangrijke informatie met tabbladen en bekijk bronnen zoals bestanden, afbeeldingen en whiteboards in het tabblad Bronnen.";
 "LN_Splitview_648531" = "Gesplitste weergave";
 "LN_BuddyNotAllowedError_WaitAccountApproval_969484_%@" = "Kan %@ niet toevoegen omdat diens account nog niet is goedgekeurd.";
@@ -13591,6 +13844,7 @@
 "LN_Setting_PG_Avatar_Retake_Picture_428912" = "Foto opnieuw maken";
 "LN_Setting_PG_Avatar_Use_Picture_428912" = "Foto gebruiken";
 "LN_Setting_PG_Avatar_Being_Built_428912" = "Uw avatar wordt gemaakt";
+"LN_CMC_InviteLink_JoinRequestSentToast_Body_1004831" = "Je wordt toegevoegd aan de vergaderchat nadat je verzoek is goedgekeurd.";
 "LN_Setting_PG_Avatar_Creating_Avatar_428912" = "Avatar maken...";
 "LN_Setting_PG_Avatar_Style_Avatar_428912" = "Avatar opmaken";
 "LN_Setting_PG_Avatar_Is_Ready_428912" = "Uw avatar is klaar";
@@ -13602,6 +13856,7 @@
 "LN_Setting_PG_Avatar_Error_Face_Need_Visible_428912" = "Zorg ervoor dat uw hele gezicht zichtbaar is voor de camera.";
 "LN_Setting_PG_Avatar_Error_Need_Looking_Camera_428912" = "Zorg ervoor dat u recht in de camera kijkt.";
 "LN_Setting_PG_Avatar_Error_Need_Neutral_Expression_428912" = "Zorg ervoor dat u een neutrale uitdrukking hebt bij het maken van een foto.";
+"LN_Link_To_Team_Chat_Meeting_Chat_1004831" = "Link naar Team Chat-vergaderchat";
 "LN_Setting_PG_Avatar_Error_Create_428912" = "Er is een onbekende fout opgetreden. Probeer het opnieuw.";
 "LN_Setting_PG_Avatar_Error_No_Camera_428912" = "Geen camera gedetecteerd.\nSelecteer een camera en probeer het opnieuw.";
 "LN_Simulive_Will_Start_632561" = "Deze simulive sessie wordt automatisch gestart";
@@ -13614,6 +13869,7 @@
 "LN_Appearance_System_643379" = "Systeeminstelling";
 "LN_Appearance_Dark_643379" = "Donkere modus";
 "LN_Appearance_Light_643379" = "Lichte modus";
+"LN_CMC_InviteLink_DuplicateJoinToast_Title_1004831" = "Je hebt al gevraagd om deel te nemen aan deze vergaderchat";
 "LN_Theme_643379" = "Thema";
 "LN_Theme_Info_643379" = "Alleen toegepast wanneer het systeem de lichte modus gebruikt";
 "LN_Theme_Help_Info_643379" = "Kleurenthema's zijn beschikbaar wanneer de app of het systeem is ingesteld op de lichte modus.\n\nHet thema \"%@\" past een grijze kleur toe op de navigatiewerkbalk van de app en past een donkergrijze kleur toe op het venster van vergaderingen en webinars.\n\nDe donkergrijze kleur wordt automatisch toegepast op vergaderingen of webinars met een aangepaste achtergrond.";
@@ -13662,6 +13918,7 @@
 "LN_File_Pick_Collaborate_Grant_Failed_With_Reason_650271" = "Het deelnemen aan de samenwerking is mislukt wegens %@.";
 "LN_File_Pick_Collaborate_Sign_In_650271" = "Meld u aan om te bewerken en samen te werken";
 "LN_File_Pick_Collaborate_Join_650271" = "Uw e-mailadres %@ is bewerkingstoegang verleend. Selecteer \"Deelnemen\" om deel te nemen aan de samenwerking.";
+"LN_Chat_Disable_MentionAll_1004831" = "@iedereen uitschakelen voor deze chat";
 "LN_Setting_Video_Portrait_Lighting_Help_Tip_682775" = "Portretbelichting zet u centraal en dimt uw achtergrond.";
 "LN_ShareAudio_Tip_Viewer_643379" = "Computeraudio wordt gedeeld";
 "LN_ShareAudio_Tip_Presenter_643379" = "Computeraudio wordt gedeeld in %@";
@@ -13694,7 +13951,9 @@
 "LN_Theme_Disable_By_WallPaper" = "Kleurenthema's zijn niet beschikbaar wanneer de host de achtergrond van de vergadering heeft ingesteld";
 "LN_Login_ZDM_Failed_Title_654532" = "Niet in staat om Zoom te gebruiken";
 "LN_Reorder_Tip_914119" = "Versleep om de volgorde van de werkbalk te wijzigen";
+"LN_CMC_MentionGroups_Delete_Message_1004831" = "De vermeldingsgroep @%@ wordt uit deze vergaderchat verwijderd. Dit heeft geen invloed op het lidmaatschap van de vergaderchat.";
 "LN_Login_ZDM_Failed_Content_654532" = "Uw Zoom-app wordt niet beheerd door uw organisatie en u kunt deze nu niet gebruiken.\nNeem contact op met uw beheerder voor meer informatie.";
+"LN_CMC_Assign_Admin_%@_Info_1004831" = "%@ wordt beheerder van de vergaderchat. Beheerders van vergaderchats hebben veelal dezelfde toestemmingen als de eigenaar. Beheerders kunnen de vergaderchat niet verwijderen of de privacyinstellingen ervan wijzigen.";
 "LN_Video_MirrorVideo_Setting_710369" = "Mijn video spiegelen";
 "LN_Audio_Noise_suppression_681813" = "Ruisonderdrukking";
 "LN_Huddle_Link_Copied_682389" = "Huddlelink gekopieerd";
@@ -13709,9 +13968,12 @@
 "LN_Huddle_Link_Copied_697870" = "Huddlelink gekopieerd";
 "LN_Error_Copying_Huddle_Link_697870" = "Fout bij het kopiëren van de huddlelink";
 "LN_Compose_limit_Tip_693167" = "Berichten hebben een limiet van %ld tekens";
+"LN_CMC_InviteLink_ResetToast_1004831" = "De chatlink en QR-code van de vergadering zijn gereset";
+"LN_CMC_InviteLink_ResetBody_1004831" = "Externe gebruikers kunnen niet meer deelnemen via de vorige link en QR-code van de vergaderchat nadat je deze opnieuw hebt ingesteld. Leden, inclusief interne gebruikers, kunnen deze nog steeds gebruiken om de vergaderchat te vinden.";
 "LN_Archive_OptionJoint_715652" = "%1$@, %2$@";
 "LN_Archive_Closed_Captions_715652" = "Ondertiteling";
 "LN_Archive_Plural_715652" = "De %@ van deze vergadering worden gearchiveerd door de organisatie(s) van een of meerdere deelnemers op basis van hun accountbeleid. Hun accounteigenaar ontvangt inhoud uit deze vergadering en kan die delen met apps en anderen.";
+"LN_CMC_Restrict_Memtion_List_Disabled_1004831" = "@iedereen (%d) is uitgeschakeld door de eigenaar van de chat";
 "LN_Show_link_preview_below_721399" = "Linkvoorbeeld hieronder weergeven";
 "LN_Hide_link_preview_below_721399" = "Linkvoorbeeld hieronder verbergen";
 "LN_CCI_CLOSED_CAPTION_LEGAL_NOTICE_718194" = "Een deelnemer heeft ondertitels ingeschakeld";
@@ -13727,9 +13989,11 @@
 "LN_CCI_Video_CountDown_Tip_718208" = "Wachten tot de consument deelneemt - Betrokkenheid wordt gesloten na %@";
 "LN_CCI_Video_RecordStarted_Tip_710378" = "Deze oproep wordt mogelijk bewaakt of opgenomen voor kwaliteitsdoeleinden";
 "LN_You_Cannot_Leave_Channel_683476" = "Het verlaten van dit kanaal is uitgeschakeld door uw accountbeheerder";
+"LN_Meeting_Chat_Restricted_Owner_Mention_All_1004831" = "@iedereen is alleen voorbehouden aan de eigenaar van de chat";
 "LN_Media_Stream_689434" = "Mediastream";
 "LN_PSE_Auto_Record_840003" = "Gepersonaliseerde audio-isolatie moet uw stem leren kennen";
 "LN_Adjust_Background_650330" = "Achtergrond en effecten aanpassen...";
+"LN_Meeting_Chat_Instant_Meeting_Tip_1004831" = "Geef leden van de vergaderchat de mogelijkheid om een onmiddellijke vergadering te starten vanuit de vergaderchat en alle leden te bellen.";
 "LN_CannotChooseStudioEffects_650330" = "U kunt geen studio-effect kiezen terwijl u dia's deelt als virtuele achtergrond";
 "LN_Others_Share_Screen_711934" = "%@ deelt scherm";
 "LN_Custom_Cannt_Choose_StudioEffects_650330" = "U kunt geen studio-effect kiezen tijdens een immersieve scène.";
@@ -13739,10 +14003,17 @@
 "LN_RadioButton_Popout_711934" = "Losmaken van tabbladen toestaan";
 "LN_Multi_Share_Alert_Host_Block_Title_710890" = "Meervoudig delen inschakelen?";
 "LN_Docs_Coach_Mark_Title_749573" = "Samenwerken met Zoom Docs";
+"LN_CMC_Unassign_Admin_myself_Info_1004831" = "Je wordt een gewoon lid. Dit betekent dat je geen andere beheerders voor de vergaderchat kunt toewijzen en de vergaderchat niet kunt bewerken.";
+"LN_Only_Chat_Owner_Admins_1004831" = "Alleen de eigenaar en beheerders van de chat";
 "LN_Self_Controlling_711934" = "U bedient het scherm van %@";
 "LN_Phone_VoicemailTranscription_Language_Polish_824646" = "Pools (Polen)";
+"LN_Meeting_Chat_Instant_Meeting_Setting_Disabled_1004831" = "Deze vergaderchat heeft meer dan %ld leden, dus deze instelling is uitgeschakeld.";
 "LN_Multi_Share_Alert_Host_Block_Content_710890" = "U kunt momenteel één item tegelijk delen.";
+"LN_CMC_AtAllDisabledToast_1004831" = "@iedereen is uitgeschakeld door de eigenaar van de vergaderchat";
 "LN_Multi_Share_Alert_Replace_Current_Share_710890" = "Huidig gedeeld item vervangen";
+"LN_CMC_MentionGroups_No_MentionGroups_1004831" = "Vermeldingsgroepen die beschikbaar zijn voor gebruik in deze vergaderchat worden hier weergegeven. \n\nAlleen de eigenaar en beheerders van de chat kunnen vermeldingsgroepen maken. Alle leden kunnen zichzelf toevoegen of verwijderen.";
+"LN_Only_Chat_Owner_Admins_Add_External_1004831" = "Alleen de eigenaar en beheerders van de chat kunnen externe gebruikers toevoegen.";
+"LN_CMC_Unassign_Admin_%@_Info_1004831" = "%@ wordt een gewoon lid. Dit betekent dat diegene geen andere beheerders voor de vergaderchat kan toewijzen en de vergaderchat niet kan bewerken.";
 "LN_My_Share_711934" = "U deelt";
 "LN_Multi_Share_Alert_Allow_Multi_Share_710890" = "Meervoudig delen toestaan";
 "LN_Multi_Share_Alert_Participant_Block_Title_Has_Share_710890" = "Iemand anders is aan het delen";
@@ -13750,6 +14021,7 @@
 "LN_Multi_Share_Alert_Participant_Block_Title_No_Share_710890" = "Delen is niet ingeschakeld";
 "LN_Disable_Annotate_Tip_711934" = "Aantekeningen zijn enkel per gedeeld item mogelijk";
 "LN_Multi_Share_Alert_Participant_Block_Content_Meeting_710890" = "U kunt de host vragen om meervoudig delen in te schakelen voor deze vergadering.";
+"LN_CMC_Assign_Admins_limit_1004831" = "De vergaderchat heeft al het maximale aantal van %d beheerders.";
 "LN_Phone_VoicemailTranscription_Language_Danish_824646" = "Deens (Denemarken)";
 "LN_Multi_Share_Alert_Participant_Block_Content_Webinar_710890" = "U kunt de host vragen om meervoudig delen in te schakelen voor deze webinar.";
 "LN_Multi_Share_Alert_Send_Request_710890" = "Verzoek verzenden";
@@ -13757,6 +14029,7 @@
 "LN_Multi_Share_Alert_Host_Disable_Multi_Share_Webinar_710890" = "De host staat meervoudig delen niet toe voor deze webinar.";
 "LN_Coachmark_Title_799004" = "Alleen de gedeelde inhoud weergeven";
 "LN_Multi_Share_Alert_Host_Receive_Request_Title_710890" = "%@ vraagt u om meervoudig delen in te schakelen";
+"LN_CMC_Account_Admin_Disabled_Instant_Meeting_1004831" = "Je accountbeheerder heeft onmiddellijke vergaderingen vanuit kanalen of vergaderchats uitgeschakeld.";
 "LN_Multi_Share_Alert_Host_Receive_Request_Content_710890" = "Deze instellingen worden ingeschakeld:\n· Alle deelnemers kunnen delen\n· Meerdere deelnemers kunnen tegelijk delen";
 "LN_Multi_Share_Alert_Multi_Share_On_Noti_710890" = "Meervoudig delen is ingeschakeld.";
 "LN_Phone_VoicemailTranscription_Language_Vietnamese_824646" = "Vietnamees (Vietnam)";
@@ -13790,7 +14063,6 @@
 "LN_ViewImage_870831" = "Afbeelding weergeven";
 "LN_Self_Collaborating_711934" = "U werkt samen";
 "LN_Setting_Using_Face_Effects_Alert_Title_705116" = "Gezichtseffecten toestaan";
-"LN_Setting_Using_Face_Effects_Alert_Content_705116" = "U kunt Zoom Workplace toestaan om gezichtseffecten toe te passen door avatars, studio-effecten of bepaalde videofilters te selecteren. Door op \"OK\" te klikken, staat u Zoom Workplace toe om de positie en bewegingen van uw gezicht op uw apparaat te analyseren om de geselecteerde effecten te genereren. Deze gegevens verlaten uw apparaat niet, worden niet bewaard, en worden alleen gebruikt om de gekozen effecten te maken.";
 "LN_Invite_To_Huddle_Declined_720894" = "Inkomende uitnodiging voor huddle in \"%@\" - afgewezen";
 "LN_Phone_VoicemailTranscription_Language_Swedish_824646" = "Zweeds (Zweden)";
 "LN_Outgoing_Invite_To_Huddle_720894" = "Uitgaande uitnodiging voor huddle in \"%@\"";
@@ -13864,6 +14136,7 @@
 "LN_Next_MBO_Countdownd_715160" = "De volgende sessie begint over %ld seconden.";
 "NSCalendarsFullAccessUsageDescription" = "Om uw evenementen te kunnen weergeven, heeft Zoom Workplace toegang tot uw agenda nodig.";
 "LN_Next_MBO_Launch_Next_Session_Button_715160" = "Volgende sessie starten";
+"LN_Setting_VB_AI_Image_Description_1055261" = "Maak een virtuele achtergrond met AI";
 "LN_Can_Not_Join_Channel_Due_Setting_764479" = "%@ kan niet deelnemen aan dit kanaal wegens hun accountinstellingen";
 "LN_Search_In_Chat_Or_Channel_766266" = "Zoeken in chat of kanaal";
 "LN_Can_Not_Join_Group_Chat_Due_Something_Wrong_764479" = "Er is iets misgegaan – %@ kon niet deelnemen aan deze groepschat.";
@@ -13871,6 +14144,7 @@
 "LN_Next_MBO_Title_715160" = "Volgende sessie";
 "LN_Copy_Huddle_Link_756935" = "Huddlelink kopiëren";
 "LN_Next_MBO_Launch_Next_Session_Alert_Content_With_Seconds_715160" = "U sluit alle bestaande ruimtes in de lopende sessie en verplaatst alle deelnemers naar de volgende sessie over %ld seconden.";
+"LN_Setting_Using_Face_Effects_Alert_New_Content_705116" = "Als je doorgaat, analyseert Zoom je gelaatstrekken en bewegingen om de geselecteerde avatar, de Studio-effecten of bepaalde videofilters op je gezicht toe te passen. De gegevens verlaten je apparaat niet en worden onmiddellijk verwijderd.";
 "LN_MTAssets_SubTitle3_771118" = "Meld u aan om gebruik te maken van de Zoom Workplace-functies";
 "LN_MTAssets_Tip_Links1_771118" = "Open links, bijlagen en opnames";
 "LN_Share_Remove_Spotlight_734161" = "Spotlight verwijderen";
@@ -13910,6 +14184,7 @@
 "LN_YES_CallAllMembers_782521" = "Ja, alle leden bellen";
 "LN_FileValidationFailureInTextFieldDescription_689913" = "Het bestand kan niet worden verzonden. Zorg ervoor dat de bestandsindeling juist is en probeer het opnieuw.";
 "LN_IM_Sidebar_Filter_Title_760805" = "Filteren op:";
+"LN_IM_Sidebar_Filter_By_Title_1058163" = "Filteren op";
 "LN_%ld_Members_Of_%@_WillBeInviteToMeeting_782521" = "%1$ld leden van %2$@ worden automatisch uitgenodigd voor deze vergadering.";
 "LN_Login_GoToHome_769533" = "Naar Home";
 "LN_MTAssets_Tip_Summary_771118" = "Bekijk de samenvatting van de vergadering, volgende stappen en plan wat volgt";
@@ -13929,6 +14204,7 @@
 "LN_Play_Sound_Mic_778824" = "Geluid afspelen bij het dempen en inschakelen van de microfoon";
 "LN_Play_Sound_Info_778824" = "Speelt een geluid af wanneer u uw microfoon dempt/inschakelt tijdens een vergadering (alleen hoorbaar voor u). Apparaten met gesynchroniseerd dempen spelen hun eigen geluid af, ongeacht deze instelling.";
 "LN_Send_to_multiple_recipients_747500" = "Verzenden naar meerdere ontvangers";
+"LN_Drag_To_Resize_1053625" = "Versleep om de grootte aan te passen";
 "LN_MTAssets_GoToChat_771118" = "Ga naar chat";
 "LN_MTAssets_Tip_Links_771118" = "Open links, documenten en opnames";
 "LN_PT_ToastTip_DisasterModeON_753652" = "De overlevingsmodus is ingeschakeld.";
@@ -14138,6 +14414,7 @@
 "LN_Test_Mic_Spk_770243" = "Luidspreker en microfoon testen";
 "LN_Video_Connection_Failed_770243" = "De videoverbinding is mislukt";
 "LN_Video_770243" = "Video";
+"LN_Assign_Space_Owner_Content_1020748_%@" = "Je staat op het punt het eigendom van de gedeelde ruimte over te dragen aan %@. Na het overdragen van het eigendom word je automatisch beheerder van deze gedeelde ruimte.";
 "LN_Channel_Setting_Disabled_894941" = "Dit kanaal heeft meer dan %ld leden, waardoor deze instelling is uitgeschakeld.";
 "LN_3rd_Audio_Tip_770243" = "Instructies voor het deelnemen met audio worden in de vergadering weergegeven";
 "LN_Click_Mute_770243" = "Klik op de audioknop om uw microfoon te dempen.";
@@ -14386,6 +14663,7 @@
 "LN_UnableToPreviewInZoom_download_915684" = "Kan geen voorbeeld weergeven in Zoom, download dit bestand om het te bekijken.";
 "LN_SummaryIsProcessing_912558" = "Samenvatting wordt verwerkt";
 "LN_Waiting_Audio_914907" = "U kunt blijven wachten of de %@ verlaten en opnieuw deelnemen.";
+"LN_Meeting_Chat_Tag_1026317" = "CHATTEN TIJDENS VERGADERING";
 "LN_JumpToLatest_917463" = "Naar recentste";
 "LN_Audio_Control_Privileges_865345" = "%@ heeft u audiobediening toegewezen";
 "LN_Audio_Controlled_Tip_865345" = "%@ kan nu uw audio bedienen";
@@ -14404,7 +14682,6 @@
 "LN_Schedule_ConnectCalendar_949277" = "Koppel deze nu";
 "LN_ParticipantsID_Reminder" = "Neemt u al telefonisch deel? Voer %@ in op uw telefoon.";
 "LN_Docs_Request_Share_Doc_Fail_Alert_Desc_Account_883311" = "Uw aanmeldgegevens voor de client komen niet overeen met die voor het web. Controleer uw accounts of meld u opnieuw aan.";
-"LN_Sip_Participants_Title_920901" = "Deelnemers";
 "LN_Add_Audio_Control_Group_865345" = "Toevoegen aan audiobedieningsgroep";
 "LN_Output_Volume_865345" = "Outputvolume";
 "LN_Someone_Controlling_Audio_Tip_865345" = "%@ bedient uw audio";
@@ -14456,10 +14733,8 @@
 "LN_DowngradeNotAllowed_933517" = "Je probeert een oudere versie te installeren die niet wordt ondersteund. Neem contact op met je IT-beheerder voor hulp.";
 "LN_New_Chat_Message_966144" = "Bericht %@";
 "LN_Start_New_Channel_Content_966144" = "We stroomlijnen de manier waarop berichten werken. Als je dit gesprek een naam wilt geven, converteer het dan naar een kanaal.";
-"LN_Convert_To_Private_Channel_Des_For_Member_966144" = "Alleen de eigenaar heeft de mogelijkheid om dit bericht om te zetten naar een privékanaal.";
 "LN_DeepLink_Error_Toast_970487" = "Deze pagina bestaat niet meer of is niet beschikbaar.";
 "LN_Edit_Shared_Space_Failure_938661" = "Bewerken van gedeelde ruimte mislukt. Probeer het later opnieuw.";
-"LN_Convert_To_Private_Channel_Des_For_Owner_966144" = "Wanneer je naar een privékanaal converteert, kun je het een naam geven, leden beheren en toegang krijgen tot geavanceerde instellingen.";
 "LN_Convert_To_Private_Channel_966144" = "Omzetten naar privékanaal";
 "LN_Unread_937144" = "Ongelezen";
 "LN_welcome_create_channel_966144" = "Welkom bij het kanaal '%@'";
@@ -14509,6 +14784,7 @@
 "LN_Delete_Record_Message_947084" = "Weet je zeker dat je je opname wilt verwijderen?";
 "LN_MagicCode_985336" = "Aanmelden met magische code";
 "LN_Microphone_Modes_Noise_965279" = "Ruisonderdrukking";
+"LN_New_Sidebar_Chips_Menu_Reorder_1058163" = "Versleep om vast te maken of de volgorde te wijzigen";
 "LN_SR_Video_Help_Tip_740471" = "Zoom zal je afbeelding gebruiken om je te identificeren wanneer je Zoom-diensten gebruikt.";
 "LN_Original_Sound_On_965279" = "Oorspronkelijk geluid voor muzikanten: aan";
 "LN_MagicCode_Tip_985336" = "Of sla het wachtwoord over met een %@ die naar je e-mailadres wordt gestuurd.";
@@ -14518,6 +14794,7 @@
 "LN_Create_Voice_Recording_Disclaimer_Info_740471" = "Door op 'OK' te klikken, ga je ermee akkoord dat Zoom je stemafdruk kan maken en analyseren op basis van de referentiestemopname. We slaan die op en gebruiken die om je audio-ervaring te verbeteren en/of om je bij naam te identificeren als spreker wanneer je Zoom-diensten gebruikt.\n\nJe kunt je stemafdruk en referentiestemopname op elk moment verwijderen in je profiel-Instellingen of door je account te verwijderen.";
 "LN_Delete_947084" = "Verwijderen";
 "LN_MagicCode_button_985336" = "eenmalige magische code";
+"LN_Prevent_Capture_type_screen_recording_1022426" = "schermopname";
 "LN_MagicCode_SendTo_985336" = "Er is een magische code verzonden naar %@";
 "LN_Show_Watermark_On_Video_985806" = "Watermerk weergeven op videofeeds";
 "LN_Done_947084" = "Gereed";
@@ -14530,6 +14807,7 @@
 "LN_Video_Recognition_740471" = "Videoherkenning";
 "LN_Use_Voice_Recording_740471" = "Spraakopname gebruiken";
 "LN_You_Created_This_Private_Channel_966144" = "Je hebt dit privékanaal gemaakt";
+"LN_CMCAssetsCard_ChangeSettings" = "Je instellingen wijzigen";
 "LN_Delete_Voice_Confirm_740471" = "Je referentiestemopname kan niet meer worden gebruikt nadat deze is verwijderd, en slimme videoherkenningsfuncties worden uitgeschakeld.";
 "LN_Use_Exist_Image_Desc_740471" = "Je kunt je bestaande afbeelding gebruiken voor betere automatische herkenning.";
 "LN_Enrollment_Completed_740471" = "Registratie voltooid";
@@ -14542,13 +14820,16 @@
 "LN_Join_PMI_Link_912361" = "Deelnemen met persoonlijke link";
 "LN_Apps_Tooltip_951410" = "Apps die toegang hebben tot vergaderinhoud";
 "LN_Confirm_Link_Title_912361" = "Is dit de persoonlijke link waarmee je wilt deelnemen?";
+"LN_New_Sidebar_Chats_Empty_Tip_1058163" = "Mis nooit meer een rechtstreeks bericht. Selecteer een gesprek in de zijbalk om te bekijken.";
 "LN_Add_Channel_Name_To_Create_Channel_966144" = "Voeg kanaalnaam toe om kanaal te maken";
 "LN_AskAICAboutMT_Content_988942" = "Je kunt AI Companion nu vragen stellen over je vergadering.";
 "LN_Members_966144" = "Leden:";
 "LN_New_Channel_Placeholder_966144" = "Gebruikersnaam of e-mailadres ";
 "LN_Use_Exist_Voice_Image_Desc_740471" = "Je kunt je bestaande spraakopname en afbeelding gebruiken voor betere spraakisolatie en automatische herkenning.";
 "LN_Reuse_Exist_Image_Desc_740471" = "Je hebt een bestaande afbeelding voor slimme naamlabels voor video. Wil je je bestaande afbeelding opnieuw gebruiken voor betere automatische herkenning?";
+"LN_New_Sidebar_SharedSpace_Empty_Tip_1058163" = "Werk samen met je team in gedeelde ruimtes. Selecteer er een in de zijbalk om deze hier te bekijken.";
 "LN_SR_Avaliable_740471" = "Slimme herkenning is beschikbaar";
+"LN_New_Sidebar_Apps_Empty_Tip_1058163" = "Al je appgesprekken op één plek. Selecteer een app om te beginnen met chatten.";
 "LN_Video_Recognition_Description_740471" = "Upload een afbeelding van jezelf die gebruikt kan worden voor slimme videoherkenningsfuncties in Zoom-diensten.";
 "LN_ViewDetail_988942" = "Details weergeven";
 "LN_Watermark_On_Video_985806" = "Watermerk op videofeeds";
@@ -14562,7 +14843,9 @@
 "LN_Upload_An_Image_740471" = "Een afbeelding uploaden";
 "LN_Image_Quality_Low_740471" = "Je foto voldoet mogelijk niet aan de optimale vereisten. Werk je foto bij voor het beste resultaat.";
 "LN_Personal_Link_912361" = "Persoonlijke link";
+"LN_New_Sidebar_Folder_Empty_Tip_1058163" = "Organiseer je chats met mappen.  Selecteer er een in de zijbalk om deze hier te bekijken.";
 "LN_AskAICAboutMT_Title_988942" = "AI Companion vragen stellen over deze vergadering";
+"LN_New_Sidebar_Starred_Empty_Tip_1058163" = "Begin met chatten door op een gesprek met een ster te klikken.";
 "LN_Enter_PMI_Title_912361" = "Voer de persoonlijke link in die je wilt gebruiken";
 "LN_Pause_947084" = "Pauzeren";
 "LN_Create_Voice_Recording_Disclaimer_740471" = "Een spraakopname maken";
@@ -14577,12 +14860,14 @@
 "LN_View_Enrolled_Image_740471" = "Afbeelding voor inschrijving bekijken";
 "LN_New_Chat_Creating_Private_Channel_966144" = "Je maakt een privékanaal";
 "LN_ZR_Workplace_SNT_Avaliable_740471" = "Nieuwe slimme herkenningsfuncties, Zoom Rooms en slimme naamlabels voor spraak in de Zoom Workplace-app zijn beschikbaar. Wil je je bestaande spraakopname gebruiken om je aan te melden?";
+"LN_CMCAssetsCard_SummarySharingRestricted" = "Het delen van samenvattingen van vergaderingen is beperkt.";
 "LN_Voice_Recorded_Success_Info_740471" = "We hebben gepersonaliseerde audio-isolatie en automatische slimme naamlabels voor spraak ingeschakeld voor deze opname. Je kunt je spraakopname op elk moment verwijderen of bijwerken in de instellingen voor '%@' in je profiel.";
 "LN_Voice_Recognition_Description_740471" = "Maak een spraakopname die gebruikt kan worden voor slimme verbetering van de spraakkwaliteit en spraakherkenningsfuncties in Zoom-diensten.";
 "LN_Enable_SNT_Image_Desc_740471" = "We hebben automatische slimme naamlabels ingeschakeld voor video met deze afbeelding. Je kunt je afbeelding vanuit je profiel bijwerken of verwijderen in 'Instellingen voor slimme herkenning'.";
 "LN_New_Chat_Creating_Public_Channel_966144" = "Je maakt een openbaar kanaal";
 "LN_Upload_Image_740471" = "Afbeelding uploaden";
 "LN_HaveRecording_988942" = "Je opname is binnenkort klaar.";
+"LN_New_Sidebar_MeetingChats_Empty_Tip_1058163" = "Zet het gesprek voort, zelfs na een vergadering. Kies een vergaderchat in de lijst.";
 "LN_SR_Voice_Help_Tip_740471" = "Zoom gebruikt je stemopname om je audio-ervaring te verbeteren en/of je te identificeren als spreker wanneer je Zoom-diensten gebruikt.";
 "LN_Voice_Recorded_Success_740471" = "Spraak opgenomen";
 "LN_Watermark_On_Share_985806" = "Watermerk op gedeelde inhoud";
@@ -14594,6 +14879,7 @@
 "LN_Delete_Voice_Recording_740471" = "Spraakopname verwijderen";
 "LN_RecapOfMT_988942" = "Hier is een samenvatting van je vergadering";
 "LN_Personalized_Audio_On_965279" = "Gepersonaliseerde audio: aan";
+"LN_New_Sidebar_Channels_Empty_Tip_1058163" = "Blijf in contact met je team via kanalen. Kies er één in de zijbalk om te beginnen.";
 "LN_AskAboutMT_988942" = "Stel vragen over deze vergadering";
 "LN_Microphone_Modes_965279" = "Microfoonmodi";
 "LN_Start_AIC_With_Live_Summary_Content_990843" = "Als je AI Companion inschakelt, worden ook samenvatting van vergadering en live samenvatting ingeschakeld. Alle deelnemers en genodigden hebben toegang tot de vergaderinhoud. Je kunt de toegangsinstellingen wijzigen in het deelvenster AI Companion.";
@@ -14704,3 +14990,241 @@
 "LN_Name_Will_Create_Channel_1020902" = "Door een naam te geven, wordt een kanaal gemaakt";
 "LN_Conversation_Name_1020902" = "Gespreksnaam (optioneel)";
 "LN_Coach_Mark_Tip_Turn_On_923864" = "Inschakelen";
+"LN_Setting_Video_HD_1047285" = "HD";
+"LN_Setting_Video_Mirror_Info_1047285" = "Deze instelling heeft alleen invloed op de manier waarop je je video ziet.";
+"LN_EndWebinar_1041113" = "Webinar beëindigen";
+"LN_Jump_To_Latest_998823" = "Ga naar meest recente";
+"LN_Revert_998823" = "Ongedaan maken";
+"LN_Setting_Video_Ratio_1047285" = "Oorspronkelijke verhouding";
+"LN_Setting_Phone_Voicemail_VB_Default_Title_989109" = "Standaardachtergrond";
+"LN_Setting_Video_Mirror_1047285" = "Mijn videovoorbeeld spiegelen";
+"LN_Unable_Add_External_User_1036535" = "Kan geen externe gebruikers toevoegen omdat de kanaalinstellingen dit niet toestaan.";
+"LN_Access_Capture_Audio_111977" = "Geef toegang om audio van andere apps vast te leggen.";
+"LN_KeepMeetingActive_1041113" = "Vergadering actief houden";
+"LN_Sip_Language_Hindi_1036485" = "Hindi";
+"LN_WebinarWillEnd_S_Inactivity_1041113" = "Deze webinar eindigt automatisch over %ds wegens inactiviteit.";
+"LN_WebinarEnd_Inactivity_Title_1041113" = "De webinar is beëindigd wegens inactiviteit";
+"LN_Name_Will_Create_Channel_Optional_1020902" = "Bij naamgeving wordt een kanaal aangemaakt (optioneel)";
+"LN_Sip_Language_Telugu_1036485" = "Telugu";
+"LN_WebinarWillEnd_MS_Inactivity_1041113" = "Deze webinar eindigt automatisch over %1$dm %2$ds wegens inactiviteit.";
+"LN_Blur_Rectangle_111977" = "Rechthoek vervagen";
+"LN_DontAutoEndWebinar_1041113" = "Mijn webinars niet automatisch beëindigen";
+"LN_MeetingEnd_Inactivity_Content_1041113" = "Deze vergadering werd automatisch beëindigd na %@ minuten inactiviteit.";
+"LN_WebinarEnd_Inactivity_Content_1041113" = "Deze webinar werd automatisch beëindigd na %@ minuten inactiviteit.";
+"LN_DontAutoEndMeeting_1041113" = "Mijn vergaderingen niet automatisch beëindigen";
+"LN_Sip_Language_Bengali_1036485" = "Bengaals";
+"LN_Blur_Brush_111977" = "Vervagingskwast";
+"LN_MeetingWillEnd_MS_Inactivity_1041113" = "Deze vergadering eindigt automatisch over %1$dm %2$ds wegens inactiviteit.";
+"LN_Sip_Language_Tamil_1036485" = "Tamil";
+"LN_DontAutoEndMeeting_Setting_1041113" = "Vergaderingen niet automatisch beëindigen na inactiviteit";
+"LN_EndThisMeeting?_1041113" = "Deze vergadering beëindigen?";
+"LN_MeetingEnd_Inactivity_Title_1041113" = "De vergadering is beëindigd vanwege inactiviteit";
+"LN_Webinar_Will_Start_On_%1$@_At_%2$@_1042795" = "Deze webinar begint op %1$@ om %2$@";
+"LN_Simulive_Will_Start_On_%1$@_At_%2$@_1042795" = "Deze simulive webinar begint op %1$@ om %2$@";
+"LN_MeetingWillEnd_S_Inactivity_1041113" = "Deze vergadering eindigt automatisch over %ds wegens inactiviteit.";
+"LN_PMI_Invalid_912361" = "Deze persoonlijke link is ongeldig. Controleer en probeer het opnieuw.";
+"LN_Blur_Intensity_111977" = "Intensiteit van vervagen";
+"LN_EndThisWebinar?_1041113" = "Deze webinar beëindigen?";
+"LN_NoteAddedTab_%1$@_%2$@_%3$@_957094" = "%1$@ heeft een %2$@-tabblad '%3$@' toegevoegd";
+"LN_NoteRenamedTab_%1$@_%2$@_%3$@_%4$@_957094" = "%1$@ heeft het %2$@-tabblad '%3$@' hernoemd naar '%4$@'";
+"LN_NoteRmovedTab_%1$@_%2$@_%3$@_957094" = "%1$@ heeft het %2$@-tabblad '%3$@' verwijderd";
+"LN_99+_new_917463" = "99+ nieuwe";
+"LN_Summarize_99+_new_917463" = "99+ nieuwe samenvatten";
+"LN_KeepWebinarActive_1041113" = "Webinar actief houden";
+"LN_CodeSignIn_Des_1001610" = "Ontvang een eenmalige toegangscode via %@.";
+"LN_MagicCode_1001610" = "Magische code";
+"LN_MagicCode_Des_1001610" = "Ontvang een eenmalige magische toegangscode via %@.";
+"LN_TryAnotherWay2SignIn_1001610" = "Op een andere manier aanmelden";
+"LN_PasskeyBind_Title_1001610" = "Sneller aanmelden met je gezicht, vingerafdruk of pincode";
+"LN_PasskeyBind_Success_Tip_1001610" = "Je kunt nu je vingerafdruk, gezicht, pincode of hardwarebeveiligingssleutel gebruiken om te verifiëren dat jij je aanmeldt.";
+"LN_OTP_Notification_ChangePassword_SubTitle_1065104" = "Als jij dit niet bent, raden we aan je wachtwoord bij te werken en tweestapsverificatie in te schakelen om je account te beveiligen.";
+"LN_MFA_Title_1065104" = "Tweestapsverificatie";
+"LN_PasskeyAuth_Fail_1001610" = "Aanmelden met toegangscode mislukt (foutcode: %d).";
+"LN_PasskeyAuth_Title_1001610" = "Gebruik je toegangscode om te bevestigen dat jij het bent";
+"LN_EnterPhonePassword_Des_1001610" = "Voer het wachtwoord van je telefoonnummer in";
+"LN_PasskeyBind_Fail_1001610" = "Toegangscode genereren mislukt (foutcode: %d). Klik op Volgende om het opnieuw te proberen.";
+"LN_Or_1032636" = "%1$@ of %2$@";
+"LN_ChooseToSignIn_1001610" = "Kies hoe je je wilt aanmelden:";
+"LN_SignIn_CoachMark_Content_1051844" = "Krijg via Zoom Workplace toegang tot je opnamen, samenvattingen en meer nadat de vergadering is afgelopen.";
+"LN_ZUI_Get_Mobile_App_Desc_1057446" = "Blijf verbonden, waar je ook bent. Scan de QR-code vanaf je mobiele apparaat of ga naar [zoom.com/go]";
+"LN_EnterPassword_Des_1001610" = "Voer het wachtwoord van je e-mailadres in.";
+"LN_ZUI_Get_Mobile_App_Title_1057446" = "De mobiele app voor Zoom Workplace downloaden";
+"LN_SignIn_CoachMark_Title_1051844" = "Meld je aan om alles uit Zoom Workplace te halen";
+"LN_EnterPassword_1001610" = "Wachtwoord invoeren";
+"LN_UsePasskey_1001610" = "Je toegangscode gebruiken";
+"LN_UsePasskey_Des_1001610" = "Op je apparaat wordt er om je gezicht, vingerafdruk, pincode of beveiligingssleutel gevraagd.";
+"LN_PasskeyBind_Tip_1001610" = "Maak een toegangscode om je aan te melden bij je Zoom-account.\n Hiervoor heb je geen wachtwoord of codes nodig.";
+"LN_SignOut_Info_939162" = "Je maakt notities. Het stopt en wordt automatisch opgeslagen.";
+"LN_Quit_939162" = "Afsluiten";
+"LN_SignOut_Message_939162" = "Afmelden bij je account";
+"LN_Quit_Message_939162" = "Zoom Workplace afsluiten";
+"LN_New_Notes_939162" = "Nieuwe notities";
+"LN_Quit_Info_939162" = "Je maakt notities. Het stopt en wordt automatisch opgeslagen.";
+"LN_Transcription_disable_939162" = "Transcripties worden niet ondersteund";
+"LN_SignOut_939162" = "Afmelden";
+"LN_Turn_off_notification_for_app_name_1035096" = "Meldingen voor %1$@ uitschakelen";
+"LN_New_Notes_1035096" = "Nieuwe notitie";
+"LN_Meeting_detected_1035096" = "Vergadering gedetecteerd";
+"LN_Skip_for_now_1035096" = "Voorlopig overslaan";
+"LN_Enable_audio_for_full_experience_1035096" = "Audio inschakelen voor een volledige ervaring";
+"LN_Allow_Zoom_to_access_system_microphone_and_speaker_when_you_continue_1035096" = "Geef Zoom toegang tot systeemaudio en -microfoon wanneer je doorgaat.";
+"LN_Toolbar_Admin_Locked_1060393" = "De volgende instellingen zijn vergrendeld door je beheerder en kunnen niet worden gewijzigd.";
+"LN_Link_To_Team_Chat_Group_Chat_1017555" = "Link naar Team Chat-groepschat";
+"LN_Zoom_939162" = "Zoom";
+"LN_Hide_App_939162" = "%@ verbergen";
+"LN_Quit_App_939162" = "%@ afsluiten";
+"LN_Record_Tip_1035168" = "Opnemen (Enter)";
+"LN_What_New_In_Chat_Title_1017555" = "Wat is er nieuw in de chat?";
+"LN_ConvertToChannel_Blurb_Tip_1017555" = "Je staat op het punt om '%@' om te zetten in een privékanaal. Je wordt de eigenaar van het kanaal. Deze wijziging kan niet ongedaan worden gemaakt.";
+"LN_Toolbar_Meeting_Info_Encryption_Security_1060393" = "Beveiligingsinstellingen";
+"LN_Toolbar_How_Many_Panelists_Can_Share_At_A_Time_1060393" = "Hoeveel panelleden kunnen tegelijk delen?";
+"LN_Toolbar_Meeting_Info_Encryption_Code_BO_2_1060393" = "Deelnemers moeten controleren of hun beveiligingscodes overeenkomen met die van jou om er zeker van te zijn dat de aparte vergaderruimte end-to-end versleuteld is.";
+"LN_NewBO_AutoMoveToBO_IncludeWRTip_974017" = "Deelnemers in de wachtruimte worden toegelaten en verplaatst";
+"LN_ZUIST_Preferred_Translation_Language_1048759" = "Voorkeurstaal voor vertaling";
+"LN_Group_Chat_Will_Be_Created_1017555" = "Er wordt een nieuwe groepschat met deze gebruikers gemaakt als er nog geen bestaat. Verwijder het vinkje om individuele berichten te versturen.";
+"LN_Toolbar_Plist_More_Host_Tool_Meeting_1060393" = "Host-tools voor deelnemers";
+"LN_%@_recipient_Timezone_1043637" = "Tijdzone van %@";
+"LN_Simplified_Toolbar_Tip_Title_1060379" = "De vergaderwerkbalk is vereenvoudigd";
+"LN_Simplified_Toolbar_Tip_Desc_1060379" = "Vind snel wat je nodig hebt in 'Meer' en maak tools aan je werkbalk vast om je vergaderervaring te personaliseren.";
+"WorkForceManagement" = "Workforce Management";
+"LN_Recording_State_Stopped_1035168" = "Opname: gestopt";
+"LN_Toolbar_When_Enabled_All_Signed_In_Participants_Can_Share_Docs_1060393" = "Als deze optie is ingeschakeld, kunnen alle aangemelde deelnemers (intern en extern) documenten delen tijdens deze vergadering.";
+"LN_Toolbar_All_Docs_Created_Will_Belong_To_The_Host_Webinar_1060393" = "De host wordt de eigenaar van alle documenten die in de webinar worden gemaakt.";
+"LN_Recording_Warning_1035168" = "Bezig met opnemen: tijdswaarschuwing";
+"LN_Toolbar_All_Screens_Mode_1060393" = "Modus Alle schermen";
+"LN_Toolbar_Show_Participants_Local_Time_1060393" = "Lokale tijd van deelnemer weergeven";
+"LN_Convert_Private_Channel_Disable_Tip_1017555" = "Privékanalen zijn uitgeschakeld door je accountbeheerder. Je kunt deze chat niet omzetten.";
+"LN_About_App_939162" = "Over %@";
+"LN_Toolbar_When_Enabled_All_Signed_In_Participants_Can_Share_Docs_Webinar_1060393" = "Als deze optie is ingeschakeld, kunnen alle aangemelde deelnemers (intern en extern) documenten delen tijdens deze webinar.";
+"LN_Toolbar_Meeting_Info_Encryption_Code_Meeting_2_1060393" = "Deelnemers moeten controleren of hun beveiligingscodes overeenkomen met die van jou om er zeker van te zijn dat de vergadering end-to-end versleuteld is.";
+"LN_Can_Not_Access_This_Chat_Content_1017555" = "Je bent geen lid. Neem contact op met de persoon die de link heeft gedeeld.";
+"LN_Screenshot_Record_1035168" = "Scherm opnemen";
+"LN_Recording_State_Paused_1035168" = "Opname: gepauzeerd";
+"LN_Sidebar_Menu_Manage_Sidebar" = "Zijbalk beheren";
+"LN_Convert_To_Private_Channel_Des_1017555" = "Nadat de chat is veranderd in een kanaal, kun je deze een andere naam geven, beschrijvingen bewerken, leden beheren, geavanceerde instellingen openen en het classificatielabel wijzigen.";
+"LN_Toolbar_Meeting_Info_Encryption_Title_1060393" = "Verbeterde encryptie is ingeschakeld";
+"LN_Toolbar_Focus_Mode_1060393" = "Focusmodus";
+"LN_Toolbar_Who_Can_Share_When_Someone_Else_Is_Sharing_1060393" = "Wie kan delen wanneer iemand anders aan het delen is?";
+"LN_Toolbar_Host_Tool_Plist_Title_Webinar_1060393" = "Panelleden en deelnemers";
+"LN_Toolbar_Who_Can_Create_A_Doc_In_This_Meeting_1060393" = "Wie kan een document maken in deze vergadering?";
+"LN_Allow_access_to_your_microphone_and_speaker_ZOOM_1035096" = "Geef nadat je start toegang tot je microfoon en luidspreker voor de beste ervaring.";
+"LN_Processing_Recording_1035168" = "Opname wordt verwerkt";
+"LN_Leave_Chat_Content_1017555" = "Er zijn geen andere leden in dit gesprek. Als je dit gesprek verlaat, wordt het verwijderd en verlies je toegang tot alle berichten.";
+"LN_Sidebar_Menu_Badging_Title" = "Badges";
+"LN_NewBO_AutoMoveToBO_974017" = "Alle toegewezen deelnemers automatisch verplaatsen naar aparte vergaderruimtes wanneer aparte vergaderruimtes worden geopend";
+"LN_Other_Timezone_1043637" = "Overig";
+"LN_Convert_To_Channel_To_Edit_Setting_Tip_1017555" = "Dit zijn actieve instellingen. Zet deze chat om in een kanaal om de instellingen te bewerken.";
+"LN_Toolbar_Video_Effect_Setting_1055261" = "Video- en effectinstellingen";
+"LN_Need_grant_mic_permission_1035096" = "Je moet Zoom toegang geven tot de microfoon om spraaknotities te kunnen maken. [Instellingen]";
+"LN_Can_Not_Access_This_Chat_Title_1017555" = "Je hebt geen toegang tot deze chatbericht";
+"LN_Toolbar_Depending_On_Host_Settings_You_Might_Only_See_Local_Time_1060393" = "Afhankelijk van de instellingen van de host zie je misschien alleen lokale tijden die verschillen van jouw tijdzone.";
+"LN_Download_Paused_Resume_When_Meeting_Ends_928475" = "Gepauzeerd. De download wordt hervat wanneer je vergadering voorbij is.";
+"LN_Owner_Role_Tip_1017555" = "De eigenaar is zichtbaar vanwege oude instellingen.";
+"LN_Toolbar_Allow_Panelists_To_Share_Docs_1060393" = "Panelleden toestaan om documenten te delen";
+"LN_Toolbar_Who_Can_Create_A_Doc_In_This_Webinar_1060393" = "Wie kan een document maken in deze webinar?";
+"LN_Recording_Stop_1035168" = "Bezig met opnemen. Klik om te stoppen.";
+"LN_Toolbar_How_Many_Participants_Can_Share_At_A_Time_1060393" = "Hoeveel deelnemers kunnen tegelijk delen?";
+"LN_Processing_1035168" = "Verwerken";
+"LN_Remove_Tip_1017555" = "Alleen leden van het account van %@ kunnen mensen uit deze chat verwijderen.";
+"LN_Toolbar_Dark_Right_Panel_1060393" = "Donker rechterpaneel";
+"LN_Got_It_1060379" = "Begrepen";
+"LN_Sidebar_Menu_Manage_Badges" = "Badges beheren";
+"LN_Recording_Continue_1035168" = "Opname gepauzeerd. Klik om door te gaan.";
+"LN_Toolbar_Setting_Display_Controls_1060393" = "Display en bedieningselementen";
+"LN_Convert_To_Private_Channel_Tip_1017555" = "Alleen leden van het account van %@ kunnen deze chat omzetten in een kanaal.";
+"LN_Toolbar_Meeting_Info_Encryption_Code_BO_1_1060393" = "Lees de beveiligingscodes voor aan alle deelnemers in de aparte vergaderruimte.";
+"LN_Voice_Notes_939162" = "Mijn notities";
+"LN_Sidebar_Menu_Behavior_Title" = "Gedrag van de zijbalk";
+"LN_What_New_In_Chat_Content_With_Permission_1017555" = "\n1. Geen eigenaar, dezelfde toestemmingen voor iedereen.\n2. Je kunt <a href='%1$@'>deze chat omzetten in een privékanaal</a> voor meer controle.";
+"LN_Follow_All_Applicable_Legal_Desc_1035096" = "Volg alle toepasselijke wetten als je gesprekken transcribeert";
+"LN_Toolbar_Plist_More_Host_Tool_Webianr_1060393" = "Host-tools voor panelleden en deelnemers";
+"LN_ZUIST_Preferred_Translation_Language_Help_1048759" = "Standaardtaal voor vertaling van voicemail, gespreksopnames, gesprekssamenvattingen en sms-berichten";
+"LN_Toolbar_Setting_Request_AIC_1060393" = "Host verzoeken om AI Companion te starten";
+"LN_Toolbar_All_Docs_Created_Will_Belong_To_The_Host_1060393" = "De host wordt de eigenaar van alle documenten die in de vergadering worden gemaakt.";
+"LN_Record_1035168" = "Opnemen";
+"LN_Recording_State_1035168" = "Opnemen ... ";
+"LN_Toolbar_Allow_Participants_To_Share_Docs_1060393" = "Deelnemers toestaan om documenten te delen";
+"LN_NewBO_AutoMoveToBO_IncludeWR_974017" = "Deelnemers in de wachtruimte opnemen";
+"LN_Toolbar_Setting_Send_Reactions_1060393" = "Reacties sturen";
+"LN_Forward_As_One_Group_Chat_1017555" = "Doorsturen als één groepschat naar alle gebruikers";
+"LN_Toolbar_Meeting_Info_Encryption_Code_Meeting_1_1060393" = "Lees de beveiligingscodes voor aan alle deelnemers aan de vergadering.";
+"LN_Search_ShortCut_Updated_Title_1078847" = "Sneltoets bijgewerkt.";
+"LN_Chat_Archived_Member_Tip_1017555" = "Deze chat is gearchiveerd. Als je berichten wilt versturen, vraag je een lid van het account van %@ om de archivering ongedaan te maken.";
+"LN_Draft_Tip_1034529" = "Schrijf, beheer en plan je concepten om ze op een later moment te verzenden.";
+"LN_Microphone_activity_detected_1035096" = "Er is microfoonactiviteit gedetecteerd";
+"LN_Toolbar_Share_Disabled_By_Admin_1060393" = "Deze instelling is vergrendeld door je beheerder en kan niet worden gewijzigd.";
+"LN_Toolbar_Share_Setting_Locked_By_Admin_1060393" = "De volgende instellingen zijn vergrendeld door je beheerder en kunnen niet worden gewijzigd.";
+"LN_MissedCalls_Tip_1034529" = "Blijf op de hoogte van gemiste oproepen: selecteer er een in de zijbalk om deze te bekijken.";
+"LN_Search_ShortCut_Updated_Content_1078847" = "Wil je globaal zoeken? Gebruik dan %1$@. \nMet %2$@ zoek je nu in de huidige chat.";
+"LN_ViewMTRecap_1067124" = "Samenvatting van vergadering weergeven";
+"LN_1_Minute_ago_1034529" = "1 minuut geleden";
+"LN_VoiceNotes_Stop_All_Notes_Transcriptions_1081790" = "Transcripties van alle notities stoppen";
+"LN_1_Minute_1034529" = "1 minuut";
+"LN_Toolbar_E2EE_Encryption_Title_1060393" = "End-to-end-encryptie staat aan";
+"LN_To_%@_1034529" = "Naar %@";
+"LN_Auto_Archived_Owner_System_Message_1017555" = "Deze chat is automatisch gearchiveerd na een periode zonder activiteit.\nDeze instelling is ingesteld door je beheerder.";
+"LN_Bookmark_Tip_1034529" = "Houd belangrijke berichten binnen handbereik. Selecteer een bladwijzer om deze hier te bekijken.";
+"LN_Your_Timezone_1043637" = "Jouw tijdzone";
+"LN_Reply_1034529" = "(Antwoord)";
+"LN_%d_Minute_ago_1034529" = "%d minuten geleden";
+"LN_Remove_From_Chat_Sys_Message_1017555" = "Je hebt %@ verwijderd";
+"LN_%d_Minute_1034529" = "%d minuten";
+"LN_Auto_Archived_Member_System_Message_1017555" = "Deze chat is automatisch gearchiveerd na een periode zonder activiteit.\nDeze instelling is ingesteld door de accountbeheerder van %@.";
+"LN_1_Hour_ago_1034529" = "1 uur geleden";
+"LN_1_Hour_1034529" = "1 uur";
+"LN_Sent_Tip_1034529" = "Alle berichten die je verzendt, worden hier verzameld. Selecteer er een in de zijbalk om deze hier te bekijken.";
+"LN_VoiceNotes_Stop_Notes_Transcription_1081790" = "Transcriptie van notities stoppen";
+"LN_Toolbar_Share_Disabled_By_All_Screens_Mode_1060393" = "De volgende instellingen zijn uitgeschakeld in de modus Alle schermen.";
+"LN_VoiceNotes_Stop_Notes_Tips_1081790" = "De transcriptie van notities is uitgeschakeld.";
+"LN_Reminder_Tip_1034529" = "Blijf op de hoogte van je berichten: al je herinneringen vind je hier. Selecteer er één in de zijbalk om deze te bekijken.";
+"LN_MorePannel_Empty_Text_1036353" = "Je hebt geen items in Meer.";
+"LN_%d_Hours_ago_1034529" = "%d uur geleden";
+"LN_%d_Hours_1034529" = "%d uur";
+"LN_TTurn_this_notification_off_1035096" = "Deze melding uitschakelen";
+"LN_All_Reminders_1034529" = "Alle herinneringen";
+"LN_Chat_Archived_Owner_Tip_1017555" = "Deze chat is gearchiveerd.";
+"LN_Start_Chat_Sys_Message_1017555" = "Je hebt deze chat met %@ gestart";
+"LN_RA_Photo_Multiple_Faces_1034845" = "Meerdere gezichten gedetecteerd. Zorg ervoor dat er maar één persoon zichtbaar is in het kader.";
+"LN_RA_Unable_Verify_1034845" = "We kunnen je bewegingen niet verifiëren. Probeer het opnieuw.";
+"LN_RA_Photo_Taken_Successfully_1034845" = "Foto gelukt";
+"LN_Choose_Avatar_Title_1034845" = "Kies een avatartype";
+"LN_Cartoon_Avatar_Reach_Limit_Tip_1034845" = "Je hebt de limiet van cartoon-avatars bereikt. Verwijder een bestaande avatar voordat je een nieuwe maakt.";
+"LN_RA_Create_Avatar_1034845" = "Avatar maken";
+"LN_RA_Introduction_Page_Policy_1034845" = "Door op 'Doorgaan' te klikken, ga je ermee akkoord dat Zoom je gezichtsgeometrie en gelaatstrekken kan analyseren en opslaan om je fotorealistische avatar te creëren en te animeren. Je kunt de geüploade foto en de bijbehorende gezichtsgegevens op elk moment verwijderen door je avatar of je account te verwijderen.";
+"LN_RA_Creation_Loading_1034845" = "Het kan enkele minuten duren om je avatar te voltooien. Als je deze pagina verlaat, stellen we je op de hoogte wanneer deze klaar is.";
+"LN_RA_Verify_Nod_head_1034845" = "Knik met je hoofd";
+"LN_RA_Photo_Uploaded_Successfully_1034845" = "Foto geüpload";
+"LN_RA_Photo_Unable_Verify_Photo_1034845" = "We kunnen je foto niet verifiëren. Probeer het opnieuw.";
+"LN_Video_Realistic_Avatar_Tip_1034845" = "Dit is een door AI gegenereerde realistische avatar, die alleen voor video (niet voor audio) wordt gebruikt.";
+"LN_RA_Photo_Face_Blocked_1034845" = "Je gezicht is geblokkeerd. Verwijder alle obstakels.";
+"LN_RA_Verify_Photo_1034845" = "Foto verifiëren";
+"LN_RA_Creation_Failed_1034845" = "Het maken van je realistische avatar is mislukt. Probeer het opnieuw.";
+"LN_Create_Realistic_Avatar_1034845" = "Een realistische avatar maken";
+"LN_RA_Photo_No_Faces_1034845" = "Geen gezichten gedetecteerd. Zorg dat je gezicht duidelijk zichtbaar is in het kader.";
+"LN_RA_Verify_Turn_right_1034845" = "Draai je gezicht naar rechts, daarna terug";
+"LN_RA_Virtual_Camera_Not_Supported_1034845" = "Virtuele camera wordt niet ondersteund. Wijzig je camerakeuze.";
+"LN_RA_Verify_Turn_left_1034845" = "Draai je gezicht naar links, daarna terug";
+"LN_RA_Apply_Failed_Title_1034845" = "De realistische avatar kan niet worden geladen";
+"LN_RA_Introduction_Page_In_Meeting_1034845" = "Je kunt tijdens een vergadering geen realistische avatar maken.";
+"LN_RA_Apply_Failed_Description_1034845" = "Je video en realistische avatar zijn uitgeschakeld. In plaats daarvan kun je een cartoon-avatar of video inschakelen.";
+"LN_RA_Photo_Face_Not_Visible_1034845" = "Je gezicht is niet volledig zichtbaar. Kijk recht in de camera.";
+"LN_Realistic_Avatar_Apply_1034845" = "Toepassen";
+"LN_Realistic_Avatar_Ready_1034845" = "Je realistische avatar is klaar.";
+"LN_RA_Verify_Description_1034845" = "Volg de instructies op het scherm om te verifiëren dat de toegevoegde foto van jou is. Druk op de knop Starten om te beginnen.";
+"LN_RA_Upload_Photo_1034845" = "Foto uploaden";
+"LN_Realistic_Avatar_Creation_Failed_1034845" = "Het maken van je realistische avatar is mislukt. Probeer het later opnieuw.";
+"LN_Realistic_Avatar_1034845" = "Realistische avatar";
+"LN_RA_Introduction_Page_Limit_Description_1034845" = "Je kunt tot 5 realistische avatars maken. Verwijder een bestaande avatar voordat je een nieuwe maakt of maak in plaats daarvan een cartoon-avatar.";
+"LN_RA_Take_Photo_1034845" = "Foto maken";
+"LN_RA_Verify_Open_mouth_1034845" = "Open je mond, daarna sluiten";
+"LN_RA_Photo_Requirement_1034845" = "Maak of upload een goed verlichte foto van jezelf. Plaats jezelf binnen het kader met je gezicht gecentreerd, schouders zichtbaar, en zonder enige vorm van gezichtsbedekking.";
+"LN_RA_Verify_Blink_1034845" = "Knipper met beide ogen";
+"LN_RA_Verification_Complete_1034845" = "Verificatie voltooid";
+"LN_Realistic_Avatar_Try_Again_1034845" = "Opnieuw proberen";
+"LN_Cartoon_Avatar_1034845" = "Cartoon-avatar";
+"LN_RA_Photo_Face_Outside_1034845" = "Je gezicht valt buiten het kader. Centreer jezelf.";
+"LN_VoiceNotes_disabled_939162" = "Mijn notities is uitgeschakeld";
+"LN_Switch_Message_939162" = "Van account wisselen";
+"LN_Return_Notes_939162" = "Terug naar notitie";
+"LN_Switch_939162" = "Wisselen";
+"LN_Switch_Info_939162" = "Je maakt notities. Het stopt en wordt automatisch opgeslagen.";

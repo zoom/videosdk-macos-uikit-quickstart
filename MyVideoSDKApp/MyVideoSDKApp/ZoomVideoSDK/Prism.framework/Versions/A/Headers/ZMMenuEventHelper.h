@@ -26,4 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSEvent *)generateFakeEventForEvent:(NSEvent *)event;
 @end
 
+@interface NSMenu (ZMMenuEventHelper)
+@property (nonatomic, assign) BOOL zm_ignoreTrackingNSMenuEvent;
+@end
+
 NS_ASSUME_NONNULL_END

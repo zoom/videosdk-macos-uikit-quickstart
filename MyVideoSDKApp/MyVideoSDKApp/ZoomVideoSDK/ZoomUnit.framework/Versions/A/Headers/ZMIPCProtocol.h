@@ -14,6 +14,7 @@ typedef NS_ENUM(NSUInteger, ZMIPCCustomType){
 typedef NS_ENUM(NSUInteger, ZMIPCTypeConf2PT) {
     ZMIPCTypeConf2PT_ConfFail = 1,
     ZMIPCTypeConf2PT_OpenSetting,
+    ZMIPCTypeConf2PT_CloseSetting,
     ZMIPCTypeConf2PT_ProfileCardRefreshAvatar,
     ZMIPCTypeConf2PT_ProfileCardWillDisappear,
     ZMIPCTypeConf2PT_ProfileCardSelectedChanged,

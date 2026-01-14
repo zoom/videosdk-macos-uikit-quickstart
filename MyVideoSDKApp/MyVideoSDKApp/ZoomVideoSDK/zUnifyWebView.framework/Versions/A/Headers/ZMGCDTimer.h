@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, ZMGCDTimerState){
 
 @interface ZMGCDTimer : NSObject
 
-@property (nonatomic, copy) void (^onTimerStateChanged)(ZMGCDTimer *timer);
+@property (nonatomic, copy, nullable) void (^onTimerStateChanged)(ZMGCDTimer *timer);
 
 #pragma mark - Once Timer
 - (instancetype)initOnceTimerWith:(NSTimeInterval)timeInterval

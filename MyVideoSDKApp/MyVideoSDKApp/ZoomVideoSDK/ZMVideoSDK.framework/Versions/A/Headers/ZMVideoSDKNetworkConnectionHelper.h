@@ -33,17 +33,17 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKProxySettingHandler : NSObject
 
 /**
- * @brief Get the address of the proxy host.
+ * @brief Gets the proxy host's address.
  */
 @property (nonatomic, copy, readonly) NSString * _Nullable proxyHost;
 
 /**
- * @brief Get the proxy port.
+ * @brief Gets the proxy port.
  */
 @property (nonatomic, assign, readonly) unsigned int proxyPort;
 
 /**
- * @brief Get the description of the proxy.
+ * @brief Gets the proxy's description.
  */
 @property (nonatomic, copy, readonly) NSString * _Nullable proxyDescription;
 
@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)inputUsernamePassword:(NSString *)userName password:(NSString *)psw;
 
 /**
- * @brief Cancel the process to input the username and password of the proxy.
+ * @brief Cancels the process to input the username and password of the proxy.
  */
 - (void)cancel;
 
@@ -69,22 +69,22 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKSSLCertificateInfo : NSObject
 
 /**
- * @brief Get the value of whom the SSL certificate is issued to.
+ * @brief Gets the value of whom the SSL certificate is issued to.
  */
 @property (nonatomic, copy, readonly, nullable) NSString * certIssuedTo;
 
 /**
- * @brief Get the value that who issues the SSL certificate.
+ * @brief Gets the value that who issues the SSL certificate.
  */
 @property (nonatomic, copy, readonly, nullable) NSString * certIssuedBy;
 
 /**
- * @brief Get the serial number of the SSL certificate.
+ * @brief Gets the serial number of the SSL certificate.
  */
 @property (nonatomic, copy, readonly, nullable) NSString * certSerialNum;
 
 /**
- * @brief Get the SSL certificate's fingerprint.
+ * @brief Gets the SSL certificate's fingerprint.
  */
 @property (nonatomic, copy, readonly, nullable) NSString * certFingerprint;
 
@@ -93,14 +93,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * @class ZMVideoSDKNetworkConnectionHelper
- * @brief A helper class used to configure proxy settings for SDK network connections.
+ * @brief A helper class for configuring proxy settings for SDK network connections.
  */
 @interface ZMVideoSDKNetworkConnectionHelper : NSObject
 
 /**
- * @brief Set the proxy that the user want to use according to your net environment.
+ * @brief Sets the proxy that the user want to use according to your net environment.
  * @param proxySetting The proxy ip address and port that user want to use, should be organized like ip:port, such as '255.255.255.255:8080'. Using ';' to separate multi proxies.
- * @return If the function succeeds, the return value is ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)configureProxy:(ZMVideoSDKProxySettings*)proxySetting;
 @end

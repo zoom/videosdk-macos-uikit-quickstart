@@ -290,6 +290,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSImage * _Nullable)getLightCobrandingDialogLogo;
 - (NSImage * _Nullable)getDarkCobrandingDialogLogo;
 
+// Deeplink
+- (BOOL)chechIfZoomInternalNavigateURL:(NSURL *)url;
+- (BOOL)handleZoomInternalNavigateURLAction:(NSString *)url;
+- (BOOL)checkAndHandleZoomInternalNavigateURLAction:(NSURL *)url;
 @end
 
 NS_ASSUME_NONNULL_END

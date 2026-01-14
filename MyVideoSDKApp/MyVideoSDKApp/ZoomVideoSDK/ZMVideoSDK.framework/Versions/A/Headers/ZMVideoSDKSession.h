@@ -16,15 +16,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMFileTransferProgress : NSObject
 /**
- * @brief The ratio of the file transfer completed.
+ * @brief The file transfer's completion ratio.
  */
 @property(nonatomic, assign, readonly) unsigned int ratio;
 /**
- * @brief The size of the file transferred so far in bytes.
+ * @brief The file's size transferred so far in bytes.
  */
 @property(nonatomic, assign, readonly) unsigned long long completeSize;
 /**
- * @brief The speed of the file transfer in bits per second.
+ * @brief The file transfer's speed in bits per second.
  */
 @property(nonatomic, assign, readonly) unsigned int bitPreSecond;
 @end
@@ -32,15 +32,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * @class ZMVideoSDKFileStatus
- * @brief Represents the status of a file transfer, including current state and progress.
+ * @brief Represents a file transfer's status, including current state and progress.
  */
 @interface ZMVideoSDKFileStatus : NSObject
 /**
- * @brief The status of the file transfer.
+ * @brief The file transfer's status.
  */
 @property(nonatomic, assign, readonly) ZMVideoSDKFileTransferStatus transStatus;
 /**
- * @brief The progress of the file transfer.
+ * @brief The file transfer's progress.
  */
 @property(nonatomic, retain, readonly) ZMFileTransferProgress *transProgress;
 @end
@@ -52,11 +52,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKSendFile : NSObject
 /**
- * @brief The timestamp of the file transfer.
+ * @brief The file transfer's timestamp.
  */
 @property(nonatomic, assign, readonly) time_t timeStamp;
 /**
- * @brief Determine whether the file transfer is send to all.
+ * @brief Determines whether the file transfer is send to all.
  */
 @property(nonatomic, assign, readonly) BOOL isSendToAll;
 /**
@@ -68,17 +68,17 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic, copy, readonly) NSString *fileName;
 /**
- * @brief The status of the file transfer.
+ * @brief The file transfer's status.
  */
 @property(nonatomic, retain, readonly) ZMVideoSDKFileStatus *status;
 /**
- * @brief The receiver of the file transfer.
+ * @brief The file transfer's receiver.
  */
 @property(nonatomic, assign, readonly) ZMVideoSDKUser * _Nullable receiver;
 
 /**
- * @brief Cancel the file transfer.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Cancels the file transfer.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)cancelSend;
 @end
@@ -90,11 +90,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKReceiveFile : NSObject
 /**
- * @brief The timestamp of the file transfer.
+ * @brief The file transfer's timestamp.
  */
 @property(nonatomic, assign, readonly) time_t timeStamp;
 /**
- * @brief Determine whether the file transfer is send to all.
+ * @brief Determines whether the file transfer is send to all.
  */
 @property(nonatomic, assign, readonly) BOOL isSendToAll;
 /**
@@ -106,23 +106,23 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic, copy, readonly) NSString *fileName;
 /**
- * @brief The status of the file transfer.
+ * @brief The file transfer's status.
  */
 @property(nonatomic, retain, readonly) ZMVideoSDKFileStatus *status;
 /**
- * @brief The sender of the file transfer.
+ * @brief The file transfer's sender.
  */
 @property(nonatomic, assign, readonly) ZMVideoSDKUser * _Nullable sender;
 
 /**
- * @brief Start receive the file.
- * @param downloadPath The download path, you need to pass the complete path, including the file name and file format.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Starts receive the file.
+ * @param downloadPath The download path. Pass the complete path, including the file name and file format.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)startReceive:(NSString *)downloadPath;
 /**
- * @brief Cancel receive the file.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Cancels receive the file.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)cancelReceive;
 @end
@@ -135,129 +135,129 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKSessionAudioStatisticInfo : NSObject
 
 /**
- * @brief Get the frequency in kilohertz (KHz) sent by the current user.
+ * @brief Gets the frequency in kilohertz (KHz) sent by the current user.
  */
 @property(nonatomic, assign, readonly) int sendFrequency;
 
 /**
- * @brief Get the audio latency (delay in network data transfer) experienced by the current user while sending data.
+ * @brief Gets the audio latency (delay in network data transfer) experienced by the current user while sending data.
  */
 @property(nonatomic, assign, readonly) int sendLatency;
 
 /**
- * @brief Get the audio jitter (change in latency) experienced by the current user while sending data.
+ * @brief Gets the audio jitter (change in latency) experienced by the current user while sending data.
  */
 @property(nonatomic, assign, readonly) int sendJitter;
 
 /**
- * @brief Get the average audio packet loss sent by the current user.
+ * @brief Gets the average audio packet loss sent by the current user.
  */
 @property(nonatomic, assign, readonly) float sendPacketLossAvg;
 
 /**
- * @brief Get the maximum audio packet loss sent by the current user.
+ * @brief Gets the maximum audio packet loss sent by the current user.
  */
 @property(nonatomic, assign, readonly) float sendPacketLossMax;
 
 /**
- * @brief Get the frequency in kilohertz (KHz) received by the current user.
+ * @brief Gets the frequency in kilohertz (KHz) received by the current user.
  */
 @property(nonatomic, assign, readonly) int recvFrequency;
 
 /**
- * @brief Get the audio latency (delay in network data transfer) experienced by the current user while receiving data.
+ * @brief Gets the audio latency (delay in network data transfer) experienced by the current user while receiving data.
  */
 @property(nonatomic, assign, readonly) int recvLatency;
 
 /**
- * @brief Get the audio jitter (change in latency) experienced by the current user while receiving data.
+ * @brief Gets the audio jitter (change in latency) experienced by the current user while receiving data.
  */
 @property(nonatomic, assign, readonly) int recvJitter;
 
 /**
- * @brief Get the average audio packet loss received by the current user.
+ * @brief Gets the average audio packet loss received by the current user.
  */
 @property(nonatomic, assign, readonly) float recvPacketLossAvg;
 
 /**
- * @brief Get the maximum audio packet loss received by the current user.
+ * @brief Gets the maximum audio packet loss received by the current user.
  */
 @property(nonatomic, assign, readonly) float recvPacketLossMax;
 @end
 
 /**
  * @class ZMVideoSDKSessionASVStatisticInfo
- * @brief Provides video/share statistics such as resolution, FPS, latency, and packet loss.
+ * @brief Provides video or share statistics such as resolution, FPS, latency, and packet loss.
  */
 @interface ZMVideoSDKSessionASVStatisticInfo : NSObject
 
 /**
- * @brief Get the frame width in pixels sent by the current user.
+ * @brief Gets the frame width in pixels sent by the current user.
  */
 @property(nonatomic, assign, readonly) int sendFrameWidth;
 
 /**
- * @brief Get the frame height in pixels sent by the current user.
+ * @brief Gets the frame height in pixels sent by the current user.
  */
 @property(nonatomic, assign, readonly) int sendFrameHeigh;
 
 /**
- * @brief Get the frame rate in FPS sent by the current user.
+ * @brief Gets the frame rate in FPS sent by the current user.
  */
 @property(nonatomic, assign, readonly) int sendFps;
 
 /**
- * @brief Get the video latency (delay in network data transfer) experienced by the current user while sending data.
+ * @brief Gets the video latency (delay in network data transfer) experienced by the current user while sending data.
  */
 @property(nonatomic, assign, readonly) int sendLatency;
 
 /**
- * @brief Get the video jitter (change in latency) experienced by the current user while sending data.
+ * @brief Gets the video jitter (change in latency) experienced by the current user while sending data.
  */
 @property(nonatomic, assign, readonly) int sendJitte;
 
 /**
- * @brief Get the average video packet loss sent by the current user.
+ * @brief Gets the average video packet loss sent by the current user.
  */
 @property(nonatomic, assign, readonly) float sendPacketLossAvg;
 
 /**
- * @brief Get the maximum video packet loss sent by the current user.
+ * @brief Gets the maximum video packet loss sent by the current user.
  */
 @property(nonatomic, assign, readonly) float sendPacketLossMax;
 
 /**
- * @brief Get the frame width in pixels received by the current user.
+ * @brief Gets the frame width in pixels received by the current user.
  */
 @property(nonatomic, assign, readonly) int recvFrameWidth;
 
 /**
- * @brief Get the frame height in pixels received by the current user.
+ * @brief Gets the frame height in pixels received by the current user.
  */
 @property(nonatomic, assign, readonly) int recvFrameHeigh;
 
 /**
- * @brief Get the frame rate in FPS received by the current user.
+ * @brief Gets the frame rate in FPS received by the current user.
  */
 @property(nonatomic, assign, readonly) int recvFps;
 
 /**
- * @brief Get the video latency (delay in network data transfer) experienced by the current user while receiving data.
+ * @brief Gets the video latency (delay in network data transfer) experienced by the current user while receiving data.
  */
 @property(nonatomic, assign, readonly) int recvLatency;
 
 /**
- * @brief Get the video jitter (change in latency) experienced by the current user while receiving data.
+ * @brief Gets the video jitter (change in latency) experienced by the current user while receiving data.
  */
 @property(nonatomic, assign, readonly) int recvJitte;
 
 /**
- * @brief Get the video average packet loss received by the current user.
+ * @brief Gets the video average packet loss received by the current user.
  */
 @property(nonatomic, assign, readonly) float recvPacketLossAvg;
 
 /**
- * @brief Get the maximum video packet loss received by the current user.
+ * @brief Gets the maximum video packet loss received by the current user.
  */
 @property(nonatomic, assign, readonly) float recvPacketLossMax;
 @end
@@ -269,105 +269,105 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKSession : NSObject
 
 /**
- * @brief Get the current session number.
- * @return If the function succeeds, the return value is the current meeting number. Otherwise returns ZERO(0).
+ * @brief Gets the current session number.
+ * @return If the function succeeds, it returns the current meeting number. Otherwise returns 0.
  */
 - (unsigned long long)getSessionNumber;
 
 /**
- * @brief Get the session's name.
- * @return The value is session name.
+ * @brief Gets the session's name.
+ * @return The session name. Otherwise, this function fails and returns nil.
  */
 - (NSString* _Nullable)getSessionName;
 
 /**
- * @brief Get the session's password.
- * @return The value is session password.
+ * @brief Gets the session's password.
+ * @return The session password. Otherwise, this function fails and returns nil.
  */
 - (NSString* _Nullable)getSessionPassword;
 
 /**
- * @brief Get the session's password.
- * @return The value is session password.
+ * @brief Gets the session's phone passcode.
+ * @return The session phone passcode. Otherwise, this function fails and returns nil.
  */
 - (NSString* _Nullable)getSessionPhonePasscode;
 
 /**
- * @brief Get the session Id.
- * @return The value is session ID.
- * @note: Only the host can get the session Id.
+ * @brief Gets the session ID.
+ * @return The session ID. Otherwise, this function fails and returns nil.
+ * @note Only the host can get the session ID.
  */
 - (NSString* _Nullable)getSessionID;
 
 /**
- * @brief Get the host's name.
- * @return The value is session host name.
+ * @brief Gets the host's name.
+ * @return The session host name. Otherwise, this function fails and returns nil.
  */
 - (NSString* _Nullable)getSessionHostName;
 
 /**
- * @brief Get the session's host user object.
- * @return If the function succeeds, the return value is host user object. Otherwise return nil.
+ * @brief Gets the session's host user object.
+ * @return If the function succeeds, it returns host user object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKUser* _Nullable)getSessionHost;
 
 /**
- * @brief Get a list of the session's remote users.
- * @return If the function succeeds, the return value is remote users list. Otherwise returns nil.
+ * @brief Gets a list of the session's remote users.
+ * @return If the function succeeds, it returns remote users list. Otherwise, this function fails and returns nil.
  */
 - (NSArray<ZMVideoSDKUser *>* _Nullable)getRemoteUsers;
 
 /**
  * @brief The session's user object for myself.
- * @return If the function succeeds, the return value is myself object. Otherwise returns nil.
+ * @return If the function succeeds, it returns myself object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKUser* _Nullable)getMySelf;
 
 /**
- * @brief Get the session's audio statistic information.
- * @return If the function succeeds, it will return a session audio statistic infomation object, otherwise returns nil.
+ * @brief Gets the session's audio statistic information.
+ * @return If the function succeeds, it returns a session audio statistic information object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKSessionAudioStatisticInfo* _Nullable)getSessionAudioStatisticInfo;
 
 /**
- * @brief Get the session's video statistic information.
- * @return If the function succeeds, it will return a session video statistic information object, otherwise returns nil.
+ * @brief Gets the session's video statistic information.
+ * @return If the function succeeds, it returns a session video statistic information object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKSessionASVStatisticInfo* _Nullable)getSessionVideoStatisticInfo;
 
 /**
- * @brief Get the session's screen share statistic information.
- * @return If the function succeeds, it will return a session share statistic information object, otherwise returns nil.
+ * @brief Gets the session's screen share statistic information.
+ * @return If the function succeeds, it returns a session share statistic information object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKSessionASVStatisticInfo* _Nullable)getSessionShareStatisticInfo;
 
 /**
- * @brief Determine whether file transfer is enabled.
- * @return YES if file transfer is enabled, otherwise NO.
+ * @brief Determines whether file transfer is enabled.
+ * @return YES if file transfer is enabled. Otherwise, NO.
  */
 - (BOOL)isFileTransferEnabled;
 
 /**
- * @brief Send file to all users in current session.
- * @param filePath The local path of the file.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Sends file to all users in current session.
+ * @param filePath The file's local path.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)transferFile:(NSString *)filePath;
 
 /**
- * @brief Get the list of allowed file types in transfer.
- * @return The value of allowed file types in transfer, comma-separated if there are multiple values. Exe files are by default forbidden from being transferred.
+ * @brief Gets the list of allowed file types in transfer.
+ * @return The value of allowed file types in transfer, comma-separated if there are multiple values. Exe files are by default forbidden from being transferred. Otherwise, this function fails and returns nil.
  */
 - (NSString * _Nullable)getTransferFileTypeWhiteList;
 
 /**
- * @brief Get the maximum size for file transfer.
+ * @brief Gets the maximum size for file transfer.
  * @return The maximum number of bytes for file transfer.
  */
 - (unsigned long long)getMaxTransferFileSize;
 
 /**
- * @brief Get the session type of this session.
+ * @brief Gets the session type of this session.
  * @return The session type.
  */
 - (ZMVideoSDKSessionType)getSessionType;

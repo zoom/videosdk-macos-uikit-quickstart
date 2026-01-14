@@ -733,6 +733,7 @@
 "LN_Setting_Statistic_Phone_Remote_IP_Port_82877" = "Uzak IP ve bağlantı noktası";
 "LN_Setting_Statistic_Phone_Network_Delay_96715" = "Ağ gecikmesi";
 "LN_Setting_Statistic_Phone_Packet_82877" = "Paket";
+"LN_Zoom_Place_664309" = "Workplace";
 "LN_Setting_Statistic_Phone_frequency_96715" = "Sıklık";
 "LN_Setting_Statistic_Phone_Packet_Loss_Average_Max_96715" = "Paket Kaybı Ortalaması (Maks)";
 "LN_Setting_Statistic_Phone_Bandwidth_96715" = "Bant Genişliği";
@@ -1429,6 +1430,8 @@
 
 //waiting list
 "Please wait, the meeting host will let you in soon." = "Lütfen bekleyin, toplantının oturum sahibi yakında girmenize izin verecek.";
+"LN_Direct_Share_Prompt_Placehoder_Title_999739" = "Oda kodu veya toplantı kimliği";
+"LN_Direct_Share_Prompt_Error_String_999739" = "Lütfen geçerli bir oda kodu veya toplantı kimliği girin";
 "Admit" = "Kabul et";
 
 "Take off hold" = "Beklemeden Geri Al";
@@ -1528,6 +1531,7 @@
 "LN_Billing_unknown_contact_alert_833575" = "Bilinmeyen kişi. Bilinmeyen kişilerle yapılan faturalandırılabilir toplantılar, siz eklemediğiniz sürece raporunuzda görünmeyecektir.";
 "LN_Billing_track_here_833575" = "İzlemeyi buradan başlatın, duraklatın veya devam ettirin.";
 "LN_Billing_choose_contacts_or_create_833575" = "Kişileriniz arasından seçim yapın veya yeni bir kişi oluşturun.";
+"LN_Billing_add_personal_contact_1034570" = "Bu katılımcı kişisel kişi listenizde görünmüyor. Bu katılımcıyı kişisel kişilerinize ekleyin ve faturalandırılabilir saatleri atayın.";
 "no" = "hayır";
 "LN_Billing_contacts_found_833575" = "Kişiler bulundu";
 "LN_Billing_track_billable_hours_833575" = "Faturalandırılabilir saatlerinizi artık takip edebilirsiniz";
@@ -1599,6 +1603,7 @@
 "Enter %@ on your phone\nto associate your phone call with this computer as one participant." = "Telefon çağrınızı\nbu bilgisayarla tek bir katılımcı olarak ilişkilendirmek için telefonunuza %@ girin.";
 //ZOOM-14880
 "Show Dial-in Number" = "Arama numarasını göster";
+"LN_Limit_Reached_User_Minutes_997504" = "Zoom şu anda ücretsiz toplantınızı uzatamıyor. Süre %@ dakikaya ulaştığında toplantınız sona erecektir.\n\n(HATA: %d)";
 //ZOOM-14880
 
 //ZOOM-6524
@@ -2145,7 +2150,13 @@
 "LN_Turn_Off_19901" = "Kapat";
 "LN_Snooze_Menu_20_Minutes_19901" = "20 dakika";
 "LN_Snooze_Menu_1_Hour_19901" = "1 saat";
+"LN_Meeting_Live_Stream_LiveOn_1049044" = "Bu toplantının içeriği şuraya gönderiliyor: <zmview key=$1>";
+"LN_LiveStream_Meeting_LiveOn_1049044" = "Toplantı verileri şuraya gönderiliyor: <zmview key=$1>";
 "LN_Snooze_Menu_2_Hours_19901" = "2 saat";
+"LN_LiveStream_Webinar_LiveOn_1049044" = "Web semineri verileri şuraya gönderiliyor: <zmview key=$1>";
+"LN_LiveStream_Meeting_LiveOn_1017615" = "Toplantı verileri şuraya gönderiliyor: %@";
+"LN_LiveStream_Webinar_LiveOn_1017615" = "Web semineri verileri şuraya gönderiliyor: %@";
+"LN_Webinar_Live_Stream_LiveOn_1049044" = "Bu web semineri içeriği şuraya gönderiliyor:<zmview key=$1>";
 "LN_Snooze_Menu_4_Hours_19901" = "4 saat";
 "LN_Snooze_Menu_8_Hours_19901" = "8 saat";
 "LN_Notifications_Label_19895" = "Bildirimler";
@@ -2473,8 +2484,8 @@
 
 "LN_Do_You_Hear_A_Ringtone_38961" = "Zil sesi duyuyor musun?";
 "LN_Speak_And_Pause_Do_You_Hear_Replay_38961" = "Konuşun ve duraklatın, tekrarını duyabiliyor musunuz?";
-"LN_Troubleshoot_Speaker_Mic_38961" = "Hoparlörü ve Mikrofonu Test Et...";
-"LN_Swithch_To_Phone_Audio_38961" = "Telefon Sesine Geç...";
+"LN_Troubleshoot_Speaker_Mic_38961" = "Hoparlörü ve Mikrofonu Test Et";
+"LN_Swithch_To_Phone_Audio_38961" = "Telefon Sesine Geç";
 
 "LN_Install_AirHost_With_AdminPrivileges_43112" = "AirHost'u kullanmaya başlamak için yönetici ayrıcalıkları ile kurulum yapmanız gerekiyor.";
 "LN_Install_CodeSnippet_With_AdminPrivileges_43112" = "Kod parçacığını kullanmaya başlamak için yönetici ayrıcalıkları ile kurulum yapmanız gerekiyor.";
@@ -2849,7 +2860,9 @@
 "LN_Sip_Allow_Location_In_Setting_HelperString_332593" = "Yöneticiniz cihaz ayarlarından Zoom ile konum paylaşımını etkinleştirmenizi istedi. Konumunuzu paylaşmak, Zoom'un acil durum çağrısı sırasında konumunuzu bildirmesine yardımcı olur ve konum tabanlı erişim ve çağrı yönlendirme gibi gelişmiş özellikleri etkinleştirmenizi sağlar. Konum bilgileriniz yalnızca bu amaç için kullanılır.";
 "LN_Phone_Setting_Emergency_Address_206937" = "Acil durum adresi:";
 "LN_Phone_CloudContact_Add_TO_ZOOM_209112" = "Zoom kişisi olarak davet et";
+"LN_SMS_Delegation_View_Settings_1042922" = "Ayarları görüntüle";
 "LN_Phone_CloudContact_Add_Request_Sent_209112" = "İstek gönderildi";
+"LN_SMS_Delegation_Banner_Message_1042922" = "SMS temsilci yetkilendirmesi şu anda açık. Mesajlar size ve %d temsilciye gönderilmektedir.";
 "LN_Contact_Invite_Contact_549500" = "Bir Zoom kullanıcısını bağlanmaya davet edin";
 "LN_Contact_Import3rdPartyContact_549500" = "Üçüncü taraftan kişileri içe aktar";
 "LN_Phone_Invite_Contact_224836" = "Zoom Kişisi Davet Et";
@@ -2904,6 +2917,8 @@
 "LN_Sip_Turn_Off_Call_Forwarding_356261" = "Çağrı yönlendirmeyi kapat";
 "LN_Sip_Turn_Off_Call_Forwarding_Content_356261" = "Çağrılarınız şu anda bir kişiye, dahili numaraya veya sesli mesaja yönlendiriliyor. Çağrı yönlendirmeyi kapatmak ister misiniz?";
 
+"LN_Direct_Share_Prompt_Rename_Room_Code_999739" = "Paylaşım anahtarı, oda kodu olarak yeniden adlandırıldı";
+"LN_Direct_Share_Prompt_New_Code_999739" = "Yeni oda kodunu girin";
 
 
 
@@ -3025,8 +3040,10 @@
 "LN_Setting_RecordSeparate_HelpString_273146" = "İlk 80 konuşmacının ses dosyalarını destekleyin. Telefonla katılan kullanıcıların sesleri tek bir ses dosyasında birleştirilecektir.";
 "LN_Setting_PacketLoss_NewIM" = "Paket Kaybı Ortalaması (Maks)";
 "LN_Setting_SubmitFeedback_NewIM" = "Geri bildirim gönder";
+"LN_Separate_Chats_And_Channels_1058163" = "Ayrı sohbetler ve kanallar";
 "LN_Setting_FeedBackPlaceHolder_NewIM" = "Fikirlerinize, yorumlarınıza ve önerilerinize önem veriyoruz.";
 "LN_Setting_UnreadTop_NewIM" = "Tüm okunmamış mesajları yukarıda tut";
+"LN_Chats_And_Channels_1058163" = "Sohbetler ve Kanallar";
 "LN_Setting_DoNotPrompt3rd_NewIM" = "Toplantıya 3. taraf ses kullanarak katılım sağlandığında sese katılma penceresini gösterme";
 "LN_Login_UnableConnect_NewIM_56043" = "Zoom ile bağlantı kuramıyorsunuz. Lütfen ağ bağlantınızı kontrol edip yeniden deneyin.";
 "LN_Setting_ChannelNotiSeachPlaceHolder_NewIM" = "Kanalları ara";
@@ -3323,6 +3340,7 @@
 "LN_34295_Close breakout room" = "Ara odasını kapat";
 "LN_34295_Close now" = "Şimdi kapat";
 "LN_34295_Keep breakout rooms open" = "Ara odaları açık tut";
+"LN_Your_Voicemail_Sent_1028435" = "Sesli mesajınız gönderildi";
 "LN_34295_Time is up for the %d minute breakout room session. Do you want to close the breakout rooms now?" = "Ara odası için %d dakikalık süre doldu. Tüm ara odalarını şimdi kapatmak istiyor musunuz?";
 "LN_BO_Time_Up_For_Minutes_212359" = "Ara oda için %d dakikalık süre doldu Tüm ara odalarını şimdi kapatmak istiyor musunuz?";
 "LN_34295_All participants have been given %d seconds to leave their Breakout Rooms." = "Tüm katılımcılara, ara odalarından çıkmaları için %d saniye süre verildi.";
@@ -3367,6 +3385,7 @@
 "LN_Accessibility_Meeting_Being_Recored_55154" = ", toplantı kaydediliyor";
 "LN_Accessibility_Webinar_Being_Recored_55154" = ", web semineri kaydediliyor";
 "LN_Accessibility_Meeting_Live_On_55154" = ", toplantı canlı yayınlanıyor %@";
+"LN_Sidepanel_Tip_Back_529219" = "Geri";
 "LN_Accessibility_Webinar_Live_On_55154" = ", web semineri canlı yayınlanıyor %@";
 
 "LN_Say_%1$@_To_%2$@_NewIM" = "Şu kişiye \"%1$@\" deyin: %2$@";
@@ -3580,6 +3599,7 @@
 "LN_Accessibility_Expand_Advance_Button_63646" = "genişlet";
 "LN_Accessibility_Collapse_Advance_Button_63646" = "daralt";//"Click to collapse the additional meeting options";
 
+"LN_HideThisChannel_NewIM" = "Bu kanalı gizle";
 "LN_Accessibility_Dropdown_Button_61896" = "Açılır düğme";
 "LN_Accessibility_AvailableOnDesktop_61896" = "masaüstünde mevcut";
 "LN_Accessibility_AvailableOnMobile_61896" = "cep telefonunda mevcut";
@@ -3717,6 +3737,9 @@
 "LN_Remove_from_this_Group_43362" = "Bu gruptan çıkar";
 "LN_Added_%ld_Contacts_to_%@_43362" = "Şuraya %ld kişi eklendi: %@";
 "LN_Added_%@_to_%@_43362" = "Şuraya %@ eklendi: %@";
+"LN_Certification_Topbar_Title_1062770" = "Sertifikasyon";
+"LN_Certification_Accessibility_1062770" = "Sertifikasyon etkinleştirildi";
+"LN_Certification_Window_Title_1062770" = "Sertifikasyon";
 "LN_Contact_External_43362" = "Harici";
 "LN_Add_%ld_Contacts_43362" = "%ld kişi ekle";
 "LN_Deleted_Group_43362" = "Silindi %@";
@@ -3808,11 +3831,14 @@
 "LN_Hotkey_Open_Panelist_123974" = "Katılımcı panelini göster/gizle";
 "LN_Hotkey_Open_Meeting_Chat_123974" = "Toplantı İçi Sohbet Panelini Göster/Gizle";
 "LN_Hotkey_Open_Invite_Panel_123974" = "Davet edin";
+"LN_Host_Allow_Attendee_To_Talk_Content_1067517" = "Sesi açmayı seçerseniz web seminerindeki diğer kişiler sizi duyabilecektir. Oturum sahibi veya panelistler siz sesinizi açtıktan sonra web seminerini kaydetmeye, canlı yayınlamaya, arşivlemeye ya da uygulamalarla ve/veya başkalarıyla paylaşmaya karar verirse sesiniz dâhil edilecektir. Kayıt, üçüncü taraf modelleri de içerebilen yapay zekâ teknolojisini kullanan akıllı kayıt ile paylaşılabilir. Zoom, Zoom’un veya üçüncü tarafların yapay zekâ modellerini eğitmek amacıyla hiçbir bir sesi, videoyu, sohbeti, ekran paylaşımını, eki veya (anket sonuçları, beyaz tahta ve reaksiyonlar gibi) diğer iletişim benzeri içerikleri kullanmaz.\n\n İlgili izinlere sahip olan katılımcılar da web semineri dökümünü kaydedebilir ve paylaşabilir.";
 "LN_Hotkey_Raise_Hand_123974" = "Parmak Kaldır/İndir";
 "LN_Hotkey_Begin_Remote_Control_123974" = "Uzaktan kontrole başla";
 "LN_Hotkey_Revoke_Remote_Control_123974" = "Uzaktan Kontrol İznini İptal Et/Vazgeç";
 "LN_Hotkey_Jump_To_Chat_123974" = "Biriyle sohbete atla";
 "LN_Hotkey_Screenshot_41839" = "Ekran Görüntüsü";
+"LN_Join_Webinar_Consent_Content_1067517" = "Web semineri kaydedilebilir, canlı yayınlanabilir, oturum sahibi tarafından arşivlenebilir veya uygulamalarla ve başkalarıyla paylaşılabilir. Kayıt, üçüncü taraf modelleri de içerebilen yapay zekâ teknolojisini kullanan akıllı kayıt ile paylaşılabilir. Zoom, Zoom’un veya üçüncü tarafların yapay zekâ modellerini eğitmek amacıyla hiçbir bir sesi, videoyu, sohbeti, ekran paylaşımını, eki veya (anket sonuçları, beyaz tahta ve reaksiyonlar gibi) diğer iletişim benzeri içerikleri kullanmaz.\n\n İlgili izinlere sahip olan katılımcılar da web semineri dökümünü kaydedebilir ve paylaşabilir.\n\n Bu web seminerine panelist olarak katıldığınızda katılımınızın dâhil edilmesine izin vermiş olursunuz.";
+"LN_Attendee_Promoted_To_Panelist_Content_1067517" = "Bir panelist olarak sesinizi açabilir ve videoyu başlatabilirsiniz. Bu da web seminerindeki diğer kişiler tarafından görülebileceğiniz anlamına gelir.\n\nOturum sahibi veya panelistler siz sesinizi açtıktan sonra web seminerini kaydetmeye, canlı akış yapmaya, arşivlemeye ya da uygulamalarla ve/veya diğer kişilerle paylaşmaya karar verirse katılımınız dâhil edilecektir Kayıt, üçüncü taraf modelleri de içerebilen yapay zekâ teknolojisini kullanan akıllı kayıt ile paylaşılabilir. Zoom, Zoom’un veya üçüncü tarafların yapay zekâ modellerini eğitmek amacıyla hiçbir bir sesi, videoyu, sohbeti, ekran paylaşımını, eki veya (anket sonuçları, beyaz tahta ve reaksiyonlar gibi) diğer iletişim benzeri içerikleri kullanmaz.\n\n İlgili izinlere sahip olan katılımcılar da web semineri dökümünü kaydedebilir ve paylaşabilir.";
 "LN_Hotkey_Close_Window_123974" = "Geçerli pencereyi kapat";
 "LN_Hotkey_Switch_Portrait_View_41839" = "Dikey/yatay görünüme geç";
 "LN_Hotkey_Always_Show_Meeting_Controls_123974" = "Toplantı kontrollerini her zaman göster";
@@ -4031,6 +4057,7 @@
 
 "LN_BasicInfo_Extend_997504" = "Oturum sahipliği yaptığınız toplantılar 60 dakika ile sınırlı olacaktır.";
 //ZOOM-70706
+"LN_BasicInfo_Trial_Extend_997504" = "Düzenlediğiniz toplantılar %@ dakika ile sınırlı olacaktır.";
 "LN_Failed_70706" = "Başarısız oldu";
 "LN_Canceled_70706" = "İptal edildi";
 "LN_FailedToSend_70706" = "Gönderilemedi";
@@ -4116,6 +4143,7 @@
 "LN_Schedule_Limitation_Upgrade_Now_371482" = "Zoom Pro'yu deneyin";
 "LN_Remain_10Min_End_Title_371482" = "Ücretsiz toplantınız 10 dakika sonra sona erecek";
 "LN_Remain_10Min_End_Content_371482" = "Daha fazla zamana mı ihtiyacınız var? Zoom Pro sınırsız toplantı ve daha fazlasını sağlar.";
+"LN_Menu_Uninstall_Place_95001" = "Workplace'i Kaldır";
 "LN_Third_End_Title_371482" = "Ücretsiz toplantınız sona erdi";
 "LN_Third_End_Content_371482" = "Zoom Pro ile sınırsız toplantı ve daha fazlasını elde edin.";
 "LN_Contact_To_Upgrade_371482" = "Daha fazla zamana mı ihtiyacınız var? Sınırsız toplantı içeren bir plana yükseltmek için yöneticinize başvurun.";
@@ -4189,6 +4217,7 @@
 "LN_Delete_File_89706" = "Dosyayı sil";
 "LN_Your_Video_Is_Now_Broadcasting_In_The_%@_Channel_And_Main_Meeting_330475" = "Videonuz artık %@ kanalında ve ana toplantıda yayınlanıyor";
 "LN_Delete_File_From_Chat_89706" = "Bu dosyayı %@ içinden silmek istediğinizden emin misiniz? Bu paylaşılan dosya yalnızca bu sohbetten kaldırılacaktır.";
+"LN_Host_Allow_SLI_To_Talk_Content_Webinar_1067517" = "Sesi açmayı seçerseniz web seminerindeki diğer kişiler sizi duyabilecektir. Oturum sahibi veya panelistler siz sesinizi açtıktan sonra web seminerini kaydetmeye, canlı yayınlamaya, arşivlemeye ya da uygulamalarla ve/veya başkalarıyla paylaşmaya karar verirse sesiniz dâhil edilecektir. Kayıt, üçüncü taraf modelleri de içerebilen yapay zekâ teknolojisini kullanan akıllı kayıt ile paylaşılabilir. Zoom, Zoom’un veya üçüncü tarafların yapay zekâ modellerini eğitmek amacıyla hiçbir bir sesi, videoyu, sohbeti, ekran paylaşımını, eki veya (anket sonuçları, beyaz tahta ve reaksiyonlar gibi) diğer iletişim benzeri içerikleri kullanmaz.";
 "LN_Delete_File_From_Zoom_89706" = "Bu dosyayı Zoom'dan kalıcı olarak silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.";
 
 "LN_JoinFromRoom_95168" = "Bir odadan katıl";
@@ -4495,8 +4524,12 @@
 
 "LN_Plist_Guest_110290" = "Konuk";
 
+"LN_Remote_Support_Restart_Computer_Receive_Normal_Title_938601" = "\"%@\" adlı bir kullanıcı bilgisayarınızı yeniden başlatmak istiyor";
+"LN_Remote_Support_Restart_Computer_Receive_Suspicious_Title_938601" = "\"%@\" adlı şüpheli bir kullanıcı bilgisayarınızı yeniden başlatmak istiyor";
 "LN_Vanity_URL_Select_Title_Without_Name_100649" = "Hangi toplantıya katılmak istiyorsunuz?";
 "LN_Vanity_URL_Select_Title_With_Name_100649" = "Hangi \"%@\" toplantısına katılmak istiyorsunuz?";
+"LN_Remote_Support_Restart_Computer_Receive_Double_Confirm_Description_938601" = "Bilgisayarı yeniden başlatma izni vermeden önce lütfen bu kullanıcıya güvendiğinizi onaylayın.";
+"LN_Remote_Support_Restart_Computer_Receive_Description_First_Line_938601" = "Bilgisayarınız yeniden başlatıldıktan sonra bu toplantıya otomatik olarak tekrar katılacaksınız.";
 "LN_Vanity_URL_Select_Same_Account_100649" = "Şirketiniz";
 "LN_Meeting_Info_Numeric_Pass_624069" = "Sayısal parola (Telefon, SIP/H.323 sistemleri)";
 "LN_Meeting_Info_Numeric_Pass_105984" = "Sayısal Geçiş Kodu (Telefon/Oda Sistemleri)";
@@ -4838,9 +4871,7 @@
 "LN_Revoke_386882" = "İptal Et";
 "LN_Store_key_Title_386882" = "Yedek anahtarınızı güvenli bir yerde saklayın";
 "LN_Learn_More_809581" = "Daha fazla bilgi edinin";
-"LN_Update_Client_Desc_506188" = "Post-quantum güvenli şifrelemeyi desteklemek için bu cihazın en son istemci sürümüne güncellenmesi gerekir. %@";
 "LN_Update_Client_809581" = "İstemciyi güncelle";
-"LN_Add_BackupKey_809581" = "Yeni yedekleme anahtarı ekle";
 "LN_Store_key_Content_386882" = "Bu pencere kapandıktan sonra, bu anahtarı bir daha görüntüleyemezsiniz.";
 "LN_Create_key_Title_386882" = "Yeni yedek anahtar oluşturuldu";
 "LN_Create_key_Content_386882" = "Bu kişi sizseniz bu cihazın sahip olduğu ve geçmişte gelişmiş olarak şifrelenmiş %@ işlevine erişebilmesi için yeni anahtarı onaylayın.";
@@ -4851,15 +4882,20 @@
 "LN_Key_386882" = "Anahtar";
 "LN_Keys_386882" = "Anahtarlar";
 "LN_Email_386882" = "e-postalar";
-"LN_Add_BackupKey_Desc_809581" = "Post-quantum güvenli şifrelemeyi desteklemek için lütfen yeni bir yedek anahtar ekleyin. Before-quantum güvenli şifreleme için oluşturulan anahtarlar dönüştürülemez. %@";
 "LN_Voicemail_386882" = "sesli mesajlar";
 "LN_Emali_Voicemail_386882" = "e-postalar ve sesli mesajlar";
 "LN_Backup_Key_386882" = "Yedek anahtar %@";
+"LN_Regain_Data_Tip_1019138" = "Veri erişimini yeniden kazanmanız gerekiyorsa %@ ile iletişime geçin.";
 "LN_Something_Wrong_386882" = "Bir sorun oldu";
+"LN_Your_Admin_1019138" = "yöneticiniz";
 "LN_Share_Data_Title_386882" = "Şifrelenmiş verileri paylaş";
+"LN_Admin_Device_Desc_1019138" = "Post-quantum şifrelemeyi desteklemek için yöneticinizin en son istemci sürümüne güncellenmesi gerekir.";
 "LN_Invalid_ClientVersion_756698" = "Bu özelliği kullanmak için lütfen Zoom Workplace'i yükseltin.";
 "LN_Share_Data_Content_386882" = "Gelişmiş şifrelenmiş %@ işlevini yedek anahtardan diğer tüm cihazlarla paylaşın.";
+"LN_Add_BackupKey_Desc_809581" = "Post-quantum şifrelemeyi desteklemek için lütfen bu yedek anahtarı kaldırın. Post-quantum güvenliği olan yeni bir anahtar ekleyebilirsiniz.";
 "LN_New_Device_Title_386882" = "Yeni cihaz giriş yaptı";
+"LN_Add_BackupKey_809581" = "Yeni yedekleme anahtarı";
+"LN_Update_Client_Desc_506188" = "Post-quantum şifrelemeyi desteklemek için bu cihazın en son istemci sürümüne güncellenmesi gerekir. Tanımıyorsanız veya artık kullanmıyorsanız kaldırılmalıdır.";
 "LN_New_Device_Content_386882" = "Bu kişi sizseniz bu cihazın sahip olduğu ve geçmişte gelişmiş olarak şifrelenmiş %@ işlevine erişebilmesi için yeni cihazı onaylayın.";
 "LN_Unable_Approve_386882" = "Onaylanamıyor. Yeniden deneyin.";
 "LN_Remove_Access_Title_386882" = "Erişimi kaldır";
@@ -5576,6 +5612,7 @@
 "LN_Schedule_Epidemic_Tip_145391" = "Zoom, global COVID-19 pandemisi sırasında Temel (ücretsiz) kullanıcılara geçici olarak sınırsız süreli toplantı hizmeti sunuyor.";
 "LN_Report_Clips_Recorder_598501" = "Klip kaydı sırasında";
 "LN_Profile_Epidemic_Tip_145391" = "Zoom, küresel COVID-19 pandemisi süresince sizin için geçici olarak sınırsız toplantı süresi sağlamaktadır.";
+"LN_Always_Chow_Captions_Desc_900292" = "Mevcut olduğunda alt yazıları her seferinde etkinleştirmeye gerek kalmadan otomatik olarak görüntüleyin.";
 "LN_Generate_AIAvatar_Fail_741591" = "Avatarınız oluşturulamıyor.";
 
 "LN_Meeting_Client_Connect_Encrypted_Tip_148375" = "Toplantı bağlantınız şifrelemeli";
@@ -5645,6 +5682,7 @@
 "LN_Black" = "siyah";
 "LN_Crash_Report_Send_Button_149368" = "Zoom'a Gönder";
 "LN_Crash_Report_Do_Not_Send_Button_149368" = "Gönderme";
+"LN_VirtualBackgroundsList_1037483" = "Sanal arka planlar listesi";
 
 "LN_SettingsHigh_167323" = "Yüksek";
 "LN_Schedule_Passcode_Error_Tip_136696" = "Geçiş kodu gereksinimleri karşılamıyor";
@@ -5674,12 +5712,19 @@
 "LN_Phone_Park_Detail_131319" = "Çağrıyı başka bir kullanıcının yanıtlaması için beklemeye alın";
 "LN_Phone_Minimize_Detail_131319" = "Çağrılarınızın boyutunu düşürün";
 "LN_Phone_LockCall_Detail_285598" = "Başkalarının çağrıya katılmasını engelle";
+"LN_Poll_Scheduled_1012736" = "Planlandı";
 
 "LN_Phone_Lines_Parked_131319" = "PARK EDİLDİ";
+"LN_Remove_Schedule_Time_1012736" = "Planlanan zamanı sil";
+"LN_Poll_Scheduled_Remove_1012736" = "Sil";
 
 //Phone E2E
+"LN_Poll_Scheduled_Launch_1012736" = "Anketi başlatma saati:";
+"LN_AIC_Ask_Host_Stop_1041052" = "Oturum sahibinden AI Companion’ı durdurmasını iste";
 "LN_Phone_Switch_To_E2E_267077" = "Bu aramayı uçtan uca şifrelemeye geçir";
+"LN_Poll_Scheduled_Share_1012736" = "Sonuç paylaşımı:";
 "LN_Phone_Call_Cannot_Be_E2E_267077" = "Bu arama uçtan uca şifrelenemiyor";
+"LN_Poll_Scheduled_Timeline_1012736" = "Kayıt zaman çizelgesinde planlandı:";
 "LN_Phone_Not_E2E_373059" = "Bu çağrı uçtan uca şifreli değil.";
 "LN_Phone_Unavailable_304741" = "Uygun değil";
 
@@ -6667,14 +6712,26 @@
 "LN_AIC_Manage_Setting_738866" = "Tüm ayarları yönet";
 "LN_AIC_Features_Disable_Tip_738866" = "Ayarlarınızda bir veya daha fazla AI Companion özelliği devre dışı bırakıldı.";
 "LN_BO_AX_Broadcast_Voice_Start_356559" = "Ses yayınına başla";
+"LN_AIC_Request_Host_Start_976513" = "Oturum sahibinden AI Companion'ı başlatmasını talep et";
+"LN_AIC_Request_Host_Start_Turn_Off_Tip_976513" = "Katılımcıların bu toplantıda AI Companion talep etmelerine izin verilmez. Bunu Oturum Sahibi araçlarında etkinleştirebilirsiniz.";
 "LN_BO_AX_Broadcast_Voice_Stop_356559" = "Ses yayınını durdur";
 "LN_AIC_Auto_Enable_Tip_Title_738866" = "AI Companion özellikleri hesabınız için etkinleştirildi";
+"LN_AIC_Can_Not_Requeste_Tip_976513" = "AI Companion, yönetici ayarlarından dolayı talep edilemiyor.";
+"LN_AIC_Can_Not_Requeste_External_Tip_976513" = "AI Companion, kuruluş politikasından dolayı talep edilemiyor.";
+"LN_AIC_Request_Disabled_976513" = "Oturum sahibi, AI Companion'ı başlatma isteklerini devre dışı bıraktı.";
+"LN_AIC_Can_Not_Requeste_Participant_Tips_976513" = "AI Companion, kuruluşunuzun ayarlarından dolayı talep edilemiyor.";
+"LN_AIC_Turn_Off_Reason_Host_Tip_976513" = "AI Companion, toplantıya bir veya daha fazla harici kullanıcı katıldığı için kapatıldı.";
+"LN_AIC_Can_Not_Start_Reason_Host_Tip_976513" = "AI Companion, toplantıya bir veya daha fazla harici kullanıcı katıldığı için başlatılamıyor.";
+"LN_AIC_Turn_Off_Reason_Participant_Tip_976513" = "AI Companion, kuruluş politikası nedeniyle kapatıldı.";
 "LN_AIC_Auto_Enable_Tip_Desc_738866" = "AI Companion, toplantıları özetleyebilir ve Zoom'daki diğer birçok günlük görevi gerçekleştirmenize yardımcı olabilir.";
 "LN_BO_AX_Broadcast_Stopped_356559" = "Yayın durdu";
 "LN_AIC_Summary_Tip_738866" = "Konuşmanın özetlerini alın.";
+"LN_AIC_Turn_Off_Reason_Host_Tip2_976513" = "AI Companion, toplantıya bir veya daha fazla harici kullanıcı katıldığı için durduruldu.";
 "LN_BO_AX_Close_Broadcast_Message_Button_356559" = "Mesaj yayınlama bölümünü kapat";
+"LN_AIC_Turn_Off_Reason_Participant_Tips_976513" = "AI Companion, kuruluşunuzun ayarları nedeniyle durduruldu.";
 "LN_BO_AX_Close_Broadcast_Voice_Button_356559" = "Ses yayınlama bölümünü kapat";
 "LN_BO_AX_Message_To_All_Rooms_356559" = "Tüm odalara mesaj";
+"LN_AIC_Can_Not_Requeste_External_Tips_976513" = "Bu toplantının ayarları nedeniyle AI Companion talep edilemiyor.";
 "LN_BO_AX_Broadcasting_Has_Stopped_356559" = "Yayın durdu";
 "LN_AIC_Can_Not_Start_740048" = "AI Companion özellikleri, oturum sahibi katılana kadar başlatılamaz.";
 "LN_AIC_Can_Not_Start_Host_740048" = "Oturum sahibi uygulamanın desteklenen bir sürümüne yükseltme yapmadığından dolayı AI Companion özellikleri başlatılamıyor.";
@@ -6726,6 +6783,8 @@
 "LN_Summary_Enable_Desc_613955" = "Bir toplantı düzenlediğinizde ücretsiz toplantı özetinizi kullanın.";
 "LN_AIC__Questions_Can_Not_Start_740048" = "Toplantı soruları, oturum sahibi katılana kadar başlatılamaz.";
 "LN_Summary_Enable_Maybelater_613955" = "Belki daha sonra";
+"LN_AI_Companion_BRB_Catch_Me_Up_Last_2_Mins_n_1025336" = "Bana toplantının son 2 dakikasındaki güncel bilgileri ver";
+"LN_AI_Companion_BRB_Catch_Me_Up_Last_Mins_n_1025336" = "Bana toplantının son %d dakikasındaki güncel bilgileri ver";
 "LN_Summary_Enable_Try_Now_613955" = "Şimdi deneyin";
 "LN_AIC_Start_Using_Desc_738866" = "Bir toplantı özeti oluşturun veya AI Companion'a konuşma hakkında sorular sorun.";
 "LN_Summary_Banner_Desc_613955" = "Kısa bir süre önce toplantı özetini denediniz. Sürekli erişim ve daha fazla harika özellik için Zoom One Pro'ya yükseltin!";
@@ -6733,6 +6792,8 @@
 "LN_Summary_Summarize_Meeting_613955" = "AI Companion ile toplantınızı ücretsiz olarak özetleyin";
 "LN_Summary_Tip_New_Support_Language_622754" = "Üretken yapay zekanın gücünden yararlanılan toplantı özeti işlevinde, toplantınızın özeti 33 dilde otomatik olarak oluşturulup paylaşılır. %@";
 "LN_Summary_Tip_Support_Language_Title_622754" = "Ek diller artık kullanılabilir";
+"LN_AI_Companion_Recap_Prepare_Recap_1043472" = "Benim için bu toplantının kısa bir özetini ve eylem maddelerini hazırla.";
+"LN_AI_Companion_Recap_Tooltip_Desc_1043472" = "Toplantınızın bitmesine 5 dakika kaldı. Önemli noktaları ve eylem maddelerinizi gözden geçirin.";
 "LN_AI_Companion_Tip_Content2_664338" = "Sohbetlerinizdeki önemli güncellemeleri sorabilir, mesajlar veya belgeler için taslaklar ve özetler oluşturabilir ve yaklaşan toplantılara hazırlanabilirsiniz.";
 "LN_AI_Companion_Tip_Title2_664338" = "AI Companion ile istediğiniz zaman yardım alın";
 "LN_Summary_Tip_Support_Language_622754" = "Toplantı özeti, ön izlemede ilave dilleri destekliyor. %@";
@@ -6896,6 +6957,7 @@
 "LN_AIC_Start_Meeting_Summary_695050" = "Toplantı özetini başlatın.";
 "LN_AIC_Start_AIC_695050" = "Bu toplantı için AI Companion'ı başlatın.";
 "LN_Reply_Tip_143929" = "Yanıtla";
+"LN_A_Participant_1060084" = "Bir katılımcı";
 "LN_Announce_143929" = "Duyuru yap";
 
 "LN_Share_Select_Hold_Key_Tip_115653" = "Birden çok pencereyi seçmek için %@ tuşunu basılı tutun";
@@ -6971,19 +7033,26 @@
 "LN_AIC_Hide_AIC_Panel_976183" = "AI Companion panelini gizle";
 "LN_Audio_Message_190015" = "Sesli mesaj";
 "LN_AIC_Stop_Title_695050" = "AI Companion özelliklerini durdur";
+"LN_AIC_Ask_Host_Turn_Off_1001627" = "Oturum sahibinden kapatmasını iste";
 "LN_AIC_Open_AIC_Panel_976183" = "AI Companion panelini aç";
 
+"LN_AIC_Turn_On_Anyway_1001627" = "Yine de aç";
 "LN_AIC_Host_Decline_Access_Request_695050" = "Oturum sahibi, toplantı sorularına erişme isteğinizi reddetti.";
 //ZOOM-169889
 "LN_Schedule_Synced_From_Web_169889" = "Planlama ayarlarınız, Zoom web portalınızdan eşitlendi";
+"LN_AIC_Start_Restrict_Title_1001627" = "AI Companion özellikleri açılırsa katılımcılar çıkarılabilir";
+"LN_AIC_Turned_On_1001627" = "AI Companion bu toplantı için açık";
 "LN_Webinar_AIC_Stop_Panel_Title_792041" = "Bu web semineri için AI Companion\'ı durdur";
+"LN_AIC_Stay_Anyway_1001627" = "Yine de kal";
 
 "LN_No_Number_194358" = "Uygun numara yok";
 "LN_AIC_Start_Questions_Desc_827302" = "Bu toplantıdaki herkes için toplantı sorularını başlatın.";
 "LN_AIC_Start_Using_Desc_695050" = "Toplantınızla ilgili sorular sormak, özet, eylem maddeleri ve daha fazlasını almak için AI Companion'ı kullanın.";
 "LN_AIC_Stop_Panel_Title_695050" = "Bu toplantı için AI Companion'ı durdur";
+"LN_AIC_Start_Request_Title_1001627" = "Bir katılımcı sizden AI Companion’ı başlatmanızı istedi ancak katılımcılar çıkarılabilir";
 "LN_AIC_Start_Desc_827302" = "Bu toplantıdaki herkes için toplantı sorularını ve toplantı özetini başlatın.";
 "LN_AIC_Donot_Remind_827302" = "Bir daha hatırlatma";
+"LN_AIC_Request_To_Stop_Or_Drop_1001627" = "%@, toplantıdan ayrılmamak için AI Companion’ı durdurmanızı istiyor";
 "LN_AIC_Ask_Start_AIC_695050" = "Bir katılımcı Al Companion'ı başlatmanızı istiyor";
 "LN_AIC_Start_summary_827302" = "Bu toplantıdaki herkes için toplantı özetini başlatın.";
 "LN_AIC_Start_Title_827302" = "Toplantınıza yardımcı olması için AI Companion'ı başlatın";
@@ -6997,16 +7066,22 @@
 "LN_AIC_Stop_Subtitle_695050" = "Bu özellikler durdurulacaktır:";
 "LN_Whiteboards_194175" = "Beyaz Tahtalar";
 "LN_AIC_Request_Start_AIC_Host_Content_695050" = "Tüm katılımcılar ve davetliler AI Companion'a erişim elde eder. Erişim izinlerini AI companion panelinde değiştirebilirsiniz.";
+"LN_Webinar_AIC_Start_Desc2_792041" = "Web semineri sorularını ve web semineri özetini başlatın.";
 "LN_MeetWith_%@_194175" = "Şu kişiyle toplantı yap: %@";
 "LN_Invite_%@_toMeeting_194175" = "%@ adlı kişiyi toplantıya davet et";
+"LN_AIC_Start_Desc2_827302" = "Toplantı sorularını ve toplantı özetini başlatın.";
 "LN_AIC_Ask_Start_Deny_All_695050" = "Tümünü reddet";
 "LN_ViewAllWhiteboards_194175" = "Tüm beyaz tahtaları göster";
+"LN_Webinar_AIC_Start_summary2_792041" = "Web seminerini başlatın.";
 "LN_AI_Requesting_AIC_Content_695050" = "\"Etkinleştir\" seçeneğine tıkladığınızda hesabınızda bu özelliğin web ayarları etkinleştirilir ve özellik bu toplantı için açılır. Ayrıca bu özellik, oturum sahipleri tarafından daha sonraki toplantılarda da açılabilir. Bunu istediğiniz zaman Ayarlar'dan değiştirebilirsiniz.";
 "LN_No_Whiteboard_Content_194175" = "Sohbette paylaşılan beyaz tahtalar burada görünür";
+"LN_Webinar_AIC_Start_Questions_Desc2_792041" = "Web semineri sorularını başlatın.";
 "LN_Older_%@_Whiteboards_Removed_194175" = "%@ süresinden daha eski beyaz tahtalar kaldırıldı";
 "LN_File_AllImage_ShareIn_%@_194175" = "Şurada paylaşılan tüm görüntüler: %@";
+"LN_AIC_Start_Questions_Desc2_827302" = "Toplantı sorularını başlatın.";
 "LN_AI_Ask_Summary_Enable_695050" = "Yöneticiden toplantı özetini etkinleştirmesini isteyin";
 "LN_AIC_Start_Meeting_Summary_Button_695050" = "Toplantı özetini başlat";
+"LN_AIC_Start_summary2_827302" = "Toplantı özetini başlatın.";
 "LN_AIC_Enable_Questions_For_Account_Info_695050" = "Yönetici toplantı ayarlarında hesabınız için toplantı sorularını etkinleştirin";
 "LN_AIC_Host_Client_Older_695050" = "Oturum sahibi AI Companion'ı kapatamıyor. Lütfen daha sonra tekrar deneyin.";
 "LN_File_AllWhiteboard_ShareIn_%@_194175" = "Şurada paylaşılan tüm beyaz tahtalar: %@";
@@ -7046,6 +7121,7 @@
 "LN_UnPinForEveryone_196620" = "Herkes için Sabitlenmesini İptal Et";
 "LN_CN_Unable_To_Start_881415" = "Klinik notu başlatılamıyor";
 "LN_UnPinForEveryone_Info_196620" = "Bu mesajın sabitlenmesini iptal etmek istediğinizden emin misiniz? Üyeler bunu sabitleme geçmişinde görmeye devam edebilecek.";
+"LN_CN_Available_Notes_Used_Error_1030925" = "Geçerli abonelik dönemi için mevcut tüm notlarınızı zaten kullandınız. Destek için lütfen yöneticinizle iletişime geçin.";
 "LN_CN_Please_Contact_Support_881415" = "Web ayarlarınızda Klinik Notları kapatıldı. Destek için lütfen yöneticinizle iletişime geçin.";
 "LN_ViewPin_196620" = "Sabitleme geçmişini görüntüle";
 "LN_Pin_By_%@_196620" = "Sabitleyen: %@";
@@ -7053,17 +7129,35 @@
 "LN_You_Top_Pin_Message_To_Channel_196620" = "Bu kanalda <a href='%1$@'>bir mesajı</a> sabitlediniz. <a href='%2$@'>Sabitleme Geçmişini Görüntüle</a>";
 "LN_AIC_Unable_Load_Desc_695050" = "AI Companion'a şu anda bağlantı kurmakta sorun yaşıyor.";
 "LN_AIC_Remind_Start_For_Meetings_Tip_902567" = "Oturum sahipliği yaptığınız toplantılar için AI Companion'ı başlatmanız hatırlatılacaktır.";
+"LN_CN_Network_Connection_Error_1030925" = "İnternet bağlantınızda geçici bir sorun var. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.";
 "LN_Others_Top_Pin_Message_To_Channel_196620" = "%1$@ bu kanala <a href='%2$@'>bir mesaj</a> sabitledi. <a href='%3$@'>Sabitleme Geçmişini Görüntüle</a>";
 "LN_You_Top_Pin_Message_To_Chat_196620" = "Bu sohbete <a href='%1$@'>bir mesaj</a> sabitlediniz. <a href='%2$@'>Sabitleme Geçmişini Görüntüle</a>";
+"LN_Stop_Translator_For_Me_961527" = "Benim için çevirmeni durdur";
+"LN_Voice_Translator_961527" = "Sesli çevirmen";
 "LN_Others_Top_Pin_Message_To_Chat_196620" = "%1$@ bu sohbete <a href='%2$@'>bir mesaj</a> sabitledi. <a href='%3$@'>Sabitleme Geçmişini Görüntüle</a>";
+"LN_Live_Voice_Translator_Others_On_961527" = "Diğerleri için canlı sesli çevirmen açık";
 "LN_You_UnTop_Pin_Message_196620" = "Bir mesajın <a href='%@'>sabitlemesini kaldırdınız</a>";
+"LN_Start_Translator_For_Me_961527" = "Benim için çevirmeni başlat";
+"LN_Using_Voice_Translator_Content_961527" = "Sesli çevirmen kullanıyorsunuz. Bu toplantı sizin için %@ diline çevrilecektir.";
+"LN_Live_Voice_Translator_On_961527" = "Canlı sesli çevirmen açık";
+"LN_Voice_Translation_Delay_Warning_961527" = "Çeviri, konuşmada gecikmelere yol açabilir.";
 "LN_Other_UnTop_Pin_Message_you_Pinned_196620" = "%1$@ sabitlediğiniz <a href='%2$@'>mesajın</a> sabitlemesini kaldırdı";
 "LN_AIC_Auto_Start_For_Meetings_Tip_902567" = "AI Companion, oturum sahipliği yaptığınız toplantılar için otomatik olarak başlayacaktır.";
+"LN_Translated_961527" = "Çevrilmiş";
 "LN_Other_UnTop_Pin_Message_196620" = "%1$@ bir mesajın <a href='%2$@'>sabitlemesini kaldırdı</a>";
+"LN_Voice_Translator_Settings_961527" = "Sesli çevirmen ayarları";
+"LN_Language_You_Want_To_Hear_961527" = "Duymak istediğiniz dil";
 "LN_CN_Request_To_Cancel_Declined_779477" = "Klinik Notu iptal etme isteği oturum sahibi tarafından reddedildi.";
+"LN_Test_Voice_961527" = "Sesi test et";
+"LN_Can_Turn_On_Voice_Translator_Content_961527" = "Konuşmayı daha iyi anlamak için tercih ettiğiniz dilde çevirmeni açabilirsiniz.";
 "LN_RemoveFromHistory_196620" = "Geçmişten kaldır";
+"LN_Balance_Volume_Audio_961527" = "Ses seviyesini dengeleyin";
 "LN_RemovePIN_Info_196620" = "Bu işlem, mesajı herkes için sabitleme geçmişinden kaldıracaktır. Kaldırmak istediğinizden emin misiniz?";
+"LN_Voice_Translator_Turned_On_961527" = "Sesli çevirmen açıldı.";
+"LN_Original_961527" = "Orijinal";
 "LN_Remove_TopPIN_Info_196620" = "Bu mesajın sabitlenmesini iptal edip, mesajı herkes için Sabitleme Geçmişinden kaldıracaksınız. Kaldırmak istediğinizden emin misiniz?";
+"LN_My_Spoken_Language_961527" = "Konuştuğum dil";
+"LN_Voice_Translator_Set_Language_961527" = "Sesli çevirmen etkinleştirildi. Bu toplantı için konuşacağınız dili ayarlayın.";
 "LN_Delete_Top_Pin_196620" = "Sabitlenmiş mesajı sil";
 "LN_Delete_Top_Pin_Info_196620" = "Bu mesaj şu anda bu kanala sabitlenmiş. Mesajın silinmesi durumunda, sabitleme herkes için kaldırılır.";
 "LN_CN_Approve_To_Cancel_Note_779477" = "Klinik Notun iptal edilmesini onaylarsanız bu akıştan herhangi bir not oluşturulmaz.";
@@ -7071,6 +7165,7 @@
 "LN_CN_Patient_Data_Saved_903500" = "Hasta verileri başarıyla kaydedildi";
 "LN_Turn_Off_CN_Decline_779477" = "Reddet";
 "LN_Clinical_Notes_779477" = "Klinik Notlar";
+"LN_Select_Translated_Voice_Style_961527" = "Çeviri ses stilinizi seçin:";
 "LN_CN_Unable_Save_Patient_Data_903500" = "Hasta verileri kaydedilemiyor";
 "LN_CN_Edit_Patient_Data_903500" = "Hasta verilerini düzenle";
 "LN_Clinical_Note_779477" = "Klinik not";
@@ -7755,25 +7850,40 @@
 "LN_Audio_Device_Type_Aggregate_751220" = "Küme";
 "LN_SmartSearch_627157" = "Akıllı Arama";
 "LN_Try_New_Search_486123" = "Yeni Arama (Beta) özelliğini deneyin";
+"LN_On_For_External_Meeting_1044325" = "Harici toplantılar";
+"LN_On_For_Internal_Meeting_Set_By_Admin_1044325" = "Dahili toplantılar (yönetici tarafından ayarlanan)";
 "LN_Audio_Device_Type_Thunderbolt_751220" = "Thunderbolt";
 "LN_Share_MeetingCard_283899" = "Toplantı içi materyal kartı paylaş";
+"LN_You_Have_No_Added_Apps_1044325" = "Eklenen uygulamanız yok.";
 "LN_In_MeetingCard_283899" = "Toplantı içi materyal kartları";
+"LN_On_For_External_Meeting_Locked_By_Admin_1044325" = "Harici toplantılar (yönetici tarafından kilitlendi)";
 "LN_Create_New_Chat_283899" = "Yeni sohbet oluştur";
 "LN_Existing_Chat_283899" = "Mevcut sohbet";
+"LN_On_For_Internal_Meeting_Locked_By_Admin_1044325" = "Dahili toplantılar (yönetici tarafından kilitlenen)";
+"LN_Auto_Open_Settings_1044325" = "Otomatik açma ayarları";
 "LN_All_participants_283899" = "Oturum açan tüm toplantı katılımcıları";
 "LN_ShareCard_In_Chat_283899" = "Kartı sohbette paylaş";
+"LN_On_For_Internal_Meeting_1044325" = "Dahili toplantılar";
+"LN_On_For_All_Meeting_1044325" = "Tüm toplantılar";
+"LN_Auto_Open_Limit_Reached_1044325" = "Otomatik açma sınırına ulaşıldı";
 "LN_Post_Fail_By_Upgrade_283899" = "Toplantı içi materyal kartları paylaşılamadı. Lütfen en son sürüme yükseltin.";
 "LN_Audio_Device_Type_DisplayPort_751220" = "DisplayPort";
 "LN_Audio_Device_Type_Network_751220" = "Ağ";
 "LN_Post_to_the_%@_Channel_283899" = "Daha önce %@ kanalındaki toplantı içi materyal kartınızı paylaşın";
+"LN_Max_Reached_1044325" = "Maksimuma ulaşıldı";
+"LN_Added_Apps_1044325" = "Eklenen uygulamalar";
 "LN_Audio_Device_Mic_Speaker_751220" = "Mikrofon ve hoparlör";
 "LN_Post_to_%@_Chat_283899" = "Daha önce %@ adlı kişi ile konuşmanızdaki toplantı içi materyal kartınızı paylaşın";
+"LN_On_For_External_Meeting_Set_By_Admin_1044325" = "Harici toplantılar (Yönetici tarafından ayarlanan)";
 "LN_Posted_to_the_%@_channel_283899" = "Toplantı içi materyal kartınız %@ kanalında paylaşıldı";
 "LN_Posted_to_%@_chat_283899" = "Toplantı içi materyal kartınız %@ ile gerçekleştirdiğiniz konuşmada paylaşıldı";
 "LN_Audio_Device_Type_Builtin_751220" = "Yerleşik";
 "LN_Post_Fail_By_You_ChatDisable_283899" = "Sohbetiniz hesap yöneticisi tarafından kısıtlandığı için toplantı içi materyal kartı paylaşılamıyor";
+"LN_Locked_By_Admin_1044325" = "Yönetici tarafından kilitlenen";
+"LN_Reach_Maximum_Number_For_Auto_Open_1044325" = "Otomatik açılmasına izin verilen maksimum uygulama sayısına ulaştınız.";
 "LN_Post_Fail_By_Not_Contact_%@_283899" = "%@ kişilerinizde yer almadığından toplantı içi materyal kartı paylaşılamıyor";
 "LN_Post_Fail_By_Contact_NotExist_%@_283899" = "%@ mevcut olmadığı için toplantı içi materyal kartları paylaşılamıyor.";
+"LN_Set_By_Admin_1044325" = "Yönetici tarafından ayarlanan";
 "LN_Post_Fail_By_Permission_283899" = "Kanal yöneticisinin mesaj gönderebilecek kişileri kısıtlamış olması nedeniyle toplantı içi materyal kartı paylaşılamıyor.";
 "LN_Audio_Device_Type_AirPlay_751220" = "AirPlay";
 "LN_Post_Fail_By_Encrypted_Chat_283899" = "Toplantı içi materyal kartı şifreli bir sohbette paylaşılamaz";
@@ -7781,6 +7891,7 @@
 "LN_Post_Fail_283899" = "Toplantı içi materyal kartları paylaşılamıyor.";
 "LN_%@_View_Meeting_Assets_283899" = "%@ | Toplantı içi materyal kartlarını görüntüle";
 "LN_Zoom_MeetingIn_%@_283899" = "%@ ile Zoom Toplantısı";
+"LN_Modified_1044325" = "Değiştirildi";
 "LN_Share_you_card_283899" = "Kartınızı bir sohbette diğer toplantı katılımcılarıyla paylaşın";
 "LN_Share_in_Channel_218632" = "Kanalda paylaş";
 "LN_Share_in_Chat_218632" = "Sohbette paylaş";
@@ -7791,6 +7902,7 @@
 "LN_Add_Apps_Tip_418931" = "Uygulamaları bağlayarak iş akışınızı kolaylaştırın";
 "LN_APPS_Session_418931" = "UYGULAMALAR";
 "LN_Apps_Contact_Group_418931" = "Uygulamalar";
+"LN_Auto_Open_Selected_Zoom_Apps_1044325" = "Seçili uygulamaları otomatik aç";
 "LN_Add_A_App_418931" = "Bir uygulama ekleyin";
 "LN_Block_App_418931" = "Uygulamayı engelle";
 "LN_Unblock_App_418931" = "Uygulama engelini kaldır";
@@ -7799,6 +7911,7 @@
 "LN_Star_App_418931" = "Uygulamaya yıldız ekle";
 "LN_Audio_Device_Type_Continuity_751220" = "Süreklilik";
 "LN_UnStar_App_418931" = "Uygulamanın yıldızını kaldır";
+"LN_Add_Apps_From_Marketplace_1044325" = "Marketplace'ten uygulama ekle";
 "LN_Audio_Device_Type_Virtual_751220" = "Sanal";
 "LN_Hide_this_App_418931" = "Bu uygulamayı gizle";
 "LN_App_418931" = "UYGULAMA";
@@ -7977,7 +8090,6 @@
 "LN_Custom_Change_Host_Info_261363" = "%@ kişisi oturum sahibi olarak belirlensin ve kullanıcıyı içine alan görünüm durdurulsun mu?";
 "LN_Custom_Scene_Is_Full_261363" = "Kullanıcıyı içine alan görünüm dolu";
 "LN_Apps_Push_App_Close_Attendees_Only_769589" = "Yalnızca rolsüz katılımcılar";
-"LN_Apps_RTMS_AAN_Brought_By_862885" = "Oturum sahibi hesabı tarafından başlatıldı";
 "LN_Apps_RTMS_AAN_Deny_By_Host_862885" = "Oturum sahibi tarafından reddedildi";
 "LN_Apps_Stop_Play_Together_And_Share_Audio_769589" = "Ses paylaşmak için oynatma oturumunu durdurun";
 "LN_Apps_RTMS_AAN_Deny_By_You_862885" = "Sizin tarafınızdan reddedildi";
@@ -8010,14 +8122,17 @@
 "LN_Custom_Accessibility_Focus_Tip_242350" = "Katılımcıyı seçmek için ok tuşlarını kullanın ve etkileşime girmek için Boşluk veya Giriş tuşunu kullanın";
 "LN_Apps_RTMS_AAN_Sharing_862885" = "Erişim sağlanıyor";
 "LN_Apps_RTMS_Host_Tool_951404" = "Uygulamalarla gerçek zamanlı toplantı içeriğini paylaşın";
-"LN_MIL_DoD_Title_1012212" = "Kamu Sektörü için Zoom - Savunma ile bağlantı kurdunuz";
+"LN_MIL_DoD_Title_1012212" = "Savunma Bakanlığı için Zoom'a bağlandınız";
+"LN_Apps_RTMS_AAN_Brought_By_OBF_1002666" = "%@ tarafından getirildi";
 "LN_Apps_RTMS_Disable_All_Tips_862885" = "Gerçek zamanlı toplantı içeriğinin uygulamalarla paylaşılması katılımcılar için devre dışı bırakıldı.";
 "LN_Custom_Accessibility_Focused_Tip_242350" = "Komut - Ok tuşlarını kullanarak hareket edin, Komut - Shift - Ok tuşları ile boyutu değiştirin";
 "LN_Apps_RTMS_AAN_Disable_By_Host_862885" = "Oturum sahibi tarafından devre dışı bırakıldı";
 "LN_Apps_RTMS_Disable_Alert_Desc_1_862885" = "Katılımcılardan gelen yeni uygulama paylaşım taleplerini engelleyin.";
 "LN_Custom_Accessibility_Focused_Remove_Tip_242350" = "Komut - Ok tuşlarını kullanarak hareket edin, Komut - Shift - Ok tuşları ile boyutu değiştirin ve kaldırmak için silin";
 "LN_Apps_RTMS_AAN_Enable_By_You_862885" = "Sizin tarafınızdan etkinleştirildi";
-"LN_MIL_DoD_Tooltip_1012212" = "Kamu Sektörü için Zoom - Savunma";
+"LN_Apps_RTMS_Not_In_Meeting_1050803" = "toplantıda değil";
+"LN_Apps_RTMS_Not_In_Webinar_1050803" = "web seminerinde değil";
+"LN_MIL_DoD_Tooltip_1012212" = "Savunma için Zoom";
 "LN_App_Share_Background_745455" = "Arka planı paylaş";
 "LN_Custom_Accessibility_Video_242350" = "%@adlı kişinin videosu";
 "LN_Custom_Accessibility_Video_Removed_242350" = "%@ adlı kişinin Videosu Kaldırıldı";
@@ -8045,6 +8160,7 @@
 "LN_Apps_RTMS_Remove_%@_Title_862885" = "\"%@\" uygulaması kaldırılsın mı?";
 "LN_Apps_RTMS_Pause_Access_862885" = "Erişimi duraklatın";
 "LN_Webinar_Has_Ended_503544" = "Bu web semineri sona erdi";
+"LN_Join_Space_Rejected_For_Restrictions_1025496" = "Paylaşılan alan yöneticisinin katılabilecek kişileri sınırlaması nedeniyle %@ tarafından eklendiğiniz paylaşılan alana katılamazsınız";
 "LN_Apps_RTMS_Resume_Access_862885" = "Erişime devam et";
 "LN_Webinar_In_Min_503544" = "Web semineri %d dakika içinde başlayacak";
 "LN_Apps_RTMS_Host_Not_Support_RTMS_862885" = "Oturum sahibi, uygulamanızın toplantı içeriğine erişimini onaylayamaz.";
@@ -8238,6 +8354,7 @@
 "LN_Meeting_Annotation_Legal_Notices_Tip_Cloud_Recording_260898" = "Kaydetme açık. Dolayısıyla, hesap sahibi ve toplantıdaki herkes burada paylaştıklarınızı kaydedebilir ve bunları uygulamalarla ve başkalarıyla paylaşabilir.";
 "LN_Meeting_Annotation_Legal_Notices_Tip_Local_Recording_260898" = "Kaydetme açık. Dolayısıyla, toplantıdaki herkes burada paylaştıklarınızı kaydedebilir ve bunları uygulamalarla ve başkalarıyla paylaşabilir.";
 "LN_Simulive_Start_Live_748835" = "Canlı oturumu başlat";
+"LN_Simulive_Remind_Video_And_Audio_Available_Content_1007388" = "Kayıt şu anda oynatılıyor. Web seminerindeki rolsüz katılımcıların tümü kaydı görebilir ve duyabilir.\n\n Oturum sahibinin ve panelistlerin sesleri ve videoları yalnızca web semineri canlı yayına geçtikten sonra kullanılabilir.";
 "LN_Simulive_Remind_Webinar_End_Content_748835" = "Kaydın oynatılması bittiğinde web semineri otomatik olarak sona erecektir.";
 "LN_Simulive_748835" = "Simulive";
 
@@ -8281,6 +8398,7 @@
 "LN_MTChat_Message_%@_748343" = "Şuraya mesaj gönder: %@";
 "LN_IM_File_Downloading_239315" = "İndiriliyor...";
 "LN_IM_File_Uploading_239315" = "Karşıya yükleniyor...";
+"LN_Simulive_Feature_Not_Available_1075603" = "Bu özellik şu anda mevcut değil. Bu, oturumda daha sonra etkinleştirilecek.";
 "LN_MTChat_Message_Direct_WR_%@_748343" = "Şuraya mesaj gönder: %@ (bekleme odası)";
 "LN_Simulive_Not_Auto_Start_967444" = "otomatik olarak başlatılmayacaktır";
 "LN_Simulive_Failed_Need_Manually_Start_967444" = "Simüle-canlı oturum, planlanan saatte otomatik olarak başlatılamadı.\nLütfen oturumu manuel olarak başlatın.";
@@ -8309,6 +8427,7 @@
 "LN_MTChat_CMC_DM_Ready_100946" = "Buraya gönderilen mesajlar, DM mevcutsa Team Chat'te de görüntülenir.";
 "LN_IM_File_Download_Failed_239315" = "İndirilemedi";
 "LN_Simulive_Started_967444" = "Simüle-canlı oturum başladı.";
+"LN_MTChat_Unsupported_%@_1057789" = "Bu özellik hesaplarında kullanılmadığı için %@ kullanıcısına mesaj atamazsınız.";
 "LN_MTChat_CMC_DM_Failed_100946" = "Ayarlar veya bazı katılımcıların Zoom Workplace uygulamaları bu özelliği destekleyemediği için mesajlar bu toplantı sohbeti ile eşitlenemiyor.";
 "LN_Chat_Legal_PMC_Record_Tips_855079" = "Kayıt açık. Hesap sahibi ve toplantıdaki herkes toplantı grubu sohbetine gönderdiğiniz mesajları görüp kaydedebilir ve bunları uygulamalarla ve başkalarıyla paylaşabilir. Bu mesajlar ayrıca Ekip Sohbeti'ndeki özel toplantı grubu sohbetinde de yayınlanır ve toplantıda olmayanlar da dahil olmak üzere oradaki herkes bunları görebilir, kaydedebilir ve paylaşabilir.";
 "LN_IM_File_Click_Retry_Download_239315" = "Yeniden denemek için tıklayın";
@@ -8338,12 +8457,14 @@
 "LN_MTChat_Not_In_Meeting_736262" = "Toplantıda değil";
 "LN_MTChat_Restrict_DLP_%@_859479" = "%@ adlı kullanıcının doğrudan mesaj alması kısıtlandı. (DLP nedeniyle)";
 "LN_Chat_Content_Encrypted_InMuc_Tip_%@_580327" = "Gönderdiğiniz sohbet içeriği <a href='advanced_chat_encrypted'>gelişmiş sohbet şifrelemelidir</a>. Ancak, başkaları tarafından gönderilen içerik bu şekilde şifreli olmayabilir. Ayrıca, bu sohbetin meta verileri (grup sohbeti adı, grup sohbeti üyelerinin adları ve grup sohbeti gizlilik yapılandırması gibi) hesap sahibi, hesap yöneticileri ve hesap sahibinin atadığı diğer kişiler tarafından görüntülenebilir veya düzenlenebilir olmaya devam eder ve mesajlar, politikalarına tabi olarak hesap sahibi tarafından arşivlenebilir.";
+"LN_Notes_Tip_Title_1045743" = "Kendi yönteminizle not alın";
 "LN_MTChat_New_Chat_Tip_748343" = "Birine doğrudan mesaj atabilir veya iki veya daha fazla katılımcıyla grup sohbetleri başlatabilirsiniz.";
 "LN_Notes_Tip_Title_996840" = "Kolayca notlar alın";
 
 "LN_Schedule_Unable_Save_Tip_260491" = "Bu toplantı kaydedilemiyor %@ için toplantı planlamak veya düzenlemek için lütfen Zoom web portalına gidin.";
 //ZOOM-251821
 "LN_MTChat_Outdated_Version_748343" = "Bu katılımcı eski bir Zoom Workplace versiyonu kullanıyor ve grup sohbetine eklenemiyor.";
+"LN_Notes_Tip_Content_1045743" = "Toplantılarınızda hızlıca fikirlerinizi not edin, AI Companion onları sizin için düzenlesin. Özelliğin kullanılabilirliği Zoom planınıza bağlıdır.";
 "LN_Schedule_Unable_Schedule_For%@_251821" = "Şunun için toplantı planlanamıyor: %@";
 //ZOOM-213159
 "LN_Date_Comma_Time_213159" = "%@, %@";
@@ -8354,20 +8475,27 @@
 "LN_MTChat_Legal_Normal_859479" = "Sohbetler toplantı katılımcıları tarafından görülebilir, kaydedilebilir ve paylaşılabilir.";
 "LN_Invite_With_Dots_373384" = "Davet et...";
 
+"LN_MTChat_UnPin_Content_1013473" = "Bu mesajın sabitlemesini kaldırmak istediğinizden emin misiniz?";
 "LN_MTChat_CMC_DM_Title_950219" = "Katılımcının katılması bekleniyor...";
 "LN_MTChat_Legal_DLP_859479" = "Bir veya daha fazla katılımcı, doğrudan mesajları da dahil olmak üzere veri kaybı önlemeye (DLP) tabidir. DLP politikalarıyla çelişen tüm mesajlar silinecektir. Hesap sahiplerinin DLP\&apos;ye tabi mesajlara erişimi vardır.";
 
+"LN_Gift_Limit_Extend_First_End_Message_997504" = "Toplantınız %1$@ sürdü. Toplantı planınızda %2$@ dakikalık süre hakkınız var. Lütfen planınızı yükseltmeyi ve toplantılarınızı sınırsız hâle getirmeyi değerlendirin.";
+"LN_MTChat_Add_App_Title_1029818" = "Toplantı kanalına ekle";
 
 "LN_MTChat_Rec_Archive_DLP_Conflict_859479" = "Mesajlarınızı kimler görebilir? Kayıt, arşivleme açık ve DLP çakışması";
+"LN_MTChat_Other_Pin_Message_1013473" = "%1$@ bu sohbete <a href='%2$@'>bir mesaj</a> sabitledi.";
 "LN_Main_Tab_ZRC_FTE_Info_179546" = "Toplantıları masaüstü istemcinizden kontrol etmek için bir Zoom Odası ile eşleştirme yapın.\r\n\r\nBu özelliği <a href='%@'> Ayarlar bölümünden devre dışı bırakabilirsiniz</a>";
 "LN_Main_Tab_ZRC_Setting_179546" = "\"Oda ile Eşleştir\" özelliğini gezinme çubuğunda ve toplantı sırasında göster.";
 "LN_MTChat_To_Me_748343" = "%@ kişisinden bana";
 "LN_Main_Tab_ZRC_Setting_Disable_Tooltip_179546" = "Bu özellik yöneticiniz tarafından devre dışı bırakıldı";
 "LN_Main_Tab_ZRC_Unpaired_Status_Hover_179546" = "Zoom Room veya Zoom for Home cihazıyla eşleştir";
+"LN_MTChat_Fusion_Title_1029818" = "Daha fazla uygulama ve araç";
 "LN_Main_Tab_ZRC_Paired_Status_Hover_179546" = "Şununla eşleştirildi: %@";
 "LN_Gift_Extend_First_End_Message_997504" = "Toplantınız %@ sürdü. Toplantı planınızda 60 dakikalık bir süre hakkınız var. Lütfen planınızı yükseltmeyi ve toplantılarınızı sınırsız hâle getirmeyi değerlendirin.";
 "LN_Main_Tab_ZRC_Pairing_179546" = "Eşleştiriliyor...";
 "LN_Gift_Extend_Second_End_Message_997504" = "Toplantınız %@ sürdü. Toplantı planınızda 60 dakikalık bir süre hakkınız var. Lütfen planınızı yükseltmeyi ve toplantılarınızı sınırsız hâle getirmeyi değerlendirin.";
+"LN_MTChat_You_Pin_Message_1013473" = "Bu sohbete <a href='%1$@'>bir mesaj</a> sabitlediniz.";
+"LN_Gift_Limit_Extend_Second_End_Message_997504" = "Toplantınız %1$@ sürdü. Toplantı planınızda %2$@ dakikalık süre hakkınız var. Lütfen planınızı yükseltmeyi ve toplantılarınızı sınırsız hâle getirmeyi değerlendirin.";
 "LN_MTChat_Rec_DLP_Conflict_859479" = "Mesajlarınızı kimler görebilir? Kayıt açık ve DLP çakışması";
 "LN_Main_Tab_ZRC_Detecting_179546" = "Algılanıyor...";
 "LN_Main_Tab_ZRC_Paired_Toast_179546" = "Bilgisayarınız %@ ile eşleştirildi.";
@@ -8576,6 +8704,7 @@
 "LN_AdminRMMsg_ConfirmDescription2_%@_276949" = "%@ kişisine mesajının bu etkinlikten kaldırıldığı e-posta ile bildirilecek.";
 "LN_AdminRMMsg_ConfirmDescription3_276949" = "Bu raporu gönderdiğinizde, Zoom'un <a href='%@'>Zoom Events Gizlilik Politikası</a> çerçevesinde bu rapordaki tüm verilere erişmesine izin vermiş olursunuz. Bu veriler, ekli tüm dosyaları ve ekran görüntülerini, kullanıcı bilgilerinizi, bildirdiğiniz kişilerin kullanıcı bilgilerini ve tüm ilgili toplantı bilgilerini içerir.";
 "LN_Toolbar_Audio_Companion_FTE_Tip_Content_750362" = "Bu toplantıda yankı veya geri bildirim olmadan ses kalitenizi artırmak için %@ mikrofonunu kullanın.";
+"LN_Main_Tab_ZRC_Keep_Pair_Alert_Title_1033710" = "Oturumunuz sona erdi. %@ ile eşleştirilmiş hâlde kalmak istiyor musunuz?";
 "LN_YES_RMMsgAndSendReport_276949" = "Evet, mesajı kaldır ve rapor gönder";
 "LN_YES_RMMsg_276949" = "Evet, mesajı kaldır";
 "LN_Main_Tab_ZRC_Inquiry_View_Start_From_Room_Companion_Button_Tooltip_775584" = "Zoom Room'da toplantı başlatın, kişisel cihazınız da sohbet ve ekran paylaşımı için katılacaktır.";
@@ -8585,16 +8714,22 @@
 
 
 "LN_AdminReportRMUser_%@_276949" = "Bu sohbet mesajını ve kullanıcıyı bildir ve kaldır %@";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Desc_1024205" = "Sohbet ve ekran paylaşımı için cihazınız Zoom Room’a bağlansın mı?";
 "LN_Main_Tab_ZRC_Pair_Move_Meeting_Error_Others_995355" = "Zoom Room ile eşleştirilemiyor. Lütfen tekrar deneyin.";
+"LN_Main_TAB_ZRC_Companion_Disconnected_1024205" = "Cihazınızın %@ ile bağlantısı kesildi.";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Title_1024205" = "Toplantı aktarıldı";
 
+"LN_Main_TAB_ZRC_Companion_Connected_1024205" = "Cihazınız sohbet ve ekran paylaşımı için şuraya bağlandı: %@.";
 "LN_Main_Tab_ZRC_Inquiry_View_Start_From_Room_Companion_Button_Title_775584" = "Odadan ve eşlikçi olarak başlatın";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Room_Companion_Button_Title_775584" = "Odadan ve eşlikçi olarak katılın";
 "LN_AdminRMReport_Desc1_276949" = "Bu sohbet mesajını kaldırdığınızda bu mesaj artık kurtarılamaz ve bu işlemi de geri alamazsınız.";
 
 "LN_AdminRMReport_Desc2_276949" = "Bu kullanıcıyı ve mesajını kaldırmak ve Zoom'a bir olay raporu göndermek için \"Devam\" üzerine tıklayın. Bu kullanıcıyı ve sohbet mesajını bir olay raporu göndermeden kaldırmak için \"Zoom'a Bildir\" seçeneğini devre dışı bırakın. <a href='%@'>Zoom Güven ve Güvenlik</a> olay raporları hakkında daha fazla bilgi edinin.";
 
+"LN_Main_Tab_ZRC_Join_From_Room_Client_In_Meeting_937231" = "Şu anda bir toplantıdasınız. Odadan bir toplantıyı başlatmadan veya bir toplantıya katılmadan önce lütfen toplantıdan ayrılın.";
 "LN_Toolbar_Audio_Companion_Speaker_Menu_Title_750362" = "Bir dinleme cihazı seçin";
 "LN_Toolbar_Audio_Companion_Poor_Quality_Detected_Tip_Content_750362" = "Bu toplantıda yankı veya geri bildirim olmadan ses kalitesini artırmak için %@ cihazınızı açmak ister misiniz?";
+"LN_Main_TAB_ZRC_ZR_IN_USE_1024205" = "Oda şu anda kullanımda. Toplantı aktarımı yapılamaz.";
 "LN_Toolbar_Audio_Companion_Mic_Button_Unmute_Tooltip_879423" = "Eşlikçi mikrofonun sesini aç";
 "LN_Toolbar_Audio_Companion_Mic_Error_Device_Issue_Tip_Title_750362" = "Eşlikçi mikrofon bağlantısı kesildi";
 "LN_Toolbar_Audio_Companion_Room_Setting_Auto_Join_Title_750362" = "Eşlikçi olarak katılırken eşlikçi mikrofonu otomatik olarak etkinleştir";
@@ -8602,9 +8737,12 @@
 "LN_Toolbar_Audio_Companion_Mic_Button_Mute_Tooltip_879423" = "Eşlikçi mikrofonu sessize al";
 "LN_Toolbar_Audio_Companion_Mic_Error_Cannot_Turn_On_Tip_Title_750362" = "Eşlikçi mikrofonu açılamıyor";
 "LN_Main_Tab_ZRC_Inquiry_View_Start_From_Room_Only_Button_Disabled_Tooltip_832028" = "Lütfen toplantıyı başlatmak için başka bir yöntem deneyin.";
+"LN_Main_Tab_ZRC_Connect_To_Room_Error_ZR_Idle_937231" = "Bu seçenek yalnızca Zoom Room bir toplantıdayken kullanılabilir.";
 "LN_Meeting_Summary_Lowercase_890360" = "toplantı özeti";
+"LN_Main_TAB_ZRC_Connect_1024205" = "Bağlan";
 "LN_AdminRptRMUserMsg_276949" = "Kullanıcıyı bildir ve kullanıcıyı ve/veya sohbet mesajlarını kaldır";
 "LN_Whiteboard_Lowercase_890360" = "beyaz tahta";
+"LN_Main_Tab_ZRC_Connect_To_Room_Error_Title_937231" = "Odaya bağlanamıyor";
 "LN_AdminRptRMUserMsg_Desc1_276949" = "Sohbet mesajları kaldırıldığında bu eylem geri alınamaz.";
 "LN_Main_Tab_ZRC_Claim_Single_Asset_Failed_Message_890360" = "Size ait %@ devre dışı bırakıldı. Toplantı sona erdiğinde %@ ögesini içeren bir e-posta alacaksınız.";
 "LN_Main_Tab_ZRC_Claim_Assets_Toast_890360" = "Başarıyla talep edildi.";
@@ -8616,16 +8754,23 @@
 "LN_Main_Tab_ZRC_Claim_Multi_Asset_Failed_Message_890360" = "Aşağıdaki ögeler devre dışı bırakıldı ve kaydedilemedi. Toplantı sona erdiğinde bu varlıkları içeren bir e-posta alacaksınız.";
 "LN_Toolbar_Audio_Companion_Mic_Error_No_Device_Tip_Content_750362" = "Desteklenen ses cihazı yok. Lütfen bir cihaz bağlayın.";
 "LN_Main_TAB_ZRC_CLaim_Assets_Failed_Across_Account_1000857" = "Farklı hesaplardaki toplantı varlıklarını talep edemez ve kaydedemezsiniz. Yardım için lütfen yöneticinizle iletişime geçin.";
+"LN_Main_TAB_ZRC_AIC_Record_Failed_937231" = "AI Companion ile kayıt yapılamıyor. Lütfen tekrar deneyin.";
+"LN_Main_Tab_ZRC_Claim_Assets_Toast_937231" = "Varlıklar başarıyla talep edildi ve odadan kaydedildi.";
+"LN_Main_TAB_ZRC_ZR_Busy_Toast_937231" = "Oda şu anda kullanımda. Lütfen daha sonra tekrar deneyin.";
 "LN_Main_TAB_ZRC_CLaim_Assets_Failed_Permission_890360" = "Kaydedilemedi. Varlıkları kaydetmek için izniniz yok. Yöneticinizden yardım isteyin.";
 "LN_Toolbar_Audio_Companion_FTE_Tip_Title_750362" = "Eşlikçi mikrofon açık";
 "LN_Main_TAB_ZRC_CLaim_Assets_Failed_890360" = "Kaydedilemedi.";
+"LN_Main_TAB_ZRC_CLaim_Assets_Timeout_937231" = "Odadaki varlıklar kaydedilemiyor. Lütfen tekrar deneyin.";
 "LN_Main_Tab_ZRC_Loading_View_Description_775584" = "Odadan katılım sağlanıyor...";
 "LN_AdminRptRMUserMsg_Desc2_276949" = "Kullanıcıyı ve aşağıdaki mesajı kaldırma işlemini tamamlamak ve Zoom'a bir olay raporu göndermek için \"Devam\" üzerine tıklayın. <a href='%@'>Zoom Güven ve Güvenlik olay raporları</a> hakkında daha fazla bilgi edinin.";
 "LN_Toolbar_Audio_Companion_FTE_Tip_Title_879423" = "Eşlikçi mikrofonun sesi açık";
 
 "LN_Toolbar_Audio_Companion_Speaker_Button_Off_Tooltip_879423" = "Oda dinlemesinin sesini aç";
 "LN_Toolbar_Audio_Companion_Speaker_Button_On_Tooltip_879423" = "Oda dinlemesini sessize al";
+"LN_Main_TAB_ZRC_AIC_Record_Failed_Client_Not_Support_937231" = "Bu oda için AI Companion ile kaydetme devre dışı bırakıldı. Yardım için lütfen BT yöneticinizle iletişime geçin.";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Join_Title_Period_937231" = "Toplantıya Zoom Room'dan katılındı.";
 "LN_Toolbar_Audio_Companion_Speaker_Button_Title_750362" = "Dinle";
+"LN_Main_TAB_ZRC_Remember_My_Choice_937231" = "Seçimimi hatırla";
 "LN_UserAndThisMsg_276949" = "Kullanıcı ve bu mesaj";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Room_Only_Button_Disabled_Tooltip_832028" = "Lütfen toplantıya katılmak için başka bir yöntem deneyin.";
 "LN_Toolbar_Audio_Companion_Mic_Error_Generic_Tip_Content_750362" = "Eşlikçi mikrofon özelliği şu anda kullanılamıyor. Daha sonra yeniden deneyin.";
@@ -8634,27 +8779,42 @@
 "LN_Toolbar_Audio_Companion_Mic_Error_Cannot_Turn_On_Tip_Title_879423" = "Eşlikçi mikrofonun sesini açamıyorum";
 
 "LN_RM_%@_UserAndOneMsg_276949" = "%@ kullanıcısını ve sohbet mesajını bu etkinlikten kaldırmak istediğinizden emin misiniz?";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Start_Title_Period_937231" = "Toplantı Zoom Room'dan başlatıldı.";
 "LN_RM_%@_UserAndOneMsg_Desc_276949" = "Bir lobi sohbet mesajı kaldırıldığında bu işlem geri alınamaz. %@ adlı kullanıcıya mesajının kaldırıldığı ve bu etkinliğe erişiminin iptal edildiği e-posta ile bildirilecek.";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Transfer_Title_Period_937231" = "Toplantı Zoom Room'a aktarıldı.";
 "LN_Toolbar_Audio_Companion_Speaker_Error_No_Device_Tip_Content_750362" = "Desteklenen ses cihazı yok. Lütfen bir cihaz bağlayın.";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Join_Title_937231" = "Toplantıya Zoom Room'dan katılındı";
+"LN_Main_TAB_ZRC_Companion_Connected_937231" = "Cihazınız sohbet ve içerik görüntüleme için %@ ile bağlıdır.";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Device_Issue_Tip_Content_750362" = "%@ artık odadan ses çalmıyor. Odaya yeniden bağlanmak için eşlik modunda tekrar katılın.";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Cannot_Turn_On_Tip_Title_750362" = "Oda dinleme özelliği açılamıyor";
+"LN_Toolbar_Paired_Zr_Action_Menu_Transfer_To_Room_Title_1024686" = "Toplantıyı odaya aktar";
 "LN_Toolbar_Audio_Companion_Mic_Error_Generic_Tip_Title_750362" = "Zoom Room'a bağlanılamıyor";
+"LN_Toolbar_Paired_Zr_Action_Menu_Connect_To_Room_Help_String_1024686" = "Cihazınız sohbet ve ekran paylaşımı için Zoom Room’a bağlanacaktır.";
+"LN_Toolbar_Paired_Zr_Action_Menu_Connect_To_Room_Title_1024686" = "Odaya bağlan";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Desc_937231" = "Sohbet ve içerik görüntüleme için cihazınız Zoom Room'a bağlansın mı?";
+"LN_Main_TAB_ZRC_AIC_Record_Failed_ZR_Busy_937231" = "Zoom Room şu anda meşgul. Lütfen daha sonra AI Companion ile kayıt yapmayı deneyin.";
 "LN_Toolbar_Audio_Companion_Mic_Error_Zr_Muted_Tip_Content_879423" = "Odanın sesi kapalıyken eşlikçi mikrofonunuzun sesini açamazsınız.";
 "LN_YES_SendRptRMUserAndOneMsg_276949" = "Evet, rapor gönder ve kullanıcıyı ve mesajı kaldır";
+"LN_Main_TAB_ZRC_Room_Detected_937231" = "Oda algılandı";
 "LN_Toolbar_Audio_Companion_Mic_Error_Exceed_Maximum_Tip_Content_750362" = "Bu Zoom Room'a maksimum sayıda eşlikçi mikrofon cihazı bağlanmıştır.";
 
+"LN_Toolbar_Paired_Zr_Action_Menu_Connect_To_My_Device_Title_1024686" = "Toplantıyı cihazıma aktar";
 "LN_RM_%@_UserAndAllMsgs_276949" = "%@ adlı kullanıcıyı ve tüm sohbet mesajlarını bu etkinlikten kaldırmak istediğinizden emin misiniz?";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Start_Title_937231" = "Toplantı Zoom Room'dan başlatıldı";
 "LN_RM_%@_UserAndAllMsgs_Desc_276949" = "Lobi sohbet mesajları kaldırıldığında bu işlem geri alınamaz. %@ adlı kullanıcıya mesajlarının kaldırıldığı ve bu etkinliğe erişiminin iptal edildiği e-posta ile bildirilecek.";
 "LN_Toolbar_Audio_Companion_Mic_Error_Zr_Muted_Tip_Title_750362" = "Zoom Room sesi kapatıldı";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Disconnect_Tip_Title_750362" = "Oda dinleme bağlantısı kesildi";
 "LN_Toolbar_Audio_Companion_Mic_Error_Disconnected_Tip_Title_750362" = "Mikrofonun cihazınızla bağlantısı kesildi";
 "LN_YES_SendRptRMUserAndAllMsgs_276949" = "Evet, rapor gönder ve kullanıcıyı ve mesajları kaldır";
+"LN_Main_TAB_ZRC_Room_Connected_937231" = "Odaya bağlandı";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Transfer_Title_937231" = "Toplantı Zoom Room’a aktarıldı";
 "LN_Toolbar_Audio_Companion_Speaker_Error_No_Device_Tip_Content_879423" = "Oda dinlemesini etkinleştirmek için lütfen bir eşlikçi dinleme cihazı bağlayın.";
 
 "LN_RM_%@_User_276949" = "%@ kullanıcısını bu etkinlikten kaldırmak istediğinizden emin misiniz?";
 "LN_RM_%@_User_Desc_276949" = "%@ kullanıcısına bu etkinliğe erişiminin iptal edildiği e-posta ile bildirilecek.";
 "LN_Toolbar_Audio_Companion_FTE_Tip_LeaveOn_Button_750362" = "Açık bırak";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Computer_Button_Title_775584" = "Yalnızca bilgisayardan katılın";
+"LN_Main_TAB_ZRC_Connect_To_Room_ZR_IN_USE_937231" = "Bağlanmak için oda ile aynı toplantıda bulunmanız gerekir.";
 "LN_Toolbar_Audio_Companion_Speaker_Error_No_Device_Tip_Title_879423" = "Desteklenen bir ses cihazı bağlayın";
 "LN_YES_SendRptRMUser_276949" = "Evet, rapor gönder ve kullanıcıyı kaldır";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Generic_Tip_Title_750362" = "Zoom Room'a bağlanılamıyor";
@@ -8678,21 +8838,31 @@
 "LN_OrganizerAndTeamSendEmail_276949" = "Düzenleyici, raporunuzu inceledikten sonra bir karar verecektir. Ayrıca Güven ve Güvenlik Ekibimiz, olay hakkında daha fazla bilgi edinmek için toplantıdan sonra size bir e-posta gönderecektir.";
 "LN_OrganizerReviewAndMakeDecision_276949" = "Düzenleyici, raporunuzu inceledikten sonra bir karar verecektir.";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Computer_Button_Tooltip_775584" = "Kişisel cihazınızla toplantıya katılın, Zoom Room katılmayacaktır.";
+"LN_Pin_To_Toolbar_1060379" = "Araç çubuğuna sabitle";
 "LN_Toolbar_Audio_Companion_Speak_Error_Not_Same_Meeting_Tip_Content_975235" = "Oda dinleme özelliği kullanılamıyor. Zoom Room ile aynı toplantıda değilsiniz.";
 "LN_TeamSendEmail_276949" = "Güven ve Güvenlik Ekibimiz, olay hakkında daha fazla bilgi edinmek için toplantıdan sonra size bir e-posta gönderecektir.";
 "LN_Toolbar_Audio_Companion_Mic_Error_Zr_Muted_Tip_Content_750362" = "Odanın sesi kapalıyken eşlikçi mikrofonunuzu açamazsınız.";
 
+"LN_Host_Tools_For_BO_1060379" = "Küçük grup odaları için oturum sahibi araçları";
 "LN_Toolbar_Audio_Companion_Mic_Error_Device_Issue_Tip_Content_750362" = "%@ artık odaya ses akışı sağlamıyor. Odaya yeniden bağlanmak için eşlik modunda tekrar katılın.";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Network_Issue_Tip_Content_975235" = "Oda dinleme özelliğini etkinleştirmek için Zoom Room ağına ulaşılamıyor. Zoom Room'a bağlantısı olan bir ağa geçmeyi deneyin.";
 "LN_Toolbar_Audio_Companion_Poor_Quality_Detected_Tip_Title_750362" = "Kötü ses kalitesi algılandı";
 "LN_Toolbar_Audio_Companion_Speaker_Button_On_Tooltip_750362" = "Oda dinleme özelliğini kapatın";
+"LN_Transfer_To_Zoom_Room_1060379" = "Odaya aktar";
+"LN_Host_Tools_For_Apps_1060379" = "Uygulamalar için oturum sahibi araçları";
+"LN_Chat_settings_1060379" = "Sohbet ayarları";
+"LN_Share_Screen_Settings_1060379" = "Ayarları paylaş";
 "LN_Main_Tab_ZRC_Pair_View_Error_Admin_Disable_Msg_917924" = "Bu Zoom Odası için eşleştirme devre dışı bırakıldı. Lütfen yardım için BT yöneticinizle iletişime geçin veya başka bir odayla eşleştirin.";
 "LN_Main_Tab_ZRC_Inquiry_View_Description_775584" = "Nasıl toplantı yapmak istersiniz?";
 "LN_MsgsSentBy_%@_BeRemoved_276949" = "%@ tarafından gönderilen sohbet mesajları kaldırıldı";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Room_Only_Button_Disabled_Tooltip_ZR_Not_Support_833695" = "Zoom Rooms sürümü güncel olmadığı için odadan katılamazsınız. En son Zoom Rooms sürümüne güncellemek için lütfen yöneticiyle iletişime geçin.";
+"LN_Host_Tools_For_Docs_1060379" = "Dokümanlar için oturum sahibi araçları";
 "LN_MsgsSentBy_%@_BeRemoved_Desc1_276949" = "%@ kullanıcısına sohbet mesajının bu etkinlikten kaldırıldığı e-posta ile bildirildi.";
+"LN_Transfer_To_Device_1060379" = "Cihaza aktar";
+"LN_Remove_From_Toolbar_1060379" = "Araç çubuğundan kaldır";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Disconnected_Tip_Content_750362" = "%@ artık cihazınıza bağlı değil ve ses çalamıyor.";
 "LN_Toolbar_Audio_Companion_Speaker_Button_Off_Tooltip_750362" = "Oda dinleme özelliğini açın";
+"LN_Reaction_Settings_1060379" = "Reaksiyon ayarları";
 "LN_Main_Tab_ZRC_Pair_View_Error_Admin_Disable_Title_917924" = "Eşleştirme devre dışı bırakıldı";
 "LN_Main_Tab_ZRC_Pair_View_Pair_Another_917924" = "Başka bir odayla eşleştir";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Room_Only_Button_Tooltip_775584" = "Zoom Room'da toplantıya katılın, kişisel cihazınız katılmayacaktır.";
@@ -8700,10 +8870,13 @@
 "LN_Main_Tab_ZRC_Setting_Auto_Detect_Button_Title_775584" = "Zoom Rooms otomatik algılama";
 "LN_ReportSubmitted_TeamSendEmail_276949" = "Ayrıca raporunuz Zoom'a gönderildi. Güven ve Güvenlik Ekibimiz, olay hakkında daha fazla bilgi edinmek için size kısa süre içinde bir e-posta gönderecektir.";
 
+"LN_Host_Tools_For_Whiteboards_1060379" = "Beyaz tahtalar için oturum sahibi araçları";
 "LN_%@_AndMsg_BeRemoved_276949" = "%@ kullanıcısı ve lobi sohbet mesajı bu etkinlikten kaldırıldı";
+"LN_Host_Tools_For_Share_1060379" = "Paylaşım için oturum sahibi araçları";
 "LN_%@_AndMsg_BeRemoved_Desc_276949" = "%@ kullanıcısına, lobi sohbet mesajlarının kaldırıldığı ve bu etkinliğe erişiminin iptal edildiği e-posta ile bildirildi.";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Disable_Tip_Title_975235" = "Oda dinleme özelliği devre dışı bırakıldı";
 
+"LN_Connect_To_Room_1060379" = "Odaya bağlan";
 "LN_%@_AndMsgs_BeRemoved_276949" = "%@ kullanıcısı ve lobi sohbet mesajları bu etkinlikten kaldırıldı";
 "LN_%@_AndMsgs_BeRemoved_Desc_276949" = "%@ kullanıcısına, lobi sohbet mesajlarının kaldırıldığı ve bu etkinliğe erişiminin iptal edildiği e-posta ile bildirildi.";
 "LN_Toolbar_Audio_Companion_Mic_Error_Not_Same_Meeting_Tip_Content_975235" = "Eşlikçi mikrofon kullanılamıyor. Zoom Room ile aynı toplantıda değilsiniz.";
@@ -8719,6 +8892,7 @@
 "LN_Failed2Remove_Try_276949" = "Kaldırılamadı. Lütfen yeniden deneyin.";
 "LN_Failed2RemoveAndReport_Try_276949" = "Kaldırma ve bildirim yapılamadı. Lütfen yeniden deneyin.";
 "LN_Main_TAB_ZRC_AIC_Record_Not_Support_Msg_951610" = "Toplantı özetiniz veya kaydınız devre dışı bırakıldı. Yardım için lütfen BT yöneticinizle iletişime geçin.";
+"LN_Host_Tools_For_Captions_1060379" = "Alt yazılar için oturum sahibi araçları";
 "LN_IM_TutorialSessionName_430336" = "Başlayın";
 "LN_IM_TutorialSession_Header_Title_430336" = "Ekip Sohbeti'ne Hoş Geldiniz!";
 "LN_Main_TAB_ZRC_AIC_Record_Not_Support_Title_951610" = "AI Companion ile kayıt yapılamadı";
@@ -8729,6 +8903,7 @@
 "LN_IM_TutorialSession_Header_Body_430336" = "Ekibinizle bağlantı kurun ve iş birliği yapın, odaklanmaya devam etmek için konuşmalarınızı düzenli halde tutun ve fikirleri kolayca paylaşın.";
 "LN_IM_TutorialSession_CardList_Header_430336" = "Başlayın";
 "LN_IM_TutorialSession_CardButton_430336" = "Hadi başlayalım!";
+"LN_Recording_settings_1060379" = "Kayıt ayarları";
 "LN_Main_Tab_ZRC_Pair_Join_From_Room_Error_Description_775584" = "Hata kodu: %lu";
 "LN_Main_Tab_ZRC_Inquiry_View_Start_From_Room_Only_Button_Title_775584" = "Yalnızca odadan başlatın";
 "LN_Main_Tab_ZRC_Setting_Auto_Detect_Tooltip_775584" = "Kişisel cihazınızı, Bluetooth ve Wi-Fi kullanarak yakındaki Zoom Rooms ögelerini bulacak şekilde etkinleştirin. Bu; toplantılara başlamanızı, bir beyaz tahta açmanızı ve uygulamaları doğrudan bir Zoom Room üzerinden başlatmanızı sağlayacaktır.";
@@ -8842,6 +9017,7 @@
 "LN_IDP_LearnMore_291878" = "Daha fazla bilgi edinin";
 "LN_IDP_Loading_291878" = "Onaylı profil yükleniyor...";
 "LN_IDP_More_Button_%@_291878" = "%@ onaylı profili görüntüle";
+"LN_Plist_Audio_Only_1022426" = "Yalnızca ses";
 "LN_IDP_Reauthenticate_%@_291878" = "%@ adlı kullanıcının onaylanmış profil rozetinizi görüntülemek için kimliğini doğrulaması gerekmektedir.";
 "LN_IDP_Reauthenticate_%@_460147" = "Kimlik doğrulamanızı %@ rozetiyle göstermek için kimlik doğrulaması yapın";
 "LN_IDP_authenticate_button_291878" = "Kimlik doğrulayın";
@@ -9119,6 +9295,7 @@
 "LN_Arabic_367863" = "Arapça";
 "LN_Bengali_367863" = "Bengalce";
 "LN_Chinese_Traditional_367863" = "Çince (Geleneksel)";
+"LN_Tooltip_EnterSendMessage_572186" = "Göndermek için Enter'a basın";
 "LN_Czech_367863" = "Çekçe";
 "LN_Estonian_367863" = "Estonca";
 "LN_Finnish_367863" = "Fince";
@@ -9203,6 +9380,7 @@
 //ZOOM-31850
 "LN_Live_Stream_Notify_Starting_Webinar_31850" = "Toplantı sahibi, web seminerini şurada yayınlamaya başladı: %@";
 "LN_MeetingList_Calendar_Policy_Changed_834457" = "Politika değişikliği için takviminizi yeniden yetkilendirmeniz gerekir. Lütfen yeniden kimlik doğrulaması yapın.";
+"LN_Simulive_Will_Start_At_%@_1042795" = "Bu canlı etkileşimli kayıttan web seminerinin başlama saati %@";
 "LN_Live_Stream_Notify_Stoping_Webinar_31850" = "Toplantı sahibi, web seminerini şurada yayınlamayı durdurdu: %@";
 "LN_Live_Stream_Notify_Starting_Meeting_31850" = "Toplantı sahibi, toplantıyı şurada yayınlamaya başladı: %@";
 "LN_Live_Stream_Notify_Stoping_Meeting_31850" = "Toplantı sahibi, toplantıyı şurada yayınlamayı durdurdu: %@";
@@ -9213,6 +9391,7 @@
 "LN_Phone_StartMeeting_InGreeting_Titel_290286" = "Yeni toplantı başlat ve görüntülü mesajı sonlandır";
 "LN_Home_Transfer_PairedZR_Description_716795" = "Eşleştirilmiş odada: %@";
 "LN_Check_Link_788190" = "Bu bağlantıyı kontrol et";
+"LN_Webinar_Will_Start_At_%@_1042795" = "Bu web seminerinin başlama saati %@";
 "LN_Phone_StartMeeting_InGreeting_Content_290286" = "Bu, geçerli görüntülü mesajınızı sona erdirecektir";
 "LN_Closed_Caption_Subtitles_197564" = "Alt yazılar kapalı";
 "LN_Closed_Caption_Subtitles_Position_Desc_197564" = "%1$d piksel (alt kenardan), %2$d piksel (sağ kenardan).";
@@ -9418,7 +9597,9 @@
 "LN_End_Play_Together_Tool_Tip_359060" = "Birlikte oynama oturumunu sonlandırın";
 "LN_Leave_Play_Together_Tool_Tip_359060" = "Birlikte oynama oturumundan ayrıl";
 "LN_Apps_Will_End_Play_Together_Session_359060" = "Bu, birlikte oynama oturumunu sona erdirecektir.";
+"LN_IM_ShowOriginalThread_826743" = "Orijinal mesaj dizisini göster";
 "LN_Apps_Play_Together_Toast_Title_359060" = "%@ sizi bir Zoom App kullanarak birlikte oynamaya davet etti";
+"LN_IM_ShowTranslation_826743" = "Çeviriyi göster";
 "LN_Apps_Play_Together_Conf_Tip_Title_359060" = "%@ sizi %@ kullanarak birlikte oynamaya davet etti";
 "LN_Apps_Play_Together_Ended_Title_359060" = "Birlikte oyun oturumu sona erdi.";
 "LN_Apps_BO_Master_Play_Together_Toast_Title_379009" = "Ana odadaki %@ sizi bir Zoom Uygulaması kullanarak birlikte oynamaya davet etti";
@@ -9488,13 +9669,18 @@
 "LN_Setting_New_UnreadBadgeForChannels_705077" = "Kanallar için okunmamışların sayısını (<zmview key=1>) göster";
 "LN_Setting_Sort_By_Unread_705077" = "Önce okunmamışlara göre sırala";
 
+"LN_Are_You_Sure_You_Want_To_Change_The_Speaking_Language_1058374" = "Konuşma dilini değiştirmek istediğinizden emin misiniz?";
+"LN_Speaking_Language_%@_1058374" = "Konuşma dili: %@";
 //ZOOM-288353
 "LN_IM_Toady_Mentions_288353" = "Bugün bahsedilenler";
+"LN_Lock_Speaking_Language_Tip_1058374" = "Herkesin konuşma dili bu dil olarak değiştirilecektir.";
 "LN_Show_Profile_Photos_Label_288353" = "Doğrudan Mesajların yanında Profil Fotoğraflarını Göster";
 "LN_IM_Session_List_View_All_288353" = "Tümünü görüntüle";
 "LN_IM_Session_List_View_Less_288353" = "Daha az görüntüle";
 "LN_IM_Session_List_Show_Avatar_Tip_288353" = "Ayarlarınızı kişisel profil fotoğraflarınızı gösterecek şekilde güncelleyin!";
 "LN_Emoji_Cagegory_CustomEmojis_Label_505877" = "Özel emojiler";
+"LN_Lock_Speaking_Language_For_This_Meeting_1058374" = "Bu toplantı için konuşma dilini kilitle";
+"LN_Lock_Speaking_Language_For_This_Meeting_Desc_1058374" = "Bu ayar etkinleştirildiğinde toplantıdaki konuşma dilini yalnızca oturum sahibi değiştirebilir.";
 "LN_Emoji_Was_Deleted_719177" = "Bu emoji silindi";
 "LN_Unrecognized_Emoji_719177" = "Tanınmayan emoji";
 "LN_Position_875284" = "Pozisyon";
@@ -9923,6 +10109,7 @@
 "LN_IM_FileTransfer_Restricted_By_My_Admin_311831" = "Hesap yöneticiniz tarafından kısıtlanan dosyaya erişim";
 "LN_IM_FileTransfer_Restricted_By_Sender_Admin_311831" = "Bu kullanıcının hesap yöneticisi tarafından kısıtlanan dosyaya erişim";
 "LN_IM_FileTransfer_Restricted_By_MaxFileSize_311831" = "%d MB boyutunu aşan dosyaların aktarımı hesap yöneticiniz tarafından kısıtlandı";
+"LN_Webinar_Reaction_Intensity_318269" = "Reaksiyon yoğunluğu";
 "LN_IM_FileTransfer_Restricted_By_MaxFileSize_for_External_311831" = "%d MB boyutunu aşan dosyaların harici kullanıcılardan aktarımı hesap yöneticiniz tarafından kısıtlandı";
 "LN_IM_FileTransfer_Restricted_By_FileType_311831" = "%@ dosyasının aktarımı hesap yöneticiniz tarafından kısıtlandı";
 "LN_IM_FileTransfer_Restricted_By_FileType_for_External_311831" = "%@ dosyasının harici kullanıcılardan aktarımı hesap yöneticiniz tarafından kısıtlandı";
@@ -9935,6 +10122,7 @@
 "LN_Schedule_A_Channel_Meeting_Tip_311991" = "Tüm kanal üyelerini davet edin. Toplantı ayrıntıları kanal konuşmasında gösterilir.";
 "LN_Start_Scheduling_311991" = "Planlamayı başlat";
 "LN_Unable_Schedule_Meeting_311991" = "Toplantı planlanamıyor";
+"LN_Webinar_Reaction_Medium_318269" = "Orta";
 "LN_Unable_Schedule_Meeting_Tip_311991" = "Şimdilik, %1$ld katılımcı kapasiteli bir toplantı planlayabilirsiniz ancak #%2$@, %3$ld üyeden daha fazlasına sahip.";
 "LN_Set_Up_A_Calendar_311991" = "Bir takvim ayarlayın";
 "LN_Set_Up_A_Calendar_Tip_311991" = "Toplantı planlamak için profil ayarlarınızda okuma ve yazma izinlerine sahip bir takvim ve kişi entegrasyonu ayarlayın.";
@@ -10215,10 +10403,10 @@
 "LN_ZUIST_Selected_819462" = "Seçilen:";
 "LN_ZUIST_Reset_Zoom_Workplace_819462" = "Zoom Workplace gezinme çubuğunu varsayılan sıraya sıfırla";
 "LN_Accessibility_Drafts_MessagePreview_426247" = "Mesaj önizlemesi, ";
+"LN_ZUIST_Show_Zoom_Workplace_819462" = "Zoom Workplace'i macOS menü çubuğunda göster";
 "LN_Accessibility_Drafts_MoreOptions_426247" = "Diğer seçenekler";
 "LN_ZUIST_When_Using_The_Outlook_819462" = "Cihazınızda Outlook uygulamasını kullanırken, Zoom'un Outlook durumunuzu mevcut Zoom Workplace uygunluk durumunuza göre ayarlamasına izin verin.";
 "LN_Accessibility_Drafts_Column_%d_header_426247" = "Sütun %d başlığı";
-"LN_ZUIST_Pin_Zoom_Workplace_819462" = "Zoom Workplace'i macOS menüsüne sabitle";
 "LN_Accessibility_Drafts_Date_426247" = "Son düzenleme";
 "LN_ZUIST_When_Closing_The_Zoom_819462" = "Zoom Workplace uygulaması kapatılırken, görev çubuğu yerine bildirim alanına taşınacak.";
 "LN_ZUIST_Fast_More_819462" = "Hızlı (daha fazla güncelleme, en erken özellik erişimi)";
@@ -10243,12 +10431,14 @@
 "LN_ZUIST_Use_Zoom_Rooms_Auto_Detection_819462" = "Zoom Rooms otomatik algılamayı kullan";
 "LN_ZUIST_Automatically_Adjusts_819462" = "Ortama göre gürültü bastırmayı otomatik olarak ayarlar";
 "LN_ZUIST_Start_Silently_819462" = "Sessizce başlat";
+"LN_ZUIST_Device_Connection_Behavior_1057705" = "Odada bir toplantı başlatırken veya toplantıyı aktarırken cihaz bağlantısının davranışı";
 "LN_ZUIST_Suppresses_Background_819462" = "Arka plandaki konuşmaları bastırır";
 "LN_Accessibility_Drafts_Sort_ZtoA_426247" = "Z'den A'ya sırala";
 "LN_Accessibility_Drafts_Sort_Newest_426247" = "En yeniye göre sırala";
 "LN_Accessibility_Drafts_Sort_Oldest_426247" = "En eskiye göre sırala";
 "LN_ZUIST_Smart_Recognition_Settings_819462" = "Akıllı tanıma ayarları";
 "LN_Accessibility_Drafts_Checked_426247" = "işaretlendi";
+"LN_ZUIST_ZR_Use_Auto_Detection_Title_1057705" = "Zoom Rooms otomatik algılama";
 "LN_ZUIST_Play_Incoming_Ringtone_819462" = "Toplantı ve çağrılar için gelen zil seslerini birincil hoparlörünüzde ve başka bir cihazda oynatın.";
 "LN_ZUIST_Select_Method_Every_Time_819462" = "Her seferinde yöntem seçin";
 "LN_Accessibility_Drafts_Unchecked_426247" = "işaret kaldırıldı";
@@ -10274,7 +10464,9 @@
 "LN_ZUIST_Optimize_Zoom_Audio_819462" = "En yüksek kalitede müzik için Zoom sesini optimize eder. CPU kullanımını artırabilir ve daha fazla ağ bant genişliği kullanılabilir. En iyi sonuçlar için ethernet bağlantısı (Wi-Fi değil) şiddetle tavsiye edilir.";
 "LN_ZUIST_Check_Grammar_With_Spelling_1006730" = "Dil bilgisi ve yazım denetimi yap";
 "LN_ZUIST_Call_Waiting_Volume_819462" = "Çağrı bekletme ses seviyesi";
+"LN_ZUIST_ZR_Use_Auto_Detection_Tip_1057705" = "Cihazınızı kullanarak Bluetooth ve Wi-Fi aracılığıyla yakındaki Zoom Rooms'ları bulun. Bu, toplantıları başlatmanıza veya aktarmanıza, ekranınızı paylaşmanıza, bir Zoom Room'a bağlanmanıza ve daha fazla seçeneği keşfetmenize olanak tanır.";
 "LN_ZUIST_Spelling_and_Grammar_Tooltip_1006730" = "Tüm mesaj yazma alanları için geçerlidir";
+"LN_ZUIST_Automatically_Connect_To_Zoom_Room_1057705" = "Zoom Room'a otomatik bağlan";
 "LN_ZUIST_Use_Your_Voiceprint_819462" = "Toplantılarınızda ses netliği açısından sesi optimize etmek ve arka plan gürültüsünü gidermek için ses izinizi kullanın.";
 "LN_Accessibility_Drafts_E2EE_Learn_Mode_426247" = "E2EE hakkında daha fazla bilgi edinin";
 "LN_ZUIST_Update_App_Automatically_819462" = "Uygulamayı otomatik olarak güncelle";
@@ -10282,6 +10474,7 @@
 "LN_ZUIST_Automatically_Enable_819462" = "Eşlikçi olarak katılırken eşlikçi mikrofonu otomatik olarak etkinleştir";
 "LN_ZUIST_Notification_Sounds_819462" = "Bildirim sesleri";
 "LN_ZUIST_Medium_Computer_Fan_819462" = "Orta (bilgisayar fanı, kalem kapakları)";
+"LN_ZUIST_Show_Zoom_Room_Icon_1057705" = "Uygulamada \"Zoom Room\" simgesini göster";
 "LN_WB_Facilitate_Title_M_770231" = "Yorum yapanların ve görüntüleyenlerin toplantıda araçları sağlamasına izin ver";
 "LN_Drafts_Scheduled_Time_at_426247" = "MMM dd 'saat' h:mm a";
 "LN_Drafts_Scheduled_Edit_Time_426247" = "Planlanan zamanı düzenle";
@@ -10289,11 +10482,13 @@
 "LN_ZUIST_Test_Microphone_819462" = "Mikrofonu test et";
 "LN_Drafts_Scheduled_Banner_Single_%@_426247" = "%@ tarihinde gönderilmek üzere bir mesaj planladınız";
 "LN_Drafts_Scheduled_Banner_Multiple_%ld_426247" = "%ld planlanmış mesajınız var";
+"LN_ZUIST_Dont_Connect_To_Zoom_Room_1057705" = "Zoom Room'a bağlanma";
 "LN_ZUIST_Join_Method_When_Paired_819462" = "Zoom Rooms ile eşleştirildiğinde katılma yöntemi";
 "LN_ZUIST_Turn_On_Live_Performance_Audio_Describe_986294" = "Bu seçeneği etkinleştirmek, daha önce seçilen mikrofon modunu geçersiz kılacaktır. Bunu açmak istediğinizden emin misiniz?";
 "LN_Drafts_Scheduled_Show_All_426247" = "Tüm planlanmış mesajları görüntüleyin";
 "LN_ZUIST_IM_Dark_Contrast_973313" = "Koyu kontrast";
 "LN_Drafts_Scheduled_Changes_Saved_426247" = "Planlanmış mesaj için değişiklikler kaydedildi";
+"LN_ZUIST_Ask_Me_Every_Time_1057705" = "Bana her seferinde sor";
 "LN_ZUIST_Live_Performance_Audio_986294" = "Birden fazla enstrüman veya ses içeren toplantılar için önerilir. Bu özelliği aktif hale getirmek için, en az iki katılımcının toplantı içi geçiş özelliğini etkinleştirmesi gerekir. Bu özelliği aktif hale getirmek, önceden seçilmiş tüm mikrofon modlarını geçersiz kılacaktır.";
 "LN_ZUIST_Sounds_819462" = "Sesler";
 "LN_ZUIST_Selecting_High_819462" = "\"Yüksek\" seçeneğinin belirlenmesi CPU kullanımını artırabilir.";
@@ -10366,8 +10561,10 @@
 "LN_Drafts_Toast_Abort_SaveEmptySchedule_Description_426247" = "Planlanan mesaj boş olduğu için değişiklikler kaydedilmedi. Silmek için taslaklara gidin.";
 "LN_ZUIST_When_Joining_Meetings_And_Webinars_819462" = "Toplantılara ve web seminerlerine katılırken:";
 "LN_ZUIST_Create_Recording_Further_819462" = "Kişiselleştirilmiş ses izolasyonunu daha da geliştirmek için bir ses kaydı oluşturun";
+"LN_ZUIST_After_Selecting_819462" = "\"Toplantıdan ayrıl\" veya \"Web seminerinden ayrıl\" seçeneği seçildikten sonra Zoom, ayrılmadan önce onaylamanızı ister.";
 "LN_Drafts_Toast_Error_SendSchedule_Description_426247" = "Planlanan mesaj gönderilirken bir hata oluştu.";
 "LN_ZUIST_Send_Desktop_Notifications_819462" = "Şunlar için masaüstü bildirimleri gönder:";
+"LN_ZUIST_After_A_Meeting_End_819462" = "Bir toplantı sona erdikten sonra, toplantı sırasında açtığınız Zoom Apps ögelerini kullanmaya devam edin.";
 "LN_ZUIST_Note_Shared_With_Me_819462" = "Benimle paylaşılan not";
 "LN_Drafts_Toast_XMPPError_Unknown" = "Mesaj gönderilemedi. Düzenleyip yeniden deneyin.";
 "LN_ZUIST_Hide_Chat_Notifications_819462" = "Toplantı ve çağrılar sırasında sohbet bildirimlerini gizle";
@@ -10377,6 +10574,7 @@
 "LN_ZUIST_Headset_819462" = "Kulaklık";
 "LN_ZUIST_Keywords_Mentioned_819462" = "Bahsedilen anahtar kelimeler:";
 "LN_Drafts_Toast_XMPPError_CannotSend" = "Bu sohbet için mesajlaşma devre dışı bırakıldığından gönderilemiyor. Depolama alanını temizlemek için silin.";
+"LN_ZUIST_Activate_The_Thumbs_819462" = "İlgili el hareketini 2 saniye boyunca kameranın önünde tutarak hareket tabanlı reaksiyonları etkinleştirin.";
 "LN_ZUIST_Dual_Window_819462" = "Çift pencere";
 "LN_ZUIST_Missed_Phone_Calls_819462" = "Cevapsız telefon çağrıları";
 "LN_ZUIST_Channel_Updates_819462" = "Kanal güncellemeleri";
@@ -10395,6 +10593,7 @@
 "LN_ZUIST_Extension_Insert_819462" = "Dahili numara: [kullanıcı dahili numarasını girin]";
 "LN_Drafts_Schedule_Alert_Title_426247" = "Mesajı planla";
 "LN_Drafts_Schedule_Alert_Timezone_426247" = "Saat dilimi:";
+"LN_ZUIST_Dont_Notify_Me_When_Voice_Activity_ZOOM_1035096" = "Bu uygulamalarda sesli etkinlik algılandığında bana bildirimde bulunma:";
 "LN_ZUIST_Presence_Status_819462" = "Uygunluk durumu";
 "LN_Drafts_Schedule_Alert_Date_426247" = "Tarih";
 "LN_Drafts_Schedule_Alert_Time_426247" = "Süre";
@@ -10413,6 +10612,7 @@
 "LN_Drafts_Schedule_Alert_Timezone_Warn_%@_426427" = "%@ bu mesajı şu tarihte alacak: ";
 "LN_Drafts_Scheduled_Time_at_Timezone_426247" = "MMM dd 'saat' h:mm a zzz";
 "LN_Drafts_Scheduled_Onboarding_Title_426247" = "Mesajları planla";
+"LN_ZUIST_Auto_Detected_Voice_ZOOM_1035096" = "Kaydetmek ve not almak için otomatik algılanan ses etkinliği";
 "LN_ZUIST_Maximum_Participant_819462" = "Her ekran için maksimum katılımcı";
 "LN_ZUIST_Show_Reactions_Above_819462" = "Reaksiyonları araç çubuğunun üzerinde göster";
 "LN_Drafts_Scheduled_Onboarding_Description_426247" = "Artık mesajınızı daha sonra göndermek için bir zaman planlayabilirsiniz. Mesajlarınızı şurada görüntüleyin veya düzenleyin: <b>Taslaklar</b>";
@@ -10482,7 +10682,6 @@
 "LN_WaingRoom_Video_Off_Tip_375886" = "Toplantı sahibi, toplantı başladığında videoyu kapattı";
 "LN_ZUIST_Play_Chime_With_Hand_819462" = "Parmak kaldırınca zil sesi oynat";
 "LN_WaingRoom_Audio_Off_Tip_375886" = "Toplantı sahibi, toplantı başladığında katılımcıların sesini kapattı";
-"LN_ZUIST_Activate_The_Thumbs_819462" = "Kameraya 5 saniye boyunca bir başparmak göstererek veya el kaldırarak beğeni emojisini veya el kaldırma özelliğini görünür olacak şekilde etkinleştirin.";
 "LN_ZUIST_Show_Stop_Incoming_Video_819462" = "Oturum sahibi kontrollerinde \"Gelen videoyu durdur\" seçeneğini göster";
 "LN_VideoPreview_Video_Start_State_Acc_375886" = "Video başlatıldı";
 "LN_ZUIST_Only_You_Can_819462" = "Zamanlayıcıyı yalnızca siz görebilirsiniz.";
@@ -10597,6 +10796,7 @@
 "LN_ZUIST_Network_Delay_819462" = "Ağ gecikmesi:";
 "LN_MentionGroups_SystemMessage_AddedGroup_less1member_419933" = "<a href='%1$@'>@%2$@</a> bahsetme grubunu %3$lu üye ile eklediniz.";
 "LN_MentionGroups_SystemMessage_AddedGroupElsewhere_less1member_419933" = "%1$@, %4$lu üyeye sahip <a href='%2$@'>@%3$@</a> bahsetme grubunu ekledi.";
+"LN_ZUIST_Delegation_Title_1042922" = "Temsilci yetkilendirme";
 "LN_MentionGroups_SystemMessage_AddedGroup_Without_Owner_less1member_419720" = "Bahsetme grubu <a href='%1$@'>@%2$@</a>, %3$lu üye ile eklendi.";
 "LN_ZUIST_Set_Up_Ringtones_819462" = "Zil seslerini Bildirimler ve sesler ayarlarından ayarlayın";
 "LN_MentionGroups_SystemMessage_DeletedGroup_Without_Owner_419720" = "Bahsetme grubu %@ silindi.";
@@ -10605,45 +10805,66 @@
 "LN_MentionGroups_No_MentionGroups_419720" = "Bu kanalda kullanılabilecek bahsetme grupları burada gösterilir. \n\nYalnızca kanal sahibi ve yöneticiler bahsetme grupları oluşturabilir. Tüm üyeler kendilerini ekleyebilir veya kaldırabilir.";
 "LN_ZUIST_Record_By_Computer_961188" = "Bilgisayara kaydet";
 "LN_ZUIST_Noti_Sounds_819462" = "Bildirimler ve sesler";
+"LN_ZUIST_SMS_Delegation_Title_1042922" = "SMS temsilci yetkilendirmesi";
+"LN_ZUIST_Delegates_1042922" = "Temsilciler";
 "LN_ZUIST_Video_Effects_819462" = "Video ve efektler";
 "LN_ZUIST_Video_Rendering_Method_819462" = "Video işleme yöntemi";
 "LN_ZUIST_External_Contact_961188" = "Harici kişi";
 "LN_ZUIST_Enter_Into_Fullscreen_819462" = "Tam ekran gir";
 "LN_Join_ZoomPhone_Audio_441532" = "Zoom Phone audio ile katılın";
 "LN_ZUIST_Time_Begin_To_End_961188" = "%1$@ - %2$@";
+"LN_ZUIST_Amazon_Polly_SSML_961188" = "Amazon Polly Konuşma Sentezi Biçimlendirme Dili'ni (SSML) kullanmak, sağladığınız metnin konuşmaya nasıl dönüştürüleceği konusunda ek kontrol sağlar.";
+"LN_ZUIST_Delegation_Desc_1042922" = "Temsilci seçimi ve ayrıcalıklar [Telefon Ayarlarım] üzerinden yönetilebilir.";
 "LN_ZUIST_Downstream_Max_819462" = " \n· Aşağı Akış (Maks): %2 kbps";
 "LN_ZUIST_Sun_961188" = "Paz";
 "LN_ZUIST_Click_The_Play_Button_961188" = "Önizleme için oynat düğmesine tıklayın.";
 "LN_ZUIST_IVR_Allows_Routing_961188" = "Etkileşimli sesli yanıt (IVR) sistemi, arayanların tuş takımını kullanarak yönlendirme seçeneklerini seçmelerine olanak tanır.";
 "LN_ZUIST_Enter_Number_961188" = "Lütfen bir numara girin";
+"LN_ZUIST_No_Hours_All_Weekdays_Closed_Hours_961188" = "Hafta içi günlerde herhangi bir saat seçmediniz. İnsanlar sizi aradığında telefonlarınızdan hiçbiri çalmayacaktır. Bu gelen çağrılar Kapalı Olunan Saatler ayarına göre işlenecektir.";
 "LN_ZoomPhone_Audio_Info_441532" = "Uyumluluk gereksinimlerini karşılamak için çağrılarınızın kaydedilmesi gerektiğinden, yöneticiniz bu çağrıya yalnızca Zoom Phone audio kullanarak katılmanıza izin veriyor.";
 "LN_ZUIST_24_Hours_961188" = "24 Saat";
 "LN_ZUIST_Voicemail_And_Forwarding_961188" = "Sesli mesaj ve yönlendirme";
 "LN_ZUIST_Mon_961188" = "Pzt";
+"LN_ZUIST_Forward_To_External_Contact_961188" = "Haricî kişiye yönlendir";
 "LN_ZUIST_Choose_Individual_Windows_819462" = "Ayrı pencereler seç";
 "LN_Join_Zoom_Audio_441532" = "Zoom Phone sesine bağlısınız";
 "LN_Phone_Connecting_441532" = "Telefon bağlanıyor...";
+"LN_ZUIST_Move_Up_961188" = "Yukarı taşı";
+"LN_ZUIST_Play_Busy_Signal_961188" = "Meşgul sinyali oynat";
 "LN_ZUIST_Click_To_Upload_Or_Drop_961188" = "Bir dosyayı yüklemek için tıklayın ya da buraya sürükleyin";
 "LN_ZUIST_When_I_Share_819462" = "Paylaşım yaptığımda";
+"LN_ZUIST_SMS_Delegation_Desc_1042922" = "Temsilcilerin sizin adınıza SMS'leri yönetmesine izin verin.";
 "LN_ZUIST_Upstream_Max_819462" = " \n\n· Yukarı Akış (Maks): %1 kbps";
 "LN_ZUIST_Time_PM_961188" = "%@ ÖS";
 "LN_ZUIST_Select_Extension_961188" = "Lütfen bir dahili hat seçin";
 "LN_Failed_Connect_441532" = "Bağlanılamadı";
+"LN_ZUIST_Character_Limit_961188" = "Karakter sınırı, %1$@/%2$@";
 "LN_ZUIST_Click_The_Record_Button_961188" = "Kaydı başlatmak için kaydet düğmesine tıklayın.";
+"LN_ZUIST_Call_Waiting_961188" = "Çağrı bekletme";
 "LN_ZUIST_Recorded_Audio_961188" = "Kaydedilmiş ses";
 "LN_ZUIST_Data_Center_819462" = "Veri merkezi:";
+"LN_ZUIST_Add_IVR_Greeting_Audio_961188" = "IVR karşılama sesi ekleyin";
+"LN_ZUIST_Move_Down_961188" = "Aşağı taşı";
+"LN_ZUIST_Add_Disconnect_Greeting_Audio_961188" = "Bağlantı kesintisi için sesli mesajı ekleyin";
 "LN_SMS_RemoveMessage_Title_416547" = "Mesajı kaldır";
+"LN_ZUIST_Forward_To_External_Number_961188" = "Haricî numaraya yönlendir";
 "LN_IM_Tip_RemoveMessage_416547" = "Bu mesaj kanaldan kaldırılacak. Hesap yöneticileri mesajı sohbet geçmişi raporunda görebilir.\n\nBu işlem geri alınamaz.";
 "LN_ZUIST_Separate_Direct_Messages_819462" = "Doğrudan mesajları, kanalları ve toplantı sohbetlerini ayırın";
+"LN_ZUIST_Character_Limit_Reached_961188" = "%@ karakter sınırına ulaşıldı, uyarı";
 "LN_IM_Tip_RemoveMessage_Admin_416547" = "Mesaj kaldırıldı.";
 "LN_ZUIST_Tue_961188" = "Sal";
 "LN_IM_Tip_RemoveMessage_MsgOwner_416547" = "Kanal sahibi veya yönetici mesajınızı kaldırdı.";
 "LN_IM_Tip_RemoveMessage_Failed_416547" = "Mesaj kaldırılamadı";
 "LN_IM_SysMsg_RemoveMessage_416547" = "Bir mesaj kanal sahibi veya yönetici tarafından kaldırıldı";
+"LN_ZUIST_Forward_To_Voicemail_961188" = "Sesli mesaja yönlendir";
 "LN_ZUIST_Time_AM_961188" = "%@ ÖÖ";
+"LN_ZUIST_Duration_961188" = "süre";
+"LN_ZUIST_Play_Message_Then_Disconnect_961188" = "Bir mesaj oynat, sonra bağlantıyı kes";
 "LN_ZUIST_Sat_961188" = "Cmt";
 "LN_IM_SysMsg_RemoveEmailMessage_680622" = "Bir e-posta mesajı, kanal sahibi veya yönetici tarafından kaldırıldı";
 "LN_ZUIST_Record_Again_961188" = "Tekrar kaydet";
+"LN_ZUIST_Add_New_Greeting_961188" = "Yeni karşılama ekle";
+"LN_ZUIST_Show_Phone_Webview_819462" = "Web görünümünü göster";
 "LN_ZUIST_Automatically_Dim_819462" = "Yanıp sönen görsel desenler algılandığında videoyu otomatik olarak karart";
 "LN_ZUIST_Wed_961188" = "Çar";
 "LN_ZUIST_24_Hours_7_Days_961188" = "Günün 24 saati, haftanın 7 günü";
@@ -10684,13 +10905,14 @@
 "LN_ZUIST_THEME_975638" = "Tema (Görünüm)";
 "LN_ZUIST_Scale_Shared_Conten_819462" = "Paylaşılan içeriği, geçerli toplantı penceresi boyutuna sığacak şekilde ölçeklendirin.";
 "LN_ZUIST_COLOR_MODE_975638" = "Renk modu (Görünüm)";
-"LN_ZUIST_BG_NOISE_REMOVAL_975638" = "Arka plan gürültüsü giderme (Ses profili)";
+"LN_ZUIST_BG_NOISE_REMOVAL_975638" = "Arka plan gürültüsü giderme (Mikrofon modları)";
 "LN_ZUIST_Optimize_For_Third_819462" = "Üçüncü taraf video düzenleyiciler için optimize et";
 "LN_ZUIST_HUDDLES_975638" = "Özel toplantı ayarları";
 "LN_ZUIST_ZOOM_ROOMS_975638" = "Zoom Rooms ayarları";
 "LN_ZUIST_ZOOM_APPS_975638" = "Zoom Apps ayarları";
 "LN_ZUIST_This_Action_Will_819462" = "Bu işlem, molaların çalışma saatleri dışında olmasına neden olacak. Planlama çakışmasını önlemek için saatlerinizin yeniden ayarlanması gerekebilir. Devam etmek istediğinizden emin misiniz?";
 "LN_ZUIST_SHOW_PAIR_WITH_ROOM_ICON_975638" = "Uygulama gezinti çubuğunda \"Oda ile eşleştir\" simgesini göster (Zoom Rooms)";
+"LN_ZUIST_Separate_Direct_Messages_1073426" = "Ayrı sohbetler, kanallar ve toplantı sohbetleri";
 "LN_Organize_By_Section_473930" = "Bölüme göre düzenle";
 "LN_ZUIST_EMOJI_975638" = "Emoji ve reaksiyonların cilt tonu (Görünüm)";
 "LN_ZUIST_Yes_Continue_819462" = "Evet, Devam Et";
@@ -10707,7 +10929,7 @@
 "LN_ZUIST_MEET_JOIN_EXP_975638" = "Toplantı katılım deneyimi";
 "LN_Edit_Meeting_Chat_453158" = "Toplantı sohbetini düzenle";
 "LN_ZUIST_CHAT_CONTACTS_975638" = "Bahsedilen sohbet kişileri (Bildirimler)";
-"LN_ZUIST_PERS_AUDIO_ISO_975638" = "Kişiselleştirilmiş ses izolasyonu (Ses profili)";
+"LN_ZUIST_PERS_AUDIO_ISO_975638" = "Kişiselleştirilmiş ses izolasyonu (Mikrofon modları)";
 "LN_ZUIST_Dial_Local_Calls_819462" = "Yerel aramalarda önce ülke ve alan kodu girmeden arama yapın.";
 "LN_Edit_Meeting_Chat_Tip_453158" = "Konuyu değiştirmek için lütfen etkinlik veya takvim davetinizi düzenleyin";
 "LN_ZUIST_Enables_Software_Based_819462" = "Alınan video çözünürlüğünü artırmak için yazılım tabanlı yükseltmeyi etkinleştirir.";
@@ -10725,7 +10947,7 @@
 "LN_ZUIST_OUTPUT_VOLUME_975638" = "Çıkış ses seviyesi (Hoparlör)";
 "LN_ZUIST_PLAY_CHIME_MUTE_975638" = "Sessize alma/sesi açma için sesli zil çal (Toplantılar)";
 "LN_ZUIST_MEET_CONTROLS_975638" = "Toplantı kontrolleri";
-"LN_ZUIST_ORIG_SOUND_MUS_975638" = "Müzisyenler için orijinal ses (Ses profili)";
+"LN_ZUIST_ORIG_SOUND_MUS_975638" = "Müzisyenler için orijinal ses (Mikrofon modları)";
 "LN_ZUIST_KEEP_MIC_MUTE_975638" = "Mikrofonumu sessize alınmış olarak tut (Toplantılar)";
 "LN_ZUIST_Record_A_Separate_Audio_819462" = "En fazla 80 katılımcı için ayrı bir ses dosyası kaydedin. Telefonla katılan kullanıcıların sesleri tek bir ses dosyasında birleştirilir.";
 "LN_ZUIST_OPEN_ZOOM_APPS_975638" = "Seçili Zoom Apps'i aç (Toplantılar)";
@@ -10796,14 +11018,17 @@
 "LN_ZUIST_Voicemail_Greeting_917148" = "Sesli mesaj karşılama mesajı";
 "LN_ZUIST_CHAT_DISPLAY_SIZE_975638" = "Sohbet görüntüleme boyutu (Erişilebilirlik)";
 "LN_ZUIST_This_Example_Launch_819462" = "Bu örnek, bir çağrı geldiğinde bir tarayıcı açar";
+"LN_ZUI_Uploading_Desc_1066814" = "Zoom, toplantıdaki bireysel kaydınızı buluta yüklüyor. Lütfen bilgisayarınızı kapatmayın veya internet bağlantınızı kesmeyin.";
 "LN_ZUIST_STOP_AV_ON_LOCK_975638" = "Bilgisayar kilitlendiğinde ses ve videoyu durdur (Toplantılar)";
 "LN_ZUIST_24x7_Text_917148" = "Günün 24 saati, haftanın 7 günü";
 "LN_ZUIST_Video_Processing_819462" = "Video işleme";
 "LN_ZUIST_INC_TIMESTAMP_REC_975638" = "Zaman damgasını ekle (Kayıtlar)";
 "LN_ZUIST_Forward_To_917148" = "Şuraya yönlendir:";
+"LN_ZUI_Uploading_Title_1066814" = "Bireysel kaydınız yükleniyor";
 "LN_ZUIST_LEFT_SIDEBAR_975638" = "Sol kenar çubuğu davranışı (Team Chat)";
 "LN_ZUIST_DEF_APP_CLICK2DIAL_975638" = "Tıklayarak arama işlevi için varsayılan uygulama (Telefon)";
 "LN_ZUIST_SPACE_UNMUTE_975638" = "Sesi geçici olarak açmak için Boşluk tuşunu basılı tut (Toplantılar)";
+"LN_ZUI_Upload_Failed_Title_1066814" = "Bireysel kaydınız yüklenemedi";
 "LN_ZUIST_SHOW_UNREAD_CHAN_975638" = "Kanallar için okunmamış sayısını göster (Team Chat)";
 "LN_ZUIST_ADV_RECORDING_975638" = "Gelişmiş kayıt";
 "LN_ZUIST_LEAVE_EXP_SET_975638" = "Deneyim ayarlarından çık (Toplantılar)";
@@ -10814,20 +11039,32 @@
 "LN_Phone_Fax_empty_644870" = "Yeni faks yok";
 "LN_ZUIST_STOP_INCOMING_VIDEO_975638" = "Gelen videoyu durdurma özelliğini etkinleştir (Gelişmiş toplantılar)";
 "LN_ZUIST_SCALE_TO_FIT_975638" = "İçeriği sığacak şekilde ölçeklendir (Başkaları paylaştığında)";
+"LN_ZUI_Upload_Failed_Desc_1066814" = "Zoom bireysel kaydınızı yükleyemiyor. Lütfen dosyaları kurtarmak ve yüklemek için Zoom Destek ile iletişime geçin.";
 "LN_ZUIST_Busy_On_Another_Call_917148" = "Başka bir çağrıda meşgul olduğumda";
+"LN_ZUI_Resume_Upload_1066814" = "Yüklemeyi sürdür";
 "LN_ZUIST_REC_VIDEO_SHARE_975638" = "Ekran paylaşımı sırasında video kaydet (Kayıtlar)";
 "LN_ZUIST_ANIMATE_EMOJIS_975638" = "Emojilere animasyon ekle (Toplantılar)";
 "LN_ZUIST_Forward_To_An_Operator_917148" = "Bir operatöre yönlendirin:";
+"LN_ZUI_Upload_Success_Desc_1066814" = "Zoom, bireysel kaydınızı buluta yükledi.";
+"LN_ZUI_Uploading_Not_In_Meeting_Desc_1066814" = "Zoom, toplantıda olmadığınızda kaydınızı yüklemeye devam edecek.";
+"LN_ZUI_Upload_Paused_1066814" = "Duraklatıldı";
+"LN_ZUI_Pause_Upload_1066814" = "Yüklemeyi duraklat";
 "LN_ZUIST_Use_Hardware_Acceleration_819462" = "Şunun için donanım hızlandırmayı kullanın:";
 "LN_Zoom_ZApp_ZOOM_442596" = "Bu özelliği kullanmak için lütfen Zoom Workplace uygulamanızı en son sürüme güncelleyin";
 "LN_Huddles_Already_Open_Whiteboard_537103" = "Bir beyaz tahta zaten huddle'da açıkken beyaz tahta açamazsınız.";
 "LN_ZUIST_PHONE_LOC_PERM_975638" = "Telefon konum izni";
 "LN_ZUIST_PLAY_CHIME_HAND_975638" = "Birisi elini kaldırdığında sesli zili çal (Toplantılar)";
+"LN_TB_Schedule_event_1043046" = "Etkinlik planla";
 "LN_Companion_Mode_Stream_On_Alert_Title_549229" = "Tercüman akışı etkinleştirildi";
+"LN_ZUI_Upload_Success_Title_1066814" = "Bireysel kaydınız yüklendi";
 "LN_ZUIST_BLOCKED_USERS_975638" = "Engellenen kullanıcılar (Team Chat)";
+"LN_StudioRecording_Start_Tip_1005566" = "Oturum sahibi Kayıt Stüdyosunu etkinleştirdi. Bu, kameranızı sisteminizde yerel olarak kaydedecek ve ardından güvenli bulut depolama alanımıza yükleyecektir.";
+"LN_StudioRecording_Title_1005566" = "Kayıt Stüdyosu";
+"LN_ZUI_Upload_Retry_1066814" = "Şimdi yeniden dene";
 "LN_ZUIST_SHOW_ZOOM_WIN_975638" = "Zoom Workplace uygulamamı ve toplantı pencerelerimi göster (Paylaştığımda)";
 "LN_ZUIST_MNG_CHAT_BADGE_975638" = "Bireysel sohbet rozetlerini yönet (Team Chat)";
 "LN_Companion_Mode_Stream_On_Alert_Content_549229" = "Bu işleme devam etmek video ve ses akışını etkinleştirebilir.";
+"LN_ZUI_Upload_Failed_Desc_Retry_1066814" = "Zoom, bireysel kaydınızı yükleyemedi ve bir sonraki fırsatta otomatik olarak tekrar deneyecektir.";
 "LN_ZUIST_Combine_All_Chats_819462" = "Tüm sohbetleri Son Kullanılanlar klasöründe birleştir";
 "LN_ZUIST_REC_SEP_AUDIO_975638" = "Ayrı katılımcı ses dosyalarını kaydet (Gelişmiş kayıt)";
 "LN_ZUIST_OPEN_SECTIONS_975638" = "Bölümleri veya klasörleri açma (Team Chat)";
@@ -10835,12 +11072,16 @@
 "LN_ZUIST_RESET_MEET_DISC_975638" = "Toplantı sorumluluk reddi beyanlarını sıfırla (Gelişmiş toplantılar)";
 "LN_ZUIST_Custom_Hours_917148" = "Özel saatler";
 "LN_ZUIST_Forward_To_External_Contact_917148" = "Harici bir kişiye yönlendir";
+"LN_TB_New_SMS_message" = "Yeni SMS mesajı";
+"LN_WB_Visualize_This_Meeting_Detail" = "AI Companion, bu toplantıya göre bir beyaz tahta oluşturdu. Kullanmak ister misiniz?";
+"LN_TB_Press_to_search" = "Arama yapmak için %@ tuşuna basın";
 "LN_ZUIST_Only_Internal_Callers_See_Video_Greeting_917148" = "Bu video karşılama mesajını yalnızca dahili arayanlar görecektir. Harici arayanlar sesli mesaj karşılama mesajınızı duyacaktır.";
 "LN_ZUIST_Setup_Ringtone_In_819462" = "Ses ayarlarında zil sesini ayarlayın";
 "LN_ZUIST_SCREEN_SHARE_SET_975638" = "Ekran paylaşım ayarları (Başkaları paylaştığında)";
 "LN_ZUIST_Voice_917148" = "Ses";
 "LN_ZUIST_IVR_Menu_917148" = "IVR menüsü";
 "LN_Automatic_Camera_Selection_527322" = "Otomatik Kamera Seçimi";
+"LN_TB_New_chat_messgae" = "Yeni sohbet mesajı";
 "LN_ZUIST_Call_Queue_917148" = "Çağrı kuyruğu";
 "LN_ZUIST_KEEP_UNCONV_REC_975638" = "Sorun giderme için dönüştürülmemiş kayıt dosyalarını sakla (Gelişmiş kayıt)";
 "LN_ZUIST_Closed_Hours_917148" = "Kapalı olduğu saatler";
@@ -10848,6 +11089,7 @@
 "LN_ZUIST_Play_Voicemail_Greeting_At_End_917148" = "Yönlendirme dizisinin sonunda aranan kişinin sesli mesaj karşılama mesajını oynat";
 "LN_ZUIST_VIDEO_HW_ACCEL_975638" = "Video donanım hızlandırma ayarları";
 "LN_ZUIST_Manage_Badge_Settings_819462" = "Rozet ayarlarını yönet";
+"LN_TB_New_task" = "Yeni görev";
 "LN_ZUIST_RESET_LEFT_SIDEBAR_975638" = "Sol kenar çubuğunu varsayılana sıfırla (Team Chat)";
 "LN_ZUIST_Require_Press1_To_Connect_Option_Description_917148" = "Yönlendirdiğiniz kişinin çağrıyı bağlamadan önce 1'e basmasını zorunlu kılmak için bu seçeneği etkinleştirin. Cevaplanmayan çağrılar, yönlendirme dizisinin sonunda sesli mesajınıza aktarılacaktır. Arayanların yönlendirme kişinizin sesli mesajına ulaşmasına izin vermek için bu seçeneği devre dışı bırakın.";
 "LN_Phone_Voicemail_TaskWindow_ZoomIQ_548779" = "Zoom IQ";
@@ -10862,11 +11104,14 @@
 "LN_ZUIST_Advanced_Share_Screen_819462" = "Gelişmiş ekran paylaşımı";
 "LN_Phone_Voicemail_TaskWindow_Generating_548779" = "Zoom IQ, görevi çıkarıyor...";
 "LN_ZUIST_Show_My_Zoom_Workplace_819462" = "Zoom Workplace uygulamamı ve toplantı pencerelerimi göster";
+"LN_TB_New_whiteboard" = "Yeni beyaz tahta";
 "LN_ZUIST_USE_HW_ACCEL_SHARE_975638" = "Donanım hızlandırma işlevini kullan (Gelişmiş ekran paylaşımı)";
 "LN_ZUIST_MOVE_MSG_REPLY_975638" = "Yeni yanıtların olduğu mesajları sohbetin altına taşı (Team Chat)";
 "LN_ZUIST_Live_Transcription_819462" = "Canlı transkripsiyon ayarları";
+"LN_TB_New_doc" = "Yeni doküman";
 "LN_ZUIST_Connect_To_Operator_917148" = "Operatöre bağlan";
 "LN_Phone_Voicemail_TaskWindow_Generating_Failed_548779" = "Görev ayıklanamıyor. Lütfen tekrar deneyin veya BT desteğinize başvurun.";
+"LN_TB_New_email" = "Yeni e-posta";
 "LN_ZUIST_Add_Voicemail_Greeting_917148" = "Sesli mesaj karşılama sesi ekle";
 "LN_ZUIST_Asset_Name_917148" = "Öge adı";
 "LN_Phone_Voicemail_TaskWindow_Generating_NotExist_548779" = "Görevler kullanılamıyor.";
@@ -10895,15 +11140,18 @@
 "LN_ZUIST_Click_To_Dial_Help_Description_917148" = "Varsayılan uygulama, tıklayarak ara ile vurgulayarak ara işlevi için kullanılacak. Köprüleri destekleyen uygulamalarda bir numara tıklandığında veya vurgulandığında otomatik olarak aranacaktır. ";
 "LN_Phone_AddEmergencyAddress_City_598739" = "Şehir";
 "LN_Phone_AddEmergencyAddress_TownOrCity_RequiredWarning_569653" = "Lütfen bir kasaba/şehir seçin.";
+"LN_TB_Record_clip" = "Klip kaydet";
 "LN_ZUIST_Check_Voicemail_By_Pin_Code_917148" = "PIN kodu ile sesli mesajı kontrol edin";
 "LN_ZUIST_Upload_File_917148" = "Dosya yükle";
 "LN_ZUIST_Allow_Users_Reach_Operator_917148" = "Kullanıcıların bir operatöre ulaşmasına izin verin";
 "LN_ZUIST_Location_Permission_819462" = "Konum izni";
 "LN_ZUIST_Disconnect_Greeting_917148" = "Karşılama bağlantısını kes";
 "LN_ZUIST_Full_Name_819462" = "%N - Adı Soyadı";
+"LN_TB_New_phone_call" = "Yeni telefon çağrısı";
 "LN_Choose_VB_581862" = "Sanal arka plan seç";
 "LN_ZUIST_Scale_To_Fit_Content_819462" = "İçeriği sığacak şekilde ölçeklendir";
 "LN_VB_Video_Deleted_Alert_581862" = "Sanal arka plan dosyanız kaldırıldığı için videonuz durdurulur. Başka bir sanal arka plan seçebilir veya videonuzu durdurulmuş halde tutabilirsiniz.";
+"LN_TB_Meet_now_1043046" = "Şimdi toplantı yap";
 "LN_ZUIST_Message_Grouping_819462" = "Mesaj gruplama";
 "LN_Contact_Session_ZoomPhoneEntities_553657" = "Zoom Phone Varlıkları";
 "LN_ZUIST_Message_To_Play_917148" = "Oynatılacak mesaj";
@@ -10917,6 +11165,7 @@
 "LN_Contact_Group_AutoReceptionists_553657" = "Otomatik Resepsiyonistler";
 "LN_Contact_Group_CommonAreaPhones_553657" = "Ortak Alan Telefonları";
 "LN_ZUIST_Network_Switch_819462" = "Ağ anahtarı:";
+"LN_WB_Visualize_This_Meeting" = "Bu toplantıyı görselleştir";
 "LN_Contact_Group_SharedLineGroups_553657" = "Paylaşılan Hat Grupları";
 "LN_ZUIST_Register_ID_819462" = "Kayıt Kimliği:";
 "LN_ZUIST_Webpage_Example_This_819462" = "Web sayfası örneği: Bu örnek, bir çağrı geldiğinde bir tarayıcıyı açar.";
@@ -11300,6 +11549,7 @@
 "LN_Start_New_Meeting_Chat_SubTitle_451016" = "Bu, planlanmış bir toplantıya özel bir grup sohbetidir. Sohbeti başlatmak için bir mesaj gönderin.";
 "LN_IM_ChatApp_Webhook_NotMatch_Tip_438512" = "Uygulamadan beklenmedik bir yanıt algılandı. Lütfen hesap yöneticinizle iletişime geçin.";
 "LN_Emoji_Cagegory_Animated_Label_436971" = "Animasyonlu tepkiler";
+"LN_Tip_Using_Avatars_GreenScreenDisable_1063103" = "Avatarlar kullanılırken yeşil ekran kullanılamaz";
 "LN_Emoji_Category_Basic_Reactions_Label_667801" = "Reaksiyonlar";
 "LN_External_Warning_Banner_Large_Channel_%lu_783687" = "Harici üyeler de dahil olmak üzere %lu üye, mesajınızı görecektir";
 "LN_Emoji_Category_Effect_Reactions_Label_667801" = "Efektle gönder";
@@ -11420,6 +11670,7 @@
 "LN_%@_Assigned_You_Owner_358250" = "%@ sizi sahip olarak atadı";
 "LN_Has_Assigned_Owner_358250" = "%1$@, %2$@ adlı kişiyi sahip olarak atadı";
 "LN_Reset_Meeting_Disclaimers_Desc_747752" = "Kullanıcı \"Bir daha gösterme\"yi seçtiğinde gizlenen toplantı içi sorumluluk reddi beyanlarını yeniden etkinleştirin";
+"LN_AuthenticateLabel_learnmore_1071909" = "Şifreli sohbetlerde ve kanallarda mesajları görüntülemek ve göndermek için kimlik doğrulaması yapın. <a href='%@'>Daha fazla bilgi edinin</a>";
 "LN_You_Assigned_%@_Admin_358250" = "%@ adlı kişiyi yönetici olarak atadınız";
 "LN_%@_Assigned_You_Admin_358250" = "%@ sizi yönetici olarak atadı";
 "LN_Has_Unassigned_Admin_358250" = "%1$@, %2$@ adlı kişinin yönetici atamasını kaldırdı";
@@ -11760,11 +12011,6 @@
 "LN_WB_Existing_Whiteboards_609586" = "Mevcut beyaz tahtalar";
 "LN_WB_Allow_Access_After_296305" = "Katılımcıların toplantıdan sonra erişmesine izin ver";
 "LN_WB_Allow_Access_After_Tip_296305" = "Hesap yöneticiniz beyaz tahta paylaşımına kısıtlamalar koydu. Bazı katılımcıların erişimi olmayabilir.";
-"LN_WB_Open_And_Collaborate_296305" = "Aç ve iş birliği yap";
-"LN_WB_All_Participants_Can_Edit_296305" = "Tüm Katılımcılar düzenleyebilir";
-"LN_WB_All_Participants_Can_View_296305" = "Tüm Katılımcılar görüntüleyebilir";
-"LN_WB_Loading_Failed_296305" = "Yükleme başarısız";
-"LN_WB_No_Results_Matching_296305" = "%@' ile eşleşen arama sonucu yok";
 "LN_WB_Close_Whiteboard_296305" = "Beyaz tahtayı kapat";
 "LN_WB_You_Are_Collaborating_296305" = "Bu beyaz tahtada iş birliği yapıyorsunuz";
 "LN_WB_You_Are_Co_Editing_296305" = "%@ adlı kişinin beyaz tahtasını birlikte düzenliyorsunuz";
@@ -11788,15 +12034,7 @@
 "LN_WB_BO_Whiteboard_Session_Ended_367558" = "Birisi ana oturumdan paylaşım yaptığı için beyaz tahta paylaşımınız durdurulacaktır";
 "LN_WB_Cannot_Start_Whiteboard_Proctoring_Mode_647030" = "Beyaz tahtaları tüm ekranlar modunda açamazsınız.";
 "LN_PAC_Meeting_Tip_369419" = "Kişisel sesli konferanstasınız.";
-"LN_WB_Allow_Access_Meeting_385632" = "Katılımcıların toplantıdan sonra erişmesine izin ver";
-"LN_WB_Allow_Access_Meeting_Tip_385632" = "Hesap yöneticiniz beyaz tahta paylaşımına kısıtlamalar koydu. Bazı katılımcıların erişimi olmayabilir.";
-"LN_WB_Allow_Access_Webinar_385632" = "Panelistlerin web seminerinden sonra erişmesine izin ver";
-"LN_WB_Allow_Access_Webinar_Tip_385632" = "Hesap yöneticiniz beyaz tahta paylaşımına kısıtlamalar koydu. Bazı panelistlerin erişimi olmayabilir.";
-"LN_WB_All_Panelists_Can_Edit_385632" = "Tüm panelistler düzenleyebilir";
-"LN_WB_All_Panelists_Can_View_385632" = "Tüm panelistler görüntüleyebilir";
-"LN_WB_Advanced_Options_385632" = "Gelişmiş beyaz tahta paylaşım seçenekleri";
 "LN_WB_Grab_Share_385632" = "Başkası paylaşımda bulunurken kimler paylaşmaya başlayabilir?";
-"LN_WB_Whiteboard_Deleted_385632" = "%@ çöp kutusuna taşındı";
 "LN_WB_Whiteboard_Options_385632" = "Beyaz tahta paylaşma seçenekleri";
 "LN_WB_Submenu_385632" = "alt menü";
 "LN_WB_Loading_Whiteboard_448903" = "Beyaz tahta deneyiminiz yükleniyor";
@@ -11824,7 +12062,6 @@
 "LN_WB_Setting_Administrator_Has_Locked_M_487798" = "Yönetici bu ayarı kilitlediği için değiştiremezsiniz. Toplantı içi beyaz tahtanızın tümü bu ayarı kullanacak.";
 "LN_WB_Setting_Administrator_Has_Locked_W_487798" = "Yönetici bu ayarı kilitlediği için değiştiremezsiniz. Tüm web semineri beyaz tahtanız bu ayarı kullanacak.";
 "LN_WB_Setting_Is_Disabled_487798" = "\"%@\" ayarını devre dışı bıraktığınız için bu seçenek devre dışı bırakıldı";
-"LN_WB_This_Option_Is_Disabled_487798" = "\"Toplantıda yalnızca oturum sahibi yeni beyaz tahta başlatabilir\" seçeneğini belirlediğiniz için bu seçenek devre dışı bırakıldı.";
 "LN_WB_Classic_Whiteboard_623176" = "Beyaz tahta (klasik)";
 "LN_WB_Back2_ClassicWB_Content_623176" = "Yeni Beyaz Tahtamız çalışmanızı kaydeder ve en güncel özellikleri sunar. Beyaz Tahta'yı (Klasik) ayarlarda varsayılan olarak pano şeklinde ayarlayabilirsiniz.";
 "LN_WB_Use_Classic_Whiteboard_623176" = "Beyaz tahtayı kullan (klasik)";
@@ -11841,8 +12078,6 @@
 "LN_NT_Start_Collaborating_522963" = "İş birliğini başlatın";
 "LN_NT_Collaboration_Session_Ended_522963" = "İş birliği oturumu sona erdi";
 "LN_NT_Has_Closed_Meeting_Note_522963" = "%@ toplantı notunu kapattı";
-"LN_NT_Zoom_Notes_522963" = "Zoom Notes";
-"LN_NT_Take_Notes_522963" = "Toplantılardan önce, toplantılar sırasında ve sonrasında not alın, paylaşın ve başkalarıyla iş birliği yapın.";
 "LN_NT_Loading_Your_Notes_522963" = "Notlarınız yükleniyor...";
 "LN_NT_Error_Occurred_522963" = "Notlar hatası oluştu (%@)";
 "LN_NT_ACC_Toolbar_Open_Notes_Panel_611520" = "Notlar panelini kapat, açıldı";
@@ -11993,6 +12228,7 @@
 "LN_WBUI_Distribute_300151" = "Dağıt";
 "LN_WBUI_Start_Point_300151" = "Başlangıç Noktası";
 "LN_Channel_Members_936548" = "Kanal üyeleri";
+"LN_IM_Chats_Set_reminder_1043637" = "Hatırlatma ayarla";
 "LN_Add_Description_936548" = "Açıklama ekle";
 "LN_WBUI_Line_Shape_300151" = "Çizgi Şekli";
 "LN_WBUI_End_Point_300151" = "Bitiş Noktası";
@@ -12021,6 +12257,7 @@
 "LN_WBUI_Zoom_In_300151" = "Yakınlaştır";
 "LN_WBUI_Zoom_Out_300151" = "Uzaklaştır";
 "LN_WBUI_Reset_100_300151" = "%100'e sıfırla";
+"LN_IM_Chats_Custom_Reminder_1043637" = "Özel hatırlatma ayarlayın";
 "LN_WBUI_Copy_300151" = "Kopyala";
 "LN_WBUI_Paste_300151" = "Yapıştır";
 "LN_WBUI_Duplicate_300151" = "Çoğalt";
@@ -12395,13 +12632,17 @@
 "LN_Dim_Screen_Share_Video_Title_432814" = "Ekran paylaşımı videosunu karart";
 "LN_Dim_Screen_Share_Video_Detected_432814" = "Yanıp sönen görüntüler veya görsel desenler (çizgiler gibi) algılandığında videoyu otomatik olarak karartın.";
 "LN_Dim_Screen_Share_Video_Tip_432814" = "Yanıp sönen görüntüler veya görsel desenler (çizgiler gibi) için ekran karartıldı";
+"LN_Clips_Share_coachmark_content_meeting_1018995" = "Artık bir toplantı sırasında Zoom Clips'i Paylaş ekranındaki Gelişmiş sekmesinden paylaşabilirsiniz. <a href = '%@'> Daha fazla bilgi </a>";
 "LN_In_Min_403149" = "%ld dakika içinde";
 "LN_In_Mins_403149" = "%ld dakika içinde";
+"LN_Clips_Share_coachmark_title_meeting_1018995" = "Toplantılarda klip oynat";
 "LN_Started_403149" = "Başladı";
+"LN_Clips_Share_coachmark_content_webinar_1018995" = "Artık bir web semineri sırasında Zoom Clips'i Paylaş ekranındaki Gelişmiş sekmesinden paylaşabilirsiniz. <a href = '%@'> Daha fazla bilgi </a>";
 "LN_Joined_403149" = "Katıldı";
 "LN_Sequence_LAST_403149" = "son";
 "LN_Sequence_FIRST_403149" = "birinci";
 "LN_Sequence_SECOND_403149" = "ikinci";
+"LN_Clips_Share_coachmark_title_webinar_1018995" = "Web seminerlerinde klip oynat";
 "LN_Sequence_THIRD_403149" = "üçüncü";
 "LN_Sequence_FOURTH_403149" = "dördüncü";
 "LN_Meeting_Anytime_403149" = "Herhangi bir zamanda toplantı";
@@ -12514,6 +12755,7 @@
 "LN_Search_In_Spot_Channel_442140" = "Spot Kanalında ara";
 "LN_Channel_Leave_Spot_Channel_442140" = "Spot Kanalından ayrıl";
 "LN_Add_Spot_Channel_Info_442140" = "Spot kanalı açıklaması ekle";
+"LN_IM_SharedSpace_ChannelTypeDisabledByAddMember_1015266" = "Kanal türü değiştirilemez. Üye ekleme, paylaşılan alan yöneticisi tarafından kısıtlandı.";
 "LN_Setting_Turn_On_Avatar_480748" = "Bir toplantıya katıldığımda avatarımı aç";
 "LN_Insert_Quote_461342" = "Fiyat teklifini ekle";
 "LN_Setting_LastUsedAvatar_484318" = "Son kullanılan avatar";
@@ -12636,9 +12878,11 @@
 "LN_Owner_Admins_Only_466312" = "Yalnızca sahip ve yöneticiler";
 "LN_Owners_Admins_Internal_Members_466312" = "Yalnızca sahipler, yöneticiler ve dahili üyeler";
 "LN_View_Channel_Apps_466312" = "Kanal uygulamalarını görüntüleyin";
+"LN_Studio_Preview_NoScene_1056018" = "Sahne yok";
 "LN_Channel_Apps_subTitle_466312" = "Bu kanaldaki uygulamalar";
 "LN_View_Channel_Workflows_732607" = "Kanal iş akışlarını görüntüle";
 "LN_Meeting_Chat_Preview_Coachmark_540281" = "Bu toplantıda sürekli toplantı sohbeti etkindir. Ekip Sohbeti'nde toplantı sırasında gönderilen mesajları bulabilir ve sohbeti daha sonra da devam ettirebilirsiniz.";
+"LN_IM_SharedSpace_RemovePendingMember_1082062_%@" = "%@ bu ortak alana eklenmez.";
 "LN_Meeting_Chat_CMC_System_Tip_540281" = "\"Toplantı Grubu Sohbeti\" adresine gönderilen mesajlar, Ekip Sohbeti'ndeki toplantı grubu sohbetinde de görünür";
 "LN_IM_ZoomIQ_Discard_Confirmation_Title_525626" = "Oluşturulan metni sil";
 "LN_IM_ZoomIQ_Discard_Confirmation_Content_525626" = "Oluşturulan bu metni iptal etmek istediğinizden emin misiniz? Bu işlem geri alınamaz.";
@@ -12648,6 +12892,7 @@
 "LN_Convert_CMC_To_Channel_Error_642055" = "Toplantı sohbeti kanala dönüştürülürken bir sorun oluştu.";
 "LN_CHAT_SHARED_FROM_406642" = "%@ kaynağından paylaşıldı";
 "LN_Studio_Video_LoadFailed_969678" = "Video yüklenemiyor";
+"LN_Studio_SceneList_Empty_1056018" = "Sahne eklenmedi";
 "LN_CHAT_SHARED_FROM_A_CHANNEL_406642" = "%1$@ kaynağından paylaşıldı (#%2$@)";
 "IM_Chat_MeetingCard_SummaryUpdated" = "Özet, bir Zoom Dokümanında güncellendi.";
 "LN_CHAT_SHARD_MESSAGE_406642" = "Paylaşılan mesaj";
@@ -12840,6 +13085,7 @@
 "LN_Studio_Video_Setting_GoNext_840309" = "Ön izlemede sonraki sahneye git";
 "LN_By_All_Channel_Members_662986" = "Tüm onaylı kanal üyeleri tarafından";
 "LN_External_Can_Be_Invited_637823" = "Harici kullanıcılar davet edilebilir";
+"LN_Can_Not_Start_Old_Version_990843" = "Oturum sahibi, uygulamanın desteklenen bir sürümüne yükseltme yapmadığı için %@ bu toplantıda başlatılamıyor.";
 "LN_External_Cannot_Be_Invited_637823" = "Harici kullanıcılar davet edilemez";
 "LN_Cannot_Be_Added_Restrict_External_Chats_662986" = "Hesap yöneticisi harici sohbetleri kısıtladığı için %@ eklenemiyor.";
 "LN_Allow_Every_Reply_644239" = "Herkesin yanıt vermesine izin ver";
@@ -12852,9 +13098,11 @@
 "LN_Share_Setting_Stop_Multi-Share_Mode_458717" = "Gelişmiş Çoklu Paylaşım modunu durdur";
 "LN_Share_Setting_Start_Multi-Share_Mode_Title_458717" = "Gelişmiş Çoklu Paylaşım modu başlatılsın mı?";
 "LN_Share_Setting_Start_Multi-Share_Mode_Content_458717" = "Aynı anda birden fazla paylaşılan ekranı görüntüleyebileceksiniz. Diğer katılımcılar başkalarının ekranlarını görüntüleyemez.\n\nKatılımcılardan ekranlarını paylaşmaları istenecektir";
+"LN_Start_Summary_With_Live_Summary_Original_Host_Info_990843" = "Toplantı özetini açtığınızda canlı özet de etkinleştirilir. Tüm davetliler bunlara erişebilecektir. Erişim izinlerini AI Companion panelinden değiştirebilirsiniz.";
 "LN_Studio_Video_Setting_WhenEnd_840309" = "Video sona erdiğinde";
 "LN_Share_Setting_All_Screens_Mode_Start_660126" = "Tüm ekranlar modunu başlat";
 "LN_Share_Setting_All_Screens_Mode_Stop_660126" = "Tüm ekranlar modunu durdur";
+"LN_Start_Live_Summary_Original_Host_Info_990843" = "Tüm davetliler canlı özete erişebilecek. Erişim izinlerini AI Companion panelinden değiştirebilirsiniz.";
 "LN_Share_Setting_Start_Multi-Share_Mode_Title_660126" = "Tüm ekranları başlat";
 "LN_Studio_Video_Dialog_EndWebinar_840309" = "Sahnedeki video sona erdi. Web semineri herkes için sonlandırılsın mı?";
 "LN_Share_Setting_Start_Multi-Share_Mode_Content_660126" = "Aynı anda birden fazla paylaşılan ekranı görüntüleyebilirsiniz. Diğer katılımcılar başkalarının ekranlarını görüntüleyemez.\n\nKatılımcılardan ekranlarını paylaşmaları istenir.";
@@ -12862,6 +13110,7 @@
 "LN_Request_Share_458717" = "Paylaşım isteyin";
 "LN_TopBar_Enhanced_Multi-Share_Mode_Title_660126" = "Tüm ekranlar";
 "LN_TopBar_Enhanced_Multi-Share_Mode_Tip_OnlyHost_660126" = "Tüm ekranlar modu devam ediyor. Katılımcılar diğer katılımcılardan paylaşılan içeriği görüntüleyemez.";
+"LN_AIC_Request_Start_Live_Summary_Tip_990843" = "Canlı özet başlatma isteği oturum sahibine gönderildi.";
 "LN_TopBar_Enhanced_Multi-Share_Mode_Tip_All_660126" = "Tüm ekranlar modu devam ediyor. Katılımcılar diğer katılımcılardan paylaşılan içeriği görüntüleyebilir.";
 "LN_TopBar_Enhanced_Multi-Share_Mode_Stop_660126" = "Tüm ekranlar modunu durdur";
 "LN_TopBar_Enhanced_Multi-Share_Mode_Title_458717" = "Gelişmiş Çoklu Paylaşım";
@@ -12873,6 +13122,7 @@
 "LN_Onboarding_Connect_Microsoft365_526400" = "Microsoft hesabınızı Zoom'a bağlayın";
 "LN_Onboarding_Start_Title_526400" = "Zoom deneyiminizi ayarlayın";
 "LN_Onboarding_Start_Detail_526400" = "Zoom'un sizin için çalışmasını sağlamak için hesap ayarlarınızı özelleştirin. Fikrinizi değiştirirseniz bunları daha sonra istediğiniz zaman güncelleyebilirsiniz.";
+"LN_Can_Not_Start_Host_990843" = "Oturum sahibi katılana kadar bu toplantıda %@ başlatılamaz.";
 "LN_Onboarding_Start_Action_526400" = "Başlayın";
 "LN_Onboarding_Notify_Title_526400" = "Bildirim alın";
 "LN_Onboarding_Notify_Detail_526400" = "Zoom için bildirimlere izin verdiğinizde, bir toplantı başlamak üzere olduğunda veya birisi size mesaj gönderdiğinde sizi bilgilendiririz.";
@@ -13228,6 +13478,7 @@
 "LN_Create_Unique_Address_For_649227_698917" = "%@ için benzersiz bir e-posta adresi oluştur";
 "LN_Create_Unique_Address_For_649227" = "#%@ için benzersiz bir e-posta adresi oluştur";
 "LN_Create_Mails_Description_%@_649227" = "Gelen e-postaları bu %@ ögesine göndermek için bu adresi kullanın. Örneğin, web sitenizdeki bir iletişim formundan e-postaları yönlendirebilirsiniz.";
+"LN_Certifications_Toolbar_Error_Desc_1059967" = "Sertifikalar Uygulaması şu anda bağlanmakta sorun yaşıyor.";
 "LN_Delete_Mail_Address_649227" = "E-posta adresini sil";
 "LN_Delete_Mail_Description_%@_%@_649227" = "Bu adrese gönderilen e-postalar artık bu %@ üzerinde yayınlanmaz. Bu %@ üzerinde daha önce yayınlanmış olan e-postalar silinmez.";
 "LN_Link_Copied_Address_649227" = "Bağlantı panoya kopyalandı";
@@ -13239,6 +13490,7 @@
 "LN_Phone_VoicemailTopics_Prompt_Description_638257" = "Sesli mesaj önceliklendirmesini açın ve ayarlarınıza giderek öncelikli konuları eklemeye başlayın.";
 "LN_AutoAssignWR_transToWR_638315" = "Toplantınızdaki katılımcılar bekleme odasına geçti";
 "LN_AutoAssignWR_HostLeaveTip_638315" = "Oturum sahibi toplantıdan ayrıldı. Oturum sahibinin katılması bekleniyor";
+"LN_Certifications_Unable_to_load_Desc_1059967" = "Yüklenemiyor";
 "LN_Share_Select_Layouts_Mode_Button_As_Background_965706" = "Arka plan olarak";
 "LN_IM_Direct_Messages_529870" = "Doğrudan mesajlar";
 "LN_IM_Muted_529870" = "Sessize alındı";
@@ -13253,6 +13505,7 @@
 "LN_BuddyNotAllowedError_ZoomRoom_969484" = "Bu kanala Zoom Rooms eklenemiyor.";
 "LN_BuddyNotAllowedError_PrivateCseChannelAddExt_969484_%@" = "Bu kanalda harici kullanıcılara izin verilmediğinden %@ eklenemiyor.";
 "LN_IM_Mention_692675" = "@Bahsetmeler";
+"LN_Certifications_Toolbar_Title_1059967" = "Sertifikasyon";
 "LN_IM_All_692675" = "@Tümü";
 "LN_IM_Sibar_Filter_No_All_692675" = "@tüm sonucunuz yok";
 "LN_BuddyNotAllowedError_WaitAccountApproval_969484_%@" = "Hesabı henüz onaylanmadığından %@ eklenemiyor.";
@@ -13591,6 +13844,7 @@
 "LN_File_Pick_Collaborate_Join_650271" = "E-postanıza (%@) düzenleme erişimi verildi. İş birliğine katılmak için \"Katıl\" ögesini seçin.";
 "LN_Setting_Video_Portrait_Lighting_Help_Tip_682775" = "Portre Işığı, arka planınızı loşlaştırırken sizi öne çıkarır.";
 "LN_ShareAudio_Tip_Viewer_643379" = "Bilgisayar sesi paylaşılıyor";
+"LN_CMC_InviteLink_JoinRequestSentToast_Body_1004831" = "İsteğiniz onaylandıktan sonra toplantı sohbetine ekleneceksiniz.";
 "LN_ShareAudio_Tip_Presenter_643379" = "Bilgisayar sesi, %@ içerisinde paylaşılıyor";
 "LN_Setting_VB_AI_Button_646299" = "Yapay zeka sanal arka planı oluştur";
 "LN_Setting_VB_AI_Window_646299" = "Yapay zeka sanal arka planı";
@@ -13602,6 +13856,7 @@
 "LN_Private_Channel_Huddle_Active_679398" = "Özel kanal: Huddleda %ld aktif üye";
 "LN_Public_Channel_Huddle_One_Active_679398" = "Herkese açık kanal: Huddleda 1 aktif üye";
 "LN_Private_Channel_Huddle_One_Active_679398" = "Özel kanal: Huddle'da 1 aktif üye";
+"LN_Link_To_Team_Chat_Meeting_Chat_1004831" = "Team Chat toplantı sohbetine bağla";
 "LN_Enable_Channel_Huddle_Title_674689" = "Kanal huddle'ı";
 "LN_Enable_Channel_Huddle_Button_674689" = "Bu kanaldan özel bir huddle'a katılmayı etkinleştir";
 "LN_Setting_PG_Avatar_Error_Image_Face_Need_Visible_428912" = "Lütfen seçtiğiniz görselde yüzünüzün tamamının göründüğünden emin olun.";
@@ -13614,6 +13869,7 @@
 "LN_Search_Zoom_Docs_694376" = "Zoom Docs";
 "LN_Search_Zoom_Whiteboards_694376" = "Zoom Whiteboards";
 "LN_Search_Copied_link_694376" = "Bağlantı kopyalandı.";
+"LN_CMC_InviteLink_DuplicateJoinToast_Title_1004831" = "Bu toplantı sohbetine katılmayı zaten talep ettiniz";
 "LN_SwitchAccount_SignOutDialog_Title_706824" = "%@ uygulamasından çıkış yap";
 "LN_SwitchAccount_SignOutDialog_Content_706824" = "Bu hesaptan çıkış yaparsanız doğrudan bu hesaba geçiş yapamazsınız.";
 "LN_MG_Filter_694376" = "filtre";
@@ -13662,6 +13918,7 @@
 "LN_Custom_Cannt_Choose_StudioEffects_650330" = "Kapsayıcı görünümdeyken stüdyo efekti seçemezsiniz.";
 "LN_DisableStudioEffectsForUsingAvatar_650330" = "Avatarlar kullanılırken Stüdyo Efektleri kullanılamaz";
 "LN_NotSupportStudioEffects_650330" = "Makineniz Stüdyo Efektlerini desteklemiyor.";
+"LN_Chat_Disable_MentionAll_1004831" = "Bu sohbet için @all'ı devre dışı bırak";
 "LN_Multi_Share_Alert_Host_Block_Title_710890" = "Çoklu paylaşım açılsın mı?";
 "LN_Multi_Share_Alert_Host_Block_Content_710890" = "Şimdilik tek seferde bir öge paylaşabilirsiniz.";
 "LN_Multi_Share_Alert_Replace_Current_Share_710890" = "Geçerli paylaşımı değiştir";
@@ -13694,14 +13951,15 @@
 "LN_Share_Link_Not_Supported_Toast_734529" = "Doğrudan mesajlardaki bağlantılar paylaşılamaz";
 "LN_Leave_a_message_703208" = "Mesaj bırak";
 "LN_Convert_CMC_To_Channel_Description_642055" = "Kaydedilen sürekli toplantı sohbeti ile takip toplantıları planlamak için bu toplantı sohbetini bir kanala dönüştürün.";
+"LN_CMC_MentionGroups_Delete_Message_1004831" = "Bahsetme grubu @%@ bu toplantı sohbetinden silinecektir. Toplantı sohbet üyeliği etkilenmeyecektir.";
 "LN_Reorder_Tip_914119" = "Araç çubuğunu yeniden sıralamak için sürükleyin";
+"LN_CMC_Assign_Admin_%@_Info_1004831" = "%@ toplantı sohbeti yöneticisi olacak. Toplantı sohbet yöneticileri, izinlerin çoğunu sahip ile paylaşır. Yöneticiler toplantı sohbetini silemez veya toplantı sohbetinin gizlilik ayarlarını düzenleyemez.";
 "LN_Convert_CMC_To_Channel_642055" = "Toplantı sohbetlerini kanallara dönüştür";
 "LN_Compose_limit_728610" = "Mesaj girişi en fazla %ld karakteri destekler";
 "LN_Apps_Open_App_In_Meeting_713945" = "Uygulamayı toplantıda aç";
 "LN_Add_as_Contact_to_chat_703208" = "Sohbete başlamak için kişi olarak ekleyin.";
 
 "LN_Setting_Using_Face_Effects_Alert_Title_705116" = "Yüz efektlerine izin ver";
-"LN_Setting_Using_Face_Effects_Alert_Content_705116" = "Avatarlar, stüdyo efektleri veya belirli video filtreleri seçerek Zoom Workplace'in yüzünüze efekt yerleştirmesine izin verebilirsiniz. \"Tamam\" seçeneğine tıklayarak, seçilen efektleri oluşturmak için Zoom Workplace'in cihazınızda yüzünüzün konumunu ve hareketini analiz etmesine izin vermeyi kabul etmiş olursunuz. Veriler cihazınızdan çıkmaz, saklanmaz ve yalnızca seçilen efektleri oluşturmak için kullanılır.";
 "LN_Invite_To_Huddle_Declined_720894" = "\"%@\" için gelen huddle daveti - reddedildi";
 "LN_Outgoing_Invite_To_Huddle_720894" = "\"%@\" içinde huddle düzenlemek üzere giden davet";
 "LN_Auto_Call_725658" = "Otomatik çağrı";
@@ -13710,9 +13968,12 @@
 "LN_Running_late_725502" = "Geç kalıyor: %ld dk";
 "LN_Multi_Share_Alert_Host_Block_Title_744073" = "Birden fazla sunucu paylaşımına izin verilsin mi?";
 "LN_SimuliveWebinar_Confirm_Tip_739224" = "Emin misiniz? Kayıt oynatma durdurulacak ve katılımcılar canlı etkileşimli kayıttan web seminerinden çıkarılacak.";
+"LN_CMC_InviteLink_ResetToast_1004831" = "Toplantı sohbet bağlantısı ve QR kodu sıfırlandı";
+"LN_CMC_InviteLink_ResetBody_1004831" = "Sıfırlandıktan sonra, harici kullanıcılar önceki toplantı sohbet bağlantısı ve QR kodundan katılamaz. Dahili kullanıcılar da dahil olmak üzere üyeler, toplantı sohbetini bulmak için bunları kullanmaya devam edebilir.";
 "LN_Message_all_725438" = "Tümüne mesaj gönder";
 "LN_Multi_Share_Alert_Host_Disable_Multi_Share_Meeting_744073" = "Oturum sahibi bu toplantı için birden çok sunucu paylaşımına izin vermiyor.";
 "LN_Invite_To_Huddle_720894" = "\"%@\" içine gelen huddle daveti";
+"LN_CMC_Restrict_Memtion_List_Disabled_1004831" = "@all (%d) sohbet sahibi tarafından devre dışı bırakıldı";
 "LN_Docs_Tip_Title_754159" = "Yapay zeka öncelikli iş birliği için Zoom Docs ile tanışın";
 "LN_Docs_Coach_Mark_Title_749573" = "Zoom Docs'u kullanarak iş birliği yapın";
 "LN_Multi_Share_Alert_Participant_Block_Content_Meeting_744073" = "Bu toplantı için birden fazla sunucu paylaşımı talep edebilirsiniz.";
@@ -13728,9 +13989,11 @@
 "LN_Huddle_Invite_Declined_712233" = "%@ davetinizi reddetti.";
 "LN_Invite_To_Huddle_Canceled_720894" = "\"%@\" için gelen huddle daveti - iptal edildi";
 "LN_You_sent_contact_request_703208" = "<b>%@</b> adlı kullanıcıya bir kişi isteği gönderdiniz.";
+"LN_Meeting_Chat_Restricted_Owner_Mention_All_1004831" = "@all yalnızca sohbet sahibiyle sınırlandırıldı";
 "LN_PSE_Auto_Record_840003" = "Kişiselleştirilmiş ses yalıtımının sesinizi öğrenmesi gerekiyor";
 "LN_Others_Share_Screen_711934" = "%@ Ekranı paylaşıyor";
 "LN_Invite_To_Huddle_Accepted_741298" = "Özel bir huddle'a gelen davet - kabul edildi";
+"LN_Meeting_Chat_Instant_Meeting_Tip_1004831" = "Toplantı sohbet üyelerinin toplantı sohbetinden anında toplantı başlatmasına ve tüm üyeleri çaldırmasına izin verin.";
 "LN_SimuliveWebinar_Confirm_ButtonTitle_739224" = "Evet, web seminerini herkes için sonlandır";
 "LN_OtherSettings_Title_711934" = "Diğer ayarlar";
 "LN_Invite_To_Huddle_Accepted_720894" = "\"%@\" için gelen huddle daveti - kabul edildi";
@@ -13740,10 +14003,17 @@
 "LN_Self_Controlling_711934" = "%@ adlı kullanıcının ekranını kontrol ediyorsunuz";
 "LN_Multi_Share_Alert_Host_Block_Content_744073" = "Aynı anda yalnızca bir sunucu paylaşımda bulunabilir.";
 "LN_Multi_Share_Alert_Sent_Request_Noti_744073" = "İstek gönderildi.";
+"LN_CMC_Unassign_Admin_myself_Info_1004831" = "Düzenli üye olacaksınız. Diğer toplantı sohbet yöneticilerini atayamayacaksınız, toplantı sohbetini düzenleyemeyeceksiniz.";
+"LN_Only_Chat_Owner_Admins_1004831" = "Yalnızca sohbet sahibi ve yöneticiler";
 "LN_Phone_VoicemailTranscription_Language_Polish_824646" = "Lehçe (Polonya)";
 "LN_My_Share_711934" = "Paylaşıyorsunuz";
+"LN_Meeting_Chat_Instant_Meeting_Setting_Disabled_1004831" = "Bu toplantı sohbetinde %ld üyeden daha fazla üye olduğundan bu ayar devre dışı bırakılmıştır.";
 "LN_Reconnect_Count_Down_716352" = "%ld saniye";
+"LN_CMC_AtAllDisabledToast_1004831" = "@all toplantı sohbetinin sahibi tarafından devre dışı bırakıldı";
 "LN_Invite_To_Huddle_Missed_720894" = "\"%@\" için gelen huddle daveti - cevapsız";
+"LN_CMC_MentionGroups_No_MentionGroups_1004831" = "Bu toplantı sohbetinde kullanılabilecek bahsetme grupları burada gösterilir. \n\nYalnızca sohbet sahibi ve yöneticiler bahsetme grupları oluşturabilir. Tüm üyeler kendilerini ekleyebilir veya çıkarabilir.";
+"LN_Only_Chat_Owner_Admins_Add_External_1004831" = "Yalnızca sohbet sahibi ve yöneticiler harici kullanıcı ekleyebilir.";
+"LN_CMC_Unassign_Admin_%@_Info_1004831" = "%@ düzenli bir üye olacak. Diğer toplantı sohbet yöneticilerini atayamayacaklar veya toplantı sohbeti düzenleyemeyecekler.";
 "LN_Shared_Content_Only_799004" = "Yalnızca paylaşılan içerik";
 "LN_Invite_To_Huddle_741298" = "Özel bir huddle'a gelen davet";
 "LN_Disable_Annotate_Tip_711934" = "Ek açıklama, yalnızca tek bir paylaşımda kullanılabilir";
@@ -13751,6 +14021,7 @@
 "LN_Multi_Share_Alert_Host_Declined_Noti_744073" = "Çoklu sunucu paylaşımına izin verme isteği, oturum sahibi tarafından reddedildi.";
 "LN_Message_all_tooltip" = "Bu toplantı için sürekli toplantı sohbeti kapatıldı";
 "LN_Phone_VoicemailTranscription_Language_Danish_824646" = "Danca (Danimarka)";
+"LN_CMC_Assign_Admins_limit_1004831" = "Toplantı sohbetinde zaten maksimum %d yönetici var.";
 "LN_Send_contact_request_Notes_703208" = "Kişiselleştirilmiş mesajla gönder <font %@ >(İsteğe bağlı)</font>";
 "LN_Invite_To_Huddle_Declined_741298" = "Özel bir huddle'a gelen davet - reddedildi";
 "LN_Coachmark_Title_799004" = "Yalnızca paylaşılan içeriği görüntüle";
@@ -13758,6 +14029,7 @@
 "LN_Reconnect_Tip_716352" = "Zoom bulut hizmeti kısa süre içinde yükseltilecek. Bağlantınız kesilecek ve şu süre içinde yeniden katılacaksınız: %@";
 "LN_Multi_Share_Alert_Allow_Multi_Share_744073" = "İzin ver";
 "LN_Add_Contact_Tip_without_note_703208" = "</b>%1$@<b> henüz kişileriniz arasında yer alımıyor.\nSohbete başlamak için kişi olarak ekleyin. <a href='%2$@'>Kişi isteği gönder ></a>";
+"LN_CMC_Account_Admin_Disabled_Instant_Meeting_1004831" = "Hesap yöneticiniz kanallardan veya toplantı sohbetlerinden anında toplantıları devre dışı bıraktı.";
 "LN_Add_Contact_Tip_703208" = "<b>%@</b>henüz kişileriniz arasında yer almıyor.\nİlk mesajınızı ve kişi isteğinizi harici kullanıcıya e-posta ile göndereceğiz. Davet mesajı için yalnızca düz metne izin verilir.";
 "LN_Phone_VoicemailTranscription_Language_Vietnamese_824646" = "Vietnamca (Vietnam)";
 "LN_Media_Stream_Unable_To_Load_Desc_689434" = "Medya Akışı şu anda bağlantı kurmakta sorun yaşıyor.";
@@ -13841,6 +14113,7 @@
 "LN_FileValidationFailureInTextFieldDescription_689913" = "Dosya gönderilemiyor. Lütfen dosya biçiminin doğru olduğundan emin olun ve tekrar deneyin.";
 "LN_Share_View_Spotlight_Tip_734161" = "Öne çıkan sekmeyi görüntüle";
 "LN_IM_Sidebar_Filter_Title_760805" = "Filtreleme ölçütü:";
+"LN_IM_Sidebar_Filter_By_Title_1058163" = "Filtreleme ölçütü";
 "LN_%ld_Members_Of_%@_WillBeInviteToMeeting_782521" = "%1$ld %2$@ üyesi, bu toplantıya otomatik olarak davet edilecek.";
 "LN_Login_GoToHome_769533" = "Ana sayfaya git";
 "LN_MTAssets_Tip_Summary_771118" = "Toplantı özetini, sonraki adımları gözden geçirin ve sonraki süreci planlayın";
@@ -13863,6 +14136,7 @@
 "LN_MTAssets_Tip_Links_771118" = "Bağlantıları, belgeleri ve kayıtları alın";
 "LN_Share_Add_Spotlight_734161" = "Bu paylaşımı öne çıkar";
 "LN_PT_ToastTip_DisasterModeON_753652" = "Sürdürülebilirlik modu açıldı.";
+"LN_Setting_VB_AI_Image_Description_1055261" = "Yapay zeka sanal arka planı oluştur";
 "LN_Updater_Dialog_1_Hour_748834" = "1 saat içinde bana hatırlat";
 "LN_Copy_My_Chat_Link_770244" = "Doğrudan sohbet bağlantımı kopyala";
 "LN_Updater_Dialog_24_Hour_748834" = "Yarın bana hatırlat";
@@ -13870,6 +14144,7 @@
 "LN_CCI_Popout_App_Information_720325" = "Bu uygulama, Zoom Contact Center istemcisinin dışında yeni bir pencerede açılacak.";
 "LN_FileValidationChecking_689913" = "Dosya kullanılabilirliğini kontrol et";
 "LN_MTAssets_SubTitle2_771118" = "Bundan sonra ihtiyacınız olan her şeye erişmek için Zoom Workplace'e giriş yapın:";
+"LN_Setting_Using_Face_Effects_Alert_New_Content_705116" = "Devam ettiğinizde Zoom, seçili avatarı, stüdyo efektini veya belirli video filtrelerini yüzünüze uygulamak için yüz özelliklerinizi ve hareketlerinizi analiz eder. Veriler cihazınızdan çıkmaz ve hemen silinir.";
 "LN_Tabs_More_Tip_726982" = "Ögeleri araç çubuğundan kaldırmak için buraya sürükle";
 "LN_After_Assign_Channel_Owner_Desc_776533" = "Yeni bir sahip atadıktan sonra otomatik olarak bu kanalın yöneticisi olacaksınız.";
 "LN_FileValidationResourceNotReadyTitle_689913" = "Güvenlik dosyasını indirin";
@@ -13929,6 +14204,7 @@
 "LN_Panelist&NoAttendee_Joined_769313" = "%d panelist katıldı, hiçbir rolsüz katılımcı katılmadı";
 "LN_Dot_769313" = ".";
 "LN_OnePanelist&OneAttendee_Joined_769313" = "1 panelist ve 1 rolsüz katılımcı katıldı";
+"LN_Drag_To_Resize_1053625" = "Yeniden boyutlandırmak için sürükleyin";
 "LN_Meeting_769313" = "toplantı";
 "LN_Share_750952" = "Paylaş";
 "LN_PhoneCallOnHold_Join_769313" = "Telefon araması beklemeye alınıp %@ kabul edilsin mi?";
@@ -14138,6 +14414,7 @@
 "LN_Chat_Summarize_1_message_868213" = "1 yeni mesajı özetle";
 "zm_aic_plus_webinar_start_all_features_title_793510" = "Bu web semineri için AI Companion\'ı başlatın.";
 "LN_IM_SharedSpace_TransferOwnerNoResults_849208" = "Sonuç bulunamadı. Sahiplik yalnızca hesabınızdaki birine atanabilir.";
+"LN_Assign_Space_Owner_Content_1020748_%@" = "Paylaşılan alan sahipliğini %@ adlı kişiye aktarmak üzeresiniz. Sahipliği aktardıktan sonra otomatik olarak bu paylaşılan alanın yöneticisi olursunuz.";
 "LN_Chat_Forward_Message_Failed_870751" = "Mesaj %@ adlı kullanıcıya iletilemiyor";
 "LN_Channel_Setting_Disabled_894941" = "Bu kanalın %ld üyeden daha fazla üyesi olduğundan bu ayar devre dışı bırakıldı.";
 "LN_Show_Zoom_Windows_881209" = "Zoom pencerelerini göster";
@@ -14335,7 +14612,6 @@
 "LN_Schedule_ConnectCalendar_949277" = "Şimdi bağlanın";
 "LN_ParticipantsID_Reminder" = "Zaten telefonla katılım sağlandı mı? Telefonunuzda %@ girin.";
 "LN_Docs_Request_Share_Doc_Fail_Alert_Desc_Account_883311" = "Müşteri girişiniz web girişinizle eşleşmiyor. Lütfen hesaplarınızı doğrulayın veya tekrar giriş yapın.";
-"LN_Sip_Participants_Title_920901" = "Katılımcılar";
 "LN_Add_Audio_Control_Group_865345" = "Ses kontrol grubuna ekle";
 "LN_Output_Volume_865345" = "Çıkış ses seviyesi";
 "LN_Someone_Controlling_Audio_Tip_865345" = "%@ sesinizi kontrol ediyor";
@@ -14386,13 +14662,12 @@
 "LN_Create_channel_for_better_collaboration_966144" = "10'dan fazla kişiyle sohbet mi ediyorsunuz? Daha iyi iş birliği için bir kanal oluşturun.";
 "LN_Coach_Mark_Floating_Reactions_Content_956462" = "Reaksiyonlar için yeni bir animasyon var! Bir şans verin.";
 "LN_DowngradeNotAllowed_933517" = "Desteklenmeyen eski bir sürümü yüklemeye çalışıyorsunuz. Yardım için BT lütfen yöneticinize başvurun.";
+"LN_Meeting_Chat_Tag_1026317" = "TOPLANTI SOHBETİ";
 "LN_New_Chat_Message_966144" = "%@ adlı kişiye mesaj gönderin";
 "LN_Updater_Dialog_Required_Info_932209" = "Zoom Workplace'in eski bir sürümünü kullanıyorsunuz. Daha sorunsuz bir deneyim için lütfen en son sürüme güncelleyin.\n\nBu sürümdeki %@ göz atın.";
 "LN_Start_New_Channel_Content_966144" = "Mesajların çalışma şeklini düzenliyoruz. Bu konuşmaya bir isim vermek istiyorsanız bunu bir kanala dönüştürün.";
-"LN_Convert_To_Private_Channel_Des_For_Member_966144" = "Bu mesajı özel bir kanala dönüştürme yetkisi yalnızca sahibine aittir.";
 "LN_DeepLink_Error_Toast_970487" = "Bu sayfa artık mevcut değil veya kullanılamıyor.";
 "LN_Edit_Shared_Space_Failure_938661" = "Paylaşılan alan düzenlenemedi, lütfen daha sonra tekrar deneyin.";
-"LN_Convert_To_Private_Channel_Des_For_Owner_966144" = "Özel bir kanala dönüştürdüğünüzde kanalı adlandırabilir, üyeleri yönetebilir ve gelişmiş ayarlara erişebilirsiniz.";
 "LN_Convert_To_Private_Channel_966144" = "Özel kanala dönüştür";
 "LN_Unread_937144" = "Okunmadı";
 "LN_welcome_create_channel_966144" = "\"%@\" kanalına hoş geldiniz";
@@ -14509,6 +14784,7 @@
 "LN_View_Enrolled_Image_740471" = "Kayıtlı resmi göster";
 "LN_New_Chat_Creating_Private_Channel_966144" = "Özel bir kanal oluşturuyorsunuz";
 "LN_ZR_Workplace_SNT_Avaliable_740471" = "Yeni akıllı tanıma özellikleri kullanıma sunuldu: Zoom Rooms ve Zoom Workplace uygulaması için ses tabanlı akıllı ad etiketleri. Mevcut ses kaydınızı kullanarak kaydolmak ister misiniz?";
+"LN_New_Sidebar_Chips_Menu_Reorder_1058163" = "Sabitlemek veya yeniden sıralamak için sürükleyin";
 "LN_Voice_Recorded_Success_Info_740471" = "Bu kaydı kullanarak ses için kişiselleştirilmiş ses izolasyonunu ve otomatik akıllı ad etiketlerini etkinleştirdik. Ses kaydınızı istediğiniz zaman profilinizdeki \"%@\" ayarları bölümünden silebilir veya güncelleyebilirsiniz.";
 "LN_Voice_Recognition_Description_740471" = "Zoom Hizmetlerinde akıllı ses kalitesi iyileştirme ve ses tanıma özellikleri için kullanılmak üzere bir ses kaydı oluşturun.";
 "LN_MagicCode_SendTo_985336" = "%@ adresine sihirli kod gönderildi";
@@ -14518,6 +14794,7 @@
 "LN_HaveRecording_988942" = "Kaydınız yakında hazır olacak.";
 "LN_SR_Voice_Help_Tip_740471" = "Zoom, ses deneyiminizi iyileştirmek ve/veya Zoom hizmetlerini kullandığınızda sizi konuşmacı olarak tanımlamak için ses kaydınızı kullanacaktır.";
 "LN_Voice_Recorded_Success_740471" = "Ses kaydedildi";
+"LN_Prevent_Capture_type_screen_recording_1022426" = "ekran kaydı";
 "LN_Watermark_On_Share_985806" = "Paylaşılan içerikte filigran";
 "LN_End_Voice_Record_947084" = "Kaydı sonlandır";
 "LN_Join_Meeting_ID_912361" = "Toplantı kimliğiyle katıl";
@@ -14530,6 +14807,7 @@
 "LN_AskAboutMT_988942" = "Bu toplantı hakkında soru sorun";
 "LN_Microphone_Modes_965279" = "Mikrofon modları";
 "LN_Start_AIC_With_Live_Summary_Content_990843" = "AI Companion'ı açtığınızda toplantı özeti ve canlı özet de etkinleştirilecektir. Tüm katılımcılar ve davetliler toplantı içeriğine erişebilir. Erişim izinlerini AI Companion panelinde değiştirebilirsiniz.";
+"LN_CMCAssetsCard_ChangeSettings" = "Ayarlarınızı değiştirin";
 "LN_Use_Existing_740471" = "Mevcut olanı kullan";
 "LN_Delete_Record_947084" = "Kaydı sil";
 "LN_Microphone_Modes_Disable_Info_965279" = "Canlı Performans Sesi etkinleştirildiğinden mikrofon modları devre dışı bırakıldı. Mikrofon modlarını kullanmak için lütfen Canlı Performans Sesini devre dışı bırakın.";
@@ -14542,13 +14820,16 @@
 "LN_Upload_New_Image_740471" = "Yeni resim yükle";
 "LN_Live_Summary_Coachmark_Content_830124" = "Yapay zekanın bu toplantıyı gerçek zamanlı olarak özetlemesine izin verin, böylece önemli anları hiç kaçırmazsınız.";
 "LN_Start_Meeting_Summary_Request_Accepted_Tip_990843" = "Oturum sahibi, toplantı özetine erişiminizi sağladı.";
+"LN_New_Sidebar_Chats_Empty_Tip_1058163" = "Hiçbir doğrudan mesajı kaçırmayın! Görüntülemek için kenar çubuğundan bir konuşma seçin.";
 "LN_Start_Live_Summary_Host_Content_990843" = "Orijinal oturum sahibinin belirlediği izinlere bağlı olarak bazı katılımcılar canlı özete erişemeyebilir.";
 "LN_Ask_Start_Live_Summary_990843" = "Bir katılımcı, canlı özeti başlatmanızı istiyor";
 "LN_Start_Live_Summary_Request_Accepted_Tip_990843" = "Canlı özet açık.";
 "LN_Start_Live_Summary_Request_Declined_Tip_990843" = "Oturum sahibi canlı özet başlatma isteğinizi reddetti.";
 "LN_Start_Summary_With_Live_Summary_Host_Content_990843" = "Toplantı özetini açarak canlı özeti de etkinleştirirsiniz. Orijinal oturum sahibinin belirlediği izinlere bağlı olarak bazı katılımcılar bunlara erişemeyebilir.";
 "LN_Start_Live_Summary_Original_Host_Content_990843" = "Tüm davetliler canlı özete erişebilecek. Erişim izinlerini AI Companion panelinden değiştirebilirsiniz.";
+"LN_New_Sidebar_SharedSpace_Empty_Tip_1058163" = "Paylaşılan Alanlarda ekibinizle iş birliği yapın! Burada görüntülemek için kenar çubuğundan birini seçin.";
 "LN_Live_Summary_830124" = "Canlı özet";
+"LN_New_Sidebar_Apps_Empty_Tip_1058163" = "Tüm uygulama konuşmalarınız tek bir yerde. Sohbet etmeye başlamak için bir uygulama seçin.";
 "LN_Start_Live_Summary_Button_990843" = "Canlı özeti başlat";
 "LN_Start_Summary_With_Live_Summary_Original_Host_Content_990843" = "Toplantı özetini açarak canlı özeti de etkinleştirirsiniz. Tüm davetliler buna erişebilecek. Erişim izinlerini AI Companion panelinde değiştirebilirsiniz.";
 "LN_Update_Voice_Recording_740471" = "Ses kaydını güncelle";
@@ -14562,7 +14843,9 @@
 "LN_ZUIST_Choose_Learn_More_Sdk_819462" = "Ekranı yakalamak için kullanılan bir yöntem seçin.";
 "LN_MeetingSummaryShared_992575" = "Toplantı özeti başarıyla paylaşıldı.";
 "LN_Thick_111977" = "Kalın";
+"LN_New_Sidebar_Folder_Empty_Tip_1058163" = "Sohbetlerinizi klasörlerle düzenli tutun.  Burada görüntülemek için kenar çubuğundan birini seçin.";
 "LN_MeetingRecordingShared_992575" = "Toplantı kaydı başarıyla paylaşıldı.";
+"LN_New_Sidebar_Starred_Empty_Tip_1058163" = "Yıldızlı bir sohbete tıklayarak sohbete başlayın!";
 "LN_Shared_Space_Admin_964805" = "Ortak alan yöneticisi";
 "LN_Undo_Z_111977" = "Geri Al (⌘+Z)";
 "LN_Simplify_Disclamier_ZRA_Recoding_Livestream_AI_CC_Desc_1014390" = "Oturum sahibi, transkripsiyon amacıyla konuşmacılar arasında ayrım yapabilmek için ses de dahil olmak üzere toplantıyı analiz etmek maksadıyla Zoom AI Companion kullanıyor. Ses analizi, döküm oluşturulduktan sonra silinir. Kayda, canlı akışa veya döküme erişimi olan herkes bunu görüntüleyebilir veya başkalarıyla paylaşabilir.";
@@ -14577,12 +14860,14 @@
 "LN_OneEmailCannotBeAdded_974962_%@" = "1 e-posta eklenemiyor <a %@>Kaldır</a>";
 "LN_InvalidDomain_993876" = "Lütfen geçerli bir gösterim URL'si girin";
 "LN_Gesture_Reactions_Info_Tip_ThumbsDown_991817" = "Başparmak yukarı";
+"LN_CMCAssetsCard_SummarySharingRestricted" = "Toplantı özeti paylaşımı kısıtlanmıştır.";
 "LN_Apps_Enable_Auto_Open_Desc_1016534" = "\"İzin Ver\" seçeneğinin belirtilmesi, uygulamayı gelecekteki toplantıları otomatik olarak başlatacak şekilde ayarlar. Bu seçimi Ayarlar > Toplantılar ve web seminerleri > Deneyime katıl alanından yönetebilirsiniz.";
 "LN_Simplify_Disclamier_ZRA_Recoding_Livestream_Desc_1014390" = "Oturum sahibi, transkripsiyon amacıyla konuşmacılar arasında ayrım yapabilmek için ses de dahil olmak üzere toplantıyı analiz etmek maksadıyla Zoom AI Companion kullanıyor. Ses analizi, döküm oluşturulduktan sonra silinir. Kayda veya canlı akışa erişimi olan herkes bunu görüntüleyebilir veya başkalarıyla paylaşabilir.";
 "LN_Reaction_Gesture_Conflict_MacOS_Tip_991817" = "Hem macOS hem de Zoom reaksiyonlarının oluşturulmasını önlemek için macOS reaksiyonlarını kapatın.";
 "LN_Setting_Auto_Framing_923864" = "Otomatik çerçeveleme";
 "LN_Profile_Menu_970439" = "Mobil uygulamayı indir";
 "LN_Simplify_Disclamier_ZRA_Recoding_AI_Desc_1014390" = "Oturum sahibi, transkripsiyon amacıyla konuşmacılar arasında ayrım yapabilmek için ses de dahil olmak üzere toplantıyı analiz etmek maksadıyla Zoom AI Companion kullanıyor. Ses analizi, döküm oluşturulduktan sonra silinir. Kayda erişimi olan herkes bunu görüntüleyebilir veya başkalarıyla paylaşabilir.";
+"LN_New_Sidebar_MeetingChats_Empty_Tip_1058163" = "Toplantıdan sonra bile konuşmayı sürdürün. Listeden bir toplantı sohbeti seçin!";
 "LN_Gesture_Reactions_Info_Tip_Okay_991817" = "Tamam işareti";
 "LN_Apps_card_%ld_881993" = "Uygulamalar kartı (%ld)";
 "LN_Gesture_Reactions_Info_Tip_Celebration_991817" = "Kutlama için çift başparmak yukarı";
@@ -14594,6 +14879,7 @@
 "LN_Circle_111977" = "Daire";
 "LN_Simplify_Disclamier_ZRA_Recoding_Desc_1014390" = "Oturum sahibi, transkripsiyon amacıyla konuşmacılar arasında ayrım yapabilmek için ses de dahil olmak üzere toplantıyı analiz etmek maksadıyla Zoom AI Companion kullanıyor. Ses analizi, döküm oluşturulduktan sonra silinir. Kayda erişimi olan herkes bunu görüntüleyebilir veya başkalarıyla paylaşabilir.";
 "LN_Setting_Auto_Framing_Tip_923864" = "Otomatik çerçeveleme, görüntülü çağrılar sırasında kameranın görüntüsünü otomatik olarak ayarlayarak sizi çerçevenin ortasında tutar.";
+"LN_New_Sidebar_Channels_Empty_Tip_1058163" = "Kanallarda ekibinizle bağlantıda kalın. Başlamak için kenar çubuğundan birini seçin.";
 "LN_File_%ld_881993" = "Dosya (%ld)";
 "LN_Thin_111977" = "İnce";
 "LN_ZRA_Smart_Recording_Tip_Title_1014390" = "Akıllı kayıt açık ve Zoom AI Companion ile paylaşılıyor.";
@@ -14637,3 +14923,241 @@
 "LN_Conversation_Name_1020902" = "Konuşma adı (isteğe bağlı)";
 "LN_Share_Zoom_Windows_881209" = "Zoom pencerelerini paylaş";
 "LN_Coach_Mark_Tip_Turn_On_923864" = "Aç";
+"LN_Setting_Video_HD_1047285" = "HD";
+"LN_Setting_Video_Mirror_Info_1047285" = "Bu ayar yalnızca videonuzu nasıl görüntülediğinizi etkiler.";
+"LN_EndWebinar_1041113" = "Web seminerini sonlandır";
+"LN_Jump_To_Latest_998823" = "En sonuncuya atla";
+"LN_Revert_998823" = "Geri al";
+"LN_Setting_Video_Ratio_1047285" = "Orijinal oran";
+"LN_Setting_Phone_Voicemail_VB_Default_Title_989109" = "Varsayılan arka plan";
+"LN_Setting_Video_Mirror_1047285" = "Video ön izlememi yansıt";
+"LN_Access_Capture_Audio_111977" = "Diğer uygulamalardan ses kaydı almak için lütfen erişime izin verin.";
+"LN_KeepMeetingActive_1041113" = "Toplantıyı aktif tut";
+"LN_Sip_Language_Hindi_1036485" = "Hintçe";
+"LN_WebinarWillEnd_S_Inactivity_1041113" = "Bu web semineri, hareketsizlik nedeniyle %d sn içinde otomatik olarak sona erecek.";
+"LN_WebinarEnd_Inactivity_Title_1041113" = "Web semineri hareketsizlik nedeniyle sonlandırıldı";
+"LN_Name_Will_Create_Channel_Optional_1020902" = "Adlandırma bir kanal oluşturacaktır (isteğe bağlı)";
+"LN_Sip_Language_Telugu_1036485" = "Telugu dili";
+"LN_WebinarWillEnd_MS_Inactivity_1041113" = "Bu web semineri, hareketsizlik nedeniyle %1$d dk %2$d sn içinde otomatik olarak sona erecek.";
+"LN_Blur_Rectangle_111977" = "Bulanıklaştırma dikdörtgeni";
+"LN_DontAutoEndWebinar_1041113" = "Web seminerlerimi otomatik olarak sonlandırma";
+"LN_MeetingEnd_Inactivity_Content_1041113" = "Bu toplantı %@ dakika hareketsizlikten sonra otomatik olarak sonlandırıldı.";
+"LN_WebinarEnd_Inactivity_Content_1041113" = "Bu web semineri %@ dakika hareketsizlikten sonra otomatik olarak sonlandırıldı.";
+"LN_DontAutoEndMeeting_1041113" = "Toplantılarımı otomatik olarak sonlandırma";
+"LN_Sip_Language_Bengali_1036485" = "Bengalce";
+"LN_Blur_Brush_111977" = "Bulanıklaştırma fırçası";
+"LN_MeetingWillEnd_MS_Inactivity_1041113" = "Bu toplantı, hareketsizlik nedeniyle %1$d dk %2$d sn içinde otomatik olarak sona erecek.";
+"LN_Sip_Language_Tamil_1036485" = "Tamil dili";
+"LN_DontAutoEndMeeting_Setting_1041113" = "Hareketsizlikten sonra toplantıları otomatik olarak sonlandırma";
+"LN_EndThisMeeting?_1041113" = "Bu toplantı sonlandırılsın mı?";
+"LN_MeetingEnd_Inactivity_Title_1041113" = "Toplantı hareketsizlik nedeniyle sonlandırıldı";
+"LN_Webinar_Will_Start_On_%1$@_At_%2$@_1042795" = "Bu web seminerinin başlama zamanı %1$@, saat %2$@";
+"LN_Simulive_Will_Start_On_%1$@_At_%2$@_1042795" = "Bu canlı etkileşimli kayıttan web seminerinin başlama zamanı %1$@ günü, saat %2$@";
+"LN_MeetingWillEnd_S_Inactivity_1041113" = "Bu toplantı, hareketsizlik nedeniyle %d sn içinde otomatik olarak sona erecek.";
+"LN_PMI_Invalid_912361" = "Bu kişisel bağlantı geçerli değil. Lütfen kontrol edip tekrar deneyin.";
+"LN_Blur_Intensity_111977" = "Bulanıklaştırma yoğunluğu";
+"LN_EndThisWebinar?_1041113" = "Bu web semineri sonlandırılsın mı?";
+"LN_NoteAddedTab_%1$@_%2$@_%3$@_957094" = "%1$@ tarafından \"%3$@\" adlı bir %2$@ sekmesi eklendi";
+"LN_NoteRenamedTab_%1$@_%2$@_%3$@_%4$@_957094" = "\"%3$@\" adlı %2$@ sekmesi, %1$@ tarafından \"%4$@\" olarak yeniden adlandırıldı";
+"LN_NoteRmovedTab_%1$@_%2$@_%3$@_957094" = "\"%3$@\" adlı %2$@ sekmesi %1$@ tarafından kaldırıldı";
+"LN_99+_new_917463" = "99+ yeni";
+"LN_Summarize_99+_new_917463" = "99+ yeni ürünü özetleyin";
+"LN_KeepWebinarActive_1041113" = "Web seminerini aktif tut";
+"LN_Unable_Add_External_User_1036535" = "Kanal ayarları izin vermediğinden harici kullanıcılar eklenemiyor.";
+"LN_CodeSignIn_Des_1001610" = "%@ numaralı telefona tek kullanımlık bir şifre alın.";
+"LN_MagicCode_1001610" = "Sihirli kod";
+"LN_MagicCode_Des_1001610" = "%@ adresine tek kullanımlık bir sihirli şifre alın.";
+"LN_TryAnotherWay2SignIn_1001610" = "Oturum açmak için başka bir yol deneyin";
+"LN_PasskeyBind_Title_1001610" = "Yüzünüzle, parmak izinizle veya PIN kodunuzla daha hızlı oturum açın";
+"LN_PasskeyBind_Success_Tip_1001610" = "Artık sizin oturum açtığınızı doğrulamak için parmak izinizi, yüzünüzü, PIN kodunuzu veya donanım güvenlik anahtarınızı kullanabilirsiniz.";
+"LN_OTP_Notification_ChangePassword_SubTitle_1065104" = "Bu siz değilseniz hesabınızı güvende tutmak için parolanızı güncellemenizi ve iki adımlı kimlik doğrulamayı etkinleştirmenizi öneririz.";
+"LN_MFA_Title_1065104" = "İki adımlı doğrulama";
+"LN_PasskeyAuth_Fail_1001610" = "Geçiş anahtarı ile oturum açma başarısız oldu (hata kodu: %d).";
+"LN_PasskeyAuth_Title_1001610" = "Gerçekten siz olduğunuzu onaylamak için geçiş anahtarınızı kullanın";
+"LN_EnterPhonePassword_Des_1001610" = "Telefon numaranızın parolasını girin";
+"LN_PasskeyBind_Fail_1001610" = "Geçiş anahtarı oluşturulamıyor (hata kodu: %d). Tekrar denemek için lütfen ileri seçeneğine tıklayın.";
+"LN_Or_1032636" = "%1$@ veya %2$@";
+"LN_ChooseToSignIn_1001610" = "Nasıl oturum açmak istediğinizi seçin:";
+"LN_SignIn_CoachMark_Content_1051844" = "Zoom Workplace’te toplantı bittikten sonra toplantı kayıtlarınıza, özetlerinize ve çok daha fazlasına erişin.";
+"LN_ZUI_Get_Mobile_App_Desc_1057446" = "Nerede olursanız olun bağlantıda kalın. Mobil cihazınızdan QR kodunu tarayın veya [zoom.com/go] adresine gidin.";
+"LN_EnterPassword_Des_1001610" = "E-posta parolanızı girin.";
+"LN_ZUI_Get_Mobile_App_Title_1057446" = "Zoom Workplace mobil uygulamasını indirin";
+"LN_SignIn_CoachMark_Title_1051844" = "Zoom Workplace’ten en iyi şekilde yararlanmak için oturum açın";
+"LN_EnterPassword_1001610" = "Parolayı girin";
+"LN_UsePasskey_1001610" = "Geçiş anahtarınızı kullanın";
+"LN_UsePasskey_Des_1001610" = "Cihazınız yüzünüzü, parmak izinizi, PIN kodunuzu veya güvenlik anahtarınızı isteyecektir.";
+"LN_PasskeyBind_Tip_1001610" = "Zoom hesabınızda oturum açmak için bir geçiş anahtarı oluşturun.\n Parola veya kod gerekmez.";
+"LN_SignOut_Info_939162" = "Not alıyorsunuz. Otomatik olarak durdurulacak ve kaydedilecektir.";
+"LN_Quit_939162" = "Çık";
+"LN_SignOut_Message_939162" = "Hesabınızın oturumunu kapatın";
+"LN_Quit_Message_939162" = "Zoom Workplace'ten çık";
+"LN_New_Notes_939162" = "Yeni notlar";
+"LN_Quit_Info_939162" = "Not alıyorsunuz. Otomatik olarak durdurulacak ve kaydedilecektir.";
+"LN_Transcription_disable_939162" = "Transkripsiyon desteklenmiyor";
+"LN_SignOut_939162" = "Oturumu kapat";
+"LN_Turn_off_notification_for_app_name_1035096" = "%1$@ için bildirimleri kapat";
+"LN_New_Notes_1035096" = "Yeni Not";
+"LN_Meeting_detected_1035096" = "Toplantı algılandı";
+"LN_Skip_for_now_1035096" = "Şimdilik atla";
+"LN_Enable_audio_for_full_experience_1035096" = "Eksiksiz deneyim için sesi etkinleştirin";
+"LN_Allow_Zoom_to_access_system_microphone_and_speaker_when_you_continue_1035096" = "Devam ettiğinizde Zoom'un sistem sesine ve mikrofonuna erişmesine izin verin.";
+"LN_Toolbar_Admin_Locked_1060393" = "Aşağıdaki ayarlar yöneticiniz tarafından kilitlenmiştir ve değiştirilemez.";
+"LN_Link_To_Team_Chat_Group_Chat_1017555" = "Team Chat grup sohbetine bağlantı";
+"LN_Zoom_939162" = "Zoom";
+"LN_Hide_App_939162" = "%@'u gizle";
+"LN_Quit_App_939162" = "%@'tan çık";
+"LN_Record_Tip_1035168" = "Kaydet (Enter)";
+"LN_What_New_In_Chat_Title_1017555" = "Sohbetteki yenilikler";
+"LN_ConvertToChannel_Blurb_Tip_1017555" = "\"%@\" kanalını özel bir kanala dönüştürmek üzeresiniz. Kanalın sahibi olacaksınız. Bu değişiklik geri alınamaz.";
+"LN_Toolbar_Meeting_Info_Encryption_Security_1060393" = "Güvenlik ayarları";
+"LN_Toolbar_How_Many_Panelists_Can_Share_At_A_Time_1060393" = "Aynı anda kaç panelist paylaşımda bulunabilir?";
+"LN_Toolbar_Meeting_Info_Encryption_Code_BO_2_1060393" = "Katılımcılar, küçük grup odasının uçtan uca şifrelendiğinden emin olmak için güvenlik kodlarının sizinkiyle eşleşip eşleşmediğini kontrol etmelidir.";
+"LN_NewBO_AutoMoveToBO_IncludeWRTip_974017" = "Bekleme odasındaki katılımcılar içeri alınacak ve taşınacaktır";
+"LN_ZUIST_Preferred_Translation_Language_1048759" = "Tercih edilen çeviri dili";
+"LN_Group_Chat_Will_Be_Created_1017555" = "Eğer mevcut değilse, bu kullanıcılarla yeni bir grup sohbeti oluşturulacaktır. Bireysel mesajları göndermek için işareti kaldırın.";
+"LN_Toolbar_Plist_More_Host_Tool_Meeting_1060393" = "Katılımcılar için oturum sahibi araçları";
+"LN_%@_recipient_Timezone_1043637" = "%@ kullanıcısının saat dilimi";
+"LN_Simplified_Toolbar_Tip_Title_1060379" = "Toplantı araç çubuğu basitleştirildi";
+"LN_Simplified_Toolbar_Tip_Desc_1060379" = "\"Daha Fazla\" bölümünde ihtiyacınız olanı hızlıca bulun ve toplantı deneyiminizi kişiselleştirmek için araçları araç çubuğunuza sabitleyin.";
+"WorkForceManagement" = "İş Gücü Yönetimi";
+"LN_Recording_State_Stopped_1035168" = "Kayıt: Durduruldu";
+"LN_Toolbar_When_Enabled_All_Signed_In_Participants_Can_Share_Docs_1060393" = "Bu özellik etkinleştirildiğinde, giriş yapmış olan tüm katılımcılar (dahili ve harici) bu toplantı sırasında doküman paylaşabilir.";
+"LN_Toolbar_All_Docs_Created_Will_Belong_To_The_Host_Webinar_1060393" = "Web seminerinde oluşturulan tüm dokümanlar oturum sahibine aittir.";
+"LN_Recording_Warning_1035168" = "Kayıt - Zaman Uyarısı";
+"LN_Toolbar_All_Screens_Mode_1060393" = "Tüm ekranlar modu";
+"LN_Toolbar_Show_Participants_Local_Time_1060393" = "Katılımcının yerel saatini göster";
+"LN_Convert_Private_Channel_Disable_Tip_1017555" = "Özel kanallar hesap yöneticiniz tarafından devre dışı bırakıldı. Bu sohbeti dönüştüremezsiniz.";
+"LN_About_App_939162" = "%@ hakkında";
+"LN_Toolbar_When_Enabled_All_Signed_In_Participants_Can_Share_Docs_Webinar_1060393" = "Bu özellik etkinleştirildiğinde, giriş yapmış olan tüm katılımcılar (dahili ve harici) bu web semineri sırasında doküman paylaşabilir.";
+"LN_Toolbar_Meeting_Info_Encryption_Code_Meeting_2_1060393" = "Katılımcılar, toplantının uçtan uca şifrelendiğinden emin olmak için güvenlik kodlarının sizinkiyle eşleştiğinden emin olmalıdır.";
+"LN_Can_Not_Access_This_Chat_Content_1017555" = "Üye değilsiniz. Bağlantıyı paylaşan kişiyle iletişime geçin.";
+"LN_Screenshot_Record_1035168" = "Ekranı kaydet";
+"LN_Recording_State_Paused_1035168" = "Kayıt: Duraklatıldı";
+"LN_Sidebar_Menu_Manage_Sidebar" = "Kenar çubuğunu yönet";
+"LN_Convert_To_Private_Channel_Des_1017555" = "Sohbet bir kanal haline geldiğinde, adını değiştirebilir, açıklamaları düzenleyebilir, üyeleri yönetebilir, gelişmiş ayarlara erişebilir ve sınıflandırma etiketini değiştirebilirsiniz.";
+"LN_Toolbar_Meeting_Info_Encryption_Title_1060393" = "Gelişmiş şifreleme etkin";
+"LN_Toolbar_Focus_Mode_1060393" = "Konsantrasyon modu";
+"LN_Toolbar_Who_Can_Share_When_Someone_Else_Is_Sharing_1060393" = "Başkası paylaşımda bulunurken kim paylaşabilir?";
+"LN_Toolbar_Host_Tool_Plist_Title_Webinar_1060393" = "Panelistler ve rolsüz katılımcılar";
+"LN_Toolbar_Who_Can_Create_A_Doc_In_This_Meeting_1060393" = "Kimler bu toplantıda doküman oluşturabilir?";
+"LN_Allow_access_to_your_microphone_and_speaker_ZOOM_1035096" = "En iyi deneyimi yaşamak için başladıktan sonra mikrofonunuza ve hoparlörünüze erişime izin verin.";
+"LN_Processing_Recording_1035168" = "Kayıt işleniyor";
+"LN_Leave_Chat_Content_1017555" = "Bu konuşmada başka üye bulunmamaktadır. Bu konuşmadan ayrılmanız bu konuşmayı silecek ve tüm mesajlara erişiminizi kaybedeceksiniz.";
+"LN_Sidebar_Menu_Badging_Title" = "Rozetleme";
+"LN_NewBO_AutoMoveToBO_974017" = "Küçük grup odaları açıldığında tüm atanan katılımcıları otomatik olarak küçük grup odalarına taşı";
+"LN_Other_Timezone_1043637" = "Diğer";
+"LN_Convert_To_Channel_To_Edit_Setting_Tip_1017555" = "Bunlar etkin ayarlardır. Ayarları düzenlemek için bu sohbeti bir kanala dönüştürün.";
+"LN_Toolbar_Video_Effect_Setting_1055261" = "Video ve efekt ayarları";
+"LN_Need_grant_mic_permission_1035096" = "Sesli notlar alabilmek için Zoom'a mikrofon erişimi vermeniz gerekir. [Ayarlar]";
+"LN_Can_Not_Access_This_Chat_Title_1017555" = "Bu sohbete erişemezsiniz";
+"LN_Toolbar_Depending_On_Host_Settings_You_Might_Only_See_Local_Time_1060393" = "Oturum sahibinin ayarlarına bağlı olarak, yalnızca saat diliminizden farklı olan yerel saatleri görebilirsiniz.";
+"LN_Download_Paused_Resume_When_Meeting_Ends_928475" = "Duraklatıldı. İndirme, toplantınız sona erdiğinde devam edecek.";
+"LN_Owner_Role_Tip_1017555" = "Eski ayarlar nedeniyle sahip görünür durumda.";
+"LN_Toolbar_Allow_Panelists_To_Share_Docs_1060393" = "Panelistlerin doküman paylaşmasına izin ver";
+"LN_Toolbar_Who_Can_Create_A_Doc_In_This_Webinar_1060393" = "Kimler bu web seminerinde doküman oluşturabilir?";
+"LN_Recording_Stop_1035168" = "Kaydediliyor, bitirmek için tıklayın";
+"LN_Toolbar_How_Many_Participants_Can_Share_At_A_Time_1060393" = "Aynı anda kaç katılımcı paylaşımda bulunabilir?";
+"LN_Processing_1035168" = "İşleniyor";
+"LN_Remove_Tip_1017555" = "Sadece %@ hesabının üyeleri bu sohbetten kişileri çıkarabilir.";
+"LN_Toolbar_Dark_Right_Panel_1060393" = "Koyu sağ panel";
+"LN_Got_It_1060379" = "Anladım";
+"LN_Sidebar_Menu_Manage_Badges" = "Rozetleri yönet";
+"LN_Recording_Continue_1035168" = "Kayıt duraklatıldı. Devam etmek için tıklayın.";
+"LN_Toolbar_Setting_Display_Controls_1060393" = "Ekran ve kontroller";
+"LN_Convert_To_Private_Channel_Tip_1017555" = "Yalnızca %@ hesabının üyeleri bu sohbeti bir kanala dönüştürebilir.";
+"LN_Toolbar_Meeting_Info_Encryption_Code_BO_1_1060393" = "Tüm küçük grup odası katılımcılarına güvenlik kodlarını okuyun.";
+"LN_Voice_Notes_939162" = "Notlarım";
+"LN_Sidebar_Menu_Behavior_Title" = "Kenar çubuğu davranışı";
+"LN_What_New_In_Chat_Content_With_Permission_1017555" = "\n1. Sahip yok, herkes için aynı izinler.\n2. Daha fazla kontrol için <a href='%1$@'>bu sohbeti özel bir kanala dönüştürebilirsiniz</a>.";
+"LN_Follow_All_Applicable_Legal_Desc_1035096" = "Konuşmaları yazıya dökerken yürürlükteki tüm yasalara uyduğunuzdan emin olun";
+"LN_Toolbar_Plist_More_Host_Tool_Webianr_1060393" = "Panelistler ve rolsüz katılımcılar için oturum sahibi araçları";
+"LN_ZUIST_Preferred_Translation_Language_Help_1048759" = "Sesli mesaj, çağrı kaydı, çağrı özeti ve SMS için varsayılan dil çevirisi";
+"LN_Toolbar_Setting_Request_AIC_1060393" = "Oturum sahibinden AI Companion'ı başlatmasını talep et";
+"LN_Toolbar_All_Docs_Created_Will_Belong_To_The_Host_1060393" = "Toplantıda oluşturulan tüm dokümanlar oturum sahibine aittir.";
+"LN_Record_1035168" = "Kayıt";
+"LN_Recording_State_1035168" = "Kaydediliyor...";
+"LN_Toolbar_Allow_Participants_To_Share_Docs_1060393" = "Katılımcıların doküman paylaşmalarına izin ver";
+"LN_NewBO_AutoMoveToBO_IncludeWR_974017" = "Bekleme odası katılımcılarını dahil et";
+"LN_Toolbar_Setting_Send_Reactions_1060393" = "Reaksiyonları gönder";
+"LN_Forward_As_One_Group_Chat_1017555" = "Tüm kullanıcılara tek bir grup sohbeti olarak ilet";
+"LN_Toolbar_Meeting_Info_Encryption_Code_Meeting_1_1060393" = "Tüm toplantı katılımcılarına güvenlik kodlarını okuyun.";
+"LN_Search_ShortCut_Updated_Title_1078847" = "Kısayol güncellendi!";
+"LN_Chat_Archived_Member_Tip_1017555" = "Bu sohbet arşivlendi. Mesaj göndermek istiyorsanız, %@ hesabının bir üyesinden arşivden çıkarmasını isteyin.";
+"LN_Draft_Tip_1034529" = "Hazır olduğunuzda daha sonra göndermek üzere taslaklarınızı yazın, yönetin ve planlayın!";
+"LN_Microphone_activity_detected_1035096" = "Mikrofon etkinliği tespit edildi";
+"LN_Toolbar_Share_Disabled_By_Admin_1060393" = "Bu ayar yöneticiniz tarafından kilitlenmiştir ve değiştirilemez.";
+"LN_Toolbar_Share_Setting_Locked_By_Admin_1060393" = "Aşağıdaki ayarlar yöneticiniz tarafından kilitlenmiştir ve değiştirilemez.";
+"LN_MissedCalls_Tip_1034529" = "Cevapsız çağrıları takip edin — görüntülemek için kenar çubuğundan birini seçin.";
+"LN_Search_ShortCut_Updated_Content_1078847" = "Genel arama mı arıyorsunuz? %1$@ \n%2$@ aramalarını şimdi mevcut sohbette kullanın";
+"LN_ViewMTRecap_1067124" = "Toplantı özetini görüntüle";
+"LN_1_Minute_ago_1034529" = "1 dakika önce";
+"LN_VoiceNotes_Stop_All_Notes_Transcriptions_1081790" = "Tüm not transkripsiyonlarını durdur";
+"LN_1_Minute_1034529" = "1 dakika";
+"LN_Toolbar_E2EE_Encryption_Title_1060393" = "Uçtan uca şifreleme etkin";
+"LN_To_%@_1034529" = "Kime: %@";
+"LN_Auto_Archived_Owner_System_Message_1017555" = "Bu sohbet, etkin olunmayan bir sürenin ardından otomatik olarak arşivlendi.\nBu ayar, yöneticiniz tarafından yapılandırılır.";
+"LN_Bookmark_Tip_1034529" = "Önemli mesajlarınızı elinizin altında bulundurun. Burada görüntülemek için bir yer işareti seçin.";
+"LN_Reply_1034529" = "(Yanıt)";
+"LN_%d_Minute_ago_1034529" = "%d dakika önce";
+"LN_Remove_From_Chat_Sys_Message_1017555" = "%@ adlı kişiyi kaldırdınız";
+"LN_%d_Minute_1034529" = "%d dakika";
+"LN_Auto_Archived_Member_System_Message_1017555" = "Bu sohbet, etkin olunmayan bir sürenin ardından otomatik olarak arşivlendi.\nBu ayar %@ kullanıcısının hesap yöneticisi tarafından yapılandırılır.";
+"LN_1_Hour_ago_1034529" = "1 saat önce";
+"LN_1_Hour_1034529" = "1 saat";
+"LN_Your_Timezone_1043637" = "Saat diliminiz";
+"LN_Sent_Tip_1034529" = "Göndermiş olduğunuz tüm mesajlar burada toplanır. Burada görüntülemek için kenar çubuğundan birini seçin.";
+"LN_VoiceNotes_Stop_Notes_Transcription_1081790" = "Notların transkripsiyonunu durdur";
+"LN_Toolbar_Share_Disabled_By_All_Screens_Mode_1060393" = "Aşağıdaki ayarlar tüm ekran modunda devre dışıdır.";
+"LN_VoiceNotes_Stop_Notes_Tips_1081790" = "Notların transkripsiyonu kapatıldı.";
+"LN_Reminder_Tip_1034529" = "Mesajlarınızın kontrolünü elinizde tutun — tüm hatırlatmalarınız burada yer alır. İncelemek için kenar çubuğundan birini seçin.";
+"LN_MorePannel_Empty_Text_1036353" = "Daha Fazla içinde hiç öğeniz yok.";
+"LN_%d_Hours_ago_1034529" = "%d saat önce";
+"LN_%d_Hours_1034529" = "%d saat";
+"LN_TTurn_this_notification_off_1035096" = "Bu bildirimi kapat";
+"LN_All_Reminders_1034529" = "Tüm hatırlatmalar";
+"LN_Chat_Archived_Owner_Tip_1017555" = "Bu sohbet arşivlendi.";
+"LN_Start_Chat_Sys_Message_1017555" = "Bu sohbeti %@ ile başlattınız";
+"LN_RA_Photo_Multiple_Faces_1034845" = "Birden fazla yüz algılandı. Çerçeve içinde yalnız bir kişinin olduğundan emin olun.";
+"LN_RA_Unable_Verify_1034845" = "Hareketlerinizi doğrulayamıyoruz. Tekrar deneyin.";
+"LN_RA_Photo_Taken_Successfully_1034845" = "Fotoğraf başarıyla çekildi";
+"LN_Choose_Avatar_Title_1034845" = "Bir avatar türü seçin";
+"LN_Cartoon_Avatar_Reach_Limit_Tip_1034845" = "Çizgi film avatarı sınırına ulaştınız. Yenisini oluşturmadan önce lütfen mevcut bir avatarı silin.";
+"LN_RA_Create_Avatar_1034845" = "Avatar oluştur";
+"LN_RA_Introduction_Page_Policy_1034845" = "\"Devam et\" seçeneğine tıklayarak Zoom'un fotogerçekçi avatarınızı oluşturmak ve canlandırmak için yüz geometrinizi ve özelliklerinizi analiz edip saklayabileceğini kabul etmiş olursunuz. Yüklenen fotoğrafı ve ilgili yüz verilerini, avatarınızı veya hesabınızı kaldırarak istediğiniz zaman silebilirsiniz.";
+"LN_RA_Creation_Loading_1034845" = "Avatarınızın tamamlanması birkaç dakika sürebilir. Şimdi çıkış yaparsanız avatarınız hazır olduğunda sizi bilgilendireceğiz.";
+"LN_RA_Verify_Nod_head_1034845" = "Başınızı sallayın";
+"LN_RA_Photo_Uploaded_Successfully_1034845" = "Fotoğraf başarıyla yüklendi";
+"LN_RA_Photo_Unable_Verify_Photo_1034845" = "Fotoğrafınızı doğrulayamadık. Tekrar deneyin.";
+"LN_Video_Realistic_Avatar_Tip_1034845" = "Bu, yalnızca video için (ses için değil) kullanılan, yapay zeka tarafından oluşturulmuş bir gerçekçi avatardır.";
+"LN_RA_Photo_Face_Blocked_1034845" = "Yüzünüz engellendi. Engelleri ortadan kaldırın.";
+"LN_RA_Verify_Photo_1034845" = "Fotoğrafı doğrula";
+"LN_RA_Creation_Failed_1034845" = "Gerçekçi avatarınız oluşturulamadı. Tekrar deneyin.";
+"LN_Create_Realistic_Avatar_1034845" = "Gerçekçi bir avatar oluşturun";
+"LN_RA_Photo_No_Faces_1034845" = "Yüz algılanmadı. Yüzünüzün çerçevede net bir şekilde göründüğünden emin olun.";
+"LN_RA_Verify_Turn_right_1034845" = "Yüzünüzü sağa, sonra geri çevirin";
+"LN_RA_Virtual_Camera_Not_Supported_1034845" = "Sanal kamera desteklenmez. Kamera seçiminizi değiştirin.";
+"LN_RA_Verify_Turn_left_1034845" = "Yüzünüzü sola, sonra geri çevirin";
+"LN_RA_Apply_Failed_Title_1034845" = "Gerçekçi avatar yüklenemedi";
+"LN_RA_Introduction_Page_In_Meeting_1034845" = "Bir toplantıdayken gerçekçi avatar oluşturamazsınız.";
+"LN_RA_Apply_Failed_Description_1034845" = "Videonuz ve gerçekçi avatarınız kapatıldı. Bunun yerine, bir çizgi film avatarı veya video açabilirsiniz.";
+"LN_RA_Photo_Face_Not_Visible_1034845" = "Yüzünüz tam olarak görünmüyor. Doğrudan kameraya bakın.";
+"LN_Realistic_Avatar_Apply_1034845" = "Uygula";
+"LN_Realistic_Avatar_Ready_1034845" = "Gerçekçi avatarınız hazır.";
+"LN_RA_Verify_Description_1034845" = "Eklenen fotoğrafın size ait olduğunu doğrulamak için lütfen ekrandaki talimatları izleyin. Başlamak için lütfen Başlat düğmesine basın.";
+"LN_RA_Upload_Photo_1034845" = "Fotoğraf yükle";
+"LN_Realistic_Avatar_Creation_Failed_1034845" = "Gerçekçi avatarınız oluşturulamadı. Lütfen daha sonra tekrar deneyin.";
+"LN_Realistic_Avatar_1034845" = "Gerçekçi avatar";
+"LN_RA_Introduction_Page_Limit_Description_1034845" = "En fazla 5 gerçekçi avatar oluşturabilirsiniz. Lütfen yeni bir avatar oluşturmadan önce mevcut bir avatarı silin veya bunun yerine bir çizgi film avatarı oluşturun.";
+"LN_RA_Take_Photo_1034845" = "Fotoğraf çek";
+"LN_RA_Verify_Open_mouth_1034845" = "Ağzınızı açıp kapatın";
+"LN_RA_Photo_Requirement_1034845" = "İyi aydınlatılmış bir fotoğrafınızı çekin veya yükleyin. Yüzünüz ortada, omuzlarınız görünür ve yüzünüzü hiçbir şey kapatmayacak şekilde kendinizi çerçevenin içinde konumlandırın.";
+"LN_RA_Verify_Blink_1034845" = "İki gözünüzü de kırpın";
+"LN_RA_Verification_Complete_1034845" = "Doğrulama tamamlandı";
+"LN_Realistic_Avatar_Try_Again_1034845" = "Tekrar dene";
+"LN_Cartoon_Avatar_1034845" = "Çizgi film avatarı";
+"LN_RA_Photo_Face_Outside_1034845" = "Yüzünüz çerçevenin dışında. Kendinizi ortalayın.";
+"LN_VoiceNotes_disabled_939162" = "Notlarım devre dışı bırakıldı";
+"LN_Switch_Message_939162" = "Hesabınızı değiştirin";
+"LN_Return_Notes_939162" = "Nota geri dön";
+"LN_Switch_939162" = "Değiştir";
+"LN_Switch_Info_939162" = "Not alıyorsunuz. Not otomatik olarak durdurulacak ve kaydedilecektir.";

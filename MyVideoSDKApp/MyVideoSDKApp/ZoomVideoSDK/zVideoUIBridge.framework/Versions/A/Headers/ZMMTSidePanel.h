@@ -9,17 +9,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class ZMMTSidePanelItem;
+
 @protocol ZMMTSidePanelDelegate <NSWindowDelegate>
-- (void)windowWillPopIn:(NSButton *)sender;
+@optional
 - (void)windowClickClose:(NSButton *)sender;
 
 @end
 
 @interface ZMMTSidePanel : ZMInvisibleWindow
 @property (weak) id<ZMMTSidePanelDelegate> delegate;
+@property (nonatomic, strong, nullable) ZMMTSidePanelItem *item;
 
 - (instancetype)init;
+- (instancetype)initWithContentRect:(NSRect)contentRect;
 - (void)showWithContentView:(NSView*)view;
+- (void)addTopRightView:(NSView*)view;
 
 @end
 

@@ -205,9 +205,7 @@ typedef enum
 {
     Evt_Conf_SubType_None,
     Evt_Font_Size_Changed,
-    Evt_Audio_Device_Changed,
     Evt_Audio_ManualSelectDevice_Error,
-    Evt_Conf_SubType_Meeting_Controls,
     Evt_Conf_SubType_LeaveMeeting_By_Hardware,//ZOOM-10528
     Evt_Conf_SubType_LeaveMeeting_Without_Confirm,
     Evt_Conf_SubType_Feedback,
@@ -222,8 +220,6 @@ typedef enum
     Evt_Conf_SubType_MenuBar_Option_Change,//[Zoom-42226]
     Evt_Conf_SubType_Login_Finished,//[Zoom-42226]
     Evt_Conf_SubType_Logout_Finished,//[Zoom-42226]
-    Evt_Conf_Audio_Setting_Show,//ZOOM-38961
-    Evt_Conf_SubType_CoreAudio_JustKilled,//[Zoom-43850]
     Evt_conf_BandWidth_Limit_Info,//ZOOM-82229
     Evt_Conf_SubType_Font_Size_Changed,//ZOOM-20021
     Evt_Conf_SubType_Detect_Music,//ZOOM-213253
@@ -239,7 +235,6 @@ typedef enum
 {
     Evt_Conf_None,
     Evt_ClosedCaption,
-    Evt_Audio,
     Evt_Meeting,
     Evt_DirectShare,
     Evt_Conf_Type_Accessibility,

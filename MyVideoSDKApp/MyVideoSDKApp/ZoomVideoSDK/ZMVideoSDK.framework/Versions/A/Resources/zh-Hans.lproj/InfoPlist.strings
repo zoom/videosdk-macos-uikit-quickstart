@@ -5,3 +5,4 @@ NSCalendarsFullAccessUsageDescription = "为了能够显示你的事件，Zoom W
 NSLocalNetworkUsageDescription = "需要执行此流程以在Zoom客户端中启用AirPlay和点对点会议。";
 NSBluetoothAlwaysUsageDescription = "这将允许Zoom Workplace查找附近的Zoom Rooms。";
 NSCameraUsageDescription = "为让参会者看到您，Zoom 需要访问您的摄像头。";
+NSAudioCaptureUsageDescription = "请允许访问，以便从其他应用采集音频。";

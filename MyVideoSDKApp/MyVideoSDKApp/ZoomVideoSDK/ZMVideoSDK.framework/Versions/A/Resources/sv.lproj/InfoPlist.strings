@@ -5,3 +5,4 @@ NSCalendarsFullAccessUsageDescription= "För att kunna visa dina evenemang måst
 NSLocalNetworkUsageDescription= "Denna process krävs för att aktivera AirPlay och peer-to-peer-möten i Zoom-klienten.";
 NSBluetoothAlwaysUsageDescription= "Detta gör det möjligt för Zoom Workplace att hitta Zoom Rooms i närheten.";
 NSCameraUsageDescription = "För att deltagarna ska kunna se dig behöver Zoom tillgång till din kamera.";
+NSAudioCaptureUsageDescription = "Tillåt åtkomst för att fånga ljud från andra appar.";

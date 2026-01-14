@@ -39,6 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable) CGColorRef cgBorderColor;
 @property (nonatomic, assign) NSRectCorner cornerMask;
 @property (nonatomic, nullable, retain) ZMPigment* pigment;
+@property (nonatomic, assign) BOOL ignoreEffectiveChange;
 @end
 
 @interface ZMNonLayerBaseView : ZMBaseView

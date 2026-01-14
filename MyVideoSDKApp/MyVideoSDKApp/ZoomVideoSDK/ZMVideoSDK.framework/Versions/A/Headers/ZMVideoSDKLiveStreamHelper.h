@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKLiveStreamParams : NSObject
 
 /**
- * The live stream URL where the stream will be sent (e.g., YouTube, Facebook Live).
+ * The live stream URL to send the stream to (e.g., YouTube, Facebook Live).
  */
 @property(nonatomic, copy, nullable) NSString* streamUrl;
 
@@ -61,50 +61,50 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKLiveStreamHelper : NSObject
 
 /**
- * @brief Start live stream.
+ * @brief Starts live stream.
  * @param streamUrl The live stream url.
  * @param url The live stream broadcast url.
  * @param key The live stream key.
- * @return If the function succeeds, it will return @c ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @deprecated Use \link startLiveStreamWithParams: \endlink instead.
  */
 - (ZMVideoSDKErrors)startLiveStream:(NSString *)streamUrl broadcastUrl:(NSString *)url liveStreamKey:(NSString *)key DEPRECATED_MSG_ATTRIBUTE("Use -startLiveStreamWithParams: instead");
     
 /**
- * @brief Stop live stream.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Stops live stream.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)stopLiveStream;
     
 /**
- * @brief Determine if can start living stream.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Determines if can start living stream.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)canStartLiveStream;
 
 /**
- * @brief Start a live stream of the current session using ZMVideoSDKLiveStreamParams.
+ * @brief Starts a live stream of the current session using ZMVideoSDKLiveStreamParams.
  * @param param The live stream parameters containing URL, key, broadcast URL and settings.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)startLiveStreamWithParams:(ZMVideoSDKLiveStreamParams *)param;
 
 /**
- * @brief Get the current live stream settings for the current session.
- * @return The current live stream settings. Returns nil if no live stream is active.
+ * @brief Gets the current live stream settings for the current session.
+ * @return If the function succeeds, it returns the current live stream settings. Otherwise, returns nil if no live stream is active.
  */
 - (ZMVideoSDKLiveStreamSetting * _Nullable)getCurrentLiveStreamSetting;
 
 /**
- * @brief Update the live stream settings for the current session.
+ * @brief Updates the live stream settings for the current session.
  * @param setting The new live stream settings to apply.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)updateLiveStreamSetting:(ZMVideoSDKLiveStreamSetting *)setting;
 
 /**
- * @brief Check if the current user can get or update live stream settings.
- * @return YES if the user can get or update live stream settings, NO otherwise.
+ * @brief Checks if the current user can get or update live stream settings.
+ * @return YES if the user can get or update live stream settings. Otherwise, NO.
  * @note Live stream must be started, and only the person who started the live stream can get or update the setting.
  */
 - (BOOL)canGetOrUpdateLiveStreamSetting;
@@ -140,31 +140,31 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @brief Bind incoming live stream with a stream key ID.
  * @param strStreamKeyID The stream key ID to bind.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)bindIncomingLiveStream:(NSString *)strStreamKeyID;
 /**
  * @brief Unbind the bound incoming live stream.
  * @param strStreamKeyID The stream key ID you want to unbind.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)unbindIncomingLiveStream:(NSString *)strStreamKeyID;
 /**
- * @brief Get the status of the bound streams.
- * @return If the function succeeds, it will return @c ZMVideoSDKErrors_Success, otherwise failed.
+ * @brief Gets the bound streams' status.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @note Will receive callback "-onIncomingLiveStreamStatusResponse:"
  */
 - (ZMVideoSDKErrors)getIncomingLiveStreamStatus;
 /**
- * @brief Start the bound stream as a special participant.
+ * @brief Starts the bound stream as a special participant.
  * @param strStreamKeyID The stream key ID you want to start.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)startIncomingLiveStream:(NSString *)strStreamKeyID;
 /**
- * @brief Stop the bound stream as a special participant.
+ * @brief Stops the bound stream as a special participant.
  * @param strStreamKeyID The stream key ID to stop.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)stopIncomingLiveStream:(NSString *)strStreamKeyID;
 @end

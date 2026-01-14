@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(BOOL)isAskAICompanionEnabled;
 -(BOOL)isQueryEntranceEnabled;
 -(BOOL)needShowQueriesEntrance;
+-(BOOL)needShowQueriesPanel;
 - (BOOL)isQueryEnabledButNotOnForAttendee;
 -(BOOL)isMeetingQueryFeatureOn;
 -(BOOL)isStartAICWithCloudRecordingEnabled;

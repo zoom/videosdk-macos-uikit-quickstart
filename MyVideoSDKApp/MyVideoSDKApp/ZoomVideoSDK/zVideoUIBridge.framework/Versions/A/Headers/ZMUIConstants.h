@@ -57,6 +57,7 @@ typedef NS_ENUM(NSUInteger, ZMConfInstType) {
 #define ZMLoggingModule_VideoUI_CC  "VideoUI_CC"
 #define ZMLoggingModule_VideoUI_SDKMeeting  "VideoUI_SDKMeeting"
 #define ZMLoggingModule_VideoUI_Interpretation  "VideoUI_Interpretation"
+#define ZMLoggingModule_VideoUI_VoiceTranslation  "VideoUI_VoiceTranslation"
 #define ZMLoggingModule_VideoUI_WBO "VideoUI_WBO"
 #define ZMLoggingModule_VideoUI_CameraControl "VideoUI_CameraControl"
 #define ZMLoggingModule_VideoUI_AIC  "VideoUI_AIC"
@@ -97,6 +98,8 @@ typedef NS_OPTIONS(NSUInteger, ZMVideoUpdateStrategy) {
     ZMVideoUpdateStrategyDockbar    = 1<<20,
     ZMVideoUpdateStrategyRenderRect = 1<<21,
     ZMVideoUpdateStrategyScreenResolution = 1<<22,
+    ZMVideoUpdateStrategyLocalTime  = 1<<23,
+    ZMVideoUpdateStrategyAIInterpreting = 1<<24,
 };
 
 #pragma mark - ZMMTConferenceStrategy
@@ -132,8 +135,11 @@ typedef NS_ENUM(NSInteger, ZMConfUpdateStrategy) {
     ZMConfUpdateStrategy_Audio_Type,
     ZMConfUpdateStrategy_Active_Audio,
     
+    ZMConfUpdateStrategy_Voice_Translation_Changed,
+    
     ZMConfUpdateStrategy_Active_ZR_Speaker,
     ZMConfUpdateStrategy_Edit_ZR_Speaker_Info,
+    ZMConfUpdateStrategy_Speaker_Tag_Enable_Changed,
     
     ZMConfUpdateStrategy_Video_Status,
     ZMConfUpdateStrategy_My_Video_Status,
@@ -237,6 +243,7 @@ typedef NS_ENUM(NSInteger, ZMConfUpdateStrategy) {
     ZMConfUpdateStrategy_IQ_Status_Changed,
     ZMConfUpdateStrategy_Query_Setting_Changed,
     ZMConfUpdateStrategy_AI_Companion_Notice_Changed,
+    ZMConfUpdateStrategy_Watch_Only_Status_Changed,
     ZMConfUpdateStrategy_CMR_Recording_Status_Changed,
     ZMConfUpdateStrategy_Resource_Visible_Status_Changed,
     
@@ -409,6 +416,11 @@ typedef NS_OPTIONS(NSUInteger, ZMMTVideoSortType) {
     ZMMTVideoSortType_LastNameDesc          = 4,
     ZMMTVideoSortType_EntryTimeAsc          = 5,
     ZMMTVideoSortType_EntryTimeDesc         = 6,
+};
+
+typedef NS_ENUM(NSUInteger, ZMMTVideoBorderViewStyle) {
+    ZMMTVideoBorderViewStyleGreenDefault = 0,
+    ZMMTVideoBorderViewStyleGradient,
 };
 
 typedef NS_ENUM(NSInteger, ZMMTRelation){

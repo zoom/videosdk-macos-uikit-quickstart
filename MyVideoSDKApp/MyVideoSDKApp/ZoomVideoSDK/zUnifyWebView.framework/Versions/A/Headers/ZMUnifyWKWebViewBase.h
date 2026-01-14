@@ -8,13 +8,21 @@
 #import "ZMUnifyWebViewProtocol.h"
 #import <WebKit/WebKit.h>
 
+@class ZMUnifyLocalPathInfo;
+
 @interface ZMUnifyWKWebViewBase : WKWebView
 
 @property (nonatomic, strong) ZMUnifyWebViewConfiguration *unifyConfig;
 @property (nonatomic, strong) NSMutableSet<NSString*>* customMessageHandlerSet;
+@property (nonatomic, strong) NSString *webViewID;
+@property (nonatomic, strong) NSString* instName;
+@property (nonatomic, assign) int currentGPUProcessId;
 
 + (WKWebViewConfiguration *)getWKConfigurationWith:(ZMUnifyWebViewConfiguration*)unifyConfig;
+- (void)prepareForUnifyWebView;
+- (void)updateInterceptionRulesFromLocalPathInfo:(ZMUnifyLocalPathInfo *)localPathInfo;
 - (void)cleanUp;
+- (void)observeGPUProcessIdentifier:(NSDictionary<NSKeyValueChangeKey, id> *)change;
 
 - (void)configCustomMessageHandlers:(NSArray<NSString*>*) customMessageHandlers;
 
@@ -38,6 +46,7 @@
 - (void)disableContextMenu;
 - (NSString *)getUnifyTitleStr;
 - (void)configCustomUserAgent:(NSString *)customUserAgent;
+- (void)configSafariUserAgent;
 - (BOOL)getWebViewLoadingStatus;
 - (void)stopMediaPlay:(nullable void (^)(id, NSError *))completeHandler;
 - (void)stopLoadingWebView;
@@ -68,4 +77,17 @@
 - (BOOL)isLocalLoadEnabled;
 
 - (enum UnifyWebViewNavigationType)getNavigationType;
+
+- (BOOL)killGpuProcess;
+- (BOOL)killRenderProcess;
+
+// Get detailed renderer process state (Foreground/Background/Suspended)
+- (NSString *)getRenderProcessState;
+
+// Get resource domains based on current webview's module type
+- (ZMWebResourceAllowDomains *)getResourceDomains;
+
+
+- (void)urlDidChanged:(NSString*)oldURL newURL:(NSString*)newURL;
+- (void)titleDidChanged:(NSString*)newTitle;
 @end

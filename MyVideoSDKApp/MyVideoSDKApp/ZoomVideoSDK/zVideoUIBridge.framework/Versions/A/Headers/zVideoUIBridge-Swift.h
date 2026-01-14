@@ -307,13 +307,48 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
+@class ZMMTV2Telemetry;
+@class NSString;
+
+SWIFT_CLASS_NAMED("ClipsEventHelper")
+@interface ZMMTClipsEventHelper : NSObject
++ (ZMMTV2Telemetry * _Nonnull)createBaseTelemetry SWIFT_WARN_UNUSED_RESULT;
++ (void)trackPlayPauseWithIsPaused:(BOOL)isPaused;
++ (void)trackProgressChange;
++ (void)trackVolumeChange;
++ (void)trackOptimizeVideoShare;
++ (void)trackSpeedChange;
++ (void)trackStopShareWithEventSource:(ZMMTEventSource)eventSource eventLocation:(ZMMTEventLocation)eventLocation;
++ (void)trackStartShareClips;
++ (void)trackShareResultWithResult:(ZMMTShareResult)result;
++ (void)trackShareResultWithResult:(ZMMTShareResult)result errorCode:(NSString * _Nonnull)errorCode;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+enum ZMMTClipsShareContentStatusStatusType : NSInteger;
+
+SWIFT_CLASS_NAMED("ClipsShareContentStatus")
+@interface ZMMTClipsShareContentStatus : NSObject
+@property (nonatomic, readonly) enum ZMMTClipsShareContentStatusStatusType type;
+@property (nonatomic, readonly) NSUInteger duration;
+- (nonnull instancetype)initWithType:(enum ZMMTClipsShareContentStatusStatusType)type duration:(NSUInteger)duration OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, ZMMTClipsShareContentStatusStatusType, "StatusType", closed) {
+  ZMMTClipsShareContentStatusStatusTypeClipTotalDuration = 0,
+};
+
 
 SWIFT_CLASS_NAMED("ClipsSharePropertyModel")
 @interface ZMMTClipsSharePropertyModel : NSObject
 @property (nonatomic) ZMClipsShareStatus currentStatus;
 @property (nonatomic) BOOL pauseTimeUpdate;
-- (void)updateTotalDurationIfNeeded;
+- (void)updateTotalDuration;
 @property (nonatomic) NSTimeInterval playTime;
+@property (nonatomic, readonly) BOOL startPlayManually;
+- (void)initializeIfNeeded;
 - (void)setSeekTime:(NSTimeInterval)time;
 @property (nonatomic) uint64_t totalDuration;
 @property (nonatomic) double speed;

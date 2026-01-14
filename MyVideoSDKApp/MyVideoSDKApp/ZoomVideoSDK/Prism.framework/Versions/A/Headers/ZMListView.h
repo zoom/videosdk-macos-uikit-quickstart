@@ -105,6 +105,8 @@ typedef NS_ENUM(NSInteger, ZMListViewAutoPreventDitheringPreference){
 
 - (void)listView:(ZMListView *)listView cellView:(NSView *)cellView clickAtPoint:(CGPoint)point;
 
+- (void)listView:(ZMListView *)listView cellView:(NSView *)cellView clickAtRow:(NSInteger)row;
+
 - (void)listView:(ZMListView *)listView rightMouseDown:(CGPoint)point;
 
 - (void)listView:(ZMListView *)listView hoverRow:(NSInteger)newHoverRow oldHoverRow:(NSInteger)oldHoverRow;
@@ -146,6 +148,8 @@ typedef NS_ENUM(NSInteger, ZMListViewAutoPreventDitheringPreference){
 @property (nonatomic, assign) BOOL dynamicLoadRowHeight;
 @property (nonatomic, assign) BOOL usesAutomaticRowHeights;
 @property (nonatomic, assign) BOOL useAutoLayout;//default is NO
+
+@property (nonatomic, assign) BOOL useAutoresizing;//default is YES
 
 @property (nonatomic, assign) BOOL isEnableTrack;//default is NO
 @property (nonatomic, assign) NSInteger hoveredRow;

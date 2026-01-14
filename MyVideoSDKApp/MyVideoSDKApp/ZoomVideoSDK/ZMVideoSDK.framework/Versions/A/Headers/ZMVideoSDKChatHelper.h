@@ -15,56 +15,56 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKChatHelper : NSObject
     
 /**
- * @brief Determine whether chat is disabled.
- * @return YES if chat is disabled, otherwise NO.
+ * @brief Determines whether chat is disabled.
+ * @return YES if chat is disabled. Otherwise, NO.
  */
 - (BOOL)isChatDisabled;
     
 /**
- * @brief Determine whether private chat is disabled.
- * @return YES if private chat is disabled, otherwise NO.
+ * @brief Determines whether private chat is disabled.
+ * @return YES if private chat is disabled. Otherwise, NO.
  */
 - (BOOL)isPrivateChatDisabled;
     
 /**
- * @brief Call this method to send a chat message to a specific user.
+ * @brief Sends a chat message to a specific user.
  * @param user The receiver.
  * @param msgContent The content of message.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)sendChatToUser:(ZMVideoSDKUser*)user content:(NSString *)msgContent;
     
 /**
- * @brief Call this method to send a chat message to all users.
+ * @brief Sends a chat message to all users.
  * @param msgContent The content of message.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)sendChatToAll:(NSString *)msgContent;
 
 /**
- * @brief Determine if a specific message can be deleted.
+ * @brief Determines if a specific message supports deletion.
  * @param msgID The message Id.
- * @return YES if the message can be deleted, otherwise NO.
+ * @return YES if the message supports deletion. Otherwise, NO.
  */
 - (BOOL)canChatMessageBeDeleted:(NSString *)msgID;
 
 /**
- * @brief Call this method to delete a specific chat message from the Zoom server.
+ * @brief Deletes a specific chat message from the Zoom server.
  * @param msgID The message Id.
- * @return If the function succeeds, it will return @c ZMVideoSDKErrors_Success, otherwise failed.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @note This does not delete the message in your user interface.
  */
 - (ZMVideoSDKErrors)deleteChatMessage:(NSString *)msgID;
 
 /**
- * @brief Set participant chat privilege when in session. Only session host/manager can run the function.
- * @param privilege The chat privilege of the participant.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success, otherwise failed.
+ * @brief Sets participant chat privilege when in session. Only session host or manager can run the function.
+ * @param privilege The participant's chat privilege.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)changeChatPrivilege:(ZMVideoSDKChatPrivilegeType)privilege;
 
 /**
- * @brief Get participant chat privilege when in session.
+ * @brief Gets participant chat privilege when in session.
  * @return The result of participant chat priviledge.
  */
 - (ZMVideoSDKChatPrivilegeType)getChatPrivilege;

@@ -9,7 +9,8 @@
 #import <zVideoUIBridge/ZMBaseHelper.h>
 #import <zVideoUIBridge/ZMUIConstants.h>
 #ifdef __cplusplus
-#import <zm_conf_universal_ui/zm_conf_universal_ui_api.h>
+#import <zm_conf_universal_ui/zm_conf_universal_ui_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_aic_interface.h>
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
@@ -93,9 +94,8 @@ typedef NS_OPTIONS(NSUInteger, ZMMTChatFilter) {
 - (BOOL)shouldShowShareMeetingChat;
 
 // delete chat
-- (BOOL)hasDeleteChatPrivilege:(NSString *)messageId;
+- (BOOL)canDeleteMessage:(NSString *)messageId sessionId:(NSString*)sessionId;
 - (void)deleteMessage:(NSString *)messageId;
-- (BOOL)isDeleteChatEnabled;
 
 // Chat Etiquette Tool
 - (ZMTDLPResultType)checkDLPPolicyWithContent:(NSString *)content;
@@ -117,6 +117,7 @@ typedef NS_OPTIONS(NSUInteger, ZMMTChatFilter) {
 - (BOOL)isFileTransferEnabled;
 - (BOOL)needPromotePotentialSecurityIssueDialog:(NSString *)messageId needShowCheck:(BOOL *)needShow;
 - (BOOL)needPromotePotentialSecurityIssueDialog:(NSString*)fileName senderGuid:(NSString*)senderGuid senderJid:(NSString*)senderJid needShowCheck:(BOOL *)needShowCheck;
+- (void)setAlwaysTrustFileSender:(NSString*)senderGuid senderJid:(NSString*)senderJid;
 
 #ifdef __cplusplus
 - (BOOL)IsDropBoxInMeetingOn:(FileIntegrationOperation)op;
@@ -173,6 +174,7 @@ chatMsgType:(ChatMsgType)msgType;
 - (BOOL)isCMCLoadMsgHalfwayEnabled;
 - (NSString *)fetchNewChatSessionId;
 - (NSString *)sessionID;  //Zoom Meeting ChannelID
+- (NSString *)myJID;
 
 - (void)showInFinder;
 - (void)refreshThreadData:(BOOL)inTeamChat;
@@ -190,8 +192,6 @@ chatMsgType:(ChatMsgType)msgType;
 - (BOOL)isMySelfSupportPrivateChat;
 
 - (BOOL)isDisableHyperLinkEnabled;
-- (BOOL)chechIfZoomInternalNavigateURL:(NSURL *)url;
-- (BOOL)checkAndHandleZoomInternalNavigateURLAction:(NSURL *)url;
 
 - (BOOL)canChatWithWR;
 - (BOOL)canChatWithWRUser;
@@ -242,6 +242,9 @@ chatMsgType:(ChatMsgType)msgType;
 - (NSString*)groupIDForSessionID:(NSString*)sessionID;
 
 - (NSArray<NSString*>*)sessionIDsForMembers:(NSArray<NSNumber*>*)userArray;
+
+//MARK: - Task
+- (BOOL)isCreateZoomTasksEnabled:(NSString *)sessionID messageID:(NSString *)messageID;
 
 //MARK: - Chat with AIC
 - (BOOL)canShowChatWithAICCoachMark;

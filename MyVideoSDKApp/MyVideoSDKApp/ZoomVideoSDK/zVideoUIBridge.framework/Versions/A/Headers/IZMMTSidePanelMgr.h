@@ -5,7 +5,7 @@
 //  Created by Jun Pang on 3/31/22.
 //  Copyright © 2022 zoom.us. All rights reserved.
 //
-#import <zVideoUIBridge/ZMMTSidePanelBaseItem.h>
+#import <zVideoUIBridge/ZMMTSidePanelItem.h>
 
 NS_ASSUME_NONNULL_BEGIN
 @protocol IZMMTSidePanelMgr <NSObject>
@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)canDeminiaturizeSidePanelItem:(id<ZMSidePanelItem>)sidePanelItem;
 - (void)deminiaturizeSidePanelItem:(id<ZMSidePanelItem>)sidePanelItem;
+- (BOOL)canMergeSidePanelItem:(id<ZMSidePanelItem>)sidePanelItem;
 
 - (void)collapseSidePanel:(id<ZMSidePanelItem>)sidePanelItem;
 - (void)expandSidePanel:(id<ZMSidePanelItem>)sidePanelItem;
@@ -39,5 +40,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)registRestoreItem:(id<ZMSidePanelItem>)sidePanelItem;
 - (void)unregistRestoreItem:(id<ZMSidePanelItem>)sidePanelItem;
+
+- (ZMAppearance*)drawingAppearance;
+@end
+
+@protocol ZMMTSidePanelProtocol <NSObject>
+- (void)onSidePanelMergeableStatusChanged:(id<IZMMTSidePanelMgr>)sidePanelMgr;
 @end
 NS_ASSUME_NONNULL_END

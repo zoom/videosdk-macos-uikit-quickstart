@@ -9,7 +9,8 @@
 #import <events/MetricsScenario_enum.h>
 #import <cmmlib/CmmString.h>
 #import <ZoomTelemetry/ZoomTelemetryEnums.h>
-
+#import <IZoomSnowplowObject.h>
+#import <ZoomTelemetry/ZoomTelemetryInterface.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZMScenarioTelemetry : NSObject
@@ -25,9 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface ZMScenarioTelemetryTracker : NSObject
-
++ (ns_zoom_telemetry::IZoomTelemetryAPI *)getTelemetryAPI;
 + (BOOL)startMetricsScenario:(ZMScenarioTelemetry *)telemetry andSessionID:(Cmm::CString &)sessionID;
 + (BOOL)addStepInfo:(ZMScenarioTelemetry *)telemetry bySessionID:(NSString *)sessionID;
++ (BOOL)addEntityWithSessionID:(NSString *)sessionID entityVec:(std::vector<ZoomSnowplow::ISnowplowObject*> &)entityVec;
 + (BOOL)endMetricsScenario:(ZMScenarioTelemetry *)telemetry bySessionID:(NSString *)sessionID;
 @end
 

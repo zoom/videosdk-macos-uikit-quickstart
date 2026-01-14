@@ -56,6 +56,13 @@ extern NSString* const ZMActionAttributeName;
 
 - (CGFloat)getParagraphTailIndentInLocatioin:(NSInteger)location;
 
+
+//will call zm_attributedSubstringTruncatedToLines:maxLayoutWidth:appendEllipsis:textContainer:
+//appendEllipsis NO
+- (NSAttributedString *)zm_attributedSubstringTruncatedToLines:(NSUInteger)lines
+                                                maxLayoutWidth:(CGFloat)maxWidth
+                                                 textContainer:(NSTextContainer *)textContainer API_AVAILABLE(macos(10.11));
+
 /// Returns an attributed substring of the receiver that is truncated to contain
 /// at most the specified lines.
 ///
@@ -63,9 +70,11 @@ extern NSString* const ZMActionAttributeName;
 ///   - lines: Number of maximum lines the substring can contain.
 ///   - maxWidth: The maximum width used to constrain the text layout.
 ///   - textContainer: A reference text container for layout.
+///   - appendEllipsis: will display ...
 - (NSAttributedString *)zm_attributedSubstringTruncatedToLines:(NSUInteger)lines
                                                 maxLayoutWidth:(CGFloat)maxWidth
-                                                 textContainer:(NSTextContainer *)textContainer API_AVAILABLE(macos(10.11));
+                                                appendEllipsis:(BOOL)appendEllipsis
+                                                 textContainer:(nonnull NSTextContainer *)textContainer API_AVAILABLE(macos(10.11));
 
 - (NSRect)zm_boundingRectWithMaxLayoutWidth:(CGFloat)maxWidth
                       numberOfLineFragments:(NSUInteger * _Nullable)outNumberOfLineFragments

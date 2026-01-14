@@ -39,6 +39,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)onAudioStatusChanged:(CmmUserChangeStatus*_Nullable*_Nullable)list number:(CmmUInt32)num;
 - (BOOL)onRosterChanged:(CmmUserChangeStatus*_Nullable*_Nullable)list number:(CmmUInt32)num;
 - (BOOL)onKBRosterChanged:(CmmUserChangeStatus*_Nullable*_Nullable)list number:(CmmUInt32)num;
+
+//MARK: Notes Transcription (BO)
+- (void)onMainConfUserNotesTranscriptStartedStatusChanged:(NSString *)userGUID 
+                                         newStartedStatus:(BOOL)isStarted;
 @end
 
 @interface ZMConfBaseSinkAdapter (ConfStatus)
@@ -190,6 +194,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onQuerySwitchStatusChanged:(CmmBool)enable;
 
 - (void)onReceiveSwitchAICResponseMsg:(CmmBool)timeout agree:(CmmBool)agree switchAction:(NSInteger)switchAction;
+- (void)onRequestToSwitchAICResult:(CmmUInt32)result aicOption:(CmmInt64)aicOption;
 - (void)onReceiveSwitchAICRequestMsg:(const CString&)reqId senderId:(CMM_USERID)senderId aicOption:(CmmInt64)aicOption switchAction:(NSInteger)switchAction;
 - (void)onReceiveChangeQueryPrivilegeSettingReqMsg:(const CString&)reqId senderId:(CMM_USERID)senderId expectSetting:(NSInteger)expectSetting;
 - (void)onReceiveChangeQueryPrivilegeSettingRspMsg:(CmmBool)timeout decline:(CmmBool)decline;
@@ -253,7 +258,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onReceiveSwitchClinicalNoteRequestMsg:(const CString&)reqId senderId:(CMM_USERID)senderId switchAction:(NSInteger)switchAction;
 - (void)onReceiveSwitchClinicalNoteResponseMsg:(CmmBool)timeout isDecline:(CmmBool)decline switchAction:(NSInteger)switchAction;
 - (void)onClinicalNoteStatusChanged;
-- (void)onCreateClinicalNoteSessionFailed;
+- (void)onCreateClinicalNoteSessionFailed:(CMM_CN_ERROR_CODE)errCode;
 - (void)onAICompanionTokenReceived:(CmmBool)success reqId:(const CString&)reqId token:(const CString&)token;
 @end
 
@@ -290,4 +295,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onRTMSGwStatusChanged;
 @end
 
+@interface ZMConfBaseSinkAdapter (IPC)
+- (void)onReceiveCustomMessageFromPT:(CmmUInt32)type msgData:(const CmmUInt8 *)msgData size:(CmmUInt32)size;
+@end
+
+@interface ZMConfBaseSinkAdapter (VoiceNotes)
+- (void)onUseMicrophoneAppsChange:(const SSB_MC_MICROPHONE_USAGE_INFO&)data;
+@end
 NS_ASSUME_NONNULL_END

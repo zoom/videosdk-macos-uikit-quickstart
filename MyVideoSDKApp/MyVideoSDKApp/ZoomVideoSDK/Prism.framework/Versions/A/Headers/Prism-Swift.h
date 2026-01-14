@@ -282,7 +282,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 @import AppKit;
 @import CoreFoundation;
-@import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
 #endif
@@ -308,36 +307,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
-enum PZMTheme : NSInteger;
-
-/// Defines a view or other object, such as a view controller, that supports theming.
-/// note:
-/// For the available themes, see <code>Theme</code>.
-SWIFT_PROTOCOL_NAMED("Themeable")
-@protocol PZMThemeable <NSAppearanceCustomization>
-/// Sets the theme override for the view and its subviews.
-/// \param themeOverride The theme to use for the view and its subviews.
-///
-/// \param recursively Whether to set the theme override recursively for all subviews.
-///
-- (void)setThemeOverride:(enum PZMTheme)themeOverride recursively:(BOOL)recursively;
-/// Clears the theme override for the view and its subviews.
-/// \param recursively Whether to clear the theme override recursively for all subviews.
-///
-- (void)clearThemeOverrideWithRecursively:(BOOL)recursively;
-/// Returns the effective theme for the view.
-@property (nonatomic, readonly) enum PZMTheme effectiveTheme;
-@optional
-/// Invoked when an object’s theme override is changed.
-/// Override this method to implement custom logic to handle the theme
-/// update, such as updating a text field’s text color.
-/// note:
-/// This function plays a similar role to
-/// <code>NSView.viewDidChangeEffectiveAppearance</code>, but for the <code>Theme</code>
-/// API instead.
-- (void)didChangeEffectiveTheme;
-@end
-
 @class PrismColor;
 enum PZMCursorState : NSInteger;
 @class PZMCursorStateBinding;
@@ -444,6 +413,7 @@ SWIFT_PROTOCOL("_TtP5Prism19CursorStateBindable_")
 - (PZMCursorStateBinding * _Nullable)makeCursorStateBinding SWIFT_WARN_UNUSED_RESULT;
 @end
 
+@class ZMPigment;
 @class NSCoder;
 @class NSEvent;
 @class PZMToolTip;
@@ -459,7 +429,7 @@ SWIFT_PROTOCOL("_TtP5Prism19CursorStateBindable_")
 /// If you are implementing a subclass, variables such as <code>backgroundColor</code> and <code>cornerRadius</code>
 /// can be safely overridden and the changes will be reflected in the drawn view.
 SWIFT_CLASS_NAMED("View")
-@interface PZMView : NSView <CursorStateBindable, PZMThemeable>
+@interface PZMView : NSView <CursorStateBindable>
 @property (nonatomic, readonly) BOOL propagatesKeyEvents;
 @property (nonatomic) BOOL suppressNextLayerAnimation;
 /// Determines whether to enable animation in the view’s own updates (such as a fade-in/out or sliding text).
@@ -478,6 +448,7 @@ SWIFT_CLASS_NAMED("View")
 /// this does <em>not</em> propagate through view instances that do not inherit from <code>View</code>, but
 /// this behavior may change in the future.
 - (void)enableInteractionInSubtree;
+@property (nonatomic, strong) ZMPigment * _Nullable pigment;
 /// The view’s default background color.
 @property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
 /// The view’s background color, when it is hovered.
@@ -611,10 +582,6 @@ SWIFT_CLASS_NAMED("View")
 - (void)viewDidMoveToWindow;
 - (void)viewWillMoveToSuperview:(NSView * _Nullable)newSuperview;
 - (void)viewDidMoveToSuperview;
-- (void)setThemeOverride:(enum PZMTheme)themeOverride recursively:(BOOL)recursively;
-- (void)clearThemeOverrideWithRecursively:(BOOL)recursively;
-- (void)didChangeEffectiveTheme;
-@property (nonatomic, readonly) enum PZMTheme effectiveTheme;
 - (void)viewDidChangeEffectiveAppearance;
 /// Sets the intrinsic content size override for a view.
 /// To clear the override, pass <code>NSSize</code> with <code>.width</code> and <code>.height</code> set to <code>NSView.noIntrinsicMetric</code>.
@@ -792,6 +759,8 @@ SWIFT_CLASS_NAMED("AvatarPresenceView")
 /// Typically, this is used for things such as displaying a profile card when an avatar is hovered.
 @property (nonatomic, copy) void (^ _Nullable onCursorStateChanged)(PZMAvatarPresenceView * _Nonnull);
 @property (nonatomic) enum PZMCursorState cursorState;
+@property (nonatomic, strong) PZMToolTip * _Nullable toolTipModel;
+@property (nonatomic, copy) NSString * _Nullable toolTip;
 @property (nonatomic) BOOL wantsUpdateLayer;
 /// Sets a non-<code>nil</code> presence for the view.
 /// \param presence The new presence to be displayed.
@@ -911,7 +880,6 @@ SWIFT_CLASS_NAMED("AvatarView")
 /// An optional action to be taken when the avatar’s cursor state is changed.
 /// Typically, this is used for things such as displaying a profile card when an avatar is hovered.
 @property (nonatomic, copy) void (^ _Nullable onCursorStateChanged)(PZMAvatarView * _Nonnull);
-@property (nonatomic) BOOL requiresTracking;
 /// The size of the avatar.
 @property (nonatomic) enum PZMAvatarViewSize size;
 @property (nonatomic) CGFloat cornerRadius;
@@ -954,6 +922,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMAvatarViewSize, "Size", open) {
   PZMAvatarViewSizeExtraLarge = 4,
 };
 
+@class NSAttributedString;
 enum PZMSentiment : NSInteger;
 
 /// Prism’s view for a banner notification.
@@ -964,7 +933,7 @@ enum PZMSentiment : NSInteger;
 /// <h2>Reference</h2>
 /// <a href="https://www.figma.com/file/fLGhhzkzA1tlvZOg00to2L/Prism-Component-Library-(MVP)?type=design&node-id=683-8"><em>Figma</em>: Notification Design Specification</a>
 SWIFT_CLASS_NAMED("BannerView")
-@interface PZMBannerView : PZMInteractableView
+@interface PZMBannerView : PZMView
 @property (nonatomic) CGFloat preferredLayoutWidth;
 @property (nonatomic) BOOL shouldAutoResizeWidth;
 @property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
@@ -972,6 +941,7 @@ SWIFT_CLASS_NAMED("BannerView")
 @property (nonatomic) CGFloat borderWidth;
 @property (nonatomic) CGFloat cornerRadius;
 - (nonnull instancetype)initWithFrame:(NSRect)frame SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithAttributedBody:(NSAttributedString * _Nonnull)attributedBody sentiment:(enum PZMSentiment)sentiment;
 /// Objective-C compatible convenience initializer with flattened parameters.
 /// This initializer provides the same functionality as the Swift convenience initializer
 /// but is accessible from Objective-C code. Note that all parameters are required since
@@ -1038,6 +1008,21 @@ SWIFT_PROTOCOL_NAMED("BaseButton")
 @end
 
 
+
+/// <code>Invertible</code> declares a protocol for views that have special styles
+/// that need to be displayed against a different color background.
+SWIFT_PROTOCOL_NAMED("Invertible")
+@protocol PZMInvertible
+/// Whether the view is currently inverted.
+/// important:
+/// When implementing a view that conforms to <code>InvertibleView</code>,
+/// the view should support setting <code>isInverted</code> directly, and should update itself accordingly.
+@property (nonatomic) BOOL inverted;
+/// Inverts the view.
+/// Invoking this is equivalent to setting <code>inverted</code>.
+- (void)invert;
+@end
+
 enum PZMButtonStyle : NSInteger;
 enum PZMButtonSize : NSInteger;
 
@@ -1054,7 +1039,7 @@ enum PZMButtonSize : NSInteger;
 /// <h2>Reference</h2>
 /// <a href="https://www.figma.com/file/fLGhhzkzA1tlvZOg00to2L/Prism-Component-Library-(MVP)?type=design&node-id=3-1"><em>Figma</em>: Button Design Specification</a>
 SWIFT_CLASS_NAMED("Button")
-@interface PZMButton : PZMInteractableView
+@interface PZMButton : PZMInteractableView <PZMInvertible>
 /// The button’s action, to be invoked when the user interacts with the button.
 @property (nonatomic, copy) void (^ _Nonnull action)(id <PZMBaseButton> _Nonnull);
 /// Determines whether the button’s action will be executed on a <code>InteractableView/mouseDown(with:)</code> event, as
@@ -1174,6 +1159,8 @@ SWIFT_CLASS_NAMED("Button")
 - (void)showProgressIndicator;
 /// Hides the button’s progress indicator.
 - (void)hideProgressIndicator;
+@property (nonatomic) BOOL inverted;
+- (void)invert;
 /// Layout implementation: Set the button height to 0
 - (void)setButtonHeightToZero:(BOOL)enable;
 - (void)updateButtonTitle:(NSString * _Nullable)title SWIFT_DEPRECATED_MSG("", "label");
@@ -1187,6 +1174,7 @@ SWIFT_CLASS_NAMED("Button")
 - (void)mouseUp:(NSEvent * _Nonnull)event;
 /// Handles the key up event and sets the cursor state accordingly.
 - (void)keyDown:(NSEvent * _Nonnull)event;
+- (NSView * _Nullable)hitTest:(NSPoint)point SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 - (void)viewDidChangeEffectiveAppearance;
 @property (nonatomic, readonly) BOOL wantsUpdateLayer;
@@ -1295,15 +1283,24 @@ SWIFT_CLASS_NAMED("CheckboxView")
 /// The checkbox’s selection state.
 @property (nonatomic) enum PZMCheckboxViewState state;
 @property (nonatomic) BOOL enabled;
+/// Override disableToolTip to forward to the first checkbox view
+@property (nonatomic, copy) NSString * _Nullable disableToolTip;
+/// Override toolTip to forward to the first checkbox view
+@property (nonatomic, copy) NSString * _Nullable toolTip;
+/// Override toolTipModel to forward to the first checkbox view
+@property (nonatomic, strong) PZMToolTip * _Nullable toolTipModel;
 @property (nonatomic) BOOL selected;
 @property (nonatomic) BOOL forbidTracking;
 @property (nonatomic) BOOL requiresTracking;
 @property (nonatomic, copy) NSString * _Nullable text;
+@property (nonatomic, copy) NSString * _Nullable descriptionText;
 /// An optional action to take when the state of the checkbox is changed.
 /// The second parameter,  <code>programmatically</code>, is <code>false</code> when the state is changed via user interaction.
 @property (nonatomic, copy) void (^ _Nullable onStateChange)(PZMCheckboxView * _Nonnull, BOOL);
 - (nonnull instancetype)initWithFrame:(NSRect)frame SWIFT_UNAVAILABLE;
 - (nonnull instancetype)initWithItems:(NSArray<PZMCheckboxItem *> * _Nonnull)items;
+- (nonnull instancetype)initWithItems:(NSArray<PZMCheckboxItem *> * _Nonnull)items title:(NSString * _Nullable)title SWIFT_DEPRECATED_MSG("", "initWithTitle:items:");
+- (nonnull instancetype)initWithTitle:(NSString * _Nullable)title items:(NSArray<PZMCheckboxItem *> * _Nonnull)items OBJC_DESIGNATED_INITIALIZER;
 /// Creates a checkbox from a <code>Item</code>.
 /// This is useful for more complex checkboxes that have children and/or sub-options.
 /// \param item The group item model.
@@ -1364,6 +1361,8 @@ SWIFT_CLASS_NAMED("Item")
 @property (nonatomic, strong) PZMPopover * _Nullable iconPopover;
 /// The starting selection state for this checkbox item.
 @property (nonatomic) BOOL isSelected;
+/// Some text to be displayed as a description below the checkbox; optional.
+@property (nonatomic, copy) NSString * _Nullable descriptionText;
 /// An optional action to take when the state of the checkbox is changed.
 @property (nonatomic, copy) void (^ _Nullable onStateChange)(PZMCheckboxView * _Nonnull, BOOL);
 /// Creates a new checkbox group item model object.
@@ -1384,6 +1383,49 @@ SWIFT_CLASS_NAMED("Item")
 ///
 /// \param children The list of children to be displayed along with this checkbox.
 ///
+/// \param isSelected Whether the checkbox will be selected at instantiation time.
+///
+/// \param onStateChange A closure to be invoked when the state of the checkbox changes.
+///
+///
+/// returns:
+/// A new <code>Item</code> instance with the given label.
+- (nonnull instancetype)initWithText:(NSString * _Nonnull)text children:(NSArray<PZMCheckboxItem *> * _Nullable)children onStateChange:(void (^ _Nullable)(PZMCheckboxView * _Nonnull, BOOL))onStateChange OBJC_DESIGNATED_INITIALIZER;
+/// Creates a new checkbox group item model object.
+/// \param text The text to be displayed on the checkbox’s label.
+///
+/// \param description The description to be shown under the checkbox; optional.
+///
+/// \param children The list of children to be displayed along with this checkbox.
+///
+/// \param isSelected Whether the checkbox will be selected at instantiation time.
+///
+/// \param onStateChange A closure to be invoked when the state of the checkbox changes.
+///
+///
+/// returns:
+/// A new <code>Item</code> instance with the given label.
+- (nonnull instancetype)initWithText:(NSString * _Nonnull)text description:(NSString * _Nullable)description children:(NSArray<PZMCheckboxItem *> * _Nullable)children isSelected:(BOOL)isSelected onStateChange:(void (^ _Nullable)(PZMCheckboxView * _Nonnull, BOOL))onStateChange OBJC_DESIGNATED_INITIALIZER;
+/// Creates a new checkbox group item model object.
+/// \param text The text to be displayed on the checkbox’s label.
+///
+/// \param description The description to be shown under the checkbox; optional.
+///
+/// \param children The list of children to be displayed along with this checkbox.
+///
+/// \param isSelected Whether the checkbox will be selected at instantiation time.
+///
+/// \param onStateChange A closure to be invoked when the state of the checkbox changes.
+///
+///
+/// returns:
+/// A new <code>Item</code> instance with the given label.
+- (nonnull instancetype)initWithText:(NSString * _Nonnull)text description:(NSString * _Nullable)description children:(NSArray<PZMCheckboxItem *> * _Nullable)children onStateChange:(void (^ _Nullable)(PZMCheckboxView * _Nonnull, BOOL))onStateChange OBJC_DESIGNATED_INITIALIZER;
+/// Creates a new checkbox group item model object.
+/// \param text The text to be displayed on the checkbox’s label.
+///
+/// \param children The list of children to be displayed along with this checkbox.
+///
 /// \param icon A trailing icon to be shown next to the text.
 ///
 /// \param popover The popover to show when the icon is hovered.
@@ -1396,30 +1438,26 @@ SWIFT_CLASS_NAMED("Item")
 /// returns:
 /// A new <code>Item</code> instance with the given label.
 - (nonnull instancetype)initWithText:(NSString * _Nonnull)text children:(NSArray<PZMCheckboxItem *> * _Nullable)children icon:(NSImage * _Nonnull)icon iconPopover:(PZMPopover * _Nonnull)iconPopover isSelected:(BOOL)isSelected onStateChange:(void (^ _Nullable)(PZMCheckboxView * _Nonnull, BOOL))onStateChange OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-/// Prism’s checkbox group view, used to display several checkboxes together as one single view.
-/// This view is responsible for the layout of its checkbox items.
-/// important:
-/// Never attempt to make a <code>CheckboxGroupView</code> instance smaller than its <code>intrinsicContentSize</code>.
-SWIFT_CLASS_NAMED("CheckboxGroupView")
-@interface PZMCheckboxGroupView : PZMCheckboxView
-/// Instantiates a new checkbox group item with the given checkboxes and optional title.
-/// \param items One or more <code>CheckboxView/Item</code> instances to be displayed in the group; required.
+/// Creates a new checkbox group item model object.
+/// \param text The text to be displayed on the checkbox’s label.
 ///
-/// \param title A section title to display; optional.
+/// \param children The list of children to be displayed along with this checkbox.
+///
+/// \param icon A trailing icon to be shown next to the text.
+///
+/// \param popover The popover to show when the icon is hovered.
+///
+/// \param isSelected Whether the checkbox will be selected at instantiation time.
+///
+/// \param onStateChange A closure to be invoked when the state of the checkbox changes.
 ///
 ///
 /// returns:
-/// A new <code>CheckboxGroupView</code> instance.
-- (nonnull instancetype)initWithItems:(NSArray<PZMCheckboxItem *> * _Nonnull)items title:(NSString * _Nullable)title OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@property (nonatomic) NSSize intrinsicContentSize;
+/// A new <code>Item</code> instance with the given label.
+- (nonnull instancetype)initWithText:(NSString * _Nonnull)text children:(NSArray<PZMCheckboxItem *> * _Nullable)children icon:(NSImage * _Nonnull)icon iconPopover:(PZMPopover * _Nonnull)iconPopover onStateChange:(void (^ _Nullable)(PZMCheckboxView * _Nonnull, BOOL))onStateChange OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
 
 @class NSStoryboard;
 @class NSBundle;
@@ -1470,60 +1508,90 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMChipViewSize, "Size", open) {
   PZMChipViewSizeMedium = 1,
 };
 
-@class NSAppearance;
-@class NSColorSpace;
+enum ZMThemeName : NSUInteger;
+@class PrismColorTheme;
 
 /// Prism’s self-managed color type.
 /// <code>Color</code> instances offer light/dark theme support and return the correct color value for a property
 /// depending on the current drawing appearance and their set values.
 SWIFT_CLASS_NAMED("Color")
 @interface PrismColor : NSColor
-/// The color’s value for light drawing appearances.
-@property (nonatomic, strong) NSColor * _Nonnull lightColor;
-/// The color’s value for dark drawing appearances.
-@property (nonatomic, strong) NSColor * _Nonnull darkColor;
-- (void)setLightColor:(NSColor * _Nullable)color forTheme:(enum PZMTheme)theme;
-- (void)setDarkColor:(NSColor * _Nullable)color forTheme:(enum PZMTheme)theme;
-/// Creates a new clear color instance.
-///
-/// returns:
-/// A new <code>Color</code> instance, with light and dark colors set to <code>NSColor.clear</code>.
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-/// Creates a new color instance with light and dark colors.
-/// \param lightColor The color to be used for light drawing appearances.
-///
-/// \param darkColor The color to be used for dark drawing appearances.
+@property (nonatomic, readonly, strong) NSColor * _Nonnull lightColor;
+@property (nonatomic, readonly, strong) NSColor * _Nonnull darkColor;
+/// Returns the light color for the specified theme.
+/// \param theme The theme name to get the light color for.
 ///
 ///
 /// returns:
-/// A new <code>Color</code> instance, with light and dark colors set appropriately.
-- (nonnull instancetype)initWithLightColor:(NSColor * _Nonnull)lightColor darkColor:(NSColor * _Nonnull)darkColor;
-- (nullable instancetype)initWithPasteboardPropertyList:(id _Nonnull)propertyList ofType:(NSPasteboardType _Nonnull)type SWIFT_UNAVAILABLE;
+/// The light color for the specified theme.
+/// The base implementation returns the default light color.
+/// If called on a ThemeColor, this method will look up and return the color associated with the given theme if available.
+- (NSColor * _Nonnull)lightColorFor:(enum ZMThemeName)theme SWIFT_WARN_UNUSED_RESULT;
+/// Returns the dark color for the specified theme.
+/// \param theme The theme name to get the dark color for.
+///
+///
+/// returns:
+/// The dark color for the specified theme.
+/// The base implementation returns the default dark color.
+/// If called on a ThemeColor, this method will look up and return the color associated with the given theme if available.
+- (NSColor * _Nonnull)darkColorFor:(enum ZMThemeName)theme SWIFT_WARN_UNUSED_RESULT;
+/// Returns a copy of itself with the given alpha component for light and dark themes. See
+/// <code>NSColor.withAlphaComponent</code>.
+- (PrismColor * _Nonnull)colorWithAlphaComponent:(CGFloat)alpha SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
-- (void)encodeWithCoder:(NSCoder * _Nonnull)coder;
-/// Creates a color from another <code>Color</code> instance.
-/// \param color The <code>Color</code> to copy.
+- (nullable instancetype)initWithPasteboardPropertyList:(id _Nonnull)propertyList ofType:(NSPasteboardType _Nonnull)type SWIFT_UNAVAILABLE;
+@property (nonatomic, readonly, copy) NSString * _Nonnull debugDescription;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) SWIFT_METATYPE(PrismColorTheme) _Nonnull theme;)
++ (SWIFT_METATYPE(PrismColorTheme) _Nonnull)theme SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS_NAMED("Theme")
+@interface PrismColorTheme : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+
+@interface PrismColor (SWIFT_EXTENSION(Prism))
+/// Creates a color by name using dynamic property access.
+/// This method allows for runtime color resolution by name, which is useful for dynamic theming
+/// and configuration-driven color selection.
+/// note:
+/// only for ZUI now
+/// \param name The name of the color property to resolve. If nil, returns the error color.
 ///
 ///
 /// returns:
-/// A copy of the given <code>Color</code>.
-+ (PrismColor * _Nonnull)colorWithCopiedFrom:(PrismColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
-/// Creates a color with an <code>NSColor</code> instance.
-/// \param color The <code>NSColor</code> to use for both light and dark themes.
+/// The resolved color, or the error color if the name is invalid or not found.
++ (PrismColor * _Nonnull)colorWithName:(NSString * _Nullable)name SWIFT_WARN_UNUSED_RESULT;
+/// Clears the color name cache.
+/// This method should be called when the theme system is reset or when memory optimization is needed.
+/// It is thread-safe and can be called from any thread.
++ (void)clearColorCache;
+@end
+
+@class NSNumber;
+
+@interface PrismColor (SWIFT_EXTENSION(Prism))
+/// Creates a color with RGB integer and alpha values for light and dark themes.
+/// \param light The RGB integer value to use for light themes, from 0 to 0xffffff.
 ///
+/// \param lightAlpha The alpha value for the light color, from 0 to 1.
 ///
-/// returns:
-/// A <code>Color</code> instance with the given color.
-+ (PrismColor * _Nonnull)colorWithColor:(NSColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
-/// Creates a color with <code>NSColor</code> instances for light and dark themes.
-/// \param light The <code>NSColor</code> to use for light themes.
+/// \param dark The RGB integer to use for dark themes, from 0 to 0xffffff.
 ///
-/// \param dark The <code>NSColor</code> to use for dark themes.
+/// \param darkAlpha The alpha value for the dark color, from 0 to 1.
 ///
 ///
 /// returns:
 /// A <code>Color</code> instance with the given colors.
-+ (PrismColor * _Nonnull)colorWithLight:(NSColor * _Nonnull)light dark:(NSColor * _Nonnull)dark SWIFT_WARN_UNUSED_RESULT;
++ (PrismColor * _Nonnull)colorWithLightHex:(NSUInteger)lightHex lightAlpha:(CGFloat)lightAlpha darkHex:(NSUInteger)darkHex darkAlpha:(CGFloat)darkAlpha SWIFT_WARN_UNUSED_RESULT;
 /// Creates a color with RGB integer values for light and dark themes.
 /// note:
 /// For values <code>< 0xFFFFFF</code>, the alpha value of the color is <code>1</code>. Otherwise, the alpha
@@ -1537,88 +1605,57 @@ SWIFT_CLASS_NAMED("Color")
 /// returns:
 /// A <code>Color</code> instance with the given colors.
 + (PrismColor * _Nonnull)colorWithLightHex:(NSUInteger)lightHex darkHex:(NSUInteger)darkHex SWIFT_WARN_UNUSED_RESULT;
-/// Creates a color with RGB integer and alpha values for light and dark themes.
-/// \param light The RGB integer value to use for light themes, from 0 to 0xffffff.
+/// Creates a color with NSColor instances for light and dark themes.
+/// \param lightColor The NSColor to use for light themes.
 ///
-/// \param lightAlpha The alpha value for the light color, from 0 to 1.
-///
-/// \param dark The RGB integer to use for dark themes, from 0 to 0xffffff.
-///
-/// \param darkAlpha The alpha value for the dark color, from 0 to 1.
+/// \param darkColor The NSColor to use for dark themes.
 ///
 ///
 /// returns:
 /// A <code>Color</code> instance with the given colors.
-+ (PrismColor * _Nonnull)colorWithLightHex:(NSUInteger)light lightAlpha:(CGFloat)lightAlpha darkHex:(NSUInteger)darkHex darkAlpha:(CGFloat)darkAlpha SWIFT_WARN_UNUSED_RESULT;
-+ (PrismColor * _Nonnull)colorWithLightRed:(CGFloat)lightRed lightGreen:(CGFloat)lightGreen lightBlue:(CGFloat)lightBlue lightAlpha:(CGFloat)lightAlpha darkRed:(CGFloat)darkRed darkGreen:(CGFloat)darkGreen darkBlue:(CGFloat)darkBlue darkAlpha:(CGFloat)darkAlpha SWIFT_WARN_UNUSED_RESULT;
-- (NSColor * _Nonnull)lightColorFor:(enum PZMTheme)theme SWIFT_WARN_UNUSED_RESULT;
-- (NSColor * _Nonnull)darkColorFor:(enum PZMTheme)theme SWIFT_WARN_UNUSED_RESULT;
-- (NSColor * _Nonnull)withThemeOverrideFor:(id <PZMThemeable> _Nonnull)themeable in:(NSAppearance * _Nullable)_appearance SWIFT_WARN_UNUSED_RESULT;
-/// The color space for the calculated current color. See <code>NSColor.colorSpace</code>.
-@property (nonatomic, readonly, strong) NSColorSpace * _Nonnull colorSpace;
-/// Invokes <code>.set()</code> on the calculated current color. See <code>NSColor.set</code>.
-- (void)set;
-/// Invokes <code>.setFill()</code> on the calculated current color. See <code>NSColor.setFill</code>.
-- (void)setFill;
-/// Invokes <code>.setStroke()</code> on the calculated current color. See <code>NSColor.setStroke</code>.
-- (void)setStroke;
-/// Returns the color type for the calculated current color. See <code>NSColor.type</code>.
-@property (nonatomic, readonly) NSColorType type;
-/// Returns <code>.usingType(type:)</code> for the calculated current color. See <code>NSColor.usingType</code>.
-- (NSColor * _Nullable)colorUsingType:(NSColorType)type SWIFT_WARN_UNUSED_RESULT;
-/// Returns <code>.getComponents(components:)</code> for the calculated current color. See <code>NSColor.getComponents</code>.
-- (void)getComponents:(CGFloat * _Nonnull)components;
-/// Returns the <code>CGColor</code> for the calculated current color.
-@property (nonatomic, readonly) CGColorRef _Nonnull CGColor;
-/// Returns the number of components for the calculated current color.
-@property (nonatomic, readonly) NSInteger numberOfComponents;
-/// Returns a copy of itself with the given alpha component for light and dark themes. See
-/// <code>NSColor.withAlphaComponent</code>.
-- (PrismColor * _Nonnull)colorWithAlphaComponent:(CGFloat)alpha SWIFT_WARN_UNUSED_RESULT;
-/// Returns a copy of itself with the given color space for light and dark themes. See <code>NSColor.usingColorSpace</code>.
-- (PrismColor * _Nullable)colorUsingColorSpace:(NSColorSpace * _Nonnull)space SWIFT_WARN_UNUSED_RESULT;
-/// Returns <code>.redComponent</code> for the calculated current color. See <code>NSColor.redComponent</code>.
-@property (nonatomic, readonly) CGFloat redComponent;
-/// Returns <code>.greenComponent</code> for the calculated current color. See <code>NSColor.greenComponent</code>.
-@property (nonatomic, readonly) CGFloat greenComponent;
-/// Returns <code>.blueComponent</code> for the calculated current color. See <code>NSColor.blueComponent</code>.
-@property (nonatomic, readonly) CGFloat blueComponent;
-/// Returns <code>.alphaComponent</code> for the calculated current color. See <code>NSColor.alphaComponent</code>.
-@property (nonatomic, readonly) CGFloat alphaComponent;
-/// Returns the RGBA components for the calculated current color. See <code>NSColor.getRed(_:, green:, blue:, alpha:)</code>.
-- (void)getRed:(CGFloat * _Nullable)red green:(CGFloat * _Nullable)green blue:(CGFloat * _Nullable)blue alpha:(CGFloat * _Nullable)alpha;
-/// Returns <code>.hueComponent</code> for the calculated current color. See <code>NSColor.hueComponent</code>.
-@property (nonatomic, readonly) CGFloat hueComponent;
-/// Returns <code>.saturationComponent</code> for the calculated current color. See <code>NSColor.saturationComponent</code>.
-@property (nonatomic, readonly) CGFloat saturationComponent;
-/// Returns <code>.brightnessComponent</code> for the calculated current color. See <code>NSColor.brightnessComponent</code>.
-@property (nonatomic, readonly) CGFloat brightnessComponent;
-/// Returns the HSBA components for the calculated current color. See
-/// <code>NSColor.getHue(_:, saturation:, brightness:, alpha:)</code>.
-- (void)getHue:(CGFloat * _Nullable)hue saturation:(CGFloat * _Nullable)saturation brightness:(CGFloat * _Nullable)brightness alpha:(CGFloat * _Nullable)alpha;
-/// Returns <code>.whiteComponent</code> for the calculated current color. See <code>NSColor.whiteComponent</code>.
-@property (nonatomic, readonly) CGFloat whiteComponent;
-/// Returns <code>.cyanComponent</code> for the calculated current color. See <code>NSColor.cyanComponent</code>.
-@property (nonatomic, readonly) CGFloat cyanComponent;
-/// Returns <code>.magentaComponent</code> for the calculated current color. See <code>NSColor.magentaComponent</code>.
-@property (nonatomic, readonly) CGFloat magentaComponent;
-/// Returns <code>.yellowComponent</code> for the calculated current color. See <code>NSColor.yellowComponent</code>.
-@property (nonatomic, readonly) CGFloat yellowComponent;
-/// Returns <code>.blackComponent</code> for the calculated current color. See <code>NSColor.blackComponent</code>.
-@property (nonatomic, readonly) CGFloat blackComponent;
-/// Returns the CMYKA components for the calculated current color. See
-/// <code>NSColor.getCyan(_:, magenta:, yellow:, black:, alpha:)</code>.
-- (void)getCyan:(CGFloat * _Nullable)cyan magenta:(CGFloat * _Nullable)magenta yellow:(CGFloat * _Nullable)yellow black:(CGFloat * _Nullable)black alpha:(CGFloat * _Nullable)alpha;
++ (PrismColor * _Nonnull)colorWithLightColor:(NSColor * _Nonnull)lightColor darkColor:(NSColor * _Nonnull)darkColor SWIFT_WARN_UNUSED_RESULT;
+/// Creates a Color with NSColor for Prism components.
+/// This method wraps an existing NSColor to make it compatible with the Prism appearance system.
+/// The same color will be used for both light and dark themes.
+/// note:
+/// Suggest to use NSColor.prismColor() instead.
+/// \param withColor The NSColor to wrap.
+///
+///
+/// returns:
+/// A <code>Color</code> instance that uses the same color for both light and dark themes.
++ (PrismColor * _Nonnull)colorWithColor:(NSColor * _Nonnull)withColor SWIFT_WARN_UNUSED_RESULT;
+/// Creates a theme color with ARGB hex values for light and dark themes.
+/// The parameter format is ARGB, e.g., 0x11223344, where 0x11 is Alpha, 0x22 is Red, 0x33 is Green, and 0x44 is Blue.
+/// This is a Objective-C usage:
+/// \code
+/// [PrismColor colorWithLightHex:0xDFE3E8 darkHex:0x323539
+///                        themes:@{@(ZMThemeNameAgave):NSColorFromHex(0x841930),
+///                                 @(ZMThemeNameBloom):ZMHexColor(0xDFE3E8, 0x134240),
+///                                 @(ZMThemeNameRose):ZMHexColor(0xDFE3E8, 0x6C162A)}];
+///
+///
+/// \endcode\param lightHex The ARGB hex value for light themes.
+///
+/// \param darkHex The ARGB hex value for dark themes.
+///
+///
+/// returns:
+/// A <code>ThemeColor</code> instance with the given colors.
++ (PrismColor * _Nonnull)colorWithLightHex:(NSUInteger)lightHex darkHex:(NSUInteger)darkHex themes:(NSDictionary<NSNumber *, NSColor *> * _Nonnull)themes SWIFT_WARN_UNUSED_RESULT;
+/// Creates a color from a ZMPigment object.
+/// \param pigment The ZMPigment object to create the color from.
+///
+///
+/// returns:
+/// A <code>PigmentColor</code> instance that derives its colors from the pigment.
++ (PrismColor * _Nonnull)colorWithPigment:(ZMPigment * _Nonnull)pigment SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 @interface PrismColor (SWIFT_EXTENSION(Prism))
-+ (PrismColor * _Nonnull)colorWithName:(NSString * _Nullable)name SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-
-@interface PrismColor (SWIFT_EXTENSION(Prism))
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull prismClear;)
++ (PrismColor * _Nonnull)prismClear SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull backgroundDarkerNeutral;)
 + (PrismColor * _Nonnull)backgroundDarkerNeutral SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull backgroundDefault;)
@@ -1871,6 +1908,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor *
 + (PrismColor * _Nonnull)subtleErrorPressed SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull subtleNeutralHovered;)
 + (PrismColor * _Nonnull)subtleNeutralHovered SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull subtleNeutralHover;)
++ (PrismColor * _Nonnull)subtleNeutralHover SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull subtleNeutralPressed;)
 + (PrismColor * _Nonnull)subtleNeutralPressed SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull subtlePrimaryDisable;)
@@ -1971,6 +2010,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor *
 + (PrismColor * _Nonnull)underlayDark SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull invalidTokenColor;)
 + (PrismColor * _Nonnull)invalidTokenColor SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull badgeTextNeutral;)
++ (PrismColor * _Nonnull)badgeTextNeutral SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -2029,7 +2070,7 @@ SWIFT_CLASS_NAMED("ColorEditView")
 /// stringInPopup: The localized string in the popup filed. Typically: “Give your color swatch a name for those who are using a screen reader.”  If nil, the naming is disabled
 /// alphable: Whether the alpha compounent can be edited, default is false
 /// knobSVAXLabel: Used in ACC, typically: “select pen color, use Left and Right arrow keys to set saturation, use Up and Down arrow keys to set brightness”
-/// knobHue:AXLabel: Used in ACC, typically: “select pen color, use Left and Right arrow keys to set hue”
+/// knobHueAXLabel: Used in ACC, typically: “select pen color, use Left and Right arrow keys to set hue”
 /// knobAlphaAXLabel:  Used in ACC, typically: “select pen color, use Left and Right arrow keys to set alpha”. If alphable is false, this parameter is ignored
 /// sampleButton:  Used in ACC, typically: “Color Picker”
 /// colorFieldAXLabel: Used in ACC, typically: “Enter hex color code”
@@ -2126,22 +2167,8 @@ SWIFT_CLASS_NAMED("ColorPickerView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-/// <code>Invertible</code> declares a protocol for views that have special styles
-/// that need to be displayed against a different color background.
-SWIFT_PROTOCOL_NAMED("Invertible")
-@protocol PZMInvertible
-/// Whether the view is currently inverted.
-/// important:
-/// When implementing a view that conforms to <code>InvertibleView</code>,
-/// the view should support setting <code>isInverted</code> directly, and should update itself accordingly.
-@property (nonatomic) BOOL inverted;
-/// Inverts the view.
-/// Invoking this is equivalent to setting <code>inverted</code>.
-- (void)invert;
-@end
-
 enum PZMCounterViewColor : NSInteger;
+enum PZMCounterViewSize : NSInteger;
 
 /// Prism’s counter view, typically used for unread message or notification counts.
 /// The view manages its own counter and draws it on screen.
@@ -2168,7 +2195,11 @@ SWIFT_CLASS_NAMED("CounterView")
 /// The border width for the counter.
 /// This is a design constant and cannot be overridden.
 @property (nonatomic) CGFloat borderWidth;
+/// The size of the counter view.
+@property (nonatomic) enum PZMCounterViewSize size;
 @property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
+- (void)didChangeEffectiveTheme;
+- (void)viewDidChangeEffectiveAppearance;
 @property (nonatomic) BOOL inverted;
 - (void)invert;
 /// Creates a counter view with a zero count.
@@ -2184,8 +2215,17 @@ SWIFT_CLASS_NAMED("CounterView")
 ///
 /// returns:
 /// A <code>CounterView</code> instance with the given count.
-- (nonnull instancetype)initWithCount:(NSUInteger)count OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithCount:(NSUInteger)count;
+/// Creates a counter view with a given count and size.
+/// \param count The starting count for the counter view.
+///
+/// \param size The size of the counter view. Defaults to <code>.medium</code>.
+///
+///
+/// returns:
+/// A <code>CounterView</code> instance with the given count and size.
+- (nonnull instancetype)initWithCount:(NSUInteger)count size:(enum PZMCounterViewSize)size OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 - (void)encodeWithCoder:(NSCoder * _Nonnull)coder;
 /// Utility function that returns a counter view with a given count.
 /// \param count The starting count for the counter view.
@@ -2204,6 +2244,13 @@ SWIFT_CLASS_NAMED("CounterView")
 - (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isAccessibilityElement SWIFT_WARN_UNUSED_RESULT;
 @end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMCounterViewSize, "Size", open) {
+/// The small counter size (15pt).
+  PZMCounterViewSizeSmall = 0,
+/// The medium counter size (20pt). This is the default.
+  PZMCounterViewSizeMedium = 1,
+};
 
 typedef SWIFT_ENUM_NAMED(NSInteger, PZMCounterViewColor, "ColorCombo", open) {
   PZMCounterViewColorRed = 0,
@@ -2962,6 +3009,7 @@ SWIFT_CLASS_NAMED("InputField")
 /// \param $1 <code>true</code> if the view is becoming first responder; <code>false</code> otherwise.
 ///
 @property (nonatomic, copy) void (^ _Nullable onFirstResponderStateChange)(id <PZMBaseView> _Nonnull, BOOL);
+@property (nonatomic) CGFloat preferredBubbleHeight;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (void)updateConstraints;
 - (void)updateLayer;
@@ -3011,7 +3059,6 @@ SWIFT_CLASS_NAMED("_PrismOCBridge_Decoration")
 @protocol PZMTextInputFieldDelegate;
 @class NSFormatter;
 @class NSText;
-@class NSControl;
 @class NSNotification;
 @class NSTextView;
 @class PZMTextInputFieldPredicate;
@@ -3023,22 +3070,33 @@ SWIFT_CLASS_NAMED("TextInputField")
 @interface PZMTextInputField : PZMInputField
 @property (nonatomic, weak) id <PZMTextInputFieldDelegate> _Nullable delegate;
 @property (nonatomic, readonly) BOOL hasError;
+/// A block to be invoked when the tab key is pressed.
+/// If this block is set, it will be called instead of the default tab key behavior.
+/// If this block is nil, the default behavior (super.keyDown) will be executed.
+@property (nonatomic, copy) BOOL (^ _Nullable tabKeyDownBlock)(void);
 @property (nonatomic, strong) NSFormatter * _Nullable formatter;
-- (NSText * _Nullable)currentEditor SWIFT_WARN_UNUSED_RESULT;
+- (NSText * _Nullable)currentEditor SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED;
 @property (nonatomic) BOOL readOnly;
 @property (nonatomic) BOOL enabled;
+- (BOOL)makeFirstResponderIfPossible SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic) BOOL clearFieldButtonFocusable;
 - (void)updateLayer;
 @property (nonatomic) BOOL usesSingleLineMode;
+/// Whether to update bubbleViewHeightConstraint in setFrameSize
+@property (nonatomic) BOOL shouldUpdateBubbleViewHeight;
+- (void)setFrameSize:(NSSize)newSize;
 /// Whether the <code>TextInputField</code> will truncate the string when its
 /// length reaches <code>limit</code>.
 /// This value defaults to <code>false</code>. When enabled, the input length
 /// will be limited to <code>limit</code>. When disabled, an error state will show
 /// when the limit length is exceeded.
 @property (nonatomic) BOOL useStrictLimit;
-- (void)control:(NSControl * _Nonnull)control didFailToValidatePartialString:(NSString * _Nonnull)string errorDescription:(NSString * _Nullable)error;
-- (void)controlTextDidChange:(NSNotification * _Nonnull)obj;
-- (BOOL)control:(NSControl * _Nonnull)control textView:(NSTextView * _Nonnull)textView doCommandBySelector:(SEL _Nonnull)commandSelector SWIFT_WARN_UNUSED_RESULT;
+- (void)setTextLimit:(NSInteger)limit;
+- (void)keyDown:(NSEvent * _Nonnull)event;
+- (void)textDidChange:(NSNotification * _Nonnull)notification;
+- (BOOL)textView:(NSTextView * _Nonnull)textView doCommandBySelector:(SEL _Nonnull)commandSelector SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSAttributedStringKey, id> * _Nonnull)textView:(NSTextView * _Nonnull)textView shouldChangeTypingAttributes:(NSDictionary<NSString *, id> * _Nonnull)oldTypingAttributes toAttributes:(NSDictionary<NSAttributedStringKey, id> * _Nonnull)newTypingAttributes SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)textView:(NSTextView * _Nonnull)textView shouldChangeTextInRange:(NSRange)affectedCharRange replacementString:(NSString * _Nullable)_replacementString SWIFT_WARN_UNUSED_RESULT;
 /// Instantiates a search text field with the given options.
 /// \param header The header to be displayed above the bubble.
 ///
@@ -3073,6 +3131,16 @@ SWIFT_CLASS_NAMED("TextInputField")
 /// \param decorations Any <code>PZMInputFieldDecoration</code> instances to display around the view.
 ///
 - (nonnull instancetype)initWithHeader:(NSString * _Nullable)header placeholder:(NSString * _Nullable)placeholder decorations:(NSArray<PZMInputFieldDecoration *> * _Nullable)ocDecorations;
+/// Instantiates a basic text field with the given options and trailing icon.
+/// \param header The header to be displayed above the bubble.
+///
+/// \param placeholder The text to be shown in the bubble if there is no input.
+///
+/// \param decorations Any <code>PZMInputFieldDecoration</code> instances to display around the view.
+///
+/// \param trailingIcon The trailing icon image to display when hovered.
+///
+- (nonnull instancetype)initWithHeader:(NSString * _Nullable)header placeholder:(NSString * _Nullable)placeholder decorations:(NSArray<PZMInputFieldDecoration *> * _Nullable)ocDecorations trailingIcon:(NSImage * _Nullable)trailingIcon;
 /// Instantiates a search text field with the given options.
 /// \param header The header to be displayed above the bubble.
 ///
@@ -3109,6 +3177,19 @@ SWIFT_CLASS_NAMED("TextInputField")
 - (nonnull instancetype)initWithHeader:(NSString * _Nullable)header placeholder:(NSString * _Nullable)placeholder size:(enum PZMInputFieldSize)size decorations:(NSArray<PZMInputFieldDecoration *> * _Nullable)ocDecorations;
 @property (nonatomic, copy) NSArray<PZMTextInputFieldPredicate *> * _Nullable predicates;
 @property (nonatomic, copy) NSString * _Nullable stringValue;
+- (void)setTextFieldFont:(NSFont * _Nonnull)font;
+/// Sets the text color for the text field.
+/// \param textColor The text color to apply to the text field.
+///
+- (void)setTextFieldTextColor:(NSColor * _Nonnull)textColor;
+- (void)setTextFieldSelectable:(BOOL)selectable;
+/// Sets the border width for the bubble view.
+/// \param borderWidth The border width to apply to the bubble view.
+///
+- (void)setBubbleViewBorderWidth:(CGFloat)borderWidth;
+- (void)setBubbleViewBackgroundColor:(PrismColor * _Nonnull)backgroundColor;
+- (void)setBubbleViewHoverBackgroundColor:(PrismColor * _Nonnull)hoveredBackgroundColor;
+- (CGFloat)getBasicTextFieldFitHeight SWIFT_WARN_UNUSED_RESULT;
 @end
 
 typedef SWIFT_ENUM_NAMED(NSInteger, PZMTextInputFieldKeyAction, "KeyAction", open) {
@@ -3194,20 +3275,6 @@ SWIFT_CLASS_NAMED("Item")
 /// Any object that represents the item. Unused.
 @property (nonatomic, strong) NSObject * _Nullable representedObject;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_PROTOCOL_NAMED("TextInputFieldDelegate")
-@protocol PZMTextInputFieldDelegate
-@optional
-- (void)textInputField:(PZMTextInputField * _Nonnull)sender didUpdate:(NSString * _Nonnull)text;
-- (void)textInputField:(PZMTextInputField * _Nonnull)sender didChangePredicateValidationState:(BOOL)success;
-- (BOOL)textInputField:(PZMTextInputField * _Nonnull)sender shouldProcessKeyAction:(enum PZMTextInputFieldKeyAction)shouldProcessKeyAction SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface PZMDropdownFilter (SWIFT_EXTENSION(Prism)) <PZMTextInputFieldDelegate>
-- (void)textInputField:(PZMTextInputField * _Nonnull)sender didUpdate:(NSString * _Nonnull)text;
 @end
 
 @class PZMMenu;
@@ -3307,12 +3374,32 @@ SWIFT_PROTOCOL_NAMED("Delegate")
 /// returns:
 /// <code>true</code> if the item can be inserted at <code>proposedIndex</code>; <code>false</code> otherwise.
 - (BOOL)dropdownMenu:(PZMMenu * _Nonnull)sender canDrop:(id <NSDraggingInfo> _Nonnull)info proposedItem:(PZMMenuItem * _Nonnull)item atProposedIndex:(NSInteger * _Nonnull)proposedIndex SWIFT_WARN_UNUSED_RESULT;
+/// Notifies the delegate that a drag operation was ended.
+/// This method is called for both drag and drop operations.
+/// \param sender The <code>Menu</code> that received the event.
+///
+- (void)dropdownMenuDidEndDragOperation:(PZMMenu * _Nonnull)sender;
 @end
 
 
 @interface PZMDropdownFilter (SWIFT_EXTENSION(Prism)) <PZMMenuDelegate>
 - (void)dropdownMenuWillShow:(PZMMenu * _Nonnull)sender;
 - (void)dropdownMenuDidDismiss:(PZMMenu * _Nonnull)sender;
+@end
+
+
+SWIFT_PROTOCOL_NAMED("TextInputFieldDelegate")
+@protocol PZMTextInputFieldDelegate
+@optional
+- (void)textInputField:(PZMTextInputField * _Nonnull)sender didUpdate:(NSString * _Nonnull)text;
+- (void)textInputField:(PZMTextInputField * _Nonnull)sender didChangePredicateValidationState:(BOOL)success;
+- (BOOL)textInputField:(PZMTextInputField * _Nonnull)sender shouldProcessKeyAction:(enum PZMTextInputFieldKeyAction)shouldProcessKeyAction SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface PZMDropdownFilter (SWIFT_EXTENSION(Prism)) <PZMTextInputFieldDelegate>
+- (void)textInputField:(PZMTextInputField * _Nonnull)sender didUpdate:(NSString * _Nonnull)text;
+- (BOOL)textInputField:(PZMTextInputField * _Nonnull)sender shouldProcessKeyAction:(enum PZMTextInputFieldKeyAction)keyAction SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class PZMDropdownViewItem;
@@ -3339,6 +3426,7 @@ SWIFT_CLASS_NAMED("DropdownInputField")
 @property (nonatomic) NSInteger selectedIndex;
 @property (nonatomic, copy) void (^ _Nullable onFirstResponderStateChange)(id <PZMBaseView> _Nonnull, BOOL);
 @property (nonatomic) NSRect frame;
+- (void)keyDown:(NSEvent * _Nonnull)event;
 /// Initializes a new <code>DropdownInputField</code> with the given options.
 /// \param header The text to be shown on the control that creates the dropdown menu.
 ///
@@ -3374,6 +3462,15 @@ SWIFT_CLASS_NAMED("Item")
 @interface PZMDropdownViewItem : NSObject
 /// The item label.
 @property (nonatomic, readonly, copy) NSString * _Nonnull label;
+/// An optional label to be shown in the <code>DropdownInputField</code>
+/// when this item is selected.
+/// If <code>nil</code>, <code>label</code> is shown instead.
+@property (nonatomic, copy) NSString * _Nullable selectedLabel;
+/// An optional section title to be shown above this item.
+/// Use this for the first item in the section only.
+/// To insert a divider and start a new section with no
+/// title, use <code>sectionTitle == ""</code>.
+@property (nonatomic, copy) NSString * _Nullable sectionTitle;
 /// An action to be run when the item is seleted.
 @property (nonatomic, copy) void (^ _Nullable action)(PZMDropdownViewItem * _Nonnull);
 /// An optional context; useful for <code>action</code>.
@@ -3571,8 +3668,8 @@ SWIFT_CLASS_NAMED("FileUploaderInfo")
 @end
 
 
-SWIFT_CLASS_NAMED("FirstActionButton")
-@interface PZMFirstActionButton : PZMInteractableView
+SWIFT_CLASS_NAMED("FloatingActionButton")
+@interface PZMFloatingActionButton : PZMInteractableView
 /// The button’s action, to be invoked when the user interacts with the button.
 @property (nonatomic, copy) void (^ _Nonnull action)(id <PZMBaseButton> _Nonnull);
 @property (nonatomic, strong) NSImage * _Nullable image;
@@ -3583,7 +3680,7 @@ SWIFT_CLASS_NAMED("FirstActionButton")
 @property (nonatomic, readonly) BOOL wantsUpdateLayer;
 - (nonnull instancetype)initWithImage:(NSImage * _Nullable)image action:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))action;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
-+ (PZMFirstActionButton * _Nonnull)plusButtonWithAction:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))action SWIFT_WARN_UNUSED_RESULT;
++ (PZMFloatingActionButton * _Nonnull)plusButtonWithAction:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))action SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic) BOOL enabled;
 @property (nonatomic) BOOL tintImage;
 @property (nonatomic) BOOL showDot;
@@ -3638,10 +3735,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum PZMIconButtonSt
 @property (nonatomic) enum PZMIconButtonStyle style;
 /// The icon shown in the button.
 @property (nonatomic, strong) NSImage * _Nullable image;
+@property (nonatomic) BOOL tintImage SWIFT_DEPRECATED_MSG("", "isImageTinted");
 /// Whether the button will draw its image in the color specified by the design system.
 /// To prevent the button from changing the color of an icon that needs to draw in its
 /// original colors, set this property to <code>false</code>.
-@property (nonatomic) BOOL tintImage;
+@property (nonatomic) BOOL isImageTinted;
 @property (nonatomic) CGFloat cornerRadius;
 @property (nonatomic) enum PZMCursorState cursorState;
 @property (nonatomic) BOOL enabled;
@@ -3738,7 +3836,6 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMIconDotStyle, "DotStyle", open) {
   PZMIconDotStylePrimary = 1,
 };
 
-@class NSAttributedString;
 
 SWIFT_CLASS_NAMED("HelpButton")
 @interface PZMHelpButton : PZMIconButton
@@ -3803,10 +3900,169 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMBaseButtonStyle, "Style", open) {
 };
 
 
+enum PZMIconTextButtonStyle : NSInteger;
+enum PZMIconTextButtonSize : NSInteger;
+
+/// Prism’s implementation of an icon with text button, useful for tab bars and navigation.
+/// This view manages its own size and style. The button displays an icon above a text label in a vertical layout.
+/// <h2>Reference</h2>
+/// <a href="https://www.figma.com/file/fLGhhzkzA1tlvZOg00to2L/Prism-Component-Library-(MVP)?type=design&node-id=3-1"><em>Figma</em>: Button Design Specification</a>
+SWIFT_CLASS_NAMED("IconTextButton")
+@interface PZMIconTextButton : PZMInteractableView <PZMInvertible>
+- (void)showProgressIndicator;
+- (void)hideProgressIndicator;
+/// The inset (margin) from the top and trailing edges for NEW/BETA/TRIAL badges.
+/// Default is -3 for NEW/BETA/TRIAL badges.
+/// If set to a negative value, it will be clamped to 0.
+/// note:
+/// This property only affects NEW/BETA/TRIAL badges.
+/// For notification dot, use <code>dotInset</code>, <code>dotTopInset</code>, or <code>dotTrailingInset</code>.
+/// For counter badge, use <code>counterInset</code>, <code>counterTopInset</code>, or <code>counterTrailingInset</code>.
+@property (nonatomic) CGFloat badgeInset;
+/// Convenience inset from the top and trailing edges for counter badge.
+/// Default is 0 (aligned with button’s top and trailing edges).
+/// If set to a negative value, it will be clamped to 0.
+/// Setting this will update both <code>counterTopInset</code> and <code>counterTrailingInset</code>.
+/// Getting returns the value when both insets are equal; otherwise, the max of the two.
+@property (nonatomic) CGFloat counterInset;
+/// The inset (margin) from the top edge for counter badge.
+/// Default is 0 (aligned with button’s top edge).
+/// If set to a negative value, it will be clamped to 0.
+@property (nonatomic) CGFloat counterTopInset;
+/// The inset (margin) from the trailing edge for counter badge.
+/// Default is 10.
+/// If set to a negative value, it will be clamped to 0.
+@property (nonatomic) CGFloat counterTrailingInset;
+/// Convenience inset from the top and trailing edges for notification dot.
+/// Default is 6.
+/// If set to a negative value, it will be clamped to 0.
+/// Setting this will update both <code>dotTopInset</code> and <code>dotTrailingInset</code>.
+/// Getting returns the value when both insets are equal; otherwise, the max of the two.
+@property (nonatomic) CGFloat dotInset;
+/// The inset (margin) from the top edge for notification dot.
+/// Default is 6.
+/// If set to a negative value, it will be clamped to 0.
+@property (nonatomic) CGFloat dotTopInset;
+/// The inset (margin) from the trailing edge for notification dot.
+/// Default is 6.
+/// If set to a negative value, it will be clamped to 0.
+@property (nonatomic) CGFloat dotTrailingInset;
+/// Whether to show a “NEW” badge in the top-right corner of the button.
+@property (nonatomic) BOOL showNew;
+/// Whether to show a “BETA” badge in the top-right corner of the button.
+@property (nonatomic) BOOL showBeta;
+/// Whether to show a “TRIAL” badge in the top-right corner of the button.
+@property (nonatomic) BOOL showTrial;
+/// Whether to show a notification dot in the top-right corner of the button.
+@property (nonatomic) BOOL showDot;
+/// The number to display in a badge in the top-right corner. Set to 0 to hide.
+/// For numbers >= 100, displays “99+”.
+@property (nonatomic) NSInteger buttonTag;
+@property (nonatomic) BOOL tintImage;
+/// The button’s action, to be invoked when the user interacts with the button.
+@property (nonatomic, copy) void (^ _Nonnull action)(id <PZMBaseButton> _Nonnull);
+/// The button’s style.
+@property (nonatomic) enum PZMIconTextButtonStyle style;
+/// Horizontal inset for text content (left and right padding). Default is 1.
+@property (nonatomic) CGFloat textHorizontalInset;
+/// Custom width override. If set to a value greater than 0, this value will be used instead of the default minimum width.
+/// Set to 0 or negative value to use the default width based on size.
+/// The minimum allowed width is 48.
+@property (nonatomic) CGFloat customWidth;
+/// The icon shown in the button.
+@property (nonatomic, strong) NSImage * _Nullable image;
+/// Whether the button will draw its image in the color specified by the design system.
+@property (nonatomic) BOOL isImageTinted;
+/// Updates the button’s icon.
+/// \param newImage The new icon image to display.
+///
+/// \param animated Whether to animate the transition. Default is false.
+///
+- (void)updateIcon:(NSImage * _Nonnull)newImage animated:(BOOL)animated;
+/// Updates the button’s icon without animation.
+/// \param newImage The new icon image to display.
+///
+- (void)updateIcon:(NSImage * _Nullable)newImage;
+/// The text label shown in the button.
+@property (nonatomic, copy) NSString * _Nonnull label;
+@property (nonatomic) BOOL enabled;
+@property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
+@property (nonatomic, strong) PrismColor * _Nullable hoveredBackgroundColor;
+@property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
+@property (nonatomic, strong) PrismColor * _Nullable borderColor;
+@property (nonatomic) CGFloat borderWidth;
+@property (nonatomic) CGFloat cornerRadius;
+- (void)layout;
+/// Initializes a new <code>IconTextButton</code> instance.
+/// \param image The icon to be shown in the button.
+///
+/// \param label The text label to be shown below the icon.
+///
+/// \param style The style for the button.
+///
+/// \param size The size of the button.
+///
+/// \param action The action to be taken when the button is clicked.
+///
+///
+/// returns:
+/// A new <code>IconTextButton</code> instance with the given options.
+- (nonnull instancetype)initWithImage:(NSImage * _Nullable)image label:(NSString * _Nonnull)label style:(enum PZMIconTextButtonStyle)style size:(enum PZMIconTextButtonSize)size action:(void (^ _Nonnull)(id <PZMBaseButton> _Nonnull))action;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithFrame:(NSRect)_ SWIFT_UNAVAILABLE;
+@property (nonatomic) BOOL inverted;
+- (void)invert;
+/// Determines whether the button’s action will be executed on a <code>mouseDown(with:)</code> event, as opposed to
+/// <code>mouseUp(with:)</code>. Defaults to <code>false</code>.
+@property (nonatomic) BOOL runActionOnMouseDown;
+- (void)mouseDown:(NSEvent * _Nonnull)event;
+- (void)mouseUp:(NSEvent * _Nonnull)event;
+- (void)keyDown:(NSEvent * _Nonnull)event;
+- (NSView * _Nullable)hitTest:(NSPoint)point SWIFT_WARN_UNUSED_RESULT;
+- (void)viewDidChangeEffectiveAppearance;
+- (void)viewDidMoveToWindow;
+- (void)updateLayer;
+@property (nonatomic, readonly) NSSize intrinsicContentSize;
+@property (nonatomic, readonly) CGFloat focusRingSpacing;
+- (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)accessibilityPerformPress SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, copy) NSString * _Nonnull keyEquivalent;
+@property (nonatomic) NSEventModifierFlags keyEquivalentModifierMask;
+- (BOOL)performKeyEquivalent:(NSEvent * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+@end
+
+/// The possible icon text button styles.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMIconTextButtonStyle, "Style", open) {
+/// The regular button styles.
+  PZMIconTextButtonStylePrimary = 0,
+/// The regular button styles.
+  PZMIconTextButtonStyleSecondary = 1,
+/// The regular button styles.
+  PZMIconTextButtonStyleTertiary = 2,
+/// The danger button styles.
+  PZMIconTextButtonStyleDangerPrimary = 3,
+/// The danger button styles.
+  PZMIconTextButtonStyleDangerSecondary = 4,
+/// The danger button styles.
+  PZMIconTextButtonStyleDangerTertiary = 5,
+};
+
+/// The possible icon text button sizes.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMIconTextButtonSize, "Size", open) {
+/// The small button size.
+  PZMIconTextButtonSizeSmall = 0,
+/// The medium button size.
+  PZMIconTextButtonSizeMedium = 1,
+/// The large button size.
+  PZMIconTextButtonSizeLarge = 2,
+};
+
 
 
 
 enum ZMLinkHandlerType : NSInteger;
+@class NSValue;
 
 SWIFT_CLASS_NAMED("Label")
 @interface PZMLabel : PZMInteractableView
@@ -3817,6 +4073,7 @@ SWIFT_CLASS_NAMED("Label")
 /// Create a Label with default parameters
 - (nonnull instancetype)initWithFrame:(NSRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (void)keyDown:(NSEvent * _Nonnull)event;
+- (BOOL)accessibilityPerformPress SWIFT_WARN_UNUSED_RESULT;
 /// The text color
 @property (nonatomic, strong) PrismColor * _Nonnull textColor;
 /// Maximum number of lines, default is 1
@@ -3865,6 +4122,8 @@ SWIFT_CLASS_NAMED("Label")
 @property (nonatomic) BOOL roleAsLink;
 - (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
+- (void)drawFocusRingMask;
+- (NSArray<NSValue *> * _Nonnull)getAllLinkRanges SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -3908,6 +4167,10 @@ SWIFT_CLASS_NAMED("LinkView")
 @property (nonatomic) NSFocusRingType focusRingType;
 @property (nonatomic) BOOL requiresTracking;
 @property (nonatomic) BOOL enabled;
+/// Custom accessibility role for this link view. If set, overrides the default .link role.
+@property (nonatomic) NSAccessibilityRole _Nullable accessibilityRoleOverride;
+/// Custom accessibility title for this link view. If set, overrides the default title.
+@property (nonatomic, copy) NSString * _Nullable accessibilityTitleOverride;
 /// Creates a new <code>LinkView</code> instance with some text, a URL, and optionally a <code>Style</code>.
 /// Returns: A new <code>LinkView</code> instance.
 /// \param text The label to be displayed.
@@ -3971,7 +4234,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMLinkViewStyle, "Style", open) {
 
 
 SWIFT_CLASS_NAMED("TableCellView")
-@interface PZMTableCellView : NSTableCellView <CursorStateBindable, PZMThemeable>
+@interface PZMTableCellView : NSTableCellView <CursorStateBindable>
 @property (nonatomic) BOOL suppressNextLayerAnimation;
 /// Determines whether to enable animation in the view’s own updates (such as a fade-in/out or sliding text).
 /// Declared in <code>AnimatedView</code>; defaults to <code>true</code>.
@@ -4156,10 +4419,6 @@ SWIFT_CLASS_NAMED("TableCellView")
 - (void)viewDidMoveToWindow;
 - (void)viewWillMoveToSuperview:(NSView * _Nullable)newSuperview;
 - (void)viewDidMoveToSuperview;
-- (void)setThemeOverride:(enum PZMTheme)themeOverride recursively:(BOOL)recursively;
-- (void)clearThemeOverrideWithRecursively:(BOOL)recursively;
-- (void)didChangeEffectiveTheme;
-@property (nonatomic, readonly) enum PZMTheme effectiveTheme;
 - (void)viewDidChangeEffectiveAppearance;
 - (NSString * _Nullable)accessibilityHelp SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -4217,8 +4476,6 @@ SWIFT_CLASS_NAMED("Listbox")
 ///
 - (void)removeViewsIn:(NSStackViewGravity)gravity predicate:(BOOL (^ _Nullable)(NSView * _Nonnull))predicate;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
-- (void)setThemeOverride:(enum PZMTheme)themeOverride recursively:(BOOL)recursively;
-- (void)clearThemeOverrideWithRecursively:(BOOL)recursively;
 @property (nonatomic) BOOL hoversOnVoiceOverSelection;
 - (NSString * _Nullable)accessibilityRoleDescription SWIFT_WARN_UNUSED_RESULT;
 - (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
@@ -4233,6 +4490,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMListboxStyle, "Style", open) {
   PZMListboxStyleSidebar = 1,
 };
 
+@class NSAppearance;
 
 SWIFT_PROTOCOL_NAMED("PanelDelegate")
 @protocol PZMPanelDelegate
@@ -4298,6 +4556,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor *
 @property (nonatomic, readonly) NSRect screenFrame;
 /// The items to be shown in the menu.
 @property (nonatomic, copy) NSArray<PZMMenuItem *> * _Nonnull items;
+/// The index of the selected item.
+@property (nonatomic) NSInteger selectedIndex;
 /// Adds one item to the end of <code>items</code>.
 /// \param item the item to be added.
 ///
@@ -4415,6 +4675,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor *
 /// \param completionHandler A function to be invoked after the completion of the animation.
 ///
 - (void)appearAtPoint:(CGPoint)point pinnedBy:(enum PZMRectEdge)pinnedBy inDirection:(enum PZMDirection)inDirection superwindow:(NSWindow * _Nullable)superwindow screen:(NSScreen * _Nullable)screen;
+/// Causes the menu to perform the action of a specified menu item.
+/// \param index The integer index of a menu item.
+///
+///
+/// returns:
+/// <code>true</code> if an action is performed or <code>false</code> if it is not.
+- (BOOL)performActionForItemAtIndex:(NSInteger)index;
 - (void)setIndexToScroll:(NSInteger)newValue;
 - (void)removeIndexToScroll;
 /// Whether the <code>Menu</code> will consume mouse scrolling events.
@@ -4458,7 +4725,6 @@ SWIFT_CLASS_NAMED("Event")
 @end
 
 
-@class NSNumber;
 @protocol PZMMenuItemSubpanelProvider;
 
 /// An object representing one menu item.
@@ -4516,6 +4782,7 @@ SWIFT_CLASS_NAMED("MenuItem")
 @end
 
 
+
 @interface PZMMenuItem (SWIFT_EXTENSION(Prism))
 @end
 
@@ -4541,7 +4808,6 @@ SWIFT_PROTOCOL_NAMED("SubpanelProvider")
 /// Whether or not the provider’s item should display in the enabled or disabled state.
 @property (nonatomic, readonly) BOOL enabled;
 @end
-
 
 
 /// Prism’s model object for modal UI elements, such as popovers and toasts.
@@ -4618,17 +4884,37 @@ SWIFT_CLASS("_TtC5Prism15MonthPickerView")
 
 
 
-@interface NSApplication (SWIFT_EXTENSION(Prism))
-+ (BOOL)isSupportDarkMode SWIFT_WARN_UNUSED_RESULT;
-+ (BOOL)isDarkMode SWIFT_WARN_UNUSED_RESULT;
+@interface NSColor (SWIFT_EXTENSION(Prism))
++ (NSColor * _Nonnull)colorFromHexvalue:(NSInteger)value alpha:(CGFloat)alpha SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
 
 
-
 @interface NSColor (SWIFT_EXTENSION(Prism))
-+ (NSColor * _Nonnull)colorFromHexvalue:(NSInteger)value alpha:(CGFloat)alpha SWIFT_WARN_UNUSED_RESULT;
+/// Converts an NSColor to a Prism Color.
+/// If the receiver is already a Prism Color, it returns itself. Otherwise, it wraps the NSColor
+/// in a WrapperNSColor that uses the same color for both light and dark themes.
+///
+/// returns:
+/// A Prism Color instance.
+- (PrismColor * _Nonnull)prismColor SWIFT_WARN_UNUSED_RESULT;
+/// Returns the light color variant.
+/// For regular NSColor instances, this returns the color itself.
+/// note:
+/// Reduce the business side’s judgment on the color type, can directly get lightColor and darkColor
+///
+/// returns:
+/// The light color variant.
+@property (nonatomic, readonly, strong) NSColor * _Nonnull lightColor;
+/// Returns the dark color variant.
+/// For regular NSColor instances, this returns the color itself.
+/// note:
+/// Reduce the business side’s judgment on the color type, can directly get lightColor and darkColor
+///
+/// returns:
+/// The dark color variant.
+@property (nonatomic, readonly, strong) NSColor * _Nonnull darkColor;
 @end
 
 
@@ -4787,7 +5073,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) NSColor * _N
 + (NSColor * _Nonnull)zmMenuHoverColor SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) NSColor * _Nonnull zmFocusBlueColor;)
 + (NSColor * _Nonnull)zmFocusBlueColor SWIFT_WARN_UNUSED_RESULT;
-@property (nonatomic, readonly) NSInteger hexRGB;
+@property (nonatomic, readonly) NSUInteger hexRGB;
 @end
 
 
@@ -4818,6 +5104,27 @@ enum PZMTypograph : NSInteger;
 
 
 @interface NSImage (SWIFT_EXTENSION(Prism))
+/// Returns the light image variant.
+/// For regular NSImage instances, this returns the image itself.
+/// note:
+/// Reduce the business side’s judgment on the image type, can directly get lightImage and darkImage
+///
+/// returns:
+/// The light image variant.
+@property (nonatomic, readonly, strong) NSImage * _Nonnull lightImage;
+/// Returns the dark image variant.
+/// For regular NSImage instances, this returns the image itself.
+/// note:
+/// Reduce the business side’s judgment on the image type, can directly get lightImage and darkImage
+///
+/// returns:
+/// The dark image variant.
+@property (nonatomic, readonly, strong) NSImage * _Nonnull darkImage;
+@end
+
+
+@interface NSImage (SWIFT_EXTENSION(Prism))
+/// This function can support all color type, like <code>NSColor</code>, <code>AppearanceColor</code>,<code>ThemeColor</code>
 - (NSImage * _Nonnull)tinted:(NSColor * _Nonnull)color SWIFT_WARN_UNUSED_RESULT;
 - (NSImage * _Nonnull)tintedImageWith:(NSColor * _Nullable)tintColor SWIFT_WARN_UNUSED_RESULT;
 - (NSImage * _Nonnull)tintedImageWith:(NSColor * _Nullable)tintColor operation:(NSCompositingOperation)operation SWIFT_WARN_UNUSED_RESULT;
@@ -4834,6 +5141,42 @@ enum PZMTypograph : NSInteger;
 @end
 
 
+
+
+@class ZMTheme;
+
+SWIFT_PROTOCOL("_TtP5Prism20ZMThemeCustomization_")
+@protocol ZMThemeCustomization <NSObject>
+@property (nonatomic, strong) ZMTheme * _Nullable zmTheme;
+/// This returns the theme that would be used when drawing the receiver, taking inherited appearances into account.
+@property (nonatomic, readonly, strong) ZMTheme * _Nonnull effectiveTheme;
+/// The theme associated with this provider, used as the context
+/// for drawing colors and images.
+/// Each provider should produce a single <code>ZMTheme</code>, which serves
+/// as the <code>drawingTheme</code> during rendering operations.
+/// note:
+/// This theme is intended for drawing-related purposes only,
+/// not for higher-level appearance or layout configurations.
+@property (nonatomic, readonly, strong) ZMTheme * _Nonnull drawingTheme;
+@optional
+- (void)didChangeEffectiveTheme;
+@end
+
+
+@interface NSResponder (SWIFT_EXTENSION(Prism)) <ZMThemeCustomization>
+/// The explicit theme override for this responder.
+/// When set, this theme takes precedence over inherited themes.
+@property (nonatomic, strong) ZMTheme * _Nullable zmTheme;
+/// The theme used for drawing operations.
+/// This creates a dynamic theme that adapts to the responder’s effective theme.
+@property (nonatomic, readonly, strong) ZMTheme * _Nonnull drawingTheme;
+/// The effective theme for this responder, resolved through hierarchical inheritance.
+/// This is the theme that should be used for drawing and appearance decisions.
+@property (nonatomic, readonly, strong) ZMTheme * _Nonnull effectiveTheme;
+/// private method that trigger change effecitveTheme when view move to window or superView
+/// -note: please don’t call this method directly, it just for internal use
+- (void)_final_changeEffectiveThemeIfNeeded;
+@end
 
 
 
@@ -4889,6 +5232,23 @@ enum PZMTypograph : NSInteger;
 
 
 
+@class ZMAppearance;
+
+SWIFT_PROTOCOL("_TtP5Prism25ZMAppearanceCustomization_")
+@protocol ZMAppearanceCustomization <NSAppearanceCustomization>
+@property (nonatomic, strong) ZMAppearance * _Nullable zmAppearance;
+@optional
+/// Notifies the appearance that the effective appearance has changed and needs to be refreshed
+- (void)didChangeEffectiveAppearance;
+@end
+
+
+@interface NSView (SWIFT_EXTENSION(Prism)) <ZMAppearanceCustomization>
+@property (nonatomic, readonly, strong) ZMAppearance * _Nullable drawingAppearance;
+@property (nonatomic, strong) ZMAppearance * _Nullable zmAppearance;
+- (void)didChangeEffectiveAppearance;
+@end
+
 
 @interface NSView (SWIFT_EXTENSION(Prism))
 /// Returns the point, in the superview’s coordinate system, at a given edge.
@@ -4912,6 +5272,18 @@ enum PZMRectCorners : NSInteger;
 @interface NSWindow (SWIFT_EXTENSION(Prism))
 - (void)setPZMPosition:(NSPoint)position forCorner:(enum PZMRectCorners)corner animate:(BOOL)animate;
 - (BOOL)containsPoint:(NSPoint)locationInScreen SWIFT_WARN_UNUSED_RESULT;
+/// Returns the frame view (the view closest to the window) of the window.
+///
+/// returns:
+/// The frame view of the window
+- (NSView * _Nullable)zmFrameView SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface NSWindow (SWIFT_EXTENSION(Prism)) <ZMAppearanceCustomization>
+@property (nonatomic, readonly, strong) ZMAppearance * _Nullable drawingAppearance;
+@property (nonatomic, strong) ZMAppearance * _Nullable zmAppearance;
+- (void)didChangeEffectiveAppearance;
 @end
 
 
@@ -5068,6 +5440,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMNotifierViewStyle, "Style", open) {
   PZMNotifierViewStyleBlue = 1,
 };
 
+@class NSControl;
 
 /// Prism’s Input Field component for integer numeric input.
 /// <code>NumberInputField</code> instances may enforce minimum and maximum values if desired.
@@ -5079,6 +5452,8 @@ SWIFT_CLASS_NAMED("NumberInputField")
 @property (nonatomic) NSInteger intValue;
 @property (nonatomic, readonly) BOOL wantsUpdateLayer;
 @property (nonatomic, copy) void (^ _Nullable onUpdate)(PZMNumberInputField * _Nonnull, NSInteger);
+/// Whether to hide the arrow buttons to increment/decrement; defaults to <code>false</code>.
+@property (nonatomic) BOOL hideArrowButtons;
 /// Instantiates a new <code>NumberInputField</code> with the given options.
 /// \param header The header to be displayed above the bubble.
 ///
@@ -5201,10 +5576,12 @@ SWIFT_CLASS_NAMED("Panel")
 ///
 /// \param pinnedBy The corner around which to reposition the <code>Panel</code>.
 ///
+/// \param animate Specifies whether the window performs a smooth resize.
+///
 ///
 /// returns:
 /// The frame origin offset used to reposition the panel during the size change.
-- (NSSize)setFrameSize:(NSSize)size pinnedBy:(enum PZMRectEdge)corner;
+- (NSSize)setFrameSize:(NSSize)size pinnedBy:(enum PZMRectEdge)corner animate:(BOOL)animate;
 - (nonnull instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)style backing:(NSBackingStoreType)backingStoreType defer:(BOOL)flag SWIFT_UNAVAILABLE;
 @end
 
@@ -5361,6 +5738,7 @@ SWIFT_CLASS_NAMED("Popover")
 @property (nonatomic) BOOL announceWhenShown;
 - (void)removeAnnounceWhenShownOverride;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
+@property (nonatomic, copy) NSString * _Nullable accessibilityDescriptionPrefix;
 @property (nonatomic, readonly, copy) NSString * _Nonnull accessibilityDescription;
 /// ❄️ snowflake configuration ❄️
 /// !! DO NOT USE BEFORE CONTACTING OWNER !!
@@ -5516,6 +5894,48 @@ SWIFT_PROTOCOL("_TtP5Prism17PrismCoreDelegate_")
 @property (nonatomic, readonly) BOOL isVoiceOverRunning;
 @end
 
+
+
+
+@interface PrismImage (SWIFT_EXTENSION(Prism))
+/// Creates an image with theme support using NSNumber keys (deprecated).
+/// warning:
+/// This method is deprecated for swift. Use <code>image(withImage:themes:theme:)</code> instead.
+/// This is a Objective-C usage:
+/// \code
+/// [PrismImage imageWithImage:@"PT_Titlebar_Logo_theme_normal".resourceSvgImage
+///                     themes:@{@(`ZMThemeNameClassic`): @"PT_Titlebar_Logo_theme_classic".resourceSvgImage}];
+///
+/// \endcode\param image The base image to use for light and dark themes.
+///
+/// \param themes Dictionary of theme-specific images using NSNumber keys.
+///
+/// \param note NSNumber value is ThemeName type in Objective-C.
+///
+///
+/// returns:
+/// A <code>ThemeImage</code> instance with the specified images.
++ (PrismImage * _Nonnull)imageWithImage:(NSImage * _Nonnull)image themes:(NSDictionary<NSNumber *, NSImage *> * _Nonnull)themes SWIFT_WARN_UNUSED_RESULT;
+/// Creates an image from a ZMPigment object.
+/// \param pigment The ZMPigment object to create the image from.
+///
+///
+/// returns:
+/// A <code>PigmentImage</code> instance that derives its images from the pigment.
++ (PrismImage * _Nonnull)imageWithPigment:(ZMPigment * _Nonnull)pigment SWIFT_WARN_UNUSED_RESULT;
+/// Sets an image for a specific theme. Only ThemeImage subclasses can use this method.
+/// note:
+/// This method will fatal error if called on base Image class.
+/// Only ThemeImage subclasses should override this method.
+/// \param image The image to set for the theme, or nil to remove the theme-specific image.
+///
+/// \param note The image type is NSImage, support <code>NSImage</code>, <code>Image/PrismImage</code> parameter.
+///
+/// \param theme The theme name to set the image for.
+///
+- (void)setImage:(NSImage * _Nullable)image forTheme:(enum ZMThemeName)theme;
+@end
+
 @class PZMProgressIndicatorSegment;
 enum PZMProgressIndicatorSize : NSInteger;
 
@@ -5523,6 +5943,7 @@ SWIFT_CLASS_NAMED("ProgressIndicator")
 @interface PZMProgressIndicator : PZMView
 @property (nonatomic, copy) NSArray<PZMProgressIndicatorSegment *> * _Nullable segments;
 @property (nonatomic) float progress;
+@property (nonatomic, strong) PrismColor * _Nullable staticForegroundColor;
 /// The warningUsage of progress indicator
 @property (nonatomic) float warningUsage;
 /// The seriousUsage of progress indicator
@@ -5725,6 +6146,8 @@ SWIFT_CLASS_NAMED("RadioButton")
 /// returns:
 /// A new <code>RadioButton</code> instance.
 - (nonnull instancetype)initWithItem:(PZMRadioButtonItem * _Nullable)item attributedText:(NSAttributedString * _Nullable)attributedText isSelected:(BOOL)isSelected OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic) BOOL shouldUpdateConstraint;
+- (void)setFrameSize:(NSSize)newSize;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 @property (nonatomic) BOOL enabled;
 - (void)mouseDown:(NSEvent * _Nonnull)event;
@@ -5740,6 +6163,8 @@ SWIFT_CLASS_NAMED("RadioButton")
 - (id _Nullable)accessibilityValue SWIFT_WARN_UNUSED_RESULT;
 - (NSRect)accessibilityFrame SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)accessibilityPerformPress SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly) BOOL canBecomeKeyView;
+@property (nonatomic) BOOL canBecomeKeyViewOnlyWhenSelected;
 @end
 
 
@@ -5828,6 +6253,7 @@ SWIFT_CLASS_NAMED("RadioGroupView")
 - (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isAccessibilityEnabled SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)becomeFirstResponder SWIFT_WARN_UNUSED_RESULT;
+- (void)setAccessibilityIdentifier:(NSString * _Nullable)identifier forItemAtIndex:(NSInteger)index;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
 @end
 
@@ -5891,6 +6317,7 @@ SWIFT_CLASS_NAMED("SegmentedControl")
 /// This implementation runs in <code>O(n)</code>, where <code>n</code> is the number of subviews.
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 - (void)updateLayer;
+- (void)layout;
 - (BOOL)selectWithTag:(NSInteger)tag error:(NSError * _Nullable * _Nullable)error;
 - (BOOL)selectWithItemIdentifier:(NSString * _Nonnull)itemIdentifier error:(NSError * _Nullable * _Nullable)error;
 /// Selects the item at an index.
@@ -6030,6 +6457,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMSentiment, "Sentiment", open) {
   PZMSentimentPlain = 5,
   PZMSentimentNew = 6,
   PZMSentimentBeta = 7,
+  PZMSentimentSystem = 8,
 };
 
 @class PZMSliderViewDecoration;
@@ -6057,6 +6485,12 @@ SWIFT_CLASS_NAMED("SliderView")
 @property (nonatomic, copy) void (^ _Nullable onMouseUp)(PZMSliderView * _Nonnull);
 @property (nonatomic) NSRect frame;
 @property (nonatomic) double doubleValue;
+/// The minimum value of the slider’s range (for display and external use)
+@property (nonatomic) double minValue;
+/// The maximum value of the slider’s range (for display and external use)
+@property (nonatomic) double maxValue;
+/// The current value of the slider in the user-defined range (minValue to maxValue)
+@property (nonatomic) double currentValue;
 @property (nonatomic) NSUInteger intValue;
 @property (nonatomic) BOOL requiresTracking;
 @property (nonatomic) BOOL enabled;
@@ -6084,6 +6518,7 @@ SWIFT_CLASS_NAMED("SliderView")
 - (void)viewWillMoveToWindow:(NSWindow * _Nullable)newWindow;
 - (void)viewWillMoveToSuperview:(NSView * _Nullable)newSuperview;
 - (void)keyDown:(NSEvent * _Nonnull)event;
+@property (nonatomic, readonly) BOOL mouseDownCanMoveWindow;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 - (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)accessibilityValueDescription SWIFT_WARN_UNUSED_RESULT;
@@ -6268,6 +6703,73 @@ SWIFT_CLASS_NAMED("SpanView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+enum PZMSplitButtonStyle : NSInteger;
+enum PZMSplitButtonSize : NSInteger;
+
+/// A split button that has a primary action on the left and a secondary action on the right.
+/// The secondary action is typically used to show additional options or a menu.
+SWIFT_CLASS_NAMED("SplitButton")
+@interface PZMSplitButton : PZMInteractableView <PZMBaseButton>
+/// The button’s primary action, to be invoked when the user clicks the main part of the button.
+@property (nonatomic, copy) void (^ _Nonnull action)(id <PZMBaseButton> _Nonnull);
+/// The button’s secondary action, to be invoked when the user clicks the secondary part of the button.
+@property (nonatomic, copy) void (^ _Nonnull secondaryAction)(id <PZMBaseButton> _Nonnull);
+/// The button’s style.
+@property (nonatomic) enum PZMSplitButtonStyle style;
+/// The button’s label.
+@property (nonatomic, copy) NSString * _Nullable label;
+@property (nonatomic, strong) NSImage * _Nullable primaryIcon;
+/// The Objective-C compatible secondary icon property.
+@property (nonatomic, strong) NSImage * _Nullable secondaryIcon;
+@property (nonatomic) BOOL runActionOnMouseDown;
+@property (nonatomic) BOOL showDot;
+@property (nonatomic) NSInteger buttonTag;
+@property (nonatomic) BOOL tintImage;
+@property (nonatomic, copy) NSString * _Nonnull keyEquivalent;
+@property (nonatomic) NSEventModifierFlags keyEquivalentModifierMask;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithLabel:(NSString * _Nullable)_ocLabel style:(enum PZMSplitButtonStyle)style size:(enum PZMSplitButtonSize)size secondaryIcon:(NSImage * _Nullable)_ocSecondaryIcon action:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))_ocAction secondaryAction:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))_ocSecondaryAction;
+@property (nonatomic) BOOL enabled;
+@property (nonatomic) BOOL forbidInteraction;
+@property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
+@property (nonatomic, strong) PrismColor * _Nullable hoveredBackgroundColor;
+@property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
+@property (nonatomic) CGFloat borderWidth;
+@property (nonatomic, strong) PrismColor * _Nullable borderColor;
+@property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic, readonly) NSSize intrinsicContentSize;
+@property (nonatomic, readonly) BOOL canBecomeKeyView;
+@property (nonatomic, readonly) BOOL acceptsFirstResponder;
+- (void)showProgressIndicator;
+- (void)hideProgressIndicator;
+- (BOOL)isAccessibilityElement SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isAccessibilityEnabled SWIFT_WARN_UNUSED_RESULT;
+- (void)setPrimaryButtonAccessibilityIdentifier:(NSString * _Nullable)accessibilityIdentifier;
+- (void)setSecondaryButtonAccessibilityIdentifier:(NSString * _Nullable)accessibilityIdentifier;
+- (void)setSecondaryButtonAccessibilityTitle:(NSString * _Nullable)accessibilityTitle;
+- (void)setSecondaryButtonAccessibilityLabel:(NSString * _Nullable)accessibilityLabel;
+- (void)setSecondaryButtonAccessibilityRole:(NSAccessibilityRole _Nullable)accessibilityRole;
+- (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
+@end
+
+/// The button styles, as defined in the design specification.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMSplitButtonStyle, "Style", open) {
+/// The primary button style.
+  PZMSplitButtonStylePrimary = 0,
+/// The secondary button style.
+  PZMSplitButtonStyleSecondary = 1,
+};
+
+/// The available button sizes.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMSplitButtonSize, "Size", open) {
+/// The small button size.
+  PZMSplitButtonSizeSmall = 0,
+/// The medium button size.
+  PZMSplitButtonSizeMedium = 1,
+/// The large button size.
+  PZMSplitButtonSizeLarge = 2,
+};
+
 
 SWIFT_CLASS_NAMED("SplitView")
 @interface PZMSplitView : NSSplitView <CursorStateBindable>
@@ -6418,12 +6920,11 @@ SWIFT_CLASS_NAMED("SplitView")
 - (void)viewDidMoveToWindow;
 - (void)viewWillMoveToSuperview:(NSView * _Nullable)newSuperview;
 - (void)viewDidMoveToSuperview;
-- (void)setThemeOverride:(enum PZMTheme)themeOverride recursively:(BOOL)recursively;
-- (void)clearThemeOverrideWithRecursively:(BOOL)recursively;
-@property (nonatomic, readonly) enum PZMTheme effectiveTheme;
 - (void)viewDidChangeEffectiveAppearance;
 @end
 
+enum PZMSteppedProgressIndicatorStepState : NSInteger;
+@class PZMSteppedProgressIndicatorItem;
 
 /// Prism’s stepped progress indicator component, used to display progress with multi-step actions.
 /// This component is commonly used for multi-step processes, such as a checkout or sign-up page. Its state can
@@ -6436,6 +6937,31 @@ SWIFT_CLASS_NAMED("SplitView")
 /// <a href="https://www.figma.com/file/fLGhhzkzA1tlvZOg00to2L/Prism-Component-Library-(MVP)?type=design&node-id=40902-110468"><em>Figma</em>: Stepped Progress Indicator Design Specification</a>
 SWIFT_CLASS_NAMED("SteppedProgressIndicator")
 @interface PZMSteppedProgressIndicator : PZMView
+/// The index of the currently active step.
+@property (nonatomic) NSInteger activeIndex;
+/// The <code>StepState</code> of the item at <code>activeIndex</code>.
+@property (nonatomic) enum PZMSteppedProgressIndicatorStepState activeIndexState;
+/// Returns the <code>StepState</code> of the item at <code>step</code>.
+/// \param step the index of the item.
+///
+///
+/// returns:
+/// the <code>StepState</code> for the item at <code>step</code>.
+- (enum PZMSteppedProgressIndicatorStepState)stateWithStep:(NSInteger)step SWIFT_WARN_UNUSED_RESULT;
+/// Sets the <code>StepState</code> of the item at <code>step</code>.
+/// note:
+/// Implicitly, this may also set the state of any items before or ahead of it.
+/// For example, setting <code>StepState/done</code> for <code>step == 1</code> will also set
+/// <code>StepState/done</code> for <code>step == 0</code>.
+- (void)setState:(enum PZMSteppedProgressIndicatorStepState)state step:(NSInteger)step;
+/// Whether or not the item at <code>activeIndex</code> has an error.
+/// This property is equivalent to calling <code>state(step:)</code> and
+/// <code>setState(_:step:)</code> with <code>activeIndex</code> and <code>StepState/error</code> if <code>true</code>,
+/// <code>StepState/current</code> if <code>false</code>.
+@property (nonatomic) BOOL hasError;
+/// An alignment guide to align content with the circles in the item views.
+@property (nonatomic, strong) NSLayoutGuide * _Nonnull alignmentLayoutGuide;
+- (nonnull instancetype)initWithItems:(NSArray<PZMSteppedProgressIndicatorItem *> * _Nonnull)items orientation:(enum PZMOrientation)orientation activeIndex:(NSInteger)activeIndex OBJC_DESIGNATED_INITIALIZER;
 /// Creates a stepped progress indicator with a list of items and an orientation.
 /// Optionally, takes an active index. Defaults to zero (first item).
 /// \param items 2 or more item labels to be displayed.
@@ -6444,7 +6970,7 @@ SWIFT_CLASS_NAMED("SteppedProgressIndicator")
 ///
 /// \param activeIndex The currently selected index.
 ///
-- (nonnull instancetype)initWithItems:(NSArray<NSString *> * _Nonnull)items orientation:(enum PZMOrientation)orientation activeIndex:(NSInteger)activeIndex OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLabels:(NSArray<NSString *> * _Nonnull)labels orientation:(enum PZMOrientation)orientation activeIndex:(NSInteger)activeIndex;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 /// The minimum size for the view, given its items and the layout constants.
 /// complexity:
@@ -6453,7 +6979,6 @@ SWIFT_CLASS_NAMED("SteppedProgressIndicator")
 /// returns:
 /// The minimum size for the view to lay itself out correctly.
 @property (nonatomic, readonly) NSSize minimumSize;
-- (void)setFrameSize:(NSSize)newSize;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 /// Advances the progress indicator to the next step.
 /// If the last step is already complete, this does nothing.
@@ -6461,8 +6986,43 @@ SWIFT_CLASS_NAMED("SteppedProgressIndicator")
 /// Regresses the progress indicator to the next step.
 /// If the first step is pending, this does nothing.
 - (void)decrement;
-- (void)updateLayer;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMSteppedProgressIndicatorStepState, "StepState", open) {
+  PZMSteppedProgressIndicatorStepStateDone = 0,
+  PZMSteppedProgressIndicatorStepStatePending = 1,
+  PZMSteppedProgressIndicatorStepStateCurrent = 2,
+  PZMSteppedProgressIndicatorStepStateError = 3,
+};
+
+
+SWIFT_CLASS_NAMED("Item")
+@interface PZMSteppedProgressIndicatorItem : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull label;
+@property (nonatomic, readonly, copy) NSString * _Nullable descriptionString;
+- (nonnull instancetype)initWithLabel:(NSString * _Nonnull)label description:(NSString * _Nullable)description OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Configuration for system notification style buttons.
+/// This class is used to configure buttons in the system notification style toast.
+SWIFT_CLASS_NAMED("SystemNotificationButton")
+@interface PZMSystemNotificationButton : NSObject
+/// The button title.
+@property (nonatomic, readonly, copy) NSString * _Nonnull title;
+/// The action to be executed when the button is clicked.
+@property (nonatomic, readonly, copy) void (^ _Nonnull action)(void);
+/// Initializes a system notification button.
+/// \param title The button title.
+///
+/// \param action The action to be executed when the button is clicked.
+///
+- (nonnull instancetype)initWithTitle:(NSString * _Nonnull)title action:(void (^ _Nonnull)(void))action OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -6508,12 +7068,10 @@ SWIFT_CLASS_NAMED("TabView")
 @interface PZMTabView : PZMView
 @property (nonatomic, weak) id <PZMTabViewDelegate> _Nullable delegate;
 @property (nonatomic, weak) id <PZMTabViewDataSource> _Nullable dataSource;
-@property (nonatomic) NSRect frame;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 /// The designated initializer. All strings passed have to be localized by extenal
 /// If the width of the total tab buttons is greater than the tabView self, the tabview is scrollable hoirzontally
 /// The height of this view can not be resized, it is determined by Size. 48.0 in large mode, 32.0 in regular mode
-/// The width of this view can be resized
 /// The ideal size of this view can be get from intrinsicContentSize
 /// important:
 /// This view does not create a tab content view
@@ -6524,44 +7082,36 @@ SWIFT_CLASS_NAMED("TabView")
 /// initialSelectedIndex: Which tab is selected initially, based on 0. There are 2 cases to lead to the failure of initializing the selected index
 /// The initialSelectedIndex is greater than the tabItems
 /// The initialSelectedIndex in the new tabItems is not selectable
+/// zmTheme: Can be assigned with ZMTheme.base or ZMTheme.unspecified
 /// dataSource: The data source which offers the arry of Tab Items, can not be nil, nor zero size
-/// delegate: The delegate to the TabView
-- (nonnull instancetype)initWithSize:(enum PZMTabViewSize)size leftAXString:(NSString * _Nullable)leftAXString rightAXString:(NSString * _Nullable)rightAXString initialSelectedIndex:(NSInteger)initialSelectedIndex dataSource:(id <PZMTabViewDataSource> _Nullable)dataSource;
-/// The designated initializer. All strings passed have to be localized by extenal
-/// If the width of the total tab buttons is greater than the tabView self, the tabview is scrollable hoirzontally
-/// The height of this view can not be resized, it is determined by Size. 48.0 in large mode, 32.0 in regular mode
-/// The width of this view can be resized
-/// The ideal size of this view can be get from intrinsicContentSize
-/// important:
-/// This view does not create a tab content view
-/// Parameters:
-/// size: determines the intrinsic height of this view, 48.0 in large mode, 32.0 in regular mode
-/// width: The initial width of this view, can be changed by setting frame
-/// leftAXString: What to read by voice over when the focus is moved onto the left arrow. The string passed has to be localized by extenal
-/// rightAXString: What to read by voice over when the focus is moved onto the right arrow. The string passed has to be localized by extenal
-/// initialSelectedIndex: Which tab is selected initially, based on 0. There are 2 cases to lead to the failure of initializing the selected index
-/// The initialSelectedIndex is greater than the tabItems
-/// The initialSelectedIndex in the new tabItems is not selectable
-/// dataSource: The data source which offers the arry of Tab Items, can not be nil, nor zero size
-/// delegate: The delegate to the TabView
-- (nonnull instancetype)initWithSize:(enum PZMTabViewSize)size width:(CGFloat)width leftAXString:(NSString * _Nullable)leftAXString rightAXString:(NSString * _Nullable)rightAXString initialSelectedIndex:(NSInteger)initialSelectedIndex dataSource:(id <PZMTabViewDataSource> _Nullable)dataSource;
+- (nonnull instancetype)initWithSize:(enum PZMTabViewSize)size leftAXString:(NSString * _Nullable)leftAXString rightAXString:(NSString * _Nullable)rightAXString initialSelectedIndex:(NSInteger)initialSelectedIndex zmTheme:(ZMTheme * _Nonnull)zmTheme dataSource:(id <PZMTabViewDataSource> _Nullable)dataSource;
 /// reload the tabs according to the tabItems from the dataSource
 /// This method tries to keep the selected index
 /// Make sure to make the selected index valid before calling this method
-/// There are 2 cases to lead to the failure of keeping the selected index
+/// There are 2 cases which lead to the failure
 /// The original selctedIndex is greater than the new tabItems
 /// The original selctedIndex in the new tabItems is not selectable
 - (BOOL)reload;
 /// reload the tabs according to the tabItems from the dataSource and select the selectedIndex
 /// This method tries to select selectedIndex
 /// Make sure to make the selected index valid before calling this method
-/// There are 2 cases to lead to the failure of keeping the selected index
-/// The original selctedIndex is greater than the new tabItems
-/// The original selctedIndex in the new tabItems is not selectable
+/// There are 2 cases which lead to the failure
+/// The new selctedIndex is greater than the new tabItems
+/// The new selctedIndex in the new tabItems is not selectable
 - (BOOL)reloadWithSelectedIndex:(NSInteger)selectedIndex;
 /// The index of selected tab, based on 0
 /// The focus slider is animated
 @property (nonatomic) NSInteger selectedIndex;
+/// Get the tab button view at the specified index
+/// warning:
+/// The returned view is for read-only purposes (e.g., positioning tooltips, popovers).
+/// Do not modify the button’s state directly as it may cause inconsistency with the TabView’s internal state.
+/// \param index The index of the tab button, based on 0
+///
+///
+/// returns:
+/// The tab button view if the index is valid, nil otherwise
+- (NSView * _Nullable)tabButtonAt:(NSInteger)index SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -6572,6 +7122,16 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMTabViewSize, "Size", open) {
   PZMTabViewSizeRegular = 0,
 /// The large avatar size (height is 48px).
   PZMTabViewSizeLarge = 1,
+};
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMTabViewCause, "TabViewCause", open) {
+  PZMTabViewCauseUnknown = 0,
+/// Caused by reloadWithSelectedIndex
+  PZMTabViewCauseByReload = 1,
+/// Caused by a clicking
+  PZMTabViewCauseByUserClick = 2,
+/// Caused by the assignment to selectedIndex
+  PZMTabViewCauseByAssign = 3,
 };
 
 
@@ -6589,12 +7149,12 @@ SWIFT_PROTOCOL_NAMED("TabViewDelegate")
 /// tabView: TabView self
 /// sourceIndex: the former selected index, base on 0
 /// destinationIndex: the index to select, base on 0
-- (BOOL)aTabWillSelectWithTabView:(PZMTabView * _Nonnull)tabView sourceIndex:(NSInteger)sourceIndex destinationIndex:(NSInteger)destinationIndex SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)aTabWillSelect:(PZMTabView * _Nonnull)tabView sourceIndex:(NSInteger)sourceIndex destinationIndex:(NSInteger)destinationIndex cause:(enum PZMTabViewCause)cause SWIFT_WARN_UNUSED_RESULT;
 /// Called when a tab button is clicked and aTabWillSelect returns true
 /// Parameters:
 /// tabView: TabView self
 /// byClicking: true if it is triggered by mouse clicking, or by selectedIndex assignment
-- (void)aTabDidSelectWithTabView:(PZMTabView * _Nonnull)tabView byClicking:(BOOL)byClicking;
+- (void)aTabDidSelect:(PZMTabView * _Nonnull)tabView cause:(enum PZMTabViewCause)cause;
 /// Called when the cursor state if a tab button is changed
 /// Parameters:
 /// tabView: TabView self
@@ -6648,14 +7208,16 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMTextAlignment, "TextAlignment", open) {
 enum PZMTextBadgeStyle : NSInteger;
 
 /// Prism’s text Badge component, commonly used for “beta” and “new” labels.
-/// <code>TextBadge</code> instances resize themselves to fit their content. Do not manually
-/// resize these instances.
+/// <code>TextBadge</code> instances resize themselves to fit their content by default.
+/// Optionally, you can set <code>customWidth</code> and <code>customHeight</code> to specify a fixed size.
+/// When custom size is set, the font will automatically adjust to fit the text,
+/// and text will be truncated in “A…B” format if it becomes too small to read.
 /// <h2>Reference</h2>
 /// <a href="https://www.figma.com/file/fLGhhzkzA1tlvZOg00to2L/Prism-Component-Library-(MVP)?type=design&node-id=683-0"><em>Figma</em>: Badge Design Specification</a>
 SWIFT_CLASS_NAMED("TextBadge")
 @interface PZMTextBadge : PZMView <PZMInvertible>
-/// <code>TextBadge</code> is theme-agnostic due to its color-based <code>Style</code> list.
-@property (nonatomic, readonly) enum PZMTheme effectiveTheme;
+/// The button’s style.
+@property (nonatomic) enum PZMTextBadgeStyle style;
 /// ❄️ snowflake configuration ❄️
 /// !! DO NOT USE BEFORE CONTACTING OWNER !!
 /// <ul>
@@ -6667,6 +7229,10 @@ SWIFT_CLASS_NAMED("TextBadge")
 ///   </li>
 /// </ul>
 @property (nonatomic) CGFloat snf_marginOffset;
+/// Custom width. When set to a value > 0, uses fixed width instead of auto-sizing.
+@property (nonatomic) CGFloat customWidth;
+/// Custom height. When set to a value > 0, uses fixed height instead of auto-sizing.
+@property (nonatomic) CGFloat customHeight;
 /// The label contents.
 @property (nonatomic, copy) NSString * _Nonnull text;
 @property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
@@ -6708,9 +7274,14 @@ SWIFT_CLASS_NAMED("TextBadge")
 /// returns:
 /// A <code>TextBadge</code> instance with the “NEW” style and text.
 + (PZMTextBadge * _Nonnull)makeNewBadge SWIFT_WARN_UNUSED_RESULT;
-- (void)updateLayer;
+/// Utility function that returns a “TRIAL” badge, as defined in the design specification.
+///
+/// returns:
+/// A <code>TextBadge</code> instance with the “TRIAL” style and text.
++ (PZMTextBadge * _Nonnull)makeTrialBadge SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 @property (nonatomic, readonly) BOOL propagatesKeyEvents;
+- (void)updateLayer;
 - (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)accessibilityTitle SWIFT_WARN_UNUSED_RESULT;
 - (NSArray<id <NSAccessibilityElement>> * _Nullable)accessibilityChildrenInNavigationOrder SWIFT_WARN_UNUSED_RESULT;
@@ -6731,13 +7302,45 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMTextBadgeStyle, "Style", open) {
 
 
 
-typedef SWIFT_ENUM_NAMED(NSInteger, PZMTheme, "Theme", open) {
-  PZMThemeClassic = 0,
-  PZMThemeBloom = 1,
-  PZMThemeAgave = 2,
-  PZMThemeRose = 3,
-};
 
+@interface PrismColorTheme (SWIFT_EXTENSION(Prism))
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull backgroundDarkerNeutral;)
++ (PrismColor * _Nonnull)backgroundDarkerNeutral SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull fillSubtlerNeutral;)
++ (PrismColor * _Nonnull)fillSubtlerNeutral SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull borderPrimary;)
++ (PrismColor * _Nonnull)borderPrimary SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull fillGlobalPrimary;)
++ (PrismColor * _Nonnull)fillGlobalPrimary SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull primaryHovered;)
++ (PrismColor * _Nonnull)primaryHovered SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull primaryPressed;)
++ (PrismColor * _Nonnull)primaryPressed SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull textError;)
++ (PrismColor * _Nonnull)textError SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull textNeutral;)
++ (PrismColor * _Nonnull)textNeutral SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull textStrongerNeutral;)
++ (PrismColor * _Nonnull)textStrongerNeutral SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull textPrimary;)
++ (PrismColor * _Nonnull)textPrimary SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull borderSubtleNeutral;)
++ (PrismColor * _Nonnull)borderSubtleNeutral SWIFT_WARN_UNUSED_RESULT;
+@end
+
+/// Theme name enumeration that defines all available themes in the Prism system.
+/// Each theme represents a distinct visual style with its own color palette and design language.
+typedef SWIFT_ENUM_NAMED(NSUInteger, ZMThemeName, "ThemeName", open) {
+  ZMThemeNameNone = 0,
+  ZMThemeNameBase = 1,
+  ZMThemeNameClassic = 2,
+  ZMThemeNameBloom = 3,
+  ZMThemeNameAgave = 4,
+  ZMThemeNameRose = 5,
+  ZMThemeNameDark = 6,
+  ZMThemeNameCustom = 7,
+  ZMThemeNameBackstage = 8,
+};
 
 /// Prism’s definitions for the time picker components. Similar to Cocoa time component specifiers, but
 /// accommodates for 12-hour clocks (with <code>ampm</code>) for UI operations.
@@ -6889,6 +7492,9 @@ SWIFT_CLASS_NAMED("ToastCoordinator")
 @property (nonatomic) BOOL inRelayout;
 @property (nonatomic) BOOL needRelayoutWhenShow;
 @property (nonatomic) BOOL needRelayoutAfterShow;
+@property (nonatomic) BOOL isSystemToast;
+/// Callback invoked when toast list changes (toast added or removed)
+@property (nonatomic, copy) void (^ _Nullable onToastListChanged)(void);
 - (nonnull instancetype)initWithWindow:(NSWindow * _Nonnull)window;
 - (nonnull instancetype)initWithWindow:(NSWindow * _Nonnull)window rightMargin:(CGFloat)rightMargin topMargin:(CGFloat)topMargin spacing:(CGFloat)spacing OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -6923,6 +7529,7 @@ enum ZMToastBusinessModule : NSInteger;
 - (void)addToast:(ZMToast * _Nonnull)toast;
 - (void)addToast:(ZMToast * _Nullable)toast animation:(BOOL)isAnimate;
 - (void)removeToast:(ZMToast * _Nullable)toast;
+- (BOOL)removeToastWithIdentifier:(NSString * _Nullable)identifier SWIFT_WARN_UNUSED_RESULT;
 - (void)updateExistToast:(ZMToast * _Nullable)toast;
 - (void)removeAllToasts;
 - (ZMToast * _Nullable)fetchToastWithIdentifier:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
@@ -6940,15 +7547,11 @@ SWIFT_CLASS_NAMED("ToastPanel")
 @property (nonatomic, strong) PZMToastCoordinator * _Nonnull toastCoordinator;
 @property (nonatomic) BOOL isPrismStyle;
 - (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, copy) NSString * _Nonnull title;
 - (nonnull instancetype)initWithContentRect:(NSRect)contentRect closable:(BOOL)closable miniaturizable:(BOOL)miniaturizable resizable:(BOOL)resizable generateWidgets:(BOOL)generate SWIFT_UNAVAILABLE;
 - (nonnull instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)style backing:(NSBackingStoreType)backingStoreType defer:(BOOL)flag SWIFT_UNAVAILABLE;
 @end
 
-@class PZMToastView;
-
-@interface PZMToastPanel (SWIFT_EXTENSION(Prism))
-- (PZMToastView * _Nonnull)pzmToastViewWithToast:(PZMUserNotification * _Nullable)toast SWIFT_WARN_UNUSED_RESULT;
-@end
 
 
 
@@ -6984,10 +7587,12 @@ SWIFT_CLASS_NAMED("ToastView")
 /// \param toast the model for the toast.
 ///
 - (nonnull instancetype)initWithToast:(PZMUserNotification * _Nonnull)toast closeButtonDidClick:(void (^ _Nullable)(void))closeButtonDidClick linkButtonDidClicked:(void (^ _Nullable)(void))linkButtonDidClicked primaryButtonAction:(void (^ _Nullable)(void))primaryButtonAction secondaryButtonAction:(void (^ _Nullable)(void))secondaryButtonAction OBJC_DESIGNATED_INITIALIZER;
-- (void)updateUIWithToast:(PZMUserNotification * _Nonnull)toast;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (BOOL)isAccessibilityElement SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isAccessibilityEnabled SWIFT_WARN_UNUSED_RESULT;
+- (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
+- (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, readonly) BOOL acceptsFirstResponder;
 @property (nonatomic) NSSize intrinsicContentSize;
 - (void)mouseDown:(NSEvent * _Nonnull)event;
@@ -7138,6 +7743,7 @@ SWIFT_CLASS_NAMED("ToolTip")
 @property (nonatomic, copy) NSString * _Nullable key;
 /// The tooltip’s super view enable status
 @property (nonatomic) BOOL superviewEnable;
+@property (nonatomic, strong) NSAppearance * _Nullable appearance;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) CGFloat preferredTextFieldLayoutWidth;)
 + (CGFloat)preferredTextFieldLayoutWidth SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) CGFloat textFieldFontSize;)
@@ -7286,6 +7892,10 @@ SWIFT_CLASS_NAMED("UserNotification")
 @property (nonatomic, copy) NSString * _Nullable (^ _Nullable informationTiming)(void);
 /// showLoading
 @property (nonatomic) BOOL showLoading;
+/// The custom icon for system notification style (24x24 points)
+@property (nonatomic, strong) NSImage * _Nullable customIcon;
+/// The system notification buttons array (Objective-C compatible, max 2 buttons)
+@property (nonatomic, copy) NSArray<PZMSystemNotificationButton *> * _Nullable systemNotificationButtonsOC;
 + (PZMUserNotification * _Nonnull)instanceWithTitle:(NSString * _Nonnull)title body:(NSString * _Nonnull)body attributeBody:(NSAttributedString * _Nonnull)attributeBody openLinkTitle:(NSString * _Nonnull)openLinkTitle primaryButtonTitle:(NSString * _Nonnull)primaryButtonTitle secondaryButtonTitle:(NSString * _Nonnull)secondaryButtonTitle sentiment:(enum PZMSentiment)sentiment autoDisappear:(BOOL)autoDisappear alwaysShowCloseButton:(BOOL)alwaysShowCloseButton closeButtonDidClicked:(void (^ _Nullable)(void))closeButtonDidClicked linkButtonDidClicked:(void (^ _Nullable)(void))linkButtonDidClicked primaryButtonClicked:(void (^ _Nullable)(void))primaryButtonClicked secondaryButtonClicked:(void (^ _Nullable)(void))secondaryButtonClicked toastDidClicked:(void (^ _Nullable)(void))toastDidClicked SWIFT_WARN_UNUSED_RESULT;
 /// Initializes a new notification.
 /// \param body The body of the notification.
@@ -7297,6 +7907,23 @@ SWIFT_CLASS_NAMED("UserNotification")
 /// \param context An optional context to be passed to a primary or secondary button displayed in the modal.
 ///
 - (nonnull instancetype)initWithBody:(NSString * _Nonnull)body sentiment:(enum PZMSentiment)sentiment autoDisappear:(BOOL)autoDisappear decorations:(NSArray<PZMUserNotificationDecoration *> * _Nonnull)decorations context:(id _Nullable)context;
+/// Creates a UserNotification with system notification style.
+/// \param title The notification title.
+///
+/// \param body The notification body.
+///
+/// \param customIcon The custom icon (24x24 points recommended).
+///
+/// \param buttons An array of buttons (max 2 will be displayed).
+///
+/// \param sentiment The notification sentiment (default: .plain).
+///
+/// \param closeButtonDidClicked Optional close button action.
+///
+///
+/// returns:
+/// A configured UserNotification instance.
++ (PZMUserNotification * _Nonnull)systemNotificationStyleWithTitle:(NSString * _Nonnull)title body:(NSString * _Nonnull)body customIcon:(NSImage * _Nullable)customIcon buttons:(NSArray<PZMSystemNotificationButton *> * _Nonnull)buttons sentiment:(enum PZMSentiment)sentiment closeButtonDidClicked:(void (^ _Nullable)(void))closeButtonDidClicked SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -7431,10 +8058,10 @@ SWIFT_CLASS("_TtC5Prism17ZMAlertScrollView")
 @end
 
 
+
 @interface ZMAlertViewController (SWIFT_EXTENSION(Prism))
 - (void)viewDidAppear;
 @end
-
 
 
 @interface ZMAlertViewController (SWIFT_EXTENSION(Prism))
@@ -7460,6 +8087,68 @@ SWIFT_CLASS("_TtC5Prism17ZMAlertScrollView")
 @end
 
 
+SWIFT_CLASS("_TtC5Prism12ZMAppearance")
+@interface ZMAppearance : NSObject
+- (void)effectiveAppearanceDidChanged;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface ZMAppearance (SWIFT_EXTENSION(Prism))
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) ZMAppearance * _Nonnull light;)
++ (ZMAppearance * _Nonnull)light SWIFT_WARN_UNUSED_RESULT;
++ (void)setLight:(ZMAppearance * _Nonnull)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) ZMAppearance * _Nonnull dark;)
++ (ZMAppearance * _Nonnull)dark SWIFT_WARN_UNUSED_RESULT;
++ (void)setDark:(ZMAppearance * _Nonnull)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) ZMAppearance * _Nonnull app;)
++ (ZMAppearance * _Nonnull)app SWIFT_WARN_UNUSED_RESULT;
++ (void)setApp:(ZMAppearance * _Nonnull)value;
++ (ZMAppearance * _Nonnull)appearanceWithProvider:(id <NSAppearanceCustomization> _Nonnull)provider SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+
+
+/// Base theme class that represents a visual theme in the Prism system.
+SWIFT_CLASS("_TtC5Prism7ZMTheme")
+@interface ZMTheme : NSObject
+/// The name of the theme
+@property (nonatomic) enum ZMThemeName name;
+/// Initializes a theme with the specified name
+/// \param name The theme name to use
+///
+- (nonnull instancetype)initWithName:(enum ZMThemeName)name OBJC_DESIGNATED_INITIALIZER;
+- (ZMTheme * _Nonnull)themeWithProvider:(id <ZMThemeCustomization> _Nonnull)provider SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, copy) NSString * _Nonnull debugDescription;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Dynamic theme class that adapts its appearance based on a theme provider.
+/// This theme automatically updates when the provider’s effective theme changes.
+SWIFT_CLASS("_TtC5Prism14ZMDynamicTheme")
+@interface ZMDynamicTheme : ZMTheme
+@property (nonatomic, weak) id <ZMThemeCustomization> _Nullable provider;
+- (nonnull instancetype)initWithProvider:(id <ZMThemeCustomization> _Nullable)provider OBJC_DESIGNATED_INITIALIZER;
+/// Notifies the theme that the effective theme has changed and needs to be refreshed
+- (void)effectiveThemeDidChanged;
+/// The current theme name, dynamically resolved from the provider
+@property (nonatomic) enum ZMThemeName name;
+/// Debug description for the dynamic theme
+@property (nonatomic, readonly, copy) NSString * _Nonnull debugDescription;
+- (nonnull instancetype)initWithName:(enum ZMThemeName)name SWIFT_UNAVAILABLE;
+@end
+
+
+/// A custom SplitButton subclass that fixes the first-click issue on secondaryAction
+/// by ensuring hit test returns the button itself instead of child views (like ImageView)
+SWIFT_CLASS("_TtC5Prism18ZMFixedSplitButton")
+@interface ZMFixedSplitButton : PZMSplitButton
+- (NSView * _Nullable)hitTest:(NSPoint)point SWIFT_WARN_UNUSED_RESULT;
+@end
+
 
 SWIFT_CLASS("_TtC5Prism7ZMHLine")
 @interface ZMHLine : ZMAccessibleView
@@ -7481,6 +8170,31 @@ typedef SWIFT_ENUM(NSInteger, ZMLinkHandlerType, open) {
   ZMLinkHandlerTypeEnterKeyDown = 1,
   ZMLinkHandlerTypeSpaceKeyDown = 2,
 };
+
+
+
+
+@interface ZMTheme (SWIFT_EXTENSION(Prism))
+/// If you set as .unspecified, the effectiveTheme for this view will get from parent or application,
+/// most component default is unspecified(==nil)
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ZMTheme * _Nullable unspecified;)
++ (ZMTheme * _Nullable)unspecified SWIFT_WARN_UNUSED_RESULT;
+/// If you set as .base, only return base light and dark source, so component default value is base, like: <code>Button</code>,<code>FloatingActionButton</code>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) ZMTheme * _Nonnull base;)
++ (ZMTheme * _Nonnull)base SWIFT_WARN_UNUSED_RESULT;
++ (void)setBase:(ZMTheme * _Nonnull)value;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ZMTheme * _Nonnull classic;)
++ (ZMTheme * _Nonnull)classic SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ZMTheme * _Nonnull bloom;)
++ (ZMTheme * _Nonnull)bloom SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ZMTheme * _Nonnull agave;)
++ (ZMTheme * _Nonnull)agave SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ZMTheme * _Nonnull rose;)
++ (ZMTheme * _Nonnull)rose SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ZMTheme * _Nonnull zoom;)
++ (ZMTheme * _Nonnull)zoom SWIFT_WARN_UNUSED_RESULT;
+@end
+
 
 enum ZMToastType : NSInteger;
 enum ZMToastPosition : NSInteger;
@@ -7524,6 +8238,10 @@ SWIFT_CLASS("_TtC5Prism7ZMToast")
 @property (nonatomic) BOOL isVisible;
 @property (nonatomic) enum ZMToastPosition postion;
 @property (nonatomic) enum ZMToastBusinessModule businessModule;
+@property (nonatomic) BOOL ignoreWindowVisibility;
+@property (nonatomic, strong) NSImage * _Nullable customIcon;
+@property (nonatomic, copy) NSArray<PZMSystemNotificationButton *> * _Nullable systemNotificationButtonsOC;
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nullable extraDict;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -7536,6 +8254,22 @@ SWIFT_CLASS("_TtC5Prism7ZMToast")
 + (ZMToast * _Nonnull)temporaryToastWithType:(enum ZMToastType)type information:(NSString * _Nullable)information SWIFT_WARN_UNUSED_RESULT;
 + (ZMToast * _Nonnull)timingToastWithType:(enum ZMToastType)type informationTiming:(NSString * _Nullable (^ _Nonnull)(ZMToast * _Nonnull, NSTimeInterval))informationTiming SWIFT_WARN_UNUSED_RESULT;
 - (void)makeClickableText:(NSString * _Nonnull)text url:(NSString * _Nonnull)url linkText:(NSString * _Nonnull)linkText;
+/// Set attributed information from HTML string with automatic link support
+/// This method processes HTML strings and creates attributed strings with clickable links
+/// It supports both NSLinkAttributeName and ZMLinkAttributeName for compatibility
+/// Example:
+/// \code
+/// toast.setHTMLInformation(
+///     "Visit our <a href='https://zoom.us'>website</a> for more info",
+///     fontSize: 14
+/// )
+///
+/// \endcodeNote: For custom text colors, use the Objective-C trans2HtmlSnippetFontLabel:textColor: method directly
+/// \param htmlString The HTML string containing <a> tags for links
+///
+/// \param fontSize The font size for the text (default: 14)
+///
+- (void)setHTMLInformation:(NSString * _Nonnull)htmlString fontSize:(CGFloat)fontSize;
 @end
 
 
@@ -7626,6 +8360,7 @@ typedef SWIFT_ENUM(NSInteger, ZMToastType, open) {
   ZMToastTypePlain = 8,
   ZMToastTypeNew = 9,
   ZMToastTypeBeta = 10,
+  ZMToastTypeSystem = 11,
 };
 
 @class NSMutableAttributedString;

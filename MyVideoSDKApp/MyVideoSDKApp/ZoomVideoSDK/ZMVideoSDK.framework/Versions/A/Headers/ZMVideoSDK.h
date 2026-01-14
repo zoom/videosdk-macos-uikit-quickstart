@@ -34,6 +34,7 @@
 #import <ZMVideoSDK/ZMVideoSDKSubSessionHelper.h>
 #import <ZMVideoSDK/ZMVideoSDKBroadcastStreamingController.h>
 #import <ZMVideoSDK/ZMVideoSDKBroadcastStreamingViewer.h>
+#import <ZMVideoSDK/ZMVideoSDKRTMSHelper.h>
 
 NS_ASSUME_NONNULL_BEGIN
 @class ZMVideoSDKExtendParams;
@@ -44,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKInitParams : NSObject
 /**
- * @brief Set client domain of ZOOM Video SDK.
+ * @brief Sets client domain of ZOOM Video SDK.
  */
 @property (nonatomic, retain, readwrite, nullable) NSString* domain;
 
@@ -54,22 +55,22 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain, readwrite, nullable) NSString* logFilePrefix;
 
 /**
- * @brief Set whether to enable default log of which the capacity is less than 5M.
+ * @brief Sets whether to enable default log of which the capacity is less than 5M.
  */
 @property (nonatomic, assign, readwrite) BOOL enableLog;
 
 /**
- * @brief Set audio raw data memory mode.
+ * @brief Sets audio raw data memory mode.
  */
 @property (nonatomic, assign, readwrite) ZMVideoSDKRawDataMemoryMode audioRawDataMemoryMode;
 
 /**
- * @brief Set video raw data memory mode.
+ * @brief Sets video raw data memory mode.
  */
 @property (nonatomic, assign, readwrite) ZMVideoSDKRawDataMemoryMode videoRawDataMemoryMode;
 
 /**
- * @brief Set share raw data memory mode.
+ * @brief Sets share raw data memory mode.
  */
 @property (nonatomic, assign, readwrite) ZMVideoSDKRawDataMemoryMode shareRawDataMemoryMode;
 
@@ -101,7 +102,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readwrite) ZMVideoSDKPreferVideoResolution preferVideoResolution;
 
 /**
- * @brief disable access keychain.
+ * @brief Disable access keychain.
  */
 @property (nonatomic, assign, readwrite) BOOL disableKeychainAccess;
 @end
@@ -113,7 +114,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKVideoOption : NSObject
 /**
- * @brief Set local video on or off.
+ * @brief Sets local video on or off.
  */
 @property (nonatomic, assign, readwrite) BOOL localVideoOn;
 @end
@@ -134,12 +135,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readwrite) BOOL mute;
 
 /**
- * @brief Determine whether my voice is in the mixed audio raw data or not. YES to include. No to exclude.
+ * @brief Determines whether my voice is in the mixed audio raw data or not. YES to include. No to exclude.
  */
 @property (nonatomic, assign, readwrite) BOOL isMyVoiceInMix;
 
 /**
- * @brief Whether to automatically adjust the volume of the speaker or not. If YES, this will automatically adjust the volume if it is muted or low. If NO it will not.
+ * @brief Whether to automatically adjust the speaker's volume or not. If YES, this automaticallies adjust the volume if it is muted or low. If NO it nots.
  */
 @property (nonatomic, assign, readwrite) BOOL autoAdjustSpeakerVolume;
 
@@ -182,23 +183,23 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain, readwrite, nullable) ZMVideoSDKAudioOption* audioOption;
 
 /**
- * @brief Set delegate. (optional).
+ * @brief Sets delegate. (optional).
  */
 @property (nonatomic, assign, readwrite) id<ZMVideoSDKVideoSourcePreProcessor> preProcessor;
 /**
- * @brief Set delegate (optional).
+ * @brief Sets delegate (optional).
  */
 @property (nonatomic, assign, readwrite) id<ZMVideoSDKVideoSource> externalVideoSource;
 /**
- * @brief Set virtual audio delegate (optional).
+ * @brief Sets virtual audio delegate (optional).
  */
 @property (nonatomic, assign, readwrite) id<ZMVideoSDKVirtualAudioMic> virtualAudioMic;
 /**
- * @brief Set virtual audio speaker delegate (optional).
+ * @brief Sets virtual audio speaker delegate (optional).
  */
 @property (nonatomic, assign, readwrite) id<ZMVideoSDKVirtualAudioSpeaker> virtualAudioSpeaker;
 /**
- * @brief [Optional] The amount of time in minutes after which an idle session will end.
+ * @brief [Optional] The amount of time in minutes after which an idle session ends.
  * @note When there is only one user remaining in a session, that session is considered idle.
  * @note Default value: 40. If the value is less than 0, the session will stay alive indefinitely.
  */
@@ -218,14 +219,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * @brief Returns ZMVideoSDK instance.
- * @return ZMVideoSDK instance.
+ * @return If the function succeeds, it returns ZMVideoSDK instance. Otherwise, this function fails and returns nil.
  */
 + (ZMVideoSDK*)sharedVideoSDK;
     
 /**
- * @brief Initialize the Zoom Video SDK with the appropriate parameters.
+ * @brief Initializes the Zoom Video SDK with the appropriate parameters.
  * @param params An initialization parameter object containing all required configuration fields.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)initialize:(ZMVideoSDKInitParams*)params;
     
@@ -235,180 +236,186 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)cleanUp;
     
 /**
- * @brief Register a listener for session events.
+ * @brief Registers a listener for session events.
  * @param listener A listener class that groups together all the callbacks related to a session.
  */
 - (void)addListener:(id <ZMVideoSDKDelegate>)listener;
     
 /**
- * @brief Unregister a listener for session events.
+ * @brief Unregisters a listener for session events.
  * @param listener A listener class that groups together all the callbacks related to a session.
  */
 - (void)removeListener:(id <ZMVideoSDKDelegate>)listener;
     
 /**
- * @brief Call this method to join a session with the appropriate ZMVideoSDKSessionContext parameters. When successful, the SDK will attempt to join a session. Use the callbacks in the listener to confirm whether the SDK actually joined.
- * @param params It is a session context object, contain all params to join session.
- * @return If the function succeeds, the return value is the pointer of session object, otherwise returns nil.
+ * @brief Joins a session with the appropriate ZMVideoSDKSessionContext parameters. When successful, the SDK attempts to join a session. Use the callbacks in the listener to confirm whether the SDK actually joined.
+ * @param params A session context object containing all parameters to join the session.
+ * @return If the function succeeds, it returns the session object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKSession* _Nullable)joinSession:(ZMVideoSDKSessionContext*)params;
     
 /**
- * @brief Call this method to leave a session previously joined through joinSession method call. When successful, the SDK will attempt to leave a session. Use the callbacks in the listener to confirm whether the SDK actually left.
+ * @brief Leaves a session previously joined through joinSession method call. When successful, the SDK attempts to leave a session. Use the callbacks in the listener to confirm whether the SDK actually left.
  * @param end YES if the host should end the entire session, or NO if the host should just leave the session.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)leaveSession:(BOOL)end;
     
 /**
  * @brief Returns the current session information.
- * @return If the function succeeds, it will return a session object, otherwise returns nil.
+ * @return If the function succeeds, it returns a session object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKSession*)getSessionInfo;
     
 /**
- @brief Check if there is an active session between participants.
- @return YES means in session, otherwise not.
+ @brief Checks if there is an active session between participants.
+ @return YES if in session. Otherwise, NO.
  */
 - (BOOL)isInSession;
     
 /**
  * @brief Returns Zoom SDK internal version.
- * @return If the function succeeds, the return value is sdk version. Otherwise returns nil.
+ * @return If the function succeeds, it returns sdk version. Otherwise, this function fails and returns nil.
  */
 - (NSString* _Nullable)getSDKVersion;
 
 /**
  * @brief Exports a log file to local disk.
- * @return If the function succeeds, the return value is the exported log file path.
+ * @return If the function succeeds, it returns the exported log file path. Otherwise, this function fails and returns nil.
  */
 - (NSString* _Nullable)exportLog;
 
 /**
  * @brief Cleans all exported logs.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success. Otherwise the function fails.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)cleanAllExportedLogs;
 
 /**
  * @brief Returns an instance to manage audio controls related to the current video SDK session.
- * @return If the function succeeds, it will return  a ZMVideoSDKAudioHelper instance, otherwise returns nil.
+ * @return If the function succeeds, it returns  a ZMVideoSDKAudioHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKAudioHelper*)getAudioHelper;
     
 /**
  * @brief Returns an instance to manage cameras and video during a video SDK session.
- * @return If the function succeeds, it will return  a ZMVideoSDKVideoHelper instance, otherwise returns nil.
+ * @return If the function succeeds, it returns  a ZMVideoSDKVideoHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKVideoHelper*)getVideoHelper;
     
 /**
  * @brief Returns an instance to manage users present in a video SDK session.
- * @return If the function succeeds, it will return  a ZMVideoSDKUserHelper instance, otherwise returns nil.
+ * @return If the function succeeds, it returns  a ZMVideoSDKUserHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKUserHelper*)getUserHelper;
     
 /**
  * @brief Returns an instance to manage screen sharing during a video SDK session.
- * @return If the function succeeds, it will return a ZMVideoSDKShareHelper instance, otherwise returns nil.
+ * @return If the function succeeds, it returns a ZMVideoSDKShareHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKShareHelper*)getShareHelper;
     
 /**
  * @brief Returns an instance to manage live streaming during a video SDK session.
- * @return If the function succeeds, it will return a ZMVideoSDKLiveStreamHelper instance, otherwise returns nil.
+ * @return If the function succeeds, it returns a ZMVideoSDKLiveStreamHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKLiveStreamHelper*)getLiveStreamHelper;
     
 /**
  * @brief Returns an instance to send and receive chat messages within video SDK session participants.
- * @return If the function succeeds, it will return a ZMVideoSDKChatHelper instance, otherwise returns nil.
+ * @return If the function succeeds, it returns a ZMVideoSDKChatHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKChatHelper*)getChatHelper;
 
 /**
  * @brief Returns an instance to manage cloud recordings during a video SDK session.
- * @return If the function succeeds, it will return a ZMVideoSDKRecordingHelper instance, otherwise returns nil.
+ * @return If the function succeeds, it returns a ZMVideoSDKRecordingHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKRecordingHelper*)getRecordingHelper;
 
 /**
  * @brief Returns an instance to use command channel features during a video SDK session.
- * @return If the function succeeds, it will return a ZMVideoSDKCmdChannel instance, otherwise returns nil.
+ * @return If the function succeeds, it returns a ZMVideoSDKCmdChannel instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKCmdChannel*)getCmdChannel;
 
 /**
  * @brief Returns an instance to manage phone invitations during a video SDK session.
- * @return If the function succeeds, it will return a ZMVideoSDKPhoneHelper instance, otherwise returns nil.
+ * @return If the function succeeds, it returns a ZMVideoSDKPhoneHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKPhoneHelper*)getPhoneHelper;
 
 /**
  * @brief Returns an instance to manage audio setting during or before a video SDK session.
- * @return If the function succeeds, it will return a ZMVideoSDKAudioSettingHelper instance, otherwise returns nil.
+ * @return If the function succeeds, it returns a ZMVideoSDKAudioSettingHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKAudioSettingHelper*)getAudioSettingHelper;
 
 /**
  * @brief Returns an instance to manage audio device test during or before a video SDK session.
- * @return If the function succeeds, it will return a ZMVideoSDKAudioDeviceTestHelper instance, otherwise returns nil.
+ * @return If the function succeeds, it returns a ZMVideoSDKAudioDeviceTestHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKAudioDeviceTestHelper*)getAudioDeviceTestHelper;
 
 /**
  * @brief Returns an instance to manage network connection during or before a video SDK session.
- * @return If the function succeeds, it will return a ZMVideoSDKNetworkConnectionHelper instance, otherwise returns nil.
+ * @return If the function succeeds, it returns a ZMVideoSDKNetworkConnectionHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKNetworkConnectionHelper*)getNetworkConnectionHelper;
 
 /**
- * @brief Get video setting helper object.
- * @return If the function succeeds, it will return a ZMVideoSDKVideoSettingHelper instance, otherwise returns nil.
+ * @brief Gets video setting helper object.
+ * @return If the function succeeds, it returns a ZMVideoSDKVideoSettingHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKVideoSettingHelper*)getVideoSettingHelper;
 
 /**
- * @brief Get share setting helper object.
- * @return If the function succeeds, it will return a ZMVideoSDKShareSettingHelper instance, otherwise returns nil.
+ * @brief Gets share setting helper object.
+ * @return If the function succeeds, it returns a ZMVideoSDKShareSettingHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKShareSettingHelper*)getShareSettingHelper;
 
 /**
- * @brief Get crc helper object.
- * @return If the function succeeds, it will return a ZMVideoSDKCRCHelper instance, otherwise returns nil.
+ * @brief Gets crc helper object.
+ * @return If the function succeeds, it returns a ZMVideoSDKCRCHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKCRCHelper*)getCRCHelper;
 
 /**
- * @brief Get live transcription helper object.
- * @return If the function succeeds, it will return a ZMVideoSDKLiveTranscriptionHelper instance, otherwise returns nil.
+ * @brief Gets live transcription helper object.
+ * @return If the function succeeds, it returns a ZMVideoSDKLiveTranscriptionHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKLiveTranscriptionHelper*)getLiveTranscriptionHelper;
 
 /**
- * @brief Get incoming live stream helper object.
- * @return If the function succeeds, it will return a ZMVideoSDKIncomingLiveStreamHelper instance, otherwise returns nil.
+ * @brief Gets incoming live stream helper object.
+ * @return If the function succeeds, it returns a ZMVideoSDKIncomingLiveStreamHelper instance. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKIncomingLiveStreamHelper*)getIncomingLiveStreamHelper;
 
 /**
- * @brief Get the subsession helper object.
- * @return If the function succeeds, it will return a ZMVideoSDKSubSessionHelper instance, otherwise returns nil.
+ * @brief Gets the subsession helper object.
+ * @return If the function succeeds, it returns a ZMVideoSDKSubSessionHelper instance. Otherwise, this function fails and returns nil.
  * @note Only host and manager can call this interface.
  */
 - (ZMVideoSDKSubSessionHelper* _Nullable)getSubSessionHelper;
 
 /**
  * @brief Gets the broadcast streaming controller object.
- * @return The broadcast streaming controller object if available; otherwise, nil.
+ * @return The broadcast streaming controller object if available. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKBroadcastStreamingController* _Nullable)getBroadcastStreamingController;
 
 /**
  * @brief Gets the broadcast streaming viewer object.
- * @return The broadcast streaming viewer object if available; otherwise, nil.
+ * @return The broadcast streaming viewer object if available. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKBroadcastStreamingViewer* _Nullable)getBroadcastStreamingViewer;
+
+/**
+ * @brief Returns an instance to manage RTMS (Real-Time Media Streams) during a video SDK session.
+ * @return If the function succeeds, it returns a ZMVideoSDKRTMSHelper instance. Otherwise, this function fails and returns nil.
+ */
+- (ZMVideoSDKRTMSHelper* _Nullable)getRealTimeMediaStreamsHelper;
 @end
 NS_ASSUME_NONNULL_END

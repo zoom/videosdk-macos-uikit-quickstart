@@ -45,6 +45,7 @@ typedef NS_ENUM(NSUInteger, ZMTopbarItemType) {
     ZMTopbarItemTypeAppTimer,
     ZMTopbarItemTypeRTMS,
 #endif
+    ZMTopbarItemTypeCertification,
     ZMTopbarItemTypeSignIn,
     ZMTopbarItemTypeProctoringMode,
     ZMTopbarItemTypeExtendMeeting,
@@ -57,6 +58,7 @@ typedef NS_ENUM(NSUInteger, ZMTopbarItemType) {
     ZMTopbarItemTypeDogFood,
 #endif
     ZMTopbarItemTypeMediaStream,
+    ZMTopbarItemTypeVoiceTranslation,
     ZMTopbarItemTypeDisaster,
     ZMTopbarItemTypeAudioController,
 };

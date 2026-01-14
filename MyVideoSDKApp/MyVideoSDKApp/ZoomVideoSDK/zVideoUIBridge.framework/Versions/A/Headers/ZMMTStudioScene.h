@@ -119,7 +119,6 @@ class CmmPSLScene;
                         containShare:(BOOL)isContainShare
                        bigVideoCount:(NSInteger)bigVideoCount;
 
-- (CGFloat)getShareAreaWithLayoutType:(NSInteger)layoutID;
 - (BOOL)isGalleryScene;
 - (NSInteger)galleryMaxRows;
 @end

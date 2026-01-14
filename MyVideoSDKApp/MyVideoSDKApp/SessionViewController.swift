@@ -84,7 +84,7 @@ class SessionViewController: NSViewController {
         
         let audioHelper = ZMVideoSDK.shared().getAudioHelper()
         
-        if audioStatus.audioType == .none {
+        if audioStatus.audioType == ZMVideoSDKAudioType_None {
             audioHelper.startAudio()
         } else {
             let _ = audioStatus.isMuted ? audioHelper.unMuteAudio(myUser) : audioHelper.muteAudio(myUser)
@@ -147,7 +147,7 @@ extension SessionViewController: ZMVideoSDKDelegate {
     func onUserJoin(_ userHelper: ZMVideoSDKUserHelper, userList userArray: [ZMVideoSDKUser]?) {
         guard let users = userArray, let myUser = ZMVideoSDK.shared().getSessionInfo().getMySelf() else { return }
         for user in users where user.getID() != myUser.getID() {
-            if let currentUserID = user.getID(), let remoteUserVideoCanvas = user.getVideoCanvas() {
+            if let currentUserID = user.getID() {
                 let view = addRemoteUserView(for: user)
                 remoteUserViews[currentUserID] = view
             }

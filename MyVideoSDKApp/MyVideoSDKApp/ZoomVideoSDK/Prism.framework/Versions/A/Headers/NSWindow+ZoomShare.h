@@ -18,6 +18,13 @@ typedef NS_ENUM(NSInteger, ZMWindowShareType){
 @property(nonatomic,assign) BOOL zmShareTypeFollowParentWindow;//default is YES
 @property(nonatomic,assign) BOOL zmPreventScreenCaptureWindow;//default is NO
 
+
+// YES: window may become mouse-transparent during remote control (mouse events pass through)
+// NO: normal mouse event handling (default)
+// Replaces the legacy invisibleInSharing method
+@property(nonatomic,assign) BOOL zmIgnoreMouseEventInRemoteControl;
+@property(nonatomic,assign) BOOL zmIncludedInSharePicker;
+
 - (BOOL)configWindowCaptureExcludeShape;
 - (void)clearWindowCaptureExcludeShape;
 

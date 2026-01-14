@@ -20,9 +20,12 @@
 #define ZMMTFitbarContentMarginLeftRight 2
 
 typedef NS_ENUM(NSInteger, ZPConfToolBarButtonTag) {
+    ZPConfToolBarButtonTagNone,
     ZPConfToolBarButtonTagAudio = 1,
     ZPConfToolBarButtonTagAudioOrAudioSetting,
     ZPConfToolBarButtonTagAudioMenu,
+    ZPConfToolBarButtonTagAudioCompanionMic,
+    ZPConfToolBarButtonTagAudioCompanionSpeaker,
     ZPConfToolBarButtonTagVideo,
     ZPConfToolBarButtonTagParticipant,
     ZPConfToolBarButtonTagChat,
@@ -38,6 +41,7 @@ typedef NS_ENUM(NSInteger, ZPConfToolBarButtonTag) {
     ZPConfToolBarButtonTagZoomApps,
 #endif
     ZPConfToolBarButtonTagZoomIQ,
+    ZPConfToolBarButtonTagCertifications,
     ZPConfToolBarButtonTagRecord,
     ZPConfToolBarButtonTagQA,
     ZPConfToolBarButtonTagMore,
@@ -55,13 +59,26 @@ typedef NS_ENUM(NSInteger, ZPConfToolBarButtonTag) {
     ZPConfToolBarButtonTagRoomController,
     ZPConfToolBarButtonTagMediaStream,
     ZPConfToolBarButtonTagClinicalNote,
+    ZPConfToolBarButtonTagVoiceTranslation,
     ZPConfToolBarButtonTagTranscript,
+    ZPConfToolBarButtonTagSettings,
+    ZPConfToolBarButtonTagZoomRoom,
+    ZPConfToolBarButtonTagLivestream,
+    ZPConfToolBarButtonTagIncomingStream,
+    ZPConfToolBarButtonTagStudioRecording,
+    ZPConfToolBarButtonTagShare,
+    ZPConfToolBarButtonTagHostTools,
+    ZPConfToolBarButtonTagSupport,
+    ZPConfToolBarButtonTagLeave,
 };
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol IZPConfToolbarController <ZMRoutableObject>
 - (nullable __kindof NSView *)buttonWithTag:(ZPConfToolBarButtonTag)tag;
+- (nullable __kindof NSView *)buttonWithTag:(ZPConfToolBarButtonTag)tag needMoreButton:(BOOL)needMoreButton;
+// The return value is kind of class ZMToolbarComponent
+- (nullable id)componentWithTag:(ZPConfToolBarButtonTag)tag;
 - (void)updateButtonWithTag:(ZPConfToolBarButtonTag)tag;
 - (void)updateButtonWithTag:(ZPConfToolBarButtonTag)tag needRelayoutUI:(BOOL)needRelayoutUI;
 - (void)updateButtonWithTag:(ZPConfToolBarButtonTag)tag needRelayoutUI:(BOOL)needRelayoutUI needDelay:(BOOL)needDelay;
@@ -70,6 +87,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)updateAudio;
 
+- (void)showReactionsMenu;
+- (void)closeReactionsMenu;
+- (BOOL)isReactionsMenuShowing;
+- (void)showMoreEmojiMenu;
 // Implementated at category.
 @optional
 - (BOOL)isToolbarAvailableInterpretLanguageTipShowing;

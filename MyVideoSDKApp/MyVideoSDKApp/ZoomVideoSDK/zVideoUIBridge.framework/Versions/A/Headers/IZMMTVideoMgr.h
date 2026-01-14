@@ -55,6 +55,8 @@ typedef NS_OPTIONS(NSUInteger, ZMVideoAlphaMaskType){
 - (BOOL)isMyVideoTurnOn;
 - (BOOL)isSupportSmartVirtualBackground;
 
+- (BOOL)onMyVideo;
+
 // Immersive
 - (BOOL)isVideoCutout;
 - (BOOL)setPortraitRect:(NSRect)rect renderHandle:(void *)handle;

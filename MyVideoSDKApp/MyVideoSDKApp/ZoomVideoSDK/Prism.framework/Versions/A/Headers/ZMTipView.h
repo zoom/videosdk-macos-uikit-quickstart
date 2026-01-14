@@ -21,6 +21,11 @@ typedef void(^ZMTipTextViewConfigBlock)(ZMTipView *aTipView, __kindof ZMTextView
 @property (nonatomic, assign) NSEdgeInsets edgeInsets;
 
 #pragma mark - Top Area
+/// Will add this view to the top of tip view
+/// Caller is responsible for layout
+/// If there is a close button, will move close to the top automatically
+@property (nonatomic, strong, nullable) NSView *topView;
+
 @property (nonatomic, strong, nullable) NSView *headIconView;
 @property (nonatomic, strong, nullable) NSImage *headIcon;
 @property (nonatomic, assign) BOOL needIgnoreHeadIconEvent;
@@ -51,13 +56,18 @@ typedef void(^ZMTipTextViewConfigBlock)(ZMTipView *aTipView, __kindof ZMTextView
 @property (nonatomic, copy, nullable) ZMTipTextViewConfigBlock descTextViewConfigBlock;
 - (void)setDescContentCompressionResistancePriority:(NSLayoutPriority)priority forOrientation:(NSLayoutConstraintOrientation)orientation;
 
+// Add to center area
 - (void)addAccessoryView:(NSView *)view;
 
 #pragma mark - Bottom Area
 - (ZMButton *)addLeftButtonWithTitle:(NSString *)title actionBlock:(ZMTipActionBlock)actionBlock;
 - (ZMButton *)addLeftButtonWithTitle:(NSString *)title style:(ZMButtonColorStyle)style actionBlock:(ZMTipActionBlock)actionBlock;
 - (ZMButton *)addRightButtonWithTitle:(NSString *)title isDefault:(BOOL)isDefault actionBlock:(ZMTipActionBlock)actionBlock;
-
+- (NSButton *)addCustomButton:(NSButton *)button
+                  actionBlock:(ZMTipActionBlock)actionBlock
+                  viewGravity:(NSStackViewGravity)viewGravity;
+// Add to button area
+- (NSView *)addCustomView:(NSView *)view viewGravity:(NSStackViewGravity)viewGravity;
 #pragma mark - Spacing
 @property (nonatomic, assign) CGFloat topAreaInnerSpacing; // Default is 4
 @property (nonatomic, assign) CGFloat spacingAfterTitle; // Default is 4

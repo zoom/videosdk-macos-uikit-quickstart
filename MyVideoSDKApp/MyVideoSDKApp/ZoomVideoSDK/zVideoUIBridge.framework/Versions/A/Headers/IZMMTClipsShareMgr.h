@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger, ZMClipsShareStatus) {
     ZMClipsShareStatusPlaying,
     ZMClipsShareStatusPaused,
 };
-@class ZMMTClipsSharePropertyModel, ZMMTClipsShareHelper;
+@class ZMMTClipsSharePropertyModel, ZMMTClipsShareHelper, ZMMTClipsShareContentStatus;
 @protocol IZMMTClipsShareMgr <ZMRoutableObject>
 
 - (nonnull ZMMTClipsShareHelper *)clipsShareHelper;
@@ -27,11 +27,12 @@ typedef NS_ENUM(NSUInteger, ZMClipsShareStatus) {
 - (void)closeFilePickerWindow;
 - (void)showClipsShareSetting;
 
-- (void)onClipsStartShareRequestFailed;
+- (void)onClipsStartShareRequestFailed:(BOOL)isTimeOut;
 - (void)onClipsInviteGatewayFailedWithErrorCode:(int64_t)errorCode;
 - (void)onClipsShareStateMessageUpdatedWithGatewayID:(ZMUserID)gatewayID code:(NSInteger)code message:(nullable NSString *)message session:(nullable ZMConfSession *)session;
 - (void)onClipsShareStartedWithIsMyClips:(BOOL)isMyClips shareSourceID:(uint32_t)shareSourceID session:(nullable ZMConfSession *)session;
 - (void)onClipsShareStoppedWithIsMyClips:(BOOL)isMyClips shareSourceID:(uint32_t)shareSourceID session:(nullable ZMConfSession *)session;
+- (void)onClipsShareContentStatusUpdated:(nonnull ZMMTClipsShareContentStatus *)status shareSourceID:(uint32_t)shareSourceID session:(nullable ZMConfSession *)session;
 - (void)startShareClips:(nullable NSDictionary *)params;
 - (nullable ZMMTClipsSharePropertyModel *)mySharePropertyModel;
 - (void)resetMyPropertyModel;

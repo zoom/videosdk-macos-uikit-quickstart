@@ -34,17 +34,17 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKAudioStatus : NSObject
     
 /**
- * @brief Get audio type: VOIP (Voice over IP), Telephony, or None.
+ * @brief Gets audio type: VOIP (Voice over IP), Telephony, or None.
  */
 @property (nonatomic, assign, readonly) ZMVideoSDKAudioType audioType;
     
 /**
- * @brief Determine whether the audio is muted.
+ * @brief Determines whether the audio is muted.
  */
 @property (nonatomic, assign, readonly) BOOL isMuted;
     
 /**
- * @brief Determine whether the user is talking.
+ * @brief Determines whether the user is talking.
  */
 @property (nonatomic, assign, readonly) BOOL isTalking;
 @end
@@ -56,27 +56,27 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKVideoStatisticInfo : NSObject
 
 /**
- * @brief Get the width of video data size.
+ * @brief Gets the width of video data size.
  */
 @property (nonatomic, assign, readonly) int width;
     
 /**
- * @brief Get the height of video data size.
+ * @brief Gets the height of video data size.
  */
 @property (nonatomic, assign, readonly) int height;
     
 /**
- * @brief Get video fps.
+ * @brief Gets video fps.
  */
 @property (nonatomic, assign, readonly) int fps;
     
 /**
- * @brief Get video Bpf.
+ * @brief Gets video Bpf.
  */
 @property (nonatomic, assign, readonly) int bpf;
 
 /**
- * @brief Get video network status.
+ * @brief Gets video network status.
  */
 @property (nonatomic, assign, readonly) ZMVideoSDKNetworkStatus videoNetworkStatus;
 @end
@@ -88,27 +88,27 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKShareStatisticInfo : NSObject
 
 /**
- * @brief Get the width of share data size.
+ * @brief Gets the width of share data size.
  */
 @property (nonatomic, assign, readonly) int width;
     
 /**
- * @brief Get the height of share data size.
+ * @brief Gets the height of share data size.
  */
 @property (nonatomic, assign, readonly) int height;
     
 /**
- * @brief Get share fps.
+ * @brief Gets share fps.
  */
 @property (nonatomic, assign, readonly) int fps;
     
 /**
- * @brief Get share Bpf.
+ * @brief Gets share Bpf.
  */
 @property (nonatomic, assign, readonly) int bpf;
 
 /**
- * @brief Get share network status.
+ * @brief Gets share network status.
  */
 @property (nonatomic, assign, readonly) ZMVideoSDKNetworkStatus shareNetworkStatus;
 @end
@@ -120,17 +120,17 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKYUVRawDataI420 : NSObject
 
 /**
- * @brief Get the YUVI420 Y buffer. The Y component represents the luma or brightness values.
+ * @brief Gets the YUVI420 Y buffer. The Y component represents the luma or brightness values.
  */
 @property (nonatomic, assign, readonly) char* _Nullable yBuffer;
 
 /**
- * @brief Get the YUVI420 U buffer. The U component represents the chroma values.
+ * @brief Gets the YUVI420 U buffer. The U component represents the chroma values.
  */
 @property (nonatomic, assign, readonly) char* _Nullable uBuffer;
 
 /**
- * @brief Get the YUVI420 V buffer. The V component represents the chroma values.
+ * @brief Gets the YUVI420 V buffer. The V component represents the chroma values.
  */
 @property (nonatomic, assign, readonly) char* _Nullable vBuffer;
 
@@ -140,7 +140,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) char* _Nullable buffer;
 
 /**
- * @brief Get video alpha mask data buffer.
+ * @brief Gets video alpha mask data buffer.
  */
 @property (nonatomic, assign, readonly, nullable) char* alphaBuffer;
 
@@ -150,12 +150,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) unsigned int bufferLen;
 
 /**
- * @brief Get the alpha buffer length.
+ * @brief Gets the alpha buffer length.
  */
 @property (nonatomic, assign, readonly) unsigned int alphaBufferLen;
 
 /**
- * @brief Get if this data is limited I420 format.
+ * @brief Gets if this data is limited I420 format.
  */
 @property (nonatomic, assign, readonly) BOOL isLimitedI420;
 
@@ -165,7 +165,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) unsigned int streamWidth;
 
 /**
- * @brief Get the stream height.
+ * @brief Gets the stream height.
  */
 @property (nonatomic, assign, readonly) unsigned int streamHeight;
 
@@ -175,7 +175,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) unsigned int rotation;
 
 /**
- * @brief Get the source_id of current YUV raw data.
+ * @brief Gets the source_id of current YUV raw data.
  */
 @property (nonatomic, assign, readonly) unsigned int resourceID;
 
@@ -184,20 +184,21 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign, readonly) long long timeStamp;
 /**
- * @brief Determine if the reference count for accessing the raw data buffer can be increased.
- * @return If you addRef(), the SDK will try to hold the raw data buffer until the reference becomes 0. When you finish using the raw data buffer, you must call releaseRef;
+ * @brief Determines if adding a reference to the raw data buffer is supported.
+ * @return YES if adding a reference is supported. Otherwise, NO.
  */
 - (BOOL)canAddRef;
 
 /**
- * @brief Increase reference count by 1. Adding a reference will ensure that the raw data buffer will not be released.
- * @return If you addRef, the SDK will try to hold the raw data buffer until the reference becomes 0. When you finish using the raw data buffer, you must call releaseRef.
+ * @brief Increase reference count by 1. Adding a reference ensures that the raw data buffer nots be released.
+ * @return YES if the reference count was successfully increased. Otherwise, NO.
+ * @note The SDK will hold the raw data buffer until the reference count becomes 0. When finished using the raw data buffer, call releaseRef.
  */
 - (BOOL)addRef;
 
 /**
- * @brief Decrease reference count by 1. When you finish using the raw data buffer, you must call releaseRef.
- * @return If the function succeeds, it will return reference count of this object.
+ * @brief Decrease reference count by 1. When finished using the raw data buffer, call releaseRef.
+ * @return If the function succeeds, it returns reference count of this object. Otherwise, returns 0.
  */
 - (int)releaseRef;
 @end
@@ -253,65 +254,65 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * @class ZMVideoSDKRawDataPipe
- * @brief Video/share raw data pipe interface.
+ * @brief Video or share raw data pipe interface.
  */
 @interface ZMVideoSDKRawDataPipe : NSObject
 
 /**
- * @brief Subscribe video/share raw data.
+ * @brief Subscribes video or share raw data.
  * @param resolution The subscribe size.
  * @param listener The callback sink object.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)subscribe:(ZMVideoSDKResolution)resolution listener:(id<ZMVideoSDKRawDataPipeDelegate>)listener;
     
 /**
- * @brief Unsubscribe video/share raw data.
+ * @brief Unsubscribes video or share raw data.
  * @param listener The callback sink object.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)unSubscribe:(id<ZMVideoSDKRawDataPipeDelegate>)listener;
 
 /**
- * @brief Get the raw data data type.
+ * @brief Gets the raw data data type.
  * @return Share or Video data type.
  */
 - (ZMVideoSDKRawDataType)getRawdataType;
 
 /**
- * @brief Get video status.
- * @return If the function succeeds, the return value is pointer of video status object, otherwise returns nil.
+ * @brief Gets video status.
+ * @return If the function succeeds, it returns pointer of video status object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKVideoStatus* _Nullable)getVideoStatus;
 
 /**
- * @brief Get video device name.
- * @return If the function succeeds, the return value is the video device name, otherwise returns nil.
+ * @brief Gets video device name.
+ * @return If the function succeeds, it returns the video device name. Otherwise, this function fails and returns nil.
  */
 - (NSString* _Nullable)getVideoDeviceName;
 
 /**
- * @brief Get share status.
- * @return If the function succeeds, the return value is current share status.
+ * @brief Gets share status.
+ * @return The current share status.
  */
 - (ZMVideoSDKShareStatus)getShareStatus;
 
 /**
  * @brief Gets the reason why the share capture is paused.
  * @return The current pause reason of the ongoing share.
- * @note If sharing is not paused, the return value is @c ZMVideoSDKShare_Capture_Pause_None.
+ * @note If sharing is not paused, it returns @c ZMVideoSDKShare_Capture_Pause_None.
  */
 - (ZMVideoSDKShareCapturePauseReason)getShareCapturePauseReason;
 
 /**
- * @brief Get share type.
- * @return If the function succeeds, the return value is current share type.
+ * @brief Gets share type.
+ * @return The current share type.
  */
 - (ZMVideoSDKShareType)getShareType;
 
 /**
- * @brief Get video statistic information.
- * @return If the function succeeds, the return value is the object of ZMVideoSDKVideoStatisticInfo.
+ * @brief Gets video statistic information.
+ * @return If the function succeeds, it returns the object of ZMVideoSDKVideoStatisticInfo. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKVideoStatisticInfo* _Nullable)getVideoStatisticInfo;
 @end
@@ -324,13 +325,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * @brief Approve the remote camera control request.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)approve;
 
 /**
  * @brief Decline the remote camera control request.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)decline;
 @end
@@ -342,56 +343,56 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKRemoteCameraControlHelper : NSObject
 
 /**
- * @brief Request to control remote camera.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Requests to control remote camera.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)requestControlRemoteCamera;
 
 /**
  * @brief Give up control of the remote camera.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)giveUpControlRemoteCamera;
 
 /**
  * @brief Turn the camera to the left.
  * @param range The rotation range, 10 <= range <= 100.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)turnLeft:(unsigned int)range;
 
 /**
  * @brief Turn the camera to the right.
- * @param range rotation range, 10 <= range <= 100.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @param range Rotation range, 10 <= range <= 100.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)turnRight:(unsigned int)range;
 
 /**
  * @brief Turn the camera up.
- * @param range rotation range, 10 <= range <= 100.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @param range Rotation range, 10 <= range <= 100.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)turnUp:(unsigned int)range;
 
 /**
  * @brief Turn the camera down.
- * @param range rotation range, 10 <= range <= 100.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @param range Rotation range, 10 <= range <= 100.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)turnDown:(unsigned int)range;
 
 /**
  * @brief Zoom the camera in.
- * @param range rotation range, 10 <= range <= 100.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @param range Rotation range, 10 <= range <= 100.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)zoomIn:(unsigned int)range;
 
 /**
  * @brief Zoom the camera out.
- * @param range rotation range, 10 <= range <= 100.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @param range Rotation range, 10 <= range <= 100.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)zoomOut:(unsigned int)range;
 @end
@@ -403,110 +404,117 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKUser : NSObject
 /**
- * @brief Get the user's id.
- * @return If the function succeeds, the return value is user id, otherwise returns nil.
+ * @brief Gets the user's ID.
+ * @return If the function succeeds, it returns user ID. Otherwise, this function fails and returns nil.
  */
 - (NSString* _Nullable)getUserID;
 
 /**
- * @brief Get the user's custom identity.
- * @return If the function succeeds, the return value is custom id, otherwise returns nil.
+ * @brief Gets the user's custom identity.
+ * @return If the function succeeds, it returns custom ID. Otherwise, this function fails and returns nil.
+ * @deprecated Use \link getUserKey \endlink instead.
  */
-- (NSString* _Nullable)getCustomIdentity;
+- (NSString* _Nullable)getCustomIdentity DEPRECATED_MSG_ATTRIBUTE("Use -getUserKey instead");
 
 /**
- * @brief Get the name of the user in the session.
- * @return If the function succeeds, the return value is user name, otherwise returns nil.
+ * @brief Gets the user's key.
+ * @return If the function succeeds, it returns the user's key. Otherwise, this function fails and returns nil.
+ */
+- (NSString* _Nullable)getUserKey;
+
+/**
+ * @brief Gets the user's name in the session.
+ * @return If the function succeeds, it returns user name. Otherwise, this function fails and returns nil.
  */
 - (NSString* _Nullable)getUserName;
 
 /**
- * @brief Get the user's reference.
+ * @brief Gets the user's reference.
  */
 - (NSString* _Nullable)getUserReference;
 
 /**
- * @brief Get the user's audio status.
- * @return Audio status object.
+ * @brief Gets the user's audio status.
+ * @return Audio status object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKAudioStatus* _Nullable)getAudioStatus;
     
 /**
- * @brief Determine whether the user is the host.
- * @return YES indicates that the user is the host, otherwise NO.
+ * @brief Determines whether the user is the host.
+ * @return YES if that the user is the host. Otherwise, NO.
  */
 - (BOOL)isHost;
     
 /**
- * @brief Determine whether the user is the manager.
- * @return YES indicates that the user is the manager, otherwise NO.
+ * @brief Determines whether the user is the manager.
+ * @return YES if that the user is the manager. Otherwise, NO.
  */
 - (BOOL)isManager;
     
 /**
- * @brief Get the user's video statistic information.
- * @return Video statistic information object.
+ * @brief Gets the user's video statistic information.
+ * @return Video statistic information object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKVideoStatisticInfo* _Nullable)getVideoStatisticInfo;
     
 /**
- * @brief Get the user's share statistic information.
- * @return Share statistic information object.
+ * @brief Gets the user's share statistic information.
+ * @return Share statistic information object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKShareStatisticInfo* _Nullable)getShareStatisticInfo;
     
 /**
- * @brief Get the user's video pipe.
- * @return Video pipe object.
+ * @brief Gets the user's video pipe.
+ * @return Video pipe object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKRawDataPipe* _Nullable)getVideoPipe;
 
 /**
  * @brief Gets the user's video canvas.
- * @return If the function succeeds, it will return a ZMVideoSDKVideoCanvas object, otherwise returns nil.
+ * @return If the function succeeds, it returns a ZMVideoSDKVideoCanvas object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKVideoCanvas * _Nullable)getVideoCanvas;
 
 /**
- * @brief Get the user's share-action list.
- * @return A list of all share action object.
+ * @brief Gets the user's share-action list.
+ * @return A list of all share action objects. Otherwise, this function fails and returns nil.
  */
 - (NSArray<ZMVideoSDKShareAction*>* _Nullable)getShareActionList;
 
 /**
- * @brief Get the helper class instance to access the remote camera control.
- * @return If the function succeeds, it will return a remote camera control object, otherwise returns nil.
+ * @brief Gets the helper class instance to access the remote camera control.
+ * @return If the function succeeds, it returns a remote camera control object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKRemoteCameraControlHelper * _Nullable)getRemoteCameraControlHelper;
 
 /**
- * @brief Get the user's multi-camera stream list.
- * @return A list of all streaming cameras pipe object.
+ * @brief Gets the user's multi-camera stream list.
+ * @return A list of all streaming cameras pipe objects. Otherwise, this function fails and returns nil.
  */
 - (NSArray<ZMVideoSDKRawDataPipe *>* _Nullable)getMultiCameraStreamList;
 
 /**
- * @brief Set the user's local volume. This does not affect how other participants hear the user.
+ * @brief Sets the user's local volume. This does not affect how other participants hear the user.
  * @param volume Value can be >= 0 and <=10. If volume is 0, the user won't be able to hear the related audio.
- * @param isSharingAudio YES means sets the volume of shared audio (such as shared computer audio), otherwise sets the volume of the microphone.
- * @return If successful return YES, otherwise NO.
+ * @param isSharingAudio YES to set the shared audio's volume (such as shared computer audio), NO to set the microphone's volume.
+ * @return If the function succeedsful return YES. Otherwise, NO.
  * @deprecated Use \link setUserPlaybackVolume:isSharingAudio: \endlink instead.
  */
 - (BOOL)setUserVolume:(float)volume isSharingAudio:(BOOL)isSharingAudio DEPRECATED_MSG_ATTRIBUTE("Use -setUserPlaybackVolume:isSharingAudio: instead");
 
 /**
- * @brief Get user volume.
+ * @brief Gets user volume.
  * @param volume The user volume.
- * @param isSharingAudio YES means gets the volume of shared audio (such as shared computer audio), otherwise gets the volume of the microphone.
- * @return If success return YES, otherwise NO.
+ * @param isSharingAudio YES to get the shared audio's volume (such as shared computer audio), NO to get the microphone's volume.
+ * @return If the function succeeds return YES. Otherwise, NO.
  * @deprecated Use \link getUserPlaybackVolume:isSharingAudio: \endlink instead.
  */
 - (BOOL)getUserVolume:(float*)volume isSharingAudio:(BOOL)isSharingAudio DEPRECATED_MSG_ATTRIBUTE("Use -getUserPlaybackVolume:isSharingAudio: instead");
 
 /**
- * @brief Determine which audio you can set, shared audio or microphone.
- * @param isShareAudio YES means checks whether you can set the volume of shared audio, otherwise you can set the volume of the microphone.
- * @return If success return YES, otherwise NO.
+ * @brief Determines which audio to set, shared audio or microphone.
+ * @param isShareAudio YES to check whether to set the shared audio's volume, NO to set the microphone's volume.
+ * @return If the function succeeds return YES. Otherwise, NO.
  * @deprecated Use \link canSetUserPlaybackVolume: \endlink instead.
  */
 - (BOOL)canSetUserVolume:(BOOL)isShareAudio DEPRECATED_MSG_ATTRIBUTE("Use -canSetUserPlaybackVolume: instead");
@@ -514,23 +522,23 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @brief Sets the user's local volume. This does not affect how other participants hear the user.
  * @param volume Value can between 0 and 10. If 0, the user won't hear the related audio.
- * @param isSharingAudio YES to set the volume of shared audio (such as shared computer audio; otherwise, sets the microphone volume.
- * @return YES if the operation succeeds; otherwise, NO.
+ * @param isSharingAudio YES to set the volume of shared audio (such as shared computer audio), NO to set the microphone volume.
+ * @return YES if the operation succeeds. Otherwise, NO.
  */
 - (BOOL)setUserPlaybackVolume:(float)volume isSharingAudio:(BOOL)isSharingAudio;
 
 /**
  * @brief Gets the local volume.
  * @param volume The user volume.
- * @param isShareAudio YES to get the volume of shared audio(such as shared computer audio); otherwise gets the microphone volume.
- * @return YES if the operation succeeds; otherwise, NO.
+ * @param isShareAudio YES to get the volume of shared audio (such as shared computer audio), NO to get the microphone volume.
+ * @return YES if the operation succeeds. Otherwise, NO.
  */
 - (BOOL)getUserPlaybackVolume:(float*)volume isSharingAudio:(BOOL)isSharingAudio;
 
 /**
- * @brief Checks whether you can set the volume for shared audio or microphone.
- * @param isShareAudio YES to check if you can set the volume of shared audio; otherwise, you can set the volume of the microphone.
- * @return YES if you can set the volume of shared audio; otherwise, NO.
+ * @brief Checks whether to set the volume for shared audio or microphone.
+ * @param isShareAudio YES to check if to set the shared audio's volume, NO to set the microphone's volume.
+ * @return YES if setting the volume of shared audio is supported. Otherwise, NO.
  */
 - (BOOL)canSetUserPlaybackVolume:(BOOL)isShareAudio;
 
@@ -541,38 +549,38 @@ NS_ASSUME_NONNULL_BEGIN
 - (unsigned int)getAudioLevel;
 
 /**
- * @brief Used to determine whether I agree to individual video recording.
- * @return YES if the user has individual video recording consent. Otherwise NO.
+ * @brief Determines whether I agree to individual video recording.
+ * @return YES if the user has individual video recording consent. Otherwise, NO.
  */
 - (BOOL)hasIndividualRecordingConsent;
 
 /**
- * @brief Send file to current user object.
- * @param filePath The local path of the file.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Sends file to current user object.
+ * @param filePath The file's local path.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)transferFile:(NSString *)filePath;
 
 /**
- * @brief check if user is spotlighted.
- * @return If the function succeeds, the return value is YES. Otherwise, this function returns NO.
+ * @brief Check if user is spotlighted.
+ * @return YES if that the user is spotlighted. Otherwise, this function returns NO.
  */
 - (BOOL)isVideoSpotLighted;
 
 /**
- * @brief Determine whether the user is incoming live stream user.
- * @return YES indicates that the user special for incoming live stream, otherwise NO.
+ * @brief Determines whether the user is incoming live stream user.
+ * @return YES if that the user special for incoming live stream. Otherwise, NO.
  */
 - (BOOL)isIncomingLiveStreamUser;
 
 /**
- * @brief Determine whether the user is in a subsession.
- * @return YES indicates that the user is currently in a subsession, otherwise NO.
+ * @brief Determines whether the user is in a subsession.
+ * @return YES if that the user is currently in a subsession. Otherwise, NO.
  */
 - (BOOL)isInSubSession;
 
 /**
- * @brief Get the whiteboard sharing status of the user.
+ * @brief Gets the user's whiteboard sharing status.
  * @return The whiteboard sharing status.
  */
 - (ZMVideoSDKWhiteboardStatus)getWhiteboardStatus;
@@ -585,7 +593,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (ZMVideoSDKNetworkStatus)getNetworkLevel:(ZMVideoSDKDataType)type;
 
 /**
- * @brief Gets the overall network quality level of the user.
+ * @brief Gets the user's overall network quality level.
  * @return The overall network status level.
  */
 - (ZMVideoSDKNetworkStatus)getOverallNetworkLevel;
@@ -598,44 +606,44 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKUserHelper: NSObject
     
 /**
- * @brief Change a specific user's name.
+ * @brief Changes a specific user's name.
  * @param name The new user name.
  * @param user User in the session.
- * @return YES indicates that name change is success. Otherwise, this function returns NO.
+ * @return YES if that name change is success. Otherwise, this function returns NO.
  */
 - (BOOL)changeName:(NSString*)name user:(ZMVideoSDKUser*)user;
     
 /**
  * @brief Assign a user as the session host.
  * @param user User in the session.
- * @return YES indicates that the user is now the host. Otherwise, this function returns NO.
+ * @return YES if that the user is now the host. Otherwise, this function returns NO.
  */
 - (BOOL)makeHost:(ZMVideoSDKUser*)user;
     
 /**
  * @brief Assign a user as the session manager.
  * @param user User in the session.
- * @return YES indicates that the user is now the manager. Otherwise, this function returns NO.
+ * @return YES if that the user is now the manager. Otherwise, this function returns NO.
  */
 - (BOOL)makeManager:(ZMVideoSDKUser*)user;
     
 /**
  * @brief Revoke manager rights from a user.
  * @param user User in the session.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success, otherwise not.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)revokeManager:(ZMVideoSDKUser*)user;
     
 /**
- * @brief Remove user from session.
+ * @brief Removes user from session.
  * @param user User in the session.
- * @return If the function succeeds, the return value is YES. Otherwise, this function returns NO.
+ * @return If the function succeeds, it returns YES. Otherwise, this function returns NO.
  */
 - (BOOL)removeUser:(ZMVideoSDKUser*)user;
 
 /**
  * @brief Reclaim host permission. Allow the user whose role_type = 1 to reclaim the host role.
- * @return If the function succeeds, the return value is YES. Otherwise, this function returns NO.
+ * @return If the function succeeds, it returns YES. Otherwise, this function returns NO.
  */
 - (BOOL)reclaimHost;
 @end

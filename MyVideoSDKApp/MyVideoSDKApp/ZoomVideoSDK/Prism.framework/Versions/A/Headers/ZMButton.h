@@ -150,6 +150,7 @@ typedef void(^ZMBackgroundDrawer)(NSRect bounds);
     CGSize _fixedSize;
     CGFloat _fixedHeight;
 }
+
 @property(nonatomic, retain, nullable) NSImage* normalImage;
 @property(nonatomic, retain, nullable) NSImage* hoverImage;
 @property(nonatomic, retain, nullable) NSImage* pressImage;
@@ -350,16 +351,6 @@ typedef enum {
 @end
 
 @interface ZMIconButton : ZMButton
-@end
-
-
-@interface ZMMouseDownCanMoveWindowButton : ZMButton
-{
-    NSPoint     _mouseDownLocation;
-    NSPoint     _mouseDownWindowLocation;
-    NSPoint     _currentMouseLocation;
-    BOOL        _isMouseDragged;
-}
 @end
 
 @interface ZPTrackingButton (ZMAccessibility)

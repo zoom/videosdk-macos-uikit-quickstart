@@ -35,6 +35,8 @@
 
 - (BOOL)isWindowShowing;
 
+- (BOOL)canMergePopoutWindowToMainWindow;
+
 - (NSString *)accessibilityHelpForTab:(NSView*)view;
 @end
 

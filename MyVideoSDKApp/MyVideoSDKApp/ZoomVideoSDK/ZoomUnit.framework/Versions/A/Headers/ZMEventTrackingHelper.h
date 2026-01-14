@@ -8,8 +8,6 @@
 #import <Foundation/Foundation.h>
 #import <ZoomTelemetry/ZoomEventLogConsts/ZoomEventLogConsts_Desktop.h>
 
-#import <events/chat_perfmetrics_Perfmetrics_enum.h>
-
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_OPTIONS (NSUInteger, PerfmetricsEventSource) {

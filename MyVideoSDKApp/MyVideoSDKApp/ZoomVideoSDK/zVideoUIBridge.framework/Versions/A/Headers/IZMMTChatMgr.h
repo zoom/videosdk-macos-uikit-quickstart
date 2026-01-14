@@ -98,6 +98,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class ZMMTChatGroupItem;
 @protocol ZMMTChatControllerProtocol <NSObject>
 @property (nonatomic, readonly) ZMMTChatGroupItem *groupItem;
+@property (nonatomic, readonly) NSViewController *messageController;
 @property (nonatomic, readonly) BOOL isSendingMessage;
 
 - (void)jump2Message:(NSString*)messageID;
@@ -130,7 +131,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onChatSaved;
 
 - (void)onAvatarStatusChanged;
-- (void)onInviteeListUpdated;
 
 - (void)onZappMessageUpdated:(NSString*)appId iconPath:(NSString*)iconPath;
 - (void)onZappMessageUpdated:(NSString*)msgId thumbnailPath:(NSString*)thumbnailPath;

@@ -25,8 +25,6 @@
 
 @class ZMConstraintMaker;
 
-static const NSLayoutPriority ZMLayoutPriorityDefaultMedium = 501;
-
 typedef NS_OPTIONS(NSInteger, ZMAttribute) {
     ZMAttributeLeft = 1 << NSLayoutAttributeLeft,
     ZMAttributeRight = 1 << NSLayoutAttributeRight,

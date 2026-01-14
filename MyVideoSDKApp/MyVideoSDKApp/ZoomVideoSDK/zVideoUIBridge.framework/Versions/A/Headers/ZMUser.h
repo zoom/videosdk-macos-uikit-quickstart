@@ -61,6 +61,7 @@ class IZoomQABuddy;
 @property(readonly,assign)BOOL         isHostCohost;
 @property(readonly,assign)BOOL         isHost;
 @property(readonly,assign)BOOL         isCoHost;
+@property(readonly,assign)BOOL         isWatchOnlyUser;
 @property(readonly,assign)BOOL         isVirtualAssistantUser;
 @property(readonly,assign)BOOL         isRTMPUser;
 @property(readonly,assign)BOOL         isActiveRTMPUser;

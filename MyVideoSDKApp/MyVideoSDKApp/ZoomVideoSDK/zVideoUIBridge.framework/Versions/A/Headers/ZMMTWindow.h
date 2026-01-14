@@ -59,7 +59,7 @@ typedef NS_OPTIONS(NSUInteger, ZMMTWindowBehavior){
 - (BOOL)canConcealFullscreenFadebar:(NSWindow *)window;
 @end
 
-@interface ZMMTWindow : NSWindow
+@interface ZMMTWindow : ZMWindow
 
 @property (nullable, nonatomic, strong) ZMPigment* framePigment;
 

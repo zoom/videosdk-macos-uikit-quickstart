@@ -290,7 +290,7 @@ typedef enum
     ZMVideoSDKResolution_720P,
     /** The resolution is 1080p. Video resolution might be 720p based on the user's network condition and device specs. */
     ZMVideoSDKResolution_1080P,
-    /** The resolution is changed automatically according to the size of the view, only avaliable for video canvas. */
+    /** The resolution is changed automatically according to the view's size, only avaliable for video canvas. */
     ZMVideoSDKResolution_Auto = 100
 }ZMVideoSDKResolution;
 
@@ -529,12 +529,14 @@ typedef enum {
     /** No audio input is being detected from the current device. */
     ZMVideoSDKAudioDeviceStatus_Audio_No_Input,
     /** Audio was disconnected automatically due to detected echo. */
-    ZMVideoSDKAudioDeviceStatus_Audio_Disconnect_As_Detected_Echo
+    ZMVideoSDKAudioDeviceStatus_Audio_Disconnect_As_Detected_Echo,
+    /** User is talking while muted. */
+    ZMVideoSDKAudioDeviceStatus_Audio_Talk_While_Muted
 }ZMVideoSDKAudioDeviceStatus;
 
 
 /**
- * @brief Enumerates the types of content that can be shared in a session.
+ * @brief Enumerates the types of content available for sharing in a session.
  */
 typedef enum
 {
@@ -627,7 +629,7 @@ typedef enum
 {
     /** No virtual background is applied. */
     ZMVideoSDKVirtualBackgroundDataType_None,
-    /** An image is used as the virtual background. */
+    /** An image uses as the virtual background. */
     ZMVideoSDKVirtualBackgroundDataType_Image,
     /** A blur effect is applied to the background. */
     ZMVideoSDKVirtualBackgroundDataType_Blur
@@ -685,11 +687,11 @@ typedef enum
     ZMVideoSDKScreenCaptureMode_Auto,
     /** This mode can be applicable if you are not on the latest operating systems, or don't have certain video drivers. If this option isn't enabled, a blank screen may appear on participants' screens while the host shares their screen. */
     ZMVideoSDKScreenCaptureMode_Legacy,
-    /** This mode will share your screen without showing windows from the app. */
+    /** This mode shares your screen without showing windows from the app. */
     ZMVideoSDKScreenCaptureMode_Filtering,
-    /** This mode will share your screen, include motion detection (when you move a window or play a movie), and will not show windows from the app. */
+    /** This mode shares your screen, includes motion detection (when you move a window or play a movie), and does not show windows from the app. */
     ZMVideoSDKScreenCaptureMode_ADA_Filtering,
-    /** This mode will share your screen, include motion detection (when you move a window or play a movie), and will show windows from the app. */
+    /** This mode shares your screen, includes motion detection (when you move a window or play a movie), and shows windows from the app. */
     ZMVideoSDKScreenCaptureMode_ADA_Without_Filtering
 }ZMVideoSDKScreenCaptureMode;
 
@@ -1142,3 +1144,33 @@ typedef enum
     /** Share data type. */
     ZMVideoSDKDataType_Share
 }ZMVideoSDKDataType;
+
+/**
+ * @brief Real-time media streams status.
+ * Here are more detailed structural descriptions.
+ */
+typedef enum
+{
+    /** No real-time media streams activity. */
+    ZMVideoSDKRealTimeMediaStreamsStatus_None = 0,
+    /** Real-time media streams has started. */
+    ZMVideoSDKRealTimeMediaStreamsStatus_Start,
+    /** Real-time media streams has been paused. */
+    ZMVideoSDKRealTimeMediaStreamsStatus_Pause,
+    /** Real-time media streams has been stopped. */
+    ZMVideoSDKRealTimeMediaStreamsStatus_Stop
+}ZMVideoSDKRealTimeMediaStreamsStatus;
+
+/**
+ * @brief Failure reasons for RealTimeMediaStreams.
+ * Here are more detailed structural descriptions.
+ */
+typedef enum
+{
+    /** Default value, no error (initial state) */
+    ZMVideoSDKRealTimeMediaStreamsFailReason_None = 0,
+    /** No one subscribed to the RTMS stream */
+    ZMVideoSDKRealTimeMediaStreamsFailReason_NoSubscription,
+    /** Failed to start the RTMS stream */
+    ZMVideoSDKRealTimeMediaStreamsFailReason_StartFail
+}ZMVideoSDKRealTimeMediaStreamsFailReason;

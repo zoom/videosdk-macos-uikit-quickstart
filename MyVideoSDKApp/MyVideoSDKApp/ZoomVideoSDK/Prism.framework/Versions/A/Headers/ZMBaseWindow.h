@@ -1,26 +1,16 @@
 //
-//  ZMBaseWindow.h
-//  ZCommonUI
+//  ZMWindow.h
+//  Prism
 //
-//  Created by likevin on 4/26/18.
-//  Copyright © 2018 zoom. All rights reserved.
+//  Created by Devl on 10/21/25.
 //
 
 #import <Cocoa/Cocoa.h>
 
-//IB_DESIGNABLE
-//@interface ZMBaseWindow : NSWindow
-//
-//@end
+NS_ASSUME_NONNULL_BEGIN
 
-/*IB_DESIGNABLE
-@interface ZMBasePanel : NSPanel
-{
-    BOOL _invisibleInSharing;
-}
-@property(assign)IBInspectable BOOL invisibleInSharing;
-@end*/
+@interface ZMBaseWindow : NSWindow
 
-//@interface ZMKeyWindow : ZMBaseWindow
-//
-//@end
+@end
+
+NS_ASSUME_NONNULL_END

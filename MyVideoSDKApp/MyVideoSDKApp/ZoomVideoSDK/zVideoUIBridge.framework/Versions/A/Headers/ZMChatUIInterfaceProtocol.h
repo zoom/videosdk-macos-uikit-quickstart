@@ -1,6 +1,6 @@
 //
 //  ZMChatUIInterfaceProtocol.h
-//  ChatUI
+//  ZoomSetting
 //
 //  Created by Groot Ding on 2022/3/31.
 //  Copyright © 2022 Zoom. All rights reserved.
@@ -27,15 +27,6 @@
 - (BOOL)externalFlag;
 - (NSInteger)category;
 - (NSString *)reqSource;
-
-@end
-
-@protocol ZMChatUIInviteProtocol <NSObject>
-
-@optional
-- (void)showInviteWindow;
-- (void)closeInviteWindow;
-- (void)startChatWithSessionID:(NSString *)sessionID;
 
 @end
 
@@ -208,11 +199,5 @@
 
 @end
 
-@protocol ZMChatUISettingProtocol
-
-- (void)showSettingWindow;
-- (void)closeSettingWindow;
-
-@end
 
 #endif /* ZMChatUIInterfaceProtocol_h */

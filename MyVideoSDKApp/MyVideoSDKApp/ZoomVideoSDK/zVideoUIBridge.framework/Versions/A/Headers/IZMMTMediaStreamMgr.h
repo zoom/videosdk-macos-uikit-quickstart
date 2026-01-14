@@ -38,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onCommonNoticeDeleted:(const CmmNoticeSet&)cmm_notice;
 - (void)onZoomStreamingServiceSwitchChanged:(BOOL)newSwitch;
 - (void)onZssStatusChanged;
+- (void)onRTMSMgrReady;
 @end
 
 NS_ASSUME_NONNULL_END

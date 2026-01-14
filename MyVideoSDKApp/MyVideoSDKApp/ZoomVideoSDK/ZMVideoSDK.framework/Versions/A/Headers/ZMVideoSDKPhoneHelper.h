@@ -13,15 +13,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKDialInNumberInfo : NSObject
 /**
- * @brief The country ID of the current information.
+ * @brief The current's country ID information.
  */
 @property (nonatomic, copy, readonly) NSString* countryID;
 /**
- * @brief The country code of the current information.
+ * @brief The current's country code information.
  */
 @property (nonatomic, copy, readonly) NSString* countryCode;
 /**
- * @brief The country name of the current information.
+ * @brief The current's country name information.
  */
 @property (nonatomic, copy, readonly) NSString* countryName;
 /**
@@ -36,6 +36,10 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief The type of dial in number.
  */
 @property (nonatomic, assign, readonly) ZMVideoSDKDialInNumType type;
+/**
+ * @brief Is the dial number an account dedicated number.
+ */
+@property (nonatomic, assign, readonly) BOOL isDedicateID;
 @end
 
 
@@ -45,15 +49,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKPhoneSupportCountryInfo : NSObject
 /**
- * @brief The country ID of the current information.
+ * @brief The current's country ID information.
  */
 @property (nonatomic, copy, readonly) NSString* countryID;
 /**
- * @brief The country name of the current information.
+ * @brief The current's country name information.
  */
 @property (nonatomic, copy, readonly) NSString* countryName;
 /**
- * @brief The country code of the current information.
+ * @brief The current's country code information.
  */
 @property (nonatomic, copy, readonly) NSString* countryCode;
 @end
@@ -65,7 +69,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKInvitePhoneUserInfo : NSObject
 /**
- * @brief The country code of the specified user must be in the support list.
+ * @brief The specified's country code user must be in the support list.
  */
 @property (nonatomic, copy, nullable) NSString* countryCode;
 /**
@@ -73,15 +77,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy, nullable) NSString* phoneNumber;
 /**
- * @brief The screen name of the specified user in the session.
+ * @brief The specified's screen name user in the session.
  */
 @property (nonatomic, copy, nullable) NSString* name;
 /**
- * @brief YES means need press number one to agree to join the session, otherwise not.
+ * @brief YES if need press number one to agree to join the session, NO otherwise.
  */
 @property (nonatomic, assign) BOOL bPressOne;
 /**
- * @brief YES means When joining the session, play a greeting prompt tone., otherwise not.
+ * @brief YES if joining the session, play a greeting prompt tone. NO Otherwise.
  */
 @property (nonatomic, assign) BOOL bGreeting;
 @end
@@ -93,14 +97,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKPhoneHelper : NSObject
 /**
- * @brief Determine if the session supports join by phone or not.
- * @return YES indicates join by phone is supported, otherwise NO.
+ * @brief Determines if the session supports join by phone or not.
+ * @return YES if join by phone is supported. Otherwise, NO.
  */
 - (BOOL)isSupportPhoneFeature;
 
 /**
- * @brief Get the list of the country information where the session supports to join by telephone.
- * @return If the function succeeds, the return value is the array of the country information, otherwise returns nil.
+ * @brief Gets the country information list where the session supports to join by telephone.
+ * @return If the function succeeds, it returns the country information array. Otherwise, this function fails and returns nil.
  */
 - (NSArray<ZMVideoSDKPhoneSupportCountryInfo*>* _Nullable)getSupportCountryInfo;
 
@@ -108,8 +112,8 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief Invite the specified user to join the session by phone.
  * @param countryCode The country code of the specified user must be in the support list.
  * @param phoneNumber The phone number of specified user.
- * @param name The screen name of the specified user in the session.
- * @return If the function succeeds, the return value is @c ZMVideoSDKErrors_Success, otherwise not.
+ * @param name The specified's screen name in the session.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @deprecated Use \link ZMVideoSDKPhoneHelper::invitePhoneUser: \endlink instead.
  */
 - (ZMVideoSDKErrors)inviteByPhone:(NSString*)countryCode phoneNumber:(NSString*)phoneNumber name:(NSString*)name DEPRECATED_MSG_ATTRIBUTE("Use -invitePhoneUser: instead");
@@ -117,24 +121,24 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @brief Invite the specified user to join the session by phone.
  * @param inviteInfo The info for invite by phone.
- * @return If the function succeeds, the return value is ZMVideoSDKErrors_Success, otherwise not.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)invitePhoneUser:(ZMVideoSDKInvitePhoneUserInfo *)inviteInfo;
 /**
- * @brief Cancel the invitation that is being called out by phone.
- * @return If the function succeeds, the return value is ZMVideoSDKErrors_Success, otherwise not.
+ * @brief Cancels the invitation that is being called out by phone.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)cancelInviteByPhone;
 
 /**
- * @brief Get the status of the invitation by phone.
- * @return If the function succeeds, the method returns the ZMPhoneStatus of the invitation by phone.
+ * @brief Gets the phone invitation's status.
+ * @return The phone invitation's ZMPhoneStatus.
  */
 - (ZMPhoneStatus)getInviteByPhoneStatus;
 
 /**
- * @brief Get the list of dial in numbers supported by session.
- * @return If the function succeeds, the return value is the list of the call-in numbers. Otherwise failed.
+ * @brief Gets the dial in number list supported by session.
+ * @return If the function succeeds, it returns the call-in number list. Otherwise, this function fails and returns nil.
  */
 - (NSArray<ZMVideoSDKDialInNumberInfo *>* _Nullable)getSessionDialInNumbers;
 @end

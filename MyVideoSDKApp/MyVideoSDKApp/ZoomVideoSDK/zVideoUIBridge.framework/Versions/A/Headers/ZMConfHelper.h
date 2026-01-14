@@ -10,9 +10,29 @@
 #import <zVideoUIBridge/ZMUIConstants.h>
 #import <zVideoUIBridge/ZMBaseHelper.h>
 #import <zm_conf_universal_ui/zm_conf_universal_ui_api.h>
-#import <zm_conf_universal_ui/zm_conf_universal_ui_online_business_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_online_business_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_ui_collection_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_psl_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_cc_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_transcript_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_ai_interpretation_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_share_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_reaction_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_archive_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_participant_list_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_join_session_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_layout_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_audio_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_video_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_bo_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_watermark_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_leave_session_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_chat_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_toolbar_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_dyn_layout_algo_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_aic_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_notes_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_voice_recorder_interface.h>
 #define ZUUI NS_ZM_CONF_UNIVERSAL_UI
 #define PLIST ns_uui_participant_list
 @interface ZMConfHelper : ZMBaseHelper
@@ -34,6 +54,7 @@
 + (ICmmChatComponent*)getChatAPIObj;//ZOOM-14788
 + (ICmmRecordAPI*)getRecordApi;//[Zoom-16564]
 + (ICmmLocalRecordAPI*)getLocalRecordApi;
++ (ICmmStudioRecordAPI*)getStudioRecordApi;
 //+ (CMM_SHARESTATUS)getShareStatus;//[Zoom-16564]
 + (ICmmInterpretationMgr *)getInterpretationObj;//ZOOM-73504
 + (ICmmSceneBkgndMgr *)getSceneBkgndApi;//ZOOM-261363
@@ -94,6 +115,7 @@
 //- (CMM_SHARESTATUS)getConfInstShareStatus;//[Zoom-16564]
 - (ICmmInterpretationMgr *)getConfInstInterpretationObj;//ZOOM-73504
 - (ICmmSignInterpretationMgr *)getConfInstSignInterpretationObj;//ZOOM-330475
+- (ICmmAIInterpretationMgrAPI *)getConfInstAIInterpretationObj;
 - (ICmmWhiteboardAPI*)getConfInstWhiteboardApi;
 - (ICmmZoomNotesApi*)getConfInstNotesApi;
 - (ICmmLTTAPI *)getLTTApi;//ZOOM-283768
@@ -126,8 +148,13 @@
 
 #pragma mark - ConfUniversalUI
 + (ZUUI::IZmConfUniversalUi*)getConfUniversalUI;
+#pragma mark - Closed Caption
++ (ZUUI::ICCUniversalUi *)getCCUniversalUi;
++ (ZUUI::ILTTUniversalUi *)getLTTUniversalUi;
 #pragma mark - Transcript
 + (ZUUI::ITranscriptUniversalUi*)getTranscriptUniversalUI;
+#pragma mark - AI Interpretation
++ (ZUUI::IAiInterpretationUi*)getAiInterpretationUniversalUI;
 #pragma mark - Share
 + (ZUUI::IShareUniversalUi*)getShareUniversalUI;
 #pragma mark - RaiseHand
@@ -144,19 +171,30 @@
 + (ZUUI::IUuiPlistCoachMarkLogic *)getPlistCoachMarkLogicWithType:(ZUUI::UuiPlistCoachMarkType)type;
 + (ZUUI::PLIST::IParticipantPanelLogic *)getRemovePlistLogic;
 + (ZUUI::IUuiConfUserActionLogic *)getPlistUserActionLogic;
++ (ZUUI::IUuiConfUserActionLogic *)getPlistActionLogicWithType:(UuiPlistItemType)type;
++ (ZUUI::PLIST::IUuiPlistItemLogic *)getPlistJoinedItemLogic;
 #pragma mark - OnlineBusiness
 + (ZUUI::IOnlineBusinessUniversalUi *)getOnlineBusinessUniversalUi;
 + (ZUUI::IWebinarFreetrialUniversalUi *)getWebinarFreetrialUniversalUi;
 + (ZUUI::ILargeMeetingUpSellUniversalUi *)getLargeMeetingUpSellUniversalUi;
++ (ZUUI::IZpnsCommonNoticeUniversalUi *)getZpnsCommonNoticeUniversalUi;
 #pragma mark - BO
 + (ZUUI::IBOUniversalUi *)getBOUniversalUI;
 #pragma mark - Join Session
 + (ZUUI::IJoinSessionUniversalUi*)getJoinSessionUUI;
 #pragma mark - Layout
 + (ZUUI::ILayoutUniversalUi *)getLayoutUniversalUI;
+#pragma mark - Audio
++ (ZUUI::IAudioUniversalUi *)getAudioUUI;
 #pragma mark - UICollection
 + (ZUUI::IUiCollectionUniversalUi *)getUICollectionUUI;
 + (ZUUI::IConfUserActionUniversalUi *)getUserActionUUI;
++ (ZUUI::IMeetingControlUniversalUi *)getMeetingControlUUI;
++ (ZUUI::IUuiHostToolWindowLogic *)getHostToolWindowLogic;
++ (ZUUI::IUuiHostToolPanelLogic *)getHostToolPanelLogic;
++ (ZUUI::IUuiSettingWindowLogic *)getSettingWindowLogic;
++ (ZUUI::IUuiSettingDisplayPanelLogic *)getSetingDisplayPanelLogic;
+
 #pragma mark - Video
 + (ZUUI::IVideoPortUniversalUi *)getVideoPortUUI;
 + (ZUUI::IUuiVideoPortLogic *)getVideoPortLogic;
@@ -166,5 +204,8 @@
 + (ZUUI::IMainToolbarLogic *)getMainToolbarLogic;
 #pragma mark - Watermark
 + (ZUUI::IWatermarkUniversalUi *)getWatermarkUUI;
-
+#pragma mark - leaveMeeting
++ (ZUUI::ILeaveSessionUniversalUi *)getLeaveSessionUniversalUi;
+#pragma mark - VoiceRecord
++ (ZUUI::IVoiceRecorderUniversalUi *)getVoiceRecordUUI;
 @end

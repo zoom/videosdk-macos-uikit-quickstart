@@ -16,33 +16,33 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * @brief Checks if the session supports broadcast streaming.
- * @return YES if supported; NO if not.
+ * @return YES if supported. Otherwise, NO.
  */
 - (BOOL)isBroadcastStreamingSupported;
 
 /**
  * @brief Checks if the user has permission to start a broadcast.
- * @return YES if supported; NO if not.
+ * @return YES if supported. Otherwise, NO.
  */
 - (BOOL)canStartBroadcast;
 
 /**
- * @brief Start broadcast streaming asynchronously. The result is notified via the callback \link ZMVideoSDKDelegate onStartBroadcastResponse \endlink.
- * @return If the function succeeds, the return value is @c ZMVideoSDKErrors_Success. Otherwise failed.
+ * @brief Starts broadcast streaming asynchronously. The result is notified via the callback \link ZMVideoSDKDelegate onStartBroadcastResponse \endlink.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)startBroadcast;
 
 /**
  * @brief Stops broadcast streaming asynchronously. The result is notified via the callback \link ZMVideoSDKDelegate onStopBroadcastResponse \endlink.
  * @param channelID The broadcast streaming channel ID.
- * @return If the function succeeds, the return value is @c ZMVideoSDKErrors_Success. Otherwise failed.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)stopBroadcast:(NSString*)channelID;
 
 /**
  * @brief Gets the broadcast status asynchronously. The result is notified via the callback \link ZMVideoSDKDelegate onGetBroadcastControlStatus \endlink.
  * @param channelID The broadcast streaming channel ID.
- * @return If the function succeeds, the return value is @c ZMVideoSDKErrors_Success. Otherwise failed.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)getBroadcastStatus:(NSString*)channelID;
 @end

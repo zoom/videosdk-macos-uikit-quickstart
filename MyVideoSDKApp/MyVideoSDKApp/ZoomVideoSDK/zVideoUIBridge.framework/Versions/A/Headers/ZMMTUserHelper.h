@@ -185,6 +185,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isSupportClinicalNote;
 - (BOOL)isSupportLiveSummary;
 - (BOOL)hasSupportLiveSummaryHostCoHost;
+- (BOOL)isWatchOnlyUser;
+- (BOOL)isAICWatchOnlyUser;
+- (BOOL)isAICRestrictedUser;
 
 //ZOOM-10609
 - (BOOL)isEnableParticipantID;
@@ -209,6 +212,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)isActiveSimuliveUser:(ZMUser *)zmUser;
 - (BOOL)isActiveVideoSceneUser:(ZMUser *)zmUser;
+
+// Notes transcription status
+- (BOOL)isNotesTranscriptStartedForUser:(ZMUser *)zmUser;
 
 @end
 

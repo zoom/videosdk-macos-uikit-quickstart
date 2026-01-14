@@ -91,6 +91,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateVideoTransparencyForLoacalRecord:(const SSB_MC_DATA_BLOCK_VIDEO_TRANSPARENCY_INFO&)info;
 - (void)updateVideoMaskForLoacalRecord:(const SSB_MC_DATA_BLOCK_VIDEO_MASK_INFO&)info;
 
+#pragma mark - API only for Studio Recording
+- (BOOL)isStudioRecordInProgress;
 @end
 
 
@@ -162,6 +164,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)canNotStartRecordingFeatureUntilHostJoined;
 
 - (BOOL)canShowRecordingIndicatorForSharing;
+- (BOOL)isStudioRecordingEnabled;
 @end
 
 NS_ASSUME_NONNULL_END

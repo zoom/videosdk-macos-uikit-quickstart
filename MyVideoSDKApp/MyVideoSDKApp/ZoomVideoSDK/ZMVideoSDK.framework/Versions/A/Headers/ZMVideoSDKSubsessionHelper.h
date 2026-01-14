@@ -15,11 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKSubSessionUser : NSObject
 /**
- * @brief Get the subsession user's username.
+ * @brief Gets the subsession user's username.
  */
 @property(nonatomic, copy, readonly)NSString* userName;
 /**
- * @brief Get the subsession user's GUID.
+ * @brief Gets the subsession user's GUID.
  */
 @property(nonatomic, copy, readonly)NSString* userGUID;
 @end
@@ -30,22 +30,22 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKSubSessionKit : NSObject
 /**
- * @brief Get the subsession's name.
+ * @brief Gets the subsession's name.
  */
 @property(nonatomic, copy, readonly)NSString* subSessionName;
 /**
- * @brief Get the subsession's ID.
+ * @brief Gets the subsession's ID.
  */
 @property(nonatomic, copy, readonly)NSString* subSessionID;
 /**
- * @brief Get the list of users in this subsession.
- * @return If the function succeeds, it returns an array of ZMVideoSDKSubSessionUser. Otherwise returns nil.
+ * @brief Gets the list of users in this subsession.
+ * @return If the function succeeds, it returns an array of ZMVideoSDKSubSessionUser. Otherwise, this function fails and returns nil.
  */
 - (NSArray<ZMVideoSDKSubSessionUser*>* _Nullable)getSubSessionUserList;
 
 /**
- * @brief Join this subsession.
- * @return If the function succeeds, the return value @c ZoomSDKError_Success. Otherwise, the function fails.
+ * @brief Joins this subsession.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)joinSubSession;
 @end
@@ -56,23 +56,23 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKSubSessionUserHelpRequestHandler : NSObject
 /**
- * @brief Get the username of the user who sent this request.
+ * @brief Gets the user's username who sent this request.
  */
 @property(nonatomic, copy, readonly)NSString* requestUserName;
 /**
- * @brief Get the name of the subsession where the user sent this request.
+ * @brief Gets the subsession's name where the user sent this request.
  */
 @property(nonatomic, copy, readonly)NSString* requestSubSessionName;
 /**
  * @brief Ignore this request.
- * @return If the function succeeds, the return value @c ZoomSDKError_Success. Otherwise, the function fails.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @note 'onSubSessionUserHelpRequestResult' is the corresponding callback notification.
  */
 - (ZMVideoSDKErrors)ignore;
 
 /**
- * @brief Join the subsession from which the help request originated.
- * @return If the function succeeds, the return value @c ZoomSDKError_Success. Otherwise, the function fails.
+ * @brief Joins the subsession where the help request originated.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)joinSubSessionByUserRequest;
 @end
@@ -83,21 +83,21 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKSubSessionManager : NSObject
 /**
- * @brief Start subsession.
- * @return If the function succeeds, the return value @c ZoomSDKError_Success. Otherwise, the function fails.
+ * @brief Starts subsession.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @note 'onSubSessionStatusChanged' is the corresponding callback notification.
  */
 - (ZMVideoSDKErrors)startSubSession;
 
 /**
- * @brief Determine if the subsession has started.
- * @return If the function succeeds, the return value @c ZoomSDKError_Success. Otherwise, the function fails.
+ * @brief Determines if the subsession has started.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (BOOL)isSubSessionStarted;
 
 /**
- * @brief Stop subsession.
- * @return If the function succeeds, the return value @c ZoomSDKError_Success. Otherwise, the function fails.
+ * @brief Stops subsession.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @note 'onSubSessionStatusChanged' is the corresponding callback notification.
  */
 - (ZMVideoSDKErrors)stopSubSession;
@@ -105,7 +105,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @brief Broadcast a message to all subsessions.
  * @param message The message to be broadcast.
- * @return If the function succeeds, the return value @c ZoomSDKError_Success. Otherwise, the function fails.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @note 'onBroadcastMessageFromMainSession' is the corresponding callback notification.
  */
 - (ZMVideoSDKErrors)broadcastMessage:(NSString*)message;
@@ -118,13 +118,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKSubSessionParticipant : NSObject
 /**
  * @brief Return to main session.
- * @return If the function succeeds, the return value @c ZoomSDKError_Success. Otherwise, the function fails.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)returnToMainSession;
 
 /**
- * @brief Request help.
- * @return If the function succeeds, the return value @c ZoomSDKError_Success. Otherwise, the function fails.
+ * @brief Requests help.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @note 'onSubSessionUserHelpRequestResult'is the corresponding callback notification.
  */
 - (ZMVideoSDKErrors)requestForHelp;
@@ -141,19 +141,19 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @brief Withdraw all committed subsessions and commit the new list.
  * @param subSessionList Create subsession name list.
- * @return If the function succeeds, the return value @c ZoomSDKError_Success. Otherwise, the function fails.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)commitSubSessionList:(NSArray<NSString*>*)subSessionList;
 
 /**
  * @brief Withdraw all committed subsessions.
- * @return If the function succeeds, the return value @c ZoomSDKError_Success. Otherwise, the function fails.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)withdrawSubSessionList;
 
 /**
- * @brief Get the list of commited subsessions.
- * @return If the function succeeds, it returns an array of ZMVideoSDKSubSessionKit. Otherwise returns nil.
+ * @brief Gets the list of commited subsessions.
+ * @return If the function succeeds, it returns an array of ZMVideoSDKSubSessionKit. Otherwise, this function fails and returns nil.
  */
 - (NSArray<ZMVideoSDKSubSessionKit*>* _Nullable)getCommittedSubSessionList;
 @end

@@ -16,29 +16,29 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKShareSettingHelper : NSObject
 
 /**
- * @brief Set screen capture mode.
+ * @brief Sets screen capture mode.
  * @param captureMode The mode to be set.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success, otherwise not.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)setScreenCaptureMode:(ZMVideoSDKScreenCaptureMode)captureMode;
 
 /**
- * @brief Get the screen capture mode.
+ * @brief Gets the screen capture mode.
  * @param captureMode The screen capture mode.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success, otherwise not.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)getScreenCaptureMode:(ZMVideoSDKScreenCaptureMode*)captureMode;
 
 /**
- * @brief Set the visibility of the green border when sharing the screen.
- * @param bEnable YES to display the green border. NO to hide.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success, otherwise not.
+ * @brief Sets the green border's visibility when sharing the screen.
+ * @param bEnable YES to display the green border, NO to hide.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)enableGreenBorder:(BOOL)bEnable;
 
 /**
- * @brief Determine if the green border is enabled when user shares the screen.
- * @return YES if the green border is enabled. Otherwise NO.
+ * @brief Determines if the green border is enabled when user shares the screen.
+ * @return YES if the green border is enabled. Otherwise, NO.
  */
 - (BOOL)isGreenBorderEnabled;
 @end

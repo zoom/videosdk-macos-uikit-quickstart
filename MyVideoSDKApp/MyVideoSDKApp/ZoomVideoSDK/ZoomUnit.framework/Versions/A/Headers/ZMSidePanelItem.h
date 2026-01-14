@@ -110,6 +110,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Creates pop up in side panel
 - (void)popup:(id)sender;
+- (void)popin:(id)sender;
 
 /// Collapse item view in side panel
 - (void)collapse:(id)sender;

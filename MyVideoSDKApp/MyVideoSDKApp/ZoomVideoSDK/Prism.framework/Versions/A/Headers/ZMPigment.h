@@ -48,11 +48,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property(assign) BOOL masksToBounds;
 
 @property(assign) CGFloat cornerRadius;
+@property(assign) CGFloat cornerRadiusRatio;
 @property(assign) NSRectCorner cornerMask;
 
 - (void)setPigment:(nullable ZMPigment*)pigment;
 
 @property(readonly) NSColor* appearanceColor;
+@property(readonly) NSImage* appearanceImage;
+
+- (CGFloat)effectiveCornerRadiusWithFrame:(NSRect)frame;
 @end
 
 

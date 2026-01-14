@@ -47,5 +47,7 @@
 - (void)collectViewItemDidBecomeFirstResponse:(NSCollectionViewItem * _Nonnull)item;
 - (void)collectViewItemMoreMenuClicked:(NSCollectionViewItem * _Nonnull)item menuTag:(NSInteger)menuTag;
 - (NSNumber *_Nullable)moreMenuSelectedStatus:(NSCollectionViewItem*_Nonnull)item;
-- (void)setSelectionIndexPaths:(NSSet<NSIndexPath *> *_Nonnull)selectionIndexPaths shouldAutoScroll:(BOOL)shouldAutoScroll;
+- (void)setSelectionIndexPaths:(NSSet<NSIndexPath *> *_Nonnull)indexPaths
+              shouldAutoScroll:(BOOL)shouldAutoScroll;
+- (void)setSelectionIndexPathsSilently:(NSSet<NSIndexPath *> *_Nonnull)indexPaths;
 @end

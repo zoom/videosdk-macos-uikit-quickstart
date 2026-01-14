@@ -9,6 +9,8 @@
 #define PrismOCBridge_h
 
 enum PZMTextBadgeStyle : NSInteger;
+@class PZMFloatingActionButton;
+@class PZMCheckboxView;
 
 __attribute__((deprecated))
 extern enum PZMTextBadgeStyle PZMTextBadgeStylePrimary NS_SWIFT_UNAVAILABLE("Use TextBadge.Style directly instead.");
@@ -28,5 +30,9 @@ extern enum PZMTextBadgeStyle PZMTextBadgeStyleNegative NS_SWIFT_UNAVAILABLE("Us
 __attribute__((deprecated))
 extern enum PZMTextBadgeStyle PZMTextBadgeStyleSpecial NS_SWIFT_UNAVAILABLE("Use TextBadge.Style directly instead.");
 
+__attribute__((deprecated))
+typedef PZMFloatingActionButton PZMFirstActionButton NS_SWIFT_UNAVAILABLE("Use FirstActionButton directly instead.");
+
+__attribute__((deprecated)) typedef PZMCheckboxView PZMCheckboxGroupView NS_SWIFT_UNAVAILABLE("Use CheckboxView directly instead.");
 
 #endif /* PrismOCBridge_h */

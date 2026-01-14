@@ -14,13 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMUnifyWebView : ZMUnifyWKWebViewBase <ZMUnifyWebViewInstance>
 
 @property (nonatomic, weak) id<ZMUnifyWebViewInstanceDelegate> unifyDelegate;
-@property (nonatomic, readonly) NSString *webViewID;
 @property (nonatomic, strong) NSString *homeURL;
 @property (nonatomic, assign) BOOL isRecycled;
 @property (nonatomic, assign) long long createStartTime;
 @property (nonatomic, assign) long long createEndTime;
 @property (nonatomic, assign) long long firstFinishNavigationTime;
 @property (nonatomic, assign) NSInteger errorCode;
+@property (nonatomic, assign, readonly) BOOL isVisible;
+@property (nonatomic, assign) enum UnifyWebViewWindowType windowType;
 
 + (instancetype)unifyWebViewWithConfig:(ZMUnifyWebViewConfiguration *)config;
 + (WKWebViewConfiguration *)wkConfigurationWith:(ZMUnifyWebViewConfiguration *)unifyConfig;

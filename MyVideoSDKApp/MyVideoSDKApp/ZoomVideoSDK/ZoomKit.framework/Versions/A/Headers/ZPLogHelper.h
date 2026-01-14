@@ -76,6 +76,7 @@
 /**
  define log module name
  */
+#define ZMLoggingModule_Zoom "Zoom"
 #define ZMLoggingModule_VideoUI  "VideoUI"
 #define ZMLoggingModule_VideoUI_Clips  "VideoUI_Clips"
 #define ZMLoggingModule_ChatUI_Clips  "ChatUI_Clips"

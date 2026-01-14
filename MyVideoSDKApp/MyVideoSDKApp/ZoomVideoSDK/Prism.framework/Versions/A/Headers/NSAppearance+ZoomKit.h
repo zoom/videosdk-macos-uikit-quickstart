@@ -10,16 +10,23 @@
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
+@class ZMTheme;
 @interface NSAppearance (ZoomKit)
-+ (NSAppearance*)zm_darkAppearance;
-+ (NSAppearance*)zm_lightAppearance;
++ (instancetype)zm_darkAppearance;
++ (instancetype)zm_lightAppearance;
 @property (readonly) BOOL isDarkMode;
 
 + (NSAppearance*)zmDrawingAppearance;
 
 - (void)zm_performAsCurrentDrawingAppearance:(void (NS_NOESCAPE ^)(void))block;
+
+@property (nullable, strong) ZMTheme* theme;
 @end
 
 @interface NSView (ZoomAppearance)
 @property (assign, readonly) BOOL isDarkMode;
 @end
+
+NS_ASSUME_NONNULL_END

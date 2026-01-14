@@ -7,7 +7,8 @@
 
 #import <zVideoUIBridge/ZMBaseHelper.h>
 #ifdef __cplusplus
-#import <zm_conf_universal_ui/zm_conf_universal_ui_api.h>
+#import <zm_conf_universal_ui/zm_conf_universal_ui_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_reaction_interface.h>
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
@@ -58,6 +59,8 @@ typedef NS_OPTIONS(NSUInteger, ZMSessionOptions){
 - (BOOL)isMeetingAnimatedReactionsEnable;
 
 - (BOOL)isLottieEnable;
+
+- (NSArray *)getSelectEmojis;
 
 // [ZOOM-426408] Raise Hand Improvements
 - (BOOL)isRaiseHandImprovementsAvaiable;

@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)refreshAudioSettingUI;
 - (void)closePersonalVoiceDisclaimerIfNeed;
 
+- (void)mt_checkPersonalizedVoiceState;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,7 +8,7 @@
 #ifndef ZMFileConstants_h
 #define ZMFileConstants_h
 
-static NSString * const kZMFileErrorDomain_FTCDisabled = @"kZMFileErrorDomain_FTCDisabled";
+#define kZMFileErrorDomain_FTCDisabled @"kZMFileErrorDomain_FTCDisabled"
 
 typedef NS_ENUM(unsigned long long, ZMHybridFileStyle) {
     ZMHybridFileStyle_JPG = 0x100000,

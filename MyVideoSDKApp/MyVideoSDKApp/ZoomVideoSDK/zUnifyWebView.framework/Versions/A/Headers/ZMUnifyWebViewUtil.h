@@ -6,6 +6,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <zUnifyWebView/UnifyWebViewCommonDefine.h>
+
 
 @class ZMUnifyLocalPathInfo;
 
@@ -24,12 +26,13 @@
 + (void)deleteWebCacheFolders;
 + (BOOL)isJSCallSrcURLInvalid:(NSURL *)srcURL;
 
-+ (NSString *)getCommonInjectJSString:(BOOL)isCef;
-+ (NSDictionary *)getInjectJSCommonSysPra:(BOOL)isCef;
++ (NSString *)getCommonInjectJSString:(BOOL)isCef webviewGuid:(NSString*)webviewGuid;
++ (NSString*)getUnifyConfigInjectJSString:(BOOL)isCef webviewGuid:(NSString*)webviewGuid;
++ (NSDictionary *)getInjectJSCommonSysPra:(BOOL)isCef webviewGuid:(NSString*)webviewGuid;
 + (NSDictionary *)getHTTPCommonHeader;
 + (NSString *)webviewVisibilityChangeJSCode:(BOOL)isHidden;
 + (NSString *)computerWakeStatusChangeJSCode:(BOOL)isSleep;
-+ (NSString *)themeModeChangedEventJSCode;
++ (NSString *)themeModeChangedEventJSCode:(NSView*)view;
 + (NSString *)getInjectFullscreenObserverJSCode;
 + (NSString*)getWebviewZoomFactorChangedJSCode:(int)zoomFactor;
 
@@ -43,10 +46,11 @@
 + (NSString *)urlToMIME:(NSURL *)url;
 
 + (NSString *)getWebKitVersionInUse;
-+ (NSString *)getCEFVersionInUseWithPath:(NSString *)path;
++ (NSString *)getCEFVersionInUse;
 + (NSString *)getOriginalUserAgent:(BOOL)isCEF;
-+ (NSString*)getThemeMode;
-+ (uint32_t)getWebViewBackgroundColor;
++ (NSString*)getThemeMode:(NSView*)view;
++ (NSString*)getWebViewThemeMode:(NSString*)webviewGuid;
++ (uint32_t)getWebViewBackgroundColor:(NSString*)webviewGuid;
 
 + (NSString*)getLanguageForCookie;
 + (NSString*)getHostForCookie:(NSString*)urlHost;
@@ -68,4 +72,14 @@
 + (NSString*)getInjectDebugFrame:(NSString*)htmlBodyStr;
 
 + (BOOL)isProductionRun;
++ (int)getWindowType:(NSWindow *)window;
+
++ (const char *)getUnifyWebViewLoadAddr;
++ (const char *)entrance;
++ (NSString *)hostOfURL:(NSString *)urlStr;
+
++ (NSWindow *)getWindowOfWebView:(NSString *)webViewID;
++ (NSWindow *)getPTMainWindow;
++ (NSWindow *)getConfMainWindow;
+
 @end

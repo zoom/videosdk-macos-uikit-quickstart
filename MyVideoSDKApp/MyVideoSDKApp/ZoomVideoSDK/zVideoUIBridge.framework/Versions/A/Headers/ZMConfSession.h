@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class ZMMTCoachMarkHelper;
 @class ZMMTQueriesHelper;
 @class ZMMTInterpretHelper;
+@class ZMMTVoiceTranslationHelper;
 @class ZMMTCCHelper;
 @class ZMMTChatHelper;
 @protocol IZMMTPinVideoMgr;
@@ -33,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class ZMMTReactionHelper;
 @class ZMMTClinicalNoteHelper;
 @class ZMMTArchiveHelper;
+@class ZMMTAudioUUIHelper;
 @class ZMMTShareHelper;
 @class ZMMTMeetingInfoHelper;
 @class ZMMTGRHelper;
@@ -54,6 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,readonly, weak) ZMUserHelper* zmUserHelper;
 @property(nonatomic,readonly, weak) ZMVideoHelper* zmVideoHelper;
 @property(nonatomic,readonly, weak) ZMMTInterpretHelper* zmInterpretHelper;
+@property(nonatomic,readonly, weak) ZMMTVoiceTranslationHelper* voiceTranslationHelper;
 @property(nonatomic,readonly, weak) ZMMTCCHelper* ccHelper;
 @property(nonatomic,readonly, weak) ZMBOHelper* zmBOHelper;
 @property(nonatomic,readonly, weak) ZMMTQueriesHelper* zmQueriesHelper;
@@ -68,6 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,readonly, weak) ZMPBOHelper* zmPBOHelper;
 @property(nonatomic,readonly, weak) ZMMTReactionHelper* reactionHelper;
 @property(nonatomic,readonly, weak) ZMMTClinicalNoteHelper* clinicalNoteHelper;
+@property(nonatomic,readonly, weak) ZMMTAudioUUIHelper* audioUUIHelper;
 @property(nonatomic,readonly, weak) ZMMTArchiveHelper* archiveHelper;
 @property(nonatomic,readonly, weak) ZMMTShareHelper* shareHelper;
 @property(nonatomic,readonly, weak) ZMMTMeetingInfoHelper* meetingInfoHelper;
@@ -114,8 +118,10 @@ NS_ASSUME_NONNULL_END
 
 #ifdef __cplusplus
 #import <zm_conf_universal_ui/zm_conf_universal_ui_api.h>
+#import <zm_conf_universal_ui/zm_conf_universal_ui_interface.h>
 @interface ZMConfSession(universalUI)
 @property(readonly) NSInteger cmmConfInstType;//CmmConfInstType
 @property(readonly) NS_ZM_CONF_UNIVERSAL_UI::ConfInstParam confInstParam;
++ (instancetype _Nullable)sessionWithConfInstParam:(NS_ZM_CONF_UNIVERSAL_UI::ConfInstParam)param;
 @end
 #endif

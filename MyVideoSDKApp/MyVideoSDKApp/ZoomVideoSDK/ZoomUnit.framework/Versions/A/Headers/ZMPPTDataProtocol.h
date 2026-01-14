@@ -161,7 +161,6 @@ typedef enum
     Evt_PT_SubType_Status,
     Evt_PT_SubType_BOFollowFullscreen,//ZOOM-183814
     Evt_PT_SubType_Enable,
-    Evt_PT_SubType_Side_By_Side_Mode,//ZOOM-26329 for split sharing&video
     Evt_PT_SubType_Device_Changed,
     Evt_PT_Audio_Wizard_Show,//ZOOM-38961
     Evt_PT_SubType_Event_Track,//[Zoom-46054]

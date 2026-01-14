@@ -35,6 +35,7 @@ typedef NS_ENUM(NSUInteger, ZMReactionGestureType) {
 };
 
 #define GESTURE_TIME    2
+@protocol ZMReactionsServiceProtocol;
 
 @protocol IZMConfReactionsMgr <ZMRoutableObject>
 
@@ -129,6 +130,9 @@ typedef NS_ENUM(NSUInteger, ZMReactionGestureType) {
 - (void)cleanBRBIfNeeded;
 
 -(void)triggerDynamicEmojiReaction:(NSString *)emojiString;
+
+//zUI meeting reaction setting call back
+- (void)ShowEnableSendReactionsConfirmDialogIfNeed;
 
 @end
 

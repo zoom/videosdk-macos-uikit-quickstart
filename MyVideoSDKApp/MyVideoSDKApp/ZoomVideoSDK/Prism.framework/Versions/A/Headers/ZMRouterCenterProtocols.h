@@ -34,6 +34,7 @@ static ZMEventPriority ZMEventPriorityDefault = NSIntegerMax;
 
 
 #define ZMEventPosterFor(P) ((id<P>)[ZMRouterCenter.shared posterForProtocol:@protocol(P)])
+#define ZMEventPosterWithCallBack(P,B) ((id<P>)[ZMRouterCenter.shared posterForProtocol:@protocol(P) callBack:B])
 #define ZMEventPosterV2(P,O) ((id<P>)[ZMRouterCenter.shared posterForProtocol:@protocol(P) sender:nil object:O])
 #define ZMEventPosterBroadcast(P) ((id<P>)[ZMRouterCenter.shared posterForProtocol:@protocol(P) sender:nil object:nil tag:-1 ignoreSelfObjectIfNil:YES])
 @protocol ZMEventPosterGenerator <NSObject>
@@ -42,6 +43,7 @@ static ZMEventPriority ZMEventPriorityDefault = NSIntegerMax;
 - (nullable id<ZMEventPoster>)posterForProtocol:(Protocol *)protocol sender:(nullable id)sender object:(nullable id)object;
 - (nullable id<ZMEventPoster>)posterForProtocol:(Protocol *)protocol sender:(nullable id)sender object:(nullable id)object tag:(NSInteger)tag;
 - (nullable id<ZMEventPoster>)posterForProtocol:(Protocol *)protocol sender:(nullable id)sender object:(nullable id)object tag:(NSInteger)tag ignoreSelfObjectIfNil:(BOOL)ignoreSelfObjectIfNil;
+- (nullable id<ZMEventPoster>)posterForProtocol:(Protocol *)protocol callBack:(void(^)(id obj, BOOL returnValue, BOOL *stop))callBack;
 @end
 
 @protocol ZMEventRegistry <NSObject>

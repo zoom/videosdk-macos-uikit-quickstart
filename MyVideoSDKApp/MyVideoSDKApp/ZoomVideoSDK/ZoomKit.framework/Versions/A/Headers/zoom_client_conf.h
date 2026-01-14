@@ -50,7 +50,9 @@
 #endif
 
 #if (((defined __IOS__ && !defined(__WATCHOS__)) || (defined CMM_ANDROID) || (defined WIN_CCI) || (defined __MACOS__)) && (!defined BUILD_FOR_MIMO))
+#ifndef ENABLE_ZOOM_CCI
    #define ENABLE_ZOOM_CCI
+#endif
 #if defined __MACOS__
     #define USE_ZCC_DELEGATE
 #endif
@@ -83,7 +85,9 @@
 #endif
 
 #if ((defined WIN_Calendar) || (defined __MACOS__) || (defined ENABLE_ANDROID_CLIENT_ZCALENDAR) || (defined(__IOS__) && !defined(__WATCHOS__))) ||  (defined BUILD_FOR_MIMO) || (defined BUILD_FOR_ZPCONTROLLER)
+#ifndef ENABLE_ZOOM_CALENDAR
    #define ENABLE_ZOOM_CALENDAR
+#endif
 #endif
 
 #if defined ( _WIN32 ) || defined ( __WIN32__ ) || defined ( WIN32 )
@@ -93,7 +97,9 @@
 #endif
 
 #if (((defined WIN_MailClient) || (defined __MACOS__) || (defined ENABLE_ANDROID_CLIENT_ZMAIL) || (defined __IOS__ && !defined(__WATCHOS__))) && (!defined BUILD_FOR_MIMO) && (!defined BUILD_FOR_ZPCONTROLLER))
+#ifndef ENABLE_MAILCLIENT_SERVICE
    #define ENABLE_MAILCLIENT_SERVICE
+#endif
 #endif
 
 #if (defined ( _WIN32 ) || defined ( __WIN32__ ) || defined ( WIN32 ) || defined _M_ARM64)
@@ -102,7 +108,7 @@
 #   define WIN_ZOOM_CHAT_JS
 #endif
 
-#if (((defined WIN_ZOOM_CHAT_JS) || (defined __MACOS__)) && (!defined BUILD_FOR_MIMO))
+#if (((defined WIN_ZOOM_CHAT_JS) || (defined __MACOS__) || (defined __LINUX_CLIENT__)) && (!defined BUILD_FOR_MIMO))
 	#define ENABLE_ZOOM_CHAT_JS
 #endif
 
@@ -113,7 +119,9 @@
 #endif
 
 #if (((defined __MACOS__) || (defined WIN_ZOOM_SPACES) || (defined __LINUX_CLIENT__) || ((defined __IOS__) && !defined(__XROS__) && !defined __WATCHOS__)) && (!defined BUILD_FOR_MIMO) && (!defined BUILD_FOR_ZPCONTROLLER))
+#ifndef ENABLE_ZOOM_SPACES
     #define ENABLE_ZOOM_SPACES
+#endif
 #endif
 
 #else
@@ -153,18 +161,25 @@
 #define ENABLE_DAL_FEATURE
 #endif
 
+#if !defined(BUILD_FOR_LITE_SDK) && !defined(BUILD_FOR_MINIPACKAGE)
+#define ENABLE_LOCAL_DNS_CACHE
+#endif
+
 #if !defined(BUILD_FOR_MIMO) && !defined(BUILD_FOR_ZPCONTROLLER) && !defined(BUILD_FOR_VDI) && !defined(BUILD_FOR_CLIENT_SDK) && !defined(BUILD_FOR_LITE_SDK)
 #define ENABLE_ASYNC_KV_OPERATION
 #endif
 
-#if (defined ENABLE_DAL_FEATURE) && (defined ENABLE_ASYNC_KV_OPERATION) && ((defined CMM_WIN) || (defined CMM_ANDROID) || (defined __MACOS__))
+#if (defined ENABLE_DAL_FEATURE) && (defined ENABLE_ASYNC_KV_OPERATION)
 #define ENABLE_DAL_KV_MODE
+#endif
+
+#if (defined BUILD_FOR_MIMO) || (defined BUILD_FOR_ZPCONTROLLER)
+#define ENABLE_VOICE_COMMAND_SERVICE
 #endif
 
 #if (!defined CMM_ANDROID) && (!defined __ZOOM_NO_CLIENT_LOG)
 #define ENABLE_NET_COMPOUND_ABILITY
 #endif
-
 
 #if !defined(BUILD_FOR_MIMO) && !defined(BUILD_FOR_ZPCONTROLLER) && !defined(BUILD_FOR_VDI) && !defined(BUILD_FOR_CLIENT_SDK)
 #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(_WIN64) || defined(__WIN64__) || defined(WIN64) || defined(_M_ARM64)
@@ -258,12 +273,33 @@
 #define ENABLE_VIDEO_AUTO_FRAMING
 #endif
 
+#if (defined (CMM_WIN) || defined(__MACOS__)) && (defined BUILD_FOR_NORMAL_CLIENT)
+#define ENABLE_VIDEO_AUTO_FRAMING_FOR_CLIENT
+#endif
+
 #if !(defined DISABLE_ZMDB_STORAGE) && (defined(BUILD_FOR_DOGFOOD) || defined(ZOOM_DEBUG))
 #define ENABLE_DYNAMIC_QUERY_TIMEZONE
 #endif
 
 #if ((defined CMM_WIN ) || (defined __MACOS__) || (defined __LINUX_CLIENT__)) && defined(BUILD_FOR_NORMAL_CLIENT)
 #define ENABLE_ZOOM_PROCESS_INFO_COLLECTOR
+#endif
+
+
+#if (defined (CMM_WIN) || defined (__MACOS__)) && (defined (BUILD_FOR_NORMAL_CLIENT) || defined (BUILD_FOR_VDI))
+#define ENABLE_WEBVIEW_RECYCLE
+#endif
+
+#if  (defined __MACOS__) || (defined BUILD_FOR_ZPA)
+#define ENABLE_DB_KEY_SYNC
+#endif
+
+#if (defined CMM_WIN || defined __MACOS__ || defined __LINUX_CLIENT__) && (defined(ZOOM_DEBUG) || defined(BUILD_FOR_DOGFOOD)) && defined BUILD_FOR_NORMAL_CLIENT
+#define ENABLE_STORAGE_MANAGEMENT
+#endif
+
+#if (defined __MACOS__) && (defined BUILD_FOR_NORMAL_CLIENT)
+#define ENABLE_PHOTOREALISTIC_AVATAR
 #endif
 
 // dont define the macro after this line!!!

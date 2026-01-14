@@ -16,47 +16,47 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * @brief Whether the current user can do annotation on the share.
- * @return YES means the user can do annotation, otherwise NO.
+ * @return YES if the user can do annotation. Otherwise, NO.
  */
 - (BOOL)canDoAnnotation;
 
 /**
  * @brief Whether annotation was disabled or not by the share owner.
- * @return YES indicates the annotations is disabled, otherwise NO.
+ * @return YES if the annotations is disabled. Otherwise, NO.
  * @deprecated Use \link ZMVideoSDKAnnotationHelper::canDoAnnotation \endlink instead.
  */
 - (BOOL)isSenderDisableAnnotation DEPRECATED_MSG_ATTRIBUTE("Use -canDoAnnotation instead");
 
 /**
  * @brief Starts annotation.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)startAnnotation;
 
 /**
  * @brief Stops annotation.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)stopAnnotation;
 
 /**
- * @brief Set the annotation tool color.
+ * @brief Sets the annotation tool color.
  * @param toolColor The specified color
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)setToolColor:(NSColor* _Nonnull)toolColor;
 
 /**
  * @brief Gets the annotation tool color.
  * @param toolColor The current tool color.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)getToolColor:(NSColor* _Nullable * _Nonnull)toolColor;
 
 /**
  * @brief Sets the annotation tool type.
  * @param toolType The specified annotation tool type.
- * @return If the function succeeds, it will return @c ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @warning The tool type ZMVideoSDKAnnotationToolType_Picker and ZMVideoSDKAnnotationToolType_SpotLight are not support for viewer.
  */
 - (ZMVideoSDKErrors)setToolType:(ZMVideoSDKAnnotationToolType)toolType;
@@ -64,40 +64,40 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @brief Gets the annotation tool type.
  * @param toolType The current tool type.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)getToolType:(ZMVideoSDKAnnotationToolType*)toolType;
 
 /**
  * @brief Sets the annotation tool width.
  * @param width The specify annotation tool width.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)setToolWidth:(long)width;
 
 /**
  * @brief Gets the annotation tool width.
  * @param width The line width of annotations.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)getToolWidth:(long*)width;
 
 /**
  * @brief Undoes one annotation content step.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)undo;
 
 /**
  * @brief Redoes one annotation content step.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)redo;
 
 /**
  * @brief Clears the annotation content.
  * @param type The specified clear type.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)clear:(ZMVideoSDKAnnotationClearType)type;
 @end

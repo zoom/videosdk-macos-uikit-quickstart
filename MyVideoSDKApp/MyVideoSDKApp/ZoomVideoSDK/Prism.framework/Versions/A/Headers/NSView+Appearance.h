@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSView (LegacyAppearance)
 
-- (void)_hook_viewDidChangeEffectiveAppearance;
+- (void)viewDidChangeEffectiveAppearanceFor1013;
 
 @end
 

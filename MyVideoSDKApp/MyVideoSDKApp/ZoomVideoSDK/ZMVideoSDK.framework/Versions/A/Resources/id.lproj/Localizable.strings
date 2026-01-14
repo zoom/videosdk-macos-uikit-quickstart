@@ -733,6 +733,7 @@
 "LN_Setting_Statistic_Phone_Accessibility_Basic_Info_82877" = "info Zoom Phone dasar";
 "LN_Setting_Statistic_Phone_Accessibility_Peer_Info_82877" = "Data nomor peer";
 "LN_Setting_Statistic_Phone_Accessibility_First_Peer_Info_82877" = "Data nomor peer pertama";
+"LN_Zoom_Place_664309" = "Workplace";
 "LN_Setting_Statistic_Phone_Accessibility_Second_Peer_Info_82877" = "Data nomor peer kedua";
 "LN_Setting_Statistic_Phone_Accessibility_Third_Peer_Info_82877" = "Data nomor peer ketiga";
 
@@ -1429,6 +1430,8 @@
 //ZOOM-10931 2017-01-06
 "Sharing Key or Meeting ID" = "Kunci berbagi atau ID rapat";
 "Please enter a valid sharing key or meeting ID." = "Masukkan kunci berbagi atau ID rapat yang valid.";
+"LN_Direct_Share_Prompt_Placehoder_Title_999739" = "Kode ruangan atau ID rapat";
+"LN_Direct_Share_Prompt_Error_String_999739" = "Masukkan kode ruang atau ID rapat yang valid";
 
 //Live stream
 "Stop Live Stream" = "Hentikan streaming langsung";
@@ -1528,6 +1531,7 @@
 "LN_Billing_unknown_contact_alert_833575" = "Kontak yang tidak dikenal. Rapat yang dapat ditagih dengan kontak yang tidak dikenal tidak akan muncul dalam laporan kecuali Anda menambahkan kontak yang tidak dikenal tersebut.";
 "LN_Billing_track_here_833575" = "Mulai, jeda, atau lanjutkan pelacakan di sini.";
 "LN_Billing_choose_contacts_or_create_833575" = "Pilih dari kontak Anda atau buat yang baru.";
+"LN_Billing_add_personal_contact_1034570" = "Peserta ini tidak muncul dalam daftar kontak pribadi Anda. Tambahkan peserta ini ke kontak pribadi Anda untuk menetapkan jam yang dapat ditagih.";
 "like" = "Suka";
 "LN_Billing_contacts_found_833575" = "Kontak ditemukan";
 "LN_Billing_track_billable_hours_833575" = "Anda sekarang dapat melacak jam yang dapat ditagih";
@@ -1599,6 +1603,7 @@
 
 "Touch up my appearance" = "Perbaiki penampilan saya";
 //15212
+"LN_Limit_Reached_User_Minutes_997504" = "Zoom tidak dapat memperpanjang rapat gratis Anda saat ini. Rapat Anda akan berakhir ketika durasinya mencapai %@ menit.\n\n(KESALAHAN: %d)";
 
 "No one" = "Tidak ada";
 //ZOOM-14788
@@ -2145,7 +2150,13 @@
 
 "LN_SIP_PWD_Err_Tip_25328" = "Zoom mendeteksi bahwa kata sandi telah diubah atau salah. Masukkan kata sandi yang Anda tetapkan untuk nomor telepon ini.";
 "LN_SIP_PWD_PlaceHolder_Tip_25328" = "Masukkan kata sandi telepon internal ";
+"LN_Meeting_Live_Stream_LiveOn_1049044" = "Konten rapat ini sedang dikirim ke <zmview key=$1>";
+"LN_LiveStream_Meeting_LiveOn_1049044" = "Data rapat sedang dikirim ke <zmview key=$1>";
 
+"LN_LiveStream_Webinar_LiveOn_1049044" = "Data webinar sedang dikirim ke <zmview key=$1>";
+"LN_LiveStream_Meeting_LiveOn_1017615" = "Data rapat sedang dikirim ke %@";
+"LN_LiveStream_Webinar_LiveOn_1017615" = "Data webinar sedang dikirim ke %@";
+"LN_Webinar_Live_Stream_LiveOn_1049044" = "Konten webinar ini dikirim ke <zmview key=$1>";
 "%@ has been invited." = "%@ telah diundang.";
 
 "LN_Meeting_Live_Stream_TimeOut_18924" = "Tidak dapat streaming rapat Anda ke %@.\nAnda harus memulai ulang streaming.";
@@ -2426,8 +2437,8 @@
 
 "LN_Do_You_Hear_A_Ringtone_38961" = "Apakah Anda mendengar nada dering?";
 "LN_Speak_And_Pause_Do_You_Hear_Replay_38961" = "Bicaralah dan berhenti sejenak. Apakah Anda mendengar pemutaran ulang?";
-"LN_Troubleshoot_Speaker_Mic_38961" = "Tes Speaker & Mikrofon...";
-"LN_Swithch_To_Phone_Audio_38961" = "Beralih ke Audio Telepon...";
+"LN_Troubleshoot_Speaker_Mic_38961" = "Tes Speaker & Mikrofon";
+"LN_Swithch_To_Phone_Audio_38961" = "Beralih ke Audio Telepon";
 
 "LN_Install_AirHost_With_AdminPrivileges_43112" = "Untuk mulai menggunakan AirHost, Anda perlu menginstal dengan hak admin.";
 "LN_Install_CodeSnippet_With_AdminPrivileges_43112" = "Untuk mulai menggunakan cuplikan kode, Anda perlu menginstal dengan hak admin.";
@@ -2849,7 +2860,9 @@
 "LN_Phone_CloudContct_Added_PhoneNumber_224836" = "Nomor telepon";
 "LN_Sip_Call_Forwarding_356261" = "Penerusan Panggilan";
 "LN_Sip_Forward_Calls_356261" = "Teruskan panggilan";
+"LN_SMS_Delegation_View_Settings_1042922" = "Lihat pengaturan";
 "LN_Sip_Call_Forwarding_Reminder_Info_356261" = "Panggilan sedang diteruskan ke %@ hingga %@";
+"LN_SMS_Delegation_Banner_Message_1042922" = "Delegasi SMS saat ini aktif. Pesan sedang dikirim kepada Anda dan %d delegasi.";
 "LN_Sip_Call_Forwarding_Voicemail_356261" = "pesan suara";
 "LN_Sip_Call_Forwarding_Turn_Off_356261" = "Matikan";
 "LN_Sip_Time_Limit_356261" = "Batas waktu";
@@ -2904,6 +2917,8 @@
 "LN_Annotate_StampStar_45810" = "Stempel bintang";
 "LN_Annotate_StampHeart_45810" = "Stempel hati";
 "LN_Annotate_StampQM_45810" = "Stempel tanda tanya";
+"LN_Direct_Share_Prompt_Rename_Room_Code_999739" = "Kunci berbagi telah diganti namanya menjadi kode ruang";
+"LN_Direct_Share_Prompt_New_Code_999739" = "Masukkan kode ruangan baru";
 "LN_Annotate_Stamp_45810" = "Stempel";
 
 "LN_Back_To_Revious_41410" = "Kembali ke jendela sebelumnya";
@@ -3025,8 +3040,10 @@
 
 "LN_SortByUnreadFirst_NewIM" = "Belum dibaca terlebih dahulu";
 "LN_CreateDuplicateNameGroup_NewIM" = "Saluran lain telah menggunakan nama ini. Gunakan nama yang berbeda untuk saluran ini.";
+"LN_Separate_Chats_And_Channels_1058163" = "Obrolan dan saluran terpisah";
 "LN_Settings_TitleChannel_NewIM" = "Saluran...";
 "LN_Settings_TitleChannels_NewIM" = "Saluran...";
+"LN_Chats_And_Channels_1058163" = "Obrolan & Saluran";
 "LN_Settings_ViewAdvancedFeatures_NewIM" = "Lihat Fitur Lanjutan";
 "LN_SettingS_NoneNotyTip_NewIM" = "Anda masih akan menerima lencana yang belum dibaca(       ) dalam Zoom";
 
@@ -3323,6 +3340,7 @@
 "LN_Accessibility_Meeting_Live_On_55154" = ", rapat disiarkan langsung di %@";
 "LN_Accessibility_Webinar_Live_On_55154" = ", webinar disiarkan langsung di %@";
 
+"LN_Your_Voicemail_Sent_1028435" = "Pesan suara Anda telah terkirim";
 "LN_Say_%1$@_To_%2$@_NewIM" = "Ucapkan \"%1$@\" ke %2$@";
 "LN_Hi_NewIM" = "Hai 👋";
 "LN_Say_Hi_NewIM" = "Ucapkan hai";
@@ -3367,6 +3385,7 @@
 "LN_Accessibility_Close_Button" = "Tombol tutup";
 "LN_Accessibility_Popout_Button" = "Tombol pop out";
 "LN_Accessibility_Popin_Button" = "Tombol pop in";
+"LN_Sidepanel_Tip_Back_529219" = "Kembali";
 "LN_Accessibility_Expand_Button" = "Tombol perluas";
 "LN_Accessibility_Collapse_Button" = "Tombol ciutkan";
 "LN_Sidepanel_Tip_Close_529219" = "Tutup";
@@ -3580,6 +3599,7 @@
 "LN_Accessibility_Search_Open_Contact_64277" = "Tekan enter untuk membuka kontak";
 "LN_Accessibility_Search_Select_64277" = "Tekan tombol enter untuk memilih";
 "LN_Accessibility_Search_In_Advance_Search_64277" = "Tekan enter untuk melihat hasil pencarian di pencarian lanjutan";
+"LN_HideThisChannel_NewIM" = "Sembunyikan saluran ini";
 "LN_Accessibility_Search_recent_Items_64277" = "Item pencarian terbaru";
 "LN_Accessibility_Search_recent_Item_64277" = "Item pencarian terbaru";
 "LN_Accessibility_Search_Clear_Button" = "Bersihkan pencarian";
@@ -3717,6 +3737,9 @@
 "LN_Draft_Message_71414" = "[Draf]";
 "LN_JumpToLatestMsg_68442" = "Lompat ke yang terbaru";
 "LN_JumpToFirstUnreadMsg_68442" = "Lompat ke pesan pertama yang belum dibaca";
+"LN_Certification_Topbar_Title_1062770" = "Sertifikasi";
+"LN_Certification_Accessibility_1062770" = "Sertifikasi diaktifkan";
+"LN_Certification_Window_Title_1062770" = "Sertifikasi";
 "LN_GotIt_73633" = "Mengerti";
 //ZOOM-68801
 "LN_About_68801" = "Tentang";
@@ -3808,11 +3831,14 @@
 
 "LN_Hotkey_Group_Phone_132159" = "Telepon";
 "LN_Hotkey_Highlighted_Call_132159" = "Hubungi nomor yang disorot/direktori pencarian";
+"LN_Host_Allow_Attendee_To_Talk_Content_1067517" = "Jika Anda memilih untuk membunyikan mikrofon, peserta lain di webinar akan dapat mendengar Anda. Jika host atau panelis memutuskan untuk merekam, melakukan siaran langsung, mengarsipkan, atau membagikan webinar dengan aplikasi dan/atau lainnya setelah Anda membunyikan mikrofon, suara Anda akan disertakan. Rekaman mungkin dibagikan melalui perekaman cerdas yang menggunakan teknologi AI, yang mungkin menyertakan model pihak ketiga. Zoom tidak menggunakan audio, video, obrolan, berbagi layar, lampiran, atau konten lainnya yang mirip dengan komunikasi (seperti hasil polling, papan tulis, dan reaksi) untuk melatih model AI Zoom atau pihak ketiga.\n\nPeserta dengan izin yang relevan juga bisa menyimpan dan membagikan transkrip webinar.";
 "LN_Hotkey_Accept_Call_132159" = "Terima panggilan";
 "LN_Hotkey_Decline_Call_132159" = "Tolak panggilan";
 "LN_Hotkey_End_Call_132159" = "Akhiri panggilan";
 "LN_Hotkey_Mute_Call_132159" = "Bisukan/bunyikan panggilan";
 "LN_Hotkey_Hold_Call_132159" = "Tahan/lanjutkan panggilan";
+"LN_Join_Webinar_Consent_Content_1067517" = "Webinar mungkin direkam, disiarkan langsung, atau diarsipkan oleh host, atau dibagikan dengan aplikasi dan orang lain. Rekaman mungkin dibagikan melalui perekaman cerdas yang menggunakan teknologi AI, yang mungkin menyertakan model pihak ketiga. Zoom tidak menggunakan audio, video, obrolan, berbagi layar, lampiran, atau konten lainnya yang mirip dengan komunikasi (seperti hasil polling, papan tulis, dan reaksi) untuk melatih model AI Zoom atau pihak ketiga.\n\nPeserta dengan izin yang relevan juga bisa menyimpan dan membagikan transkrip webinar.\n\nDengan bergabung ke webinar ini sebagai panelis, Anda menyetujui bahwa partisipasi Anda akan diikutsertakan.";
+"LN_Attendee_Promoted_To_Panelist_Content_1067517" = "Sebagai panelis, Anda dapat membunyikan mikrofon dan memulai video sehingga Anda akan dapat dilihat oleh peserta lainnya di webinar.\n\nJika host atau panelis memutuskan untuk merekam, melakukan siaran langsung, mengarsipkan, atau membagikan webinar dengan aplikasi dan/atau lainnya setelah Anda membunyikan mikrofon, partisipasi Anda akan disertakan. Rekaman mungkin dibagikan melalui perekaman cerdas yang menggunakan teknologi AI, yang mungkin menyertakan model pihak ketiga. Zoom tidak menggunakan audio, video, obrolan, berbagi layar, lampiran, atau konten lainnya yang mirip dengan komunikasi (seperti hasil polling, papan tulis, dan reaksi) untuk melatih model AI Zoom atau pihak ketiga.\n\nPeserta dengan izin yang relevan juga bisa menyimpan dan membagikan transkrip webinar.";
 "LN_Hotkey_Transfer_Call_319829" = "Transfer panggilan";
 
 //ZOOM-74350
@@ -4031,6 +4057,7 @@
 "LN_Masked_Tip_881211" = "Bagikan konten disembunyikan untuk mencegah efek jendela yang berulang";
 "LN_BasicInfo_Extend_997504" = "Rapat yang Anda selenggarakan akan dibatasi hingga 60 menit.";
 "LN_SaveAllTemporal_114898" = "Simpan file rekaman sementara";
+"LN_BasicInfo_Trial_Extend_997504" = "Rapat yang Anda selenggarakan akan dibatasi hingga %@ menit.";
 "LN_SaveAllTemporalTip_114898" = "Simpan file asli untuk membantu Zoom mengatasi masalah ketika terjadi masalah";
 "LN_Auto_114898" = "Otomatis";
 "LN_Setting_CopyInviteLink_114898" = "Salin tautan undangan ketika memulai rapat";
@@ -4116,6 +4143,7 @@
 //ZOOM-89706
 "LN_FileCanNotBeDownload_89706" = "Tidak dapat mengunduh";
 "LN_FileCanNotBeDownloadDetail_89706" = "File ini telah dihapus dari obrolan ini. File tidak lagi tersedia untuk diunduh.";
+"LN_Menu_Uninstall_Place_95001" = "Hapus instalan Workplace";
 "LN_FileHasBeenRemovedFromThisChat_89706" = "[File ini telah dihapus dari obrolan ini. File tidak lagi tersedia]";
 
 "LN_Alert_Title_Disable_Send_Receive_82229" = "Video dinonaktifkan";
@@ -4189,6 +4217,7 @@
 "LN_Interpretation_LanguageAvailableTip_73504" = "Interpretasi bahasa %@ dan %d tersedia!";
 "LN_Your_Video_Is_Now_Broadcasting_In_The_%@_Channel_And_Main_Meeting_330475" = "Video Anda kini disiarkan dalam saluran %@ dan rapat utama";
 "LN_Interpretation_DoubleLanguageAvailableTip_73504" = "Interpretasi %@ dan %@ tersedia!";
+"LN_Host_Allow_SLI_To_Talk_Content_Webinar_1067517" = "Jika Anda memilih untuk membunyikan mikrofon, peserta lain di webinar akan dapat mendengar Anda. Jika host atau panelis memutuskan untuk merekam, melakukan siaran langsung, mengarsipkan, atau membagikan webinar dengan aplikasi dan/atau lainnya setelah Anda membunyikan mikrofon, suara Anda akan disertakan. Rekaman mungkin dibagikan melalui perekaman cerdas yang menggunakan teknologi AI, yang mungkin menyertakan model pihak ketiga. Zoom tidak menggunakan audio, video, obrolan, berbagi layar, lampiran, atau konten lainnya yang mirip dengan komunikasi (seperti hasil polling, papan tulis, dan reaksi) untuk melatih model AI Zoom atau pihak ketiga.";
 "LN_Interpretation_ManagerInterpretation_73504" = "Kelola interpretasi bahasa...";
 
 "LN_Interpretation_Schedule_Error_Email_Invalid_73504" = "Alamat email ini tidak valid. Masukkan email yang valid.";
@@ -4495,8 +4524,12 @@
 "LN_Audio_Muted_Accessibility_495960" = "Audio sekarang dibisukan";
 "LN_Audio_Unmuted_Accessibility" = "sedang dibunyikan";
 "LN_Audio_Muted_Accessibility" = "sedang dibisukan";
+"LN_Remote_Support_Restart_Computer_Receive_Normal_Title_938601" = "Pengguna bernama \"%@\" sedang meminta untuk menyalakan ulang komputer Anda";
+"LN_Remote_Support_Restart_Computer_Receive_Suspicious_Title_938601" = "Pengguna mencurigakan bernama \"%@\" meminta untuk menyalakan ulang komputer Anda";
 "LN_Ext_Number_107261" = "Masukkan nomor ekstensi Anda";
 "LN_Zoom_Screen_NoAccess_105449" = "Izinkan Zoom Workplace merekam konten layar Anda";
+"LN_Remote_Support_Restart_Computer_Receive_Double_Confirm_Description_938601" = "Harap konfirmasi bahwa Anda memercayai pengguna ini sebelum memberikan izin untuk memulai ulang komputer.";
+"LN_Remote_Support_Restart_Computer_Receive_Description_First_Line_938601" = "Setelah komputer dimulai ulang, Anda akan bergabung kembali otomatis dalam rapat ini.";
 
 "LN_Failed_Convert_Recording_105238" = "Gagal mengonversi rekaman";
 "LN_Failed_Convert_Recording_Folder_Doesnot_Exist_105238" = "Folder tujuan tidak ada.\n\nJika Anda telah memindahkan folder tujuan, pastikan folder tersebut berisi ile berikut, lalu klik untuk mengonversi rekaman.";
@@ -4839,9 +4872,7 @@
 "LN_Last_Updated_506188" = "Terakhir diperbarui";
 "LN_Removed_506188" = "Dihapus";
 "LN_Learn_More_809581" = "Pelajari selengkapnya";
-"LN_Update_Client_Desc_506188" = "Untuk mendukung enkripsi pascakuantum yang aman, perangkat ini perlu diperbarui ke versi klien terbaru. %@";
 "LN_Update_Client_809581" = "Perbarui klien";
-"LN_Add_BackupKey_809581" = "Tambahkan kunci cadangan baru";
 "LN_Added_506188" = "Ditambahkan";
 "LN_Data_Access_506188" = "Akses data";
 "LN_Saved_BackupKey_506188" = "Saya menyimpan kunci cadangan saya";
@@ -4852,14 +4883,19 @@
 "LN_Enter_Key_506188" = "Masukkan kunci";
 "LN_Add_Key_506188" = "Tambah kunci";
 "LN_Devices_Activity_506188" = "Perangkat & aktivitas";
-"LN_Add_BackupKey_Desc_809581" = "Untuk mendukung enkripsi pascakuantum yang aman, tambahkan kunci cadangan baru. Kunci yang dibuat sebelum enkripsi kuantum yang aman tidak dapat dikonversikan. %@";
 "LN_EscrowDevices_Activity_506188" = "Perangkat escrow & aktivitas";
 "LN_New_Activity_Review_506188" = "Kami melihat adanya %ld aktivitas baru. Tinjau perubahan sebelum mengeklik simpan.";
+"LN_Regain_Data_Tip_1019138" = "Jika Anda perlu mendapatkan kembali akses data, hubungi %@.";
 "LN_New_Device_Save_506188" = "Kami melihat Anda menggunakan perangkat baru. Klik simpan untuk membuat perangkat ini.";
+"LN_Your_Admin_1019138" = "admin Anda";
 "LN_Device_Pending_Approval_506188" = "Perangkat menunggu persetujuan. Setujui dari perangkat yang ada atau dengan memasukkan kunci cadangan.";
+"LN_Admin_Device_Desc_1019138" = "Untuk mendukung enkripsi pascakuantum, admin Anda perlu diperbarui ke versi klien terbaru.";
 "LN_Invalid_ClientVersion_756698" = "Harap tingkatkan Zoom Workplace untuk menggunakan fitur ini.";
 "LN_Provision_First_Detail_506188" = "Enkripsi Lanjutan telah diaktifkan untuk %1$@ Anda. %2$@ akan memiliki akses ke %3$@ terenkripsi yang baru. Klik simpan untuk mengenkripsi perangkat di bawah ini.";
+"LN_Add_BackupKey_Desc_809581" = "Untuk mendukung enkripsi pascakuantum, hapus kunci cadangan ini. Anda dapat menambahkan kunci baru yang aman pascakuantum.";
 "LN_Devices_SignOn_506188" = "Hanya perangkat yang Anda gunakan untuk masuk";
+"LN_Add_BackupKey_809581" = "Kunci cadangan baru";
+"LN_Update_Client_Desc_506188" = "Untuk mendukung enkripsi pascakuantum, perangkat ini perlu diperbarui ke versi klien terbaru. Jika Anda tidak mengenalinya atau tidak lagi menggunakannya, sebaiknya Anda menghapusnya.";
 "LN_Devices_Admin_Detail_506188" = "dan admin Anda";
 "LN_Devices_Activity_Detail_506188" = "Ketika Anda mengeklik simpan, perangkat yang dipilih akan mendapatkan akses ke data perangkat ini. Hapus perangkat yang tidak Anda kenal atau tidak lagi digunakan.";
 "LN_Review_Activity_506188" = "Tinjau aktivitas";
@@ -5576,6 +5612,7 @@
 //ZOOM-162659
 "LN_Schedule_Passcode_Must_Not_162659" = "Kode sandi tidak boleh:";
 "LN_Report_Clips_Recorder_598501" = "Selama perekaman klip";
+"LN_Always_Chow_Captions_Desc_900292" = "Secara otomatis menampilkan teks apabila tersedia, tanpa perlu mengaktifkannya setiap kali.";
 "LN_Generate_AIAvatar_Success_741591" = "Avatar Anda telah dibuat.";
 "LN_Schedule_Psw_Rule_Include_Cases_162659" = "Berisi karakter huruf besar dan kecil";
 "LN_Schedule_Psw_Rule_Contain_%d_Consecutive_Chars_162659" = "Berisi %d karakter berurutan (misalnya “11111”, “12345”, “abcde”, atau “qwert”)";
@@ -5645,6 +5682,7 @@
 "LN_Black" = "hitam";
 "LN_AXParticipantJL_19946" = "Peserta telah bergabung/keluar dari rapat (hanya host)";
 "LN_AXParticipantJLWaitingRoom_19946" = "Peserta telah bergabung/keluar dari ruang tunggu (hanya host)";
+"LN_VirtualBackgroundsList_1037483" = "Daftar latar belakang virtual";
 "LN_AXAudioMutedByHost_19946" = "Audio dibisukan oleh host";
 "LN_AXVideoStoppedByHost_19946" = "Video dihentikan oleh host";
 "LN_SettingsHigh_167323" = "Tinggi";
@@ -5674,12 +5712,19 @@
 "LN_Show_More_Colors_463494" = "Tampilkan lebih banyak warna";
 "LN_Acc_Caption_Color_463494" = "Warna teks";
 "LN_Acc_Translation_Color_463494" = "Warna terjemahan";
+"LN_Poll_Scheduled_1012736" = "Dijadwalkan";
 "LN_Acc_Toggle_Button_463494" = "Tombol toggle";
 "LN_White" = "putih";
+"LN_Remove_Schedule_Time_1012736" = "Menghapus waktu terjadwal";
+"LN_Poll_Scheduled_Remove_1012736" = "Hapus";
 "LN_Blue" = "biru";
 "LN_Orange" = "jingga";
+"LN_Poll_Scheduled_Launch_1012736" = "Luncurkan polling:";
+"LN_AIC_Ask_Host_Stop_1041052" = "Minta host untuk menghentikan AI Companion";
 "LN_Green" = "hijau";
+"LN_Poll_Scheduled_Share_1012736" = "Bagikan hasil:";
 "LN_Purple" = "ungu";
+"LN_Poll_Scheduled_Timeline_1012736" = "Dijadwalkan dalam linimasa perekaman:";
 
 //ZOOM-167323
 "LN_SettingsLearnMore_167323" = "Pelajari selengkapnya";
@@ -6667,14 +6712,26 @@
 "LN_AIC_Features_Disable_Tip_738866" = "Satu atau beberapa fitur AI Companion dinonaktifkan di pengaturan Anda.";
 "LN_AI_Enable_Queries_Open_Settings_576025" = "Buka pengaturan";
 "LN_AI_Enable_Queries_title_576025" = "Aktifkan AI Companion";
+"LN_AIC_Request_Host_Start_976513" = "Minta host untuk memulai AI Companion";
+"LN_AIC_Request_Host_Start_Turn_Off_Tip_976513" = "Peserta tidak diperbolehkan meminta AI Companion dalam rapat ini. Anda dapat mengaktifkannya di alat bantu Host.";
 "LN_AIC_Auto_Enable_Tip_Title_738866" = "Fitur AI Companion diaktifkan untuk akun Anda";
 "LN_AIC_Auto_Enable_Tip_Desc_738866" = "AI Companion dapat meringkas rapat dan membantu Anda melakukan banyak tugas harian lainnya di Zoom.";
+"LN_AIC_Can_Not_Requeste_Tip_976513" = "AI Companion tidak dapat diminta karena pengaturan admin.";
+"LN_AIC_Can_Not_Requeste_External_Tip_976513" = "AI Companion tidak dapat diminta karena kebijakan organisasi.";
+"LN_AIC_Request_Disabled_976513" = "Host telah menonaktifkan permintaan untuk memulai AI Companion.";
+"LN_AIC_Can_Not_Requeste_Participant_Tips_976513" = "AI Companion tidak dapat diminta karena pengaturan organisasi Anda.";
+"LN_AIC_Turn_Off_Reason_Host_Tip_976513" = "AI Companion telah dinonaktifkan karena satu atau beberapa pengguna eksternal telah bergabung dalam rapat.";
+"LN_AIC_Can_Not_Start_Reason_Host_Tip_976513" = "AI Companion tidak dapat dimulai karena satu atau beberapa pengguna eksternal telah bergabung dalam rapat.";
+"LN_AIC_Turn_Off_Reason_Participant_Tip_976513" = "AI Companion telah dinonaktifkan karena kebijakan organisasi.";
 "LN_AI_Start_Queries_Request_576025" = "%@ meminta Anda untuk memulai AI Companion";
 "LN_AIC_Summary_Tip_738866" = "Dapatkan ringkasan percakapan.";
 "LN_AI_Start_Queries_Request_Title_599157" = "Siapa yang dapat mengajukan pertanyaan ke AI Companion";
+"LN_AIC_Turn_Off_Reason_Host_Tip2_976513" = "AI Companion telah dihentikan karena satu atau beberapa pengguna eksternal telah bergabung dalam rapat.";
 "LN_AI_Start_Queries_Decline_576025" = "Tolak";
+"LN_AIC_Turn_Off_Reason_Participant_Tips_976513" = "AI Companion telah dihentikan karena pengaturan organisasi Anda.";
 "LN_AI_Start_Queries_Start_576025" = "Mulai";
 "LN_AI_Start_Queries_576025" = "Mulai AI Companion";
+"LN_AIC_Can_Not_Requeste_External_Tips_976513" = "AI Companion tidak dapat diminta karena pengaturan rapat ini.";
 "LN_AIC_Can_Not_Start_740048" = "Fitur AI Companion tidak dapat dimulai hingga host bergabung.";
 "LN_AIC_Can_Not_Start_Host_740048" = "Fitur AI Companion tidak dapat dimulai karena host tidak meningkatkan ke versi aplikasi yang didukung.";
 "LN_AI_Stop_Queries_576025" = "Hentikan AI Companion";
@@ -6726,6 +6783,8 @@
 "LN_AIC__Questions_Can_Not_Start_740048" = "Pertanyaan rapat tidak dapat dimulai hingga host bergabung.";
 "LN_ExpiresOn_253548" = "Berakhir pada";
 "LN_Fingerprints_253548" = "Sidik Jari";
+"LN_AI_Companion_BRB_Catch_Me_Up_Last_2_Mins_n_1025336" = "Beri tahu saya tentang 2 menit terakhir rapat";
+"LN_AI_Companion_BRB_Catch_Me_Up_Last_Mins_n_1025336" = "Beri tahu saya tentang %d menit terakhir rapat";
 "LN_AIC_Start_Using_Desc_738866" = "Buat ringkasan rapat atau ajukan pertanyaan kepada AI Companion tentang percakapan.";
 "LN_Fingerprint_253548" = "Sidik Jari";
 "LN_CAFingerprint_253548" = "Sidik jari CA";
@@ -6733,6 +6792,8 @@
 "LN_SecurityTrustAnyway_253548" = "Tetap percayai";
 "LN_StartCertTest_501489" = "Mulai tes sert";
 "LN_WebinarBO_CloseAllRoomInSeconds_316623" = "Semua ruang diskusi akan ditutup dalam %ld detik.";
+"LN_AI_Companion_Recap_Prepare_Recap_1043472" = "Siapkan rekap cepat dan item tindakan dari rapat ini untuk saya.";
+"LN_AI_Companion_Recap_Tooltip_Desc_1043472" = "Ada waktu 5 menit tersisa dalam rapat Anda. Tinjau sorotan utama dan item tindakan Anda.";
 "LN_WebinarBO_RenameRoom_316623" = "Ganti nama ruang";
 "LN_AI_Companion_Tip_Content2_664338" = "Tanyakan tentang pembaruan penting dari obrolan Anda, buat draf dan ringkasan pesan atau dokumen, dan persiapkan diri untuk rapat mendatang.";
 "LN_AI_Companion_Tip_Title2_664338" = "Dapatkan bantuan kapan saja dengan AI Companion";
@@ -6896,6 +6957,7 @@
 "LN_Advanced_Search_188053" = "Pencarian lanjutan";
 "LN_AIC_Start_Meeting_Summary_695050" = "Mulai ringkasan rapat.";
 "LN_AIC_Start_AIC_695050" = "Mulai AI Companion untuk rapat ini.";
+"LN_A_Participant_1060084" = "Seorang peserta";
 "LN_Use_Key_Filter_Search_188053" = "Gunakan kata kunci atau filter untuk mencari pesan";
 "LN_Use_Key_Search_303569" = "Gunakan kata kunci untuk mencari pesan";
 
@@ -6971,19 +7033,26 @@
 "LN_AIC_Hide_AIC_Panel_976183" = "Sembunyikan panel AI Companion";
 "LN_Unable_Top_Pin_196620" = "Tidak dapat menyematkan untuk semua orang. Coba lagi nanti.";
 "LN_Unable_UnTop_Pin_196620" = "Tidak dapat melepas sematan untuk semua orang. Coba lagi nanti.";
+"LN_AIC_Ask_Host_Turn_Off_1001627" = "Minta host menonaktifkan";
 "LN_AIC_Open_AIC_Panel_976183" = "Buka panel AI Companion";
 "LN_AIC_Stop_Title_695050" = "Hentikan fitur AI Companion";
+"LN_AIC_Turn_On_Anyway_1001627" = "Tetap aktifkan";
 "LN_Unable_Remove_Pin_196620" = "Tidak dapat menghapus dari riwayat. Coba lagi nanti.";
 "LN_AIC_Host_Decline_Access_Request_695050" = "Host menolak permintaan Anda untuk mengakses pertanyaan rapat.";
 "LN_PinHistory_ViewMore_196620" = "Lihat lebih banyak";
+"LN_AIC_Start_Restrict_Title_1001627" = "Peserta dapat gugur jika fitur AI Companion diaktifkan";
+"LN_AIC_Turned_On_1001627" = "AI Companion diaktifkan untuk rapat ini";
 "LN_Encrypt_Message_196620" = "Ini adalah pesan terenkripsi";
+"LN_AIC_Stay_Anyway_1001627" = "Tetap tinggal";
 "LN_Webinar_AIC_Stop_Panel_Title_792041" = "Hentikan AI Companion untuk webinar ini";
 "LN_Pin_Message_196620" = "Ini adalah pesan yang disematkan";
 "LN_Pinned_Message_196620" = "Disematkan";
 "LN_AIC_Start_Questions_Desc_827302" = "Mulai pertanyaan rapat untuk semua orang dalam rapat ini.";
 "LN_AIC_Start_Using_Desc_695050" = "Gunakan AI Companion untuk mengajukan pertanyaan tentang rapat Anda, mendapatkan ringkasan, item tindakan, dan banyak lagi.";
+"LN_AIC_Start_Request_Title_1001627" = "Seorang peserta telah meminta Anda untuk memulai AI Companion tetapi peserta mungkin keluar";
 "LN_AIC_Stop_Panel_Title_695050" = "Hentikan AI Companion untuk rapat ini";
 "LN_AIC_Start_Desc_827302" = "Mulai pertanyaan rapat dan ringkasan rapat untuk semua orang dalam rapat ini.";
+"LN_AIC_Request_To_Stop_Or_Drop_1001627" = "%@ meminta Anda untuk menghentikan AI Companion jika tidak, mereka akan keluar";
 "LN_AIC_Donot_Remind_827302" = "Jangan ingatkan saya lagi";
 "LN_AIC_Ask_Start_AIC_695050" = "Seorang peserta telah meminta Anda untuk memulai AI Companion";
 "LN_AIC_Start_summary_827302" = "Mulai ringkasan rapat untuk semua orang dalam rapat ini.";
@@ -6997,16 +7066,22 @@
 "LN_AIC_CatchUp_Desc_877411" = "Dapatkan informasi yang Anda lewatkan menggunakan AI Companion. Cukup buka panel kanan dan pilih \"buatkan saya ringkasan\".";
 "LN_AIC_Stop_Subtitle_695050" = "Fitur ini akan dihentikan:";
 "LN_Settings_Audio_Tones_DownloadFail_188147" = "Tidak dapat mengunduh";
+"LN_Webinar_AIC_Start_Desc2_792041" = "Mulai pertanyaan webinar dan ringkasan webinar.";
 "LN_AIC_Request_Start_AIC_Host_Content_695050" = "Semua peserta dan undangan akan memperoleh akses ke AI Companion. Anda dapat mengubah izin akses di panel AI Companion.";
 "LN_Settings_Audio_Default_Tone_188147" = "Default";
+"LN_AIC_Start_Desc2_827302" = "Mulai pertanyaan rapat dan ringkasan rapat.";
 
 "LN_AIC_Ask_Start_Deny_All_695050" = "Tolak semua";
+"LN_Webinar_AIC_Start_summary2_792041" = "Mulai ringkasan webinar.";
 "LN_Settings_Audio_Play_Ringtone_Title_188147" = "Putar";
 "LN_AI_Requesting_AIC_Content_695050" = "Dengan mengeklik \"Aktifkan\", pengaturan web fitur ini akan diaktifkan untuk akun Anda, dan fitur tersebut akan diaktifkan untuk rapat ini dan tersedia untuk diaktifkan host di rapat mendatang. Anda dapat mengubahnya kapan saja di Pengaturan";
+"LN_Webinar_AIC_Start_Questions_Desc2_792041" = "Mulai pertanyaan webinar.";
 "LN_Settings_Audio_Stop_Ringtone_Title_188147" = "Hentikan";
 
+"LN_AIC_Start_Questions_Desc2_827302" = "Mulai pertanyaan rapat.";
 
 "LN_AI_Ask_Summary_Enable_695050" = "Minta admin untuk mengaktifkan ringkasan rapat";
+"LN_AIC_Start_summary2_827302" = "Mulai ringkasan rapat.";
 "LN_AIC_Start_Meeting_Summary_Button_695050" = "Mulai ringkasan rapat";
 "LN_AIC_Enable_Questions_For_Account_Info_695050" = "Aktifkan pertanyaan rapat untuk akun Anda dalam pengaturan rapat admin";
 "LN_AIC_Host_Client_Older_695050" = "Host tidak dapat menonaktifkan AI Companion. Coba lagi nanti.";
@@ -7046,6 +7121,7 @@
 "LN_Webinar_AIC_Start_Desc_792041" = "Mulai pertanyaan webinar dan ringkasan webinar untuk semua orang di webinar ini.";
 "LN_CN_Unable_To_Start_881415" = "Tidak dapat memulai catatan klinis";
 "LN_Participants_Suspended_200525" = "Aktivitas peserta telah ditangguhkan";
+"LN_CN_Available_Notes_Used_Error_1030925" = "Anda telah menggunakan semua catatan yang tersedia untuk periode langganan saat ini. Hubungi admin untuk mendapatkan dukungan.";
 "LN_CN_Please_Contact_Support_881415" = "Catatan Klinis telah dinonaktifkan di pengaturan web Anda. Hubungi admin untuk mendapatkan dukungan.";
 
 "LN_Settings_Share_My_Screen_In_Meeting_146708" = "Ketika saya membagikan layar saya dalam rapat";
@@ -7053,17 +7129,35 @@
 "LN_Settings_Share_Automatically_Desktop_146708" = "Bagikan desktop secara otomatis";
 "LN_Settings_Share_Show_All_Options_146708" = "Tampilkan semua opsi berbagi";
 "LN_AIC_Remind_Start_For_Meetings_Tip_902567" = "Anda akan diingatkan agar memulai AI Companion untuk rapat yang Anda selenggarakan.";
+"LN_CN_Network_Connection_Error_1030925" = "Ada yang salah dengan koneksi internet Anda untuk sementara waktu. Periksa koneksi internet Anda dan coba lagi.";
 "LN_AIC_Unable_Load_Desc_695050" = "AI Companion saat ini sedang mengalami masalah.";
 "LN_Direct_Share_Stopped_Alert_Title_146708" = "Berbagi layar dihentikan";
+"LN_Stop_Translator_For_Me_961527" = "Hentikan penerjemah untuk saya";
+"LN_Voice_Translator_961527" = "Penerjemah suara";
 "LN_Direct_Share_Stopped_Alert_Window_Closed_146708" = "Jendela berbagi layar ditutup";
+"LN_Live_Voice_Translator_Others_On_961527" = "Penerjemah suara langsung diaktifkan untuk orang lain";
 "LN_Direct_Share_Stopped_Alert_Monitor_Disconnected_146708" = "Monitor eksternal Anda telah diputus";
+"LN_Start_Translator_For_Me_961527" = "Mulailah penerjemah untuk saya";
+"LN_Using_Voice_Translator_Content_961527" = "Anda sedang menggunakan penerjemah suara. Rapat ini akan diterjemahkan untuk Anda ke dalam %@.";
+"LN_Live_Voice_Translator_On_961527" = "Penerjemah suara langsung diaktifkan";
+"LN_Voice_Translation_Delay_Warning_961527" = "Terjemahan dapat menyebabkan penundaan dalam percakapan.";
 
 "LN_AIC_Auto_Start_For_Meetings_Tip_902567" = "AI Companion akan otomatis dimulai untuk rapat yang Anda selenggarakan.";
+"LN_Translated_961527" = "Diterjemahkan";
 "LN_FileTransfer_FileIsBlockedForOverMaxFileSize_205134" = "File berukuran lebih dari %d MB dan tidak dapat dikirim";
+"LN_Voice_Translator_Settings_961527" = "Pengaturan penerjemah suara";
+"LN_Language_You_Want_To_Hear_961527" = "Bahasa yang ingin Anda dengar";
 
+"LN_Test_Voice_961527" = "Uji suara";
+"LN_Can_Turn_On_Voice_Translator_Content_961527" = "Anda dapat mengaktifkan penerjemah dalam bahasa pilihan Anda untuk lebih memahami percakapan.";
 "LN_CN_Request_To_Cancel_Declined_779477" = "Permintaan untuk membatalkan Catatan Klinis telah ditolak oleh tuan rumah.";
+"LN_Balance_Volume_Audio_961527" = "Seimbangkan audio volume";
 "LN_Settings_Audio_Ringtone_Help_211820" = "Pilih nada dering untuk rapat dan panggilan telepon";
+"LN_Voice_Translator_Turned_On_961527" = "Penerjemah suara telah diaktifkan.";
+"LN_Original_961527" = "Asli";
 
+"LN_My_Spoken_Language_961527" = "Bahasa lisan saya";
+"LN_Voice_Translator_Set_Language_961527" = "Penerjemah suara telah diaktifkan. Tetapkan bahasa yang akan Anda gunakan dalam rapat ini.";
 "LN_Settings_Share_Desktop_Automatically_Tooltip_208238" = "Ketika Anda memiliki beberapa monitor, desktop utama Anda akan dibagikan secara otomatis";
 //ZOOM-216967
 "LN_Schedule_Passcode_Des_LinkOn_216967" = "Hanya pengguna yang memiliki tautan undangan atau kode sandi yang dapat bergabung ke rapat";
@@ -7071,6 +7165,7 @@
 "LN_CN_Turn_Off_Ask_Host_779477" = "Minta host";
 "LN_CN_Patient_Data_Saved_903500" = "Data pasien berhasil disimpan";
 "LN_Turn_Off_CN_Decline_779477" = "Tolak";
+"LN_Select_Translated_Voice_Style_961527" = "Pilih gaya suara terjemahan Anda:";
 "LN_Clinical_Notes_779477" = "Catatan Klinis";
 "LN_CN_Unable_Save_Patient_Data_903500" = "Tidak dapat menyimpan data pasien";
 "LN_CN_Edit_Patient_Data_903500" = "Edit data pasien";
@@ -7755,25 +7850,40 @@
 
 "LN_Meeting_Reaction_Feedback_Slow_Down_234724" = "Perlambat";
 "LN_Meeting_Reaction_Feedback_Speed_Up_234724" = "Percepat";
+"LN_On_For_External_Meeting_1044325" = "Rapat eksternal";
+"LN_On_For_Internal_Meeting_Set_By_Admin_1044325" = "Rapat internal (ditetapkan oleh admin)";
 "LN_Meeting_Reaction_First_Time_Feedback_Tip_234724" = "Sekarang Anda dapat mengirim umpan balik nonverbal (\"ya\", \"perlambat\", dll.) dari \"Reaksi\" pada toolbar.";
 "LN_Audio_Device_Type_Aggregate_751220" = "Agregat";
+"LN_You_Have_No_Added_Apps_1044325" = "Anda tidak memiliki aplikasi yang ditambahkan.";
 
+"LN_On_For_External_Meeting_Locked_By_Admin_1044325" = "Rapat eksternal (dikunci oleh Admin)";
 "LN_Custom_Select_Participants_206956" = "Pilih peserta";
 "LN_Custom_My_Video_206956" = "Video saya";
+"LN_On_For_Internal_Meeting_Locked_By_Admin_1044325" = "Rapat internal (dikunci oleh Admin)";
+"LN_Auto_Open_Settings_1044325" = "Pengaturan buka otomatis";
 "LN_Audio_Device_Type_Thunderbolt_751220" = "Thunderbolt";
 "LN_Custom_Loadig_Immersive_%d_206956" = "Memuat tampilan imersif %d%%";
+"LN_On_For_Internal_Meeting_1044325" = "Rapat internal";
+"LN_On_For_All_Meeting_1044325" = "Semua rapat";
+"LN_Auto_Open_Limit_Reached_1044325" = "Batas buka otomatis telah tercapai";
 "LN_Custom_Cannt_Choose_VB_206956" = "Anda tidak dapat memilih latar belakang virtual ketika berada dalam pemandangan yang imersif.";
 "LN_Custom_Cannt_Choose_Filter_206956" = "Anda tidak dapat memilih filter video saat berada dalam latar belakang imersif.";
 "LN_Custom_Unable_Download_Package_206956" = "Tidak dapat mengunduh paket tampilan imersif";
 "LN_Custom_Unable_Download_Package_Update_206956" = "Tidak dapat mengunduh paket tampilan imersif. Pastikan Anda telah memperbarui Zoom Workplace ke versi terbaru.";
+"LN_Max_Reached_1044325" = "Batas maksimum tercapai";
+"LN_Added_Apps_1044325" = "Aplikasi yang ditambahkan";
 "LN_Custom_Unable_View_Share_456386" = "Tidak dapat melihat berbagi layar Anda saat \"Bagikan Jendela Zoom Saya\" diaktifkan.";
 "LN_Audio_Device_Type_DisplayPort_751220" = "DisplayPort";
+"LN_On_For_External_Meeting_Set_By_Admin_1044325" = "Rapat eksternal (ditetapkan oleh admin)";
 "LN_Audio_Device_Type_Network_751220" = "Jaringan";
 "LN_Custom_Sharing_Unsuppoted_456386" = "Berbagi imersif sepenuhnya tidak didukung di scene ini";
 "LN_Audio_Device_Mic_Speaker_751220" = "Mikrofon & speaker";
 "LN_Custom_Show_Immersive_View_517611" = "Tampilkan tampilan imersif";
+"LN_Locked_By_Admin_1044325" = "Dikunci oleh admin";
+"LN_Reach_Maximum_Number_For_Auto_Open_1044325" = "Anda telah mencapai jumlah maksimum aplikasi yang diizinkan untuk dibuka secara otomatis.";
 "LN_Custom_Leave_Immersive_View_517611" = "Keluar dari tampilan imersif";
 "LN_Alert_Title_HostEndMeeting_520873" = "Host mengakhiri rapat ini";
+"LN_Set_By_Admin_1044325" = "Ditetapkan oleh admin";
 "LN_Audio_Device_Type_Builtin_751220" = "Bawaan";
 "LN_Alert_Title_FreeMeetingEnded_520873" = "Rapat gratis ini telah berakhir";
 "LN_Alert_Title_ThanksUsing_520873" = "Terima kasih telah menggunakan Zoom";
@@ -7781,6 +7891,7 @@
 "LN_Alert_MessageInfo_HightQualityMeeting_520873" = "Selenggarakan rapat audio dan video berkualitas tinggi. Masuk atau buat akun sekarang.";
 "LN_Audio_Device_Type_AirPlay_751220" = "AirPlay";
 "LN_Alert_MessageTitle_CommunicationsInOne_520873" = "Semua komunikasi Anda dalam satu tempat";
+"LN_Modified_1044325" = "Diubah";
 "LN_Audio_Device_Type_FireWire_751220" = "FireWire";
 "LN_Alert_MessageInfo_BetterManage_520873" = "Buat akun Zoom atau masuk agar Anda dapat mengelola hari Anda lebih baik. Satu aplikasi untuk rapat, mengobrol, email, kalender, dan lainnya.";
 "LN_Alert_MessageTitle_KeepConversation_520873" = "Jaga agar percakapan tetap mengalir";
@@ -7791,6 +7902,7 @@
 //ZOOM-267129
 "LN_Apps_Loading_267129" = "Memuat...";
 "LN_Audio_Device_Combination_751220" = "Kombinasi khusus";
+"LN_Auto_Open_Selected_Zoom_Apps_1044325" = "Buka otomatis aplikasi yang dipilih";
 "LN_Audio_Device_Type_Bluetooth_751220" = "Bluetooth";
 "LN_Apps_Loading_Fail_267129" = "Tidak dapat memuat aplikasi dengan akses real time ke informasi Anda.";
 "LN_Apps_Retry_267129" = "Coba lagi";
@@ -7799,6 +7911,7 @@
 "LN_Apps_New_Signal_Tip_285413" = "Lihat aplikasi yang mengakses konten rapat Anda";
 "LN_Apps_Approved_By_Someone_285413" = "Disetujui oleh %@";
 "LN_Apps_Approved_By_N_People_285413" = "Disetujui oleh %ld orang";
+"LN_Add_Apps_From_Marketplace_1044325" = "Tambahkan aplikasi dari Marketplace";
 "LN_Apps_Host_Account_285413" = "Akun host";
 
 "LN_Audio_Device_Type_Continuity_751220" = "Kontinuitas";
@@ -7977,7 +8090,6 @@
 "LN_MIL_DoD_Tooltip_715018" = "Zoom untuk Departemen Pertahanan";
 "LN_Gift_Enterprise_Third_Message_232338" = "Hubungi admin TI Anda untuk meningkatkan paket Anda untuk menghapus batas waktu 40 menit.";
 "LN_Apps_Push_App_Close_Attendees_Only_769589" = "Hanya peserta";
-"LN_Apps_RTMS_AAN_Brought_By_862885" = "Dimulai oleh akun host";
 "LN_Apps_RTMS_AAN_Deny_By_Host_862885" = "Ditolak oleh host";
 "LN_Apps_Stop_Play_Together_And_Share_Audio_769589" = "Hentikan sesi pemutaran untuk berbagi audio";
 "LN_Apps_RTMS_AAN_Deny_By_You_862885" = "Ditolak oleh Anda";
@@ -8010,14 +8122,17 @@
 "LN_GridView_Accessibility_Move_Help_194601" = "Tekan Control+Command+Arrow untuk memindahkan urutan";
 "LN_Apps_RTMS_AAN_Sharing_862885" = "Mengakses";
 "LN_Apps_RTMS_Host_Tool_951404" = "Bagikan konten rapat real-time dengan aplikasi";
-"LN_MIL_DoD_Title_1012212" = "Anda terhubung ke Zoom untuk Pemerintahan - Pertahanan";
+"LN_MIL_DoD_Title_1012212" = "Anda terhubung ke Zoom untuk Departemen Pertahanan";
+"LN_Apps_RTMS_AAN_Brought_By_OBF_1002666" = "Dibawa oleh %@";
 "LN_Apps_RTMS_Disable_All_Tips_862885" = "Berbagi konten rapat waktu nyata dengan aplikasi telah dinonaktifkan untuk peserta.";
 "LN_Accessibility_Video_Render_194601" = "Render video";
 "LN_Apps_RTMS_AAN_Disable_By_Host_862885" = "Dinonaktifkan oleh host";
 "LN_Apps_RTMS_Disable_Alert_Desc_1_862885" = "Mencegah permintaan berbagi aplikasi baru dari peserta.";
 "LN_App_Share_Background_745455" = "Bagikan latar belakang";
 "LN_Apps_RTMS_AAN_Enable_By_You_862885" = "Diaktifkan oleh Anda";
-"LN_MIL_DoD_Tooltip_1012212" = "Zoom untuk Pemerintahan - Pertahanan";
+"LN_Apps_RTMS_Not_In_Meeting_1050803" = "tidak ada dalam rapat";
+"LN_Apps_RTMS_Not_In_Webinar_1050803" = "tidak ada dalam webinar";
+"LN_MIL_DoD_Tooltip_1012212" = "Zoom untuk Departemen Pertahanan";
 "LN_Accessibility_Pinned_194601" = "Disematkan";
 "LN_Accessibility_Spotlighted_194601" = "Disorot";
 
@@ -8045,6 +8160,7 @@
 "LN_Apps_RTMS_Remove_%@_Title_862885" = "Keluarkan \"%@\"";
 "LN_Apps_RTMS_Pause_Access_862885" = "Jeda akses";
 "LN_Join_by_Phone_239942" = "Bergabung melalui telepon";
+"LN_Join_Space_Rejected_For_Restrictions_1025496" = "Tidak dapat bergabung dengan ruang bersama %@ yang menambahkan Anda karena admin ruang bersama telah membatasi siapa saja yang dapat bergabung";
 "LN_Apps_RTMS_Resume_Access_862885" = "Lanjutkan akses";
 "LN_Next_Test_239942" = "Tes berikutnya";
 "LN_Apps_RTMS_Host_Not_Support_RTMS_862885" = "Host tidak dapat menyetujui akses aplikasi Anda ke konten rapat.";
@@ -8238,6 +8354,7 @@
 "LN_Main_Tab_ZRC_Leave_From_Computer_Button_Title_179546" = "Keluar dari komputer saya";
 "LN_Main_Tab_ZRC_Join_ZR_Meeting_Toast_Join_Button_179546" = "Bergabung dalam mode pendamping";
 "LN_Main_Tab_ZRC_Join_ZR_Meeting_Toast_Title_179546" = "Rapat di %@";
+"LN_Simulive_Remind_Video_And_Audio_Available_Content_1007388" = "Rekaman saat ini sedang diputar dan dapat dilihat serta didengar oleh semua peserta webinar.\n\n audio dan video host dan panelis hanya akan tersedia setelah webinar dialihkan ke siaran langsung.";
 "LN_Simulive_Remind_Webinar_End_Content_748835" = "Webinar akan berakhir otomatis saat pemutaran rekaman selesai.";
 "LN_Simulive_748835" = "Simulasi Langsung";
 "LN_Simulive_Start_Live_748835" = "Mulai sesi langsung";
@@ -8281,6 +8398,7 @@
 "LN_Simuive_Make_Sure_Ready_Go_Live_748835" = "Pastikan Anda siap melangsungkan siaran langsung!";
 "LN_Assistant_Admin_Name_255798" = "Asisten rapat";
 "LN_Assistant_Admin_Stop_Control_304284" = "Asisten telah berhenti mengontrol rapat";
+"LN_Simulive_Feature_Not_Available_1075603" = "Fitur ini saat ini tidak tersedia. Ini akan diaktifkan nanti dalam sesi.";
 "LN_MTChat_Message_Direct_WR_%@_748343" = "Kirim pesan %@ (ruang tunggu)";
 "LN_Simulive_Not_Auto_Start_967444" = "tidak mulai otomatis";
 "LN_Simulive_Failed_Need_Manually_Start_967444" = "Simulasi langsung gagal memulai secara otomatis pada waktu yang dijadwalkan.\n Mulailah sesi secara manual.";
@@ -8309,6 +8427,7 @@
 "LN_MTChat_CMC_DM_Ready_100946" = "Pesan yang dikirim di sini juga akan muncul di Team Chat jika DM tersedia.";
 "LN_Chats_MUC_Session_ToolTip_189893" = "Obrolan grup pribadi";
 "LN_Simulive_Started_967444" = "Simulasi langsung telah dimulai.";
+"LN_MTChat_Unsupported_%@_1057789" = "Anda tidak dapat mengirim pesan kepada %@ karena fitur ini tidak tersedia untuk akun mereka.";
 "LN_MTChat_CMC_DM_Failed_100946" = "Pesan tidak dapat disinkronkan ke obrolan rapat ini karena pengaturan atau beberapa aplikasi Zoom Workplace peserta tidak mendukung fitur ini.";
 "LN_Chats_Open_Setting_Title_189893" = "Buka Pengaturan > Obrolan";
 "LN_Chat_Legal_PMC_Record_Tips_855079" = "Perekaman aktif sehingga pemilik akun dan semua orang dalam rapat dapat melihat dan menyimpan pesan yang dikirim ke obrolan grup rapat, serta dapat membagikannya dengan aplikasi dan orang lain. Pesan ini juga akan diposting di obrolan grup rapat khusus di Obrolan Tim, dan semua orang di sana, termasuk yang tidak berada dalam rapat, dapat melihat, menyimpan, dan membagikannya.";
@@ -8338,12 +8457,14 @@
 "LN_MTChat_Not_In_Meeting_736262" = "Tidak dalam rapat";
 "LN_MTChat_Restrict_DLP_%@_859479" = "%@ dibatasi dari menerima pesan langsung. (Karena DLP)";
 "LN_Welcome_Title_In_Mention_View" = "Belum ada sebutan.";
+"LN_Notes_Tip_Title_1045743" = "Catat dengan cara Anda";
 "LN_MTChat_New_Chat_Tip_748343" = "Kirim pesan langsung kepada seseorang atau mulai obrolan grup dengan dua peserta atau lebih.";
 "LN_Notes_Tip_Title_996840" = "Catat dengan mudah";
 "LN_Welcome_Subtitle_In_Mention_View" = "Setiap kali Anda disebut dalam pesan, buka ini untuk menuju ke pesan tersebut.";
 "LN_Welcome_Tip_In_Mention_View" = "Pesan akan ditampilkan di sini setiap kali Anda disebut";
 "LN_Setting_UnreadTop_NewIM_189893" = "Letakkan semua pesan yang belum dibaca di bagian atas dalam daftar obrolan dan saluran";
 "LN_MTChat_Outdated_Version_748343" = "Peserta ini menggunakan Zoom Workplace versi lama dan tidak dapat ditambahkan ke obrolan grup";
+"LN_Notes_Tip_Content_1045743" = "Tangkap pemikiran cepat dalam rapat Anda dan biarkan AI Companion menyempurnakannya - ketersediaan tergantung pada paket Zoom Anda.";
 "LN_Add_Channel_189893" = "Saluran baru";
 "LN_Join_Lobby_270267" = "Bergabung ke lobi";
 
@@ -8354,20 +8475,27 @@
 "LN_MTChat_Legal_Normal_859479" = "Obrolan dapat dilihat, disimpan, dan dibagikan oleh peserta rapat.";
 "LN_NDI_Live_Alert_Title_273351" = "Rapat ini sedang di-streaming langsung di NDI®";
 "LN_NDI_Live_Alert_Content_273351" = "Umpan video dan audio dari rapat ini sedang di-streaming langsung di jaringan dan mungkin direkam, diubah, atau digunakan sesuai dengan %@ organisasi host.\n\nDengan tetap berada dalam rapat ini, Anda setuju untuk di-streaming langsung.";
+"LN_MTChat_UnPin_Content_1013473" = "Apakah Anda yakin ingin melepas sematan pesan ini?";
 "LN_MTChat_CMC_DM_Title_950219" = "Menunggu peserta bergabung...";
 "LN_MTChat_Legal_DLP_859479" = "Satu atau lebih peserta tunduk pada pencegahan kehilangan data (DLP), termasuk pesan langsung mereka. Pesan apa pun yang bertentangan dengan kebijakan DLP mereka akan dihapus. Pemilik akun mereka memiliki akses ke pesan yang tunduk pada DLP.";
 "LN_NDI_Policy_URL_Text_273351" = "Kebijakan Privasi";
+"LN_Gift_Limit_Extend_First_End_Message_997504" = "Rapat Anda berlangsung selama %1$@. Paket rapat Anda memiliki batas waktu %2$@ menit. Harap pertimbangkan untuk meningkatkan paket Anda dan membuat rapat Anda tidak terbatas.";
+"LN_MTChat_Add_App_Title_1029818" = "Tambahkan ke saluran rapat";
 "LN_NDI_Stream_Info_273351" = "Rapat di-streaming langsung di NDI®";
 "LN_MTChat_Rec_Archive_DLP_Conflict_859479" = "Siapa yang dapat melihat pesan Anda? Perekaman, pengarsipan & konflik DLP";
+"LN_MTChat_Other_Pin_Message_1013473" = "%1$@ menyematkan <a href='%2$@'>pesan</a> ke obrolan ini.";
 "LN_NDI_Stream_Webinar_Info_273351" = "Webinar ini di-streaming langsung di NDI®";
 "LN_NDI_TradeMark_273351" = "NDI®";
 "LN_MTChat_To_Me_748343" = "Dari %@ ke saya";
 "LN_Mesh_Low_Version_Client_421787" = "Beberapa panelis mungkin memiliki video atau audio yang tidak terverifikasi";
 "LN_Low_Version_Client_421787" = "1 panelis dengan versi klien lama";
+"LN_MTChat_Fusion_Title_1029818" = "Lebih banyak aplikasi & alat";
 
 "LN_Gift_Extend_First_End_Message_997504" = "Rapat Anda berlangsung selama %@. Paket rapat Anda memiliki batas waktu 60 menit. Harap pertimbangkan untuk meningkatkan paket Anda dan membuat rapat Anda tidak terbatas.";
 //ZOOM-273485
 "LN_Gift_Extend_Second_End_Message_997504" = "Rapat Anda berlangsung selama %@. Paket rapat Anda memiliki batas waktu 60 menit. Harap pertimbangkan untuk meningkatkan paket Anda dan membuat rapat Anda tidak terbatas.";
+"LN_MTChat_You_Pin_Message_1013473" = "Anda menyematkan <a href='%1$@'>pesan</a> ke obrolan ini.";
+"LN_Gift_Limit_Extend_Second_End_Message_997504" = "Rapat Anda berlangsung selama %1$@. Paket rapat Anda memiliki batas waktu %2$@ menit. Harap pertimbangkan untuk meningkatkan paket Anda dan membuat rapat Anda tidak terbatas.";
 "LN_MTChat_Rec_DLP_Conflict_859479" = "Siapa yang dapat melihat pesan Anda? Rekaman pada & konflik DLP";
 "LN_Pronoun_Tip_273485" = "Anda ingin membagikan kata ganti %@ Anda dalam rapat ini?";
 "LN_Pronoun_Dont_Share_Button_273485" = "Jangan bagikan";
@@ -8576,6 +8704,7 @@
 "LN_DownloadSuccessTip_273995" = "Latar belakang virtual diatur oleh host event dalam event ini";
 "LN_DownloadFailedTip_273995" = "Gagal mengunduh latar belakang virtual yang diatur oleh host event";
 
+"LN_Main_Tab_ZRC_Keep_Pair_Alert_Title_1033710" = "Sesi Anda telah berakhir. Apakah Anda ingin tetap terhubung dengan %@?";
 "LN_Toolbar_Audio_Companion_FTE_Tip_Content_750362" = "Gunakan %@ untuk meningkatkan kualitas suara di rapat ini tanpa gema atau umpan balik.";
 //ZOOM-315990
 "LN_Main_Tab_ZRC_Inquiry_View_Start_From_Room_Companion_Button_Tooltip_775584" = "Mulai rapat di Zoom Room; perangkat pribadi Anda juga akan bergabung untuk obrolan dan berbagi layar.";
@@ -8585,16 +8714,22 @@
 "LN_Main_Tab_ZRC_Pair_View_CoachMark_Description_862356" = "Pasangkan dengan Ruang Zoom untuk bergabung dalam rapat, bagikan layar, atau membuka papan tulis dari ruang, dll.";
 "LN_Webinar_VB_DownloadingTip_315990" = "Host telah mengatur latar belakang virtual untuk Anda. Setelah diunduh, latar belakang virtual tersebut akan digunakan dalam webinar ini.";
 "LN_Webinar_VB_DownloadSuccessTip_315990" = "Latar belakang virtual yang diatur oleh host siap digunakan.";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Desc_1024205" = "Hubungkan perangkat Anda ke Zoom Room untuk obrolan dan berbagi layar?";
 "LN_Main_Tab_ZRC_Pair_Move_Meeting_Error_Others_995355" = "Tidak dapat memasangkan Zoom Room. Silakan coba lagi.";
+"LN_Main_TAB_ZRC_Companion_Disconnected_1024205" = "Perangkat Anda terputus dari %@.";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Title_1024205" = "Rapat ditransfer";
 "LN_Webinar_VB_DownloadFailedTip_315990" = "Host mengatur latar belakang virtual untuk Anda, tetapi gagal diunduh. Anda tetap dapat bergabung ke sesi.";
+"LN_Main_TAB_ZRC_Companion_Connected_1024205" = "Perangkat Anda terhubung ke %@ untuk obrolan dan berbagi layar.";
 "LN_Main_Tab_ZRC_Inquiry_View_Start_From_Room_Companion_Button_Title_775584" = "Mulai dari ruang dan sebagai pendamping";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Room_Companion_Button_Title_775584" = "Bergabung dari ruang dan sebagai pendamping";
 
 //ZOOM-318711
 "LN_UnableSecureConnection_318711" = "Tidak dapat terhubung secara aman ke Zoom";
 "LN_ErrorCodeFormat_318711" = "Kode kesalahan %@: ";
+"LN_Main_Tab_ZRC_Join_From_Room_Client_In_Meeting_937231" = "Saat ini Anda sedang dalam rapat. Harap tinggalkan sebelum memulai atau bergabung dengan rapat dari ruangan.";
 "LN_Main_Tab_ZRC_Inquiry_View_Start_From_Room_Only_Button_Disabled_Tooltip_832028" = "Coba metode lain untuk memulai rapat.";
 "LN_OpenBrowser_318711" = "Buka browser Anda";
+"LN_Main_TAB_ZRC_ZR_IN_USE_1024205" = "Ruangan sedang digunakan. Transfer rapat tidak tersedia.";
 "LN_Toolbar_Audio_Companion_Poor_Quality_Detected_Tip_Content_750362" = "Anda ingin mengaktifkan %@ untuk meningkatkan kualitas suara di rapat ini tanpa gema atau umpan balik?";
 "LN_Toolbar_Audio_Companion_Mic_Button_Unmute_Tooltip_879423" = "Bunyikan mikrofon pendamping";
 "LN_Toolbar_Audio_Companion_Mic_Error_Device_Issue_Tip_Title_750362" = "Mikrofon pendamping terputus";
@@ -8602,9 +8737,12 @@
 "LN_CertNotTrustDes_318711" = " untuk memeriksa koneksi internet Anda. Ini dapat terjadi jika Anda harus masuk ke jaringan Anda atau jika Anda menggunakan Wi-Fi publik.";
 "LN_Toolbar_Audio_Companion_Mic_Button_Mute_Tooltip_879423" = "Bisukan mikrofon pendamping";
 "LN_Toolbar_Audio_Companion_Mic_Error_Cannot_Turn_On_Tip_Title_750362" = "Tidak dapat mengaktifkan mikrofon pendamping";
+"LN_Main_Tab_ZRC_Connect_To_Room_Error_ZR_Idle_937231" = "Opsi ini hanya tersedia ketika Zoom Room sedang dalam rapat.";
 "LN_Meeting_Summary_Lowercase_890360" = "ringkasan rapat";
+"LN_Main_TAB_ZRC_Connect_1024205" = "Hubungkan";
 "LN_Toolbar_Audio_Companion_Speaker_Menu_Title_750362" = "Pilih perangkat dengar";
 "LN_Whiteboard_Lowercase_890360" = "papan tulis";
+"LN_Main_Tab_ZRC_Connect_To_Room_Error_Title_937231" = "Tidak dapat terhubung ke ruangan";
 "LN_Toolbar_Audio_Companion_Room_Setting_Auto_Join_Title_750362" = "Aktifkan mikrofon pendamping secara otomatis saat bergabung sebagai pendamping";
 "LN_Main_Tab_ZRC_Claim_Single_Asset_Failed_Message_890360" = "%@ Anda dinonaktifkan, Anda akan menerima email dengan %@ saat rapat berakhir.";
 "LN_Main_Tab_ZRC_Claim_Assets_Toast_890360" = "Berhasil diklaim.";
@@ -8616,16 +8754,23 @@
 "LN_Main_Tab_ZRC_Claim_Multi_Asset_Failed_Message_890360" = "Item berikut dinonaktifkan dan tidak dapat disimpan, Anda akan menerima email dengan aset ini saat rapat berakhir.";
 "LN_Unable_To_Load_Email_527622" = "<b>Tidak dapat memuat email</b>\nEmail bersama ini telah diubah dari aslinya.";
 "LN_Main_TAB_ZRC_CLaim_Assets_Failed_Across_Account_1000857" = "Anda tidak dapat mengklaim dan menyimpan aset rapat di berbagai akun. Hubungi admin Anda untuk bantuan.";
+"LN_Main_TAB_ZRC_AIC_Record_Failed_937231" = "Tidak dapat merekam dengan AI Companion. Silakan coba lagi.";
+"LN_Main_Tab_ZRC_Claim_Assets_Toast_937231" = "Aset berhasil diklaim dan disimpan dari ruangan.";
+"LN_Main_TAB_ZRC_ZR_Busy_Toast_937231" = "Ruangan sedang digunakan. Coba lagi nanti.";
 "LN_Main_TAB_ZRC_CLaim_Assets_Failed_Permission_890360" = "Gagal menyimpan. Anda tidak memiliki izin untuk menyimpan aset. Minta bantuan admin Anda.";
 "LN_Toolbar_Audio_Companion_Mic_Button_Unmute_Tooltip_750362" = "Aktifkan mikrofon pendamping";
 "LN_Main_TAB_ZRC_CLaim_Assets_Failed_890360" = "Gagal menyimpan.";
+"LN_Main_TAB_ZRC_CLaim_Assets_Timeout_937231" = "Tidak dapat menyimpan aset dari ruangan. Silakan coba lagi.";
 
 "LN_Toolbar_Audio_Companion_Mic_Error_No_Device_Tip_Content_750362" = "Tidak ada perangkat audio yang didukung. Hubungkan perangkat.";
 "LN_Toolbar_Audio_Companion_FTE_Tip_Title_750362" = "Mikrofon pendamping diaktifkan";
 "LN_Toolbar_Audio_Companion_FTE_Tip_Title_879423" = "Mikrofon pendamping dibunyikan";
 //ZOOM-293711
 "LN_Toolbar_Audio_Companion_Speaker_Button_Off_Tooltip_879423" = "Bunyikan mendengarkan di ruang";
+"LN_Main_TAB_ZRC_AIC_Record_Failed_Client_Not_Support_937231" = "Merekam dengan AI Companion dinonaktifkan untuk ruangan ini. Hubungi admin TI Anda untuk bantuan.";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Join_Title_Period_937231" = "Rapat dimulai dari Zoom Room.";
 "LN_Toolbar_Audio_Companion_Speaker_Button_On_Tooltip_879423" = "Bisukan mendengarkan di ruang";
+"LN_Main_TAB_ZRC_Remember_My_Choice_937231" = "Ingat pilihan saya";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Room_Only_Button_Disabled_Tooltip_832028" = "Coba metode lain untuk bergabung ke rapat.";
 "LN_Edit_Channel_Addtional_Notes_For_MUC_293711" = "Dengan mengubah nama obrolan, Anda akan mengubah <b>%@</b> menjadi <b>Saluran Pribadi</b>.\nPerubahan ini tidak dapat dibatalkan.";
 "LN_Toolbar_Audio_Companion_Speaker_Button_Title_750362" = "Dengarkan";
@@ -8634,27 +8779,42 @@
 "LN_Toolbar_Audio_Companion_Mic_Error_Generic_Tip_Content_750362" = "Mikrofon pendamping Anda saat ini tidak tersedia. Coba lagi nanti.";
 "LN_Toolbar_Audio_Companion_Mic_Error_Cannot_Turn_On_Tip_Title_879423" = "Tidak dapat membunyikan mikrofon pendamping";
 "LN_%@_Changed_%@_to_a_Private_Channel_Named_%@_Bold_293711" = "%@ mengubah <b>“%@”</b> menjadi saluran pribadi bernama <b>”%@”</b>";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Start_Title_Period_937231" = "Rapat dimulai dari Zoom Room.";
 "LN_Enter_Chat_Name_293711" = "Masukkan nama obrolan";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Transfer_Title_Period_937231" = "Rapat dipindahkan ke Zoom Room.";
 
+"LN_Main_TAB_ZRC_Connect_As_Companion_Join_Title_937231" = "Rapat bergabung dari Zoom Room";
+"LN_Main_TAB_ZRC_Companion_Connected_937231" = "Perangkat Anda terhubung ke %@ untuk obrolan dan melihat konten.";
 //zoom-276949
 "LN_IMReportUser_%@_276949" = "Dengan mengirimkan laporan ini, Anda mengizinkan Zoom untuk mengakses semua data dalam laporan ini, dengan tunduk pada <a href='%@'>Kebijakan Privasi</a> Zoom. Data ini mencakup semua file dan tangkapan layar terlampir, informasi pengguna Anda, informasi pengguna dari pengguna yang Anda laporkan, dan semua informasi rapat terkait.";
+"LN_Toolbar_Paired_Zr_Action_Menu_Transfer_To_Room_Title_1024686" = "Transfer rapat ke ruangan";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Cannot_Turn_On_Tip_Title_750362" = "Tidak dapat mengaktifkan ruang mendengarkan";
+"LN_Toolbar_Paired_Zr_Action_Menu_Connect_To_Room_Help_String_1024686" = "Perangkat Anda akan terhubung ke Zoom Room untuk obrolan dan berbagi layar.";
+"LN_Toolbar_Paired_Zr_Action_Menu_Connect_To_Room_Title_1024686" = "Terhubung ke ruang";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Desc_937231" = "Hubungkan perangkat Anda ke Zoom Room untuk obrolan dan melihat konten?";
+"LN_Main_TAB_ZRC_AIC_Record_Failed_ZR_Busy_937231" = "Zoom Room saat ini sedang sibuk. Silakan mencoba merekam dengan AI Companion nanti.";
 "LN_Toolbar_Audio_Companion_Speaker_Error_No_Device_Tip_Content_750362" = "Tidak ada perangkat audio yang didukung. Hubungkan perangkat.";
 "LN_Toolbar_Audio_Companion_Mic_Error_Zr_Muted_Tip_Content_879423" = "Anda tidak dapat membunyikan mikrofon pendamping saat ruang dibisukan.";
+"LN_Main_TAB_ZRC_Room_Detected_937231" = "Ruangan terdeteksi";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Device_Issue_Tip_Content_750362" = "%@ tidak lagi memutar audio dari ruang. Bergabung kembali ke ruangan dalam mode pendamping untuk terhubung kembali.";
 "LN_Toolbar_Audio_Companion_Mic_Error_Generic_Tip_Title_750362" = "Tidak dapat terhubung ke Zoom Room";
+"LN_Toolbar_Paired_Zr_Action_Menu_Connect_To_My_Device_Title_1024686" = "Transfer rapat ke perangkat saya";
 
+"LN_Main_TAB_ZRC_Connect_As_Companion_Start_Title_937231" = "Rapat dimulai dari Zoom Room";
 "LN_Toolbar_Audio_Companion_Mic_Error_Exceed_Maximum_Tip_Content_750362" = "Jumlah maksimum perangkat mikrofon pendamping yang telah terhubung di Zoom Room ini.";
 "LN_ReportWho_276949" = "Siapa yang ingin Anda laporkan?";
 
 "LN_Toolbar_Audio_Companion_Speaker_Error_Disconnect_Tip_Title_750362" = "Ruang mendengarkan terputus";
 "LN_Toolbar_Audio_Companion_Mic_Error_Disconnected_Tip_Title_750362" = "Mikrofon terputus dari perangkat Anda";
+"LN_Main_TAB_ZRC_Room_Connected_937231" = "Terhubung ke ruangan";
+"LN_Main_TAB_ZRC_Connect_As_Companion_Transfer_Title_937231" = "Rapat ditransfer ke Zoom Room";
 "LN_ReportToZoom_276949" = "Laporkan ke Zoom";
 "LN_Toolbar_Audio_Companion_Speaker_Error_No_Device_Tip_Content_879423" = "Harap sambungkan perangkat bantuan pendengaran untuk mengaktifkan mendengarkan di ruang.";
 "LN_Toolbar_Audio_Companion_Mic_Error_Zr_Muted_Tip_Title_750362" = "Zoom Room dibisukan";
 "LN_ReportUser_276949" = "Laporkan pengguna";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Computer_Button_Title_775584" = "Bergabung hanya dari komputer";
 "LN_RemoveChatMsg_276949" = "Hapus pesan obrolan";
+"LN_Main_TAB_ZRC_Connect_To_Room_ZR_IN_USE_937231" = "Anda perlu berada dalam rapat yang sama dengan ruangan untuk terhubung.";
 "LN_ReportUser_UpperCase_276949" = "Laporkan pengguna";
 "LN_Toolbar_Audio_Companion_Speaker_Error_No_Device_Tip_Title_879423" = "Hubungkan perangkat audio yang didukung";
 "LN_Toolbar_Audio_Companion_FTE_Tip_LeaveOn_Button_750362" = "Biarkan aktif";
@@ -8678,21 +8838,31 @@
 "LN_Toolbar_Audio_Companion_Mic_Button_Mute_Tooltip_750362" = "Nonaktifkan mikrofon pendamping";
 
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Computer_Button_Tooltip_775584" = "Bergabung ke rapat di perangkat pribadi Anda; Zoom Room tidak akan bergabung.";
+"LN_Pin_To_Toolbar_1060379" = "Sematkan ke toolbar";
 "LN_Toolbar_Audio_Companion_Speak_Error_Not_Same_Meeting_Tip_Content_975235" = "Tidak dapat menggunakan fitur dengarkan di ruang. Anda tidak berada dalam rapat yang sama dengan Zoom Room.";
 "LN_AdminRMMsg_ConfirmTitle_%@_276949" = "Anda yakin ingin menghapus pesan obrolan yang dikirim oleh pengguna %@?";
 "LN_AdminRMMsg_ConfirmDescription1_276949" = "Pesan obrolan lobi yang telah dihapus tidak dapat dipulihkan dan tindakan tidak dapat dibatalkan.";
 "LN_Main_Tab_ZRC_Inquiry_View_Description_775584" = "Bagaimana Anda ingin bertemu?";
+"LN_Host_Tools_For_BO_1060379" = "Alat bantu host untuk ruang diskusi";
 "LN_Toolbar_Audio_Companion_Mic_Error_Zr_Muted_Tip_Content_750362" = "Anda tidak dapat mengaktifkan mikrofon pendamping saat ruang dibisukan.";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Network_Issue_Tip_Content_975235" = "Tidak dapat mengakses jaringan Zoom Room untuk mengaktifkan mendengarkan di ruangan. Cobalah beralih ke jaringan yang memiliki konektivitas ke Zoom Room.";
 "LN_AdminRMMsg_ConfirmDescription2_%@_276949" = "Pengguna %@ akan diberi tahu via email bahwa pesan mereka telah dihapus dari event ini.";
 "LN_Toolbar_Audio_Companion_Mic_Error_Device_Issue_Tip_Content_750362" = "%@ tidak lagi melakukan streaming audio ke ruang. Bergabung kembali ke ruangan dalam mode pendamping untuk terhubung kembali.";
+"LN_Transfer_To_Zoom_Room_1060379" = "Transfer ke kamar";
+"LN_Host_Tools_For_Apps_1060379" = "Alat bantu host untuk aplikasi";
+"LN_Chat_settings_1060379" = "Pengaturan obrolan";
+"LN_Share_Screen_Settings_1060379" = "Pengaturan berbagi";
 "LN_Main_Tab_ZRC_Pair_View_Error_Admin_Disable_Msg_917924" = "Penyandingan telah dinonaktifkan untuk Zoom Room ini. Hubungi admin TI Anda untuk bantuan atau pasangkan dengan ruang lain.";
 "LN_Toolbar_Audio_Companion_Poor_Quality_Detected_Tip_Title_750362" = "Kualitas suara yang buruk terdeteksi";
 "LN_Toolbar_Audio_Companion_Speaker_Button_On_Tooltip_750362" = "Nonaktifkan ruang mendengarkan";
 "LN_AdminRMMsg_ConfirmDescription3_276949" = "Dengan mengirimkan laporan ini, Anda mengizinkan Zoom, dengan tunduk pada <a href='%@'>Kebijakan Privasi Zoom Events</a>, untuk mengakses semua data dalam laporan ini. Data ini mencakup semua file dan tangkapan layar terlampir, informasi pengguna Anda, informasi pengguna dari pengguna yang Anda laporkan, dan semua informasi rapat terkait.";
+"LN_Host_Tools_For_Docs_1060379" = "Alat bantu host untuk dokumen";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Room_Only_Button_Tooltip_775584" = "Bergabung ke rapat di Zoom Room; perangkat pribadi Anda tidak akan bergabung.";
+"LN_Transfer_To_Device_1060379" = "Transfer ke perangkat";
+"LN_Remove_From_Toolbar_1060379" = "Hapus dari toolbar";
 "LN_YES_RMMsgAndSendReport_276949" = "Ya, hapus pesan & kirim laporan";
 "LN_Main_Tab_ZRC_Inquiry_View_Join_From_Room_Only_Button_Disabled_Tooltip_ZR_Not_Support_833695" = "Tidak dapat bergabung dari ruang karena versi Zoom Rooms sudah kedaluwarsa. Hubungi admin untuk memperbarui ke versi Zoom Rooms terbaru.";
+"LN_Reaction_Settings_1060379" = "Pengaturan reaksi";
 "LN_Main_Tab_ZRC_Pair_View_Error_Admin_Disable_Title_917924" = "Penyandingan dinonaktifkan";
 "LN_Main_Tab_ZRC_Pair_View_Pair_Another_917924" = "Pasangkan dengan ruang lain";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Disconnected_Tip_Content_750362" = "%@ tidak lagi terhubung ke perangkat Anda dan tidak dapat memutar audio.";
@@ -8700,10 +8870,13 @@
 "LN_Main_Tab_ZRC_Setting_Auto_Detect_Button_Title_775584" = "Deteksi otomatis Zoom Rooms";
 "LN_YES_RMMsg_276949" = "Ya, hapus pesan";
 
+"LN_Host_Tools_For_Whiteboards_1060379" = "Alat bantu host untuk papan tulis";
 
+"LN_Host_Tools_For_Share_1060379" = "Alat bantu host untuk berbagi";
 "LN_AdminReportRMUser_%@_276949" = "Laporkan dan hapus pesan obrolan ini dan pengguna %@";
 "LN_Toolbar_Audio_Companion_Speaker_Error_Disable_Tip_Title_975235" = "Mendengarkan di ruang dinonaktifkan";
 
+"LN_Connect_To_Room_1060379" = "Terhubung ke ruang";
 "LN_AdminRMReport_Desc1_276949" = "Pesan obrolan ini tidak dapat dipulihkan setelah dihapus dan Anda tidak akan dapat membatalkan tindakan ini.";
 
 "LN_Toolbar_Audio_Companion_Mic_Error_Not_Same_Meeting_Tip_Content_975235" = "Tidak dapat menggunakan mikrofon pendamping. Anda tidak berada dalam rapat yang sama dengan Zoom Room.";
@@ -8719,6 +8892,7 @@
 
 "LN_UserAndThisMsg_276949" = "Pengguna dan pesan ini";
 "LN_Main_TAB_ZRC_AIC_Record_Not_Support_Msg_951610" = "Ringkasan atau rekaman rapat Anda dinonaktifkan. Hubungi admin TI Anda untuk meminta bantuan.";
+"LN_Host_Tools_For_Captions_1060379" = "Alat bantu host untuk teks";
 "LN_UserAndAllMsg_276949" = "Pengguna dan semua pesan mereka";
 "LN_User_276949" = "Pengguna";
 "LN_Main_TAB_ZRC_AIC_Record_Not_Support_Title_951610" = "Tidak dapat merekam dengan AI Companion";
@@ -8729,6 +8903,7 @@
 "LN_RM_%@_UserAndOneMsg_276949" = "Anda yakin ingin mengeluarkan pengguna %@ dan menghaous pesan obrolan mereka dari event ini?";
 "LN_RM_%@_UserAndOneMsg_Desc_276949" = "Setelah pesan obrolan lobi telah dihapus, tindakan tidak dapat dibatalkan. Pengguna %@ akan diberi tahu via email bahwa pesan mereka telah dihapus dan akses mereka ke event ini telah dicabut.";
 "LN_Main_Tab_ZRC_Pair_Start_From_Room_Error_Title_833695" = "Tidak dapat memulai dari ruang";
+"LN_Recording_settings_1060379" = "Pengaturan rekaman";
 "LN_Main_Tab_ZRC_Pair_Join_From_Room_Error_Description_775584" = "Kode kesalahan: %lu";
 "LN_Main_Tab_ZRC_Inquiry_View_Start_From_Room_Only_Button_Title_775584" = "Mulai dari ruang saja";
 "LN_Main_Tab_ZRC_Setting_Auto_Detect_Tooltip_775584" = "Aktifkan perangkat pribadi Anda untuk menemukan Zoom Rooms terdekat menggunakan Bluetooth dan Wi-Fi. Tindakan akan memungkinkan Anda untuk memulai rapat, membuka papan tulis, dan meluncurkan aplikasi langsung dari Zoom Room.";
@@ -8842,6 +9017,7 @@
 "LN_Font_Mark_Add_Link_268211" = "Tambahkan tautan";
 "LN_Font_Mark_Paragraph_268211" = "Paragraf";
 "LN_Font_Mark_Increase_Indent_268211" = "Tingkatkan indentasi";
+"LN_Plist_Audio_Only_1022426" = "Hanya audio";
 "LN_Font_Mark_Decrease_Indent_268211" = "Kurangi indentasi";
 "LN_Font_Mark_Number_List_268211" = "Daftar bernomor";
 "LN_Font_Mark_Quote_268211" = "Kutipan";
@@ -9119,6 +9295,7 @@
 "LN_The_Host_Has_Changed_The_Meeting_Language_To_%@_319811" = "Host telah mengubah bahasa rapat menjadi %@";
 "LN_Select_Speaking_Language_319811" = "Pilih Bahasa Pengantar";
 "LN_Don’t_Show_Me_Again_319811" = "Jangan tampilkan lagi";
+"LN_Tooltip_EnterSendMessage_572186" = "Enter untuk mengirim";
 "LN_Captions_319811" = "Teks";
 "LN_%@_TO_%@_Translation_Not_Supported_319811" = "[%1$@ > %2$@ penerjemahan tidak didukung]";
 "LN_Request_Captions_524794" = "Minta teks";
@@ -9203,6 +9380,7 @@
 "LN_Select_The_Language_You_Will_Be_Speaking_In_For_This_Meeting_423978" = "Pilih bahasa yang akan Anda gunakan berbicara untuk rapat ini";
 "LN_My_Translation_Language_423978" = "Bahasa terjemahan saya";
 "LN_Captions_Will_Be_Translated_For_You_In_This_Language_423978" = "Teks akan diterjemahkan untuk Anda dalam bahasa ini";
+"LN_Simulive_Will_Start_At_%@_1042795" = "Webinar simulasi langsung ini akan dimulai pada pukul %@";
 "LN_A_Participant_Has_Enabled_Translation_Set_Your_Speaking_Language_For_This_Meeting_423978" = "Peserta telah mengaktifkan terjemahan. Atur bahasa pengantar untuk rapat ini.";
 "LN_Save_My_Speaking_Language_Desc_477438" = "Dengan memilih, kami akan menyimpan dan tidak menanyakan bahasa pengantar untuk penerjemahan. Anda dapat mengubah bahasa ini kapan saja dalam menu teks.";
 "LN_MeetingList_Calendar_Policy_Changed_834457" = "Perubahan kebijakan mengharuskan Anda untuk mengotorisasi ulang kalender Anda. Silakan autentikasi lagi.";
@@ -9213,6 +9391,7 @@
 "LN_Caption_Language_%@_561362" = "Bahasa teks: %@";
 "LN_Caption_Language_With_Colon_561362" = "Bahasa teks:";
 "LN_Check_Link_788190" = "Periksa tautan ini";
+"LN_Webinar_Will_Start_At_%@_1042795" = "Webinar ini akan dimulai pada pukul %@";
 "LN_Enter_Webinar_753928" = "Masuk ke webinar";
 "LN_Are_You_Sure_You_Want_To_Change_The_Caption_Language_561362" = "Anda yakin ingin mengubah bahasa teks?";
 "LN_A_Participant_Has_Set_The_Caption_Language_To_%@_561362" = "Peserta telah mengatur bahasa teks menjadi %@.";
@@ -9418,7 +9597,9 @@
 "LN_CCI_VoiceCall_322980" = "Panggilan suara";
 "LN_CCI_VideoCall_322980" = "Panggilan video";
 "LN_CCI_ToYou_322980" = "Untuk Anda";
+"LN_IM_ShowOriginalThread_826743" = "Tampilkan utas asli";
 "LN_CCI_ToQueue_322980" = "Ke %@";
+"LN_IM_ShowTranslation_826743" = "Tampilkan terjemahan";
 "LN_CCI_Incoming_Call_Transfer_589152" = "Dari %@";
 "LN_CCI_HoldMeetingAudioAccept_322980" = "Tahan audio rapat & terima";
 "LN_CCI_Chat_History_589152" = "Riwayat obrolan";
@@ -9488,13 +9669,18 @@
 "LN_Collaboration_Could_Not_Be_Started_318302" = "Terjadi kesalahan. Kolaborasi tidak dapat dimulai. Coba lagi.";
 "LN_Collaboration_Could_Not_Be_ended_318302" = "Terjadi kesalahan. Kolaborasi tidak dapat diakhiri. Coba lagi.";
 "LN_No_Permission_To_Collaborate_With_This_App_318302" = "Anda tidak memiliki izin untuk berkolaborasi dengan aplikasi ini.";
+"LN_Are_You_Sure_You_Want_To_Change_The_Speaking_Language_1058374" = "Apakah Anda yakin ingin mengubah bahasa pengantar?";
+"LN_Speaking_Language_%@_1058374" = "Bahasa pengantar: %@";
 "LN_Collaborative_Session_Has_Ended_318302" = "Sesi kolaboratif telah berakhir.";
 "LN_App_Could_Not_Be_Shared_To_Everyone_329859" = "Terjadi kesalahan. Aplikasi tidak dibagikan dengan semua orang. Coba lagi.";
+"LN_Lock_Speaking_Language_Tip_1058374" = "Bahasa pengantar semua orang akan diubah ke bahasa ini.";
 "LN_App_Could_Not_Be_Closed_For_Everyone_329859" = "Terjadi kesalahan. Aplikasi tidak dapat ditutup untuk semua orang. Coba lagi.";
 "LN_App_Could_Not_Be_Closed_For_All_Attendees_329859" = "Terjadi kesalahan. Aplikasi tidak dapat ditutup untuk semua peserta. Coba lagi.";
 "LN_No_Permission_To_Open_This_Shared_App_329859" = "Anda tidak memiliki izin untuk membuka aplikasi yang dibagikan ini.";
 "LN_No_Permission_To_Launch_Zoom_Apps_In_This_Webinar_329859" = "Anda tidak memiliki izin untuk meluncurkan Zoom Apps di webinar ini";
 "LN_Zoom_Apps_Collaborate_Mode_382279" = "Mode Berkolaborasi";
+"LN_Lock_Speaking_Language_For_This_Meeting_1058374" = "Kunci bahasa pengantar untuk rapat ini";
+"LN_Lock_Speaking_Language_For_This_Meeting_Desc_1058374" = "Saat pengaturan ini diaktifkan, hanya host yang dapat mengubah bahasa pengantar dalam rapat.";
 "LN_Zoom_Apps_Auto_Join_Collaborate_Mode_382279" = "Bergabung otomatis saat peserta memulai pengalaman kolaboratif dengan aplikasi Zoom yang sudah saya tambahkan";
 
 "LN_Position_875284" = "Posisi";
@@ -9923,6 +10109,7 @@
 "LN_Meetinglist_Delete_All_Occurrence_307543" = "Hapus semua penyelenggaraan";
 "LN_Meetinglist_Attendee_Cannot_Delete_This_Occurrence_476634" = "Peserta tidak dapat menghapus penyelenggaraan ini";
 
+"LN_Webinar_Reaction_Intensity_318269" = "Intensitas reaksi";
 "LN_IM_FileTransfer_Restricted_By_My_Admin_311831" = "Akses ke file dibatasi oleh admin akun Anda";
 "LN_IM_FileTransfer_Restricted_By_Sender_Admin_311831" = "Akses ke file dibatasi oleh admin akun pengguna ini";
 "LN_IM_FileTransfer_Restricted_By_MaxFileSize_311831" = "Transfer file yang berukuran lebih besar dari %d MB dibatasi oleh admin akun Anda";
@@ -9935,6 +10122,7 @@
 "LN_Message_Composition_ToolBar_84524" = "Toolbar komposisi pesan";
 "LN_Message_Format_ToolBar_84524" = "Toolbar format pesan";
 
+"LN_Webinar_Reaction_Medium_318269" = "Sedang";
 //whiteboard
 "LN_WB_Whiteboard_296305" = "Papan Tulis";
 "LN_WB_Zoom_Whiteboard_296305" = "Papan Tulis Zoom";
@@ -9944,11 +10132,6 @@
 "LN_WB_Existing_Whiteboards_609586" = "Papan tulis yang sudah ada";
 "LN_WB_Allow_Access_After_296305" = "Izinkan peserta untuk mengakses setelah rapat";
 "LN_WB_Allow_Access_After_Tip_296305" = "Admin akun Anda telah membatasi pembagian papan tulis. Beberapa peserta mungkin tidak memiliki akses.";
-"LN_WB_Open_And_Collaborate_296305" = "Buka dan berkolaborasi";
-"LN_WB_All_Participants_Can_Edit_296305" = "Semua Peserta dapat mengedit";
-"LN_WB_All_Participants_Can_View_296305" = "Semua Peserta dapat melihat";
-"LN_WB_Loading_Failed_296305" = "Gagal memuat";
-"LN_WB_No_Results_Matching_296305" = "Tidak ada hasil pencarian yang cocok dengan '%@'";
 
 "LN_WB_Close_Whiteboard_296305" = "Tutup papan tulis";
 "LN_WB_You_Are_Collaborating_296305" = "Anda sedang berkolaborasi di papan tulis ini";
@@ -9972,15 +10155,7 @@
 "LN_WB_BO_Whiteboard_Session_Ended_367558" = "Berbagi papan tulis Anda akan dihentikan karena seseorang berbagi dari sesi utama";
 "LN_WB_Cannot_Start_Whiteboard_Proctoring_Mode_647030" = "Anda tidak dapat membuka papan tulis dalam mode semua layar.";
 "LN_PAC_Meeting_Tip_369419" = "Anda berada dalam konferensi audio pribadi.";
-"LN_WB_Allow_Access_Meeting_385632" = "Izinkan peserta untuk mengakses setelah rapat";
-"LN_WB_Allow_Access_Meeting_Tip_385632" = "Admin akun Anda telah membatasi pembagian papan tulis. Beberapa peserta mungkin tidak memiliki akses.";
-"LN_WB_Allow_Access_Webinar_385632" = "Izinkan peserta untuk mengakses setelah webinar";
-"LN_WB_Allow_Access_Webinar_Tip_385632" = "Admin akun Anda telah membatasi pembagian papan tulis. Beberapa panelis mungkin tidak memiliki akses.";
-"LN_WB_All_Panelists_Can_Edit_385632" = "Semua panelis dapat mengedit";
-"LN_WB_All_Panelists_Can_View_385632" = "Semua panelis dapat melihat";
-"LN_WB_Advanced_Options_385632" = "Opsi berbagi papan tulis lanjutan";
 "LN_WB_Grab_Share_385632" = "Siapa yang dapat mulai berbagi ketika orang lain sedang berbagi?";
-"LN_WB_Whiteboard_Deleted_385632" = "%@ telah dipindahkan ke sampah";
 "LN_WB_Whiteboard_Options_385632" = "Opsi berbagi papan tulis";
 "LN_WB_Submenu_385632" = "submenu";
 "LN_WB_Loading_Whiteboard_448903" = "Memuat pengalaman papan tulis Anda";
@@ -10010,7 +10185,6 @@
 "LN_WB_Setting_Administrator_Has_Locked_M_487798" = "Administrator telah mengunci pengaturan ini dan Anda tidak dapat mengubahnya. Semua papan tulis dalam rapat Anda akan menggunakan pengaturan ini.";
 "LN_WB_Setting_Administrator_Has_Locked_W_487798" = "Administrator telah mengunci pengaturan ini dan Anda tidak dapat mengubahnya. Semua papan tulis webinar Anda akan menggunakan pengaturan ini.";
 "LN_WB_Setting_Is_Disabled_487798" = "Opsi ini dinonaktifkan karena Anda menonaktifkan \"%@\"";
-"LN_WB_This_Option_Is_Disabled_487798" = "Opsi ini dinonaktifkan karena Anda memilih \"Hanya host yang dapat memulai papan tulis baru dalam rapat\"";
 "LN_WB_Classic_Whiteboard_623176" = "Papan tulis (klasik)";
 "LN_WB_Back2_ClassicWB_Content_623176" = "Papan tulis baru kami menyimpan pekerjaan Anda dan menawarkan fitur terbaru. Anda dapat mengatur Papan Tulis (Klasik) sebagai papan secara default di pengaturan.";
 "LN_WB_Use_Classic_Whiteboard_623176" = "Gunakan papan tulis (klasik)";
@@ -10027,8 +10201,6 @@
 "LN_NT_Start_Collaborating_522963" = "Mulai berkolaborasi";
 "LN_NT_Collaboration_Session_Ended_522963" = "Sesi kolaborasi berakhir";
 "LN_NT_Has_Closed_Meeting_Note_522963" = "%@ telah menutup catatan rapat";
-"LN_NT_Zoom_Notes_522963" = "Zoom Notes";
-"LN_NT_Take_Notes_522963" = "Buat catatan, bagikan, dan berkolaborasi dengan yang lain sebelum, selama, dan sesudah rapat.";
 "LN_NT_Loading_Your_Notes_522963" = "Memuat catatan Anda ...";
 "LN_NT_Error_Occurred_522963" = "Terjadi kesalahan catatan (%@)";
 "LN_NT_ACC_Toolbar_Open_Notes_Panel_611520" = "Tutup panel catatan, dibuka";
@@ -10220,7 +10392,6 @@
 "LN_WBUI_Export_300151" = "Ekspor";
 "LN_ZUIST_When_Using_The_Outlook_819462" = "Saat menggunakan aplikasi Outlook di perangkat Anda, izinkan Zoom untuk mengatur status Outlook berdasarkan status kehadiran Zoom Workplace Anda saat ini.";
 "LN_WBUI_Delete_Board_300151" = "Hapus Papan";
-"LN_ZUIST_Pin_Zoom_Workplace_819462" = "Sematkan Zoom Workplace ke dock macOS";
 "LN_WBUI_Leave_Board_300151" = "Keluar dari Papan";
 "LN_ZUIST_When_Closing_The_Zoom_819462" = "Saat menutup aplikasi Zoom Workplace, aplikasi akan dipindahkan ke area pemberitahuan dan bukan ke bilah tugas.";
 "LN_ZUIST_Fast_More_819462" = "Cepat (lebih banyak pembaruan, akses fitur paling awal)";
@@ -10232,6 +10403,7 @@
 "LN_ZUIST_Slow_Fewer_819462" = "Lambat (lebih sedikit pembaruan, lebih stabil)";
 "LN_ZUIST_Uses_Up_To_200_MB_819462" = "Menggunakan ruang hard drive hingga 200 MB.";
 "LN_WBUI_Send_300151" = "Kirim";
+"LN_ZUIST_Show_Zoom_Workplace_819462" = "Tampilkan Zoom Workplace di bilah menu macOS";
 "LN_WBUI_Share_Whiteboard_300151" = "Bagikan Papan Tulis";
 "LN_ZUIST_Show_A_Desktop_Widget_Features_819462" = "Menampilkan widget desktop yang menyediakan akses ke pencarian dan panggilan cepat. Pengguna Zoom Powerpack dapat mengakses fitur tambahan.";
 "LN_WBUI_Create_Page_300151" = "Buat hingga %d halaman";
@@ -10259,12 +10431,14 @@
 "LN_ZUIST_Emoji_And_Reactions_Skin_Tone_819462" = "Emoji dan reaksi warna kulit";
 "LN_ZUIST_Show_an_In_Meeting_option_819462" = "Tampilkan opsi dalam rapat untuk menonaktifkan peredam bising guna menghilangkan pemfilteran high pass dan kontrol penguatan otomatis.";
 "LN_ZUIST_Recording_Playing_819462" = "Rekaman sedang diputar...";
+"LN_ZUIST_Device_Connection_Behavior_1057705" = "Perilaku koneksi perangkat saat memulai atau mentransfer rapat di dalam ruangan";
 "LN_ZUIST_Color_Mode_819462" = "Mode warna";
 "LN_ZUIST_Voices_Will_Sound_Like_819462" = "Suara akan terdengar seperti berasal dari posisi masing-masing orang di layar.";
 "LN_ZUIST_Check_Spell_While_Typing_1006730" = "Periksa ejaan saat mengetik";
 "LN_ZUIST_Turns_On_System_Audio_819462" = "Aktifkan peningkatan audio sistem untuk speaker dan mikrofon yang digunakan.";
 "LN_ZUIST_Spelling_and_Grammar_1006730" = "Ejaan dan tata bahasa";
 "LN_ZUIST_Team_Chat_sidebar_973313" = "Bilah samping Team Chat";
+"LN_ZUIST_ZR_Use_Auto_Detection_Title_1057705" = "Deteksi otomatis Zoom Rooms";
 "LN_WBUI_ACC_Label_White_300151" = "putih";
 "LN_ZUIST_Use_Zoom_Assistant_Phone_819462" = "Gunakan Asisten Zoom untuk telepon";
 "LN_WBUI_ACC_Label_Green_300151" = "hijau";
@@ -10290,7 +10464,9 @@
 "LN_ZUIST_Test_Microphone_819462" = "Tes mikrofon";
 "LN_WBUI_ACC_Label_Page_List_300151" = "daftar halaman";
 "LN_WBUI_ACC_Label_Page_Remove_300151" = "hapus halaman %@";
+"LN_ZUIST_ZR_Use_Auto_Detection_Tip_1057705" = "Gunakan perangkat Anda untuk menemukan Zoom Rooms terdekat melalui Bluetooth dan Wi-Fi. Ini memungkinkan Anda untuk memulai atau mentransfer rapat, berbagi layar Anda, terhubung ke Zoom Room, dan menjelajahi lebih banyak opsi.";
 "LN_ZUIST_Turn_On_Live_Performance_Audio_Describe_986294" = "Mengaktifkan toggle ini akan mengesampingkan mode mikrofon yang telah dipilih sebelumnya. Anda yakin ingin mengaktifkan ini?";
+"LN_ZUIST_Automatically_Connect_To_Zoom_Room_1057705" = "Hubungkan secara otomatis ke Zoom Room";
 "LN_ZUIST_Join_Method_When_Paired_819462" = "Metode bergabung saat dipasangkan dengan Zoom Rooms";
 "LN_ZUIST_IM_Dark_Contrast_973313" = "Kontras gelap";
 "LN_WBUI_ACC_Label_Add_Page_300151" = "tambah halaman";
@@ -10298,6 +10474,7 @@
 "LN_ZUIST_Selecting_High_819462" = "Memilih \"Tinggi\" dapat meningkatkan penggunaan CPU.";
 "LN_WBUI_ACC_Label_Switch_Page_300151" = "beralih ke halaman %@";
 "LN_ZUIST_Sounds_819462" = "Suara";
+"LN_ZUIST_Show_Zoom_Room_Icon_1057705" = "Tampilkan ikon \"Zoom Room\" di aplikasi";
 "LN_ZUIST_Use_Zoom_Assistant_Meeting_819462" = "Gunakan Asisten Zoom untuk rapat";
 "LN_ZUIST_Use_Your_Voiceprint_986294" = "Gunakan cetakan suara Anda guna mengoptimalkan audio untuk kejernihan suara dan menekan kebisingan latar belakang di rapat Anda.";
 "LN_ZUIST_Noise_Removal_Default_986294" = "Penghapusan kebisingan (default)";
@@ -10305,11 +10482,13 @@
 "LN_WBUI_ACC_Label_Total_Page_300151" = "total %@";
 "LN_WBUI_ACC_Label_Whiteboard_Toolbar_300151" = "Toolbar papan tulis, daftar";
 "LN_ZUIST_Show_Desktop_Notifications_819462" = "Tampilkan pemberitahuan desktop hingga ditutup";
+"LN_ZUIST_Dont_Connect_To_Zoom_Room_1057705" = "Jangan terhubung ke Zoom Room";
 "LN_WB_Facilitate_Content_W_770231" = "Dengan menonaktifkan pengaturan ini, hanya host, pemilik papan, dan editor yang dapat memfasilitasi papan tulis selama webinar. Fitur fasilitasi meliputi penghitung waktu, penunjuk laser, dll.";
 "LN_ZUIST_Open_New_Chat_Window_819462" = "Buka jendela obrolan baru saat memilih pemberitahuan push";
 "LN_ZUIST_Automatically_Applies_819462" = "Secara otomatis menerapkan pemrosesan audio perangkat lunak Zoom untuk memberikan kualitas suara terbaik bagi sebagian besar pengguna.";
 "LN_ZUIST_Turn_On_Live_Performance_Audio_986294" = "Nyalakan audio pertunjukan Langsung";
 "LN_ZUIST_Hear_Incoming_Call_819462" = "Bunyikan nada dering panggilan masuk di perangkat tambahan";
+"LN_ZUIST_Ask_Me_Every_Time_1057705" = "Selalu tanyakan kepada saya";
 "LN_ZUIST_Show Pair_With_Room_Icon_819462" = "Tampilkan ikon \"Pasangkan dengan ruangan\" di bilah navigasi aplikasi";
 "LN_ZUIST_Reduces_Lag_During_819462" = "Mengurangi jeda waktu selama pertunjukan langsung saat musisi berada di aplikasi Zoom Workplace. Memerlukan internet berkecepatan tinggi.";
 "LN_WBUI_ACC_Label_Zoom_Bar_300151" = "Bilah zoom";
@@ -10366,8 +10545,10 @@
 "LN_WBUI_Back_To_Settings_369251" = "Kembali ke Pengaturan";
 "LN_WBUI_Done_369251" = "Selesai";
 "LN_ZUIST_When_Joining_Meetings_And_Webinars_819462" = "Saat bergabung ke rapat dan webinar:";
+"LN_ZUIST_After_Selecting_819462" = "Setelah memilih \"Keluar dari rapat\" atau \"Keluar dari webinar\", Zoom akan meminta Anda untuk mengonfirmasi sebelum meninggalkan rapat.";
 "LN_ZUIST_Create_Recording_Further_819462" = "Buat rekaman suara untuk lebih meningkatkan isolasi audio yang dipersonalisasi";
 "LN_WBUI_Has_Been_Removed_From_369251" = "%@ telah dihapus dari %@";
+"LN_ZUIST_After_A_Meeting_End_819462" = "Setelah rapat berakhir, lanjutkan menggunakan Zoom Apps apa pun yang Anda buka selama rapat.";
 "LN_ZUIST_Send_Desktop_Notifications_819462" = "Kirim pemberitahuan desktop untuk:";
 "LN_ZUIST_Note_Shared_With_Me_819462" = "Catatan dibagikan kepada saya";
 "LN_ZUIST_Recommended_For_Crowded_Environments_819462" = "Direkomendasikan untuk lingkungan yang ramai.";
@@ -10393,6 +10574,7 @@
 "LN_ZUIST_Send_Activity_Center_819462" = "Kirim pemberitahuan pusat aktivitas untuk:";
 "LN_ZUIST_Activity_Center_Notifications_819462" = "Pemberitahuan pusat aktivitas";
 "LN_ZUIST_Desktop_Notifications_819462" = "Pemberitahuan desktop";
+"LN_ZUIST_Activate_The_Thumbs_819462" = "Aktifkan reaksi berbasis gerakan dengan menahan gerakan tangan yang sesuai di depan kamera selama 2 detik.";
 "LN_ZUIST_Extension_Insert_819462" = "Ekstensi: [masukkan nomor ekstensi pengguna]";
 "LN_ZUIST_Presence_Status_819462" = "Status kehadiran";
 "LN_WBUI_Temporary_Collaborators_Note_Meeting_385394" = "Akses sementara diberikan ke semua peserta rapat saat ini. Akses dicabut ketika rapat berakhir.";
@@ -10411,6 +10593,7 @@
 "LN_ZUIST_Notification_Preferences_819462" = "Preferensi pemberitahuan";
 "LN_WBUI_Only_Invited_User_300151" = "Hanya Pengguna yang Diundang";
 "LN_WBUI_Anyone_At_Org_300151" = "Siapa saja di %@";
+"LN_ZUIST_Dont_Notify_Me_When_Voice_Activity_ZOOM_1035096" = "Jangan beri tahu saya ketika aktivitas suara terdeteksi pada aplikasi-aplikasi ini:";
 "LN_WBUI_Anyone_With_Zoom_300151" = "Siapa saja yang memiliki akun Zoom";
 "LN_WBUI_View_300151" = "Lihat";
 "LN_WBUI_Edit_300151" = "Edit";
@@ -10429,6 +10612,7 @@
 "LN_WBUI_Invited_Only_300151" = "Hanya yang Diundang";
 "LN_ZUIST_Except_These_Group_819462" = "Kecuali obrolan grup dan saluran ini";
 "LN_ZUIST_Keep_Meeting_Controls_819462" = "Biarkan kontrol rapat tetap terlihat";
+"LN_ZUIST_Auto_Detected_Voice_ZOOM_1035096" = "Aktivitas suara yang terdeteksi otomatis untuk merekam dan mencatat";
 "LN_WBUI_With_the_Permission_300151" = "Memiliki izin";
 "LN_ZUIST_Leave_Experience_819462" = "Keluar dari pengalaman rapat";
 "LN_ZUIST_Skip_Audio_Prompts_819462" = "Lewati perintah audio dalam rapat pihak ketiga";
@@ -10485,7 +10669,6 @@
 "LN_ZUIST_Show_Stop_Incoming_Video_819462" = "Tampilkan \"Hentikan video masuk\" di kontrol host";
 "LN_WBUI_Collaborators_List_356941" = "Daftar kolaborator";
 "LN_ZUIST_Only_You_Can_819462" = "Hanya Anda yang dapat melihat pengatur waktu.";
-"LN_ZUIST_Activate_The_Thumbs_819462" = "Aktifkan emoji jempol ke atas atau fitur angkat tangan secara jelas dengan menunjukkan jempol ke atas atau tangan terangkat ke kamera selama 5 detik.";
 "LN_WBUI_Grouping_356941" = "pengelompokan";
 "LN_ZUIST_Show_Notifications_819462" = "Tampilkan pemberitahuan untuk rapat kecil berbintang saat sedang aktif";
 "LN_ZUIST_Display_819462" = "Tampilkan";
@@ -10611,39 +10794,60 @@
 "LN_ZUIST_Video_Rendering_Method_819462" = "Metode perenderan video";
 "LN_ZUIST_Downstream_Max_819462" = " \n· Downstream (Maks): %2 kbps";
 "LN_ZUIST_Time_Begin_To_End_961188" = "%1$@ hingga %2$@";
+"LN_ZUIST_Amazon_Polly_SSML_961188" = "Menggunakan Amazon Polly Speech Synthesis Markup Language (SSML) memberi Anda kontrol tambahan terkait bagaimana teks yang Anda berikan akan dikonversi menjadi ucapan.";
 "LN_ZUIST_Enter_Into_Fullscreen_819462" = "Masuk ke layar penuh";
+"LN_ZUIST_Delegation_Title_1042922" = "Delegasi";
 "LN_ZUIST_Sun_961188" = "Min";
 "LN_ZUIST_Click_The_Play_Button_961188" = "Klik tombol putar untuk melihat pratinjau.";
 "LN_ZUIST_IVR_Allows_Routing_961188" = "Sistem Respons Suara Interaktif (IVR) memungkinkan penelepon untuk memilih opsi perutean dengan menggunakan papan tombol mereka.";
 "LN_ZUIST_Enter_Number_961188" = "Masukkan nomor";
+"LN_ZUIST_No_Hours_All_Weekdays_Closed_Hours_961188" = "Anda tidak memilih jam operasional apa pun pada semua hari kerja. Saat orang menelepon Anda, semua telepon Anda tidak akan berdering. Panggilan masuk ini akan ditangani sesuai dengan pengaturan Jam Tutup.";
 "LN_WBUI_Fill_431972" = "Isi";
 "LN_ZUIST_24_Hours_961188" = "24 Jam";
 "LN_ZUIST_Voicemail_And_Forwarding_961188" = "Pesan suara dan penerusan";
+"LN_ZUIST_SMS_Delegation_Title_1042922" = "Delegasi SMS";
+"LN_ZUIST_Delegates_1042922" = "Delegasi";
 "LN_ZUIST_Mon_961188" = "Sen";
+"LN_ZUIST_Forward_To_External_Contact_961188" = "Teruskan ke kontak eksternal";
 "LN_WBUI_Text_Color_431972" = "Warna Teks";
 "LN_ZUIST_Choose_Individual_Windows_819462" = "Pilih jendela individu";
 "LN_WBUI_Text_Highlight_431972" = "Sorotan Teks";
+"LN_ZUIST_Move_Up_961188" = "Pindahkan ke atas";
+"LN_ZUIST_Play_Busy_Signal_961188" = "Putar sinyal sibuk";
+"LN_ZUIST_Delegation_Desc_1042922" = "Pemilihan delegasi dan hak dapat dikelola di [Pengaturan Telepon Saya.]";
 "LN_ZUIST_Click_To_Upload_Or_Drop_961188" = "Klik untuk mengunggah atau letakkan file di sini";
 "LN_ZUIST_Upstream_Max_819462" = " \n\n· Upstream (Maks): %1 kbps";
 "LN_WBUI_Object_Fill_431972" = "Isi Objek";
 "LN_ZUIST_Time_PM_961188" = "%@";
 "LN_ZUIST_Select_Extension_961188" = "Pilih ekstensi";
 "LN_ZUIST_When_I_Share_819462" = "Saat saya berbagi";
+"LN_ZUIST_Character_Limit_961188" = "Batas karakter, %1$@/%2$@";
 "LN_ZUIST_Click_The_Record_Button_961188" = "Klik tombol rekam untuk mulai merekam.";
+"LN_ZUIST_Call_Waiting_961188" = "Panggilan tunggu";
 "LN_ZUIST_Recorded_Audio_961188" = "Rekaman audio";
 "LN_WBUI_Object_Outline_431972" = "Garis Objek";
+"LN_ZUIST_Add_IVR_Greeting_Audio_961188" = "Menambahkan audio salam IVR";
+"LN_ZUIST_Move_Down_961188" = "Pindahkan ke bawah";
+"LN_ZUIST_Add_Disconnect_Greeting_Audio_961188" = "Menambahkan audio salam pemutusan sambungan";
 "LN_ZUIST_Data_Center_819462" = "Pusat data:";
+"LN_ZUIST_Forward_To_External_Number_961188" = "Teruskan ke nomor eksternal";
 "LN_WBUI_Text_Format_431972" = "Format Teks";
 "LN_WB_Templates_404211" = "Templat";
+"LN_ZUIST_SMS_Delegation_Desc_1042922" = "Izinkan delegasi untuk menangani SMS atas nama Anda.";
+"LN_ZUIST_Character_Limit_Reached_961188" = "%@ batas karakter tercapai, peringatan";
 "LN_ZUIST_Separate_Direct_Messages_819462" = "Pisahkan pesan langsung, saluran, dan obrolan rapat";
 "LN_ZUIST_Tue_961188" = "Sel";
 "LN_WB_Search_Tempelates_404211" = "Cari templat";
 "LN_WB_No_Results_404211" = "Tidak ada hasil untuk \"%@\"";
 "LN_WB_Showing_Results_404211" = "Menampilkan hasil untuk \"%@\"";
+"LN_ZUIST_Forward_To_Voicemail_961188" = "Teruskan ke pesan suara";
 "LN_ZUIST_Time_AM_961188" = "%@";
+"LN_ZUIST_Duration_961188" = "durasi";
+"LN_ZUIST_Play_Message_Then_Disconnect_961188" = "Putar pesan, lalu putuskan sambungan";
 "LN_ZUIST_Sat_961188" = "Sab";
 "LN_ZUIST_Automatically_Dim_819462" = "Secara otomatis meredupkan video saat pola visual berkedip terdeteksi";
 "LN_ZUIST_Record_Again_961188" = "Rekam lagi";
+"LN_ZUIST_Add_New_Greeting_961188" = "Tambahkan salam baru";
 "LN_Error_WB_Occurred_491015" = "Terjadi kesalahan whiteboard (%@)";
 "LN_ZUIST_Wed_961188" = "Rab";
 "LN_ZUIST_24_Hours_7_Days_961188" = "24 jam sehari, 7 hari seminggu";
@@ -10660,6 +10864,7 @@
 "LN_ZUIST_Sync_Buttons_On_Air_819462" = "Tombol sinkronisasi pada AirPods";
 "LN_JoinMeeting_Waiting_Host_Meeting_401255" = "Menunggu host memulai rapat.";
 "LN_ZUIST_Window_Size_When_Viewing_819462" = "Ukuran jendela saat melihat layar yang dibagikan";
+"LN_ZUIST_Show_Phone_Webview_819462" = "Tampilkan tampilan web";
 "LN_ZUIST_Open_A_Webpage_Calls_819462" = "Membuka halaman web atau meluncurkan aplikasi saat seseorang menelepon untuk membantu mengelola atau menyimpan informasi dari pemanggil masuk.";
 "LN_JoinMeeting_Waiting_Host_Webinar_401255" = "Menunggu host memulai webinar";
 "LN_JoinMeeting_Scheduled_401255" = "Terjadwal: %@";
@@ -10684,7 +10889,7 @@
 "LN_ZUIST_THEME_975638" = "Tema (Penampilan)";
 "LN_WBUI_UML_401897" = "UML";
 "LN_ZUIST_COLOR_MODE_975638" = "Mode warna (Tampilan)";
-"LN_ZUIST_BG_NOISE_REMOVAL_975638" = "Penghapusan kebisingan latar belakang (Profil audio)";
+"LN_ZUIST_BG_NOISE_REMOVAL_975638" = "Penghapusan kebisingan latar belakang (Mode mikrofon)";
 "LN_ZUIST_Scale_Shared_Conten_819462" = "Menskalakan konten yang dibagikan agar sesuai dengan ukuran jendela rapat saat ini.";
 "LN_ZUIST_HUDDLES_975638" = "Pengaturan rapat kecil";
 "LN_ZUIST_ZOOM_ROOMS_975638" = "Pengaturan Zoom Rooms";
@@ -10707,7 +10912,8 @@
 "LN_ZUIST_MEET_JOIN_EXP_975638" = "Pengalaman saat bergabung dengan rapat";
 "LN_ZUIST_When_Others_Share_819462" = "Saat orang lain berbagi";
 "LN_ZUIST_CHAT_CONTACTS_975638" = "Kontak obrolan yang disebutkan (Pemberitahuan)";
-"LN_ZUIST_PERS_AUDIO_ISO_975638" = "Isolasi audio yang dipersonalisasi (Profil audio)";
+"LN_ZUIST_Separate_Direct_Messages_1073426" = "Pisahkan obrolan, saluran, dan obrolan rapat";
+"LN_ZUIST_PERS_AUDIO_ISO_975638" = "Isolasi audio yang dipersonalisasi (Mode mikrofon)";
 "LN_WBUI_Recently_Used_401897" = "Baru Saja Digunakan";
 "LN_ZUIST_Dial_Local_Calls_819462" = "Lakukan panggilan lokal tanpa menekan kode negara dan area terlebih dahulu.";
 "LN_WBUI_Basic_Shapes_401897" = "Bentuk Dasar";
@@ -10725,7 +10931,7 @@
 "LN_ZUIST_OUTPUT_VOLUME_975638" = "Volume output (Speaker)";
 "LN_ZUIST_PLAY_CHIME_MUTE_975638" = "Putar lonceng audio untuk bisukan/bunyikan suara (Rapat)";
 "LN_ZUIST_MEET_CONTROLS_975638" = "Kontrol rapat";
-"LN_ZUIST_ORIG_SOUND_MUS_975638" = "Suara asli untuk musisi (Profil audio)";
+"LN_ZUIST_ORIG_SOUND_MUS_975638" = "Suara asli untuk musisi (Mode mikrofon)";
 "LN_ZUIST_KEEP_MIC_MUTE_975638" = "Biarkan mikrofon saya tetap dibisukan (Rapat)";
 "LN_ZUIST_Auto_Answer_Functionality_819462" = "Fungsi jawab otomatis hanya akan diaktifkan jika diaktifkan oleh administrator antrean panggilan.\nPanggilan tidak akan dijawab secara otomatis saat Anda sedang melakukan panggilan atau rapat aktif, atau saat Anda masuk ke beberapa aplikasi atau perangkat secara bersamaan.";
 "LN_ZUIST_OPEN_ZOOM_APPS_975638" = "Buka Zoom Apps yang dipilih (Rapat)";
@@ -10812,14 +11018,17 @@
 "LN_ZUIST_MNG_TAB_BADGE_975638" = "Kelola lencana tab (Team Chat)";
 "LN_ZUIST_Video_Processing_819462" = "Pemrosesan video";
 "LN_WBUI_Shape_Arrow_Left_Right_401897" = "Panah Kiri-Kanan";
+"LN_ZUI_Uploading_Desc_1066814" = "Zoom sedang mengunggah rekaman individu Anda dari rapat ke cloud. Silakan jangan mematikan komputer Anda atau memutuskan sambungan dari internet.";
 "LN_ZUIST_STOP_INCOMING_VIDEO_975638" = "Aktifkan fitur hentikan video masuk (Rapat lanjutan)";
 "LN_ZUIST_SCALE_TO_FIT_975638" = "Sesuaikan skala konten (Saat orang lain membagikannya)";
 "LN_ZUIST_Busy_On_Another_Call_917148" = "Ketika saya sibuk pada panggilan lain";
 "LN_ZUIST_REC_VIDEO_SHARE_975638" = "Merekam video selama berbagi layar (Rekaman)";
 "LN_ZUIST_ANIMATE_EMOJIS_975638" = "Animasikan emoji (Rapat)";
+"LN_ZUI_Uploading_Title_1066814" = "Mengunggah rekaman individu Anda";
 "LN_ZUIST_Forward_To_An_Operator_917148" = "Teruskan ke operator:";
 "LN_WBUI_Shape_Arrow_Right_401897" = "Panah Kanan";
 "LN_ZUIST_Use_Hardware_Acceleration_819462" = "Gunakan akselerasi perangkat keras untuk:";
+"LN_ZUI_Upload_Failed_Title_1066814" = "Gagal mengunggah rekaman individu Anda";
 "LN_WBUI_Shape_Arrow_Left_401897" = "Panah Kiri";
 "LN_ZUIST_PHONE_LOC_PERM_975638" = "Izin lokasi telepon";
 "LN_ZUIST_PLAY_CHIME_HAND_975638" = "Mainkan lonceng audio saat seseorang mengangkat tangan (Rapat)";
@@ -10830,20 +11039,32 @@
 "LN_WBUI_Shape_Star_401897" = "Bintang";
 "LN_ZUIST_Custom_Hours_917148" = "Jam khusus";
 "LN_ZUIST_REC_SEP_AUDIO_975638" = "Merekam file audio peserta secara terpisah (Perekaman lanjutan)";
+"LN_ZUI_Upload_Failed_Desc_1066814" = "Zoom tidak dapat mengunggah rekaman individu Anda. Silakan hubungi Dukungan Zoom untuk memulihkan dan mengunggah file.";
 "LN_ZUIST_OPEN_SECTIONS_975638" = "Membuka bagian atau folder (Team Chat)";
+"LN_ZUI_Resume_Upload_1066814" = "Unggah resume";
 "LN_ZUIST_DEF_LANG_PHONE_975638" = "Bahasa default (Telepon)";
 "LN_ZUIST_RESET_MEET_DISC_975638" = "Atur ulang penafian rapat (Rapat lanjutan)";
 "LN_ZUIST_Forward_To_External_Contact_917148" = "Teruskan ke kontak eksternal";
+"LN_ZUI_Upload_Success_Desc_1066814" = "Zoom telah mengunggah rekaman individu Anda ke cloud.";
+"LN_ZUI_Uploading_Not_In_Meeting_Desc_1066814" = "Zoom akan melanjutkan mengunggah rekaman Anda ketika Anda tidak sedang dalam rapat.";
+"LN_ZUI_Upload_Paused_1066814" = "Dijeda";
+"LN_ZUI_Pause_Upload_1066814" = "Jeda unggahan";
 "LN_WBUI_Shape_Pentagon_401897" = "Pentagon";
 "LN_ZUIST_Only_Internal_Callers_See_Video_Greeting_917148" = "Hanya penelepon internal yang akan melihat sambutan video ini. Penelepon eksternal akan mendengar sambutan pesan suara Anda.";
 "LN_ZUIST_Combine_All_Chats_819462" = "Gabungkan semua obrolan ke dalam folder Terbaru";
 "LN_ZUIST_SCREEN_SHARE_SET_975638" = "Pengaturan berbagi layar (Ketika orang lain berbagi)";
 "LN_ZUIST_Voice_917148" = "Suara";
+"LN_TB_Schedule_event_1043046" = "Jadwalkan acara";
 "LN_ZUIST_IVR_Menu_917148" = "Menu IVR";
+"LN_ZUI_Upload_Success_Title_1066814" = "Mengunggah rekaman individu Anda";
 "LN_ZUIST_Setup_Ringtone_In_819462" = "Atur nada dering di pengaturan audio";
+"LN_StudioRecording_Start_Tip_1005566" = "Tuan rumah telah mengaktifkan Studio Rekaman. Ini akan merekam kamera Anda secara lokal di sistem Anda dan kemudian mengunggahnya ke penyimpanan cloud kami yang aman.";
+"LN_StudioRecording_Title_1005566" = "Studio Rekaman";
+"LN_ZUI_Upload_Retry_1066814" = "Coba lagi sekarang";
 "LN_ZUIST_Call_Queue_917148" = "Antrean Panggilan";
 "LN_ZUIST_KEEP_UNCONV_REC_975638" = "Simpan file rekaman yang belum dikonversi untuk pemecahan masalah (Perekaman lanjutan)";
 "LN_ZUIST_Closed_Hours_917148" = "Jam tutup";
+"LN_ZUI_Upload_Failed_Desc_Retry_1066814" = "Zoom tidak dapat mengunggah rekaman individu Anda, dan akan mencoba lagi secara otomatis pada kesempatan berikutnya.";
 "LN_ZUIST_MSG_TRANSLATION_975638" = "Terjemahan pesan (Team Chat)";
 "LN_ZUIST_Play_Voicemail_Greeting_At_End_917148" = "Putar sambutan pesan suara penerima panggilan di akhir urutan penerusan";
 "LN_ZUIST_VIDEO_HW_ACCEL_975638" = "Pengaturan akselerasi perangkat keras video";
@@ -10851,12 +11072,16 @@
 "LN_ZUIST_RESET_LEFT_SIDEBAR_975638" = "Atur ulang bilah sisi kiri ke default (Team Chat)";
 "LN_ZUIST_Require_Press1_To_Connect_Option_Description_917148" = "Aktifkan opsi ini untuk mengharuskan kontak penerusan menekan 1 sebelum menghubungkan panggilan. Panggilan tak terjawab akan dialihkan ke pesan suara Anda di akhir urutan penerusan. Nonaktifkan opsi ini untuk mengizinkan penelepon mencapai pesan suara kontak penerusan Anda.";
 "LN_ZUIST_Manage_Badge_Settings_819462" = "Kelola pengaturan lencana";
+"LN_TB_New_SMS_message" = "Pesan SMS baru";
+"LN_WB_Visualize_This_Meeting_Detail" = "AI Companion telah membuat papan tulis berdasarkan rapat ini. Apakah Anda ingin menggunakannya?";
+"LN_TB_Press_to_search" = "Tekan %@ untuk mencari";
 "LN_ZUIST_Manage_Topics_917148" = "Kelola topik";
 "LN_ZUIST_Call_Unanswered_917148" = "Ketika panggilan tidak terjawab";
 "LN_ZUIST_Allow_Check_Voicemail_917148" = "Izinkan pengguna untuk memeriksa pesan suara";
 "LN_ZUIST_Default_Language_917148" = "Bahasa default";
 "LN_WBUI_Shape_Decago_401897" = "Dekagon";
 "LN_ZUIST_Select_This_Option_819462" = "Pilih opsi ini ketika Anda tidak dapat melihat konten di layar yang dibagikan atau ketika orang lain tidak dapat melihat konten yang Anda bagikan.";
+"LN_TB_New_chat_messgae" = "Pesan obrolan baru";
 "LN_WBUI_Shape_Cude_401897" = "Cube";
 "LN_ZUIST_Phone_Menu_Options_917148" = "Opsi menu:";
 "LN_ZUIST_Webpage_Example_819462" = "Contoh halaman web:";
@@ -10864,6 +11089,7 @@
 "LN_WBUI_Shape_Cross_401897" = "Lintas";
 "LN_ZUIST_USE_HW_ACCEL_SHARE_975638" = "Gunakan akselerasi perangkat keras (Berbagi layar tingkat lanjut)";
 "LN_ZUIST_MOVE_MSG_REPLY_975638" = "Pindahkan pesan yang berisi balasan baru ke bagian bawah obrolan (Team Chat)";
+"LN_TB_New_task" = "Tugas baru";
 "LN_ZUIST_Show_My_Zoom_Workplace_819462" = "Tampilkan aplikasi Zoom Workplace dan jendela rapat saya";
 "LN_ZUIST_Connect_To_Operator_917148" = "Hubungkan ke operator";
 "LN_ZUIST_Live_Transcription_819462" = "Pengaturan transkripsi langsung";
@@ -10878,11 +11104,14 @@
 "LN_ZUIST_Chat_And_Video_819462" = "Obrolan dan Video";
 "LN_ZUIST_Send_Unanswered_Calls_To_My_Voicemail_917148" = "Kirim panggilan tak terjawab ke pesan suara saya";
 "LN_ZUIST_Cisco_Polycom_Room_917148" = "Ruang Cisco/Polycom";
+"LN_TB_New_whiteboard" = "Papan tulis baru";
 "LN_ZUIST_Sharing_Applications_819462" = "Berbagi aplikasi";
 "LN_WBUI_Flowchart_Database_401897" = "Database";
 "LN_WBUI_Flowchart_Delay_401897" = "Tunda";
+"LN_TB_New_doc" = "Dokumen baru";
 "LN_ZUIST_SHOW_LINK_PREV_975638" = "Tampilkan pratinjau tautan (Team Chat)";
 "LN_WBUI_Flowchart_Storaged_Data_401897" = "Data yang Disimpan";
+"LN_TB_New_email" = "Email baru";
 "LN_ZUIST_Conserve_CPU_Usage_819462" = "Hemat penggunaan CPU dengan menggunakan dekoder video perangkat keras dari kartu grafis.";
 "LN_ZUIST_Participant_Video_819462" = "Video peserta";
 "LN_ZUIST_Leave_Voicemail_Instruction_917148" = "Instruksi tinggalkan pesan suara";
@@ -10911,15 +11140,18 @@
 "LN_ZUIST_Enter_Name_917148" = "Masukkan nama";
 "LN_ZUIST_Send_819462" = "(kirim)";
 "LN_ZUIST_Highlight_Important_819462" = "Menyoroti pesan suara penting berdasarkan topik";
+"LN_TB_Record_clip" = "Rekam klip";
 "LN_ZUIST_Text_To_Speech_917148" = "Teks ke ucapan";
 "LN_ZUIST_Search_By_Name_Email_Extension_917148" = "Cari berdasarkan nama, email, atau ekstensi";
 "LN_ZUIST_Shared_Line_Group_917148" = "Grup saluran bersama";
 "LN_WBUI_UML_Send_Signal_401897" = "Kirim sinyal";
 "LN_WBUI_UML_Receive_Signal_401897" = "Terima sinyal";
 "LN_WBUI_Equation_Plus_401897" = "Plus";
+"LN_TB_New_phone_call" = "Panggilan telepon baru";
 "LN_ZUIST_Network_Switch_819462" = "Sakelar jaringan:";
 "LN_WBUI_Equation_Minus_401897" = "Minus";
 "LN_ZUIST_Register_ID_819462" = "ID Pendaftaran:";
+"LN_TB_Meet_now_1043046" = "Mulai Rapat Sekarang";
 "LN_ZUIST_Webpage_Example_This_819462" = "Contoh halaman web: Contoh ini meluncurkan browser saat seseorang melakukan panggilan.";
 "LN_WBUI_Equation_Multiply_401897" = "Kalikan";
 "LN_ZUIST_Always_Show_Caption_819462" = "Selalu tampilkan teks pada rapat dan webinar";
@@ -10933,6 +11165,7 @@
 "LN_ZUIST_Forward_To_Another_Extension_917148" = "Teruskan ke ekstensi lainnya";
 "LN_ZUIST_You_Are_Connected_3_819462" = "Anda terhubung ke @1 via pusat data di @2 dan @3";
 "LN_ZUIST_Media_Foundation_819462" = "Media Foundation";
+"LN_WB_Visualize_This_Meeting" = "Visualisasikan rapat ini";
 "LN_WBUI_Flowchart_Manual_Input_401897" = "Input Manual";
 "LN_ZUIST_Receiving_Video_819462" = "Menerima video";
 "LN_ZUIST_Country_Region_917148" = "Negara/Wilayah";
@@ -11316,6 +11549,7 @@
 "LN_Accessibility_New_Unread_297561" = "pesan baru yang belum dibaca";
 "LN_IM_Float_Input_Placeholder_381958" = "Kirim pesan obrolan singkat";
 "LN_IM_Notifaction_Center_Open_Window_358239" = "jendela, pemberitahuan, daftar";
+"LN_Tip_Using_Avatars_GreenScreenDisable_1063103" = "Layar hijau tidak tersedia jika menggunakan avatar";
 "LN_Display_Participants_Names_InRecording_355633" = "Tampilkan nama peserta dalam rekaman";
 "LN_CHANNEL_MEETINGS_311991" = "Rapat saluran";
 "LN_Channel_Meetings_311991" = "Rapat saluran";
@@ -11436,6 +11670,7 @@
 "LN_Meeting_Slide_Remote_Control_Menu_AX_Description_424289" = "Beri kontrol, menu";
 "LN_Meeting_Slide_Remote_Control_Plist_AX_Description_424289" = "Daftar peserta";
 "LN_ZoomOnePro_478007" = "Zoom One Pro";
+"LN_AuthenticateLabel_learnmore_1071909" = "Autentikasi untuk melihat dan mengirim pesan dalam obrolan dan saluran terenkripsi. <a href='%@'>Pelajari selengkapnya</a>";
 "LN_Meeting_478007" = "Rapat";
 "LN_MeetingDes_478007" = "• Adakan rapat dengan kapasitas hingga 100 peserta\n• Rapat tanpa batas hingga 30 jam per rapat\n• 5 GB penyimpanan rekaman cloud (per lisensi)\n• Teks Otomatis\n• Dengan co-host";
 "LN_TeamChat_478007" = "Obrolan Tim";
@@ -11993,6 +12228,7 @@
 "LN_Audio_Signature_Failed_Info_631613" = "Pastikan tidak ada kebisingan latar belakang atau gangguan audio dan mulai merekam lagi.";
 "LN_Voice_Print_Record_Analyse_631613" = "Perekaman cetakan suara sedang berlangsung";
 "LN_Channel_Members_936548" = "Anggota saluran";
+"LN_IM_Chats_Set_reminder_1043637" = "Atur pengingat";
 "LN_Add_Description_936548" = "Tambahkan deskripsi";
 "LN_Voice_Print_Record_Analyse_Info_631613" = "Cetakan suara mungkin memerlukan waktu pembuatan hingga 30 detik.";
 "LN_Update_Voiceprint_631613" = "Perbarui rekaman cetakan suara";
@@ -12021,6 +12257,7 @@
 "LN_IM_SharedSpace_PrivateDescription_525478" = "Hanya anggota yang diundang yang dapat ditambahkan";
 "LN_IM_SharedSpace_525478" = "Ruang bersama";
 "LN_IM_PersonalFolder_525478" = "Folder pribadi";
+"LN_IM_Chats_Custom_Reminder_1043637" = "Atur pengingat khusus";
 "LN_IM_CreateSharedSpace_Body_525478" = "Buat ruang yang digunakan bersama oleh tim. Cocok untuk mengelola saluran khusus untuk proyek, departemen, atau grup yang besar.";
 "LN_IM_CreateFolder_Body_525478" = "Atur obrolan dan saluran Anda ke dalam bagian pribadi yang hanya dapat Anda lihat.";
 "LN_IM_SharedSpaceOptions_525478" = "Opsi ruang bersama";
@@ -12395,13 +12632,17 @@
 "LN_IM_Chats_Reminder_Welcome_Upcoming_285618" = "Siapkan pengingat pada obrolan yang ingin Anda tindak lanjuti nanti, dan lihat semua pengingat di sini.";
 "LN_IM_Chats_Reminder_Welcome_Past_Title_285618" = "Anda sudah siap";
 "LN_IM_Chats_Reminder_Welcome_Past_285618" = "Anda tidak memiliki pengingat sebelumnya. Atur pengingat untuk pesan dalam obrolan atau saluran untuk mengurusnya nanti.";
+"LN_Clips_Share_coachmark_content_meeting_1018995" = "Sekarang Anda dapat membagikan Zoom Clips selama rapat dari tab Lanjutan di layar Bagikan. <a href = '%@'> Pelajari selengkapnya </a>";
 "LN_IM_Chats_Reminder_Message_285618" = "Pengingat";
 "LN_IM_Chats_Reminder_Message_Beta_285618" = "BETA";
+"LN_Clips_Share_coachmark_title_meeting_1018995" = "Memutar klip dalam rapat";
 "LN_IM_Chats_Reminder_Message_Guide_Title_285618" = "Memperkenalkan pengingat";
+"LN_Clips_Share_coachmark_content_webinar_1018995" = "Sekarang Anda dapat membagikan Zoom Clips selama webinar dari tab Lanjutan di layar Bagikan. <a href = '%@'> Pelajari selengkapnya </a>";
 "LN_IM_Chats_Reminder_Message_Guide_Tip_285618" = "Atur pengingat pada pesan menggunakan menu Lainnya pada pesan tersebut. Kembali ke sini untuk mengedit pengingat mendatang atau melihat pengingat lama.";
 "LN_IM_Chats_Custom_Reminder_285618" = "Pengingat khusus";
 "LN_IM_Chats_Reminder_Note_285618" = "Catatan";
 "LN_IM_Chats_Reminder_Note_Placeholder_285618" = "Ingatkan saya untuk...";
+"LN_Clips_Share_coachmark_title_webinar_1018995" = "Memutar klip di webinar";
 "LN_IM_Chats_Date_285618" = "Tanggal";
 "LN_IM_Chats_Time_285618" = "Waktu";
 "LN_Share_Chat_Messages_Title_377225" = "Bagikan pesan obrolan";
@@ -12514,6 +12755,7 @@
 "%1$@: Unknown Message Type %2$@" = "%1$@: Jenis Pesan Tidak Diketahui %2$@";
 "You: Unknown Message Type %1$@" = "Anda: jenis pesan tidak diketahui %1$@";
 "LN_Time_Remaining_431155" = "Waktu Tersisa";
+"LN_IM_SharedSpace_ChannelTypeDisabledByAddMember_1015266" = "Tidak dapat mengubah jenis saluran. Menambahkan anggota dibatasi oleh admin ruang bersama.";
 "LN_Meeting_Duration_431155" = "Durasi Rapat";
 "LN_Scheduled_meeting_almost_over_431155" = "Waktu rapat terjadwal hampir berakhir";
 "LN_Scheduled_meeting_is_over_431155" = "Waktu rapat terjadwal berakhir";
@@ -12636,9 +12878,11 @@
 "LN_Human_Avatar_Reach_Limit_Tip_461829" = "Anda telah mencapai batas avatar khusus. Hapus avatar yang ada sebelum Anda membuat yang baru.";
 "LN_Turn_Off_Avatar_Tip_Title_444321" = "Pengaturan video nonaktif";
 "LN_Turn_Off_Avatar_Tip_Description_444321" = "Anda yakin ingin menonaktifkan avatar Anda?";
+"LN_Studio_Preview_NoScene_1056018" = "Tidak ada adegan";
 "LN_Turn_Off_Avatar_Tip_Content_444321" = "Catatan: Perubahan ini hanya akan berlaku untuk rapat ini karena pengaturan video Anda saat ini. Untuk mengubah pengaturan ini, buka tab Video di jendela Pengaturan Zoom. Di bagian pengaturan “Saat video saya mati”, pilih “Tampilkan gambar profil”.";
 "LN_Turn_Off_Avatar_Tip_Again_444321" = "Jangan tampilkan pesan ini lagi";
 "LN_Turn_Off_Avatar_Tip_No_444321" = "Tidak - biarkan avatar terlihat";
+"LN_IM_SharedSpace_RemovePendingMember_1082062_%@" = "%@ tidak akan ditambahkan ke ruang bersama ini.";
 "LN_Turn_Off_Avatar_Tip_Yes_444321" = "Ya - matikan avatar";
 "LN_Convert_CMC_To_Channel_Error_642055" = "Terjadi masalah saat mengonversi obrolan rapat ke saluran.";
 "LN_Zoom_Huddles_540002" = "Zoom Huddles";
@@ -12648,6 +12892,7 @@
 "LN_IM_Open_Huddle_442140" = "Masuk ke huddle";
 "LN_Zoom_Huddle_511725" = "Zoom huddle";
 "LN_Studio_Video_LoadFailed_969678" = "Tidak dapat memuat video";
+"LN_Studio_SceneList_Empty_1056018" = "Tidak ada adegan ditambahkan";
 "IM_Chat_MeetingCard_SummaryUpdated" = "Ringkasan telah diperbarui dalam Dokumen Zoom.";
 "LN_IM_Open_Spot_442140" = "Masuk ke Spot";
 "LN_Leave_Spot_492236" = "Keluar dari Spot";
@@ -12840,6 +13085,7 @@
 "LN_Studio_Video_Setting_GoNext_840309" = "Buka scene berikutnya dalam pratinjau";
 "LN_Leave_PBO_Alert_Info_484926" = "Anda akan dikembalikan ke sesi utama secara otomatis";
 "LN_Leave_Now_484926" = "Keluar sekarang";
+"LN_Can_Not_Start_Old_Version_990843" = "%@ tidak dapat dimulai untuk rapat ini karena host belum meningkatkan ke versi aplikasi yang didukung.";
 "LN_%@_Left_PBO_484926" = "%@ telah keluar dari ruang diskusi pribadi";
 "LN_Leave_Personal_Room_484926" = "Keluar dari ruang pribadi";
 "LN_Close_Personal_Room_484926" = "Tutup ruang pribadi";
@@ -12852,9 +13098,11 @@
 "LN_Unarchive_Chats_502373" = "Batalkan pengarsipan obrolan";
 "LN_Admin_Unarchive_Channel_Sys_Message_Owner_645885" = "Admin akun Anda membatalkan pengarsipan saluran ini.";
 "LN_Admin_Unarchive_Channel_Sys_Message_Member_645885" = "Admin akun %@ membatalkan pengarsipan saluran ini.";
+"LN_Start_Summary_With_Live_Summary_Original_Host_Info_990843" = "Dengan mengaktifkan ringkasan rapat, ringkasan langsung juga akan diaktifkan. Semua undangan akan dapat mengaksesnya. Anda dapat mengubah izin akses di panel AI Companion.";
 "LN_Studio_Video_Setting_WhenEnd_840309" = "Saat video berakhir";
 "LN_You_Unarchive_Channel_Sys_Message_645885" = "Anda membatalkan pengarsipan saluran ini.";
 "LN_Owner_Unarchive_Channel_Sys_Message_645885" = "%@ membatalkan pengarsipan saluran ini.";
+"LN_Start_Live_Summary_Original_Host_Info_990843" = "Semua undangan akan dapat mengakses ringkasan langsung. Anda dapat mengubah izin akses di panel AI Companion.";
 "LN_You_Unarchive_Group_Chat_Sys_Message_645885" = "Anda membatalkan pengarsipan obrolan grup ini.";
 "LN_Studio_Video_Dialog_EndWebinar_840309" = "Video dalam scene tersebut telah berakhir. Akhiri webinar untuk semua?";
 "LN_Owner_Unarchive_Group_Chat_Sys_Message_645885" = "%@ membatalkan pengarsipan obrolan grup ini.";
@@ -12862,6 +13110,7 @@
 "LN_Chat_Manual_Archive_Sys_Message_Member_645885" = "%@ mengarsipkan obrolan grup ini.";
 "LN_Channel_Unarchive_Sys_Message_502373" = "Saluran ini telah dibatalkan pengarsipannya.";
 "LN_Chats_Unarchive_Sys_Message_502373" = "Pengarsipan obrolan ini telah dibatalkan.";
+"LN_AIC_Request_Start_Live_Summary_Tip_990843" = "Permintaan untuk memulai ringkasan langsung telah dikirim ke host.";
 "LN_Channel_Archive_Sys_Message_502373" = "Saluran ini telah diarsipkan.";
 "LN_Chat_Archive_Sys_Message_502373" = "Obrolan ini telah diarsipkan.";
 "LN_Channel_AutoArchive_Sys_Message_502373" = "Saluran ini telah diarsipkan otomatis.";
@@ -12873,6 +13122,7 @@
 "LN_Continuous_Meeting_Chats_502373" = "%lu obrolan rapat berkelanjutan";
 "LN_Chats_AutoArchived_Description_Toast_502373" = "%@ diarsipkan otomatis. Anda masih dapat mencari dan mengakses atau membatalkan pengarsipan jika Anda adalah pemilik.";
 "LN_Channel_Unarchived_Toast_502373" = "Pengarsipan saluran \"%@\" telah dibatalkan oleh Anda.";
+"LN_Can_Not_Start_Host_990843" = "%@ tidak dapat dimulai untuk rapat ini sampai host bergabung.";
 "LN_Chat_Unarchived_Toast_502373" = "Pengarsipan obrolan \"%@\" telah dibatalkan oleh Anda.";
 "LN_Unarchive_502373" = "Batalkan Pengarsipan";
 "LN_Archived_502373" = "(Diarsipkan)";
@@ -13228,6 +13478,7 @@
 "LN_CC_LS_Turned_On_694300" = "Teks tertutup dan streaming langsung telah diaktifkan.";
 "LN_AIC_CC_LS_Turned_On_694300" = "AI Companion, teks tertutup, dan streaming langsung telah diaktifkan.";
 "LN_Choose_Who_Can_Ask_Questions_694300" = "Pilih siapa yang dapat mengajukan pertanyaan tentang rapat ini.";
+"LN_Certifications_Toolbar_Error_Desc_1059967" = "aplikasi Certifications sedang mengalami masalah menghubungkan saat ini.";
 "LN_AIC_Turn_On_All_680634" = "Aktifkan semua";
 "LN_AIC_Turn_On_Ask_Host_Title_680634" = "Minta host untuk mengaktifkan AI Companion";
 "LN_AIC_Request_Turn_On_Support_647122" = "Permintaan mengaktifkan fitur AI Companion dikirim ke host.";
@@ -13239,6 +13490,7 @@
 "LN_AIC_Request_To_Turn_On_647122" = "%@ meminta Anda untuk mengaktifkan fitur AI Companion";
 "LN_AIC_Turn_On_647122" = "Aktifkan";
 "LN_AIC_Turn_On_Decline_647122" = "Tolak";
+"LN_Certifications_Unable_to_load_Desc_1059967" = "Tidak dapat memuat";
 "LN_Share_Select_Layouts_Mode_Button_As_Background_965706" = "Sebagai latar belakang";
 "LN_AIC_Request_To_Turn_On_Declined_647122" = "Permintaan mengaktifkan fitur AI Companion ditolak oleh host.";
 "LN_All_Approved_Members_858969" = "Semua anggota yang disetujui";
@@ -13253,6 +13505,7 @@
 "LN_BuddyNotAllowedError_ZoomRoom_969484" = "Tidak dapat menambahkan Zoom Rooms ke saluran ini.";
 "LN_BuddyNotAllowedError_PrivateCseChannelAddExt_969484_%@" = "Tidak dapat menambahkan %@ karena pengguna eksternal tidak diizinkan di saluran ini.";
 "LN_AI_Start_Summary_Start" = "Mulai";
+"LN_Certifications_Toolbar_Title_1059967" = "Sertifikasi";
 "LN_Onboarding_Welcome_Title_526400" = "Selamat datang di Zoom!";
 "LN_Onboarding_Welcome_Detail_526400" = "Anda siap mulai menggunakan Zoom—aplikasi all-in-one untuk berkolaborasi, berkomunikasi, dan lainnya.";
 "LN_BuddyNotAllowedError_WaitAccountApproval_969484_%@" = "Tidak dapat menambahkan %@ karena akunnya belum disetujui.";
@@ -13591,6 +13844,7 @@
 "LN_IM_Sidebar_Starred_Options_664733" = "Opsi berbintang";
 "LN_IM_Sidebar_Filter_Title_628531" = "Filter dan pemberian lencana";
 "LN_IM_Sidebar_Filter_Description_628531" = "Gunakan filter untuk menemukan percakapan dengan cepat. Obrolan dan saluran bercetak tebal kini menunjukkan pesan baru yang belum dibaca.";
+"LN_CMC_InviteLink_JoinRequestSentToast_Body_1004831" = "Anda akan ditambahkan ke obrolan rapat setelah permintaan Anda disetujui.";
 "LN_IM_Sidebar_Drop_Menu_Recents_667934" = "Terbaru";
 "LN_IM_Sidebar_Drop_Menu_Sections_667934" = "Bagian";
 "LN_IM_Sidebar_Drop_Menu_Title_667934" = "Beralih ke tampilan bilah samping";
@@ -13602,6 +13856,7 @@
 "LN_Setting_PG_Avatar_Use_Camera_Build_Description_428912" = "Menggunakan kamera atau foto Anda untuk membuat avatar menggunakan penanda wajah. Data tersebut tidak diambil dari perangkat Anda, tidak disimpan, dan hanya digunakan untuk menghasilkan efek ini.";
 "LN_Setting_PG_Avatar_Select_image_428912" = "Pilih gambar";
 "LN_Setting_PG_Avatar_Build_Avatar_Myself_428912" = "Buat avatar sendiri";
+"LN_Link_To_Team_Chat_Meeting_Chat_1004831" = "Tautan ke obrolan rapat Team Chat";
 "LN_Setting_PG_Avatar_Take_Picture_428912" = "Ambil gambar";
 "LN_Setting_PG_Avatar_Use_Picture_Create_428912" = "Gunakan gambar ini untuk membuat avatar";
 "LN_Setting_PG_Avatar_Use_Picture_Create_Description_428912" = "Gambar ini diambil untuk membuat avatar Anda. Jika gambar ini tidak memuaskan, silakan ambil ulang gambar.";
@@ -13614,6 +13869,7 @@
 "LN_Setting_PG_Avatar_Is_Ready_428912" = "Avatar Anda siap";
 "LN_You_Deleted_Email_For_%@_649227" = "Anda menghapus alamat email ini untuk %@ ini";
 "LN_Setting_PG_Avatar_Is_Ready_Description_428912" = "Setelah Anda menata avatar, Anda bisa kembali ke pengaturan kapan saja untuk mengedit karakter avatar Anda.";
+"LN_CMC_InviteLink_DuplicateJoinToast_Title_1004831" = "Anda sudah meminta untuk bergabung dengan obrolan rapat ini";
 "LN_Setting_PG_Avatar_Use_Image_Create_428912" = "Gunakan gambar ini untuk membuat avatar";
 "LN_Setting_PG_Avatar_Use_Image_Create_Description_428912" = "Gambar ini dipilih untuk membuat avatar Anda. Jika gambar ini tidak memuaskan, silakan cari gambar baru.";
 "LN_Setting_PG_Avatar_Select_New_Image_428912" = "Pilih gambar baru";
@@ -13662,6 +13918,7 @@
 "LN_HuddlesBindChannelCoachMarkDescription_669030" = "Beralih ke percakapan langsung dengan anggota saluran ini dengan mudah.";
 "LN_HuddlesBindChannelActive_669030" = "aktif";
 "LN_Huddles_Join_Huddle_Lobby_657235" = "Bergabunglah dengan saya di lobi!";
+"LN_Chat_Disable_MentionAll_1004831" = "Nonaktifkan @all untuk obrolan ini";
 "LN_Huddles_Join_Huddle_Conversation_657235" = "Bergabunglah dengan saya dalam percakapan \"%@\"!";
 "LN_Huddles_Join_Huddle_Name_Lobby_657235" = "Lobi %@";
 "LN_PrivateMeeting_Title_675514" = "Ini adalah %@ pribadi";
@@ -13694,7 +13951,9 @@
 "LN_Public_Channel_Huddle_One_Active_679398" = "Saluran publik: 1 anggota aktif di huddle";
 "LN_Private_Channel_Huddle_One_Active_679398" = "Saluran pribadi: 1 anggota aktif di huddle";
 "LN_IM_Chats_Recency_778485" = "Terbaru";
+"LN_CMC_MentionGroups_Delete_Message_1004831" = "Grup sebutan @%@ akan dihapus dari obrolan rapat ini. Keanggotaan obrolan rapat tidak akan terpengaruh.";
 "LN_Reorder_Tip_914119" = "Seret untuk menyusun ulang bilah alat";
+"LN_CMC_Assign_Admin_%@_Info_1004831" = "%@ akan menjadi admin obrolan rapat. Admin obrolan rapat memiliki sebagian besar izin yang sama dengan pemilik. Admin tidak dapat menghapus obrolan rapat atau mengedit pengaturan privasi obrolan rapat.";
 "LN_Enable_Channel_Huddle_Title_674689" = "Huddle saluran";
 "LN_Enable_Channel_Huddle_Button_674689" = "Aktifkan bergabung dengan huddle khusus dari saluran ini";
 "LN_Setting_PG_Avatar_Error_Image_Face_Need_Visible_428912" = "Pastikan seluruh wajah Anda terlihat di gambar yang Anda pilih.";
@@ -13709,9 +13968,12 @@
 "LN_SwitchAccount_SignOutDialog_Content_706824" = "Jika Anda keluar dari akun ini, Anda tidak akan dapat beralih ke akun ini secara langsung.";
 "LN_MG_Filter_694376" = "filter";
 "LN_Theme_Alert_643379" = "Tema warna tersedia saat aplikasi dalam mode terang.";
+"LN_CMC_InviteLink_ResetToast_1004831" = "Tautan obrolan rapat dan kode QR telah diatur ulang";
+"LN_CMC_InviteLink_ResetBody_1004831" = "Setelah diatur ulang, pengguna eksternal tidak akan dapat bergabung dari tautan obrolan rapat sebelumnya dan kode QR. Anggota, termasuk pengguna internal, masih dapat menggunakannya untuk menemukan obrolan rapat.";
 "LN_Theme_Disable_By_WallPaper" = "Tema warna tidak tersedia saat host telah mengatur wallpaper rapat";
 "LN_Login_ZDM_Failed_Title_654532" = "Tidak dapat menggunakan Zoom";
 "LN_Login_ZDM_Failed_Content_654532" = "Aplikasi Zoom Anda tidak dikelola oleh organisasi Anda sehingga Anda tidak dapat menggunakannya sekarang.\nHubungi admin Anda untuk informasi selengkapnya.";
+"LN_CMC_Restrict_Memtion_List_Disabled_1004831" = "@all (%d) dinonaktifkan oleh pemilik obrolan";
 "LN_Video_MirrorVideo_Setting_710369" = "Cerminkan Video Saya";
 "LN_Audio_Noise_suppression_681813" = "Peredam bising";
 "LN_Huddle_Link_Copied_682389" = "Tautan huddle disalin";
@@ -13727,9 +13989,11 @@
 "LN_Huddle_Link_Copied_697870" = "Tautan huddle disalin";
 "LN_Error_Copying_Huddle_Link_697870" = "Kesalahan penyalinan tautan huddle";
 "LN_Compose_limit_Tip_693167" = "Pesan memiliki batas %ld karakter";
+"LN_Meeting_Chat_Restricted_Owner_Mention_All_1004831" = "@all hanya dibatasi untuk pemilik obrolan";
 "LN_Archive_OptionJoint_715652" = "%1$@, %2$@";
 "LN_Archive_Closed_Captions_715652" = "Teks Tertutup";
 "LN_PSE_Auto_Record_840003" = "Isolasi audio yang dipersonalisasi perlu mempelajari suara Anda";
+"LN_Meeting_Chat_Instant_Meeting_Tip_1004831" = "Izinkan anggota obrolan rapat untuk memulai rapat instan dari obrolan rapat dan memanggil semua anggota.";
 "LN_Archive_Plural_715652" = "%@ rapat ini sedang diarsipkan oleh satu atau beberapa organisasi peserta berdasarkan kebijakan akun mereka. Pemilik akun mereka akan menerima konten dari rapat ini dan dapat membagikannya dengan aplikasi dan orang lain.";
 "LN_Docs_Coach_Mark_Title_749573" = "Berkolaborasi menggunakan Zoom Docs";
 "LN_Others_Share_Screen_711934" = "%@ sedang berbagi Layar";
@@ -13739,10 +14003,17 @@
 "LN_OtherSettings_Title_711934" = "Pengaturan lainnya";
 "LN_Self_Controlling_711934" = "Anda mengontrol layar %@";
 "LN_CCI_CLOSED_CAPTION_LEGAL_NOTICE_EXTEND_718194" = "Siapa yang dapat melihat transkrip ini?";
+"LN_CMC_Unassign_Admin_myself_Info_1004831" = "Anda akan menjadi anggota reguler. Anda tidak dapat menetapkan admin obrolan rapat lainnya atau mengedit obrolan rapat.";
+"LN_Only_Chat_Owner_Admins_1004831" = "Hanya pemilik obrolan dan admin";
 "LN_RadioButton_Popout_711934" = "Izinkan tab pop out";
 "LN_CCI_CLOSED_CAPTION_LEGAL_NOTICE_TOOLTIP_718194" = "Transkrip dari rapat ini mungkin disimpan dan dibagikan dengan aplikasi dan orang lain oleh peserta yang memiliki izin terkait (berdasarkan pengaturan yang dikonfigurasi untuk rapat ini)";
+"LN_Meeting_Chat_Instant_Meeting_Setting_Disabled_1004831" = "Obrolan rapat ini memiliki lebih dari %ld anggota, jadi pengaturan ini dinonaktifkan.";
 "LN_Share_Special_Windows_711879" = "Tampilkan toolbar berbagi dan pemberitahuan rapat";
+"LN_CMC_AtAllDisabledToast_1004831" = "@all telah dinonaktifkan oleh pemilik obrolan rapat";
 "LN_Will_Rejoin_Tip_716352" = "Peningkatan layanan cloud Zoom akan segera dimulai. Dalam %ld detik Anda akan memutuskan dan bergabung kembali secara otomatis.";
+"LN_CMC_MentionGroups_No_MentionGroups_1004831" = "Grup sebutan yang tersedia untuk digunakan dalam obrolan rapat ini akan ditampilkan di sini. \n\nHanya pemilik obrolan dan admin yang dapat membuat grup penyebutan. Semua anggota dapat menambahkan atau mengeluarkan diri mereka sendiri.";
+"LN_Only_Chat_Owner_Admins_Add_External_1004831" = "Hanya pemilik obrolan dan admin yang dapat menambahkan pengguna eksternal.";
+"LN_CMC_Unassign_Admin_%@_Info_1004831" = "%@ akan menjadi anggota reguler. Mereka tidak akan dapat menetapkan admin obrolan rapat lainnya atau mengedit obrolan rapat.";
 "LN_Phone_VoicemailTranscription_Language_Polish_824646" = "Polandia (Polandia)";
 "LN_Sip_Location_Stored_715698" = "Administrator Anda memilih untuk menyimpan informasi lokasi Anda selama 30 hari.";
 "LN_My_Share_711934" = "Anda sedang berbagi";
@@ -13750,6 +14021,7 @@
 "LN_Plist_Raise_Hand_Noti_720505" = "Peserta yang mengangkat tangan akan diurutkan dari yang pertama hingga yang terakhir.";
 "LN_CCI_Video_Self_Mute_711454" = "Anda dibisukan sekarang.";
 "LN_Disable_Annotate_Tip_711934" = "Anotasi dapat digunakan satu kali berbagi dalam satu waktu";
+"LN_CMC_Assign_Admins_limit_1004831" = "Obrolan rapat sudah memiliki jumlah maksimum %d admin.";
 "LN_CCI_Video_AutoRecord_Tip_718216" = "Admin mengatur video agar direkam secara otomatis";
 "LN_CCI_Video_CountDown_Tip_718208" = "Tunggu pelanggan untuk bergabung - Interaksi ditutup dalam %@";
 "LN_CCI_Video_RecordStarted_Tip_710378" = "Panggilan ini mungkin dipantau atau direkam untuk tujuan jaminan mutu";
@@ -13757,6 +14029,7 @@
 "LN_You_Cannot_Leave_Channel_683476" = "Keluar dari saluran ini dinonaktifkan oleh admin akun Anda";
 "LN_Coachmark_Title_799004" = "Hanya lihat konten yang dibagikan";
 "LN_Media_Stream_689434" = "Streaming Media";
+"LN_CMC_Account_Admin_Disabled_Instant_Meeting_1004831" = "Admin akun Anda telah menonaktifkan rapat instan dari saluran atau obrolan rapat.";
 "LN_Adjust_Background_650330" = "Sesuaikan efek & latar belakan ...";
 "LN_CannotChooseStudioEffects_650330" = "Anda tidak dapat memilih efek studio saat berbagi slide sebagai latar belakang virtual";
 "LN_Custom_Cannt_Choose_StudioEffects_650330" = "Anda tidak dapat memilih efek studio saat berada dalam adegan imersif.";
@@ -13812,7 +14085,6 @@
 "LN_Add_as_Contact_to_chat_703208" = "Tambah sebagai kontak untuk mulai mengobrol.";
 
 "LN_Setting_Using_Face_Effects_Alert_Title_705116" = "Izinkan efek wajah";
-"LN_Setting_Using_Face_Effects_Alert_Content_705116" = "Anda dapat memilih mengizinkan Zoom Workplace menggunakan efek pada wajah Anda dengan memilih avatar, efek studio, atau filter video tertentu. Dengan mengklik \"OK\", Anda setuju mengizinkan Zoom Workplace menganalisis pemosisian dan pergerakan wajah Anda untuk menghasilkan efek yang dipilih. Data tidak akan diambil dari perangkat Anda, tidak disimpan, dan hanya digunakan untuk membuat efek yang dipilih.";
 "LN_Invite_To_Huddle_Declined_720894" = "Undangan masuk ke huddle dalam \"%@\" - ditolak";
 "LN_Outgoing_Invite_To_Huddle_720894" = "Undangan keluar ke huddle dalam \"%@\"";
 "LN_Auto_Call_725658" = "Panggilan otomatis";
@@ -13864,6 +14136,7 @@
 "LN_Invite_To_Huddle_Declined_741298" = "Undangan masuk ke huddle pribadi - ditolak";
 "LN_Multi_Share_Alert_Participant_Block_Content_Webinar_744073" = "Anda dapat meminta berbagi beberapa presenter untuk webinar ini.";
 "LN_Share_Add_Spotlight_734161" = "Sorot pembagian ini";
+"LN_Setting_VB_AI_Image_Description_1055261" = "Buat latar belakang virtual AI";
 "LN_Reconnect_Tip_716352" = "Layanan cloud Zoom akan segera ditingkatkan. Anda akan memutuskan sambungan dan bergabung kembali dalam: %@";
 "LN_Multi_Share_Alert_Allow_Multi_Share_744073" = "Izinkan";
 "LN_Add_Contact_Tip_without_note_703208" = "<b>%1$@</b> belum menjadi kontak Anda.\nTambahkan sebagai kontak untuk memulai obrolan. <a href='%2$@'>Kirim permintaan kontak ></a>";
@@ -13871,6 +14144,7 @@
 "LN_Media_Stream_Unable_To_Load_Desc_689434" = "Streaming Media saat ini mengalami masalah.";
 "LN_RejoinPreviousHuddleNotif_759330" = "Ingatkan saya untuk bergabung kembali ke huddle terakhir saya saat saya tidak dalam rapat, tidak dalam panggilan telepon, atau tidak pergi";
 "LN_Next_MBO_Plan_Button_715160" = "Rencanakan sesi selanjutnya";
+"LN_Setting_Using_Face_Effects_Alert_New_Content_705116" = "Dengan melanjutkan, Zoom akan menganalisis fitur wajah dan gerakan Anda untuk menerapkan avatar yang dipilih, efek studio, atau filter video tertentu ke wajah Anda. Data tidak meninggalkan perangkat Anda dan dihapus segera.";
 "LN_Can_Not_Join_Channel_Due_Something_Wrong_764479" = "Terjadi kesalahan – %@ tidak dapat bergabung dengan saluran ini";
 "LN_Next_MBO_Launch_Next_Session_Alert_Title_715160" = "Buka sesi selanjutnya dari ruang diskusi?";
 "LN_Global_Search_766266" = "Pencarian Global";
@@ -13929,6 +14203,8 @@
 "LN_YES_CallAllMembers_782521" = "Ya, panggil semua anggota";
 "LN_FileValidationFailureInTextFieldDescription_689913" = "Tidak dapat mengirim file. Pastikan format file sudah benar dan coba lagi.";
 "LN_IM_Sidebar_Filter_Title_760805" = "Filter berdasarkan:";
+"LN_IM_Sidebar_Filter_By_Title_1058163" = "Filter berdasarkan";
+"LN_Drag_To_Resize_1053625" = "Seret untuk mengubah ukuran";
 "LN_%ld_Members_Of_%@_WillBeInviteToMeeting_782521" = "%1$ld anggota dari %2$@ akan otomatis diundang ke rapat ini.";
 "LN_Login_GoToHome_769533" = "Buka beranda";
 "LN_MTAssets_Tip_Summary_771118" = "Tinjau ringkasan rapat, langkah berikutnya, dan rencanakan apa yang akan dilakukan selanjutnya";
@@ -14138,6 +14414,7 @@
 "LN_External_Connections_856135" = "Koneksi eksternal";
 "LN_ManageBadgeSettings_860649" = "Kelola pengaturan lencana...";
 "LN_ManageIndividualBadges_860649" = "Kelola lencana obrolan individual";
+"LN_Assign_Space_Owner_Content_1020748_%@" = "Anda akan mentransfer kepemilikan ruang bersama ke %@. Setelah mentransfer kepemilikan, Anda akan secara otomatis menjadi admin ruang bersama ini.";
 "LN_Channel_Setting_Disabled_894941" = "Saluran ini memiliki lebih dari %ld anggota, jadi pengaturan ini dinonaktifkan.";
 "LN_Sidebar_New_Message_860649" = "Pesan baru";
 "LN_ManageTabBadges_860649" = "Kelola lencana tab";
@@ -14386,6 +14663,7 @@
 "LN_Added_Audio_Control_Tip_865345" = "Anda menambahkan %@ ke grup kontrol audio Anda";
 "LN_Schedule_ConnectCalendar_Title_949277" = "Anda belum menghubungkan kalender. %@ untuk mengelola semua rapat dan acara Anda di satu tempat.";
 "LN_IM_InviteLink_OnboardingBody2_938266" = "Atur ulang tautan ini.";
+"LN_Meeting_Chat_Tag_1026317" = "OBROLAN RAPAT";
 "LN_Audio_Setting_865345" = "Pengaturan Audio %@";
 "LN_IM_InviteLink_ChannelSettingOnboardingBody2_938266" = "Setel ulang tautan undangan dan kode QR di modul Tambah anggota.";
 "LN_Marked_Unread_917463" = "ditandai sebagai belum dibaca";
@@ -14427,7 +14705,6 @@
 "LN_Schedule_ConnectCalendar_949277" = "Hubungkan sekarang";
 "LN_ParticipantsID_Reminder" = "Telah bergabung melalui telepon? Masukkan %@ di telepon Anda.";
 "LN_Docs_Request_Share_Doc_Fail_Alert_Desc_Account_883311" = "Login klien Anda tidak cocok dengan login web Anda. Harap verifikasi akun Anda atau masuk lagi.";
-"LN_Sip_Participants_Title_920901" = "Peserta";
 "LN_Add_Audio_Control_Group_865345" = "Tambahkan ke grup kontrol audio";
 "LN_Output_Volume_865345" = "Volume output";
 "LN_Someone_Controlling_Audio_Tip_865345" = "%@ sedang mengontrol audio Anda";
@@ -14479,10 +14756,8 @@
 "LN_DowngradeNotAllowed_933517" = "Anda mencoba menginstal versi lama yang tidak didukung. Hubungi administrator TI Anda untuk mendapatkan bantuan.";
 "LN_New_Chat_Message_966144" = "Pesan %@";
 "LN_Start_New_Channel_Content_966144" = "Kami menyederhanakan cara kerja pesan. Jika Anda ingin memberi nama pada percakapan ini, ubahlah menjadi saluran.";
-"LN_Convert_To_Private_Channel_Des_For_Member_966144" = "Hanya pemilik yang dapat mengubah pesan ini ke saluran pribadi.";
 "LN_DeepLink_Error_Toast_970487" = "Halaman ini tidak ada lagi atau tidak tersedia.";
 "LN_Edit_Shared_Space_Failure_938661" = "Gagal mengedit ruang bersama. Coba lagi nanti.";
-"LN_Convert_To_Private_Channel_Des_For_Owner_966144" = "Saat Anda beralih ke saluran pribadi, Anda dapat memberinya nama, mengelola anggota, dan mengakses pengaturan lanjutan.";
 "LN_Convert_To_Private_Channel_966144" = "Ubah ke saluran pribadi";
 "LN_Unread_937144" = "Belum dibaca";
 "LN_welcome_create_channel_966144" = "Selamat datang di saluran \"%@\"";
@@ -14509,6 +14784,7 @@
 "LN_VoiceRecord_Description1_947407" = "Perekam suara dengan AI Companion membuat transkrip dan ringkasan percakapan Anda.";
 "LN_Audio_Control_865345" = "Kontrol audio %@";
 "LN_VoiceRecord_Title_947407" = "Perekam suara dengan AI Companion";
+"LN_New_Sidebar_Chips_Menu_Reorder_1058163" = "Seret untuk menyematkan atau menyusun ulang";
 "LN_Error5506_916782" = "Anda hanya dapat mengubah nomor telepon masuk dua kali setahun. Anda dapat memperbarui lagi nomor Anda tahun depan.";
 "LN_Or_Start_New_Recording_947407" = "Atau mulai rekaman baru";
 "LN_New_Recording_947407" = "Rekaman baru";
@@ -14518,6 +14794,7 @@
 "LN_Avaya_ForwardCalls_Enable_Banner_917986" = "Penerusan panggilan diaktifkan.";
 "LN_MagicCode_SendTo_985336" = "Kode ajaib telah dikirim ke %@";
 "LN_ContactConter_JoinMeeting_969396" = "Akhiri panggilan video Zoom Contact Center Anda untuk bergabung dalam rapat";
+"LN_Prevent_Capture_type_screen_recording_1022426" = "perekaman layar";
 "LN_ContactConter_VideoCall_969396" = "Panggilan video Zoom Contact Center";
 "LN_Create_And_Send_966144" = "Buat dan kirim";
 "LN_CMCAssetsCard_RecordingPending_Channel_823869" = "Host belum membagikan rekaman tersebut ke saluran.";
@@ -14530,6 +14807,7 @@
 "LN_New_Chat_Welcome_Desc_Two_966144" = "Mulai pesan langsung baru dengan %1$@ dan %2$@";
 "LN_Live_Performance_Off_965279" = "Mode pertunjukan langsung dimatikan untuk rapat ini. %@ sedang aktif.";
 "LN_CMCAssetsCard_BothPending_Host_DM_823869" = "Ringkasan dan rekaman siap dibagikan.";
+"LN_CMCAssetsCard_ChangeSettings" = "Ubah pengaturan Anda";
 "LN_Delete_Record_Message_947084" = "Anda yakin ingin menghapus rekaman?";
 "LN_MagicCode_985336" = "Masuk dengan kode ajaib";
 "LN_Microphone_Modes_Noise_965279" = "Penghapusan kebisingan";
@@ -14542,13 +14820,16 @@
 "LN_Create_Voice_Recording_Disclaimer_Info_740471" = "Dengan mengklik \"OK\", Anda setuju bahwa Zoom dapat membuat dan menganalisis cetakan suara Anda dari rekaman suara referensi. Kami akan menyimpan dan menggunakannya untuk meningkatkan pengalaman audio Anda dan/atau mengidentifikasi Anda berdasarkan nama sebagai pembicara saat Anda menggunakan layanan Zoom.\n\n Anda dapat menghapus cetakan suara dan rekaman suara referensi kapan saja di pengaturan profil Anda, atau dengan menghapus akun Anda.";
 "LN_Delete_947084" = "Hapus";
 "LN_MagicCode_button_985336" = "kode ajaib satu kali";
+"LN_New_Sidebar_Chats_Empty_Tip_1058163" = "Jangan pernah melewatkan pesan langsung! Pilihlah percakapan dari sidebar untuk ditampilkan.";
 "LN_Show_Watermark_On_Video_985806" = "Tampilkan watermark pada umpan video";
 "LN_Done_947084" = "Selesai";
 "LN_Go_To_SR_740471" = "Buka pengenalan pintar";
 "LN_Live_Performance_On_965279" = "Audio pertunjukan langsung aktif. Peredam bising dan semua pemrosesan audio dinonaktifkan";
 "LN_Smart_Recognition_740471" = "Pengenalan pintar";
 "LN_Use_Another_Link_912361" = "Gunakan tautan lain";
+"LN_New_Sidebar_SharedSpace_Empty_Tip_1058163" = "Berkolaborasilah dengan tim Anda di Ruang Bersama! Pilih salah satu dari bilah samping untuk melihatnya di sini.";
 "LN_Delete_Record_Infomation_947084" = "Rekaman, transkrip, dan ringkasan akan dihapus.";
+"LN_New_Sidebar_Apps_Empty_Tip_1058163" = "Semua percakapan aplikasi Anda di satu tempat. Pilih aplikasi untuk memulai obrolan.";
 "LN_PT_AIC_Disabled_Tip" = "AI Companion saat ini tidak tersedia untuk akun Anda. Fitur ini mungkin telah dinonaktifkan oleh Anda atau administrator Anda.";
 "LN_Video_Recognition_740471" = "Pengenalan video";
 "LN_Use_Voice_Recording_740471" = "Gunakan rekaman suara";
@@ -14562,7 +14843,9 @@
 "LN_You_Created_This_Public_Channel_966144" = "Anda membuat saluran publik ini";
 "LN_Add_Channel_Name_Tip_966144" = "Tambahkan nama saluran untuk menggunakan fitur ini.";
 "LN_Microphone_Modes_Optimize_Voice_965279" = "Isolasi audio yang dipersonalisasi";
+"LN_New_Sidebar_Folder_Empty_Tip_1058163" = "Jaga agar obrolan Anda tetap teratur dengan folder.  Pilih salah satu dari bilah samping untuk melihatnya di sini.";
 "LN_Join_PMI_Link_912361" = "Bergabung dengan tautan pribadi";
+"LN_New_Sidebar_Starred_Empty_Tip_1058163" = "Mulai obrolan dengan mengeklik percakapan yang diberi bintang!";
 "LN_Apps_Tooltip_951410" = "Aplikasi yang mengakses konten rapat";
 "LN_Confirm_Link_Title_912361" = "Apakah ini tautan pribadi yang ingin Anda masuki?";
 "LN_Add_Channel_Name_To_Create_Channel_966144" = "Tambahkan nama saluran untuk membuat saluran";
@@ -14577,12 +14860,14 @@
 "LN_Watermark_On_Video_985806" = "Watermark pada umpan video";
 "LN_HaveSummary&Recording_988942" = "Ringkasan rapat dan rekaman Anda akan segera siap.";
 "LN_Owner_Created_This_Public_Channel_966144" = "%@ membuat saluran publik ini";
+"LN_CMCAssetsCard_SummarySharingRestricted" = "Pembagian ringkasan rapat dibatasi.";
 "LN_ZR_SNT_Avaliable_740471" = "Fitur pengenalan pintar baru, tag nama pintar Zoom Room untuk suara, kini tersedia. Apakah Anda ingin menggunakan rekaman suara yang sudah ada untuk mendaftar?";
 "LN_One_App_Tooltip_951410" = "%@ sedang mengakses konten rapat";
 "LN_Create_New_740471" = "Buat baru";
 "LN_App_Tooltip_951410" = "Aplikasi mengakses konten rapat";
 "LN_PMI_Not_Found_912361" = "Nama tautan pribadi tidak ditemukan di akun Anda";
 "LN_Upload_An_Image_740471" = "Unggah gambar";
+"LN_New_Sidebar_MeetingChats_Empty_Tip_1058163" = "Pertahankan percakapan tetap berlangsung bahkan setelah rapat. Pilihlah obrolan rapat dari daftar!";
 "LN_Image_Quality_Low_740471" = "Foto Anda mungkin tidak memenuhi kondisi ideal. Perbarui foto Anda untuk hasil terbaik.";
 "LN_Personal_Link_912361" = "Tautan pribadi";
 "LN_AskAICAboutMT_Title_988942" = "Tanyakan kepada AI Companion tentang rapat ini";
@@ -14594,6 +14879,7 @@
 "LN_Reuse_SNT_Voice_Recording_Desc_740471" = "Anda memiliki rekaman suara yang sudah ada untuk tag nama pintar untuk suara. Apakah Anda ingin menggunakan kembali rekaman yang ada untuk isolasi suara yang lebih baik dan pengenalan otomatis?";
 "LN_Use_Image_740471" = "Gunakan gambar";
 "LN_HaveSummary_988942" = "Ringkasan rapat Anda sedang dibuat.";
+"LN_New_Sidebar_Channels_Empty_Tip_1058163" = "Tetap terhubung dengan tim Anda di Saluran. Pilih salah satu dari bilah samping untuk memulai.";
 "LN_Start_Summary_With_Live_Summary_Content_990843" = "Dengan mengaktifkan ringkasan rapat, ringkasan langsung juga akan diaktifkan untuk para peserta.";
 "LN_Microphone_Modes_Optimize_Music_965279" = "Suara asli untuk musisi";
 "LN_Voice_Recognition_740471" = "Pengenalan suara";
@@ -14712,6 +14998,7 @@
 "LN_Coach_Mark_Auto_Frame_Title_923864" = "Tetap terpusat dengan pembingkaian otomatis";
 "LN_ZUIST_Device_Not_Support_Live_Performance_986294" = "Perangkat Anda tidak mendukung audio pertunjukan Langsung";
 "LN_Gesture_Reactions_Info_Tip_RaiseHand_991817" = "Angkat tangan";
+"LN_Unable_Add_External_User_1036535" = "Tidak dapat menambahkan pengguna eksternal karena pengaturan saluran tidak mengizinkannya.";
 "LN_File_881993" = "File";
 "LN_Apps_Enable_Auto_Open_Title_1016534" = "%@ ingin memulai otomatis di rapat mendatang";
 "LN_Coach_Mark_Auto_Frame_Content_923864" = "Pembingkaian otomatis membuat Anda tetap terlihat dengan menyesuaikan kamera saat Anda bergerak—tidak perlu lagi pemusatan ulang yang canggung.";
@@ -14727,3 +15014,240 @@
 "LN_Name_Will_Create_Channel_1020902" = "Memberi nama akan membuat saluran";
 "LN_Conversation_Name_1020902" = "Nama percakapan (opsional)";
 "LN_Coach_Mark_Tip_Turn_On_923864" = "Aktifkan";
+"LN_Setting_Video_HD_1047285" = "HD";
+"LN_Setting_Video_Mirror_Info_1047285" = "Pengaturan ini hanya memengaruhi cara Anda melihat video.";
+"LN_EndWebinar_1041113" = "Akhiri webinar";
+"LN_Jump_To_Latest_998823" = "Lompat ke yang terbaru";
+"LN_Revert_998823" = "Kembalikan";
+"LN_Setting_Video_Ratio_1047285" = "Rasio asli";
+"LN_Setting_Phone_Voicemail_VB_Default_Title_989109" = "Latar belakang default";
+"LN_Setting_Video_Mirror_1047285" = "Cerminkan pratinjau video saya";
+"LN_Access_Capture_Audio_111977" = "Izinkan akses untuk menangkap audio dari aplikasi lain.";
+"LN_KeepMeetingActive_1041113" = "Biarkan rapat tetap aktif";
+"LN_Sip_Language_Hindi_1036485" = "Hindi";
+"LN_WebinarWillEnd_S_Inactivity_1041113" = "Webinar ini akan secara otomatis berakhir di %dd karena tidak ada aktivitas.";
+"LN_WebinarEnd_Inactivity_Title_1041113" = "Webinar diakhiri karena tidak ada aktivitas";
+"LN_Name_Will_Create_Channel_Optional_1020902" = "Penamaan akan membuat saluran (opsional)";
+"LN_Sip_Language_Telugu_1036485" = "Telugu";
+"LN_WebinarWillEnd_MS_Inactivity_1041113" = "Webinar ini akan secara otomatis berakhir di %1$dm %2$dd karena tidak ada aktivitas.";
+"LN_Blur_Rectangle_111977" = "Persegi panjang buram";
+"LN_DontAutoEndWebinar_1041113" = "Jangan akhiri webinar saya secara otomatis";
+"LN_MeetingEnd_Inactivity_Content_1041113" = "Rapat ini secara otomatis diakhiri setelah %@ menit tidak ada aktivitas.";
+"LN_WebinarEnd_Inactivity_Content_1041113" = "Webinar ini secara otomatis diakhiri setelah %@ menit tidak ada aktivitas.";
+"LN_DontAutoEndMeeting_1041113" = "Jangan akhiri rapat saya secara otomatis";
+"LN_Sip_Language_Bengali_1036485" = "Bengali";
+"LN_Blur_Brush_111977" = "Kuas buram";
+"LN_MeetingWillEnd_MS_Inactivity_1041113" = "Rapat ini akan secara otomatis berakhir di %1$dm %2$dd karena tidak ada aktivitas.";
+"LN_Sip_Language_Tamil_1036485" = "Tamil";
+"LN_DontAutoEndMeeting_Setting_1041113" = "Jangan akhiri rapat saya secara otomatis jika tidak ada aktivitas";
+"LN_EndThisMeeting?_1041113" = "Akhiri rapat ini?";
+"LN_MeetingEnd_Inactivity_Title_1041113" = "Rapat diakhiri karena tidak ada aktivitas";
+"LN_Webinar_Will_Start_On_%1$@_At_%2$@_1042795" = "Webinar ini akan dimulai pada %1$@ pukul %2$@";
+"LN_Simulive_Will_Start_On_%1$@_At_%2$@_1042795" = "Webinar simulasi langsung ini akan dimulai pada %1$@ pukul %2$@";
+"LN_MeetingWillEnd_S_Inactivity_1041113" = "Rapat ini akan secara otomatis berakhir di %dd karena tidak ada aktivitas.";
+"LN_PMI_Invalid_912361" = "Tautan pribadi ini tidak valid. Periksa dan coba lagi.";
+"LN_Blur_Intensity_111977" = "Intensitas buram";
+"LN_EndThisWebinar?_1041113" = "Akhiri webinar ini?";
+"LN_NoteAddedTab_%1$@_%2$@_%3$@_957094" = "%1$@ menambahkan tab %2$@ \"%3$@\"";
+"LN_NoteRenamedTab_%1$@_%2$@_%3$@_%4$@_957094" = "%1$@ mengganti nama tab %2$@ \"%3$@\" menjadi \"%4$@\"";
+"LN_NoteRmovedTab_%1$@_%2$@_%3$@_957094" = "%1$@ menghapus tab %2$@ \"%3$@\"";
+"LN_99+_new_917463" = "99+ baru";
+"LN_Summarize_99+_new_917463" = "Ringkas 99+ baru";
+"LN_KeepWebinarActive_1041113" = "Biarkan webinar tetap aktif";
+"LN_CodeSignIn_Des_1001610" = "Terima kode sandi satu kali melalui %@.";
+"LN_MagicCode_1001610" = "Kode ajaib";
+"LN_MagicCode_Des_1001610" = "Dapatkan kode sandi ajaib satu kali melalui %@.";
+"LN_TryAnotherWay2SignIn_1001610" = "Coba cara lain untuk masuk";
+"LN_PasskeyBind_Title_1001610" = "Masuk lebih cepat dengan wajah, sidik jari, atau PIN Anda";
+"LN_PasskeyBind_Success_Tip_1001610" = "Sekarang Anda dapat menggunakan sidik jari, wajah, PIN, atau kunci keamanan perangkat keras untuk memverifikasi bahwa Anda yang masuk.";
+"LN_OTP_Notification_ChangePassword_SubTitle_1065104" = "Jika ini bukan Anda, silakan perbarui kata sandi dan aktifkan verifikasi dua langkah untuk mengamankan akun Anda.";
+"LN_MFA_Title_1065104" = "Verifikasi dua langkah";
+"LN_PasskeyAuth_Fail_1001610" = "Gagal masuk dengan kunci sandi (kode kesalahan: %d).";
+"LN_PasskeyAuth_Title_1001610" = "Gunakan kunci sandi Anda untuk mengonfirmasi bahwa itu benar-benar Anda";
+"LN_EnterPhonePassword_Des_1001610" = "Masukkan kata sandi nomor telepon Anda";
+"LN_PasskeyBind_Fail_1001610" = "Tidak dapat membuat kunci sandi (kode kesalahan: %d). Klik selanjutnya untuk mencoba lagi.";
+"LN_Or_1032636" = "%1$@ atau %2$@";
+"LN_ChooseToSignIn_1001610" = "Pilih cara Anda ingin masuk:";
+"LN_SignIn_CoachMark_Content_1051844" = "Akses rekaman rapat, ringkasan, dan lainnya setelah rapat berakhir di Zoom Workplace.";
+"LN_ZUI_Get_Mobile_App_Desc_1057446" = "Tetap terhubung di mana pun Anda berada. Dari perangkat seluler Anda, pindai kode QR atau buka [zoom.com/go]";
+"LN_EnterPassword_Des_1001610" = "Masukkan kata sandi email Anda.";
+"LN_ZUI_Get_Mobile_App_Title_1057446" = "Dapatkan aplikasi seluler Zoom Workplace";
+"LN_SignIn_CoachMark_Title_1051844" = "Masuk untuk mendapatkan hasil maksimal dari Zoom Workplace";
+"LN_EnterPassword_1001610" = "Masukkan kata sandi";
+"LN_UsePasskey_1001610" = "Gunakan kunci sandi Anda";
+"LN_UsePasskey_Des_1001610" = "Perangkat Anda akan meminta wajah, sidik jari, PIN, atau kunci keamanan Anda.";
+"LN_PasskeyBind_Tip_1001610" = "Buat kunci sandi untuk masuk ke akun Zoom Anda.\nTidak perlu kata sandi atau kode.";
+"LN_SignOut_Info_939162" = "Anda sedang membuat catatan. Pembuatan akan dihentikan dan disimpan secara otomatis.";
+"LN_Quit_939162" = "Keluar";
+"LN_SignOut_Message_939162" = "Keluar dari akun Anda";
+"LN_Quit_Message_939162" = "Keluar dari Zoom Workplace";
+"LN_New_Notes_939162" = "Catatan baru";
+"LN_Quit_Info_939162" = "Anda sedang membuat catatan. Pembuatan akan dihentikan dan disimpan secara otomatis.";
+"LN_Transcription_disable_939162" = "Transkripsi tidak didukung";
+"LN_SignOut_939162" = "Keluar";
+"LN_Turn_off_notification_for_app_name_1035096" = "Nonaktifkan pemberitahuan untuk %1$@";
+"LN_New_Notes_1035096" = "Catatan Baru";
+"LN_Meeting_detected_1035096" = "Rapat terdeteksi";
+"LN_Skip_for_now_1035096" = "Lewati untuk saat ini";
+"LN_Enable_audio_for_full_experience_1035096" = "Aktifkan audio untuk pengalaman penuh";
+"LN_Allow_Zoom_to_access_system_microphone_and_speaker_when_you_continue_1035096" = "Izinkan Zoom untuk mengakses audio sistem dan mikrofon saat Anda melanjutkan.";
+"LN_Toolbar_Admin_Locked_1060393" = "Pengaturan berikut dikunci oleh admin Anda dan tidak dapat diubah.";
+"LN_Link_To_Team_Chat_Group_Chat_1017555" = "Tautan ke obrolan grup Team Chat";
+"LN_Zoom_939162" = "Zoom";
+"LN_Hide_App_939162" = "Sembunyikan %@";
+"LN_Quit_App_939162" = "Keluar %@";
+"LN_Record_Tip_1035168" = "Merekam (Enter)";
+"LN_What_New_In_Chat_Title_1017555" = "Apa yang baru di obrolan";
+"LN_ConvertToChannel_Blurb_Tip_1017555" = "Anda akan mengonversi \"%@\" menjadi saluran pribadi. Anda akan menjadi pemilik saluran. Perubahan ini tidak dapat dibatalkan.";
+"LN_Toolbar_Meeting_Info_Encryption_Security_1060393" = "Pengaturan keamanan";
+"LN_Toolbar_How_Many_Panelists_Can_Share_At_A_Time_1060393" = "Berapa banyak panelis yang dapat berbagi dalam satu waktu?";
+"LN_Toolbar_Meeting_Info_Encryption_Code_BO_2_1060393" = "Peserta harus memeriksa apakah kode keamanan mereka cocok dengan kode Anda untuk memastikan bahwa ruang diskusi terenkripsi menyeluruh.";
+"LN_NewBO_AutoMoveToBO_IncludeWRTip_974017" = "Peserta ruang tunggu akan diizinkan masuk dan dipindahkan";
+"LN_ZUIST_Preferred_Translation_Language_1048759" = "Bahasa terjemahan yang dipilih";
+"LN_Group_Chat_Will_Be_Created_1017555" = "Obrolan grup baru dengan pengguna-pengguna ini akan dibuat jika belum ada. Hilangkan tanda centang untuk mengirim pesan individual.";
+"LN_Toolbar_Plist_More_Host_Tool_Meeting_1060393" = "Alat bantu host untuk peserta";
+"LN_%@_recipient_Timezone_1043637" = "Zona waktu %@";
+"LN_Simplified_Toolbar_Tip_Title_1060379" = "Menyederhanakan toolbar Rapat";
+"LN_Simplified_Toolbar_Tip_Desc_1060379" = "Temukan dengan cepat apa yang Anda butuhkan di \"Lainnya\" dan sematkan alat ke toolbar Anda untuk mempersonalisasi pengalaman rapat Anda.";
+"WorkForceManagement" = "Manajemen Tenaga Kerja";
+"LN_Recording_State_Stopped_1035168" = "Perekaman: Dihentikan";
+"LN_Toolbar_When_Enabled_All_Signed_In_Participants_Can_Share_Docs_1060393" = "Jika diaktifkan, semua peserta yang masuk (baik internal maupun eksternal) dapat berbagi dokumen selama rapat ini.";
+"LN_Toolbar_All_Docs_Created_Will_Belong_To_The_Host_Webinar_1060393" = "Semua dokumen yang dibuat di webinar akan menjadi milik host.";
+"LN_Recording_Warning_1035168" = "Perekaman - Peringatan Waktu";
+"LN_Toolbar_All_Screens_Mode_1060393" = "Mode semua layar";
+"LN_Toolbar_Show_Participants_Local_Time_1060393" = "Tampilkan waktu lokal peserta";
+"LN_Convert_Private_Channel_Disable_Tip_1017555" = "Saluran pribadi dinonaktifkan oleh admin akun Anda. Anda tidak dapat mengonversi obrolan ini.";
+"LN_About_App_939162" = "Tentang %@";
+"LN_Toolbar_When_Enabled_All_Signed_In_Participants_Can_Share_Docs_Webinar_1060393" = "Jika diaktifkan, semua peserta yang masuk (baik internal maupun eksternal) dapat berbagi dokumen selama webinar ini.";
+"LN_Toolbar_Meeting_Info_Encryption_Code_Meeting_2_1060393" = "Peserta harus memeriksa apakah kode keamanan mereka cocok dengan kode Anda untuk memastikan bahwa rapat terenkripsi menyeluruh.";
+"LN_Can_Not_Access_This_Chat_Content_1017555" = "Anda bukan anggota. Hubungi orang yang membagikan tautan.";
+"LN_Screenshot_Record_1035168" = "Merekam layar";
+"LN_Recording_State_Paused_1035168" = "Rekaman: Dijeda";
+"LN_Sidebar_Menu_Manage_Sidebar" = "Kelola bilah samping";
+"LN_Convert_To_Private_Channel_Des_1017555" = "Setelah obrolan menjadi saluran, Anda dapat mengganti namanya, mengedit deskripsi, mengelola anggota, mengakses pengaturan lanjutan, dan mengubah label klasifikasi.";
+"LN_Toolbar_Meeting_Info_Encryption_Title_1060393" = "Enkripsi yang ditingkatkan sudah aktif";
+"LN_Toolbar_Focus_Mode_1060393" = "Mode fokus";
+"LN_Toolbar_Who_Can_Share_When_Someone_Else_Is_Sharing_1060393" = "Siapa yang dapat berbagi ketika orang lain sedang berbagi?";
+"LN_Toolbar_Host_Tool_Plist_Title_Webinar_1060393" = "Panelis dan peserta";
+"LN_Toolbar_Who_Can_Create_A_Doc_In_This_Meeting_1060393" = "Siapa yang dapat membuat dokumen dalam rapat ini?";
+"LN_Allow_access_to_your_microphone_and_speaker_ZOOM_1035096" = "Izinkan akses ke mikrofon dan speaker Anda setelah Anda memulai untuk pengalaman terbaik.";
+"LN_Processing_Recording_1035168" = "Memproses rekaman";
+"LN_Leave_Chat_Content_1017555" = "Tidak ada anggota lain dalam percakapan ini. Meninggalkan percakapan ini akan menghapus percakapan ini, dan Anda akan kehilangan akses ke semua pesan.";
+"LN_Sidebar_Menu_Badging_Title" = "Pemberian Lencana";
+"LN_NewBO_AutoMoveToBO_974017" = "Pindahkan semua peserta yang ditugaskan ke ruang diskusi secara otomatis ketika ruang diskusi dibuka";
+"LN_Other_Timezone_1043637" = "Lainnya";
+"LN_Convert_To_Channel_To_Edit_Setting_Tip_1017555" = "Ini adalah pengaturan yang aktif. Ubah obrolan ini menjadi saluran untuk mengedit pengaturan.";
+"LN_Toolbar_Video_Effect_Setting_1055261" = "Pengaturan video & efek";
+"LN_Need_grant_mic_permission_1035096" = "Anda perlu memberikan akses mikrofon ke Zoom agar dapat membuat catatan suara. [Pengaturan]";
+"LN_Can_Not_Access_This_Chat_Title_1017555" = "Anda tidak dapat mengakses obrolan ini";
+"LN_Toolbar_Depending_On_Host_Settings_You_Might_Only_See_Local_Time_1060393" = "Tergantung pada pengaturan host, Anda mungkin hanya melihat waktu lokal yang berbeda dengan zona waktu Anda.";
+"LN_Download_Paused_Resume_When_Meeting_Ends_928475" = "Jeda. Unduhan akan dilanjutkan ketika rapat Anda berakhir.";
+"LN_Owner_Role_Tip_1017555" = "Pemilik terlihat karena pengaturan lama.";
+"LN_Toolbar_Allow_Panelists_To_Share_Docs_1060393" = "Izinkan panelis untuk membagikan dokumen";
+"LN_Toolbar_Who_Can_Create_A_Doc_In_This_Webinar_1060393" = "Siapa yang dapat membuat dokumen dalam webinar ini?";
+"LN_Recording_Stop_1035168" = "Sedang merekam, klik untuk mengakhiri.";
+"LN_Toolbar_How_Many_Participants_Can_Share_At_A_Time_1060393" = "Berapa banyak peserta yang dapat berbagi secara bersamaan?";
+"LN_Processing_1035168" = "Memproses";
+"LN_Remove_Tip_1017555" = "Hanya anggota dari akun %@ yang dapat menghapus orang dari obrolan ini.";
+"LN_Toolbar_Dark_Right_Panel_1060393" = "Panel kanan gelap";
+"LN_Got_It_1060379" = "Mengerti";
+"LN_Sidebar_Menu_Manage_Badges" = "Kelola lencana";
+"LN_Recording_Continue_1035168" = "Perekaman dijeda. Klik untuk Melanjutkan.";
+"LN_Toolbar_Setting_Display_Controls_1060393" = "Tampilan & kontrol";
+"LN_Convert_To_Private_Channel_Tip_1017555" = "Hanya anggota dari akun %@ yang dapat mengubah obrolan ini menjadi saluran.";
+"LN_Toolbar_Meeting_Info_Encryption_Code_BO_1_1060393" = "Bacakan kode keamanan kepada semua peserta ruang diskusi.";
+"LN_Voice_Notes_939162" = "Catatan saya";
+"LN_Sidebar_Menu_Behavior_Title" = "Perilaku bilah samping";
+"LN_What_New_In_Chat_Content_With_Permission_1017555" = "\n1. Tidak ada pemilik, izin yang sama untuk semua orang.\n2. Anda dapat <a href='%1$@'>mengonversi obrolan ini menjadi saluran pribadi</a> untuk kontrol lebih lanjut.";
+"LN_Follow_All_Applicable_Legal_Desc_1035096" = "Ikuti semua peraturan yang berlaku saat mentranskrip percakapan";
+"LN_Toolbar_Plist_More_Host_Tool_Webianr_1060393" = "Alat bantu host untuk panelis dan peserta";
+"LN_ZUIST_Preferred_Translation_Language_Help_1048759" = "Terjemahan bahasa default untuk pesan suara, perekaman panggilan, ringkasan panggilan, dan SMS";
+"LN_Toolbar_Setting_Request_AIC_1060393" = "Minta host untuk memulai AI Companion";
+"LN_Toolbar_All_Docs_Created_Will_Belong_To_The_Host_1060393" = "Semua dokumen yang dibuat dalam rapat akan menjadi milik host.";
+"LN_Your_Timezone_1043637" = "Zona waktu Anda";
+"LN_Record_1035168" = "Rekam";
+"LN_Recording_State_1035168" = "Sedang merekam...";
+"LN_Toolbar_Allow_Participants_To_Share_Docs_1060393" = "Izinkan peserta untuk membagikan dokumen";
+"LN_NewBO_AutoMoveToBO_IncludeWR_974017" = "Sertakan peserta ruang tunggu";
+"LN_Toolbar_Setting_Send_Reactions_1060393" = "Kirim reaksi";
+"LN_Forward_As_One_Group_Chat_1017555" = "Teruskan sebagai satu obrolan grup ke semua pengguna";
+"LN_Toolbar_Meeting_Info_Encryption_Code_Meeting_1_1060393" = "Bacakan kode keamanan kepada semua peserta rapat.";
+"LN_Search_ShortCut_Updated_Title_1078847" = "Pintasan telah diperbarui!";
+"LN_Chat_Archived_Member_Tip_1017555" = "Obrolan ini telah diarsipkan. Jika Anda ingin mengirim pesan, mintalah anggota akun %@ untuk membuka arsipnya.";
+"LN_Draft_Tip_1034529" = "Tulis, kelola, dan jadwalkan draf Anda untuk mengirimkannya nanti saat Anda siap!";
+"LN_Microphone_activity_detected_1035096" = "Aktivitas mikrofon terdeteksi";
+"LN_Toolbar_Share_Disabled_By_Admin_1060393" = "Pengaturan ini dikunci oleh admin Anda dan tidak dapat diubah.";
+"LN_Toolbar_Share_Setting_Locked_By_Admin_1060393" = "Pengaturan berikut dikunci oleh admin Anda dan tidak dapat diubah.";
+"LN_MissedCalls_Tip_1034529" = "Tetap memantau panggilan tak terjawab — pilih salah satu dari bilah samping untuk melihatnya.";
+"LN_Search_ShortCut_Updated_Content_1078847" = "Apakah Anda mencari pencarian global? Gunakan %1$@ \n%2$@ sekarang untuk mencari dalam obrolan saat ini";
+"LN_ViewMTRecap_1067124" = "Lihat rekap rapat";
+"LN_1_Minute_ago_1034529" = "1 menit yang lalu";
+"LN_VoiceNotes_Stop_All_Notes_Transcriptions_1081790" = "Hentikan semua transkripsi catatan";
+"LN_1_Minute_1034529" = "1 menit";
+"LN_Toolbar_E2EE_Encryption_Title_1060393" = "Enkripsi ujung-ke-ujung aktif";
+"LN_To_%@_1034529" = "Ke %@";
+"LN_Auto_Archived_Owner_System_Message_1017555" = "Obrolan ini diarsipkan otomatis setelah periode tanpa aktivitas.\nIni Pengaturan dikonfigurasi oleh admin Anda.";
+"LN_Bookmark_Tip_1034529" = "Simpan pesan penting di ujung jari Anda. Pilih penanda buku untuk melihatnya di sini.";
+"LN_Reply_1034529" = "(Balas)";
+"LN_%d_Minute_ago_1034529" = "%d menit lalu";
+"LN_Remove_From_Chat_Sys_Message_1017555" = "Anda telah menghapus %@";
+"LN_%d_Minute_1034529" = "%d menit";
+"LN_Auto_Archived_Member_System_Message_1017555" = "Obrolan ini diarsipkan otomatis setelah periode tanpa aktivitas.\nIni pengaturan dikonfigurasi oleh admin akun %@.";
+"LN_1_Hour_ago_1034529" = "1 jam yang lalu";
+"LN_1_Hour_1034529" = "1 jam";
+"LN_Sent_Tip_1034529" = "Semua pesan yang Anda kirimkan terkumpul di sini. Pilih salah satu dari bilah samping untuk melihatnya di sini.";
+"LN_VoiceNotes_Stop_Notes_Transcription_1081790" = "Hentikan transkripsi catatan";
+"LN_Toolbar_Share_Disabled_By_All_Screens_Mode_1060393" = "Pengaturan berikut dinonaktifkan dalam mode semua layar.";
+"LN_VoiceNotes_Stop_Notes_Tips_1081790" = "Transkripsi Notes telah dinonaktifkan.";
+"LN_Reminder_Tip_1034529" = "Tetap terhubung dengan pesan Anda—semua pengingat Anda ada di sini. Pilih salah satu dari bilah samping untuk ditinjau.";
+"LN_MorePannel_Empty_Text_1036353" = "Anda tidak memiliki item di bagian Lainnya.";
+"LN_%d_Hours_ago_1034529" = "%d jam yang lalu";
+"LN_%d_Hours_1034529" = "%d jam";
+"LN_TTurn_this_notification_off_1035096" = "Matikan pemberitahuan ini";
+"LN_All_Reminders_1034529" = "Semua pengingat";
+"LN_Chat_Archived_Owner_Tip_1017555" = "Obrolan ini telah diarsipkan.";
+"LN_Start_Chat_Sys_Message_1017555" = "Anda memulai obrolan ini dengan %@";
+"LN_RA_Photo_Multiple_Faces_1034845" = "Beberapa wajah terdeteksi. Pastikan hanya satu orang yang terlihat dalam bingkai.";
+"LN_RA_Unable_Verify_1034845" = "Kami tidak dapat memverifikasi pergerakan Anda. Coba lagi.";
+"LN_RA_Photo_Taken_Successfully_1034845" = "Foto berhasil diambil";
+"LN_Choose_Avatar_Title_1034845" = "Pilih jenis avatar";
+"LN_Cartoon_Avatar_Reach_Limit_Tip_1034845" = "Anda telah mencapai batas avatar kartun. Harap hapus avatar yang sudah ada sebelum membuat avatar baru.";
+"LN_RA_Create_Avatar_1034845" = "Buat avatar";
+"LN_RA_Introduction_Page_Policy_1034845" = "Dengan mengeklik \"Lanjutkan,\" Anda setuju bahwa Zoom dapat menganalisis dan menyimpan geometri dan fitur wajah Anda untuk membuat dan menghidupkan avatar fotorealistis Anda. Anda dapat menghapus foto yang diunggah dan data wajah terkait kapan saja dengan menghapus avatar atau menghapus akun Anda.";
+"LN_RA_Creation_Loading_1034845" = "Avatar Anda mungkin memerlukan waktu beberapa menit untuk diselesaikan. Jika Anda keluar, kami akan memberi tahu ketika sudah siap.";
+"LN_RA_Verify_Nod_head_1034845" = "Anggukkan kepala";
+"LN_RA_Photo_Uploaded_Successfully_1034845" = "Foto berhasil diunggah";
+"LN_RA_Photo_Unable_Verify_Photo_1034845" = "Kami tidak dapat memverifikasi foto Anda. Coba lagi.";
+"LN_Video_Realistic_Avatar_Tip_1034845" = "Ini adalah avatar realistis yang dihasilkan oleh AI, yang digunakan hanya untuk video (bukan audio).";
+"LN_RA_Photo_Face_Blocked_1034845" = "Wajah Anda terhalang. Singkirkan semua penghalang.";
+"LN_RA_Verify_Photo_1034845" = "Verifikasi foto";
+"LN_RA_Creation_Failed_1034845" = "Pembuatan avatar realistis Anda gagal. Coba lagi.";
+"LN_Create_Realistic_Avatar_1034845" = "Membuat avatar realistis";
+"LN_RA_Photo_No_Faces_1034845" = "Tidak ada wajah yang terdeteksi. Pastikan wajah Anda terlihat jelas dalam bingkai.";
+"LN_RA_Verify_Turn_right_1034845" = "Tengok ke kanan, lalu kembali hadap depan";
+"LN_RA_Virtual_Camera_Not_Supported_1034845" = "Kamera virtual tidak didukung. Ubah pilihan kamera Anda.";
+"LN_RA_Verify_Turn_left_1034845" = "Tengok ke kiri, lalu kembali hadap depan";
+"LN_RA_Apply_Failed_Title_1034845" = "Avatar realistis tidak dapat dimuat";
+"LN_RA_Introduction_Page_In_Meeting_1034845" = "Anda tidak dapat membuat avatar yang realistis saat sedang rapat.";
+"LN_RA_Apply_Failed_Description_1034845" = "Video dan avatar realistis Anda dinonaktifkan. Sebagai gantinya, Anda dapat mengaktifkan avatar kartun atau video.";
+"LN_RA_Photo_Face_Not_Visible_1034845" = "Wajah Anda tidak sepenuhnya terlihat. Tataplah secara lurus ke kamera.";
+"LN_Realistic_Avatar_Apply_1034845" = "Terapkan";
+"LN_Realistic_Avatar_Ready_1034845" = "Avatar realistis Anda sudah siap.";
+"LN_RA_Verify_Description_1034845" = "Ikuti petunjuk pada layar untuk memverifikasi bahwa foto yang ditambahkan adalah Anda. Tekan tombol Mulai untuk memulai.";
+"LN_RA_Upload_Photo_1034845" = "Unggah foto";
+"LN_Realistic_Avatar_Creation_Failed_1034845" = "Pembuatan avatar realistis Anda gagal. Coba lagi nanti.";
+"LN_Realistic_Avatar_1034845" = "Avatar realistis";
+"LN_RA_Introduction_Page_Limit_Description_1034845" = "Anda dapat membuat hingga 5 avatar realistis. Hapus avatar yang sudah ada sebelum membuat yang baru atau buat avatar kartun.";
+"LN_RA_Take_Photo_1034845" = "Ambil foto";
+"LN_RA_Verify_Open_mouth_1034845" = "Buka mulut, lalu tutup";
+"LN_RA_Photo_Requirement_1034845" = "Ambil atau unggah foto diri Anda dengan pencahayaan yang baik. Posisikan diri Anda dalam garis tepi dengan wajah Anda berada di tengah, bahu terlihat, dan tidak ada yang menutupi wajah Anda.";
+"LN_RA_Verify_Blink_1034845" = "Kedipkan kedua mata";
+"LN_RA_Verification_Complete_1034845" = "Verifikasi selesai";
+"LN_Realistic_Avatar_Try_Again_1034845" = "Coba lagi";
+"LN_Cartoon_Avatar_1034845" = "Avatar kartun";
+"LN_RA_Photo_Face_Outside_1034845" = "Wajah Anda berada di luar bingkai. Posisikan diri Anda ke tengah.";
+"LN_VoiceNotes_disabled_939162" = "Catatan saya telah dinonaktifkan";
+"LN_Switch_Message_939162" = "Ganti akun";
+"LN_Return_Notes_939162" = "Kembali ke catatan";
+"LN_Switch_939162" = "Alihkan";
+"LN_Switch_Info_939162" = "Anda sedang membuat catatan. Pembuatan catatan akan dihentikan dan disimpan secara otomatis.";

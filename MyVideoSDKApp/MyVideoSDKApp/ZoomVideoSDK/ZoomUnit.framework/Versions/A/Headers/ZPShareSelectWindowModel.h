@@ -54,7 +54,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (id)modelWithCaptureModel:(ZMCaptureModel*)model;
 - (id)initWithCaptureModel:(ZMCaptureModel*)model;
 - (BOOL)isValid;
-- (BOOL)isEqualToModel:(ZPShareSelectWindowModel *)model;
 - (BOOL)isDesktopModel;
 - (BOOL)isAsOrPsModel:(BOOL)containZapp;
 - (BOOL)isAsModel;
@@ -74,12 +73,21 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)supportBoShare;
 - (BOOL)supportWatermark;
 + (NSArray<ZPShareSelectWindowModel*>*)getScreensModelList;
-+ (NSArray<ZPShareSelectWindowModel*>*)getWindowsModelList;
-/*
- pIds indicates the sharing process
- if pIds is nil, then the system local share window is excluded
+/**
+ * Get windows model list excluding local share windows
+ * @return Array of ZPShareSelectWindowModel objects, excluding Zoom windows by default
  */
-+ (NSArray<ZPShareSelectWindowModel*>*)getWindowsModelListExcludingLocalShareWindows:(nullable NSArray<NSNumber *> *)pIds;
++ (NSArray<ZPShareSelectWindowModel*>*)getWindowsModelList;
+
+/**
+ * Get windows model list excluding local share windows with option to include Zoom windows
+ * @param includeZoomWindow Whether to include Zoom windows in the result
+ * @return Array of ZPShareSelectWindowModel objects
+ */
++ (NSArray<ZPShareSelectWindowModel*>*)getWindowsModelListWithIncludeZoomWindow:(BOOL)includeZoomWindow;
++ (NSArray<ZPShareSelectWindowModel*>*)getWindowsModelListExcludingLocalShareWindows:(nullable NSArray<NSNumber *> *)pIds
+                                                                   includeZoomWindow:(BOOL)includeZoomWindow;
+
 + (NSArray<ZPShareSelectWindowModel*>*)getProcessModeList;
 /*
  pIds indicates the sharing process

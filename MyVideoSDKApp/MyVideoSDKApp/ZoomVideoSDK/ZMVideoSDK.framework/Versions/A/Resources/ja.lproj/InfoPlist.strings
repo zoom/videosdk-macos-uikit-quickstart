@@ -5,3 +5,4 @@ NSCalendarsFullAccessUsageDescription= "イベントを表示するには、Zoom
 NSLocalNetworkUsageDescription= "この処理は、Zoom クライアントで AirPlay やピアツーピアのミーティングを有効にするために必要です。";
 NSBluetoothAlwaysUsageDescription= "許可すると Zoom Workplace が近くの Zoom Rooms を検出できるようになります。";
 NSCameraUsageDescription = "参加者に画面を表示するには、Zoomにカメラへのアクセス権限が要求されます。";
+NSAudioCaptureUsageDescription = "他のアプリからオーディオをキャプチャするには、アクセスを許可してください。";

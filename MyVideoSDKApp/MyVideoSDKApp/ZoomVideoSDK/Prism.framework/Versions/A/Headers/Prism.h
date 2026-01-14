@@ -61,10 +61,13 @@ FOUNDATION_EXPORT const unsigned char PrismVersionString[];
 #import <Prism/ZMSplitDivider.h>
 
 //baseWindow
+#import <Prism/ZMBasePanel.h>
 #import <Prism/ZMBaseWindow.h>
 #import <Prism/ZMPureWindow.h>
 #import <Prism/ZMPlainWindow.h>
 #import <Prism/ZMWindowWidgets.h>
+#import <Prism/ZMWindow.h>
+#import <Prism/ZMPanel.h>
 
 //textView/textField
 #import <Prism/ZMTokenTextAttachmentCell.h>
@@ -123,6 +126,7 @@ FOUNDATION_EXPORT const unsigned char PrismVersionString[];
 
 //Appearance
 #import <Prism/ZMAppearanceImage.h>
+#import <Prism/ZMPigment.h>
 
 //event
 #import <Prism/ZMKeyBoardType.h>
@@ -169,7 +173,6 @@ FOUNDATION_EXPORT const unsigned char PrismVersionString[];
 #import <Prism/ZMAccessibilityElement.h>
 #import <Prism/ZMAppearanceHelper.h>
 #import <Prism/ZMKeyboardLayoutMgr.h>
-#import <Prism/ZMAppearanceColor.h>
 #import <Prism/ZMWeakProxy.h>
 #import <Prism/ZMDelayCall.h>
 #import <Prism/ZMNSRectCorner.h>
@@ -204,3 +207,10 @@ FOUNDATION_EXPORT const unsigned char PrismVersionString[];
 #import <Prism/ZMTipView.h>
 #import <Prism/NSView+Appearance.h>
 #import <Prism/ZMAlertViewController.h>
+
+//Theme
+#import <Prism/NSView+Theme.h>
+
+//NavBar
+#import <Prism/ZMTabItemData.h>
+#import <Prism/ZMMorePanel.h>

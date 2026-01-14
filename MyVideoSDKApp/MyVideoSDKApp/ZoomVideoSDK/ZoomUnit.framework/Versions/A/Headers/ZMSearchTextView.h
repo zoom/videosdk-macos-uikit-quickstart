@@ -45,10 +45,6 @@
 
 - (void)updateTextViewContainerInset;
 
-- (NSRange)inputNearFieldSelectionStringRange ;
-
-- (NSString *)inputNearFieldSelectionString;
-
 + (ZMSearchTextView *)createSearchTextView NS_RETURNS_RETAINED;
 
 @end

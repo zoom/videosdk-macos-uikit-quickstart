@@ -14,22 +14,22 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKVirtualBackgroundItem : NSObject
 
 /**
- * @brief Get the current item image file path.
+ * @brief Gets the current item image file path.
  */
 @property (nonatomic, copy, readonly) NSString *imageFilePath;
 
 /**
- * @brief Get the current item image name.
+ * @brief Gets the current item image name.
  */
 @property (nonatomic, copy, readonly) NSString *imageName;
 
 /**
- * @brief Get the current item background type.
+ * @brief Gets the current item background type.
  */
 @property (nonatomic, assign, readonly) ZMVideoSDKVirtualBackgroundDataType type;
 
 /**
- * @brief Determine whether the virtual background can be deleted.
+ * @brief Determines whether the virtual background supports deletion.
  */
 @property (nonatomic, assign, readonly) BOOL canVirtualBackgroundBeDeleted;
 
@@ -43,27 +43,27 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ZMVideoSDKCameraDevice : NSObject
 /**
- * @brief Get the camera's device Id.
+ * @brief Gets the camera's device Id.
  */
 @property (nonatomic, copy, readonly) NSString* deviceID;
     
 /**
- * @brief Get the camera's device name.
+ * @brief Gets the camera's device name.
  */
 @property (nonatomic, copy, readonly) NSString* deviceName;
     
 /**
- * @brief Determine if the device is selected.
+ * @brief Determines if the device is selected.
  */
 @property (nonatomic, assign, readonly) BOOL isSelectedDevice;
 
 /**
- * @brief Determine whether the camera is selected as multiple stream video.
+ * @brief Determines whether the camera is selected as multiple stream video.
  */
 @property (nonatomic, assign, readonly) BOOL isSelectedAsMultiCamera;
     
 /**
- * @brief Determine whether the camera is running as multiple stream video.
+ * @brief Determines whether the camera is running as multiple stream video.
  */
 @property (nonatomic, assign, readonly) BOOL isRunningAsMultiCamera;
 @end
@@ -71,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * @class ZMVideoSDKPreferenceSetting
- * @brief Video preference interface. When setting custom modes, the maximum and minimum frame rates are provided by the developer. If the current bandwidth cannot maintain the minimum frame rate, the video system will drop to the next lower resolution. The default maximum and minimum frame rates for other modes are 0.
+ * @brief Video preference interface. When setting custom modes, the maximum and minimum frame rates are provided by the developer. If the current bandwidth cannot maintain the minimum frame rate, the video system drops to the next lower resolution. The default maximum and minimum frame rates for other modes are 0.
  */
 @interface ZMVideoSDKPreferenceSetting : NSObject
 /**
@@ -100,34 +100,34 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKVideoHelper : NSObject
     
 /**
- * @brief Call this method to start sending local video data from the camera.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Starts sending local video data from the camera.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)startVideo;
     
 /**
- * @brief Call this method to stop sending local video data from the camera.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Stops sending local video data from the camera.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)stopVideo;
     
 /**
- * @brief Call this method to rotate the video when the device is rotated.
+ * @brief Rotates the video when the device is rotated.
  * @param rotation It is emum.
- * @return YES means the function is success, otherwise not.
+ * @return YES if the function is success. Otherwise, NO.
  */
 - (BOOL)rotateMyVideo:(ZMVideoRotation)rotation;
     
 /**
- * @brief Switch to the next available camera.
- * @return YES means the function is success, otherwise not.
+ * @brief Switches to the next available camera.
+ * @return YES if the function is success. Otherwise, NO.
  */
 - (BOOL)switchCamera;
     
 /**
- * @brief Switch to the camera passed in as cameraDevice.
- * @param cameraDeviceID The id of camera.
- * @return YES means the function is success, otherwise not.
+ * @brief Switches to the camera passed in as cameraDevice.
+ * @param cameraDeviceID The ID of camera.
+ * @return YES if the function is success. Otherwise, NO.
  */
 - (BOOL)selectCamera:(NSString*)cameraDeviceID;
     
@@ -139,15 +139,15 @@ NS_ASSUME_NONNULL_BEGIN
     
 /**
  * @brief Returns a collection of camera devices available to share the video as an object of ZMVideoSDKCameraDevice.
- * @return Camera devices list.
+ * @return If the function succeeds, it returns camera devices list. Otherwise, this function fails and returns nil.
  */
 - (NSArray<ZMVideoSDKCameraDevice *>* _Nullable)getCameraList;
 
 /**
- * @brief Check whether the current user has permission to control the camera.
- * @param canControl The output parameter. YES means can control local camera, otherwise not.
+ * @brief Checks whether the current user has permission to control the camera.
+ * @param canControl The output parameter. YES indicates can control local camera, NO otherwise.
  * @param deviceID The camera device ID to check. The default is the main camera ID.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)canControlCamera:(BOOL *)canControl deviceID:(nullable NSString*)deviceID;
 
@@ -155,7 +155,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief Pan the camera to the left.
  * @param range Rotation range, 10 <= range <= 100.
  * @param deviceID The camera device ID to rotate. The default is the main camera ID.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)turnCameraLeft:(unsigned int)range deviceID:(nullable NSString*)deviceID;
 
@@ -163,7 +163,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief Pan the camera to the right.
  * @param range Rotation range, 10 <= range <= 100.
  * @param deviceID The camera device ID to rotate. The default is the main camera ID.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)turnCameraRight:(unsigned int)range deviceID:(nullable NSString*)deviceID;
 
@@ -171,7 +171,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief Tilt the camera up.
  * @param range Rotation range, 10 <= range <= 100.
  * @param deviceID The camera device ID to rotate. The default is the main camera ID.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)turnCameraUp:(unsigned int)range deviceID:(nullable NSString*)deviceID;
 
@@ -179,7 +179,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief Tilt the camera down.
  * @param range Rotation range, 10 <= range <= 100.
  * @param deviceID The camera device ID to rotate. The default is the main camera ID.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)turnCameraDown:(unsigned int)range deviceID:(nullable NSString*)deviceID;
 
@@ -187,7 +187,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief Zoom the camera in.
  * @param range Zoom range, 10 <= range <= 100.
  * @param deviceID The camera device ID to operate. The default is the main camera ID.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)zoomCameraIn:(unsigned int)range deviceID:(nullable NSString*)deviceID;
 
@@ -195,72 +195,72 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief Zoom the camera out.
  * @param range Zoom range, 10 <= range <= 100.
  * @param deviceID The camera device ID to operate. The default is the main camera ID.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)zoomCameraOut:(unsigned int)range deviceID:(nullable NSString*)deviceID;
 
 /**
  * @brief Adjust user's video solution and frame-rate.
  * @param preferenceSetting An instance of ZMVideoSDKPreferenceSetting.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)setVideoQualityPreference:(ZMVideoSDKPreferenceSetting*)preferenceSetting;
 
 /**
- * @brief Enable multiple stream video if you have multiple cameras, and other participants can see multiple videos of you.
+ * @brief Enables multiple stream video if you have multiple cameras, and other participants can see multiple videos of you.
  * @param cameraDeviceID The camera ID for the camera to enable.
- * @param customDeviceName The custom device name of the camera. If this parameter is not passed, a default name will be generated.
- * @return If the function succeeds, it will return YES, otherwise returns NO.
+ * @param customDeviceName The camera's custom device name. If this parameter is not passed, a default name will be generated.
+ * @return If the function succeeds, it returns YES. Otherwise, NO.
  */
 - (BOOL)enableMultiStreamVideo:(NSString *)cameraDeviceID customDeviceName:(nullable NSString *)customDeviceName;
 
 /**
- * @brief Disable multiple stream video.
- * @param cameraDeviceID The camera id which you want to disable.
- * @return If the function succeeds, it will return YES, otherwise returns NO.
+ * @brief Disables multiple stream video.
+ * @param cameraDeviceID The camera ID which you want to disable.
+ * @return If the function succeeds, it returns YES. Otherwise, NO.
  */
 - (BOOL)disableMultiStreamVideo:(NSString *)cameraDeviceID;
 
 /**
  * @brief Turn off multiple stream video.
  * @param cameraDeviceID The camera ID which is running as multiple camera.
- * @return If the function succeeds, it will return YES, otherwise returns NO.
+ * @return If the function succeeds, it returns YES. Otherwise, NO.
  */
 - (BOOL)muteMultiStreamVideo:(NSString *)cameraDeviceID;
 
 /**
  * @brief Turn on multiple stream video.
  * @param cameraDeviceID The camera ID which is running as multiple camera.
- * @return If the function succeeds, it will return YES, otherwise returns NO.
+ * @return If the function succeeds, it returns YES. Otherwise, NO.
  */
 - (BOOL)unmuteMultiStreamVideo:(NSString *)cameraDeviceID;
 /**
- * @brief Get the device ID associated with my multi-camera pipe.
+ * @brief Gets the device ID associated with my multi-camera pipe.
  * @param pipe My multi-camera pipe.
- * @return The video device ID if successful. Otherwise returns nil.
+ * @return If the function succeeds, it returns the video device ID. Otherwise, this function fails and returns nil.
  */
 - (NSString * _Nullable)getDeviceIDByMyPipe:(ZMVideoSDKRawDataPipe *)pipe;
 /**
- * @brief Subscribe preview video raw data with a callback.
+ * @brief Subscribes preview video raw data with a callback.
  * @param listener The callback sink object.
- * @param cameraDeviceID The camera id.
- * @return If the function succeeds, it will return @c ZMVideoSDKErrors_Success.
+ * @param cameraDeviceID The camera ID.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @deprecated Use \link ZMVideoSDKVideoHelper::startVideoPreview:deviceID: resolution:\endlink instead.
  */
 - (ZMVideoSDKErrors)startVideoPreview:(id<ZMVideoSDKRawDataPipeDelegate>)listener deviceID:(NSString* _Nullable)cameraDeviceID DEPRECATED_MSG_ATTRIBUTE("Use -startVideoPreview:deviceID:resolution: instead");
 
 /**
- * @brief Subscribe to preview video raw data with a callback.
+ * @brief Subscribes to preview video raw data with a callback.
  * @param listener The callback object.
  * @param cameraDeviceID Camera device ID.
- * @param resolution Specify the resolution at which to open the camera.
- * @return If the function succeeds, the return value is ZMVideoSDKErrors_Success.
+ * @param resolution Specify the resolution for opening the camera.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)startVideoPreview:(id<ZMVideoSDKRawDataPipeDelegate>)listener deviceID:(NSString* _Nullable)cameraDeviceID resolution:(ZMVideoSDKResolution)resolution;
 /**
  * @brief UnSubscribe preview video raw data with the subscribed callback.
  * @param listener The callback sink object.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)stopVideoPreview:(id<ZMVideoSDKRawDataPipeDelegate>)listener;
 
@@ -268,61 +268,61 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief Starts the preview video with a view.
  * @param view The view to preview video.
  * @param cameraDeviceID The camera ID.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)startVideoCanvasPreview:(NSView*)view deviceID:(NSString* _Nullable)cameraDeviceID;
 
 /**
  * @brief Stops the preview video.
  * @param view The view to preview video.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)stopVideoCanvasPreview:(NSView*)view;
 
 /**
- * @brief Add virtual background object.
+ * @brief Adds virtual background object.
  * @param imagePath The path of image.
  * @param imageItem An object of ZMVideoSDKVirtualBackgroundItem. Once the function is called successfully, this parameter will store the pointer to the ZMVideoSDKVirtualBackgroundItem*.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)addVirtualBackgroundItem:(NSString *)imagePath imageItem:(ZMVideoSDKVirtualBackgroundItem * _Nullable * _Nonnull)imageItem;
 
 /**
- * @brief Remove virtual background object.
+ * @brief Removes virtual background object.
  * @param imageItem The ZMVideoSDKVirtualBackgroundItem object to be removed.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)removeVirtualBackgroundItem:(ZMVideoSDKVirtualBackgroundItem *)imageItem;
 
 /**
  * @brief Returns a collection of virtual background item as an object of ZMVideoSDKVirtualBackgroundItem.
- * @return If the function succeeds, it will return a list of virtual background items.
+ * @return If the function succeeds, it returns a list of virtual background items. Otherwise, this function fails and returns nil.
  */
 - (NSArray<ZMVideoSDKVirtualBackgroundItem* >* _Nullable)getVirtualBackgroundItemList;
 
 /**
  * @brief Select virtual background item.
  * @param imageItem The ZMVideoSDKVirtualBackgroundItem object to select.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)setVirtualBackgroundItem:(ZMVideoSDKVirtualBackgroundItem*)imageItem;
 
 /**
- * @brief Get a selected virtual background item.
- * @return If the function succeeds, it will return the object of ZMVideoSDKVirtualBackgroundItem.
+ * @brief Gets a selected virtual background item.
+ * @return If the function succeeds, it returns the object of ZMVideoSDKVirtualBackgroundItem. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKVirtualBackgroundItem* _Nullable)getSelectedVirtualBackgroundItem;
 
 /**
- * @brief Determine whether current aspect ratio is the original aspect ratio of video.
- * @return YES if is original aspect ratio, otherwise NO.
+ * @brief Determines whether current aspect ratio is the original aspect ratio of video.
+ * @return YES if is original aspect ratio. Otherwise, NO.
  */
 - (BOOL)isOriginalAspectRatioEnabled;
 
 /**
- * @brief Set the aspect ratio of the video sent out.
- * @param bEnabled NO means the aspect ratio is 16:9, YES means that using the original aspect ratio of video.
- * @return If the function succeeds, it will return YES.
+ * @brief Sets the aspect ratio of the video sent out.
+ * @param bEnabled NO indicates the aspect ratio is 16:9, YES indicates that using the original aspect ratio of video.
+ * @return If the function succeeds, it returns YES. Otherwise, NO.
  * @note If session is using video source and data_mode is not VideoSourceDataMode_None, default always use original aspect ration of video.
  */
 - (BOOL)enableOriginalAspectRatio:(BOOL)bEnabled;
@@ -330,65 +330,65 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * @brief Mirrors the current user's video. Valid only for canvas.
- * @param bEnabled YES to enable mirror my video.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @param bEnabled YES to enable mirror my video, NO to disable.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)mirrorMyVideo:(BOOL)bEnabled;
 
 /**
- * @brief Determine whether mirror my video is enabled.
- * @return YES if mirror my video is enabled, otherwise NO.
+ * @brief Determines whether mirror my video is enabled.
+ * @return YES if mirror my video is enabled. Otherwise, NO.
  */
 - (BOOL)isMyVideoMirrored;
 
 /**
- * @brief Determine if the current device supports alpha channel mode.
- * @return YES indicates that the current device supports alpha channel mode, Otherwise it does not.
+ * @brief Determines if the current device supports alpha channel mode.
+ * @return YES if that the current device supports alpha channel mode. Otherwise, NO.
  */
 - (BOOL)isDeviceSupportAlphaChannelMode;
 
 /**
- * @brief Determine if alpha channel mode can be enabled.
- * @return YES means it can be enabled. Otherwise NO.
+ * @brief Determines if alpha channel mode is available.
+ * @return YES if it is available. Otherwise, NO.
  */
 - (BOOL)canEnableAlphaChannelMode;
 
 /**
- * @brief Enable or disable alpha channel mode.
- * @param enabled YES indicates to enable alpha channel mode. Otherwise, disable it.
- * @return If the function succeeds, the return value is ZMVideoSDKErrors_Success.
+ * @brief Enables or disables alpha channel mode.
+ * @param enabled YES indicates to enable alpha channel mode, NO to disable.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)enableAlphaChannelMode:(BOOL)enabled;
 
 /**
- * @brief Determine if alpha channel mode is enabled.
- * @return YES indicates is in alpha channel mode. Otherwise NO.
+ * @brief Determines if alpha channel mode is enabled.
+ * @return YES if is in alpha channel mode. Otherwise, NO.
  */
 - (BOOL)isAlphaChannelModeEnabled;
 
 /**
- * @brief Call this method to spotlight user's video.
+ * @brief Spotlights user's video.
  * @param user Which you  want to spotlight video.
- * @return If the function succeeds, the return value is ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)spotLightVideo:(ZMVideoSDKUser*)user;
 
 /**
- * @brief Call this method to unSpotlight user's video.
+ * @brief UnSpotlights user's video.
  * @param user Which you  want to unSpotlight video.
- * @return If the function succeeds, the return value is ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)unSpotLightVideo:(ZMVideoSDKUser*)user;
 
 /**
- * @brief Call this method to set all user's video unSpotlight.
- * @return If the function succeeds, the return value is ZMVideoSDKErrors_Success.
+ * @brief Sets all user's video unSpotlight.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)unSpotlightAllVideos;
 
 /**
- * @brief Enable or disable alpha channel mode.
- * @return If the function succeeds, the return value is ZMVideoSDKUser object list.
+ * @brief Enables or disables alpha channel mode.
+ * @return If the function succeeds, it returns ZMVideoSDKUser object list. Otherwise, this function fails and returns nil.
  */
 - (NSArray<ZMVideoSDKUser *>* _Nullable)getSpotlightedVideoUserList;
 @end

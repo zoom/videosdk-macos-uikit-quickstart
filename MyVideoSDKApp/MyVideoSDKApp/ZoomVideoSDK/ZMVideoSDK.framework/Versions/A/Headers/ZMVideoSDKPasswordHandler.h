@@ -14,13 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @brief Input session password.
  * @param password The session password.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)inputSessionPassword:(NSString*)password;
     
 /**
- * @brief Cancel input password.
- * @return If the function succeeds, it will return ZMVideoSDKErrors_Success.
+ * @brief Cancels input password.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)leaveSessionIgnorePassword;
 

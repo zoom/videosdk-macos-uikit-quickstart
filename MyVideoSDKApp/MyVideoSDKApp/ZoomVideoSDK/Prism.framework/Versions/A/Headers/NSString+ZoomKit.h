@@ -112,7 +112,8 @@ APPKIT_EXTERN NSString * const ZMFileInfoFileNameKey;
 
 @property (nonatomic, assign, readonly) NSInteger numberOfLines;
 - (NSString*)substringWithMaxUTF8Size:(NSInteger)maxUTF8ByteSize;
-
+- (NSString *)zm_base64UrlToBase64;
+- (NSString *)zm_base64ToBase64Url;
 @end
 
 @interface NSString (ZMHotkey)

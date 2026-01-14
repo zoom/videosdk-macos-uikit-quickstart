@@ -108,9 +108,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updatePlayerWithSceneID:(NSString *)sceneID seekTime:(CGFloat)seekTime;
 - (void)updatePlayerWithSceneID:(NSString *)sceneID volume:(CGFloat)volume;
 - (void)updatePlayerWithSceneID:(NSString *)sceneID endOperation:(ZMMTStudioVideoEndOperation)videoEndOperation fileID:(NSString *)fileID;
+- (void)requestVideoSceneInfo;
 
 - (CmmPSLLayout)convertLayoutWithScene:(ZMMTStudioScene*)scene;
 - (nullable NSArray<ZMUser *> *)gallerySceneUsersWithMaxCount:(NSInteger)maxCount;
+- (CGFloat)getShareAreaWithLayoutType:(NSInteger)layoutID;
 
 @end
 

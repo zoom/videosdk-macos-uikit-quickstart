@@ -313,6 +313,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if defined(__OBJC__)
 
 
+
 @class NSEvent;
 @class NSWindow;
 
@@ -344,19 +345,89 @@ SWIFT_CLASS_NAMED("ShareCaptureEngine")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSString;
+@class NSTextCheckingResult;
+
+/// The Objective-C representation of <code>WebLinkDetector</code>.
+SWIFT_CLASS_NAMED("WebLinkDetectorReference")
+@interface ZMKWebLinkDetector : NSObject
+/// Returns an array containing all the matches of the possible links
+/// in the string.
+/// \param string The string to match.
+///
+///
+/// returns:
+/// An array of NSTextCheckingResult objects. Each result
+/// gives the overall matched range via its <code>range</code> property,
+/// and the URL from that range via <code>url</code> property.
+- (NSArray<NSTextCheckingResult *> * _Nonnull)matchesInString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class NSMutableAttributedString;
+
+@interface ZMKWebLinkDetector (SWIFT_EXTENSION(ZoomUnit))
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSArray<NSAttributedStringKey> * _Nonnull commonAppTagKeys;)
++ (NSArray<NSAttributedStringKey> * _Nonnull)commonAppTagKeys SWIFT_WARN_UNUSED_RESULT;
++ (NSArray<NSString *> * _Nonnull)parseURLs:(NSMutableAttributedString * _Nullable)msg forCommonApp:(BOOL)isCommonApp urlOnly:(BOOL)urlOnly SWIFT_WARN_UNUSED_RESULT;
++ (NSArray<NSString *> * _Nonnull)parseURLs:(NSMutableAttributedString * _Nullable)msg forCommonApp:(BOOL)isCommonApp SWIFT_WARN_UNUSED_RESULT;
++ (NSArray<NSString *> * _Nonnull)parseURLs:(NSMutableAttributedString * _Nullable)msg urlOnly:(BOOL)urlOnly SWIFT_WARN_UNUSED_RESULT;
++ (NSArray<NSString *> * _Nonnull)parseURLs:(NSMutableAttributedString * _Nullable)msg SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC8ZoomUnit29ZMCallUpgradeDialogButtonInfo")
+@interface ZMCallUpgradeDialogButtonInfo : NSObject
+@property (nonatomic, copy) NSString * _Nonnull text;
+@property (nonatomic, copy) NSString * _Nonnull link;
+@property (nonatomic, readonly) BOOL isValid;
+- (nonnull instancetype)initWithDialogButtonText:(NSString * _Nonnull)text link:(NSString * _Nonnull)link OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC8ZoomUnit23ZMCallUpgradeDialogInfo")
+@interface ZMCallUpgradeDialogInfo : NSObject
+@property (nonatomic, copy) NSString * _Nullable noticeID;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable subTitle;
+@property (nonatomic, strong) ZMCallUpgradeDialogButtonInfo * _Nullable primaryButtonInfo;
+@property (nonatomic, strong) ZMCallUpgradeDialogButtonInfo * _Nullable secondaryButtonInfo;
+@property (nonatomic) BOOL isValid;
+@property (nonatomic) int32_t numOfMeetings;
+@property (nonatomic, strong) NSImage * _Nullable lightImage;
+@property (nonatomic, strong) NSImage * _Nullable darkImage;
+@property (nonatomic, copy) NSString * _Nullable videoUrl;
+@property (nonatomic, copy) NSString * _Nullable imageUrl;
+- (nonnull instancetype)initWithNoticeID:(NSString * _Nullable)noticeID title:(NSString * _Nullable)title subTitle:(NSString * _Nullable)subTitle primaryButtonInfo:(ZMCallUpgradeDialogButtonInfo * _Nullable)primaryButtonInfo secondaryButtonInfo:(ZMCallUpgradeDialogButtonInfo * _Nullable)secondaryButtonInfo isValid:(BOOL)isValid numOfMeetings:(int32_t)numOfMeetings lightImage:(NSImage * _Nullable)lightImage darkImage:(NSImage * _Nullable)darkImage OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithPhoneSetupLink:(NSString * _Nonnull)link OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 SWIFT_CLASS("_TtC8ZoomUnit21ZMDeepLinkFilterModel")
 @interface ZMDeepLinkFilterModel : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSString;
 
 SWIFT_CLASS("_TtC8ZoomUnit14ZMDeepLinkInfo")
 @interface ZMDeepLinkInfo : NSObject
 @property (nonatomic, copy) NSString * _Nonnull deepLink;
 @property (nonatomic, copy) NSString * _Nullable showName;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC8ZoomUnit16ZMDeepLinkRouter")
+@interface ZMDeepLinkRouter : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ZMDeepLinkRouter * _Nonnull shared;)
++ (ZMDeepLinkRouter * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (void)openDeeplink:(NSString * _Nullable)link;
 @end
 
 @class ZMDialogViewController;
@@ -463,6 +534,21 @@ SWIFT_PROTOCOL("_TtP8ZoomUnit21ZMGiftV2PanelDelegate_")
 @optional
 - (void)windowDidClickPrimaryButton:(ZMGiftV2Panel * _Nonnull)panel;
 - (void)windowDidClickSecondaryButton:(ZMGiftV2Panel * _Nonnull)panel;
+@end
+
+@class ZPHUDWindowManager;
+@class ZPHUDWindowModel;
+
+SWIFT_PROTOCOL("_TtP8ZoomUnit19ZMHUDWindowDelegate_")
+@protocol ZMHUDWindowDelegate
+/// Called when a HUD toast is removed
+/// \param manager The HUD window manager
+///
+/// \param model The HUD window model that was removed
+///
+/// \param autoDisappear Whether the toast was automatically dismissed (true) or manually closed (false)
+///
+- (void)hudWindowManager:(ZPHUDWindowManager * _Nonnull)manager didRemoveHUDModel:(ZPHUDWindowModel * _Nonnull)model autoDisappear:(BOOL)autoDisappear;
 @end
 
 
@@ -628,6 +714,76 @@ SWIFT_CLASS("_TtC8ZoomUnit12ZMPlayerView")
 
 
 
+SWIFT_CLASS("_TtC8ZoomUnit26ZMReportAttachmentBaseView")
+@interface ZMReportAttachmentBaseView : ZMBaseView
+@property (nonatomic, readonly) BOOL canBecomeKeyView;
+- (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC8ZoomUnit22ZMReportTitleTextField")
+@interface ZMReportTitleTextField : NSTextField
+- (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_CLASS("_TtC8ZoomUnit24ZMReportWindowController")
+@interface ZMReportWindowController : NSWindowController
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ZMReportWindowController * _Nonnull sharedController;)
++ (ZMReportWindowController * _Nonnull)sharedController SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, copy) NSString * _Nonnull audioLogDir;
+- (nonnull instancetype)initWithWindow:(NSWindow * _Nullable)window OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+@end
+
+
+@class NSNotification;
+
+@interface ZMReportWindowController (SWIFT_EXTENSION(ZoomUnit)) <NSTextFieldDelegate>
+- (void)controlTextDidChange:(NSNotification * _Nonnull)obj;
+@end
+
+
+
+@class ZMScreenShotItem;
+
+@interface ZMReportWindowController (SWIFT_EXTENSION(ZoomUnit)) <ZMScreenshotCallback>
+- (void)didCaptureScreenshot:(ZMScreenShotItem * _Null_unspecified)item;
+- (NSView * _Null_unspecified)captureScreenSender SWIFT_WARN_UNUSED_RESULT;
+- (void)captureFailed;
+@end
+
+@class NSCollectionView;
+@class NSIndexPath;
+@class NSCollectionViewItem;
+
+@interface ZMReportWindowController (SWIFT_EXTENSION(ZoomUnit)) <NSCollectionViewDataSource, ZMContentCollectionViewDelegate>
+- (NSInteger)numberOfSectionsInCollectionView:(NSCollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)collectionView:(NSCollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (NSCollectionViewItem * _Nonnull)collectionView:(NSCollectionView * _Nonnull)collectionView itemForRepresentedObjectAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface ZMReportWindowController (SWIFT_EXTENSION(ZoomUnit))
+- (void)resetAndRelayout;
+- (void)resetAndRelayoutWithWindow:(NSWindow * _Nonnull)window;
+- (void)resetAndRelayoutWithSelectedModel:(NSInteger)selectedModel;
+- (void)resetAndRelayoutWithSelectedModel:(NSInteger)selectedModel type:(NSInteger)type;
+- (void)resetToJMF;
+- (void)reportDocsErrorWithIsFromOutMeeting:(BOOL)isFromOutMeeting;
+- (void)reportNotesError:(BOOL)isFromOutMeeting;
+- (void)reportWhiteboardError:(BOOL)isFromOutMeeting;
+@end
+
+
+
+@interface ZMReportWindowController (SWIFT_EXTENSION(ZoomUnit))
+- (void)keyDown:(NSEvent * _Nonnull)event;
+@end
+
+
 SWIFT_CLASS("_TtC8ZoomUnit9ZMTabView")
 @interface ZMTabView : NSTabView
 @property (nonatomic, strong) NSColor * _Nullable backgroundColor;
@@ -657,6 +813,8 @@ SWIFT_CLASS("_TtC8ZoomUnit18ZMUniversalTipView")
 @property (nonatomic, strong) ZMLabel * _Nonnull titleField;
 @property (nonatomic, strong) ZMLabel * _Nonnull informationField;
 @property (nonatomic) BOOL showClose;
+@property (nonatomic) CGFloat maxWidth;
+@property (nonatomic) CGFloat minWidth;
 @property (nonatomic) BOOL showNew;
 @property (nonatomic) BOOL showBeta;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
@@ -681,18 +839,7 @@ SWIFT_PROTOCOL("_TtP8ZoomUnit26ZMUniversalTipViewDelegate_")
 - (void)chatTabTipViewClose:(ZMUniversalTipView * _Nonnull)tipView;
 @end
 
-
-SWIFT_CLASS("_TtC8ZoomUnit11ZPHUDWindow")
-@interface ZPHUDWindow : NSPanel
-@property (nonatomic, readonly) BOOL canBecomeKeyWindow;
-- (nonnull instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)style backing:(NSBackingStoreType)backingStoreType defer:(BOOL)flag OBJC_DESIGNATED_INITIALIZER;
-+ (BOOL)accessibilityIsIgnored SWIFT_WARN_UNUSED_RESULT;
-- (void)invisibleInSharing;
-@end
-
 @class NSTimer;
-@class ZPHUDWindowModel;
-@class ZPHUDWindowManager;
 
 SWIFT_CLASS("_TtC8ZoomUnit21ZPHUDWindowController")
 @interface ZPHUDWindowController : NSWindowController
@@ -706,13 +853,7 @@ SWIFT_CLASS("_TtC8ZoomUnit21ZPHUDWindowController")
 @end
 
 
-@interface ZPHUDWindowController (SWIFT_EXTENSION(ZoomUnit))
-+ (ZPHUDWindowController * _Nonnull)createHUDWindowWithModel:(ZPHUDWindowModel * _Nullable)model manager:(ZPHUDWindowManager * _Nullable)manager SWIFT_WARN_UNUSED_RESULT;
-- (void)updateDescFieldForChatMessage:(NSString * _Nullable)theDesc;
-@end
-
 @class PZMToastView;
-@class NSTextField;
 
 @interface ZPHUDWindowController (SWIFT_EXTENSION(ZoomUnit))
 - (void)windowDidLoad;
@@ -738,6 +879,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ZPHUDWindowM
 @property (nonatomic, strong) NSTimer * _Nullable timer;
 @property (nonatomic) BOOL ignoreNormalMessage;
 @property (nonatomic, copy) NSArray<ZPHUDWindowController *> * _Nonnull controllers;
+/// Delegate for receiving HUD window events
+@property (nonatomic, weak) id <ZMHUDWindowDelegate> _Nullable delegate;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -757,13 +900,21 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ZPHUDWindowM
 - (void)removeHudWindowModel:(ZPHUDWindowModel * _Nullable)model;
 - (void)removeHudWindowItem:(ZPHUDWindowController * _Nullable)item;
 - (void)ignoreMessageAtStart;
+/// Clean up ToastCoordinator related resources
+- (void)cleanupToastCoordinator;
+/// Get current number of displayed toasts (only valid when using ToastCoordinator)
+@property (nonatomic, readonly) NSUInteger currentToastCount;
 @end
 
+@class PZMSystemNotificationButton;
+@class PZMMenuItem;
 
 SWIFT_CLASS("_TtC8ZoomUnit16ZPHUDWindowModel")
 @interface ZPHUDWindowModel : NSObject
 @property (nonatomic, copy) NSString * _Nullable friendId;
 @property (nonatomic, copy) NSString * _Nonnull photoUrl;
+@property (nonatomic, copy) NSString * _Nullable identifier;
+@property (nonatomic, strong) NSImage * _Nullable customIcon;
 @property (nonatomic, copy) NSString * _Nullable title;
 @property (nonatomic, copy) NSString * _Nullable desc;
 @property (nonatomic, weak) id _Nullable target;
@@ -773,15 +924,26 @@ SWIFT_CLASS("_TtC8ZoomUnit16ZPHUDWindowModel")
 @property (nonatomic) BOOL isPTChatMessage;
 @property (nonatomic) float fadeoutSeconds;
 @property (nonatomic) BOOL photoIsAvatar;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class PZMCheckboxView;
-
-SWIFT_CLASS("_TtC8ZoomUnit15ZPHUDWindowTool")
-@interface ZPHUDWindowTool : NSObject
-+ (PZMToastView * _Nonnull)pzmHudToastViewWithTitle:(NSString * _Nullable)title body:(NSString * _Nonnull)body imageFileName:(NSString * _Nonnull)imageFileName toastDidClicked:(void (^ _Nullable)(void))toastDidClicked closeButtonDidClicked:(void (^ _Nullable)(void))closeButtonDidClicked SWIFT_WARN_UNUSED_RESULT;
-+ (PZMToastView * _Nonnull)pzmHudToastViewWithTitle:(NSString * _Nullable)title body:(NSString * _Nonnull)body imageFileName:(NSString * _Nonnull)imageFileName linkButtonaName:(NSString * _Nullable)linkButtonaName linkButtonaDidClicked:(void (^ _Nullable)(void))linkButtonaDidClicked linkButtonDisplayInPrimary:(BOOL)linkButtonDisplayInPrimary checkboxLabel:(NSString * _Nullable)checkboxLabel onCheckBoxStateChange:(void (^ _Nullable)(PZMCheckboxView * _Nullable, BOOL))onCheckBoxStateChange toastDidClicked:(void (^ _Nullable)(void))toastDidClicked closeButtonDidClicked:(void (^ _Nullable)(void))closeButtonDidClicked SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic) BOOL autoDisappear;
+@property (nonatomic) BOOL isSystemStyle;
+@property (nonatomic, copy) NSArray<PZMSystemNotificationButton *> * _Nullable buttons;
+@property (nonatomic) BOOL isVisible;
+@property (nonatomic) BOOL hiddenCloseButton;
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nullable extraDict;
+@property (nonatomic, copy) NSString * _Nonnull appName;
+@property (nonatomic, copy) NSString * _Nonnull appIdentifier;
+/// The icon to display in the button
+@property (nonatomic, strong) NSImage * _Nullable buttonIcon;
+/// The title for the split button
+@property (nonatomic, copy) NSString * _Nullable splitButtonTitle;
+/// Array of menu items
+@property (nonatomic, copy) NSArray<PZMMenuItem *> * _Nullable menuItems;
+/// Whether to show the progress bar, default is true
+@property (nonatomic) BOOL showProgressBar;
+/// Callback when primary button is clicked
+@property (nonatomic, copy) void (^ _Nullable primaryAction)(void);
+/// Callback when close button is clicked
+@property (nonatomic, copy) void (^ _Nullable closeAction)(void);
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

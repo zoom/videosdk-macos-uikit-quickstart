@@ -10,6 +10,7 @@
 #import <Prism/NSWindow+ZoomShare.h>
 extern NSNotificationName const ZMUnshareableWindowsDidChanged;
 extern NSNotificationName const ZMShareableWindowsDidChanged;
+extern NSNotificationName const ZMShareWindowMonitorDidDetectNewWindowNotification;
 
 @interface ZMShareWindowMonitor : NSObject
 + (id)sharedMonitor;
@@ -23,4 +24,6 @@ extern NSNotificationName const ZMShareableWindowsDidChanged;
  * It is safe to call this method from any thread in your app
  */
 - (NSArray<NSNumber *> *)windowsForShareType:(ZMWindowShareType)shareType;
+
+- (void)windowDidCreate:(NSInteger)windowID;
 @end

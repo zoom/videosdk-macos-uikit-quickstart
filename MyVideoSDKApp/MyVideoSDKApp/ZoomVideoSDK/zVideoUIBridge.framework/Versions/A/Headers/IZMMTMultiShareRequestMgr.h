@@ -20,6 +20,7 @@
 
 - (void)onReceiveEnableMultiShareRequestMsg:(NSString * _Nonnull)requestID user:(ZMUser * _Nullable)user;
 - (void)onReceiveEnableMultiShareResponseMsg:(CmmEnableMultiShareResponseStatus)status;
+- (void)closeAllAlerts;
 
 @end
 

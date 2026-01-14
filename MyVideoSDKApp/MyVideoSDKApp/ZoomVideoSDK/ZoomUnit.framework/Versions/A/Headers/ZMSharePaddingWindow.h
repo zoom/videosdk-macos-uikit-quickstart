@@ -11,13 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZMSharePaddingWindow : NSPanel
-- (void)invisibleInSharing;
 - (void)startAnimation;
 - (void)stopAnimation;
 @end
 
 @interface ZMShareNumberWindow : NSPanel
-- (void)invisibleInSharing;
 - (void)setIndex:(NSInteger)index;
 @end
 

@@ -254,6 +254,7 @@ public:
     virtual void OnReceiveStartSummaryRspMsg(CmmBool bTimeOut, CmmBool decline) override;
     virtual void OnSummaryFeatureOnStatusChanged(CmmBool summaryEnabled) override;
     virtual void OnReceiveSwitchAICResponseMsg(CmmBool timeout, CmmBool agree, SWITCH_AIC_ACTION switch_action) override;
+    virtual void OnRequestToSwitchAICResult(const CmmUInt32& result, CmmInt64 aic_option) override;
     virtual void OnReceiveSwitchAICRequestMsg(const CString& req_id, CMM_USERID sender_id, CmmInt64 aic_opton, SWITCH_AIC_ACTION switch_action) override;
     virtual void OnAICompanionFeatureVisableChanged(CMM_AI_COMPANION feature, CmmBool visable) override;
     virtual void OnReportActivityForTranscriptResultReceived(const CString& reportId, CMM_ACTIVITY_TYPE_ABOUT_TRANSCRIPT type, CmmBool result) override;
@@ -306,7 +307,7 @@ public:
     virtual void OnReceiveSwitchClinicalNoteRequestMsg(const CString& req_id, CMM_USERID sender_id, SWITCH_CN_ACTION switch_action) override;
     virtual void OnReceiveSwitchClinicalNoteResponseMsg(CmmBool is_timeout, CmmBool is_decline, SWITCH_CN_ACTION switch_action) override;
     virtual void OnClinicalNoteStatusChanged(const CmmGwInstInfo& cn_info) override;
-    virtual void OnCreateClinicalNoteSessionFailed(CmmInt64 err_code) override;
+    virtual void OnCreateClinicalNoteSessionFailed(CMM_CN_ERROR_CODE err_code) override;
     virtual void OnAICompanionTokenReceived(CmmBool success, const CString& req_id, const CString& token) override;
 
     //MARK: RTMS
@@ -357,10 +358,14 @@ public:
     virtual void OnAudioDeviceControlGroupOneRemoved(CMM_USERID sender_id, CmmBool ret) override;
     virtual void OnAudioDeviceControlGroupOneAdded(CMM_USERID sender_id, CmmBool ret) override;
     virtual void OnUserAudioDeviceControlAutoAcceptStatusChanged(CMM_USERID sender_id, CmmBool allow) override;
+    virtual void OnUseMicrophoneAppsChange(const SSB_MC_MICROPHONE_USAGE_INFO& data) override;
     
     virtual void OnHandGestureDetected(const SSB_MC_DATA_BLOCK_HAND_POSE_INFO& info) override;
 
     virtual void NotifyToGetMeetingInviteesInfoBeforeLeaving() override;
+    
+    //MARK: Notes Transcription (BO)
+    virtual void OnMainConfUserNotesTranscriptStartedStatusChanged(const CString& guid, CmmBool new_started_status) override;
     
 protected:
     ZMConfBaseSinkAdapter   *m_sinkAdapter;

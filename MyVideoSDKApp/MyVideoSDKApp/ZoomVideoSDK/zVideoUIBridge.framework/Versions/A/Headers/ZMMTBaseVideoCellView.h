@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class ZMMTBaseVideoCellView;
 @class ZMMTRender;
 @class ZMMTVideoMask;
+@class ZMMTVideoRenderView;
 @protocol ZMMTBaseVideoCellViewDelegate <ZMTrackingViewDelegate>
 @optional
 
@@ -49,10 +50,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 //active border
 - (BOOL)enableShowBorderForVideoCellView:(ZMMTBaseVideoCellView*)cellView;
+- (ZMMTVideoBorderViewStyle)videoCellViewBorderViewStyle:(ZMMTBaseVideoCellView*)cellView;
 //personal water mark
 - (BOOL)enableShowPersonalWaterMarkForVideoCellView:(ZMMTBaseVideoCellView*)cellView;
 - (BOOL)enableShowNameTagForVideoCellView:(ZMMTBaseVideoCellView*)cellView;
 - (BOOL)enableShowLiveTagForVideoCellView:(ZMMTBaseVideoCellView*)cellView;
+//local time label
+- (BOOL)shouldShowTimeLabelForVideoCellView:(__kindof ZMMTBaseVideoCellView *)cellView;
 - (NSString *)personalWaterMarkText;
 - (CGFloat)personalWaterMarkerOpacityLevel;
 - (ZMConfWaterMarkCoverType)personalWaterMarkCoverType;

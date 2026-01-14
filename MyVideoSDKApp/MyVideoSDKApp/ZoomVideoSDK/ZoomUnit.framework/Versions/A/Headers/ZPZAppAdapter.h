@@ -935,11 +935,14 @@ typedef NS_ENUM(NSUInteger, ZMZappOpenSettingType) {
 
 @protocol ZMZappHelperProtocol <NSObject>
 @property (nonatomic, assign) BOOL restoreAppStatus;
+@property (nonatomic, assign) BOOL shouldHandleReopen;
 
 - (NSString *)getVBAppId;
 - (void)restoreMirrorAppsIfNeeded;
+- (void)cleanSavedMirrorAppsInPT;
 - (void)cleanAllMirrorAppsInPT;
 - (NSArray *)getAllConnectedZApp;
+- (zappEnableState)getZappEnableState;
 @end
 
 @interface ZPZAppHeader : NSObject
@@ -1178,7 +1181,6 @@ typedef void (^ZMZAppToastConfirmBlock)(void);
 @property (nonatomic, assign) NSUInteger eventType;
 @property (nonatomic, assign) NSUInteger eventName;
 @property (nonatomic, assign) NSUInteger featureName;
-@property (nonatomic, copy, nullable) NSString *eventContext;
 @property (nonatomic, copy, nullable) NSString *appId;
 @property (nonatomic, copy, nullable) NSString *launchTrackingId;
 @property (nonatomic, copy, nullable) NSString *appCategory;
@@ -1366,17 +1368,6 @@ typedef NS_OPTIONS(NSInteger, ZMSupportedFileTypeOption) {
 + (NSString *)getZAppBundlePath;
 @end
 
-@interface ZMZAppKeepModel : NSObject
-
-@property (nonatomic, copy) NSString *appId;
-@property (nonatomic, copy) NSString *appName;
-@property (nonatomic, copy) NSString *iconPath;
-@property (nonatomic, assign) BOOL isSelected;
-
-- (instancetype)initWithAppId:(NSString *)appId appName:(NSString *)appName iconPath:(NSString *)iconPath isSelected:(BOOL)isSelected;
-
-@end
-
 typedef NS_ENUM(NSInteger, ZMZAppUpgradeRspActionType) {
     ZMZAppUpgradeRspActionType_None = 0,
     ZMZAppUpgradeRspActionType_Error,
@@ -1403,4 +1394,16 @@ typedef NS_ENUM(NSInteger, ZMZAppUpgradeRspActionType) {
 @property (nonatomic, strong) ZMZAppUpgradeRspAction *successAction;
 
 @end
+
+@interface ZMZAppLauncherConfig : NSObject
+@property (nonatomic, copy) NSString *accTitle;
+@property (nonatomic, assign) NSWindowLevel relativeWindowLevel;
+@property (nonatomic, assign) NSSize size;
+@property (nonatomic, assign) BOOL hideWhenLoseFocus;
+@property (nonatomic, assign) BOOL hideWhenPressEsc;
+@property (nonatomic, assign) NSRectEdge preferredEdge;
+
++ (ZMZAppLauncherConfig *)defaultConfig;
+@end
+
 NS_ASSUME_NONNULL_END

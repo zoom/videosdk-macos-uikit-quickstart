@@ -9,11 +9,18 @@
 #define ZMSipCallProtocol_h
 
 #import <ZoomUnit/ZMSipContactItemProtocol.h>
+#import <ZoomUnit/ZMSipLanguageListProtocol.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class ZMBuddyAdapter;
 @class ZMSipCloudPBX;
+@class ZMSipRingtoneCallerIDSettings;
+@class ZMSipCallOutInfo;
+@class ZMSipCallOutInputParam;
+@class ZMSipVerificationCodeParam;
+@class ZMPIntegrationInfo;
+@class ZMEscrowVoicemailItem;
 
 @protocol ZMSipCallWarningProtocol <ZMRoutableObject>
 
@@ -54,7 +61,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ZMSipCallProtocol <ZMRoutableObject>
 
-@optional
 - (BOOL)hasSipCall;
 
 @required
@@ -62,6 +68,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly, nullable) id<IZMCallUpgradeDialogMgr> callUpgradeDialogMgr;
 
 - (BOOL)isSIPFeatureEnabled;
+- (BOOL)isCloudPBXCallEnable;
 
 - (BOOL)checkPhoneTabIsVisible;
 
@@ -87,6 +94,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)isInSIPCall;
 
+- (BOOL)isInSIPCallAndUnhold;
+
 - (BOOL)isInCCIAudio;
 
 - (BOOL)hasCallingoutCall;
@@ -102,6 +111,18 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isVipSLAEnable;
 
 - (BOOL)isTransfering;
+
+- (BOOL)isMitelCallForwardEnable;
+
+- (BOOL)isPSISipCallForwardingInActive;
+
+- (BOOL)showPSICallForwardingSetting;
+
+- (BOOL)showCallForwardingSetting;
+
+- (BOOL)isSipCallForwardingFeatureEnable;
+
+- (BOOL)isSipCallForwardingInActive;
 
 - (BOOL)isWarmTransfering;
 
@@ -122,8 +143,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)selectedSessionWithToNumber:(NSString *)toNumber toName:(NSString *)toName;
 
 - (void)transferCall:(NSString*)callID peerUri:(NSString*)peerUri warmTransfer:(int)transferType andNumberType:(int)type name:(NSString*)name jID:(NSString*)jID;
-
-- (BOOL)isNewCallLogEnable;
 
 - (NSString *)isLinkedOrganization:(NSString *)paId;
 
@@ -160,7 +179,181 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)holdActiveCall:(BOOL)bPhoneAction;
 
 - (void)syncDeviceStatusToPhone;
+
+- (void)bringIncomingCallWindowToFront;
+
+- (void)updateDiagnosticCallSessionSummary;
+
+- (BOOL)isPSIPhoneEnabled;
+
+- (BOOL)isCloudPBXActive;
+
+- (BOOL)isConnectSBAServer;
+
+- (void)onAudioDeviceUpdated;
+
+- (void)onAudioDeviceUpdatedForCCI;
+
+- (NSMutableDictionary *)getSwitchInfo;
+
+- (void)showEscrowVoicemailPlaybackWindowWithItems:(NSArray<ZMEscrowVoicemailItem *> *)items;
+
+- (void)onRequestEscrowVoicemailPlayUrlFinish:(NSString *)requestID
+                                    isSuccess:(BOOL)isSuccess
+                                    errorCode:(NSInteger)errorCode
+                                      playUrl:(NSString *)playUrl;
+
+- (void)onVoicemailKBServiceFinishInit:(BOOL)success;
+- (void)onEncryptProvisionSuccess;
+- (void)onEncryptDeviceApprovalFlowCompleted;
+
+- (BOOL)isEnableIncomingCallNotificationFocusControl;
+
+- (nullable ZMSipRingtoneCallerIDSettings*)getCallerIDListForRingtone;
+
+- (NSInteger)getIncomingCallNotificationBlockType:(bool *)locked;
+
+- (void)setIncomingCallNotificationBlockType:(NSInteger)type;
+
+- (void)requestDeleteCallOutInfo:(NSString *)calloutId;
+
+- (NSArray<ZMSipCallOutInfo *> *)getCallOutInfo;
+
+- (void)setCallOutOption:(BOOL)useCallOut;
+
+- (BOOL)getCallOutOption;
+
+- (void)onRingOutUpdate;
+
+- (BOOL)isEnableCallOutLandline;
+
+- (void)requestUpdateCallOutParam:(ZMSipCallOutInputParam *)callOutParam;
+
+- (void)requestVerificationCodeParam:(ZMSipVerificationCodeParam *)codeParam;
+
+- (ZMPIntegrationInfo *)getSipIntegrationInfo;
+
+- (ZMBuddyAdapter*)getMyUserInfo;
+
+- (BOOL)isLocationPermissionOn;
+
+- (BOOL)isSetDIDEnable;
+
+- (BOOL)isShowEmergencyAddressInSetting;
+
+- (BOOL)isE911CallFeatureEnabled;
+
+- (BOOL)locationAuthorizationStatus;
+
+- (BOOL)isDLROpend;
+
+- (BOOL)isPersonalLocationOpen;
+
+- (BOOL)needShowLocationAccessPermission;
+
+- (BOOL)isLLDPEnable;
+
+- (BOOL)isEmergencyServiceDashboardEnabled;
+
+- (BOOL)isIndiaUser;
+
+- (BOOL)isLocationHelperInstalled;
+
+- (BOOL)isDeployLocationHelperByAdmin;
+
+- (NSString *)getCurrentLocationHelperVersion;
+
+- (BOOL)isTranscriptDefaultLanguageSettingAvailable;
+
+- (nullable NSString *)defaultTranscriptLanguage;
+
+- (nullable id<ZMSipLanguageListProtocol>)transcriptLanguageList;
+
+- (void)requestForUpdateDefaultTranscriptLanguage:(NSString *)language;
+
+- (BOOL)isPreferredTranslationLanguageSettingAvailable;
+
+- (nullable NSString *)preferredTranslationLanguage;
+
+- (nullable id<ZMSipLanguageListProtocol>)translationLanguageList;
+
+- (void)setPreferredTranslationLanguage:(NSString *)language;
+
+- (BOOL)isEnableDisplayAutoAnswerCQCall;
+
+- (BOOL)isShowLocationOptionButton;
+
+- (void)requestOptionalLocation:(int)option
+                     address_id:(NSString *)address_id
+                     page_index:(int)pageIndex;
+
+- (BOOL)emergencyAddressManagementIsEnable;
+
+- (nullable NSMutableDictionary *)getEmergencyAddressInfo;
+
+- (BOOL)isLaunchExternalAppOrURL:(BOOL *)isMandatory;
+
+- (BOOL)isEnableFax;
+
+- (BOOL)isEnableCallOut;
+
+- (BOOL)isEnableVideomail;
+
+- (NSString *)getDefaultEmergencyOptionAddress;
+
+- (NSUInteger)getCallQueueAutoAnswerPeriodIndex;
+
+- (nullable NSMutableArray *)queryAppAutodialPreferenceWithNowDuration:(BOOL)needNowDuration;
+
+- (BOOL)isRemoteControlEnable;
+
+- (BOOL)isHideZRAOutgoingCallLogsEnable;
+
+- (NSString *)getPreConfiguredURLorCmdForIncomingCall:(BOOL *)isMandatory;
+
+- (BOOL)hasMyGreeting;
+
+- (void)onSipCallForwardingStatusChange;
+
+- (BOOL)isSipLiveTranscriptEnable;
+
+- (BOOL)isSipLiveTranscriptAutoTurnOn;
+
+- (BOOL)isEnableZRADailer;
+
+- (void)emergencyButtonClickInSetting:(NSString *)buttonTitle;
+
+- (void)requestLocationPermissionIfNeeded;
+
+- (NSString *)transcriptLanguageForLocalizedName:(NSString *)localizedName;
+
+- (void)requestForUpdateDefaultTranscriptLanguage:(NSString *)language;
+
+- (void)setCallQueueAutoAnswerPeriodIndex:(NSUInteger)index;
+
+- (void)setLaunchExternalAppOrURL:(BOOL)isLaunch;
+
+- (void)testLaunchExternal;
+
+- (void)showWebRTCWindowController;
+
+- (NSInteger)updateSipLiveTranscriptAutoTurnOnState:(BOOL)onState;
+
+- (void)onSettingClickDownloadAndInstallLocationHelper;
+
+- (void)onRestrictFeatureUpdated;
+
+// Greeting Call
+- (BOOL)isInGreetingCall;
+- (void)endGreetingCall;
+
+// Monitoring Call
+- (BOOL)isInMonitoringCallAndNotSupportHold;
+- (void)endMonitoringCall;
+
 @end
+
+#define ZMSharedSipCallHelper ZMSharedFor(ZMSipCallProtocol)
 
 NS_ASSUME_NONNULL_END
 
