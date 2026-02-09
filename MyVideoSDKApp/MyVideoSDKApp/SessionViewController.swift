@@ -6,10 +6,14 @@ import Cocoa
 import ZMVideoSDK
 
 class SessionViewController: NSViewController {
-    let sdkKey = <#SDK Key#>
-    let sdkSecret = <#SDK Secret#>
-    let sessionName = <#Session Name#>
-    let userName = <#Username#>
+    /*
+     TODO: Enter the following variables needed to initialize the VSDK and to start/join a session
+     You should sign your JWT with a backend service in a production use-case. For faster JWT generation, you can navigate checkout the JWTGenerator.swift under Script folder and its README for more details on how to consume it. Once you got the token, you can simple copy and paste it below.
+     Ensure that the sessionName matches the session name used to generate the JWT Token.
+     */
+    let jwtToken = <#Your JWT Token#>
+    let sessionName = <#Session Name#> // Also known as tpc in JWT
+    let userName = <#Username#> // Display name
     // MARK: Session Information
     // TODO: Ensure that you do not hard code JWT or any other confidential credentials in your production app.
     // Details: https://developers.zoom.us/docs/video-sdk/macos/sessions/#create-and-join-a-session
@@ -63,8 +67,7 @@ class SessionViewController: NSViewController {
     private func joinSession() async {
         let sessionContext = ZMVideoSDKSessionContext()
         do {
-            let token = try await generateSignature(sessionName: sessionName, role: 1, sdkKey: sdkKey, sdkSecret: sdkSecret)
-            sessionContext.token = token
+            sessionContext.token = jwtToken
             sessionContext.sessionName = sessionName
             sessionContext.userName = userName
             if ZMVideoSDK.shared().joinSession(sessionContext) == nil {

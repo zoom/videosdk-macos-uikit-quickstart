@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		D79351152F1778420086E1FF /* JWTKit in Frameworks */ = {isa = PBXBuildFile; productRef = D79351142F1778420086E1FF /* JWTKit */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		D79350442F1776490086E1FF /* Embed PlugIns */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -155,7 +151,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D79351152F1778420086E1FF /* JWTKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +203,6 @@
 			);
 			name = MyVideoSDKApp;
 			packageProductDependencies = (
-				D79351142F1778420086E1FF /* JWTKit */,
 			);
 			productName = MyVideoSDKApp;
 			productReference = E5F3FC302E4987770022504F /* MyVideoSDKApp.app */;
@@ -239,7 +233,6 @@
 			mainGroup = E5F3FC272E4987770022504F;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				D79351132F1778420086E1FF /* XCRemoteSwiftPackageReference "jwt-kit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E5F3FC312E4987770022504F /* Products */;
@@ -510,25 +503,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D79351132F1778420086E1FF /* XCRemoteSwiftPackageReference "jwt-kit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/vapor/jwt-kit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.3.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D79351142F1778420086E1FF /* JWTKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D79351132F1778420086E1FF /* XCRemoteSwiftPackageReference "jwt-kit" */;
-			productName = JWTKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E5F3FC282E4987770022504F /* Project object */;
 }
