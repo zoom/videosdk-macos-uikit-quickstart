@@ -6,17 +6,18 @@ import Cocoa
 import ZMVideoSDK
 
 class SessionViewController: NSViewController {
+    
+    // MARK: Session Information
+
     /*
      TODO: Enter the following variables needed to initialize the VSDK and to start/join a session
-     You should sign your JWT with a backend service in a production use-case. For faster JWT generation, you can navigate checkout the JWTGenerator.swift under Script folder and its README for more details on how to consume it. Once you got the token, you can simple copy and paste it below.
+     You should sign your JWT with a backend service in a production use-case. For faster JWT generation, you can navigate checkout the JWTGenerator.swift under Script folder and its README for more details on how to consume it.
+     Once you got the token, you can simple copy and paste it below.
      Ensure that the sessionName matches the session name used to generate the JWT Token.
      */
-    let jwtToken = <#Your JWT Token#>
-    let sessionName = <#Session Name#> // Also known as tpc in JWT
-    let userName = <#Username#> // Display name
-    // MARK: Session Information
-    // TODO: Ensure that you do not hard code JWT or any other confidential credentials in your production app.
-    // Details: https://developers.zoom.us/docs/video-sdk/macos/sessions/#create-and-join-a-session
+    let jwtToken = "" // Leave this as empty if you choose to copy and paste your generated JWT token directly in the sample app's alert box after clicking on "Join Session"
+    let sessionName = "TestSession12345" // Also known as tpc in JWT
+    let userName = "macOS" // Display name
     
     // MARK: - Properties
     
@@ -51,32 +52,26 @@ class SessionViewController: NSViewController {
         ZMVideoSDK.shared().addListener(self)
     }
     
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        Task {
-            await joinSession()
-        }
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        showJWTAlert()
     }
     
     override func viewWillDisappear() {
         ZMVideoSDK.shared().removeListener(self)
+        super.viewWillDisappear()
     }
     
     // MARK: - Private Methods
     
-    private func joinSession() async {
+    public func joinSession(with userInputJWTToken: String) {
         let sessionContext = ZMVideoSDKSessionContext()
-        do {
-            sessionContext.token = jwtToken
-            sessionContext.sessionName = sessionName
-            sessionContext.userName = userName
-            if ZMVideoSDK.shared().joinSession(sessionContext) == nil {
-                showError(message: "Failed to join session")
-                navigateBackToStartVC()
-                return
-            }
-        } catch {
-            showError(message: "Failed to generate session token: \(error.localizedDescription)")
+        sessionContext.token = userInputJWTToken.isEmpty ? jwtToken : userInputJWTToken
+        sessionContext.sessionName = sessionName
+        sessionContext.userName = userName
+        if ZMVideoSDK.shared().joinSession(sessionContext) == nil {
+            showError(message: "Failed to join session")
+            navigateBackToStartVC()
             return
         }
     }

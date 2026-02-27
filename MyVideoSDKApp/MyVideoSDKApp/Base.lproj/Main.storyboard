@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="24128" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24128"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -744,7 +744,7 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="okv-TY-nBf">
                                 <rect key="frame" x="1675" y="976" width="250" height="88"/>
                                 <subviews>
-                                    <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="H7f-lP-u9N">
+                                    <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="H7f-lP-u9N">
                                         <rect key="frame" x="100" y="38" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="aki-Pu-Gzw"/>
@@ -775,21 +775,21 @@
                                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlh-9L-8mR">
                                         <rect key="frame" x="900" y="1734" width="1800" height="306"/>
                                         <clipView key="contentView" id="eKY-bm-cJa">
-                                            <rect key="frame" x="1" y="1" width="1783" height="289"/>
+                                            <rect key="frame" x="1" y="1" width="1781" height="287"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <view id="K1n-7d-YQK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="1768" height="274"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="1766" height="272"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                             </subviews>
                                         </clipView>
                                         <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="rml-df-YTI">
-                                            <rect key="frame" x="1" y="290" width="1783" height="15"/>
+                                            <rect key="frame" x="1" y="288" width="1781" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="R4U-xn-d8p">
-                                            <rect key="frame" x="1784" y="1" width="15" height="289"/>
+                                            <rect key="frame" x="1782" y="1" width="17" height="287"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>

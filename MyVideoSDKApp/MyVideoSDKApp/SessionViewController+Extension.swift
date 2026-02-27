@@ -81,6 +81,33 @@ extension SessionViewController {
         self.localPlaceholderView?.isHidden = isVideoOn
     }
     
+    public func showJWTAlert() {
+        if let window = NSApplication.shared.mainWindow {
+            let alert = NSAlert()
+            alert.messageText = "JWT Token Required"
+            alert.informativeText = "You can choose to copy and paste your generated JWT Token here OR leave it as empty if you have added it in the SessionView+Extension jwtToken variable"
+            alert.alertStyle = .critical
+            
+            let textField = NSTextField(frame: NSRect(x: 0, y: 0, width: 250, height: 24))
+                textField.placeholderString = "Enter your JWT Token"
+                alert.accessoryView = textField
+            
+            alert.addButton(withTitle: "OK")
+            alert.addButton(withTitle: "Cancel")
+            
+            DispatchQueue.main.async {
+                alert.beginSheetModal(for: window) { response in
+                    switch response {
+                    case .alertFirstButtonReturn:
+                        self.joinSession(with: textField.stringValue)
+                    default:
+                        self.navigateBackToStartVC()
+                    }
+                }
+            }
+        }
+    }
+    
     public func showError(message: String) {
         if let window = NSApplication.shared.mainWindow {
             let alert = NSAlert()
