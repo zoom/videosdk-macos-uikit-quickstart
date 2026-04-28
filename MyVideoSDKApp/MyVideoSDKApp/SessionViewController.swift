@@ -15,9 +15,9 @@ class SessionViewController: NSViewController {
      Once you got the token, you can simple copy and paste it below.
      Ensure that the sessionName matches the session name used to generate the JWT Token.
      */
-    let jwtToken = "" // Leave this as empty if you choose to copy and paste your generated JWT token directly in the sample app's alert box after clicking on "Join Session"
-    let sessionName = "TestSession12345" // Also known as tpc in JWT
-    let userName = "macOS" // Display name
+    let jwtToken = <#JWT#> // Leave this as empty if you choose to copy and paste your generated JWT token directly in the sample app's alert box after clicking on "Join Session"
+    let sessionName = <#SessionName#> // Also known as tpc in JWT
+    let userName = <#Username#> // Display name
     
     // MARK: - Properties
     
@@ -77,7 +77,7 @@ class SessionViewController: NSViewController {
     }
     
     @objc public func toggleAudio() {
-        guard let myUser = ZMVideoSDK.shared().getSessionInfo().getMySelf(),
+        guard let myUser = ZMVideoSDK.shared().getSessionInfo()?.getMySelf(),
               let audioStatus = myUser.getAudioStatus() else { return }
         
         let audioHelper = ZMVideoSDK.shared().getAudioHelper()
@@ -91,7 +91,7 @@ class SessionViewController: NSViewController {
     }
     
     @objc public func toggleVideo() {
-        guard let isVideoOn = ZMVideoSDK.shared().getSessionInfo().getMySelf()?.getVideoPipe()?.getVideoStatus()?.isOn else { return }
+        guard let isVideoOn = ZMVideoSDK.shared().getSessionInfo()?.getMySelf()?.getVideoPipe()?.getVideoStatus()?.isOn else { return }
         
         let videoHelper = ZMVideoSDK.shared().getVideoHelper()
         
@@ -117,7 +117,7 @@ extension SessionViewController: ZMVideoSDKDelegate {
     }
     
     func onSessionJoin() {
-        guard let myUser = ZMVideoSDK.shared().getSessionInfo().getMySelf(),
+        guard let myUser = ZMVideoSDK.shared().getSessionInfo()?.getMySelf(),
               let myUserVideoCanvas = myUser.getVideoCanvas() else { return }
         
         showLoadingView(visible: false)
@@ -143,7 +143,7 @@ extension SessionViewController: ZMVideoSDKDelegate {
     }
     
     func onUserJoin(_ userHelper: ZMVideoSDKUserHelper, userList userArray: [ZMVideoSDKUser]?) {
-        guard let users = userArray, let myUser = ZMVideoSDK.shared().getSessionInfo().getMySelf() else { return }
+        guard let users = userArray, let myUser = ZMVideoSDK.shared().getSessionInfo()?.getMySelf() else { return }
         for user in users where user.getID() != myUser.getID() {
             if let currentUserID = user.getID() {
                 let view = addRemoteUserView(for: user)
@@ -153,7 +153,7 @@ extension SessionViewController: ZMVideoSDKDelegate {
     }
     
     func onUserLeave(_ userHelper: ZMVideoSDKUserHelper, userList userArray: [ZMVideoSDKUser]?) {
-        guard let users = userArray, let myUser = ZMVideoSDK.shared().getSessionInfo().getMySelf() else { return }
+        guard let users = userArray, let myUser = ZMVideoSDK.shared().getSessionInfo()?.getMySelf() else { return }
         for user in users where user.getID() != myUser.getID() {
             if let currentUserID = user.getID(), let view = remoteUserViews[currentUserID], let remoteUserVideoCanvas = user.getVideoCanvas() {
                 Task(priority: .background) {
@@ -168,7 +168,7 @@ extension SessionViewController: ZMVideoSDKDelegate {
     }
     
     func onUserVideoStatusChanged(_ videoHelper: ZMVideoSDKVideoHelper, userList userArray: [ZMVideoSDKUser]?) {
-        guard let users = userArray, let myUser = ZMVideoSDK.shared().getSessionInfo().getMySelf() else { return }
+        guard let users = userArray, let myUser = ZMVideoSDK.shared().getSessionInfo()?.getMySelf() else { return }
         for user in users where user.getID() != myUser.getID() {
             if let currentUserID = user.getID(), let view = remoteUserViews[currentUserID], let isVideoOn = user.getVideoPipe()?.getVideoStatus()?.isOn, let remoteUserVideoCanvas = user.getVideoCanvas() {
                 if isVideoOn {

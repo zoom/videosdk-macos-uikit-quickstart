@@ -1,0 +1,96 @@
+//
+//  ZMUnifyWKWebViewBase.h
+//  zUnifyWebView
+//
+//  Created by Ethan Wu on 2025/4/7.
+//
+
+#import "ZMUnifyWebViewProtocol.h"
+#import <WebKit/WebKit.h>
+
+@interface ZMUnifyWKWebViewBase : WKWebView
+
+@property (nonatomic, strong) ZMUnifyWebViewConfiguration *unifyConfig;
+@property (nonatomic, strong) NSMutableSet<NSString*>* customMessageHandlerSet;
+@property (nonatomic, strong) NSString *webViewID;
+@property (nonatomic, strong) NSString* instName;
+@property (nonatomic, assign) int currentGPUProcessId;
+
++ (WKWebViewConfiguration *)getWKConfigurationWith:(ZMUnifyWebViewConfiguration*)unifyConfig;
+- (void)prepareForUnifyWebView;
+- (void)updateInterceptionRulesWithPatterns:(NSArray<NSString *> *)patterns
+                             injectedScript:(nullable NSString *)injectedScript;
+- (void)updateInterceptionRulesIfNeeded;
+- (void)cleanUp;
+- (void)observeGPUProcessIdentifier:(NSDictionary<NSKeyValueChangeKey, id> *)change;
+
+- (void)configCustomMessageHandlers:(NSArray<NSString*>*) customMessageHandlers;
+
+- (void)loadURL:(NSString *)urlStr withRequestHeaders:(nullable NSDictionary *)headers;
+- (void)loadURL:(NSString *)urlStr withRequestHeaders:(NSDictionary *)headers domains:(NSArray<NSString *> *)domains isAllow:(BOOL)isAllow;
+- (void)loadFileURL:(NSString *)fileString folderPath:(NSString *)folderString;
+
+- (void)configCookie:(NSHTTPCookie *)cookie completionHandler:(nullable void (^)())completionHandler;
+- (void)deleteCookie:(NSHTTPCookie *)cookie completionHandler:(nullable void (^)(void))completionHandler;
+- (void)getAllCookies:(nullable void (^)(NSArray<NSHTTPCookie *> *))completionHandler;
+
+/// Inject _zm_lang cookie for the specified host (used for iframe navigation)
+- (void)injectLanguageCookieForHost:(NSString *)host;
+
+- (void)setAllowDomainList:(NSArray<NSString *> *)allowedDomains completeHandler:(nullable void (^)(void))completeHandler;
+- (void)setAllowDomainList:(NSArray<NSString *> *)allowedDomains customSchemes:(NSArray<NSString *>*)customSchemes completeHandler:(nullable void (^)(void))completeHandler;
+- (void)setLocalHostFilterDomain:(NSArray<NSString *>  *)localAllowedDomains  customSchemes:(NSArray<NSString *>*)customSchemes completeHandler:(nullable void (^)(void))completeHandler;
+- (void)setDisallowDomainList:(NSArray<NSString *> *)domainList completeHandler:(nullable void (^)(void))completeHandler;
+- (void)removeAllContentRuleList:(nullable void (^)(void))completeHandler;
+- (void)addContentRuleList:(WKContentRuleList *)contentList completeHandler:(nullable void (^)(void))completeHandler API_AVAILABLE(macos(10.13));
+
+- (void)addScriptMessageHandler:(id<WKScriptMessageHandler>)scriptMessageHandler name:(NSString *)name;
+- (void)removeAllUserScript;
+- (void)disableContextMenu;
+- (NSString *)getUnifyTitleStr;
+- (void)configCustomUserAgent:(NSString *)customUserAgent;
+- (void)configSafariUserAgent;
+- (BOOL)getWebViewLoadingStatus;
+- (void)stopMediaPlay:(nullable void (^)(id, NSError *))completeHandler;
+- (void)stopLoadingWebView;
+
+- (void)checkHasSound:(nullable void (^)(BOOL, NSError *))completeHandler;
+- (void)suspendMediaPlay;
+- (void)takeSnapshot:(CGFloat)snapshotWidth completionHandler:(void (^)(NSImage * _Nullable snapshotImage, NSError * _Nullable error))completionHandler;
+- (void)getHTMLContentSize:(nullable void (^)(id, NSError *))completeHandler;
+- (void)reloadWebView;
+
+- (void)configBackgroundColor:(NSColor *)color;
+- (void)enableDrawsTransparentBackground:(BOOL)enabled;
+
+- (void)enableInspector:(BOOL)enabled;
+- (void)injectServiceWorkerScriptForUnifyWebView;
+- (void)injectCommonScriptForUnifyWebView;
+
+- (NSString *)currentURLStr;
+
+// Check if script message from frame is allowed based on domain matching
+- (BOOL)isScriptMessageAllowedFromFrame:(WKFrameInfo *)frameInfo;
+
+- (void)clearUnifyWebCache:(nullable void (^)())completionHandler;
+
+- (NSPoint)convertWebViewPointToScreen:(NSPoint)point;
+
+- (NSArray*)getRenderProcessIds;
+- (BOOL)isLocalLoadEnabled;
+
+- (enum UnifyWebViewNavigationType)getNavigationType;
+
+- (BOOL)killGpuProcess;
+- (BOOL)killRenderProcess;
+
+// Get detailed renderer process state (Foreground/Background/Suspended)
+- (NSString *)getRenderProcessState;
+
+// Get resource domains based on current webview's module type
+- (ZMWebResourceAllowDomains *)getResourceDomains;
+
+
+- (void)urlDidChanged:(NSString*)oldURL newURL:(NSString*)newURL;
+- (void)titleDidChanged:(NSString*)newTitle;
+@end

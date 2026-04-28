@@ -57,7 +57,6 @@
 				ZoomVideoSDK/libjson.dylib = (CodeSignOnCopy, );
 				ZoomVideoSDK/liblooper.dylib = (CodeSignOnCopy, );
 				ZoomVideoSDK/libminizip.dylib = (CodeSignOnCopy, );
-				ZoomVideoSDK/libmpg123_mac.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/libssl.dylib = (CodeSignOnCopy, );
 				ZoomVideoSDK/libzContext.dylib = (CodeSignOnCopy, );
 				ZoomVideoSDK/libzoombase_crypto_shared.dylib = (CodeSignOnCopy, );
@@ -77,7 +76,7 @@
 				ZoomVideoSDK/zNet.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/zNetUtils.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/zPSApp.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
-				ZoomVideoSDK/zUnifyWebView.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
+				ZoomVideoSDK/zUnifyWebViewApp.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/zVideoApp.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/zVideoUIBridge.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/zWebService.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
@@ -98,7 +97,6 @@
 				ZoomVideoSDK/libjson.dylib,
 				ZoomVideoSDK/liblooper.dylib,
 				ZoomVideoSDK/libminizip.dylib,
-				ZoomVideoSDK/libmpg123_mac.bundle,
 				ZoomVideoSDK/libssl.dylib,
 				ZoomVideoSDK/libzContext.dylib,
 				ZoomVideoSDK/libzoombase_crypto_shared.dylib,
@@ -127,7 +125,7 @@
 				ZoomVideoSDK/ZoomUnit.framework,
 				ZoomVideoSDK/ZoomVideoSDKMeetingBridge.framework,
 				ZoomVideoSDK/zPSApp.bundle,
-				ZoomVideoSDK/zUnifyWebView.framework,
+				ZoomVideoSDK/zUnifyWebViewApp.framework,
 				ZoomVideoSDK/zVideoApp.bundle,
 				ZoomVideoSDK/zVideoUIBridge.framework,
 				ZoomVideoSDK/zWebService.bundle,
