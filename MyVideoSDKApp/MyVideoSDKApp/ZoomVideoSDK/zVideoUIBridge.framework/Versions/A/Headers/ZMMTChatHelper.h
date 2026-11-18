@@ -86,6 +86,8 @@ typedef NS_OPTIONS(NSUInteger, ZMMTChatFilter) {
 - (BOOL)isValidChatUser:(ICmmUser *)cmmUser filter:(ZMMTChatFilter)filter;
 #endif
 - (BOOL)canDirectChatToUser:(ZMUser*)zmUser;
+- (nullable ZMUser *)zmUserByGUID:(nullable NSString *)GUID confUserId:(nullable NSString *)confUserId;
+- (NSImage *)avatarByGUID:(nullable NSString *)GUID confUserId:(nullable NSString *)confUserId name:(nullable NSString *)name;
 
 // copy chat
 - (BOOL)hasCopyChatPrivilege;
@@ -94,6 +96,7 @@ typedef NS_OPTIONS(NSUInteger, ZMMTChatFilter) {
 // delete chat
 - (BOOL)canDeleteMessage:(NSString *)messageId sessionId:(NSString*)sessionId;
 - (void)deleteMessage:(NSString *)messageId;
+- (BOOL)canEditMessage:(NSString *)messageId sessionId:(NSString*)sessionId;
 
 // Chat Etiquette Tool
 - (ZMTDLPResultType)checkDLPPolicyWithContent:(NSString *)content;
@@ -169,7 +172,6 @@ chatMsgType:(ChatMsgType)msgType;
 - (BOOL)isPMCScreenShotEnabled;
 - (BOOL)isScreenShotWithoutFileEnabled;
 - (BOOL)isCMCLoadMsgHalfwayEnabled;
-- (NSString *)fetchNewChatSessionId;
 - (NSString *)sessionID;  //Zoom Meeting ChannelID
 - (NSString *)myJID;
 
@@ -180,7 +182,6 @@ chatMsgType:(ChatMsgType)msgType;
 - (BOOL)isChatDisabledByHost;
 - (BOOL)isChatDisabledByConfig;
 - (BOOL)isCopyDisabled;
-- (BOOL)isEditDisabled;
 - (NSString*)disableDetail;
 
 - (BOOL)isChatDisabledBySecurity;
@@ -275,6 +276,10 @@ chatMsgType:(ChatMsgType)msgType;
 
 - (nullable NS_ZOOM_MESSAGER::IZoomMessenger*)getZoomMessager;
 #endif
+
+// Deeplink — routes through ICmmChatComponent; tags fromSource="meeting_chat".
+- (BOOL)checkIfZoomInternalNavigateURL:(NSURL *)url;
+- (BOOL)checkAndHandleZoomInternalNavigateURL:(NSURL *)url;
 @end
 
 // Backstage has no independent chat, route to main stage session

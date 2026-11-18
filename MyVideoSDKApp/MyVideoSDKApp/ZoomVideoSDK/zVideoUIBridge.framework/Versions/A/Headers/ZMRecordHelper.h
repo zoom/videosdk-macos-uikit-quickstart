@@ -42,6 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)setImmersiveSceneInfo:(SSB_MC_DATA_BLOCK_RECORDING_IMMERSIVE_INFO)info;
 /** Equal to GetLocalRecordStatus() == CMM_RECORD_STATUS_START || GetLocalRecordStatus() == CMM_RECORD_STATUS_PAUSE */
 - (BOOL)isLocalRecordingInProgress;
+- (BOOL)theMeetingisBeingLocalRecording;
 - (BOOL)setRecordRootPath:(NSString *)path;
 - (NSString *)getCurrentRecPath;
 - (BOOL)setRecordContentList:(PSSB_MC_DATA_BLOCK_RECORDING_SELECTTED_USERS)videoList;
@@ -85,8 +86,16 @@ NS_ASSUME_NONNULL_BEGIN
 /** Is meeting recording by CMR, equal to GetCMRStatus() == CMM_RECORD_STATUS_START || GetCMRStatus() == CMM_RECORD_STATUS_PAUSE */
 - (BOOL)recordingMeetingOnCloud;
 
+/// Notify UUI that the cloud recording was triggered by the local user.
+/// Pair with `[ZMMTSharedFor(IZMFeatureInitiator) setStartByself:ZMFeatureTypeRecording isByself:YES]`.
+- (void)markStartedCloudRecordingByMyself;
+
 - (void)updateUserNameDataForLoacalRecord:(const CmmRecordUserNameData&)data;
-- (void)updateUserAvatarForLocalRecord:(SSB_MC_DATA_BLOCK_RECORD_USER_AVATAR &)data;
+// Synchronous. The callee only borrows the structure buffers during the call.
+// NO means the API is unavailable, the UUID query misses/fails, or the recorder operation fails.
+- (BOOL)setAvatarUuidForLocalRecord:(const SSB_MC_DATA_BLOCK_RECORD_USER_AVATAR &)data;
+- (BOOL)isAvatarUuidSet:(const char *)uuid length:(uint32_t)length;
+- (BOOL)bindUserToAvatarUuid:(SSB_MC_DATA_BLOCK_RECORD_USER_AVATAR_BIND_INFO &)info;
 - (void)updateBacksplashForLoacalRecord:(const SSB_MC_DATA_BLOCK_BACK_SPLASH_PIC&)info;
 - (void)updateVideoTransparencyForLoacalRecord:(const SSB_MC_DATA_BLOCK_VIDEO_TRANSPARENCY_INFO&)info;
 - (void)updateVideoMaskForLoacalRecord:(const SSB_MC_DATA_BLOCK_VIDEO_MASK_INFO&)info;
@@ -116,7 +125,7 @@ NS_ASSUME_NONNULL_BEGIN
 // Only a part of participants can request, not all
 - (BOOL)isAllowToRequestLocalRecord;
 - (BOOL)needShowDesignedLocalRecordTip;
-- (BOOL)isAllowParticipantLocalRecordLocked;
+- (BOOL)isLocalRecordAutoApproveForAllAndSettingLocked;
 - (BOOL)isRecordOperationDisabled;
 
 //ZOOM-340709
@@ -143,6 +152,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (CHANGE_WEB_SETTING_STRATEGY)getSmartRecordingEnableStrategy;
 
 //util
+// ZOOM-1348464: authorized panelists with canControlRecording can also control smart recording.
+// The CanControlRecording roster bit alone isn't enough — see the .mm for the "only when no host" policy gate.
++ (BOOL)canUser:(ICmmUser *)user controlRecordingAsAuthorizedPanelistInSession:(ZMConfSession *)confSession;
+- (BOOL)isAuthorizedToControlRecording;
+/// YES only when I hold the CanControlRecording authorization AND the "only when no host" policy
+/// currently revokes it because a host/co-host is in the meeting. Returns NO for users who never
+/// had that authorization, so callers can tell "just lost control" from "never had control".
+- (BOOL)isRecordingControlRevokedByHostPresence;
 - (BOOL)isCMRWithSmartRecordingEnabled;
 - (BOOL)canEnableSmartRecording;
 - (BOOL)canEnableSmartRecordingInMeeting;

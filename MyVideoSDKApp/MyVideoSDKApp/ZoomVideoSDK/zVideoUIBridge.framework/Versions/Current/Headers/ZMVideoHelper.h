@@ -27,6 +27,7 @@ typedef NS_ENUM(NSUInteger, ZMMTResultType) {
 - (BOOL)canIViewVideoForUserID:(ZMUserID)userID;
 - (BOOL)canIViewVideoForUser:(ICmmUser*)cmmUser;
 
+- (BOOL)isAomHostInstalled;
 - (void)toggleVideoBlurMode;
 - (BOOL)isCanBlur;
 - (BOOL)isBlurVBMode;

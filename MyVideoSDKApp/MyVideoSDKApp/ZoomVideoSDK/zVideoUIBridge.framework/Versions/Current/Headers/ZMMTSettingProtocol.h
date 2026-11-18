@@ -33,16 +33,16 @@
 - (void)onTranslationColorChanged:(NSColor *)color;
 - (void)onBackgroundColorChanged:(NSColor *)color;
 
-- (void)openSettingWithSettingsOption:(NSInteger)setting;
-- (void)openSettingWithType:(int)type;
-- (void)openSettingWithType:(int)type context:(id)context;
+- (void)openPTSettingWithType:(int)type;
+- (void)openPTSettingWithType:(int)type context:(NSDictionary *)context;
 - (void)closePTSetting;
-- (void)closePTSettingWithContext:(id)context;
 
 - (void)ptWindowStatusChange:(BOOL)status;
 
 - (BOOL)isVideoCutout;
 - (BOOL)isVideoEnableAlphaMask;
+
+- (BOOL)canZoomDisplayFontSize;
 @end
 
 #endif /* ZMMTSettingProtocol_h */

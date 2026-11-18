@@ -15,9 +15,7 @@ typedef NS_ENUM(NSInteger, ZMMTBillingViewPauseResumeTag) {
     ZMMTBillingViewPauseResumeTagResume,
 };
 
-@protocol ZMBuddyBaseProtocol;
-
-typedef void(^ZMMTBillingAsyncSearchCompletionBlock)(NSArray<id<ZMBuddyBaseProtocol>> *buddies);
+typedef void(^ZMMTBillingAsyncSearchCompletionBlock)(NSArray<NSDictionary *> *contacts);
 
 @class ZMUser;
 
@@ -29,7 +27,7 @@ typedef void(^ZMMTBillingAsyncSearchCompletionBlock)(NSArray<id<ZMBuddyBaseProto
 @property (nonatomic, assign) BOOL isInBillingStatus; //billing actived
 @property (nonatomic, strong) ZMUser *billingUser; //real billto user
 @property (nonatomic, copy) NSString *billToUserId; //billto userid
-@property (nonatomic, nullable, strong) id<ZMBuddyBaseProtocol> contactBuddy;
+@property (nonatomic, nullable, strong) NSDictionary *contactBuddy;
 @property (nonatomic, nullable, strong) ZMUser *pendingUser; //selectUser without assign
 @property (nonatomic, copy) NSString *pendingContactName; //real contactname from JID search
 @property (nonatomic, assign) BOOL hasSelectUnknownContact;

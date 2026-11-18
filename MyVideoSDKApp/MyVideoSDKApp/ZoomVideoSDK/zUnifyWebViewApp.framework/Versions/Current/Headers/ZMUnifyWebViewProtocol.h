@@ -17,12 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol ZMUnifyWebViewHelper <NSObject>
 
 @optional
-- (BOOL)isJSCallSrcURLInvalid:(NSURL *)srcURL;
 - (void)showEmojiWindow:(BOOL)show rect:(NSRect)rect positionView:(NSView *)view type:(NSString *)type;
-- (NSString *)languageCode;
-- (void)showReportProblemWindow;
-- (NSString *)curCefAgentPath;
-- (BOOL)isCefAgentReady;
 
 @end
 
@@ -53,6 +48,36 @@ NS_ASSUME_NONNULL_BEGIN
  *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
  */
 - (void)onUnifyWebViewDestroyed:(id<ZMUnifyWebViewProtocol>)instance;
+
+/**
+ *  Called when a unified WebView instance has been recycled
+ *  This callback is triggered after the WebView recycle process completes,
+ *  allowing the delegate to perform post-recycle cleanup or UI updates
+ *  - Parameters:
+ *    - instance: The WebView instance that was recycled
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+- (void)onUnifyWebViewRecycled:(id<ZMUnifyWebViewProtocol>)instance;
+
+/**
+ *  Called when the Popup WebView close
+ *  - Parameters:
+ *    - instance: The WebView instance
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+- (void)onUnifyWebViewWindowClose:(id<ZMUnifyWebViewProtocol>)instance;
+
+/**
+ *  Called when the WebView is about to restore from recycled state
+ *  This callback is triggered before the WebView restores, allowing the delegate
+ *  to intercept and handle the restore process itself
+ *  - Parameters:
+ *    - instance: The WebView instance that is about to restore
+ *  - Possible Values: Returns YES (delegate handled restore) or NO (use default restore)
+ *  - Default Value: NO (use default restore behavior)
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+ - (BOOL)onWebViewRestoreStart:(id<ZMUnifyWebViewProtocol>)instance;
 
 //MARK: - Navigation Callbacks
 
@@ -122,6 +147,17 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSDictionary<NSString*, NSString*>*)onGetRequestHeaderMap:(id<ZMUnifyWebViewProtocol>)instance url:(nullable NSString*)url;
 
 /**
+ *  Called to retrieve custom HTTP headers for iframe navigation requests
+ *  This callback allows the delegate to provide additional HTTP headers for sub-frame document requests.
+ *  Headers can be customized based on the target iframe URL.
+ *  - Parameters:
+ *    - instance: The WebView instance making the request
+ *    - url: The target iframe URL for which headers are being requested
+ *  - Supported WebView Types: UnifyWebViewType_CEF
+ */
+- (nullable NSDictionary<NSString*, NSString*>*)onIframeGetRequestHeaderMap:(id<ZMUnifyWebViewProtocol>)instance url:(nullable NSString*)url;
+
+/**
  *  Called when a resource fails to load in the WebView
  *  This callback is triggered when individual resources (images, CSS, JS files, etc.) fail to load,
  *  providing details about the failure for debugging and error handling purposes
@@ -144,6 +180,21 @@ NS_ASSUME_NONNULL_BEGIN
  *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
  */
 - (nullable NSString*)onGetDocumentCreatedRunScript:(id<ZMUnifyWebViewProtocol>)instance;
+
+//MARK: - Permission Callbacks
+
+/**
+ *  Called when a permission is requested by the WebView (e.g., microphone, camera access)
+ *  The delegate can inspect the permission type and return a result with the permission decision
+ *  - Parameters:
+ *    - instance: The WebView instance requesting the permission
+ *    - param: ZMUnifyWebViewPermissionRequestParam containing url and permissionType
+ *  - Return Value: ZMUnifyWebViewPermissionRequestResult with permissionState and handled flag,
+ *                  or nil to use default handling
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+- (nullable ZMUnifyWebViewPermissionRequestResult*)onPermissionRequested:(id<ZMUnifyWebViewProtocol>)instance
+                                                                  param:(nonnull ZMUnifyWebViewPermissionRequestParam*)param;
 
 //MARK: - Media & Capture Callbacks
 
@@ -168,6 +219,38 @@ NS_ASSUME_NONNULL_BEGIN
  *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
  */
 - (void)onNetworkStatusChange:(id<ZMUnifyWebViewProtocol>)instance state:(int)state;
+
+/**
+ *  Called when the WebView's memory usage exceeds the configured threshold
+ *  This callback notifies the delegate that the WebView is consuming a large amount of memory,
+ *  allowing the application to take recovery actions such as releasing caches, recycling the
+ *  WebView, or reloading the page. The delegate can choose to handle the warning or fall back
+ *  to the default behavior
+ *  - Parameters:
+ *    - instance: The WebView instance reporting the memory usage
+ *    - memUsage: The current memory usage in MB
+ *  - Possible Values: Returns YES (delegate handled the warning) or NO (use default handling)
+ *  - Default Value: NO (use default handling)
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+- (BOOL)onHugeMemoryUsage:(id<ZMUnifyWebViewProtocol>)instance memUsage:(unsigned long long)memUsage;
+
+/**
+ *  Called each time the CEF OSR renderer produces a new frame.
+ *  Delivers raw BGRA pixel data directly so the delegate can process or composite
+ *  the frame without an intermediate NSImage allocation.
+ *  This callback fires on the main thread.
+ *  - Parameters:
+ *    - instance: The WebView instance that produced the frame
+ *    - buffer:   Read-only pointer to BGRA pixel data (premultiplied alpha, byte-order little-endian).
+ *                Valid only for the duration of this call — do NOT store the pointer.
+ *                Copy the bytes if you need them after the method returns.
+ *    - width:    Frame width in pixels
+ *    - height:   Frame height in pixels
+ *  - Returns: YES if the delegate handled the frame; NO to let the framework fall through.
+ *  - Supported WebView Types: UnifyWebViewType_CEF (isOsrEnabled = YES only)
+ */
+- (BOOL)onOsrPaint:(id<ZMUnifyWebViewProtocol>)instance buffer:(const void*)buffer width:(int)width height:(int)height;
 
 //MARK: - Error & Recovery Callbacks
 
@@ -347,9 +430,17 @@ NS_ASSUME_NONNULL_BEGIN
  *  Called when the WebView title changed
  *  - Parameters:
  *    - title: the title of the WebView
- *  - Supported WebView Types: UnifyWebViewType_WKWebView,
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
  */
 - (void)onTitleChanged:(NSString *)title;
+
+/**
+ *  Called when frontend requestHostClose
+ *  - Possible Values: Returns YES (delegate handled event) or NO (use default behavior)
+ *  - Default Value: NO (use default event handling)
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+- (BOOL)requestCloseWebViewDialog;
 
 //MARK: - Context Menu Callbacks
 
@@ -397,6 +488,31 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)onRequestZmdfFileData:(id<ZMUnifyWebViewProtocol>)instance
                           url:(NSString*)url
             completionHandler:(void (^)(NSData* _Nullable data))completionHandler;
+
+//MARK: - Fullscreen Callbacks
+
+/**
+ *  Called when the WebView's fullscreen state has changed
+ *  This callback is triggered at each stage of the fullscreen transition (about to enter,
+ *  entered, about to exit, exited), allowing the delegate to update UI or perform layout
+ *  adjustments in response to the change
+ *  - Parameters:
+ *    - instance: The WebView instance whose fullscreen state changed
+ *    - state: The fullscreen transition stage from UnifyWebViewFullscreenState enum
+ *    - isFullScreen: YES if the WebView is in (or entering) fullscreen mode, NO if it is not
+ *                    in (or exiting) fullscreen mode. Convenience flag derived from state.
+ *  - Possible Values:
+ *    - UnifyWebViewFullscreenState_WillEnter (1): WebView is about to enter fullscreen
+ *    - UnifyWebViewFullscreenState_DidEnter (2): WebView has finished entering fullscreen
+ *    - UnifyWebViewFullscreenState_WillExit (3): WebView is about to exit fullscreen
+ *    - UnifyWebViewFullscreenState_DidExit (4): WebView has finished exiting fullscreen
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+- (void)onFullscreenStateChanged:(id<ZMUnifyWebViewProtocol>)instance state:(enum UnifyWebViewFullscreenState)state;
+
+//MARK: - Share
+- (BOOL)onUIActionEvent:(id<ZMUnifyWebViewProtocol>)instance message:(NSString *)message;
+
 @end
 
 //MARK: - V2 Main Protocol (Methods)
@@ -426,6 +542,17 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)setParentView:(nullable NSView*)parentView;
 
+/**
+ *  Overrides the window type used by the recycle manager to determine eligibility.
+ *  Call this when the webview is embedded back into a known window context (e.g. PT main window)
+ *  so that the window type reflects the correct container rather than waiting for the next
+ *  onWindowChanged: event.
+ *  - Parameters:
+ *    - windowType: The window type to assign (e.g. UnifyWebViewWindowType_PT)
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+- (void)setWindowType:(enum UnifyWebViewWindowType)windowType;
+
 //MARK: - Navigation & Content Loading
 
 /**
@@ -448,6 +575,15 @@ NS_ASSUME_NONNULL_BEGIN
  *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
  */
 - (BOOL)openHybridApp:(nullable ZMHybridAppInfo*)appInfo;
+
+/**
+ *  Clears the hybrid application instance bound to this WebView
+ *  This method resets the current hybrid app runtime association so subsequent
+ *  hybrid app operations do not reuse the previous instance state
+ *  - Parameters: None
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+- (void)clearHybridAppInst;
 
 /**
  *  Retrieves the unique identifier for this WebView instance
@@ -687,6 +823,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)pasteAsPlainText;
 
 /**
+ *  Sets the WebView background color
+ *  This updates the native WKWebView background color immediately when supported by the platform.
+ *  - Parameters:
+ *    - color: Background color to apply
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView
+ */
+- (void)configBackgroundColor:(NSColor *)color;
+
+/**
  *  Show loading UI immediately
  *  - Supported WebView Types: UnifyWebViewType_WKWebView,  UnifyWebViewType_CEF
  */
@@ -771,6 +916,19 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)isLoading;
 
+//MARK: - Fullscreen State Query
+
+/**
+ *  Queries whether the WebView is currently in fullscreen mode
+ *  This method provides the current fullscreen status of the WebView, indicating whether
+ *  the WebView has entered fullscreen and remains YES throughout the enter/exit transition animation
+ *  - Parameters: None
+ *  - Possible Values: YES (WebView is in fullscreen or transitioning into/out of it), NO (not in fullscreen)
+ *  - Default Value: NO (not in fullscreen)
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+- (BOOL)isFullScreen;
+
 //MARK: - Error Page Display
 
 /**
@@ -830,8 +988,19 @@ __attribute__((deprecated("ZMUnifyWebViewInstanceDelegate is deprecated. Please 
 
 /// Invoked when call `window.close()`
 /// - Parameter instance: unifyWebView
-/// @deprecated Use ZMUnifyWebViewDelegate instead
+/// @deprecated Use ZMUnifyWebViewDelegate's onUnifyWebViewWindowClose instead
 - (void)unifyWebViewDidClose:(id<ZMUnifyWebViewInstance>)instance DEPRECATED_MSG_ATTRIBUTE("Use ZMUnifyWebViewDelegate instead");
+
+/// Invoked when the WebView has been recycled
+/// - Parameter instance: unifyWebView
+/// @deprecated Use ZMUnifyWebViewDelegate's onWebviewRecycled: instead
+- (void)unifyWebViewDidRecycle:(id<ZMUnifyWebViewInstance>)instance DEPRECATED_MSG_ATTRIBUTE("Use ZMUnifyWebViewDelegate's onUnifyWebViewRecycled: instead");
+
+/// Called when the WebView is about to restore from recycled state
+/// - Parameter instance: unifyWebView
+/// - Returns: YES if the delegate handled the restore, NO to use default restore behavior
+/// @deprecated Use ZMUnifyWebViewDelegate's onWebViewRestoreStart: instead
+- (BOOL)unifyWebViewWillRestore:(id<ZMUnifyWebViewInstance>)instance DEPRECATED_MSG_ATTRIBUTE("Use ZMUnifyWebViewDelegate's onWebViewRestoreStart: instead");
 
 /// unifyWebView did decide Policy, will be invoked when the WKWebView in the webView container invoke the `unifyWebView:decidePolicyForNavigationAction:`
 /// - Parameters:
@@ -1076,6 +1245,14 @@ checkUserMediaPermissionForURL:(nullable NSURL *)url
 /// @deprecated Use ZMUnifyWebViewDelegate's onResourceLoadError:httpStatus:url: instead
 - (void)unifyWebView:(id<ZMUnifyWebViewInstance>)instance resourceLoadError:(int)httpStatus url:(NSString*)url DEPRECATED_MSG_ATTRIBUTE("Use ZMUnifyWebViewDelegate's onResourceLoadError:httpStatus:url: instead");
 
+/// Invoked when the WebView memory usage exceeds the warning threshold
+/// - Parameters:
+///   - instance: unifyWebView
+///   - memUsage: current memory usage in MB
+/// - Returns: YES if the delegate handled the event, NO to use default behavior
+/// @deprecated Use ZMUnifyWebViewDelegate's onHugeMemoryUsage:memUsage: instead
+- (BOOL)unifyWebView:(id<ZMUnifyWebViewInstance>)instance onHugeMemoryUsage:(unsigned long long)memUsage DEPRECATED_MSG_ATTRIBUTE("Use ZMUnifyWebViewDelegate's onHugeMemoryUsage:memUsage: instead");
+
 @end
 
 __attribute__((deprecated("ZMUnifyWebViewInstance is deprecated. Please use ZMUnifyWebViewProtocol (V2) instead.")))
@@ -1169,6 +1346,11 @@ __attribute__((deprecated("ZMUnifyWebViewInstance is deprecated. Please use ZMUn
 /// - Parameter enabled: Whether horizontal swipe gestures trigger backward and forward page navigation
 /// @deprecated Use ZMUnifyWebViewProtocol instead
 - (void)enableBackForwardNavigationGestures:(BOOL)enabled DEPRECATED_MSG_ATTRIBUTE("Use ZMUnifyWebViewProtocol instead");
+
+/// Sets or removes first responder focus on the WebView
+/// - Parameter focus: YES to make the WebView the first responder, NO to resign first responder status
+/// @deprecated Use ZMUnifyWebViewProtocol's setFocus: instead
+- (void)setFocus:(BOOL)focus DEPRECATED_MSG_ATTRIBUTE("Use ZMUnifyWebViewProtocol's setFocus: instead");
 
 /// reload the WebView
 /// @deprecated Use ZMUnifyWebViewProtocol's refresh instead
@@ -1318,6 +1500,15 @@ __attribute__((deprecated("ZMUnifyWebViewInstance is deprecated. Please use ZMUn
 
 /// @deprecated Use ZMUnifyWebViewProtocol's getRenderProcessIds instead
 - (NSArray*)getRenderProcessIds DEPRECATED_MSG_ATTRIBUTE("Use ZMUnifyWebViewProtocol's getRenderProcessIds instead");
+
+/// @deprecated Use ZMUnifyWebViewProtocol's setWindowType instead
+- (void)setWindowType:(enum UnifyWebViewWindowType)windowType DEPRECATED_MSG_ATTRIBUTE("Use ZMUnifyWebViewProtocol's setWindowType instead");
+
+/// Convert a point from WebView coordinate space to screen coordinate space
+/// - Parameter point: point in the WebView coordinate space
+/// - Returns: corresponding point in screen coordinates
+/// @deprecated Use ZMUnifyWebViewProtocol's convertWebViewPointToScreen: instead
+- (NSPoint)convertWebViewPointToScreen:(NSPoint)point DEPRECATED_MSG_ATTRIBUTE("Use ZMUnifyWebViewProtocol's convertWebViewPointToScreen: instead");
 @end
 
 NS_ASSUME_NONNULL_END

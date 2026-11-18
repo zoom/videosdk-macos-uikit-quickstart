@@ -89,15 +89,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKVideoSender : NSObject
 
 /**
- * @brief For user to send video raw data.
+ * @brief For user to send video raw data with initialization-time data format.
  * @param frameBuffer YUVI420 buffer.
  * @param width The width of buffer size.
  * @param height The height of buffer size.
  * @param frameLength The lenght of buffer.
  * @param rotation The rotation of buffer.
- * @param format Raw data format.
  */
-- (void)sendVideoFrame:(char*)frameBuffer width:(int)width height:(int)height frameLength:(int)frameLength rotation:(int)rotation format:(ZMVideoSDKFrameDataFormat)format;
+- (void)sendVideoFrame:(char*)frameBuffer width:(int)width height:(int)height frameLength:(int)frameLength rotation:(int)rotation;
 @end
 
 /**

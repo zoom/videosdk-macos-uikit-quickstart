@@ -9,6 +9,8 @@
 
 #import <zTelemetryBiz/SnowplowBiz/meetings_v2/meetings_v2_telemetry_types.h>
 
+@class ZMMTEntity;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**

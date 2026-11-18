@@ -55,5 +55,6 @@
 #import <Prism/NSTextFieldCell+ZoomKit.h>
 #import <Prism/NSToolTipManager+ZoomKit.h>
 #import <Prism/NSOpenPanel+ZoomKit.h>
+#import <Prism/NSWindow+ZMFloating.h>
 
 #endif /* Header_h */

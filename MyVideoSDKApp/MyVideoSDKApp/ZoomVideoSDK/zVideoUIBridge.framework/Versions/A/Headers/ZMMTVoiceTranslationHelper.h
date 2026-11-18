@@ -13,9 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isAIInterpretationReady;
 - (BOOL)isMeetingAIInterpretationStarted;
 - (BOOL)isMeetingAIInterpretationOnlyStartedByOthers;
+- (BOOL)isAIInterpretationSpeakerModeStarted;
+- (BOOL)isMeetingAIInterpretationSpeakerModeStarted;
 - (BOOL)isAIInterpretationStarted;
 - (BOOL)isAIInterpretationFirstFrameReceived;
 - (BOOL)isAIInterpreterTranslatingStarted;
+- (BOOL)isAIInterpreterSpeakerModeOnForUser:(ZMUser *)user;
 - (NSString*)getCurrentLanguage;
 - (BOOL)setAIInterpretationSpeakingLanguage:(int)languageID;
 - (int)getCurrentAISpeakingLanguageID;

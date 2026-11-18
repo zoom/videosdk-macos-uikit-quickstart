@@ -20,9 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @return YES if supports 4K display, NO otherwise
 - (BOOL)canSupport4KDisplay;
 
-/// Called when enhanced media feature status changed
-/// @param enable YES if enhanced media feature is enabled
-- (void)onEnhancedMediaFeatureStatusChanged:(BOOL)enable;
+/// Called when high quality video layout status changed
+/// @param enable YES if video layout enhancement is enabled
+- (void)onHighQualityVideoLayoutStatusChanged:(BOOL)enable;
 
 @end
 

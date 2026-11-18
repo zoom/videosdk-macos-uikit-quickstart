@@ -13,35 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class ZMTabItemData;
 
-#pragma mark - Cell Configuration
-
-/// Configuration for custom cells in ZMMorePanelCollectionView
-@interface ZMMorePanelCellConfiguration : NSObject
-
-/// The cell class to use (must conform to ZMMorePanelCellViewProtocol)
-@property (nonatomic, strong) Class cellClass;
-
-/// The size of each cell
-@property (nonatomic, assign) NSSize cellSize;
-
-/// The identifier for the cell
-@property (nonatomic, copy) NSString *cellIdentifier;
-
-/// Factory method to create a default configuration
-+ (instancetype)defaultConfiguration;
-
-/// Factory method to create a custom configuration
-+ (instancetype)configurationWithCellClass:(Class)cellClass 
-                                  cellSize:(NSSize)cellSize 
-                            cellIdentifier:(NSString *)cellIdentifier;
-
-@end
-
 #pragma mark - ZMDraggableCollectionView
 
 @interface ZMMorePanelCollectionViewItem : NSCollectionViewItem
 
-@property (nonatomic, strong, readonly) NSView<ZMMorePanelCellViewProtocol> *cellView;
+@property (nonatomic, strong, readonly) ZMMorePanelCellView *cellView;
 
 - (void)focusSelf;
 
@@ -82,6 +58,9 @@ typedef NSObject<NSPasteboardWriting, NSPasteboardReading> * _Nullable (^ZMMoreP
 
 // Callbacks
 @property (nonatomic, copy, nullable) void (^onCellClickHandler)(ZMTabItemData *itemData);
+/// Fired when a cell is materialized for display (initial + scrolled into view).
+/// Used by hosts to lazily load per-cell resources (e.g. zApp tab icons).
+@property (nonatomic, copy, nullable) void (^onCellWillDisplayHandler)(ZMTabItemData *itemData);
 @property (nonatomic, copy, nullable) void (^onCellRightMouseClickHandler)(ZMTabItemData *itemData, NSEvent *event, NSView *cellView);
 @property (nonatomic, copy, nullable) void (^onItemsReorderedHandler)(ZMTabItemData *draggedItem, ZMTabItemData * _Nullable targetItem);
 @property (nonatomic, copy, nullable) void (^onItemAddedFromExternalHandler)(ZMTabItemData *itemData, BOOL isPin, ZMTabItemData * _Nullable targetItem);
@@ -99,16 +78,13 @@ typedef NSObject<NSPasteboardWriting, NSPasteboardReading> * _Nullable (^ZMMoreP
 /// Returns YES if the item is currently popped out
 @property (nonatomic, copy, nullable) BOOL (^isItemPoppedOutHandler)(ZMTabItemData *itemData);
 
-// Cell Configuration
-@property (nonatomic, strong) ZMMorePanelCellConfiguration *cellConfiguration;
-
 // Internal collection view (for advanced configuration)
 @property (nonatomic, strong) ZMDraggableCollectionView *collectionView;
+@property (nonatomic, strong, readonly) NSScrollView *scrollView;
 
 // Customization
 @property (nonatomic, copy) NSString *dragType;  // Default: @"us.zoom.maintabs"
 @property (nonatomic, assign) BOOL draggingEnabled;  // Default: NO (dragging disabled)
-@property (nonatomic, copy, nullable) NSColor * (^cellBackgroundColorProvider)(ZMTabItemData *itemData);
 @property (nonatomic, copy, nullable) ZMMorePanelPasteboardWriterBlock pasteboardWriterProvider;
 
 @property (nonatomic, strong) NSColor *dividerColor;
@@ -127,14 +103,14 @@ typedef NSObject<NSPasteboardWriting, NSPasteboardReading> * _Nullable (^ZMMoreP
 - (void)reloadItemAtIndexPath:(NSIndexPath *)indexPath;
 - (void)reloadItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths;
 
-// Drag & Drop
-- (void)removeExternalDragTemporaryItem;
+/// Current document content height calculated from items/layout rules.
+- (CGFloat)contentHeight;
 
-// Hover state management
-- (void)resetAllCellHoverStates;
+// Drag & Drop
+- (void)endDragSession;
+- (void)endDragSessionIfExternal;
+- (void)notifySourceEndIfNeeded;
 
 @end
 
 NS_ASSUME_NONNULL_END
-
-

@@ -15,6 +15,7 @@
 #import <zm_conf_universal_ui/zm_conf_uui_online_business_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_watermark_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_aic_interface.h>
+#import <zm_conf_universal_ui/disclaimer/zm_conf_uui_disclaimer_api.h>
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
@@ -33,6 +34,8 @@ extern ZCV const ZCV6_7_0;
 extern ZCV const ZCV6_7_5;
 extern ZCV const ZCV7_0_0;
 extern ZCV const ZCV7_1_0;
+extern ZCV const ZCV7_2_0;
+extern ZCV const ZCV7_2_10;
 
 @class ZMUser;
 
@@ -79,6 +82,7 @@ extern ZCV const ZCV7_1_0;
 
 - (BOOL)isFilterTWEmojiEnabled;
 - (BOOL)isUserPicDownloaded:(int)inUserID;
+- (BOOL)requestAvatarForUser:(ZMUser *)user;
 
 - (BOOL)isLeadMode;
 
@@ -173,7 +177,6 @@ extern ZCV const ZCV7_1_0;
 - (BOOL)isAudioWatermarkEnabled;
 - (BOOL)isE2EEncMeeting;
 - (BOOL)isInstantMeeting;
-- (BOOL)isFace2FaceMeeting;
 
 - (BOOL)isAudioForceDisabled;//ZOOM-54743
 - (BOOL)isAllowMessageAndFeedbackNotify;// ZOOM-82083
@@ -251,6 +254,8 @@ extern ZCV const ZCV7_1_0;
 - (BOOL)isMoreCustomInterpreteLanEnabled;//ZOOM-366210
 
 - (BOOL)shouldToolbarAlwaysBeShowing; // Implemented by category
+- (BOOL)isAccessibilityNotAllowAutoHidden; // Implemented by category
+- (NSRect)calcWindowInitialRect:(NSWindow*)myWindow; // Implemented by category
 
 #pragma mark - Main Window Visibility
 - (BOOL)mainWindowVisible;
@@ -314,6 +319,32 @@ extern ZCV const ZCV7_1_0;
 - (void)agreeLiveStreamDisclaimer:(BOOL)bAgree;
 - (void)agreeSmartSummaryDisclaimer:(BOOL)bAgree;
 
+#ifdef __cplusplus
+// ZOOM-1097292 — consolidated disclaimer routing
+// Returns YES if the given disclaimer should be displayed via the consolidated
+// disclaimer pipeline for this helper's confSession. Use as a short-circuit
+// guard before falling back to legacy per-feature disclaimer flows.
+- (BOOL)needShowConsolidatedDisclaimer:(const NS_ZM_CONF_UNIVERSAL_UI::UuiCustomDisclaimerId&)disclaimerId;
+
+// Returns YES if the disclaimer was actually triggered via the consolidated
+// pipeline (i.e. needShow returned YES and the consolidated UI was shown).
+// Callers should treat YES as "the consolidated UI took over; skip the legacy
+// flow".
+- (BOOL)showConsolidatedDisclaimerIfNeeded:(const NS_ZM_CONF_UNIVERSAL_UI::UuiCustomDisclaimerId&)disclaimerId;
+
+// ZOOM-1268547 — KVS custom disclaimer (require consent) routing
+// Returns YES if the given disclaimer is shown via the standalone custom
+// disclaimer pipeline (i.e. the disclaimer is customized). Use as a short-circuit
+// guard before falling back to legacy per-feature disclaimer flows so the legacy
+// UI is suppressed when UUI takes over.
+- (BOOL)needShowCustomDisclaimer:(const NS_ZM_CONF_UNIVERSAL_UI::UuiCustomDisclaimerId&)disclaimerId;
+
+// Re-center the standalone custom disclaimer window over the meeting window and
+// bring it to front. Used when an audio/video action is blocked by KVS consent
+// and the disclaimer needs to be surfaced again.
+- (void)showCustomDisclaimerCenterAndTop:(const NS_ZM_CONF_UNIVERSAL_UI::UuiCustomDisclaimerId&)disclaimerId;
+#endif
+
 - (void)logUIWindowSize:(NSSize)meetingWindowSize activeSize:(NSSize)activeSize;
 
 // ZOOM-1001627
@@ -363,10 +394,8 @@ extern ZCV const ZCV7_1_0;
 - (BOOL)isFirstTimeUsePPM;
 - (BOOL)isInPPMeeting;
 
-- (BOOL)isMeetingSimplificationEnabled;
 //[ZOOM-634357]
 - (BOOL)isToolbarPinEnabled;
-- (BOOL)isToolbarSimplificationEnabled;
 - (BOOL)canPersonalizeToolbar;
 - (BOOL)storeToolbarOrder:(NSArray<NSString *> *)orderArray;
 - (NSArray<NSString *> *)getToobarOrderArray;
@@ -434,6 +463,7 @@ extern ZCV const ZCV7_1_0;
 - (BOOL)isAttendeeVideoControlShareContentOnly;
 - (BOOL)isVideoLayoutEnhancementEnabled;
 - (BOOL)isEnhancedMediaFeatureEnabled;
+- (BOOL)isEnhancedMediaBadgeVisible;
 - (BOOL)isPSLOptimizationEnabled;
 - (BOOL)isPslCloudMixEnabled;
 - (BOOL)isMMRSupportCloudPsl;
@@ -469,19 +499,30 @@ extern ZCV const ZCV7_1_0;
 - (BOOL)isAllNotesTranscriptDisabled;
 - (BOOL)isMyNotesTranscriptDisabledForUser:(ZMUser *)user;
 - (BOOL)isSupportNotesTranscript;
-- (BOOL)isAICRestrictedByExternalUser;
-- (BOOL)isMyNotesEnabledForAll;
+- (BOOL)isAICRestrictedByUser;
+- (BOOL)isMyNotesEnabledForAnonymousUser;
+- (NSString*)getMyNotesAnonymousUrl;
 - (BOOL)isMyNotesEnabled;
 - (BOOL)isMyNotesEntranceEnabled;
 - (BOOL)isMyNotesStarted;
 - (void)onViewMyNotes;
 - (BOOL)hasAicLicense;
+- (BOOL)isMyNotesNewHostControlEnabled;
+- (BOOL)isMyNotesAllowAllParticipantTranscribe;
 
 - (BOOL)enableShowMainWindowWhenSendingShare;
 - (BOOL)mainWindowVisibleInSendingShare;
 - (BOOL)mainWindowInvisibleInSendingShare;
 
 - (BOOL)isBOAICFeatureEnabled;
+
+- (BOOL)isSupportMeetingLightMode;
+
+#ifdef BUILD_FOR_CLIENT_SDK
+- (BOOL)canCustomizedUI;
+#endif
+
+- (BOOL)switchAccountToJoin;
 @end
 
 NS_ASSUME_NONNULL_END

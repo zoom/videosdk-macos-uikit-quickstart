@@ -13,6 +13,8 @@
 #import <Prism/Prism.h>
 
 NS_ASSUME_NONNULL_BEGIN
+FOUNDATION_EXPORT NSString *const ZMMTMyNotesCoachmarkEntry;
+
 @class ZMShareSource;
 
 @protocol ZMMTTrackingViewDelegate <NSObject>
@@ -40,6 +42,8 @@ NS_ASSUME_NONNULL_END
 
 static const ZMEventPriority ZMSessionLifeEventPriorityTransitionMgr = 0;
 static const ZMEventPriority ZMSessionLifeEventPrioritySessionMgr = 1;
+static NSString * const ZMMTPollObjCreatedNotification = @"ZMMTPollObjCreatedNotification";
+static NSString * const ZMMTPollObjDestroyedNotification = @"ZMMTPollObjDestroyedNotification";
 
 NS_ASSUME_NONNULL_BEGIN
 @class ZMMTTransitionModel;

@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSString *)systemSettingPrivacyDescription;
 
++ (BOOL)zm_isMultiProcessMeetingEnabled;
+
 @end
 
 NS_ASSUME_NONNULL_END

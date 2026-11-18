@@ -18,6 +18,7 @@ typedef void(^ZMHMenuItemHoverBlock)(ZMBaseMenuItem * ofItem);
 
 /// To override, called by rowview selection changed
 - (void)enclosingMenuItemSelected:(BOOL)selected;
+- (void)enclosingMenuItemHovered:(BOOL)hovered;
 
 @end
 

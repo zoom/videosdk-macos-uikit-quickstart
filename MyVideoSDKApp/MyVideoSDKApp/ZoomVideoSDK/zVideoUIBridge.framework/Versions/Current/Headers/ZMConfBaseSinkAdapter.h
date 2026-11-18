@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <zVideoUIBridge/ZMUser.h>
 #import <zVideoUIBridge/ZMMTRosterList.h>
+#import <zm_conf_universal_ui/disclaimer/zm_conf_uui_disclaimer_api.h>
+#import <zm_conf_universal_ui/zm_conf_uui_string_interface.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @class ZMConfSession;
@@ -69,6 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onDeviceStatelessButtonDown:(const CString&)device_id;
 - (void)onDocumentCameraShareButtonPressed:(const CString&)device_id;
 - (void)onPairedUSBAudioDeviceDetected:(const CmmAudioUSBDeviceBriefInfo&)info isDeviceFound:(CmmBool)is_device_found;
+- (void)onShowSpeakerVolumeReminder:(CmmBool)show;
 
 - (BOOL)canUseVirtualBackgroundNow;
 - (BOOL)canUseErasedBackgroundNow;
@@ -84,10 +87,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onMyVideoDeviceRunStarted:(void*)hWnd type:(CMM_MY_VIDEO_RUN_TYPE)eRunType device:(PMediaDevice)pDeviceInfo;
 - (void)onMyCameraCaptureSizeRatioChanged:(const CString&)cameraID fWidth2Height:(float)fWidth2Height;
 - (void)onHandGestureDetected:(const SSB_MC_DATA_BLOCK_HAND_POSE_INFO&)info;
+// disabled == YES means avatars / video filters / studio effects should be disabled,
+// i.e. deepfake gateway is running AND the disclaimer has been agreed.
+- (void)onVideoEffectsDisabledForDeepfakeChanged:(BOOL)disabled;
 
 #pragma mark - Screen Resolution
 - (BOOL)canSupport4KDisplay;
 - (void)onEnhancedMediaFeatureStatusChanged:(BOOL)enable;
+- (void)onHighQualityVideoLayoutStatusChanged:(BOOL)enable;
 @end
 
 @interface ZMConfBaseSinkAdapter (Share)
@@ -113,6 +120,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)onReceiveEnableMultiShareRequestMsg:(const CString&)reqID senderID:(CMM_USERID)senderID;
 - (void)onReceiveEnableMultiShareResponseMsg:(CmmEnableMultiShareResponseStatus)status;
+- (void)onHighFrameRateContentSharingStatusChanged:(BOOL)shareEnable;
 @end
 
 @interface ZMConfBaseSinkAdapter (ClosedCaption)
@@ -235,6 +243,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onIndicatorAppStatusUpdated:(const CString&)notice_id app:(const CmmIndicatorAppItem&)indicator_app;
 - (void)onToastStatusUpdated:(const CString&)notice_id status:(CmmInt32)notice_status;
 - (void)onIndicatorTabReceived:(const CString&)tab_id;
+- (void)onCommonNoticeReceived:(const CmmNoticeSet&)cmm_notice;
 - (void)onCommonNoticeDeleted:(const CmmNoticeSet&)cmm_notice;
 - (void)onIndicatorTabDeleted:(const CString&)tab_id;
 - (void)onZoomStreamingServiceSwitchChanged:(CmmBool)new_switch;
@@ -294,12 +303,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onReceiveCustomMessageFromPT:(CmmUInt32)type msgData:(const CmmUInt8 *)msgData size:(CmmUInt32)size;
 @end
 
-@interface ZMConfBaseSinkAdapter (VoiceNotes)
-- (void)onUseMicrophoneAppsChange:(const SSB_MC_MICROPHONE_USAGE_INFO&)data;
-@end
-
 @interface ZMConfBaseSinkAdapter (ConfUniversalUI)
 - (void)onModuleAfterCreated:(NS_ZM_CONF_UNIVERSAL_UI::UuiModuleName)moduleName;
 - (void)onModuleBeforeDestroyed:(NS_ZM_CONF_UNIVERSAL_UI::UuiModuleName)moduleName;
 @end
+
+// ZOOM-1097292 — Consolidated disclaimer sink callbacks. Empty defaults live in
+// ZMConfBaseSinkAdapter+Disclaimer.mm; concrete behavior is provided by upper
+// layer (VideoUI) categories on ZMConfUISinkAdapter.
+@interface ZMConfBaseSinkAdapter (Disclaimer)
+- (void)onShowConsolidatedCustomDisclaimer;
+- (void)onUpdateConsolidatedCustomDisclaimer:(const NS_ZM_CONF_UNIVERSAL_UI::UuiConsolidatedDisclaimerUpdateParam&)param;
+- (void)onCloseConsolidatedCustomDisclaimer;
+- (void)onShowConsolidatedDisclaimerCenterAndTop;
+- (void)onGetConsolidatedDisclaimerPosParam:(NS_ZM_CONF_UNIVERSAL_UI::UuiDisclaimerPosParam&)param;
+- (void)onConsolidatedDisclaimerLeaveMeeting;
+- (nullable NSString *)localizedStringForConsolidatedDisclaimerId:(NS_ZM_CONF_UNIVERSAL_UI::UuiStringId)stringId;
+@end
+
 NS_ASSUME_NONNULL_END

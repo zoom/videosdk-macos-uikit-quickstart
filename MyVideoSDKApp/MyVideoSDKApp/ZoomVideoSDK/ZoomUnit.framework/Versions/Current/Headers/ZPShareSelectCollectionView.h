@@ -15,6 +15,7 @@
 - (void)collectionViewStartShareSelectedItem:(ZPShareSelectCollectionView*_Nonnull)collection;
 - (void)collectionViewStartShare:(ZPShareSelectCollectionView*_Nonnull)collection collectionItem:(NSCollectionViewItem *_Nonnull)item;
 @optional
+- (void)collectionView:(nonnull ZPShareSelectCollectionView *)collection didScrollToItemAtIndexPath:(nonnull NSIndexPath *)indexPath;
 - (void)collectionViewMoreMenuClicked:(ZPShareSelectCollectionView*_Nonnull)collection collectionItem:(NSCollectionViewItem *_Nonnull)item menuTag:(NSInteger)menuTag;
 - (NSNumber *_Nullable)moreMenuSelectedStatus:(ZPShareSelectCollectionView*_Nonnull)collection collectionItem:(NSCollectionViewItem *_Nonnull)item;
 @end
@@ -33,6 +34,7 @@
 @property (assign) NSUInteger maxMultiSelectDesktop;
 @property (assign) BOOL supportMultiSelectDesktop;
 @property (assign, readonly) NSUInteger itemCountPerRow;
+- (void)focusFirstKeyViewInSection:(NSInteger)section;
 - (void)cleanUp;
 - (void)collectViewItemDidDoubleClicked:(NSCollectionViewItem * _Nonnull)item;
 - (void)collectViewItemReturnKeyPressed:(NSCollectionViewItem * _Nonnull)item;

@@ -57,6 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onSummaryShareLevelChanged:(long long)newLevel;
 - (void)onLiveSummarySettingChanged:(BOOL)isLiveSummaryEnabled;
 - (void)onLiveSummaryStatusChanged;
+- (void)onEnhancedMediaFeatureStatusChanged:(BOOL)enable;
 - (void)onReceiveSwitchAICompanionWithLiveSummaryRequestMsg:(NSString *)reqId senderId:(ZMUserID)senderId aicOption:(long long)aicOption switchAction:(NSInteger)switchAction;
 - (void)onReceiveSwitchAICompanionWithLiveSummaryResponseMsg:(long long)aicOption timeout:(BOOL)timeout agree:(BOOL)agree switchAction:(NSInteger)switchAction;
 

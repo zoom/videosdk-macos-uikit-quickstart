@@ -41,6 +41,8 @@ NS_ASSUME_NONNULL_BEGIN
 @class ZMVideoSDKQOSStatistics;
 @class ZMVideoSDKQOSSendStatistics;
 @class ZMVideoSDKQOSRecvStatistics;
+@class ZMVideoSDKOnHoldHelper;
+@class ZMVideoSDKOnHoldUser;
 /**
  * @protocol ZMVideoSDKDelegate
  * @brief Delegate protocol to receive session related callbacks.
@@ -53,12 +55,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)onSessionJoin;
     
-/**
- * @brief Invoked when the current user leaves the session.
- * @deprecated Use \link ZMVideoSDKDelegate::onSessionLeave: \endlink instead.
- */
-- (void)onSessionLeave DEPRECATED_MSG_ATTRIBUTE("Use -onSessionLeave: instead");
-
 /**
  * @brief Invoked when the current user leaves the session with reason.
  * @param reason The leave reason.
@@ -85,6 +81,25 @@ NS_ASSUME_NONNULL_BEGIN
  * @param userArray An array contains the users leaved.
  */
 - (void)onUserLeave:(ZMVideoSDKUserHelper* _Nonnull)userHelper userList:(NSArray<ZMVideoSDKUser *>* _Nullable)userArray;
+
+/**
+ * @brief Invoked when the local user has joined OnHold.
+ */
+- (void)onHoldJoined;
+
+/**
+ * @brief Invoked when users join OnHold.
+ * @param helper OnHold helper.
+ * @param userArray List of users who joined OnHold.
+ */
+- (void)onHoldUserJoin:(ZMVideoSDKOnHoldHelper* _Nullable)helper userList:(NSArray<ZMVideoSDKOnHoldUser*>* _Nullable)userArray;
+
+/**
+ * @brief Invoked when users leave OnHold.
+ * @param helper OnHold helper.
+ * @param userArray List of users who left OnHold.
+ */
+- (void)onHoldUserLeave:(ZMVideoSDKOnHoldHelper* _Nullable)helper userList:(NSArray<ZMVideoSDKOnHoldUser*>* _Nullable)userArray;
     
 /**
  * @brief Invoked when a user makes changes to their video, such as starting or stopping their video.
@@ -105,6 +120,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param shareHelper The share helper object.
  * @param user The pointer to a user object.
  * @param shareAction The pointer to a ZMVideoSDKShareAction object.
+ * @note When sharing starts (for example, when status is @c ZMVideoSDKShareStatus_Start), shareAction's contentType can be @c ZMVideoSDKShareContentType_UNKNOWN temporarily. Use onShareContentChanged:user:shareAction: to get the finalized content type.
  */
 - (void)onUserShareStatusChanged:(ZMVideoSDKShareHelper* _Nonnull)shareHelper user:(ZMVideoSDKUser* _Nullable)user shareAction:(ZMVideoSDKShareAction* _Nullable)shareAction;
 
@@ -125,6 +141,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param shareHelper The share helper object.
  * @param user Current start or stop share userInfo.
  * @param shareAction The pointer to a ZMVideoSDKShareAction object.
+ * @note This callback provides the finalized share content type after sharing starts.
  */
 - (void)onShareContentChanged:(ZMVideoSDKShareHelper* _Nonnull)shareHelper user:(ZMVideoSDKUser *)user shareAction:(ZMVideoSDKShareAction* _Nullable)shareAction;
 
@@ -137,6 +154,16 @@ NS_ASSUME_NONNULL_BEGIN
  * @note This callback is only triggered for the presenter, not for viewers.
  */
 - (void)onUnsharingWindowsChanged:(NSArray<NSNumber*>*)windowsList shareHelper:(ZMVideoSDKShareHelper* _Nonnull)shareHelper user:(ZMVideoSDKUser *)user shareAction:(ZMVideoSDKShareAction* _Nullable)shareAction;
+
+/**
+ * @brief Callback event when the process's windows sharing state changes.
+ * @param isAnyWindowSharing YES if any window of the process is sharing, NO otherwise.
+ * @param shareHelper The pointer to the share helper object.
+ * @param user The user who is sharing.
+ * @param shareAction The pointer to a ZMVideoSDKShareAction object.
+ * @note This callback is only triggered for the presenter, not for viewers.
+ */
+- (void)onSharingProcessWindowsStateChanged:(BOOL)isAnyWindowSharing shareHelper:(ZMVideoSDKShareHelper* _Nonnull)shareHelper user:(ZMVideoSDKUser *)user shareAction:(ZMVideoSDKShareAction* _Nullable)shareAction;
 
 /**
  * @brief Notification of the active monitor(s) displaying the shared content has changed.
@@ -227,6 +254,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onUserNameChanged:(ZMVideoSDKUser* _Nullable)user;
 
 /**
+ * @brief Invoked when a user's failover status changes.
+ * @param user The user whose failover status changed.
+ * @param inFailover YES if the user is in failover. Otherwise, NO.
+ */
+- (void)onUserFailoverStatusChanged:(ZMVideoSDKUser* _Nullable)user inFailover:(BOOL)inFailover;
+
+/**
  * @brief Invoked when receiving shared raw audio data.
  * @param data Raw audio data.
  */
@@ -250,6 +284,14 @@ NS_ASSUME_NONNULL_BEGIN
  * @param user The user who sent the command.
  */
 - (void)onCommandReceived:(NSString* _Nullable)commandContent senderUser:(ZMVideoSDKUser* _Nullable)user;
+
+/**
+ * @brief Callback when a command is received from a user in a different session.
+ * @param commandContent The received command.
+ * @param sender The lightweight sender identity.
+ */
+- (void)onCommandReceivedFromCrossSession:(NSString* _Nullable)commandContent
+                                   sender:(ZMVideoSDKSubSessionUser* _Nullable)sender;
 
 /**
  * @brief Callback for when the current user is granted camera control access.
@@ -372,6 +414,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onSpokenLanguageChanged:(ZMVideoSDKLiveTranscriptionLanguage* _Nullable)spokenLanguage;
 
 /**
+ * @brief Callback event when voice interpretation is ready.
+ */
+- (void)onVoiceInterpretationReady;
+
+/**
  * @brief Invoked when a user deletes a chat message.
  * @param chatHelper The pointer to chat helper object.
  * @param msgID The deleted message's ID.
@@ -402,22 +449,6 @@ NS_ASSUME_NONNULL_BEGIN
  * @param info A certificate information object for verification failure. The object will be destroyed once the function calls end.
  */
 - (void)onSSLCertVerifiedFailNotification:(ZMVideoSDKSSLCertificateInfo * _Nonnull)info;
-
-/**
- * @brief Callback event of the user's video network quality changes.
- * @param status Video network quality.
- * @param user The pointer to a user object.
- * @deprecated Use \link ZMVideoSDKDelegate::onUserNetworkStatusChanged:level:user: \endlink instead.
- */
-- (void)onUserVideoNetworkStatusChanged:(ZMVideoSDKNetworkStatus)status user:(ZMVideoSDKUser * _Nullable)user DEPRECATED_MSG_ATTRIBUTE("Use -onUserNetworkStatusChanged:level:user: instead");
-
-/**
- * @brief Callback event of the current user's share network quality changes.
- * @param status Share network quality.
- * @param isSendingShare Indicates the share's direction. If YES, it refers to the sending share; if NO, it refers to the receiving share.
- * @deprecated Use \link ZMVideoSDKDelegate::onUserNetworkStatusChanged:level:user: \endlink instead.
- */
-- (void)onShareNetworkStatusChanged:(ZMVideoSDKNetworkStatus)status isSendingShare:(BOOL)isSendingShare DEPRECATED_MSG_ATTRIBUTE("Use -onUserNetworkStatusChanged:level:user: instead");
 
 /**
  * @brief Called when a user's network status changes for a specific data type.
@@ -657,6 +688,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onStreamingJoinStatusChanged:(ZMVideoSDKStreamingJoinStatus)status;
 
 /**
+ * @brief Callback event when an emoji reaction is received from a user in the session.
+ * @param user The user who sent the emoji reaction.
+ * @param type The emoji reaction type.
+ */
+- (void)onEmojiReactionReceived:(ZMVideoSDKUser* _Nullable)user type:(ZMVideoSDKEmojiReactionType)type;
+
+/**
  * @brief Invoked when the real-time media streams status changes.
  * @param status The current real-time media streams status.
  */
@@ -683,4 +721,3 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onCanvasSnapshotIncompatible:(ZMVideoSDKUser *)user;
 @end
 NS_ASSUME_NONNULL_END
-

@@ -14,6 +14,7 @@
     #import <Cocoa/Cocoa.h>
     #import <AppKit/AppKit.h>
     #import <Prism/Prism.h>
+    #import <ZoomUnit/ZPLogHelper.h>
     #import <ZoomKit/ZoomKit.h>
 #endif
 

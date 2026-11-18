@@ -124,7 +124,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (ZMVideoSDKErrors)stopAudio;
     
 /**
- * @brief Mutes user's voip audio. 0 means current user (myself).
+ * @brief Mutes user's voip audio.
  * @param user The pointer of user object.
  * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */

@@ -13,7 +13,6 @@ typedef NS_ENUM(NSInteger, ZMVNTrafficSource) {
     ZMVNTrafficSourceHomeTabMain = 1,
     ZMVNTrafficSourceHomeTabPlus = 2,
     ZMVNTrafficSourceDeepLink = 3,
-    ZMVNTrafficSourceMeetingToolbar  = 4,
     ZMVNTrafficSourceAICPanel = 5,
     ZMVNTrafficSourceAICWorkspace = 6,
     ZMVNTrafficSourceDocsPage = 7,
@@ -22,33 +21,22 @@ typedef NS_ENUM(NSInteger, ZMVNTrafficSource) {
     ZMVNTrafficSourceOtherToaster = 10,
     ZMVNTrafficSourceAutoStart = 11,
     ZMVNTrafficSourceMeetingTopbar = 12,
+    ZMVNTrafficSourceRestart = 13,
+    ZMVNTrafficSourceMynotesPage = 14,
+    ZMVNTrafficSourceOpenNotesInMeeting = 15,
+    ZMVNTrafficSourceOpenNotesInPhone = 16,
 };
 
+@class ZMMyNotesModel;
 /**
  * @router ZMShared
  */
-@protocol IZMVoiceNotesMgr <NSObject>
+@protocol IZMVoiceNotesMgr <ZMRoutableObject>
 @optional
-- (void)restartVoiceNotes:(BOOL)with3pMode;
+- (void)restartWithModel:(ZMMyNotesModel*)model;
 
-- (void)notifyWebViewConnectingIfNeeded;
-- (void)notifyNotesMeetingPropertyIfNeeded;
-- (void)notifyNotesRestartVoiceNotes:(ZMVNTrafficSource)trafficSource with3pMode:(BOOL)with3pMode;
-- (void)notifyWebViewTrafficSource;
-- (void)notifyNotesViperExReady;
-- (void)notifyNotesPTAskStopNotesIfNeeded;
-
-- (void)showReportProblemWindow;
-- (void)onVNProcessReady;
-
-- (void)startVoiceNotes:(ZMVNTrafficSource)trafficSource;
-- (void)startVoiceNotes:(ZMVNTrafficSource)trafficSource with3pMode:(BOOL)with3pMode;
-// coach mark
-- (void)registCoachMark;
-- (void)unregistCoachMark;
-- (BOOL)shouldShowF2fCoachMark;
-- (void)markF2fCoachMarkShowing;
-- (void)markF2fCoachMarkShown;
+- (void)startWithModel:(ZMMyNotesModel*)model;
+- (void)reservationVoiceNotesWithModel:(ZMMyNotesModel*)model;
 
 - (BOOL)isSupportVoiceNote;
 - (BOOL)isEnableVoiceNotes;
@@ -57,20 +45,18 @@ typedef NS_ENUM(NSInteger, ZMVNTrafficSource) {
 // event receive
 - (void)onCalendarAppReady;
 
-// connecting
-- (void)startConfCreate;
-- (void)endConfCreate;
-- (void)showErrorWithMessage:(NSString *)message errorCode:(int)errorCode;
-
+- (ZMMyNotesModel*)runningModel;
 - (BOOL)isVNConfCConnecting; //conf c
 - (BOOL)isVNProcessStaring; //process is starting up
 - (BOOL)isVNConfRunning; //on call
-- (BOOL)isVNConfRunningWithID:(NSString *)meetingID;
-- (void)startVoiceNotesWithID:(NSString *)meetingID passcode:(NSString *)passcode;
 - (void)stopVoiceNotes;
+
+- (nullable NSString*)mynotesAnonymousUrl;
 
 - (void)bringWindowToFrontFromPT;
 @end
+
+@class ZMMicrophoneUsageInfo;
 
 /**
  * @poster ZMEventPoster
@@ -81,7 +67,7 @@ typedef NS_ENUM(NSInteger, ZMVNTrafficSource) {
 - (void)onVoiceNotesStatusChanged;
 - (void)onVoiceNotesRunningStatusChanged;
 
-- (void)onVoiceNotesDetectedMeetingAndStop;
+- (void)onUseMicrophoneAppsChange:(ZMMicrophoneUsageInfo *)usageInfo;
 @end
 
 NS_ASSUME_NONNULL_END

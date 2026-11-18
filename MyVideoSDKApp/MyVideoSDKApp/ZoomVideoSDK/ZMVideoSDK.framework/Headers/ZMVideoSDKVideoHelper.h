@@ -121,6 +121,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @brief Switches to the next available camera.
  * @return YES if the function is success. Otherwise, NO.
+ * @note This method is not supported when using an external video source. If externalVideoSource is set in ZoomVideoSDKSessionContext when joining the session, this method will fail.
  */
 - (BOOL)switchCamera;
     
@@ -128,6 +129,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief Switches to the camera passed in as cameraDevice.
  * @param cameraDeviceID The ID of camera.
  * @return YES if the function is success. Otherwise, NO.
+ * @note This method is not supported when using an external video source. If externalVideoSource is set in ZoomVideoSDKSessionContext when joining the session, this method will fail.
  */
 - (BOOL)selectCamera:(NSString*)cameraDeviceID;
     
@@ -240,23 +242,26 @@ NS_ASSUME_NONNULL_BEGIN
  * @return If the function succeeds, it returns the video device ID. Otherwise, this function fails and returns nil.
  */
 - (NSString * _Nullable)getDeviceIDByMyPipe:(ZMVideoSDKRawDataPipe *)pipe;
-/**
- * @brief Subscribes preview video raw data with a callback.
- * @param listener The callback sink object.
- * @param cameraDeviceID The camera ID.
- * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
- * @deprecated Use \link ZMVideoSDKVideoHelper::startVideoPreview:deviceID: resolution:\endlink instead.
- */
-- (ZMVideoSDKErrors)startVideoPreview:(id<ZMVideoSDKRawDataPipeDelegate>)listener deviceID:(NSString* _Nullable)cameraDeviceID DEPRECATED_MSG_ATTRIBUTE("Use -startVideoPreview:deviceID:resolution: instead");
 
 /**
  * @brief Subscribes to preview video raw data with a callback.
  * @param listener The callback object.
- * @param cameraDeviceID Camera device ID.
+ * @param cameraDeviceID Camera device ID. If nil or empty, the currently selected camera is used.
  * @param resolution Specify the resolution for opening the camera.
  * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
+ * @deprecated Use \link startVideoPreview:cameraDeviceID:resolution: \endlink instead.
  */
-- (ZMVideoSDKErrors)startVideoPreview:(id<ZMVideoSDKRawDataPipeDelegate>)listener deviceID:(NSString* _Nullable)cameraDeviceID resolution:(ZMVideoSDKResolution)resolution;
+- (ZMVideoSDKErrors)startVideoPreview:(id<ZMVideoSDKRawDataPipeDelegate>)listener deviceID:(NSString* _Nullable)cameraDeviceID resolution:(ZMVideoSDKResolution)resolution DEPRECATED_MSG_ATTRIBUTE("Use -startVideoPreview:cameraDeviceID:resolution: instead");
+
+/**
+ * @brief Subscribes to preview video raw data with a callback.
+ * @param listener The callback object.
+ * @param cameraDeviceID Camera device ID. Pass nil or empty string to use the currently selected camera.
+ * @param resolution Specify the resolution for opening the camera.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
+ * @note When using an external video source (externalVideoSource set in ZoomVideoSDKSessionContext), the cameraDeviceID parameter must be nil to preview the external video source content.
+ */
+- (ZMVideoSDKErrors)startVideoPreview:(id<ZMVideoSDKRawDataPipeDelegate>)listener cameraDeviceID:(NSString* _Nullable)cameraDeviceID resolution:(ZMVideoSDKResolution)resolution;
 /**
  * @brief UnSubscribe preview video raw data with the subscribed callback.
  * @param listener The callback sink object.
@@ -267,10 +272,20 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @brief Starts the preview video with a view.
  * @param view The view to preview video.
- * @param cameraDeviceID The camera ID.
  * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
+ * @deprecated Use \link -startVideoCanvasPreview:cameraDeviceID:aspectMode: \endlink instead to specify camera device and aspect mode explicitly.
  */
-- (ZMVideoSDKErrors)startVideoCanvasPreview:(NSView*)view deviceID:(NSString* _Nullable)cameraDeviceID;
+- (ZMVideoSDKErrors)startVideoCanvasPreview:(NSView*)view deviceID:(NSString* _Nullable)cameraDeviceID DEPRECATED_MSG_ATTRIBUTE("Use -startVideoCanvasPreview:cameraDeviceID:aspectMode: instead");
+
+/**
+ * @brief Starts the preview video with a view and a specified aspect mode.
+ * @param view The view to preview video.
+ * @param cameraDeviceID The camera ID. Pass nil or empty string to use the currently selected camera.
+ * @param aspect The aspect mode applied to the preview render. LetterBox preserves legacy behavior.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
+ * @note When using an external video source (externalVideoSource set in ZoomVideoSDKSessionContext), the cameraDeviceID parameter must be nil to preview the external video source content.
+ */
+- (ZMVideoSDKErrors)startVideoCanvasPreview:(NSView*)view cameraDeviceID:(NSString* _Nullable)cameraDeviceID aspectMode:(ZMVideoSDKVideoAspect)aspect;
 
 /**
  * @brief Stops the preview video.

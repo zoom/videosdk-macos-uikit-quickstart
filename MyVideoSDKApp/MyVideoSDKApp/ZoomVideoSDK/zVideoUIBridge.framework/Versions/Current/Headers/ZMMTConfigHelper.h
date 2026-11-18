@@ -11,7 +11,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZMMTConfigHelper : ZMBaseHelper
 
-@property (nonatomic, assign) BOOL hideChatPreview;
 @property (nonatomic, assign) ZMMTVideoSortType videoOrderSortType;
 
 //ZOOM-878575

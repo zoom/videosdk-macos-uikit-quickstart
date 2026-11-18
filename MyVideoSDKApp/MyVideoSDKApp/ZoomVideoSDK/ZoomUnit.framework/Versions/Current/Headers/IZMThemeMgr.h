@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setNeedsDisplay:(BOOL)needs;
 
 - (NSArray<id<ZMThemeObject>>*)themeArray;
+
+- (void)applyUserAppearance:(ZMUserAppearance)appearance;
 @end
 
 @protocol ZMThemeProtocol <NSObject>

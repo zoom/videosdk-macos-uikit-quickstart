@@ -5,6 +5,15 @@
 ## User settings
 xcuserdata/
 
+# Build outputs
+bin/
+obj/
+build/
+DerivedData/
+
+# macOS
+.DS_Store
+
 ## Obj-C/Swift specific
 *.hmap
 

@@ -13,7 +13,6 @@
 @interface ZPShareSelectCollectionViewItem : NSCollectionViewItem<ZPShareSelectViewDelegate>
 @property (nonatomic, assign) BOOL isScreenRecordingOn;
 
-- (instancetype)initWithRepresentedObject:(ZPShareSelectWindowModel *)object;
 - (void)cleanUp;
 - (void)update;
 @end

@@ -6,3 +6,4 @@ NSLocalNetworkUsageDescription= "Dieser Vorgang ist erforderlich, um AirPlay und
 NSBluetoothAlwaysUsageDescription= "Dadurch kann Zoom Workplace Zoom Rooms in der Nähe finden.";
 NSCameraUsageDescription = "Damit die Teilnehmer Sie sehen können, ist bei Zoom der Zugriff auf Ihre Kamera erforderlich.";
 NSAudioCaptureUsageDescription = "Bitte erlauben Sie den Zugriff, damit Audio über andere Apps erfasst werden kann.";
+CFBundleDisplayName = "Zoom";

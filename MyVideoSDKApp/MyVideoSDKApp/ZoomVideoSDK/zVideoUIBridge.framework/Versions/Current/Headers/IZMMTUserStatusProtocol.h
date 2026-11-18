@@ -64,8 +64,18 @@
 // Notes Transcription
 - (void)userNotesTranscriptStatusChanged:(ZMUser *)user;
 
+// Authorized feature control
+- (void)userCanControlAuthorizedFeatureChanged:(ZMUser *)user;
+
+// AI Sales Assist (ZOOM-1242563) — fired when a user's IsAISalesAssistStarted
+// state flips (driven by CMD_USER_AI_SALES_ASSIST_STATUS_CHANGED).
+- (void)userAISalesAssistStatusChanged:(ZMUser *)user;
+
 - (void)userVideoResolutionChanged:(ZMUser *)user;
 - (void)onMyVideoResolutionChanged;
+
+- (void)userDeepfakeStatusChanged:(ZMUser *)user;
+
 @end
 
 

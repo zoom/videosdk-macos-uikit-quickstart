@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 
 - (void)galleryPlusSettingViewController:(ZMGalleryPlusSettingViewController *)settingViewController didSelectItem:(ZMGalleryPlusWallpaperModel *)model;
+- (void)galleryPlusSettingViewController:(ZMGalleryPlusSettingViewController *)settingViewController didRetryItem:(ZMGalleryPlusWallpaperModel *)model;
 - (void)galleryPlusSettingViewController:(ZMGalleryPlusSettingViewController *)settingViewController didChangeTransparency:(NSInteger)transparency isChecked:(BOOL)isChecked isDragging:(BOOL)isDragging;
 - (void)galleryPlusSettingViewController:(ZMGalleryPlusSettingViewController *)settingViewController didChangeContentMode:(ZMWallpaperContentMode)wallpaperContentMode;
 

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define kZMVideoDefaultCornerRadius 8
+#define kZMVideoDefaultCornerRadius 12
 
 @class ZMUser;
 @class ZMMTBaseVideoCellView;
@@ -85,6 +85,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSRectCorner cornerMask;
 @property (nonatomic, assign) CGFloat cornerRadius;
+@property (nonatomic, assign) BOOL autoCornerRadius;
 @property (nonatomic, assign) CGFloat borderWidth;
 
 - (id)initWithFrame:(NSRect)frame;

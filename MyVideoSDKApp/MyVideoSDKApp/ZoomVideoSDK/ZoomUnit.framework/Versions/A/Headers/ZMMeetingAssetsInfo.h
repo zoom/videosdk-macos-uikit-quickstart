@@ -27,6 +27,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) MeetingInviteesInfo inviteesInfo;
 @property (nonatomic, copy) NSString *meetingTopic;
 
+#pragma mark - Cross-process serialization
+
+/// Flatten into a JSON-safe NSDictionary for IPC transport
+/// (e.g. ZMXProcEventPoster userInfo). Embedded C++ structs are
+/// expanded field-by-field; CString values become NSString and
+/// std::vector<MeetingInviteeParams> becomes NSArray<NSDictionary *>.
+- (NSDictionary *)zm_toDictionary;
+
+/// Rebuild a ZMMeetingAssetsInfo from the dictionary produced by
+/// -zm_toDictionary. Missing keys default to 0 / empty string.
+/// Returns nil only if @c dict is nil.
++ (nullable instancetype)zm_fromDictionary:(nullable NSDictionary *)dict;
 
 @end
 

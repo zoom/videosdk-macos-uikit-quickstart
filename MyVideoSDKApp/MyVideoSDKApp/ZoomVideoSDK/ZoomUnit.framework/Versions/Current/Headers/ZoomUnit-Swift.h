@@ -371,7 +371,25 @@ SWIFT_RESILIENT_CLASS_NAMED("ErrorIconView")
 @class NSImage;
 SWIFT_CLASS_NAMED("ShareCaptureEngine")
 @interface ZMShareCaptureEngine : NSObject
-+ (void)captureDesktop:(NSInteger)desktopID size:(CGSize)size filterOutWinIDs:(NSArray<NSNumber *> * _Nullable)filterOutWinIDs completion:(void (^ _Nonnull)(NSImage * _Nullable))completion;
+/// Async desktop capture with optional window exclusion.
+/// Routing:
+/// <ul>
+///   <li>
+///     No filter (nil / empty) → <code>CGDisplayCreateImage</code> on <code>fallbackQueue</code>. Preserves
+///     the legacy <code>+[NSImage getScreenShot:]</code> routine — SCK’s full-screen capture has
+///     subtle behavioral differences (stream setup latency, color/scale) that we
+///     avoid by keeping the old CG API for this common path even though it’s
+///     deprecated on macOS 14+.
+///   </li>
+///   <li>
+///     With filter → <code>ScreenCaptureKit</code> on macOS 14+ (wallpaper preserved,
+///     native exclusion). Falls back to <code>CGWindowListCreateImageFromArray</code> on
+///     macOS 13- or if SCK errors. On macOS 15+ that CG API is obsolete and
+///     still cannot read <code>kCGWindowSharingNone</code> windows (often the wallpaper).
+///   </li>
+/// </ul>
+/// Completion may arrive on any thread; callers must not touch AppKit state directly.
++ (void)captureDesktop:(NSInteger)desktopID size:(CGSize)size filterOutWinIDs:(NSArray<NSNumber *> * _Nullable)filterOutWinIDs filterOutPIDs:(NSArray<NSNumber *> * _Nullable)filterOutPIDs completion:(void (^ _Nonnull)(NSImage * _Nullable))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -583,6 +601,47 @@ SWIFT_CLASS("_TtC8ZoomUnit16ZMImageFrameInfo")
 @property (nonatomic) CGSize imagePixSize;
 @property (nonatomic) CGImagePropertyOrientation orientation;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class NSAttributedString;
+SWIFT_PROTOCOL("_TtP8ZoomUnit21ZMJarvisHostProviding_")
+@protocol ZMJarvisHostProviding <NSObject>
+- (NSString * _Nullable)jarvisLoginEmail SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)jarvisIsInMeeting SWIFT_WARN_UNUSED_RESULT;
+- (void)presentJarvisMemoryWarning:(NSAttributedString * _Nonnull)information target:(id _Nonnull)target action:(SEL _Nonnull)action actionName:(NSString * _Nonnull)actionName;
+@end
+
+SWIFT_CLASS("_TtC8ZoomUnit15ZMJarvisManager")
+@interface ZMJarvisManager : NSObject <NSWindowDelegate>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ZMJarvisManager * _Nonnull shared;)
++ (ZMJarvisManager * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic) float memoryWarningLimit;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
++ (void)enableOSXDebug;
++ (void)configureWithHostProvider:(id <ZMJarvisHostProviding> _Nonnull)hostProvider;
+@end
+
+@interface ZMJarvisManager (SWIFT_EXTENSION(ZoomUnit))
+- (void)cleanExpiredLog;
+@end
+
+@interface ZMJarvisManager (SWIFT_EXTENSION(ZoomUnit))
+- (void)startMonitor;
+- (void)generateMemoryGraph;
+- (void)enableWebviewInspectElement;
+@end
+
+@interface ZMJarvisManager (SWIFT_EXTENSION(ZoomUnit))
++ (void)captureViewHierarchy;
++ (void)exportClientLog;
++ (void)exportClientLogIn1Hour;
++ (void)exportClientLogIn2Hours;
++ (void)exportClientLogIn6Hours;
++ (void)exportFreezeLog;
++ (void)exportInstallLog;
++ (void)openCrashFolder;
++ (void)exportCrashLog;
++ (void)zipLogWithRootPath:(NSString * _Nonnull)rootPath files:(NSArray<NSString *> * _Nonnull)files destPath:(NSString * _Nonnull)destPath with:(void (^ _Nonnull)(NSString * _Nonnull))completion;
 @end
 
 @class NSColor;
@@ -826,8 +885,30 @@ typedef SWIFT_ENUM(NSInteger, ZMReportWindowDisplayMode, closed) {
 @class PZMMenuItem;
 SWIFT_RESILIENT_CLASS("_TtC8ZoomUnit22ZMSplitButtonToastView")
 @interface ZMSplitButtonToastView : PZMView
+@property (nonatomic, readonly, strong) CALayer * _Nonnull backgroundLayer;
 /// Container width - setting this will automatically update the layout
 @property (nonatomic) CGFloat containerWidth;
+/// Whether the title can be displayed on multiple lines. Defaults to true.
+@property (nonatomic) BOOL titleAllowsMultipleLines;
+/// Whether the information text can be displayed on multiple lines. Defaults to true.
+@property (nonatomic) BOOL informationAllowsMultipleLines;
+/// Maximum number of title lines. Zero means no limit. Defaults to zero.
+@property (nonatomic) NSInteger titleMaximumNumberOfLines;
+/// Maximum number of information lines. Zero means no limit. Defaults to zero.
+@property (nonatomic) NSInteger informationMaximumNumberOfLines;
+/// Title line break mode. When unset, single-line titles use <code>.byTruncatingTail</code>
+/// and multi-line titles use <code>.byWordWrapping</code>.
+/// Set to <code>.byTruncatingMiddle</code> for AB…C. With a line limit greater than 1,
+/// text wraps first and the last visible line uses this truncation mode.
+@property (nonatomic) NSLineBreakMode titleLineBreakMode;
+/// Information line break mode. When unset, single-line information uses <code>.byTruncatingTail</code>
+/// and multi-line information uses <code>.byWordWrapping</code>.
+/// Set to <code>.byTruncatingMiddle</code> for AB…C. With a line limit greater than 1,
+/// text wraps first and the last visible line uses this truncation mode.
+@property (nonatomic) NSLineBreakMode informationLineBreakMode;
+/// Toggle the split button between primary (filled) and secondary (outlined) style.
+/// Safe to set after initialization; the button appearance updates immediately.
+@property (nonatomic) BOOL buttonStyleIsPrimary;
 /// Initialize the split button toast view
 /// \param title Title text to display
 ///
@@ -845,7 +926,7 @@ SWIFT_RESILIENT_CLASS("_TtC8ZoomUnit22ZMSplitButtonToastView")
 ///
 /// \param animationDuration Duration in seconds for progress bar animation (default 5.0)
 ///
-/// \param containerWidth Width of the toast container (default 400)
+/// \param containerWidth Width of the toast container (default 452)
 ///
 /// \param primaryAction Callback when primary button is clicked
 ///
@@ -853,7 +934,8 @@ SWIFT_RESILIENT_CLASS("_TtC8ZoomUnit22ZMSplitButtonToastView")
 ///
 /// \param progressCompletedAction Callback when progress bar animation completes
 ///
-- (nonnull instancetype)initWithTitle:(NSString * _Nullable)title information:(NSString * _Nullable)information leadingIcon:(NSImage * _Nullable)leadingIcon buttonIcon:(NSImage * _Nullable)buttonIcon splitButtonTitle:(NSString * _Nullable)splitButtonTitle menuItems:(NSArray<PZMMenuItem *> * _Nullable)menuItems showProgressBar:(BOOL)showProgressBar animationDuration:(NSTimeInterval)animationDuration containerWidth:(CGFloat)containerWidth primaryAction:(void (^ _Nullable)(void))primaryAction closeAction:(void (^ _Nullable)(void))closeAction progressCompletedAction:(void (^ _Nullable)(void))progressCompletedAction OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithTitle:(NSString * _Nullable)title information:(NSString * _Nullable)information leadingIcon:(NSImage * _Nullable)leadingIcon buttonIcon:(NSImage * _Nullable)buttonIcon splitButtonTitle:(NSString * _Nullable)splitButtonTitle menuItems:(NSArray<PZMMenuItem *> * _Nullable)menuItems showProgressBar:(BOOL)showProgressBar animationDuration:(NSTimeInterval)animationDuration containerWidth:(CGFloat)containerWidth primaryAction:(void (^ _Nullable)(void))primaryAction closeAction:(void (^ _Nullable)(void))closeAction progressCompletedAction:(void (^ _Nullable)(void))progressCompletedAction;
+- (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (void)viewDidMoveToWindow;
 @property (nonatomic, readonly) BOOL acceptsFirstResponder;
@@ -961,15 +1043,34 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ZPHUDWindowM
 @end
 
 @interface ZPHUDWindowManager (SWIFT_EXTENSION(ZoomUnit))
+/// Sets the application whose overlapping windows should be considered when adjusting toast levels.
+/// note:
+/// Call on the main thread before showing the toast.
+/// \param bundleIdentifier The target application’s bundle identifier, or <code>nil</code> to clear it.
+///
+- (void)setToastWindowLevelTargetApplicationBundleIdentifier:(NSString * _Nullable)bundleIdentifier;
 - (void)cleanupHudWindows;
 - (ZPHUDWindowController * _Nullable)lastObjectInControllers SWIFT_WARN_UNUSED_RESULT;
 - (ZPHUDWindowController * _Nullable)hudWindowControllerWithFriendId:(NSString * _Nullable)friendId SWIFT_WARN_UNUSED_RESULT;
 - (void)onTimer;
 @end
 
+@class ZMToast;
 @interface ZPHUDWindowManager (SWIFT_EXTENSION(ZoomUnit))
 - (void)resetManager;
 - (void)showWithHUDWindowModel:(ZPHUDWindowModel * _Nullable)model;
+/// Display a fully-configured <code>ZMToast</code> directly through the shared HUD toast coordinator.
+/// Use this entry point when the business side has already built a <code>ZMToast</code>
+/// (for example via <code>ZMAlertInfo</code> or a custom builder) and wants it rendered
+/// in the screen-level HUD toast area without going through the
+/// <code>ZPHUDWindowModel</code> path.
+/// note:
+/// Must be called on the main thread, consistent with the rest of
+/// <code>ZPHUDWindowManager</code>’s public surface.
+/// \param toast The toast to display. If <code>nil</code>, the call is a no-op.
+///
+- (void)showWithToast:(ZMToast * _Nullable)toast;
+- (void)removeToastWithIdentifier:(NSString * _Nullable)identifier;
 - (void)removeHudWindowModel:(ZPHUDWindowModel * _Nullable)model;
 - (void)removeHudWindowItem:(ZPHUDWindowController * _Nullable)item;
 - (void)ignoreMessageAtStart;
@@ -980,7 +1081,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ZPHUDWindowM
 @end
 
 @class PZMSystemNotificationButton;
-@class NSAttributedString;
 @class NSAppearance;
 @class PZMCheckboxView;
 SWIFT_CLASS("_TtC8ZoomUnit16ZPHUDWindowModel")
@@ -1000,9 +1100,11 @@ SWIFT_CLASS("_TtC8ZoomUnit16ZPHUDWindowModel")
 @property (nonatomic) BOOL photoIsAvatar;
 @property (nonatomic) BOOL autoDisappear;
 @property (nonatomic) BOOL isSystemStyle;
-@property (nonatomic) enum ZMToastType type;
+@property (nonatomic) enum PZMToastType type;
 @property (nonatomic, copy) NSArray<PZMSystemNotificationButton *> * _Nullable buttons;
 @property (nonatomic) BOOL isVisible;
+/// Number of post-display toast window-level adjustments, one second apart.
+@property (nonatomic) NSInteger retryTopCount;
 @property (nonatomic) BOOL hiddenCloseButton;
 @property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nullable extraDict;
 @property (nonatomic, copy) NSString * _Nonnull appName;
@@ -1011,16 +1113,39 @@ SWIFT_CLASS("_TtC8ZoomUnit16ZPHUDWindowModel")
 @property (nonatomic, strong) NSImage * _Nullable buttonIcon;
 /// The title for the split button
 @property (nonatomic, copy) NSString * _Nullable splitButtonTitle;
+/// Whether the split button uses the filled primary style (ECMS buttonStyle == “primary”).
+/// Defaults to the legacy secondary (outlined) style.
+@property (nonatomic) BOOL buttonStyleIsPrimary;
+/// Whether the toast title can be displayed on multiple lines. Defaults to true.
+@property (nonatomic) BOOL titleAllowsMultipleLines;
+/// Whether the toast information text can be displayed on multiple lines. Defaults to true.
+@property (nonatomic) BOOL informationAllowsMultipleLines;
+/// Maximum number of title lines. Zero means no limit. Defaults to zero.
+@property (nonatomic) NSInteger titleMaximumNumberOfLines;
+/// Maximum number of information lines. Zero means no limit. Defaults to zero.
+@property (nonatomic) NSInteger informationMaximumNumberOfLines;
+@property (nonatomic) NSLineBreakMode titleLineBreakMode;
+@property (nonatomic) NSLineBreakMode informationLineBreakMode;
 /// Array of menu items
 @property (nonatomic, copy) NSArray<PZMMenuItem *> * _Nullable menuItems;
 /// Whether to show the progress bar, default is true
 @property (nonatomic) BOOL showProgressBar;
-/// Container width for the toast view, default is 400
+/// Container width for the toast view, default is 452
 @property (nonatomic) CGFloat containerWidth;
+/// Optional adaptive container-width range. A valid positive range enables
+/// content-based sizing; otherwise <code>containerWidth</code> remains authoritative.
+@property (nonatomic) CGFloat minimumContainerWidth;
+@property (nonatomic) CGFloat maximumContainerWidth;
+/// Optional adaptive split-button-width range. A valid positive range
+/// sizes the button to its intrinsic content width within these bounds.
+@property (nonatomic) CGFloat minimumSplitButtonWidth;
+@property (nonatomic) CGFloat maximumSplitButtonWidth;
 /// Callback when primary button is clicked
 @property (nonatomic, copy) void (^ _Nullable primaryAction)(void);
 /// Callback when close button is clicked
 @property (nonatomic, copy) void (^ _Nullable closeAction)(void);
+/// Callback when progress bar animation completes
+@property (nonatomic, copy) void (^ _Nullable progressCompletedAction)(void);
 /// Attributed information text for rich text display
 @property (nonatomic, strong) NSAttributedString * _Nullable attributedInformation;
 /// Image for image-type toast display

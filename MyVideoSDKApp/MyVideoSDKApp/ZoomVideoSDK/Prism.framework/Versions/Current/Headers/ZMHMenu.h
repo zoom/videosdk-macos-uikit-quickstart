@@ -57,6 +57,10 @@ FOUNDATION_EXPORT NSString * const ZM_Meeting_Popup_Menu;
 @property (nonatomic, assign) BOOL ignoreResignKeyWindow; //ZOOM-257029
 @property (nonatomic, assign) BOOL enableSearch;
 @property (nonatomic, assign) BOOL assignKeyWindow;
+/// Defaults to YES. When NO, hovering an item does not change the selected row.
+@property (nonatomic, assign) BOOL hoverToSelect;
+/// Defaults to NO. When YES, the selected menu item displays a focus ring.
+@property (nonatomic, assign) BOOL showsFocusRingMask;
 @property (readonly) BOOL shown;
 /// If YES, the menu will automatically close on focus lost, clicking outside the menu, etc.
 /// If NO, the menu will only close when an item is clicked OR when [close] is called by code outsie the menu.

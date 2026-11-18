@@ -59,16 +59,6 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief Helper class for managing outgoing live stream.
  */
 @interface ZMVideoSDKLiveStreamHelper : NSObject
-
-/**
- * @brief Starts live stream.
- * @param streamUrl The live stream url.
- * @param url The live stream broadcast url.
- * @param key The live stream key.
- * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
- * @deprecated Use \link startLiveStreamWithParams: \endlink instead.
- */
-- (ZMVideoSDKErrors)startLiveStream:(NSString *)streamUrl broadcastUrl:(NSString *)url liveStreamKey:(NSString *)key DEPRECATED_MSG_ATTRIBUTE("Use -startLiveStreamWithParams: instead");
     
 /**
  * @brief Stops live stream.

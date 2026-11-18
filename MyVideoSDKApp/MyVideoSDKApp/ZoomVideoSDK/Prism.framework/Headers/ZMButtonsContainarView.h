@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, retain, nullable) NSView* anchorView;
 @property(nonatomic, retain, nullable) NSView* tailView;
 @property(nonatomic, assign) NSSize  expSize;
+@property(nonatomic, assign) CGFloat lineBreakMaxWidth;
 @end
 
 NS_ASSUME_NONNULL_END

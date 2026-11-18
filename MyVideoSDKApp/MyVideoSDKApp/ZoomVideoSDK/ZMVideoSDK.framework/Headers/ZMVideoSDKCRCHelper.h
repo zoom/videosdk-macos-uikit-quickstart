@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isCRCEnabled;
 
 /**
- * @brief Calls the CRC device. Only available for the host or co-host.
+ * @brief Calls the CRC device. Only available for the host or manager.
  * @param address The CRC device's IP address.
  * @param callProtocol The CRC device's protocol.
  * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (ZMVideoSDKErrors)callCRCDevice:(NSString *)address protocol:(ZMVideoSDKCRCProtocol)callProtocol;
 
 /**
- * @brief Cancels the call to the CRC device. Only available for the host or co-host.
+ * @brief Cancels the call to the CRC device. Only available for the host or manager.
  * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)cancelCallCRCDevice;

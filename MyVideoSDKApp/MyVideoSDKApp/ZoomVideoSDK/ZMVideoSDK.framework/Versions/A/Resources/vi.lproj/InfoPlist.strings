@@ -6,3 +6,5 @@ NSCalendarsFullAccessUsageDescription= "Zoom Workplace cần truy cập Lịch c
 NSLocalNetworkUsageDescription= "Cần tiến trình này để bật AirPlay và các cuộc họp ngang hàng trong máy khách Zoom.";
 NSBluetoothAlwaysUsageDescription= "Tính năng này sẽ cho phép Zoom Workplace tìm Zoom Rooms lân cận.";
 NSAudioCaptureUsageDescription = "Vui lòng cho phép truy cập để thu âm thanh từ các ứng dụng khác.";
+
+CFBundleDisplayName = "Zoom";

@@ -37,9 +37,13 @@ extern ZMHotkeyName const kZMHotkeyCopyInviteLink;
 extern ZMHotkeyName const kZMHotkeyToggleHand;
 extern ZMHotkeyName const kZMHotkeyGainRemoteControl;
 extern ZMHotkeyName const kZMHotkeyStopRemoteControl;
+extern ZMHotkeyName const kZMHotkeyNextFocusSection;
+extern ZMHotkeyName const kZMHotkeyPreviousFocusSection;
+
 //extern ZMHotkeyName const kZMHotkeyJumpToChat;
 extern ZMHotkeyName const kZMHotkeyCloseWindow;
 extern ZMHotkeyName const kZMHotkeyScreenShot;
+extern ZMHotkeyName const kZMHotkeyScreenShotWithZoomWindow;
 extern ZMHotkeyName const kZMHotkeyScreenShotRecord;
 extern ZMHotkeyName const kZMHotkeyCreateClip;
 extern ZMHotkeyName const kZMHotkeySwitchPortraitView;
@@ -65,6 +69,27 @@ extern ZMHotkeyName const kZMHotkeyEndCall;
 extern ZMHotkeyName const kZMHotkeyMuteCall;
 extern ZMHotkeyName const kZMHotkeyHoldCall;
 extern ZMHotkeyName const kZMHotkeyTransferCall;
+extern ZMHotkeyName const kZMHotkeyCCICallHighlightedNumber;
+extern ZMHotkeyName const kZMHotkeyCCIAcceptInboundCall;
+extern ZMHotkeyName const kZMHotkeyCCIDeclineInboundCall;
+extern ZMHotkeyName const kZMHotkeyCCIEndCurrentCall;
+extern ZMHotkeyName const kZMHotkeyCCIMuteUnmuteCall;
+extern ZMHotkeyName const kZMHotkeyCCIHoldUnholdCall;
+extern ZMHotkeyName const kZMHotkeyCCITransferCall;
+extern ZMHotkeyName const kZMHotkeyCCIMuteUnmuteAudio;
+extern ZMHotkeyName const kZMHotkeyCCIStartStopVideo;
+extern ZMHotkeyName const kZMHotkeyCCIStartStopRecording;
+extern ZMHotkeyName const kZMHotkeyCCIPauseResumeRecording;
+extern ZMHotkeyName const kZMHotkeyCCIShowHideChatPanel;
+extern ZMHotkeyName const kZMHotkeyCCICopyInviteLink;
+extern ZMHotkeyName const kZMHotkeyCCIBeginRemoteControl;
+extern ZMHotkeyName const kZMHotkeyCCIRevokeRemoteControl;
+extern ZMHotkeyName const kZMHotkeyCCITransferEngagement;
+extern ZMHotkeyName const kZMHotkeyCCIStartWorkSession;
+extern ZMHotkeyName const kZMHotkeyCCIChangeAgentStatus;
+extern ZMHotkeyName const kZMHotkeyCCIEndWorkSession;
+extern ZMHotkeyName const kZMHotkeyCCIFocusLatestMessage;
+extern ZMHotkeyName const kZMHotkeyCCIMessagingTransferEngagement;
 
 extern ZMHotkeyName const kZMHotkeySelectPreviousChat; //ZOOM-108082 //210835
 extern ZMHotkeyName const kZMHotkeySelectNextChat; //ZOOM-108082 //210835
@@ -94,10 +119,15 @@ extern ZMHotkeyName const kZMHotkeyShareLog;
 extern ZMHotkeyName const kZMHotkeyShowHideAICPanel;
 extern ZMHotkeyName const kZMHotkeyShowHideCalendarSidePanel;
 extern ZMHotkeyName const kZMHotkeySearchInMessages;
+extern ZMHotkeyName const kZMHotkeyHideCurrentChatSession;
+extern ZMHotkeyName const kZMHotkeyGotoPreviousChat;
+extern ZMHotkeyName const kZMHotkeyGotoNextChat;
 extern ZMHotkeyName const kZMHotkeyReloadHomeTab;
 extern ZMHotkeyName const kZMHotkeyPasteAsPlainText;
 
 @interface ZMHotkeyConfiguration (ZoomUnit)
 + (NSArray<NSDictionary*>*)defaultHotkeyArray;
 + (NSArray<ZMHotkeyName>*)supportGlobalHotkeyNameArray;
++ (NSArray<ZMHotkeyName>*)requiredGlobalHotkeyNameArray;
++ (BOOL)isRequiredGlobalHotkeyName:(ZMHotkeyName)hotkeyName;
 @end

@@ -15,10 +15,15 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZMVideoSDKChatMessage : NSObject
 
 /**
- * @brief Gets the message's send user object.
+ * @brief Gets the message's send user object. When the message is from a broadcast streaming viewer, this returns nil.
  * @return The user object.
  */
 @property (nonatomic, retain, readonly) ZMVideoSDKUser* sendUser;
+
+/**
+ * @brief Gets the sender's display name. This returns the sender's name for both session users and broadcast streaming viewers.
+ */
+@property (nonatomic, copy, readonly) NSString* senderName;
     
 /**
  * @brief Gets the message's receive user object.

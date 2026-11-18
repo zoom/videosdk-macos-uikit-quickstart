@@ -62,6 +62,8 @@ typedef NS_ENUM(NSUInteger, ZMConfInstType) {
 #define ZMLoggingModule_VideoUI_Immersive "VideoUI_Immersive"
 #define ZMLoggingModule_VideoUI_JoinFlow "VideoUI_JoinFlow"
 #define ZMLoggingModule_VideoUI_Record "VideoUI_Record"
+#define ZMLoggingModule_VideoUI_Doc "VideoUI_Doc"
+#define ZMLoggingModule_VideoUI_Share "VideoUI_Share"
 
 #pragma mark - video render
 typedef NS_OPTIONS(NSUInteger, ZMVideoUpdateStrategy) {
@@ -247,7 +249,6 @@ typedef NS_ENUM(NSInteger, ZMConfUpdateStrategy) {
     ZMConfUpdateStrategy_User_Account_Option_Changed,
     
     ZMConfUpdateStrategy_BO_Share_Replaced_By_Host,
-    ZMConfUpdateStrategy_Window_Level_Change,
     ZMConfUpdateStrategy_Animate_Emojis_Status_Changed,
 };
 
@@ -399,6 +400,8 @@ typedef NS_OPTIONS(NSUInteger, ZMMTVideoFilter) {
     ZMMTVideoFilter_NotActiveSimuliveUser   = 1 << 18|ZMMTVideoFilter_SimuliveUser,
     ZMMTVideoFilter_VideoSceneUser          = 1 << 19,
     ZMMTVideoFilter_NotActiveVideoSceneUser       = 1 << 20|ZMMTVideoFilter_VideoSceneUser,
+    ZMMTVideoFilter_PSLProducer             = 1 << 21,
+    ZMMTVideoFilter_MultiStreamVideoUser    = 1 << 22,
 };
 
 typedef NS_OPTIONS(NSUInteger, ZMMTVideoSortType) {
@@ -414,6 +417,7 @@ typedef NS_OPTIONS(NSUInteger, ZMMTVideoSortType) {
 typedef NS_ENUM(NSUInteger, ZMMTVideoBorderViewStyle) {
     ZMMTVideoBorderViewStyleGreenDefault = 0,
     ZMMTVideoBorderViewStyleGradient,
+    ZMMTVideoBorderViewStyleDeepfakeYellow,
 };
 
 typedef NS_ENUM(NSInteger, ZMMTRelation){
@@ -457,6 +461,7 @@ typedef NS_ENUM(NSUInteger, ZMMTUpgradeEntrance) {
     ZMMTUpgradeEntrance_PlistBanner,
     ZMMTUpgradeEntrance_ChatBanner,
     ZMMTUpgradeEntrance_AiPanel,
+    ZMMTUpgradeEntrance_Badge,
 };
 
 typedef NS_ENUM(NSInteger, ZMMTCaptionDisplayMode) {

@@ -40,6 +40,9 @@ typedef NS_ENUM(NSInteger, ZMShareSelectItemType) {
     ZMShareSelectItemZoomDocs,
     ZMShareSelectItemZoomClips,
     ZMShareSelectItemBrowserTab,
+    ZMShareSelectItemIcebreakers, //ZOOM-1264296 whiteboard-based Icebreakers entry
+    /// UI-only logical type; never maps to a CMM share session.
+    ZMShareSelectItemFileList,
 };
 
 typedef NS_ENUM(NSInteger, ZMShareSelectSegmentType) {
@@ -52,6 +55,8 @@ typedef NS_ENUM(NSUInteger, ZMShareSelectVideoQuality) {
     ZMShareSelectVideoQuality_720p30fps,
     ZMShareSelectVideoQuality_1080p60fps,
     ZMShareSelectVideoQuality_720p60fps,
+    ZMShareSelectVideoQuality_4K30fps,
+    ZMShareSelectVideoQuality_4K60fps,
     ZMShareSelectVideoQuality_Count
 };
 
@@ -70,10 +75,19 @@ typedef NS_ENUM(NSInteger, ZMShareSelectItemBrowserTabType){
 + (NSString *)descriptionForVideoQuality:(ZMShareSelectVideoQuality)videoQuality;
 + (BOOL)isHighFps:(ZMShareSelectVideoQuality)videoQuality;
 + (BOOL)isFullHD:(ZMShareSelectVideoQuality)videoQuality;
++ (BOOL)is4K:(ZMShareSelectVideoQuality)videoQuality;
++ (NSArray<NSNumber *> *)videoQualities:(NSArray<NSNumber *> *)videoQualities
+                         supportHighFPS:(BOOL)supportHighFPS;
++ (BOOL)isVideoQuality:(ZMShareSelectVideoQuality)videoQuality
+    selectedForVideoShare:(BOOL)videoShareEnabled
+                  fullHD:(BOOL)fullHD
+                 highFPS:(BOOL)highFPS
+           videoShare4K:(BOOL)videoShare4K;
 + (ZMShareSelectVideoQuality)videoQualityForLowFps:(ZMShareSelectVideoQuality)videoQuality;
 + (ZMShareSelectVideoQuality)videoQualityForLowResolution:(ZMShareSelectVideoQuality)videoQuality;
 + (ZMShareSelectVideoQuality)videoQualityWithHighFps:(BOOL)highFps
-                                              fullHD:(BOOL)fullHD;
+                                              fullHD:(BOOL)fullHD
+                                        videoShare4K:(BOOL)videoShare4K;
 @end
 
 @interface ZMShareSelectOptions : NSObject

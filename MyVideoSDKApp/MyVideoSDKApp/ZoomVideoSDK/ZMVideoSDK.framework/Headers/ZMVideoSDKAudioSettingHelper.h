@@ -87,7 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param bEnable YES to enable, NO to disable.
  * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
-- (ZMVideoSDKErrors)isMicOriginalInputEnable:(BOOL*)bEnable;
+- (ZMVideoSDKErrors)isMicOriginalInputEnabled:(BOOL*)bEnable;
     
 /**
  * @brief Sets whether to enable the function of high fidelity music mode or not.
@@ -101,7 +101,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param bEnable YES to enable, NO to disable.
  * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
-- (ZMVideoSDKErrors)isHighFidelityMusicModeEnable:(BOOL*)bEnable;
+- (ZMVideoSDKErrors)isHighFidelityMusicModeEnabled:(BOOL*)bEnable;
 
 /**
  * @brief Sets whether to disable the function of echo cancellation or not.
@@ -115,7 +115,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param bEnable YES to enable, NO to disable.
  * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
-- (ZMVideoSDKErrors)isEchoCancellationEnable:(BOOL*)bEnable;
+- (ZMVideoSDKErrors)isEchoCancellationEnabled:(BOOL*)bEnable;
 
 /**
  * @brief Sets whether to enable stereo audio.
@@ -129,7 +129,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param bEnable YES to enable, NO to disable.
  * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
-- (ZMVideoSDKErrors)isStereoAudioEnable:(BOOL*)bEnable;
+- (ZMVideoSDKErrors)isStereoAudioEnabled:(BOOL*)bEnable;
 
 /**
  * @brief Gets the echo cancellation level.

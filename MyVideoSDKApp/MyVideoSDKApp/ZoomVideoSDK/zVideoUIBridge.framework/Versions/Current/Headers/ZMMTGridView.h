@@ -82,6 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(assign) BOOL enable;
 @property(nonatomic, assign) BOOL enableAnimation;//default is NO
 @property(nonatomic, assign) BOOL enableDrag;//default is NO
+@property(nonatomic, assign) BOOL skipRemoveFromSuperviewOnRecycle;//default is NO, set YES to use hidden instead of removeFromSuperview for performance
 @property(readonly, strong) NSIndexSet* visibleCellIndexs;
 @property(readonly, strong) NSMutableArray* displayCellArray;
 @property(readonly, assign) BOOL isDragging;

@@ -72,9 +72,6 @@ typedef NS_OPTIONS(NSUInteger, ZMButtonStatus) {
     
     ZMButtonAllStatus = (1 << 5) - 1,
 };
-@interface ZMTruncateButton: NSButton
-
-@end
 
 typedef void(^ZMBackgroundDrawer)(NSRect bounds);
 
@@ -240,6 +237,7 @@ typedef void(^ZMBackgroundDrawer)(NSRect bounds);
 @property (nonatomic,retain) NSMutableAttributedString *zmDisplayAttributeTitle;
 
 @property (nonatomic,assign) SEL firstResponseChanged;
+@property (nonatomic,assign) BOOL hoverWhenBecomeFirstResponse;//default is YES
 
 @property (nonatomic, copy) NSRect (^focusRingMaskBoundsBlock)(ZMButton *button);
 @property (nonatomic, copy) void (^focusRingMaskDrawer)(ZMButton *button);
@@ -287,13 +285,6 @@ typedef void(^ZMBackgroundDrawer)(NSRect bounds);
 
 - (void)setFixedSize:(CGSize)fixedSize;
 - (void)setFixedHeight:(CGFloat)fixedHeight;
-@end
-
-@interface ZMPopupMenuButton : ZMButton
-{
-    int _triangleDirection;
-}
-@property(nonatomic, assign) int triangleDirection;
 @end
 
 //can be used by others
@@ -357,9 +348,6 @@ typedef enum {
 - (NSPoint)getTipPointToScreen;
 - (NSPoint)getLeftBottomPointToScreen;
 - (float)preferedWidth;
-@end
-
-@interface ZMIconButton : ZMButton
 @end
 
 @interface ZPTrackingButton (ZMAccessibility)

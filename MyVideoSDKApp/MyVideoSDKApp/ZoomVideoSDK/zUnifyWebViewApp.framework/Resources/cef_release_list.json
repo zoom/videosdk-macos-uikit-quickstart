@@ -1,26 +1,6 @@
 {
-    "version":"4",
+    "version":"18",
     "release_list":{
-        "128.0":{
-            "min_client_version":"6.5.0",
-            "max_client_version":"",
-            "min_os_version":"10.15.0",
-            "max_os_version":"",
-            "cefwebview":{
-                "128.0.6613":{
-                    "min_client_version":"6.5.0",
-                    "max_client_version":"6.5.999",
-                    "min_os_version":"10.15.0",
-                    "max_os_version":""
-                },
-                "128.0.1":{
-                    "min_client_version":"6.6.0",
-                    "max_client_version":"6.7.0.69678",
-                    "min_os_version":"10.15.0",
-                    "max_os_version":""
-                }
-            }
-        },
         "128.1":{
             "min_client_version":"6.7.0",
             "max_client_version":"",
@@ -30,12 +10,6 @@
                 "128.1.0":{
                     "min_client_version":"6.7.0",
                     "max_client_version":"6.999.999",
-                    "min_os_version":"10.15.0",
-                    "max_os_version":""
-                },
-                "128.1.1":{
-                    "min_client_version":"7.0.0",
-                    "max_client_version":"",
                     "min_os_version":"10.15.0",
                     "max_os_version":""
                 }
@@ -49,8 +23,94 @@
             "cefwebview":{
                 "128.2.0":{
                     "min_client_version":"7.0.0",
+                    "max_client_version":"7.0.4.99999",
+                    "min_os_version":"10.15.0",
+                    "max_os_version":""
+                }
+            }
+        },
+        "128.6":{
+            "min_client_version":"7.0.5",
+            "max_client_version":"",
+            "min_os_version":"10.15.0",
+            "max_os_version":"",
+            "cefwebview":{
+                "128.6.0":{
+                    "min_client_version":"7.0.5.78920",
+                    "max_client_version":"7.0.999.99999",
+                    "min_os_version":"10.15.0",
+                    "max_os_version":""
+                }
+            }
+        },
+        "128.7":{
+            "min_client_version":"7.1.0",
+            "max_client_version":"",
+            "min_os_version":"10.15.0",
+            "max_os_version":"",
+            "cefwebview":{
+                "128.7.0":{
+                    "min_client_version":"7.1.0",
+                    "max_client_version":"7.1.0.82739",
+                    "min_os_version":"10.15.0",
+                    "max_os_version":""
+                },
+                "128.7.3":{
+                    "min_client_version":"7.1.0.82740",
+                    "max_client_version":"7.1.999.99999",
+                    "min_os_version":"10.15.0",
+                    "max_os_version":""
+                }
+            }
+        },
+        "128.8":{
+            "min_client_version":"7.2.0",
+            "max_client_version":"",
+            "min_os_version":"10.15.0",
+            "max_os_version":"11.999.999",
+            "cefwebview":{
+                "128.8.0":{
+                    "min_client_version":"7.2.0",
                     "max_client_version":"",
                     "min_os_version":"10.15.0",
+                    "max_os_version":"11.999.999"
+                },
+                "128.8.1":{
+                    "min_client_version":"7.2.0",
+                    "max_client_version":"",
+                    "min_os_version":"10.15.0",
+                    "max_os_version":"11.999.999"
+                },
+                "128.8.2":{
+                    "min_client_version":"7.2.0",
+                    "max_client_version":"",
+                    "min_os_version":"10.15.0",
+                    "max_os_version":"11.999.999"
+                }
+            }
+        },
+        "150.0":{
+            "min_client_version":"7.2.0",
+            "max_client_version":"",
+            "min_os_version":"12.0",
+            "max_os_version":"",
+            "cefwebview":{
+                "150.0.0":{
+                    "min_client_version":"7.2.0",
+                    "max_client_version":"",
+                    "min_os_version":"12.0",
+                    "max_os_version":""
+                },
+                "150.0.1":{
+                    "min_client_version":"7.2.0",
+                    "max_client_version":"",
+                    "min_os_version":"12.0",
+                    "max_os_version":""
+                },
+                "150.0.2":{
+                    "min_client_version":"7.2.0",
+                    "max_client_version":"",
+                    "min_os_version":"12.0",
                     "max_os_version":""
                 }
             }

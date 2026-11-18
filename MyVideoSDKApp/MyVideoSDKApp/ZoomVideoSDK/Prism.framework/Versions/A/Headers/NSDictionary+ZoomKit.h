@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (double)doubleForKey:(NSString *)key;
 
+- (BOOL)boolForKey:(NSString *)key;
+
 @end
 
 @interface NSMutableDictionary (ZoomKit)

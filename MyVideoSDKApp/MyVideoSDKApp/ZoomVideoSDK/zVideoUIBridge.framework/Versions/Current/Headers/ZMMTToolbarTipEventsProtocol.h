@@ -83,8 +83,6 @@ NS_ASSUME_NONNULL_BEGIN
                                 mouseEventAction:(nullable BOOL(^)(ZMBubbleObject *bubbleObj, NSEvent *event))mouseEventAction;
 - (void)hideToolbarCompanionModeTip;
 
-- (void)hideToolbarClinicalNoteButtonBubbleTip;
-
 // Clips Share
 - (void)showClipsShareTip;
 - (void)hideClipsShareTip;

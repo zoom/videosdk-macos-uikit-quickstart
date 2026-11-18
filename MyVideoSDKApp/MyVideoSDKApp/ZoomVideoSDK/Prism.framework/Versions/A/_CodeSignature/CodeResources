@@ -6,11 +6,11 @@
 	<dict>
 		<key>Resources/Assets.car</key>
 		<data>
-		cbxfNtFZoxP7hjmDQMDIzCHnKA4=
+		ja3IA4eVpNadq1GVzOnI+gQI7JA=
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		i6ehBxmrH0p7yvs02e7tzf0mOI8=
+		SjoVStvsB0KAgRHGXbXziL5Dk7M=
 		</data>
 		<key>Resources/SVG/Avatar Masks/Large/Calendar.svg</key>
 		<data>
@@ -150,23 +150,23 @@
 		</data>
 		<key>Resources/colors-agave.json</key>
 		<data>
-		k6X4FZABkkrqmqNxD8n1zO9UZEk=
+		xLqjmGODaLnS+kr2xmq7azLlx5E=
 		</data>
 		<key>Resources/colors-bloom.json</key>
 		<data>
-		sEq7HyBWVSSg2UTU9O7rfXJrhzg=
+		NFcjQpoGfZP3LHO9fcZPm+Jo2C0=
 		</data>
 		<key>Resources/colors-dark.json</key>
 		<data>
-		1GAXPVv9M2SKyHtnDW9GvUYryHk=
+		aGzrLtOAj4TstoUNvnnYO7uAOjY=
 		</data>
 		<key>Resources/colors-light.json</key>
 		<data>
-		ONvOELS7g6DkNZGIoYhc/po3210=
+		ogWSvd3Td18OiQmitUBeGImzve0=
 		</data>
 		<key>Resources/colors-rose.json</key>
 		<data>
-		pwf2knSpNJcNm2EbKueEtbPZvZs=
+		6Zalk/wn36W7USsrKjC4V7GHAUk=
 		</data>
 		<key>Resources/en.lproj/Badge.strings</key>
 		<dict>
@@ -187,6 +187,13 @@
 			ooO2hOy9UY+xq8eXOW7M31e6p+YtPfjh328EcIJyCLk=
 			</data>
 		</dict>
+		<key>Headers/CABackdropLayer.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			eDjbaVhHuNH9MMjX77bPPUV+RpVDIc2qRQZCcLg2mcM=
+			</data>
+		</dict>
 		<key>Headers/DynamicPropertyAccessor.h</key>
 		<dict>
 			<key>hash2</key>
@@ -205,7 +212,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			R7YeHHXVpAWdOWIP4LjVs0v8E3wcPbpcBSIPPy0IbPo=
+			rI3zJ0EGaWSdrjDCm4x0eD4jpyz+JE9CFOXYnUYnAuE=
 			</data>
 		</dict>
 		<key>Headers/NSArray+ZoomKit.h</key>
@@ -275,7 +282,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KKSERFST9cp+X6zT2vxsNn/VUL/0GnsuhlnBmz5L8Jo=
+			keEG9oXS9K5U1AfAPpa4ZBi5m9LNhiAJwOyESMQANVw=
 			</data>
 		</dict>
 		<key>Headers/NSEventMonitoringCenter.h</key>
@@ -289,21 +296,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			x8307JOyMN3jUmh2KkssLjpxa1I0xFaFzBCR9NZFxEo=
+			Bovg0PSaDo8U9wpZdceNPNZhhZY4Kf3J5uWrwUaPSMs=
 			</data>
 		</dict>
 		<key>Headers/NSFont+ZoomKit.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4ZR0PlKAgV8sYV4wdm3vVa5OJeVfbQtPs/+UYG9mX+8=
+			kGsOwWXFTZtJlYEQ95Pcn7qie0y/oFgZ/hrowwpD6IQ=
 			</data>
 		</dict>
 		<key>Headers/NSImage+ZoomKit.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JHaqBd8QASaUL2Z7tlgt73roI7qDPbP9U9jB7brWKEQ=
+			YZQsPIztiZfNEEDGGI/IVAn5J3JzxE5Pn++DsRR1bxs=
 			</data>
 		</dict>
 		<key>Headers/NSImageView+ZoomKit.h</key>
@@ -520,7 +527,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			IvgUYQHEk2J6WMxblzaXDp3PMb10rregslllMLZnRqU=
+			odVH46FTJvwV9Dkmb3qTGrswweHcasaVSftdQtCZi+U=
 			</data>
 		</dict>
 		<key>Headers/NSViewController+ZoomKit.h</key>
@@ -530,11 +537,18 @@
 			iXgTY8yue4vPnQQelt8Jte4tp7VbrZ1cX0kXPk2gxYk=
 			</data>
 		</dict>
+		<key>Headers/NSWindow+ZMFloating.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			albGPxKebx3ffDVZ3vJIk7kigxkZ+Yi/NCmYQ81XkKM=
+			</data>
+		</dict>
 		<key>Headers/NSWindow+ZoomKit.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			A+MZdiqAGJ/KeluK5FIWelfZRWsSg/xB8LzdwtbhN8w=
+			zahONb4U5ZvOCJ3Xb5tLoar6fnrX+JddOpuVgVpFj2Y=
 			</data>
 		</dict>
 		<key>Headers/NSWindow+ZoomShare.h</key>
@@ -590,21 +604,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EtmbePl2OpJvYgOxnjwUL+8ob0qSCe61GPfwdYUT3j4=
+			jNl1rnynAFQ0pfdysm8PaVnr+K9hfyr1oC8n7lJM+ME=
 			</data>
 		</dict>
 		<key>Headers/Prism.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			UIdaqvkhnGJAoIYaI9gYKAHaa+FLaGp3JZSUvDw3Y+8=
+			XVxrmg6msoB10faSSUM53pAKy7yOGyg0cGe5pf5bPZ4=
 			</data>
 		</dict>
 		<key>Headers/PrismOCBridge.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xr8A9M2WJHSgnp3y7mArftRzr5akCl8nFy11uKAVX9I=
+			V8nqYlYF+7CXb7+P90/5koKKnBHY23nOkY6/KZZD4Lw=
 			</data>
 		</dict>
 		<key>Headers/ZMALButton.h</key>
@@ -709,14 +723,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uFjEr9azGV98ePgJvVrv5xy/OsnGWG145Pb4NNcOXiY=
+			oPbpEr8d+WN1o3i6i4RivvGluA7bdt1PtLkND6FNz/I=
 			</data>
 		</dict>
 		<key>Headers/ZMBaseMenuItem.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1DNIsujNRNzB/QC1QnFexeiHMj5BGtXEZ7rReQ0nUJU=
+			/p0z2hQ780IOwyxTYHcX56Zx3fVtWAen5doZ0Z8pdho=
 			</data>
 		</dict>
 		<key>Headers/ZMBasePanel.h</key>
@@ -737,7 +751,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			w3zq/wOOyPIAaGsz9I+Hs8u7LCSKIQEiFlLpLoq8LQ0=
+			qLT8pVjNQTw9EETZaiYaWFsWoX+6sWz+XGL8bt5wT8Y=
 			</data>
 		</dict>
 		<key>Headers/ZMBaseViewController.h</key>
@@ -765,21 +779,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			mC+vh2G3F5FaFUTp5mYd27wjxbgOWDgYa7UWkj+ad8k=
+			hqPhCM/wQu1JeQWdYsjFt744eZu+rWaq5ZPhFOuhV2g=
 			</data>
 		</dict>
 		<key>Headers/ZMButton.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zVg57kqiN7GNqa53dwa9Je7mSy3ztiIMjNWujPIDg6U=
+			nU8Xi2HcmrY2mm1agh88QR6BzqZQRbMotTdfPB3UX8o=
 			</data>
 		</dict>
 		<key>Headers/ZMButtonsContainarView.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SFeJc20zfmx79T+hGDpI7NOqogD4UIL4I/yyCWveTUs=
+			id1dQcTelSCTk/sZkcbWbKV3S8aHEU6CfmNh6vnONHo=
 			</data>
 		</dict>
 		<key>Headers/ZMCallbackImpl.h</key>
@@ -919,7 +933,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6k7U9wuuaPmhiY6SZKpNAWBKiFTDzabZK3Qcv9+9+XE=
+			dQ4vAqBzjll6+LgqxmQU+Cb8cPBo1y8pYnsAe01YQHU=
 			</data>
 		</dict>
 		<key>Headers/ZMHMenuItem.h</key>
@@ -933,14 +947,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qCWbHTH5TJF2WWn8qpZlGVweJqJKUFkZhZfMoHV2cK4=
+			oyrBOV9alnpiizCa3TaJMZTuFiWdxptyg0epEVWZqYk=
 			</data>
 		</dict>
 		<key>Headers/ZMHMenuListView.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0uQ0+D7EWWz0g3CeDP8PfSk3U16TPIZBdcHkjdQiJ0c=
+			Cbf6Zpq9IXEcjPKF7ziSHiXpFgbN2YHo0maARrhccvg=
 			</data>
 		</dict>
 		<key>Headers/ZMHMenuWindow.h</key>
@@ -1164,7 +1178,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3YLW9ay5chNhPjiloJcdVEM0jds0m4yKP3SGK/De2Og=
+			Hk/WmIab80KwLO3IWTpr5gaZBCtX3roqA6MsuUECIa4=
 			</data>
 		</dict>
 		<key>Headers/ZMMoveableButton.h</key>
@@ -1234,7 +1248,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SquIpaZ0+tdT309WuB8XDFevLtRbF4iN5Q81mZKj7ig=
+			5sYJKiLYvcCXjKxaThhY2KDZXv5kMrs9/7OG6RDz4Cw=
 			</data>
 		</dict>
 		<key>Headers/ZMNotificationProtocol.h</key>
@@ -1363,6 +1377,20 @@
 			lfchvQIYCjqXw23/cxpJIRyohw9Seb2Q+thXI8RAxAM=
 			</data>
 		</dict>
+		<key>Headers/ZMSharePickerAttrRegistry.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			JS8h22E9OQHglg8vjwJGoSnKNG34kEXw5JEDW2DwiIo=
+			</data>
+		</dict>
+		<key>Headers/ZMSharePickerAttrSink.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			URprD75Y/8WHrNjZTXC9eQGzUPb71jwgEZ/MgAjHL2Y=
+			</data>
+		</dict>
 		<key>Headers/ZMShareWindowMonitor.h</key>
 		<dict>
 			<key>hash2</key>
@@ -1437,7 +1465,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			JABe1V/H8Dp9INLeOCroODNe+ykRd1SFyvMLe2UI+64=
+			8PMkzSW3f6fgmDPzGnwUAw2cvaIo/G2TG9XQk17zClY=
 			</data>
 		</dict>
 		<key>Headers/ZMTextAttachmentModel.h</key>
@@ -1521,7 +1549,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			XHe24agIxYz0/xqhJHF/ZZ1MbhyOPoClJAs64Dh8N8c=
+			GeylD1FgU1NVULlgZa2RFYCq5TumyQgUkMlwgIT1mE0=
 			</data>
 		</dict>
 		<key>Headers/ZMTrackingBaseView.h</key>
@@ -1629,13 +1657,6 @@
 			NgCdECc9Rr2+TmFHKpHap6zKj0FpCO8Fo2rUXmupe7U=
 			</data>
 		</dict>
-		<key>Headers/ZPLogHelper.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			F53f7F/sj8FfS6kj/kOOrdJLXcTSUx9UCS9QuylqSiM=
-			</data>
-		</dict>
 		<key>Headers/ZPTrackingButton.h</key>
 		<dict>
 			<key>hash2</key>
@@ -1643,46 +1664,39 @@
 			cw13FdJIKnv2TZanK0MVGfejKwpTwFMKMWrsP+H4RD0=
 			</data>
 		</dict>
-		<key>Headers/log_control.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			VbdBDHd585t75OHmQXXnVa7A9GSZFQBSutJ4FhZm6k0=
-			</data>
-		</dict>
 		<key>Modules/Prism.swiftmodule/x86_64-apple-macos.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GVqrwMvKkRGLi2AxPkSqfXb/dm89L2ZVO3zC20Vabf4=
+			EY2qOJhmq8KSSuwpoowwHhXpE6msSdwQivIou03sP/w=
 			</data>
 		</dict>
 		<key>Modules/Prism.swiftmodule/x86_64-apple-macos.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YagN88CqaFEX3ZcyLFbmgMyAn8zjaC7t/8Dl8V7Vdqg=
+			iiFH7GGrWj8IOxOmjwMPsgJbEm5KsfWKTa3o9oPAzlI=
 			</data>
 		</dict>
 		<key>Modules/Prism.swiftmodule/x86_64-apple-macos.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZjTfYW7KUNAsu10LT9+b65AZ29gjcpAGXbWC5I9aYlM=
+			j4mz4GDdTHIhSC5bAUEQ+XlJ0iB+W2LUp2ThEvrSK/k=
 			</data>
 		</dict>
 		<key>Modules/Prism.swiftmodule/x86_64-apple-macos.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YagN88CqaFEX3ZcyLFbmgMyAn8zjaC7t/8Dl8V7Vdqg=
+			iiFH7GGrWj8IOxOmjwMPsgJbEm5KsfWKTa3o9oPAzlI=
 			</data>
 		</dict>
 		<key>Modules/Prism.swiftmodule/x86_64-apple-macos.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qmppUcsMpBVbA6hB5fKXoXgwgk9jvOjcvb7yjNMaxWM=
+			Icc1ICP5a0kYeTxkvzelfG0egnTazUQerRI+9OfNY9s=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -1703,14 +1717,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sqqV+a3y+QNw2V/hQO3+H42CAIo9kSsrnwMhLsdGt2M=
+			hgW4sKXoPwDyO+qiNeWSZ08ffxQAVAYQ6FbDr68QDFw=
 			</data>
 		</dict>
 		<key>PrivateHeaders/ZMMorePanelCollectionView.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WQok4bSiZGh8INl3pjFa3D6AHge2rL5PDve2pZFbBGo=
+			C8A4Dr/HSU77+WN9BSPEjIHucakWh6uJuhAjlCDL2Zg=
+			</data>
+		</dict>
+		<key>PrivateHeaders/ZMMorePanelScrollView.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			29w64GjXMqTQBNWfP8KA9IDqfSLgFvGGaxw4oZCPcdI=
 			</data>
 		</dict>
 		<key>PrivateHeaders/ZMResetControl.h</key>
@@ -1724,14 +1745,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			wG8XgMchojAHjSVndKflTajE8/u7at8m3cPQqYra85o=
+			+qvZUkA76adncIIRyg2oTekkVNizT+Fy0EEcL+7Y5cs=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			h4JqRMq4/ui6hZ7aw1YRATAwDK8rd5lkwGaDM40HpF4=
+			9JCUn/tCh62KBgb2xiJRbvA4FFAd1jnataaIPkeD06A=
 			</data>
 		</dict>
 		<key>Resources/SVG/Avatar Masks/Large/Calendar.svg</key>
@@ -1976,35 +1997,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PCamW+lQzwE3OTKQigj4qyT4CZeS+hlUJCabEHgoj4M=
+			e7EZF+CfD+WazU4bjt94AdNgZe/cT5shafzHxGtyApM=
 			</data>
 		</dict>
 		<key>Resources/colors-bloom.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			5gyhJj60zHYYeJfzEBn+IfifwCRTKBzLl4ibFOk8wB0=
+			GeX5aiwSkELD7k9mFABlyv4BuRv1IqwglUjpBm1o1z8=
 			</data>
 		</dict>
 		<key>Resources/colors-dark.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4+vHx0COitAz4mBaiuAF+B8Sha8EnTm8Vqe+M/h359k=
+			YdN/NKq6ZiCAFK0hlsnTE+B73DslvZEcn/vmHqCM0KE=
 			</data>
 		</dict>
 		<key>Resources/colors-light.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lCPbrTULCEvI6GCv4WIxAN5AeWN6aYZKoXSQxysSVxc=
+			mvDlFXb/HDTZDDcjvcK4d7QZhShQH6a0FLQZrrbS9QU=
 			</data>
 		</dict>
 		<key>Resources/colors-rose.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wbRWrgUaOeJG0K+jCBOaQMpB9JzduAs37gLMxYECxLo=
+			nHCxgGSsy9SSv4HC9kixnPaIkjtLMldW3nlOQUJ3WRo=
 			</data>
 		</dict>
 		<key>Resources/en.lproj/Badge.strings</key>

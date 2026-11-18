@@ -43,6 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) ZMMTWhiteboardDashboard *dashboard;
 @property (nonatomic, readonly) ZMMTWBCanvasWebView *canvasWebView;
+
+@property (nonatomic, readonly, assign) BOOL useCef;
+
 - (void)createCanvasWebView;
 
 - (ZMMTWhiteboardViewController*)newViewControllerWithType:(ZMMTType)type;
@@ -68,9 +71,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showDashboard;
 - (void)closeDashboard;
 
+//ZOOM-1264296 Icebreakers — remote-flag gated whiteboard-activity entry; main thread; no-op if API unavailable.
+- (BOOL)isWhiteboardActivityModeEnabled;
+- (BOOL)isCurrentWhiteboardActivityMode;
+- (void)openNewActivityWB;
+
 - (void)stopShareWhiteboard;
 - (void)stopAllWhiteboards;
-- (BOOL)canStartWB:(ZMCannotWBShareReason *)reason;
+- (BOOL)canStartWB:(ZMCannotWBShareReason *)reason
+          isCreate:(BOOL)isCreate;
 - (void)closeAllPanels;
 
 - (void)closeBack2ClassicWBToast;
@@ -81,9 +90,13 @@ NS_ASSUME_NONNULL_BEGIN
 //Called when a user clicked the "meeting now" from outside whiteboard
 - (void)onTrySharePTWhiteboard;
 
+//Called when docs hub requests a whiteboard share permission check.
+- (BOOL)onRequestStartNewShare:(NSString *)requestID isNew:(BOOL)isNew;
+
 //Some switches
 - (BOOL)shouldShowButtonOnToolBar;
 - (BOOL)initiatingAllowed;
+- (BOOL)canShareExistedWhiteboard;
 - (BOOL)shouldShowWebWhiteboardPortalInShareWindow;
 - (void)initiateAWhiteboard;
 - (BOOL)isClassicWBFeatureOpen;
@@ -92,6 +105,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)canShareBeSpotlighted;
 - (BOOL)spotlightThisShare;
 - (BOOL)stopSpotlightThisShare;
+
+//Collaborative Notes
+- (BOOL)isCollaborativeNotesEnabled;
+- (void)shareCollaborativeNotesWhiteboard;
 
 //Visualization
 - (void)visualizationEnabled:(BOOL*)pEnabled//If true, the menu item is shown

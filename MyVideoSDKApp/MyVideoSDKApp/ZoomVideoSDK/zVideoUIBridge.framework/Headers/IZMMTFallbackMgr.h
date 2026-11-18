@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <zVideoUIBridge/ZMUIConstants.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,6 +16,7 @@ typedef NS_ENUM(NSUInteger, ZMConfEventType) {
 };
 
 @protocol IZMMTChatMessageModel;
+@class ZMMTAppTag;
 
 /**
  * @router ZMMTShared
@@ -32,6 +34,10 @@ typedef NS_ENUM(NSUInteger, ZMConfEventType) {
 - (void)getZappHeadById:(NSString*)appId completion:(void (^)(ZPZAppHeader *header, NSError *error))completion;
 
 - (void)eventLogWithType:(ZMConfEventType)type;
+
+//MARK: - App tag (RTMS list for video tile)
+- (BOOL)hasRTMSAppTagsForOwner:(ZMUJID)ownerID;
+- (nullable NSArray<ZMMTAppTag *> *)rtmsAppTagsForOwner:(ZMUJID)ownerID;
 
 @end
 

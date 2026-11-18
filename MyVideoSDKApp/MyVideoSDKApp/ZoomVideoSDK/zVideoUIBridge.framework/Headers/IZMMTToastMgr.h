@@ -66,6 +66,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param message The message to display
 - (void)showScreenToast:(NSString *)message;
 
+/// Show a screen-level toast from a fully configured toast model.
+/// @param toast The toast to display
+- (void)showScreenToastWithToast:(ZMToast *)toast;
+
 /// Show a screen-level toast with title at the top-right corner of the screen
 /// @param title Optional title for the toast
 /// @param message The message to display

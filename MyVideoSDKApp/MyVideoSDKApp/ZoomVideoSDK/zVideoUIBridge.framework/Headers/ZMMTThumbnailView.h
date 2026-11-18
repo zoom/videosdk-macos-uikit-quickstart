@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSRect)getLeftArrowRectForView:(ZMMTThumbnailView*)thumbnailView;
 - (NSRect)getRightArrowRectForView:(ZMMTThumbnailView*)thumbnailView;
 
+- (NSRect)videoUnionBoundsForView:(ZMMTThumbnailView*)thumbnailView;
+
 - (BOOL)canMoveWindowForView:(ZMMTThumbnailView*)thumbnailView;
 
 - (BOOL)isVerticalLayoutForView:(ZMMTThumbnailView*)thumbnailView;

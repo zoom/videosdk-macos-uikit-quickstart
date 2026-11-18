@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)isAlwaysUseVoIPWhenJoinMeeting;
 - (void)setAlwaysUseVoIPWhenJoinMeeting:(BOOL)isOn;
+- (void)setAudioShareMode:(BOOL)isMono;
 
 - (int)getAudioType;
 - (BOOL)isSupportVoip;

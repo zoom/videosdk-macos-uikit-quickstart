@@ -9,6 +9,8 @@
 #ifndef IZPConfUIMgr_h
 #define IZPConfUIMgr_h
 
+#import <zVideoUIBridge/IZMMTSharingViewController.h>
+
 typedef NS_ENUM(NSUInteger, ZMMTLeaveMeetingAction) {
     ZMMTLeaveMeetingActionCancel,
     ZMMTLeaveMeetingActionLeave,
@@ -39,9 +41,19 @@ typedef void (^ZMMTLeaveMeetingCompletion)(ZMMTLeaveMeetingAction action);
 
 - (BOOL)isDualMode;
 
+- (BOOL)isFloatingVideoVisible;
+- (BOOL)floatingVideoNeedShowUserInfo;
+- (BOOL)isInSilentMode;
+
 @optional //ZPConfUIMgr(Window)
 // MinimalView support
 - (void)exitMinimalViewMode;
+- (NSRect)getMainViewRectInScreen;
+
+#ifdef BUILD_FOR_CLIENT_SDK
+- (void)notifyConfUIEventToSDK:(int)type param1:(void*)param1 param2:(void*)param2;
+- (nullable id<IZMMTSharingViewController>)newCustomSharePortControllerForSDK;
+#endif
 
 @end
 

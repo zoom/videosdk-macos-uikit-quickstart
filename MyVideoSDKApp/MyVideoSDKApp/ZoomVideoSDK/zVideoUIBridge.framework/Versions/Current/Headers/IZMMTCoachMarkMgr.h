@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)registerAICRemindStartCoachMark;
 
+- (void)registerAICJoinMeetingRecapCoachMark;
+
 - (void)registerAICRecordingCoachMark;
 
 - (void)registerChatWithAICCoachMark;

@@ -104,7 +104,13 @@ typedef enum
     ZMVideoSDKErrors_Session_Account_FreeMinutesExceeded,
     /** Join session failed because the account's free credit has been exceeded. */
     ZMVideoSDKErrors_Session_Account_FreeCreditExceeded,
-    
+    /** Pre-join flow: not in prepare join flow. */
+    ZMVideoSDKErrors_Session_PreJoin_Not_In_Flow,
+    /** Pre-join flow: already committed (user has confirmed). */
+    ZMVideoSDKErrors_Session_PreJoin_Already_Commit,
+    /** Pre-join flow: timeout. */
+    ZMVideoSDKErrors_Session_PreJoin_Timeout,
+
     /** Audio errors */
     /** General audio error. */
     ZMVideoSDKErrors_Session_Audio_Error = 3000,
@@ -415,7 +421,9 @@ typedef enum
     /** The attempt to cancel the call has failed. */
     ZMPhoneStatus_Cancel_Failed,
     /** The call attempt has timed out. */
-    ZMPhoneStatus_Timeout
+    ZMPhoneStatus_Timeout,
+    /** The call was answered by machine. */
+    ZMPhoneStatus_AnsweredByMachine
 }ZMPhoneStatus;
 
 /**
@@ -920,7 +928,11 @@ typedef enum
     /** Ended by host. */
     ZMVideoSDKSessionLeaveReason_EndByHost,
     /** Network is broken. */
-    ZMVideoSDKSessionLeaveReason_NetworkError
+    ZMVideoSDKSessionLeaveReason_NetworkError,
+    /** User leaves current session because joining a subsession. */
+    ZMVideoSDKSessionLeaveReason_JoinSubsession,
+    /** User leaves current session because returning to the main session. */
+    ZMVideoSDKSessionLeaveReason_ReturnToMainSession
 }ZMVideoSDKSessionLeaveReason;
 
 /**
@@ -1187,3 +1199,115 @@ typedef enum
     /** Failed to start the RTMS stream */
     ZMVideoSDKRealTimeMediaStreamsFailReason_StartFail
 }ZMVideoSDKRealTimeMediaStreamsFailReason;
+
+/**
+ * @brief Enumeration of emoji reaction types.
+ */
+typedef enum
+{
+    /** For initialization. */
+    ZMVideoSDKEmojiReactionType_None = 0,
+    /** Clap reaction. */
+    ZMVideoSDKEmojiReactionType_Clap,
+    /** Thumbs up reaction. */
+    ZMVideoSDKEmojiReactionType_Thumbsup,
+    /** Heart reaction. */
+    ZMVideoSDKEmojiReactionType_Heart,
+    /** Tears of joy reaction. */
+    ZMVideoSDKEmojiReactionType_Joy,
+    /** Open mouth reaction. */
+    ZMVideoSDKEmojiReactionType_Openmouth,
+    /** Tada reaction. */
+    ZMVideoSDKEmojiReactionType_Tada,
+}ZMVideoSDKEmojiReactionType;
+
+/**
+ * @brief Enumeration of supported translation languages for broadcast streaming live transcription.
+ */
+typedef enum
+{
+    /** English. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_English,
+    /** Chinese (Simplified). */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Chinese,
+    /** Japanese. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Japanese,
+    /** German. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_German,
+    /** French. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_French,
+    /** Russian. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Russian,
+    /** Portuguese. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Portuguese,
+    /** Spanish. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Spanish,
+    /** Korean. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Korean,
+    /** Italian. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Italian,
+    /** Vietnamese. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Vietnamese,
+    /** Dutch. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Dutch,
+    /** Ukrainian. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Ukrainian,
+    /** Arabic. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Arabic,
+    /** Bengali. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Bengali,
+    /** Chinese (Traditional). */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_ChineseTraditional,
+    /** Czech. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Czech,
+    /** Estonian. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Estonian,
+    /** Finnish. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Finnish,
+    /** Greek. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Greek,
+    /** Hebrew. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Hebrew,
+    /** Hindi. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Hindi,
+    /** Hungarian. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Hungarian,
+    /** Indonesian. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Indonesian,
+    /** Malay. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Malay,
+    /** Persian. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Persian,
+    /** Polish. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Polish,
+    /** Romanian. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Romanian,
+    /** Swedish. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Swedish,
+    /** Tamil. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Tamil,
+    /** Telugu. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Telugu,
+    /** Tagalog. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Tagalog,
+    /** Turkish. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Turkish,
+    /** Danish. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Danish,
+    /** Norwegian. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Norwegian,
+    /** Thai. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Thai,
+    /** Welsh. */
+    ZMVideoSDKBroadcastStreamingTranslationLanguage_Welsh,
+}ZMVideoSDKBroadcastStreamingTranslationLanguage;
+
+
+/**
+ * @brief Indicates which session a lightweight user belongs to.
+ */
+typedef enum
+{
+    ZMVideoSDKSubSessionUserTypeMainSession = 0,
+    ZMVideoSDKSubSessionUserTypeSubSession = 1
+}ZMVideoSDKSubSessionUserType;

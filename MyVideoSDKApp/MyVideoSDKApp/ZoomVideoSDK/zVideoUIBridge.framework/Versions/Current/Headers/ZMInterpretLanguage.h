@@ -18,10 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *iconContent;
 @property (nonatomic, copy) NSString *languageID;
 @property (nonatomic, retain, readonly) NSImage *icon;
-@property (nonatomic, retain, readonly) NSImage *toolbarIcon;
-@property (nonatomic, retain, readonly) NSImage *toolbarIconHightlighted;
 @property (nonatomic, assign) INTERPRETE_LANGUAGE language;
 @property (nonatomic, assign, readonly) BOOL isCustomLanguage;
+
+- (nullable NSImage *)toolbarLanguageIconWithColor:(NSColor *)color;
 
 @end
 

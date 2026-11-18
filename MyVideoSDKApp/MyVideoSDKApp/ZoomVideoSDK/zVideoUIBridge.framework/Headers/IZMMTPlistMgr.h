@@ -20,9 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)userInterpretStatusChangedWithUser:(ZMUser *)theUser;
 
-//need update Item UI
-- (void)userVideoStatusChangedWithUser:(ZMUser*)zmUser;
-
 //roster changed
 - (void)onUserRosterChanged:(ZMMTRosterList*)roster session:(ZMConfSession*)session;
 
@@ -49,6 +46,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updatePlistUI;
 
 - (void)userFeedbackChangedWithUser:(ZMUser *)theUser;
+
+- (void)onBotRelationChangedForUser:(ZMUser *)zmUser;
 
 @end
 

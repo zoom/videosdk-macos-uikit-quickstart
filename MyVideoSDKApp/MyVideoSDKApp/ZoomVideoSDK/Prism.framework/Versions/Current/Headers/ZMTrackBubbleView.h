@@ -34,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger bubbleGap;//the bubble offset with image
 
 - (void)setShowPopover:(BOOL)showPopover;
+- (void)resetHoverStateAndHideBubbleTip;
 @property (readonly, assign) BOOL isBubbleShowing;
 
 @property (assign) CGFloat timerInterval;//default 0.1s
@@ -42,6 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) ZMBubbleButtonEventMask eventMask;
 @property (copy) BOOL (^shouldShowBubble)(ZMTrackBubbleView* image, ZMBubbleButtonEvent event);
 @property (copy) BOOL (^shouldHideBubble)(ZMTrackBubbleView* image, ZMBubbleButtonEvent event);
+
+- (BOOL)shouldShowBubbleWithEvent:(ZMBubbleButtonEvent)event;
 
 - (void)willShowBubbleTip NS_REQUIRES_SUPER;
 - (void)didShowBubbleTip NS_REQUIRES_SUPER;

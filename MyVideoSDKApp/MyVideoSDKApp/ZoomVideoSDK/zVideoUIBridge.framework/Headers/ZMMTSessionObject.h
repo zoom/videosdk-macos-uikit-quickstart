@@ -12,6 +12,8 @@
 #import <zVideoUIBridge/ZMMTDeviceUISink.h>
 #import <zVideoUIBridge/ZMMTFeatureMgrSink.h>
 #import <zVideoUIBridge/ZMMTConfUniversalUISink.h>
+#import <zVideoUIBridge/ZMMTDisclaimerSink.h>
+#import <zVideoUIBridge/ZMMTDisclaimerStringSink.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,7 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nullable, assign) ZMMTConfInstSink* confInstSink;
 @property(nullable, assign) ZMMTDeviceUISink* deviceUISink;
 @property(nullable, assign) ZMMTConfUniversalUISink* confUniversalUISink;
-
+@property(nullable, assign) ZMMTDisclaimerSink* disclaimerSink;
+@property(nullable, assign) ZMMTDisclaimerStringSink* disclaimerStringSink;
 
 @property(nullable, retain) ZMMTFeatureMgrSinkAdapter* featureAdapter;
 @property(nullable, assign) ZMMTFeatureMgrSink* featureSink;

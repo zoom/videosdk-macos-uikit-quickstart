@@ -26,6 +26,8 @@ typedef NS_ENUM(NSInteger, ZMConfSharingLayoutItemType) {
 };
 
 @class ZMShareSource;
+@class ZMMTBaseView;
+@class ZMConfSession;
 
 /// Protocol for sharing view controller to decouple VideoUI dependency
 @protocol IZMMTSharingViewController <NSObject>

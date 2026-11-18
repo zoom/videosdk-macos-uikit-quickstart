@@ -49,6 +49,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onUpgradeEntranceClosed:(ZMMTUpgradeEntrance)entrance;
 - (void)onUpgradeNowClicked:(ZMMTUpgradeEntrance)entrance;
 
+//MARK: - Upgrade Badge Logic (web-driven checkout modal route)
+- (nullable NSString *)getUpgradeBadgeCheckoutModalUrl;
+- (nullable NSString *)getUpgradeBadgeButtonText;
+
 //MARK: - Upsell
 - (BOOL)isUpsellEligible;
 #ifdef __cplusplus

@@ -6,3 +6,5 @@ NSLocalNetworkUsageDescription= "Dit proces is nodig om AirPlay en peer-to-peerv
 NSBluetoothAlwaysUsageDescription= "Hiermee kan Zoom Workplace Zoom Rooms in de buurt vinden.";
 NSCameraUsageDescription = "Om ervoor te zorgen dat andere deelnemers u kunnen zien, heeft Zoom toegang nodig tot uw camera.";
 NSAudioCaptureUsageDescription = "Geef toegang om audio van andere apps vast te leggen.";
+
+CFBundleDisplayName = "Zoom";

@@ -54,6 +54,7 @@ typedef NS_ENUM(NSInteger, ZMMTVideoRenderSceneType) {
 
 @property (nonatomic, assign) NSRectCorner cornerMask;
 @property (nonatomic, assign) CGFloat cornerRadius;
+@property (nonatomic, assign) BOOL autoCornerRadius;
 @property (nonatomic, retain) NSColor* borderColor;
 @property (nonatomic, assign) CGFloat borderWidth;
 

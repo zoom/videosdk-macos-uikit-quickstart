@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSFileManager (ZoomKit)
 
+- (unsigned long long)availableDiskSpaceAtPath:(NSString *)path;
+
 - (BOOL)copyItemAtPathReplaceIfNeeded:(NSString *)srcPath toPath:(NSString *)dstPath error:(NSError **)error;
 
 - (BOOL)safeRemoveItemAtPath:(NSString *)path error:(NSError **)error;

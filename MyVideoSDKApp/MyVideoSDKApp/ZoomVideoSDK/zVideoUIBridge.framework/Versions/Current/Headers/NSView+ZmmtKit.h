@@ -25,6 +25,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSComparisonResult)navigationCompareView:(NSView *)view1 view2:(NSView *)view2 flipped:(BOOL)flipped;
 @end
 
+@interface NSView (ZMMTPrismToolTip)
+@property (nullable, nonatomic, copy) NSString *zmmt_prism_tooltip;
+@property (nonatomic, assign) NSEdgeInsets zmmt_prism_tooltipEdgeInsets;
+@property (nonatomic, assign) NSWindowLevel zmmt_prism_tooltipWindowLevel;
+@end
+
 @interface NSView (ZMMTSafeVideoArea)
 @property NSEdgeInsets additionalSafeVideoAreaInsets;
 @property (readonly) NSLayoutGuide* safeVideoAreaGuide;

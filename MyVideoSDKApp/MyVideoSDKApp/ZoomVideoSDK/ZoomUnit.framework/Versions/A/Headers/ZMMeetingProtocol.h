@@ -16,11 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)didLeaveMeeting;
 - (BOOL)onConfStatusChanged:(int)cmd params:(int)ret;
 
-- (void)onConfWindowWillEnterFullScreen;
-- (void)onConfWindowDidExitFullScreen;
-
-- (BOOL)isBONeedsFollowFullscreen;
-
 - (void)bringWindowToFrontIfInMeeting;
 - (void)bringWindowToFrontByDockIfInMeeting;
 @end

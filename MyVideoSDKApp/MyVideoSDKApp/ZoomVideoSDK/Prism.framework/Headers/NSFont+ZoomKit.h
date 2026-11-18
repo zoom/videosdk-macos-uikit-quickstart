@@ -15,36 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 #define ZMBaseReferenceFontSize 14.0
 
-static inline CGFloat ZMDisplayFontSize(void) {
-    return floor(ZMBaseReferenceFontSize * NSApp.fontSizeRate / 100);
-}
-
-/**
- Build-in font "SF Pro" with macOS 15 has layout issues when typing with marked-text.
- make it easy to rollback if any risk happens.
- */
-static inline NSFont *_Nonnull ZMMessageFontWithSize(CGFloat fontSize) {
-//    if (@available(macOS 15.0, *)) { // Helvetica Neue
-//        NSFont *expFont = [NSFont fontWithName:@"Helvetica" size:fontSize];
-//        if (!expFont) {
-//            expFont = [NSFont systemFontOfSize:fontSize];
-//        }
-//        return expFont;
-//    }
-//    else {
-        return [NSFont systemFontOfSize:fontSize weight:NSFontWeightRegular];
-//    }
-}
-
-static inline NSFont *ZMMessageFontWithCurrentAppSize(void) {
-    return ZMMessageFontWithSize(ZMDisplayFontSize());
-}
-
-static inline NSFont *_Nonnull ZMMessageFontWithScaledSize(CGFloat scaledSize) {
-    CGFloat fontSize = floor(scaledSize * NSApp.fontSizeRate / 100);
-    return ZMMessageFontWithSize(fontSize);
-}
-
 @interface NSFont (ZoomKit)
 
 /**
@@ -64,6 +34,9 @@ static inline NSFont *_Nonnull ZMMessageFontWithScaledSize(CGFloat scaledSize) {
 + (NSFont *)zmSystemFontOfSize:(CGFloat)fontSize;
 + (NSFont *)zmBoldSystemFontOfSize:(CGFloat)fontSize;
 
++ (nullable NSFont *)zmCachedFontWithKey:(NSString *)fontKey;
++ (void)zmCacheFont:(NSFont *)font forKey:(NSString *)fontKey;
+
 + (NSFont *)zmMonospacedDigitFontOfSize:(CGFloat)fontSize;
 + (NSFont *)zmMediumMonospacedDigitFontOfSize:(CGFloat)fontSize;
 + (NSFont *)zmBoldMonospacedDigitFontOfSize:(CGFloat)fontSize;
@@ -73,4 +46,36 @@ static inline NSFont *_Nonnull ZMMessageFontWithScaledSize(CGFloat scaledSize) {
 + (NSFont *)ultralightSystemFontOfSize:(CGFloat)fontSize;
 
 @end
+
+static inline CGFloat ZMDisplayFontSize(void) {
+    return floor(ZMBaseReferenceFontSize * NSApp.fontSizeRate / 100);
+}
+
+/**
+ Build-in font "SF Pro" with macOS 15 has layout issues when typing with marked-text.
+ make it easy to rollback if any risk happens.
+ */
+static inline NSFont *_Nonnull ZMMessageFontWithSize(CGFloat fontSize) {
+//    if (@available(macOS 15.0, *)) { // Helvetica Neue
+//        NSFont *expFont = [NSFont fontWithName:@"Helvetica" size:fontSize];
+//        if (!expFont) {
+//            expFont = [NSFont systemFontOfSize:fontSize];
+//        }
+//        return expFont;
+//    }
+//    else {
+        // return [NSFont systemFontOfSize:fontSize weight:NSFontWeightRegular];
+        return [NSFont zmSystemFontOfSize:fontSize];
+//    }
+}
+
+static inline NSFont *ZMMessageFontWithCurrentAppSize(void) {
+    return ZMMessageFontWithSize(ZMDisplayFontSize());
+}
+
+static inline NSFont *_Nonnull ZMMessageFontWithScaledSize(CGFloat scaledSize) {
+    CGFloat fontSize = floor(scaledSize * NSApp.fontSizeRate / 100);
+    return ZMMessageFontWithSize(fontSize);
+}
+
 NS_ASSUME_NONNULL_END

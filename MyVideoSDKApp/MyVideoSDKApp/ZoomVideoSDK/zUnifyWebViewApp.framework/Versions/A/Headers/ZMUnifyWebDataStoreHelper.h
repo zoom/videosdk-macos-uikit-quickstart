@@ -9,6 +9,14 @@
 #import <WebKit/WebKit.h>
 #import "ZMUnifyWebViewDefine.h"
 
+FOUNDATION_EXPORT NSString * const ZMUnifyWebDataStoreLockObserveErrorDomain;
+
+typedef NS_ENUM(NSInteger, ZMUnifyWebDataStoreLockObserveErrorCode) {
+    ZMUnifyWebDataStoreLockObserveErrorCodeTimeout = 1,
+    ZMUnifyWebDataStoreLockObserveErrorCodeInvalidParameter = 2,
+    ZMUnifyWebDataStoreLockObserveErrorCodeAlreadyOccupied = 3,
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZMUnifyWebDataStoreHelper : NSObject
@@ -30,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)clearAllWebCachesByAppId:(NSString *)appId;
 - (void)removeDataStore:(NSString *)identity;
 - (void)removeCefCacheForAppId:(NSString *)appId;
+- (void)observeIdentity:(NSString *)identity destroyComplete:(void (^)(NSError *_Nullable error))destroyComplete;
 
 @end
 

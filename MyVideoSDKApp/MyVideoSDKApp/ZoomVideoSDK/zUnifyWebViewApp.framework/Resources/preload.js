@@ -1,6 +1,6 @@
 //v2 framework preload js code 
-//@preload-js-version 6.7.0.0
-//@supported-client-version 6.7.0
+//@preload-js-version 7.0.0.0
+//@supported-client-version [7.0.0,7.1.0)
 
 try {
 ;(function () {
@@ -35,15 +35,17 @@ try {
     const CALLBACK_MODULE = (function () {
         const callbacks = new Map();
 
-        function registerCallback(callback, once = false) {
+        function registerCallback(callback, once = false, desc = '', frameId = null) {
             const identifier = UTILS.generateUID();
 
-            callbacks.set(identifier, (data) => {
+            const wrapper = (data) => {
                 if (once) {
                     unregisterCallback(identifier);
                 }
                 return callback && callback(data);
-            });
+            };
+
+            callbacks.set(identifier, { fn: wrapper, desc: desc || '', frameId });
 
             return identifier;
         }
@@ -53,25 +55,33 @@ try {
         }
 
         function runCallback(id, data) {
-            const callback = callbacks.get(id);
+            const entry = callbacks.get(id);
 
-            if (callback) {
-                callback(data);
+            if (entry && entry.fn) {
+                entry.fn(data);
             }
+        }
+
+        function getCallbacksInfo() {
+            const out = [];
+            callbacks.forEach((entry, id) => {
+                out.push({ id: id, desc: entry.desc, frameId: entry.frameId });
+            });
+            return out;
         }
 
         return {
             registerCallback,
             unregisterCallback,
             runCallback,
-            callbacks
+            getCallbacksInfo
         };
     })();
 
     const IPC_MODULE = (function () {
         const __ZM_INVOKE_KEY__ = "__ZM_INVOKE_KEY__VALUE__";
         const __ZM_CHECK_IFRAME_DOMAIN__ = __ZM_CHECK_IFRAME_DOMAIN_VALUE__;
-        const __ZM_ALLOWED_DOMAINS__ = "^((https|http|zoomus|zoommtg|zoomroom|zoomrooms)://)?([a-zA-Z0-9._-]+\\.)?(zoom\\.us|zoomconnector\\.com|zoom\\.com(\\.cn)?|meetzoom\\.net|zoom\\.cn)(/.*)?$|^((https|http|zoomus|zoommtg|zoomroom|zoomrooms)://)?([a-zA-Z0-9._-]+\\.)?(zoomdev\\.us|zoomdev\\.de)(/.*)?$|^((https|http|zoomus|zoommtg|zoomroom|zoomrooms)://)?([a-zA-Z0-9._-]+\\.)?(zoomgov)\\.(com|mil)(/.*)?$|^((https|http|zoomus|zoommtg|zoomroom|zoomrooms)://)?([a-zA-Z0-9._-]+\\.)?(zipow|zoomgovdev|zoommildev)\\.com(/.*)?$|^((https|http|zoomus|zoommtg|zoomroom|zoomrooms)://)?([a-zA-Z0-9._-]+\\.)?(dog|dg01web|dg01www3)\\.zoom\\.us(/.*)?$|^((https|http|zoomus|zoommtg|zoomroom|zoomrooms)://)?([a-zA-Z0-9._-]+\\.)?(zoomdev|zoom)\\.com\\.cn(/.*)?$|^(https?://)?([a-zA-Z0-9._-]+\\.)?localhost(/.*)?$";
+        const __ZM_ALLOWED_DOMAINS__ = "^((https|http|zoomus|zoommtg|zoomroom|zoomrooms)://)?([a-zA-Z0-9._-]+\\.)?(zoom\\.us|zoomconnector\\.com|zoom\\.com(\\.cn)?|meetzoom\\.net|zoom\\.cn)(/.*)?$|^((https|http|zoomus|zoommtg|zoomroom|zoomrooms)://)?([a-zA-Z0-9._-]+\\.)?(zoomdev\\.us|zoomdev\\.de)(/.*)?$|^((https|http|zoomus|zoommtg|zoomroom|zoomrooms)://)?([a-zA-Z0-9._-]+\\.)?(zoomgov)\\.(com|mil)(/.*)?$|^((https|http|zoomus|zoommtg|zoomroom|zoomrooms)://)?([a-zA-Z0-9._-]+\\.)?(zipow|zoomgovdev|zoommildev)\\.com(/.*)?$|^((https|http|zoomus|zoommtg|zoomroom|zoomrooms)://)?([a-zA-Z0-9._-]+\\.)?(dog|dg01web|dg01www3)\\.zoom\\.us(/.*)?$|^((https|http|zoomus|zoommtg|zoomroom|zoomrooms)://)?([a-zA-Z0-9._-]+\\.)?(zoomdev|zoom)\\.com\\.cn(/.*)?$|^https://private[a-zA-Z0-9-]*\\.[a-zA-Z0-9-]+\\.(zoomonprem|zoomdevonprem)\\.com(/.*)?$|^(https?://)?([a-zA-Z0-9._-]+\\.)?localhost(/.*)?$";
         let __ZM_ALLOWED_DOMAINS_REGEXP__ = null;
         let  inWebView = true;
         const FRAME_IPC_MODE = {
@@ -81,7 +91,7 @@ try {
             DIRECT_OVER_PROXY: 'direct_over_proxy'
         };
 
-        function isZoomDomain() {
+        function isZoomDomain(url) {
             if (!__ZM_CHECK_IFRAME_DOMAIN__) {
                 return true;
             }
@@ -89,7 +99,9 @@ try {
                 if (!__ZM_ALLOWED_DOMAINS_REGEXP__) {
                     __ZM_ALLOWED_DOMAINS_REGEXP__ = new RegExp(__ZM_ALLOWED_DOMAINS__);
                 }
-                var currentUrl = window.location.href || document.URL;
+                var currentUrl = (typeof url === 'string' && url !== '')
+                    ? url
+                    : (window.location.href || document.URL);
                 return __ZM_ALLOWED_DOMAINS_REGEXP__.test(currentUrl);
             } catch (e) {
                 return false;
@@ -179,10 +191,12 @@ try {
 
             if (frameIPCMode === FRAME_IPC_MODE.DIRECT_OVER_PROXY) {
                 messagePayload.options.frameId = frameId;
+                messagePayload.options.internalFrameId = frameId;
                 messagePayload.options.subFrameUrl = window.location.href || document.URL;
             }
             else if (frameIPCMode === FRAME_IPC_MODE.PROXY)
             {
+                messagePayload.options.internalFrameId = frameId;
                 messagePayload.options.subFrameUrl = window.location.href || document.URL;
             }
             
@@ -192,7 +206,7 @@ try {
                         return false;
                     }
                     if (frameIPCMode === FRAME_IPC_MODE.PROXY || frameIPCMode === FRAME_IPC_MODE.DIRECT_OVER_PROXY) {
-                       window.parent.postMessage(data, '*');
+                       window.top.postMessage(data, '*');
                        return true;
                     } else {
                         console.error("frameIPCMode is error,value: ", frameIPCMode)
@@ -232,7 +246,7 @@ try {
             }
             const handlerId = CALLBACK_MODULE.registerCallback((eventData) => {
                 handleDataRequestEvent(eventData);
-            });
+            }, false, 'event:listen:unifywebview:data-request');
 
             window.__ZM_INTERNALS__.invoke('unifywebview', 'event', 'listen', {
                 event: 'data-request',
@@ -251,7 +265,8 @@ try {
             setFrameIPCMode,
             registerDataRequestListener,
             isInWebView,
-            isZoomDomain
+            isZoomDomain,
+            getFrameId: () => frameId
         };
     })();
 
@@ -436,7 +451,7 @@ try {
                     
                     resolve(result);
                     CALLBACK_MODULE.unregisterCallback(error);
-                }, true);
+                }, true, `hybrid invoke resolve ${packageName}:${plugin}/${api}`);
 
                 const error = CALLBACK_MODULE.registerCallback((err) => {
                     clearTimeout(timeoutId);
@@ -457,7 +472,7 @@ try {
                     
                     reject(new HybridError(err.code,err.message, invokeId));
                     CALLBACK_MODULE.unregisterCallback(callback);
-                }, true);
+                }, true, `hybrid invoke reject ${packageName}:${plugin}/${api}`);
 
                 const now = new Date();
                 const timestamp = now.getFullYear().toString() + '-' +
@@ -482,10 +497,24 @@ try {
                     });
                 }
 
-                const timeout = options.timeout * 1000 || DEFAULT_TIMEOUT;
-                const timeoutId = setTimeout(() => {
-                    window.__ZM_INTERNALS__.runCallback(error, { code: 'HybridError_JavascriptTimeout',message:''});
-                }, timeout);
+                const timeout = (options.timeout && options.timeout * 1000 + 30000) || DEFAULT_TIMEOUT;
+                const SLEEP_TOLERANCE = 30 * 1000;
+
+                let timeoutId;
+                let hasRetriedAfterSleep = false;
+                const scheduleTimeout = () => {
+                    const scheduledAt = Date.now();
+                    timeoutId = setTimeout(() => {
+                        const elapsed = Date.now() - scheduledAt;
+                        if (elapsed > timeout + SLEEP_TOLERANCE && !hasRetriedAfterSleep) {
+                            hasRetriedAfterSleep = true;
+                            scheduleTimeout();
+                            return;
+                        }
+                        window.__ZM_INTERNALS__.runCallback(error, { code: 'HybridError_JavascriptTimeout',message:''});
+                    }, timeout);
+                };
+                scheduleTimeout();
 
                 window.__ZM_INTERNALS__.ipc({
                     package: packageName,
@@ -511,7 +540,11 @@ try {
                 }
             }
             
-            const handlerId = window.__ZM_INTERNALS__.transformCallback(params.handler);
+            const handlerId = window.__ZM_INTERNALS__.transformCallback(
+                params.handler,
+                false,
+                `frontend registerInvoke ${params.package}:${params.plugin}/${params.api}`
+            );
             
             return window.__ZM_INTERNALS__.invoke('unifywebview', 'api', 'registerInvoke', {
                 params: {
@@ -594,8 +627,44 @@ try {
     })();
 
     const MESSAGE_HANDLER = (function () {
-        function handleParentMessage(event) {
-            if (event.source !== window.parent) return;
+        function cleanupIframeCallbacks(frameId) {
+            if (!frameId) return;
+
+            const handlerIds = new Set(
+                CALLBACK_MODULE.getCallbacksInfo()
+                    .filter(entry => entry.frameId === frameId)
+                    .map(entry => entry.id)
+            );
+            if (handlerIds.size === 0) return;
+
+            handlerIds.forEach(id => {
+                CALLBACK_MODULE.unregisterCallback(id);
+                INVOKE_MODULE.frontendHandlers.delete(id);
+            });
+
+            if (window.__zm_listeners__) {
+                for (const pkg in window.__zm_listeners__) {
+                    for (const eventName in window.__zm_listeners__[pkg]) {
+                        const eventContainer = window.__zm_listeners__[pkg]?.[eventName];
+                        if (!eventContainer) continue;
+                        for (const eventId in eventContainer) {
+                            const listener = eventContainer[eventId];
+                            if (listener && handlerIds.has(listener.handlerId)) {
+                                EVENT_MODULE.unregisterListener(pkg, eventName, parseInt(eventId));
+                                window.__ZM_INTERNALS__?.invoke('unifywebview', 'event', 'unlisten', {
+                                    package: pkg,
+                                    event: eventName,
+                                    eventId: parseInt(eventId)
+                                }).catch(() => {});
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        function handlerTopFrameMessage(event) {
+            if (event.source !== window.parent && event.source !== window.top) return;
 
             const messageData = event.data;
             if (messageData && messageData.type === '__zm_run_unifysdk_callback__') {
@@ -613,7 +682,19 @@ try {
         }
 
         function handleChildMessage(event) {
-            if (!event.source || !event.data) return;
+            if (!event.data) return;
+
+            try {
+                if (event.data.type === '__zm_frame_cleanup__') {
+                    if (IPC_MODULE.isZoomDomain(event.origin)) {
+                        cleanupIframeCallbacks(event.data.internalFrameId);
+                    }
+                    return;
+                }
+            } catch (error) {
+            }
+
+            if (!event.source) return;
 
             try {
                 let messageData = event.data;
@@ -621,7 +702,11 @@ try {
                     messageData = JSON.parse(messageData);
                 }
 
-                if (messageData.options && messageData.options.subFrameUrl) {
+                if (!IPC_MODULE.isZoomDomain(event.origin) || !messageData.options || !messageData.options.subFrameUrl) {
+                    return;
+                }
+
+                {
                     let originError = null;
                     try {
                         const subFrameOrigin = new URL(messageData.options.subFrameUrl).origin;
@@ -644,17 +729,19 @@ try {
                     }
                 }
 
+                const internalFrameId = messageData.options.internalFrameId ?? null;
+
                 if (messageData.api === 'registerInvoke')
                 {
                     const originalHandlerId = messageData.payload.params.handlerId;
+                    const { package: packageName, plugin, api } = messageData.payload.params;
                     const newHandlerId = CALLBACK_MODULE.registerCallback((data) => {
                         event.source.postMessage({
                             type: '__zm_execute_frontend_handler__',
                             handlerId: originalHandlerId,
                             data: data
                         }, '*');
-                    });
-                    const { package: packageName, plugin, api } = messageData.payload.params;
+                    }, false, `iframe registerInvoke ${packageName}:${plugin}/${api}`, internalFrameId);
                     INVOKE_MODULE.frontendHandlers.set(newHandlerId, {
                         handler: (data) => CALLBACK_MODULE.runCallback(newHandlerId, data),
                         package: packageName,
@@ -676,7 +763,7 @@ try {
                                             callbackId: messageData.payload.handler,
                                             data: eventData
                                         }, '*');
-                                    });
+                                    }, false, `iframe event:listen:${messageData.payload.package}:${messageData.payload.event}`, internalFrameId);
                                     EVENT_MODULE.registerEventListener(
                                         messageData.payload.package,
                                         messageData.payload.event,
@@ -725,7 +812,14 @@ try {
 
         function initializeMessageHandlers() {
             if (UTILS.isInIframe()) {
-                window.addEventListener('message', handleParentMessage);
+                window.addEventListener('pagehide', (event) => {
+                    if (event.persisted) return;
+                    window.top?.postMessage({
+                        type: '__zm_frame_cleanup__',
+                        internalFrameId: IPC_MODULE.getFrameId()
+                    }, '*');
+                });
+                window.addEventListener('message', handlerTopFrameMessage);
             } else {
                 window.addEventListener('message', handleChildMessage);
             }
@@ -821,13 +915,18 @@ try {
             apiCallHistory.clear();
         }
 
+        function getPendingApiCall() {
+            return new Map(invokeTimeMap);
+        }
+
         return {
             storeApiCall,
             getErrorHistory,
             clearErrorHistory,
             getApiCallHistory,
             clearApiCallHistory,
-            clearAllHistory
+            clearAllHistory,
+            getPendingApiCall
         };
     })();
 
@@ -953,17 +1052,7 @@ try {
                                      entry.name.indexOf('.map') !== entry.name.length - 4) // Exclude source maps
                                 );
                                 
-                                if (isPotentialError) {
-                                    pushMetricField('resource_error', {
-                                        url: entry.name, 
-                                        duration: entry.duration, 
-                                        load_start: entry.startTime, 
-                                        transferSize: transferSize,
-                                        nextHopProtocol: nextHopProtocol,
-                                        time: Date.now()
-                                    });
-                                }
-                                else if (entry.duration > 500 && entry.name.indexOf('.js') === entry.name.length - 3)
+                                if (entry.duration > 500 && entry.name.indexOf('.js') === entry.name.length - 3)
                                 {
                                     pushMetricField('resource_longtime', {
                                         url: entry.name, 
@@ -975,12 +1064,7 @@ try {
                                 }
                             } else {
                                 // Other platforms: use responseStatus if available
-                                if ((entry.responseStatus != 200 && entry.responseStatus != 0)) {
-                                    pushMetricField('resource_error', {
-                                        url: entry.name, duration: entry.duration, load_start: entry.startTime, responseStatus: entry.responseStatus, time: Date.now()
-                                    });
-                                }
-                                else if (entry.duration > 100)
+                                if (entry.duration > 100)
                                 {
                                     pushMetricField('resource_longtime', {
                                         url: entry.name,
@@ -1216,9 +1300,19 @@ try {
             return removeSensitiveInfo(metrics);
         }
 
+        function setResourceLoadMetrics(resourceLoadMetrics) {
+            if (!resourceLoadMetrics || !Array.isArray(resourceLoadMetrics.resource_error)) {
+                setMetricField('resource_error', []);
+                return;
+            }
+
+            setMetricField('resource_error', resourceLoadMetrics.resource_error);
+        }
+
         return {
             startPerformanceMonitoring,
-            getCurrentMetrics
+            getCurrentMetrics,
+            setResourceLoadMetrics
         };
     })();
 
@@ -1247,8 +1341,8 @@ try {
         value: CALLBACK_MODULE.runCallback
     });
 
-    Object.defineProperty(window.__ZM_INTERNALS__, 'callbacks', {
-        value: CALLBACK_MODULE.callbacks
+    Object.defineProperty(window.__ZM_INTERNALS__, 'getCallbacksInfo', {
+        value: CALLBACK_MODULE.getCallbacksInfo
     });
 
     Object.defineProperty(window.__ZM_INTERNALS__, 'registerEventListener', {
@@ -1289,7 +1383,6 @@ try {
 
    
     MESSAGE_HANDLER.initializeMessageHandlers();
-    PERFORMANCE_MODULE.startPerformanceMonitoring();
 
     window.addEventListener('DOMContentLoaded', () => {
         if (!UTILS.isInIframe()) {

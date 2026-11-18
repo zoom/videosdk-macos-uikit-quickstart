@@ -31,6 +31,7 @@
 - (void)preferDynamicViewMode;
 - (void)preferSpeakerViewMode;
 - (void)restoreVideoViewIfNeeded;
+- (void)updateVideoContentMode;
 
 // ToolSuite
 - (BOOL)isAble2EnterFullscreen;

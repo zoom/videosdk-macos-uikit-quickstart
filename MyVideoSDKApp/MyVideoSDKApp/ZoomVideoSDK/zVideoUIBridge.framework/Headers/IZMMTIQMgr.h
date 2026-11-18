@@ -20,15 +20,18 @@
 - (BOOL)isAICViewShowing;
 - (void)initAICApp;
 - (BOOL)isBtnAiCNeedShow;
-- (BOOL)isBtnTranscriptNeedShow;
+- (BOOL)isTranscriptIndicatorNeedShow;
 - (BOOL)isAicFeatureStarted;
 - (BOOL)isAicRemindStartNeedShow;
 - (BOOL)isAicCatchUpNeedShow;
+- (BOOL)isAicJoinMeetingRecapNeedShow;
 - (BOOL)shouldShowRecapTip;
 - (void)sendRecapActionToWeb;
 - (BOOL)canShowAicStartWithRecordingStartCoachMark;
 - (BOOL)isRemindTurnOnAICompanionLocked;
+- (BOOL)isRemindAICatchMeUpSettingLocked;
 - (void)requestToSaveRemindHostTurnOnAICWebSetting:(BOOL)value;
+- (void)requestToSaveRemindAICatchMeUpWebSetting:(BOOL)value;
 - (NSInteger)onBtnAicClicked;
 //- (void)onSetStartAicWithRecordingStart;
 - (void)startSummaryQuestionsWithAccess;
@@ -111,6 +114,7 @@
 - (void)onUserWatchOnlyStatusChanged:(ZMUser*)zmUser;
 - (void)onConfSessionReadyChanged;
 - (void)showZoomIQDisclaimerIfNeed;
+- (void)forceShowZoomIQDisclaimer;
 - (void)showWatchOnlyDisclaimer;
 - (void)showCustomWatchOnlyDisclaimer;
 - (void)closeZoomRestrictIQDisclaimer;

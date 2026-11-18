@@ -24,6 +24,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+typedef NS_ENUM(NSInteger, ZMTabDragOrigin) {
+    ZMTabDragOriginUnknown = 0,
+    ZMTabDragOriginTabBar,
+    ZMTabDragOriginMorePanel,
+};
+
+
+@interface ZMTabItemColorfuls : NSObject
+
+@property (nonatomic, strong, nullable) NSImage *lightColorfulImage;
+@property (nonatomic, strong, nullable) NSImage *darkColorfulImage;
+
+@end
+
 /**
  * Base data model for tab items
  * Contains common properties shared between ZMTabItem and other tab-related data
@@ -32,7 +46,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) NSString *identifier;
-@property (nonatomic, strong) NSImage *image;
+@property (nonatomic, strong, nullable) ZMTabItemColorfuls *colorfulImageSet;
+@property (nonatomic, strong, nullable) NSImage *greyImage;
+- (BOOL)forceUpdateImage;
+/// Returns the colorful image for the current appearance.
+/// If `colorfulImageSet` exists, returns `darkColorfulImage` in dark mode or
+/// `lightColorfulImage` in light mode. Otherwise returns `nil`; callers that need a
+/// fallback are responsible for using `greyImage`.
+@property (nonatomic, strong, readonly, nullable) NSImage *colorfulImage;
 @property (nonatomic, assign) BOOL enable;
 @property (nonatomic, assign) CGFloat disabledAlphaValue;
 @property (nonatomic, copy, nullable) NSString *disabledToolTip;
@@ -45,16 +66,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL showRedDot;
 @property (nonatomic, assign) BOOL draggable;
 @property (nonatomic, assign) BOOL draggingNow;
+/// YES until a More-panel drag reaches the bar; keeps that item's tab-bar slot visible.
+@property (nonatomic, assign) BOOL draggingFromMorePanel;
 @property (nonatomic, strong) ZMPigment<ZMButtonPigmentProtocol> *pigment;
 @property (nonatomic, assign) BOOL matchImageColorWithTitle; //default NO
 
 /// Pre-assembled accessibility label text (e.g., "Docs, 1 of 5, not pinned, tab")
 @property (nonatomic, copy) NSString *accessibilityText;
 
-+ (instancetype)dataWithText:(NSString *)text 
-                       image:(NSImage *)image 
-                  identifier:(NSString *)identifier 
-                       isPin:(BOOL)isPin;
++ (void)writeDragOrigin:(ZMTabDragOrigin)origin toPasteboardItem:(NSPasteboardItem *)item;
++ (ZMTabDragOrigin)dragOriginFromPasteboard:(NSPasteboard *)pasteboard;
 
 @end
 

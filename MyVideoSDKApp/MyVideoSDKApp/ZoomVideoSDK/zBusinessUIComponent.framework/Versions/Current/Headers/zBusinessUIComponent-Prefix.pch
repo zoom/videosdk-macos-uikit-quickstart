@@ -49,4 +49,9 @@
 
 #endif
 
+#ifdef __cplusplus
+#import "zVideoApp/Confdef.h"
+#import "zVideoApp/CmmConfAPI.h"
+#endif
+
 #endif /* zBusinessUIComponent_Prefix_pch */

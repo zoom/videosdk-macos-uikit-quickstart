@@ -13,6 +13,7 @@ static const ZMEventPriority ZMAppReopenPriorityMTMini    = 101;   // Meeting mi
 static const ZMEventPriority ZMAppReopenPriorityCCI       = 200;   // CCI (Contact Center Integration) window
 static const ZMEventPriority ZMAppReopenPriorityPTMain    = 400;   // PT Main window (after login)
 static const ZMEventPriority ZMAppReopenPriorityLogin     = 600;   // Login window (lowest priority)
+static const ZMEventPriority ZMAppReopenPriorityStandaloneMeeting = 900; //Meeting Window for Standalone Meeting
 static const ZMEventPriority ZMAppReopenPriorityMyNotes   = 1000;  // My Notes
 static const ZMEventPriority ZMAppReopenPriorityHuddles   = 1100;   // Huddles/Spot meeting window
 
@@ -56,7 +57,7 @@ static const ZMEventPriority ZMAppReopenPriorityHuddles   = 1100;   // Huddles/S
  * For example, if observer's window is key window, return YES.
  * @return YES if active, NO otherwise.
  */
-- (BOOL)isActiveForReopen;
+- (BOOL)isActiveForReopen:(NSWindow*)keyWindow;
 
 /**
  * Called when dock icon is clicked to reopen windows.

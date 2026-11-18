@@ -9,7 +9,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol IZMPostMeetingMgr <NSObject>
+/**
+ * @router ZMShared
+ */
+@protocol IZMPostMeetingMgr <ZMRoutableObject>
+
+- (void)registerZUIPlatformDelegates;
+- (void)unregisterZUIPlatformDelegates;
+- (BOOL)checkAndShowUnLoginUserLeaveMeetingWindowForLeaveReason:(NSInteger)leaveReason;
+- (void)finalizeZuiPostMeetingLoginOrQuitIfNeeded;
+- (BOOL)isNeedShowPostMeetingLimitMarketingNoticeDialogWithGiftCount:(NSUInteger)giftCount;
+- (void)showPostMeetingLimitMarketingNoticeDialog;
+- (BOOL)canPromptClientUpdateAfterConferenceEnded;
 
 @end
 

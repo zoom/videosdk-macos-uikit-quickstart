@@ -8,7 +8,6 @@
 #import <zVideoUIBridge/ZMBaseHelper.h>
 #import <zVideoApp/CmmConfAPI.h>
 
-#import <zVideoUIBridge/ZMShareZoomWindowsOptions.h>
 #import <zVideoUIBridge/ZMMTShareWatermarkOption.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -16,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @class ZMUser;
 @interface ZMMTShareHelper : ZMBaseHelper
 
-@property (nonatomic, strong, nullable) ZMShareZoomWindowsOptions *shareZoomWindowsOptions;
 @property (nonatomic, strong) ZMMTShareWatermarkOption *watermarkOption;
 @property (nonatomic, assign, getter=isSharingZoomWindow) BOOL sharingZoomWindow;
 
@@ -74,10 +72,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isSendingSharingDoc;
 - (BOOL)isSendingSharingZappCollaborateWindow;
 - (BOOL)isSendingSharingVideo;
+- (BOOL)isSendingSharingDesktop;
+- (BOOL)isSendingSharingPortionOfDesktop;
 - (BOOL)isSendingSharingScreen;
 - (BOOL)isSendingSharingCamera;
 - (BOOL)isSendingSharingAffectWindow;
 - (BOOL)isSendingShareUserSupportAutoShare;
+
+- (BOOL)isFilterWindowEnabled;
+- (BOOL)isFilterSpecailWindowEnabled;
 
 - (BOOL)isLocalShareOn;
 
@@ -120,6 +123,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 //hub consolidation op switch
 - (BOOL)isRenameHubEnabled;
+
+// canvas rename op switch (ZOOM-1217562)
+- (BOOL)isRenameCanvasEnabled;
 
 //hub banner & badge
 - (BOOL)isShowToolbarMorePanelHubBanner;
@@ -167,25 +173,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)isMaskedRepeatWindow;
 - (BOOL)allowRepeatingWindowEffect;
-
-//annotate
-- (BOOL)isAnnotationFeatureEnabled;//whether the annotation feature is globally enabled (feature toggle)
-- (BOOL)isAnnotationAllowedForAttendee;//Whether attendees are allowed to annotate, as controlled by web configuration
-- (BOOL)canAttendeeAnnotateInCurrentShare;//Whether annotation is available to attendees in the current share state
-- (BOOL)isShowingAnnotatorName;
-- (void)toggleShowingAnnotatorName;
-- (BOOL)isAttendeeAnnotationLocked;//Whether attendee annotation is locked by the presenter via UI
-- (void)toggleAnnotationLockForAttendee;
-//annotate - convenient for presenter
-- (void)setPresenterAnnoDockPosition:(NSPoint)topLeft
-                            topRight:(NSPoint)topRight
-                          bottomLeft:(NSPoint)bottomLeft
-                         bottomRight:(NSPoint)bottomRight;
-- (void)hidePresenterAnnoterToolbar;
-- (void)showPresenterAnnoterToolbar;
-- (BOOL)isPresenterAnnoterToolbarShown;
-- (BOOL)isPresenterAnnotating;
-- (BOOL)isSharingWhiteboard;
 
 // Spotlight
 - (BOOL)spotlightShareSource:(ZMShareSource *)shareSource;

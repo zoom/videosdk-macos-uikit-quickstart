@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D771B92930AD8D50004EC158 /* libmpg123_mac.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = D771B90430AD8D4E004EC158 /* libmpg123_mac.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D771B92A30AD8D50004EC158 /* cmmbase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D771B90F30AD8D4F004EC158 /* cmmbase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D771B92B30AD8D50004EC158 /* cmmlib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D771B91930AD8D4F004EC158 /* cmmlib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D771B92C30AD8D50004EC158 /* zVideoAppPlugin.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = D771B92130AD8D50004EC158 /* zVideoAppPlugin.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		D79350442F1776490086E1FF /* Embed PlugIns */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -23,14 +30,75 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D771B92930AD8D50004EC158 /* libmpg123_mac.bundle in CopyFiles */,
+				D771B92A30AD8D50004EC158 /* cmmbase.framework in CopyFiles */,
+				D771B92B30AD8D50004EC158 /* cmmlib.framework in CopyFiles */,
+				D771B92C30AD8D50004EC158 /* zVideoAppPlugin.bundle in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D771B8FB30AD8D4E004EC158 /* curl64.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = curl64.framework; path = MyVideoSDKApp/ZoomVideoSDK/curl64.framework; sourceTree = "<group>"; };
+		D771B8FC30AD8D4E004EC158 /* VideoSDK.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = VideoSDK.dylib; path = MyVideoSDKApp/ZoomVideoSDK/VideoSDK.dylib; sourceTree = "<group>"; };
+		D771B8FD30AD8D4E004EC158 /* live_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = live_sdk.framework; path = MyVideoSDKApp/ZoomVideoSDK/live_sdk.framework; sourceTree = "<group>"; };
+		D771B8FE30AD8D4E004EC158 /* nydus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nydus.framework; path = MyVideoSDKApp/ZoomVideoSDK/nydus.framework; sourceTree = "<group>"; };
+		D771B8FF30AD8D4E004EC158 /* tp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = tp.framework; path = MyVideoSDKApp/ZoomVideoSDK/tp.framework; sourceTree = "<group>"; };
+		D771B90030AD8D4E004EC158 /* libjson.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjson.dylib; path = MyVideoSDKApp/ZoomVideoSDK/libjson.dylib; sourceTree = "<group>"; };
+		D771B90130AD8D4E004EC158 /* viper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = viper.framework; path = MyVideoSDKApp/ZoomVideoSDK/viper.framework; sourceTree = "<group>"; };
+		D771B90230AD8D4E004EC158 /* libminizip.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libminizip.dylib; path = MyVideoSDKApp/ZoomVideoSDK/libminizip.dylib; sourceTree = "<group>"; };
+		D771B90330AD8D4E004EC158 /* viperex.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = viperex.bundle; path = MyVideoSDKApp/ZoomVideoSDK/viperex.bundle; sourceTree = "<group>"; };
+		D771B90430AD8D4E004EC158 /* libmpg123_mac.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = libmpg123_mac.bundle; path = MyVideoSDKApp/ZoomVideoSDK/libmpg123_mac.bundle; sourceTree = "<group>"; };
+		D771B90530AD8D4E004EC158 /* aomagent.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = aomagent.bundle; path = MyVideoSDKApp/ZoomVideoSDK/aomagent.bundle; sourceTree = "<group>"; };
+		D771B90630AD8D4E004EC158 /* libzoombase_crypto_shared.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libzoombase_crypto_shared.dylib; path = MyVideoSDKApp/ZoomVideoSDK/libzoombase_crypto_shared.dylib; sourceTree = "<group>"; };
+		D771B90730AD8D4E004EC158 /* zData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = zData.bundle; path = MyVideoSDKApp/ZoomVideoSDK/zData.bundle; sourceTree = "<group>"; };
+		D771B90830AD8D4E004EC158 /* aomhost.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = aomhost.app; path = MyVideoSDKApp/ZoomVideoSDK/aomhost.app; sourceTree = "<group>"; };
+		D771B90930AD8D4E004EC158 /* zNet.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = zNet.bundle; path = MyVideoSDKApp/ZoomVideoSDK/zNet.bundle; sourceTree = "<group>"; };
+		D771B90A30AD8D4E004EC158 /* ZoomTelemetry.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ZoomTelemetry.bundle; path = MyVideoSDKApp/ZoomVideoSDK/ZoomTelemetry.bundle; sourceTree = "<group>"; };
+		D771B90B30AD8D4E004EC158 /* libzContext.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libzContext.dylib; path = MyVideoSDKApp/ZoomVideoSDK/libzContext.dylib; sourceTree = "<group>"; };
+		D771B90C30AD8D4F004EC158 /* ZoomUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZoomUnit.framework; path = MyVideoSDKApp/ZoomVideoSDK/ZoomUnit.framework; sourceTree = "<group>"; };
+		D771B90D30AD8D4F004EC158 /* ZoomKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZoomKit.framework; path = MyVideoSDKApp/ZoomVideoSDK/ZoomKit.framework; sourceTree = "<group>"; };
+		D771B90E30AD8D4F004EC158 /* zEventTracker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = zEventTracker.framework; path = MyVideoSDKApp/ZoomVideoSDK/zEventTracker.framework; sourceTree = "<group>"; };
+		D771B90F30AD8D4F004EC158 /* cmmbase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = cmmbase.framework; path = MyVideoSDKApp/ZoomVideoSDK/cmmbase.framework; sourceTree = "<group>"; };
+		D771B91030AD8D4F004EC158 /* zVideoUIBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = zVideoUIBridge.framework; path = MyVideoSDKApp/ZoomVideoSDK/zVideoUIBridge.framework; sourceTree = "<group>"; };
+		D771B91130AD8D4F004EC158 /* zWebService.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = zWebService.bundle; path = MyVideoSDKApp/ZoomVideoSDK/zWebService.bundle; sourceTree = "<group>"; };
+		D771B91230AD8D4F004EC158 /* zlt.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = zlt.bundle; path = MyVideoSDKApp/ZoomVideoSDK/zlt.bundle; sourceTree = "<group>"; };
+		D771B91330AD8D4F004EC158 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = MyVideoSDKApp/ZoomVideoSDK/libssl.dylib; sourceTree = "<group>"; };
+		D771B91430AD8D4F004EC158 /* zNetUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = zNetUtils.framework; path = MyVideoSDKApp/ZoomVideoSDK/zNetUtils.framework; sourceTree = "<group>"; };
+		D771B91530AD8D4F004EC158 /* Prism.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Prism.framework; path = MyVideoSDKApp/ZoomVideoSDK/Prism.framework; sourceTree = "<group>"; };
+		D771B91630AD8D4F004EC158 /* capHost.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = capHost.app; path = MyVideoSDKApp/ZoomVideoSDK/capHost.app; sourceTree = "<group>"; };
+		D771B91730AD8D4F004EC158 /* protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = protobuf.framework; path = MyVideoSDKApp/ZoomVideoSDK/protobuf.framework; sourceTree = "<group>"; };
+		D771B91830AD8D4F004EC158 /* libcares.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcares.dylib; path = MyVideoSDKApp/ZoomVideoSDK/libcares.dylib; sourceTree = "<group>"; };
+		D771B91930AD8D4F004EC158 /* cmmlib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = cmmlib.framework; path = MyVideoSDKApp/ZoomVideoSDK/cmmlib.framework; sourceTree = "<group>"; };
+		D771B91A30AD8D4F004EC158 /* cmmbiz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = cmmbiz.framework; path = MyVideoSDKApp/ZoomVideoSDK/cmmbiz.framework; sourceTree = "<group>"; };
+		D771B91B30AD8D4F004EC158 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = MyVideoSDKApp/ZoomVideoSDK/libcrypto.dylib; sourceTree = "<group>"; };
+		D771B91C30AD8D4F004EC158 /* CptHost.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = CptHost.app; path = MyVideoSDKApp/ZoomVideoSDK/CptHost.app; sourceTree = "<group>"; };
+		D771B91D30AD8D4F004EC158 /* ssb_sdk.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ssb_sdk.bundle; path = MyVideoSDKApp/ZoomVideoSDK/ssb_sdk.bundle; sourceTree = "<group>"; };
+		D771B91E30AD8D4F004EC158 /* zBusinessUIComponent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = zBusinessUIComponent.framework; path = MyVideoSDKApp/ZoomVideoSDK/zBusinessUIComponent.framework; sourceTree = "<group>"; };
+		D771B91F30AD8D4F004EC158 /* mcm.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mcm.bundle; path = MyVideoSDKApp/ZoomVideoSDK/mcm.bundle; sourceTree = "<group>"; };
+		D771B92030AD8D4F004EC158 /* zVideoApp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = zVideoApp.bundle; path = MyVideoSDKApp/ZoomVideoSDK/zVideoApp.bundle; sourceTree = "<group>"; };
+		D771B92130AD8D50004EC158 /* zVideoAppPlugin.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = zVideoAppPlugin.bundle; path = MyVideoSDKApp/ZoomVideoSDK/zVideoAppPlugin.bundle; sourceTree = "<group>"; };
+		D771B92230AD8D50004EC158 /* ZMVideoSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZMVideoSDK.framework; path = MyVideoSDKApp/ZoomVideoSDK/ZMVideoSDK.framework; sourceTree = "<group>"; };
+		D771B92330AD8D50004EC158 /* annoter.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = annoter.bundle; path = MyVideoSDKApp/ZoomVideoSDK/annoter.bundle; sourceTree = "<group>"; };
+		D771B92430AD8D50004EC158 /* ZoomTask.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZoomTask.framework; path = MyVideoSDKApp/ZoomVideoSDK/ZoomTask.framework; sourceTree = "<group>"; };
+		D771B92530AD8D50004EC158 /* zUnifyWebViewApp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = zUnifyWebViewApp.framework; path = MyVideoSDKApp/ZoomVideoSDK/zUnifyWebViewApp.framework; sourceTree = "<group>"; };
+		D771B92630AD8D50004EC158 /* liblooper.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblooper.dylib; path = MyVideoSDKApp/ZoomVideoSDK/liblooper.dylib; sourceTree = "<group>"; };
+		D771B92730AD8D50004EC158 /* util.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = util.framework; path = MyVideoSDKApp/ZoomVideoSDK/util.framework; sourceTree = "<group>"; };
+		D771B92830AD8D50004EC158 /* ZoomVideoSDKMeetingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZoomVideoSDKMeetingBridge.framework; path = MyVideoSDKApp/ZoomVideoSDK/ZoomVideoSDKMeetingBridge.framework; sourceTree = "<group>"; };
 		E5F3FC302E4987770022504F /* MyVideoSDKApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVideoSDKApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D771B8FA30AD8CEB004EC158 /* Exceptions for "MyVideoSDKApp" folder in "MyVideoSDKApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ZoomVideoSDK/cmmbase.framework,
+				ZoomVideoSDK/cmmlib.framework,
+			);
+			target = E5F3FC2F2E4987770022504F /* MyVideoSDKApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 		D79351442F177A030086E1FF /* Exceptions for "MyVideoSDKApp" folder in "Copy Files" phase from "MyVideoSDKApp" target */ = {
@@ -50,7 +118,6 @@
 				ZoomVideoSDK/aomhost.app = (RemoveHeadersOnCopy, );
 				ZoomVideoSDK/capHost.app = (RemoveHeadersOnCopy, );
 				ZoomVideoSDK/cmmbiz.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
-				ZoomVideoSDK/cmmlib.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/curl64.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/libcares.dylib = (CodeSignOnCopy, );
 				ZoomVideoSDK/libcrypto.dylib = (CodeSignOnCopy, );
@@ -69,13 +136,11 @@
 				ZoomVideoSDK/util.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/viper.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/viperex.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
-				ZoomVideoSDK/xmpp_framework.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/zBusinessUIComponent.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/zData.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/zEventTracker.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/zNet.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/zNetUtils.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
-				ZoomVideoSDK/zPSApp.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/zUnifyWebViewApp.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/zVideoApp.bundle = (CodeSignOnCopy, RemoveHeadersOnCopy, );
 				ZoomVideoSDK/zVideoUIBridge.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
@@ -89,7 +154,6 @@
 				ZoomVideoSDK/aomhost.app,
 				ZoomVideoSDK/capHost.app,
 				ZoomVideoSDK/cmmbiz.framework,
-				ZoomVideoSDK/cmmlib.framework,
 				ZoomVideoSDK/CptHost.app,
 				ZoomVideoSDK/curl64.framework,
 				ZoomVideoSDK/libcares.dylib,
@@ -111,7 +175,6 @@
 				ZoomVideoSDK/VideoSDK.dylib,
 				ZoomVideoSDK/viper.framework,
 				ZoomVideoSDK/viperex.bundle,
-				ZoomVideoSDK/xmpp_framework.framework,
 				ZoomVideoSDK/zBusinessUIComponent.framework,
 				ZoomVideoSDK/zData.bundle,
 				ZoomVideoSDK/zEventTracker.framework,
@@ -124,7 +187,6 @@
 				ZoomVideoSDK/ZoomTelemetry.bundle,
 				ZoomVideoSDK/ZoomUnit.framework,
 				ZoomVideoSDK/ZoomVideoSDKMeetingBridge.framework,
-				ZoomVideoSDK/zPSApp.bundle,
 				ZoomVideoSDK/zUnifyWebViewApp.framework,
 				ZoomVideoSDK/zVideoApp.bundle,
 				ZoomVideoSDK/zVideoUIBridge.framework,
@@ -137,6 +199,7 @@
 		E5F3FC322E4987770022504F /* MyVideoSDKApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				D771B8FA30AD8CEB004EC158 /* Exceptions for "MyVideoSDKApp" folder in "MyVideoSDKApp" target */,
 				D79351442F177A030086E1FF /* Exceptions for "MyVideoSDKApp" folder in "Copy Files" phase from "MyVideoSDKApp" target */,
 			);
 			path = MyVideoSDKApp;
@@ -175,6 +238,52 @@
 		E5F3FC982E498CDA0022504F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D771B92330AD8D50004EC158 /* annoter.bundle */,
+				D771B90530AD8D4E004EC158 /* aomagent.bundle */,
+				D771B90830AD8D4E004EC158 /* aomhost.app */,
+				D771B91630AD8D4F004EC158 /* capHost.app */,
+				D771B90F30AD8D4F004EC158 /* cmmbase.framework */,
+				D771B91A30AD8D4F004EC158 /* cmmbiz.framework */,
+				D771B91930AD8D4F004EC158 /* cmmlib.framework */,
+				D771B91C30AD8D4F004EC158 /* CptHost.app */,
+				D771B8FB30AD8D4E004EC158 /* curl64.framework */,
+				D771B91830AD8D4F004EC158 /* libcares.dylib */,
+				D771B91B30AD8D4F004EC158 /* libcrypto.dylib */,
+				D771B90030AD8D4E004EC158 /* libjson.dylib */,
+				D771B92630AD8D50004EC158 /* liblooper.dylib */,
+				D771B90230AD8D4E004EC158 /* libminizip.dylib */,
+				D771B90430AD8D4E004EC158 /* libmpg123_mac.bundle */,
+				D771B91330AD8D4F004EC158 /* libssl.dylib */,
+				D771B90B30AD8D4E004EC158 /* libzContext.dylib */,
+				D771B90630AD8D4E004EC158 /* libzoombase_crypto_shared.dylib */,
+				D771B8FD30AD8D4E004EC158 /* live_sdk.framework */,
+				D771B91F30AD8D4F004EC158 /* mcm.bundle */,
+				D771B8FE30AD8D4E004EC158 /* nydus.framework */,
+				D771B91530AD8D4F004EC158 /* Prism.framework */,
+				D771B91730AD8D4F004EC158 /* protobuf.framework */,
+				D771B91D30AD8D4F004EC158 /* ssb_sdk.bundle */,
+				D771B8FF30AD8D4E004EC158 /* tp.framework */,
+				D771B92730AD8D50004EC158 /* util.framework */,
+				D771B8FC30AD8D4E004EC158 /* VideoSDK.dylib */,
+				D771B90130AD8D4E004EC158 /* viper.framework */,
+				D771B90330AD8D4E004EC158 /* viperex.bundle */,
+				D771B91E30AD8D4F004EC158 /* zBusinessUIComponent.framework */,
+				D771B90730AD8D4E004EC158 /* zData.bundle */,
+				D771B90E30AD8D4F004EC158 /* zEventTracker.framework */,
+				D771B91230AD8D4F004EC158 /* zlt.bundle */,
+				D771B92230AD8D50004EC158 /* ZMVideoSDK.framework */,
+				D771B90930AD8D4E004EC158 /* zNet.bundle */,
+				D771B91430AD8D4F004EC158 /* zNetUtils.framework */,
+				D771B90D30AD8D4F004EC158 /* ZoomKit.framework */,
+				D771B92430AD8D50004EC158 /* ZoomTask.framework */,
+				D771B90A30AD8D4E004EC158 /* ZoomTelemetry.bundle */,
+				D771B90C30AD8D4F004EC158 /* ZoomUnit.framework */,
+				D771B92830AD8D50004EC158 /* ZoomVideoSDKMeetingBridge.framework */,
+				D771B92530AD8D50004EC158 /* zUnifyWebViewApp.framework */,
+				D771B92030AD8D4F004EC158 /* zVideoApp.bundle */,
+				D771B92130AD8D50004EC158 /* zVideoAppPlugin.bundle */,
+				D771B91030AD8D4F004EC158 /* zVideoUIBridge.framework */,
+				D771B91130AD8D4F004EC158 /* zWebService.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

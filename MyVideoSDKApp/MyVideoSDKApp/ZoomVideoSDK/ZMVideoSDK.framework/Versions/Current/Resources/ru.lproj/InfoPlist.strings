@@ -6,3 +6,5 @@ NSCalendarsFullAccessUsageDescription= "Если вы хотите, чтобы �
 NSLocalNetworkUsageDescription= "Это необходимо для включения AirPlay и конференций в одноранговых сетях в клиенте Zoom.";
 NSBluetoothAlwaysUsageDescription= "Это позволит Zoom Workplace обнаруживать залы Zoom Rooms поблизости.";
 NSAudioCaptureUsageDescription = "Разрешите доступ для записи аудио из других приложений.";
+
+CFBundleDisplayName = "Zoom";

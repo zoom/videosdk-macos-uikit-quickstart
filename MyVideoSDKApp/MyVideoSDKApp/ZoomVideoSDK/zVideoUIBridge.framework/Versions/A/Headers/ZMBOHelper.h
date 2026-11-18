@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)needToBeBuilt;
 - (BOOL)canEditWhileStart;
 - (BOOL)canControlBO;
+- (BOOL)shouldShowAllowParticipantsToInviteOthers;
+- (BOOL)canInviteOthersToBO;
 - (BOOL)isInBOStatus:(zm::new_bo::bo_user_status)status;
 - (BOOL)isBOListReady;
 - (zm::new_bo::bo_status)getBOStatus;
@@ -46,6 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString*)getRoomName;
 - (NSString*)getRoomName:(std::shared_ptr<zm::new_bo::IBORoom>)room;
 - (NSString*)getRoomNameWithID:(NSInteger)roomID;
+- (nullable NSString *)getInviteLink;
 - (nullable ICmmUser *)getUserByUniqueJoinIndex:(ZMUserID)uniqueJoinIndex;
 - (nullable IZoomQABuddy *)getBuddyByUniqueJoinIndex:(ZMUserID)uniqueJoinIndex;
 - (nullable ICmmUser *)getLeftUserByUniqueJoinIndex:(ZMUserID)uniqueJoinIndex;
@@ -53,6 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)getRoomCount;
 
 - (BOOL)canLeaveBOFreely;
+- (void)leaveBO;
 
 - (BOOL)isEnableTimer;
 
@@ -82,6 +86,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)canLoadPreAssign:(zm::new_bo::pre_assign_type)type;
 - (BOOL)isLoadingPreAssign;
 - (BOOL)canSaveBO;
+
+- (BOOL)isPopupBOWindowEnabled;
+- (void)setPopupBOWindowEnable:(BOOL)enabled;
 
 // bo activity
 - (BOOL)isViewBOActivityEnabled;

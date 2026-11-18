@@ -31,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)shouldShowNewLiveStreamText;
 
 #pragma mark - Operations
+/// Notify UUI that the live stream was triggered by the local user.
+/// Pair with `[ZMMTSharedFor(IZMFeatureInitiator) setStartByself:ZMFeatureTypeLivestream isByself:YES]`.
+- (void)markStartedLiveStreamByMyself;
 - (void)startLiveStreamForChannelKey:(NSString *)channelKey;
 - (void)stopLiveStreamForKey:(nullable NSString *)key; // if nil, stop all
 - (void)stopLiveStreamForModel:(ZMMTLiveStreamModel *)model;

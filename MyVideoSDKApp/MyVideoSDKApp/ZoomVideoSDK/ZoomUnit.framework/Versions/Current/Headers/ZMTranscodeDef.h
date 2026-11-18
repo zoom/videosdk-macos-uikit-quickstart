@@ -12,6 +12,8 @@
 #define kZMTranscodeFileName            @"kZMTranscodeFileName"
 #define kZMTranscodeStatusUpdate        @"kZMTranscodeStatusUpdate"
 #define kZMTranscodeProgressUpdate      @"kZMTranscodeProgressUpdate"
+#define kZMTranscodeMeetingStateChangedNotification @"ZMTranscodeMeetingStateChangedNotification"
+#define kZMTranscodeMeetingStateInMeeting @"kZMTranscodeMeetingStateInMeeting"
 
 typedef NS_ENUM(NSUInteger, ZMTranscodeStatusType) {
     ZMTranscodeStatusStopped,

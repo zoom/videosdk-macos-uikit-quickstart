@@ -20,8 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isBubbleShowing;
 @property (nonatomic, assign) NSInteger tag;
 @property (nonatomic, weak) id<ZMTrackBubbleViewDelegate> bubbleViewdelegate;
+@property (nonatomic, assign) BOOL hovered;
+@property (nonatomic, assign) CGFloat hiddenTimerInterval;
 
 - (void)setShowPopover:(BOOL)showPopver;
+- (void)trackExternalHoverInView:(NSView *)view rect:(NSRect)rect;
+- (void)clearExternalHoverTracking;
+- (void)resetExternalHoverAndHideBubbleTipBlockingHover:(BOOL)blocked;
 - (void)showVCardViewAtView:(NSView*)view jid:(NSString*)jid;
 - (void)showVCardViewAtView:(NSView*)view jid:(NSString*)jid relativeRect:(NSRect)rect;
 @end
@@ -35,6 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)enableShowVcard:(ZMUser*)user;
 - (BOOL)enableShowVCardByJid:(NSString*)jid;
 - (BOOL)isUserLeft:(ZMUser *)user;
+
+- (void)prefetchVCardData:(ZMUser *)user;
+- (BOOL)isVCardSupportedForUser:(ZMUser *)user;
 
 - (NSView<IZMMTVCardBubbleView> *)createVCardBubbleView;
 

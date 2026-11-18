@@ -95,6 +95,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)closeReactionsMenu;
 - (BOOL)isReactionsMenuShowing;
 - (void)showMoreEmojiMenu;
+
+- (void)showCCTip:(NSString *)tipString;
+- (void)hideCCTip;
+- (void)onCCFirstMsgReceived;
+- (void)updateUI;
+
 // Implementated at category.
 @optional
 - (BOOL)isToolbarAvailableInterpretLanguageTipShowing;

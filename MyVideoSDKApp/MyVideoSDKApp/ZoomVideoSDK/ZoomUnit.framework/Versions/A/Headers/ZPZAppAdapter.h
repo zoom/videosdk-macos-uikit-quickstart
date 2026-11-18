@@ -116,8 +116,7 @@ typedef NS_ENUM(NSInteger, ZMZAppViewCtrlActionType) {
     ACTION_OPEN_NEW_WINDOW, // Click Open in New Window
     ACTION_SELECT_APP,
     ACTION_SHARE,
-    ACTION_SELECT_WINDOW_APP_TAB,
-    ACTION_ADD_APP,
+    ACTION_ADD_APP = 23,
     ACTION_SignIn,
     ACTION_OPEN_IN_ZR,
     ACTION_Copy_Share_Link,
@@ -237,6 +236,7 @@ typedef NS_ENUM(NSUInteger, ZAppOpenAppPurpose) {
     ZAppOpenApp_By_AutoOpen,
     ZAppOpenApp_By_ApiAuto,
     ZAppOpenApp_By_CollaborateSidecarMode,
+    ZAppOpenApp_By_Marketplace,
 };
 
 typedef NS_ENUM(NSInteger, ZAppCloudRecordCmd) {
@@ -303,7 +303,6 @@ typedef NS_ENUM(NSInteger, ZAppOpenAppAction) {
 typedef NS_ENUM(NSInteger, ZAppShareWindowLocation) {
     ZAppShareWindowLocation_Window = 0,
     ZAppShareWindowLocation_Window_Basic,
-    ZAppShareWindowLocation_Window_Apps,
 };
 
 typedef NS_ENUM(NSInteger, ZAppJsCallErrorType) {
@@ -503,6 +502,7 @@ typedef NS_ENUM(NSInteger, ZAppOpenAppMode) {
 typedef NS_ENUM(NSInteger, ZAppOpenAppSource) {
     ZAppOpenAppSource_Launcher,
     ZAppOpenAppSource_Dock,
+    ZAppOpenAppSource_Marketplace,
 };
 
 typedef NS_ENUM(NSInteger, ZAppZoomLevelTag) {
@@ -928,6 +928,8 @@ typedef NS_ENUM(NSInteger, ZMZappRTMSErrorToastType) {
     ZMZappRTMSErrorToastType_NoAvaliableRtmsZone,
     ZMZappRTMSErrorToastType_RtmsAppSettingNotEnable,
     ZMZappRTMSErrorToastType_NormalRtmsConnectingFail,
+    ZMZappRTMSErrorToastType_SingleAppIsBlockedOnWeb,
+    ZMZappRTMSErrorToastType_MultInstSameAppSameAccountForbidden,
 };
 
 typedef NS_ENUM(NSUInteger, ZMZappOpenSettingType) {
@@ -954,6 +956,13 @@ typedef NS_ENUM(NSUInteger, ZMZappOpenSettingType) {
 @property (nonatomic, assign) BOOL isBetaApp;
 @property (nonatomic, copy, nullable) NSString *appCompanyName;
 @property (nonatomic, assign) BOOL isInstall;
+@property (nonatomic, assign) BOOL isSupportMobile;
+@property (nonatomic, copy, nullable) NSString *iconUrl;
+@property (nonatomic, copy, nullable) NSString *darkModeIconUrl;
+@property (nonatomic, copy, nullable) NSString *blackWhiteIconUrl;
+@property (nonatomic, copy, nullable) NSString *tabId;
+@property (nonatomic, assign) int64_t options;
+- (BOOL)canShowAppOnTab;
 @end
 
 @interface ZMZappContext : NSObject

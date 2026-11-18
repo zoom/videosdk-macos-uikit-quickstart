@@ -94,6 +94,12 @@ typedef void(^ZMMTTipNotificationResponseBlock)(BOOL* closeTip);
 - (void)showLivestreamDisclamier;
 - (void)hideLivestreamDisclamier;
 
+// Closed caption related tips
+- (void)showClosedCaptionDisclamier;
+- (void)showCloseCaptionEnabledTip;
+- (void)hideCloseCaptionEnabledTip;
+- (void)updateCloseCaptionEnabledTip;
+
 @end
 
 NS_ASSUME_NONNULL_END

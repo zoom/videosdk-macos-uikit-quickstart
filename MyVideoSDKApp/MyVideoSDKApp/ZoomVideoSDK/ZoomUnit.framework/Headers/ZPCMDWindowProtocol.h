@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class ZPCMDWindowModel;
+@protocol IZPCMDWindowManager;
 @protocol ZPInvitationItemProtocol;
 NS_ASSUME_NONNULL_BEGIN
 

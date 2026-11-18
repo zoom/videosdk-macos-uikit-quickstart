@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 
 @class ZMVideoSDKUser;
+@class ZMVideoSDKSubSessionUser;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,9 +20,18 @@ NS_ASSUME_NONNULL_BEGIN
  * @param commandContent The custom commands or data, represented in string format.
  * @param user The target user to receive the command. If nil, the command is broadcast to all users.
  * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
- * @note Limit up to 60 custom commands per second.
+ * @note This API is rate-limited; overly frequent calls return ZMVideoSDKErrors_Call_Too_Frequently.
  */
 - (ZMVideoSDKErrors)sendCommand:(NSString *)commandContent receiveUser:(nullable ZMVideoSDKUser *)user;
+
+/**
+ * @brief Sends a command to a user in the main session or a subsession.
+ * @param commandContent The custom command or data.
+ * @param subSessionUser The target lightweight user, obtained from a subsession user list.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
+ */
+- (ZMVideoSDKErrors)sendCommandToSubSessionUser:(NSString *)commandContent
+                                subSessionUser:(nullable ZMVideoSDKSubSessionUser *)subSessionUser;
 @end
 
 NS_ASSUME_NONNULL_END

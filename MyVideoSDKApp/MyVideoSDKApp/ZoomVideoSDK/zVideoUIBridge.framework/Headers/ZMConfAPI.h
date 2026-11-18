@@ -70,6 +70,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isHostSupportSharedContentOnly;
 
 @property(assign) BOOL isAvatarAllowed;
+#ifdef __cplusplus
+- (BOOL)isAvatarReady:(ICmmUser*)cmmUser;
+#endif
 
 - (BOOL)isLegalConfNumber:(NSString*)confNumber;
 - (nullable NSString*)getJoinMeetingURL;
@@ -79,7 +82,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (int)getMeetingDuration;
 - (nullable NSString*)getFreeUserMeetingDurationLimit;
 - (nullable NSString*)getZoomDomain;
-- (nullable NSString*)getClipsDomain;
 - (nullable NSString*)getProductDomain;
 - (nullable NSString*)getLoginHostName;
 - (nullable NSString*)getMeetingPassword;
@@ -147,6 +149,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSString *)sdkMeetingFeatureUrl;
 - (nullable NSString *)sdkMeetingLeaveUrl;
 - (nullable NSString *)sdkMeetingLogoPathForDarkMode:(BOOL)darkMode;
+- (nullable NSString *)meetingLogoPathForDarkMode:(BOOL)darkMode;
 - (nullable NSString *)gatewayName;
 - (BOOL)isFirstTimeUseMoreFeatures;
 - (void)setNotFirstTimeUseMoreFeatures;
@@ -223,6 +226,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) BOOL isCloudWhiteboardWebEnabled;
 @property (nonatomic, assign, readonly) BOOL isWhiteboardOwnershipEnabled;
 @property (nonatomic, assign, readonly) BOOL canNewWhiteboard;
+@property (nonatomic, assign, readonly) BOOL canShareExistedWhiteboard;
+@property (nonatomic, assign, readonly) BOOL isMMRSupportWhiteboardNewSettings;
+@property (nonatomic, assign, readonly) BOOL isCollaborativeNotesEnabled;
 
 - (void)enableWhiteboardStreamForRecording:(BOOL)bRecordWhiteboard;
 
@@ -285,9 +291,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSImage * _Nullable)getDarkCobrandingDialogLogo;
 
 // Deeplink
-- (BOOL)chechIfZoomInternalNavigateURL:(NSURL *)url;
-- (BOOL)handleZoomInternalNavigateURLAction:(NSString *)url;
-- (BOOL)checkAndHandleZoomInternalNavigateURLAction:(NSURL *)url;
+- (void)handleZoomInternalNavigateURLAction:(NSString *)url completion:(void (^ _Nullable)(BOOL handled))completion;
+- (void)checkAndHandleZoomInternalNavigateURLAction:(NSURL *)url completion:(void (^ _Nullable)(BOOL handled))completion;
+- (void)zoomInternalNavigateURLActionType:(NSURL *)url completion:(void (^ _Nullable)(NSInteger urlType))completion;
 @end
 
 NS_ASSUME_NONNULL_END

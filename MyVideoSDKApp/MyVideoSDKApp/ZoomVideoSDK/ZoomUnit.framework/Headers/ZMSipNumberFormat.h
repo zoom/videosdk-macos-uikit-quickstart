@@ -94,5 +94,6 @@
 
 + (NSString *)getNumberCountryCode:(NSString *)number;
 
++ (NSString *)getNumberCountryISOCode:(NSString *)number;
 @end
 

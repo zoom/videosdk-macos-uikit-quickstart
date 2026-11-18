@@ -20,12 +20,12 @@
 - (void)onTurnOnButtonClicked;
 - (void)onTurnOffButtonClicked;
 - (void)onTurnOffNotifierButtonClicked;
+- (void)showAttendeeRequestTurnOffPanelIfNeed;
 - (void)onPauseButtonClicked;
 - (void)onResumeButtonClicked;
 - (void)startClinicalNote;
 - (void)stopClinicalNote;
 - (void)pauseClinicalNote;
-- (NSString*)getClinicalNoteNotiferFooterText;
 - (ZMBaseView *)getContentView;
 - (BOOL)isUrlEmpty;
 - (void)onPatientDataPanelHidden:(BOOL)isDataWindowVisible;
@@ -37,7 +37,12 @@
 - (void)popupWindowEnabled:(BOOL)enable;
 - (BOOL)isPopupWindowEnabled;
 - (BOOL)needRestorePatientDataPanel;
-- (void)onClinicalNoteGetMMRToken:(NSString *)jsCallId;
+- (void)onClinicalNoteGetCommonConfigs:(NSString *)jsCallId;
+
+- (void)onPopOutPatientDataPanel;
+- (void)onPopInPatientDataPanel;
+- (void)onClosePanelDataPanel;
+- (void)notifyPatientDataPanelLayoutToWebIfNeeded;
 @end
 
 /**
@@ -48,8 +53,6 @@
 @optional
 - (void)onReceiveSwitchClinicalNoteRequestMsg:(NSString *)reqId senderId:(ZMUserID)senderId switchAction:(NSInteger)switchAction;
 - (void)onReceiveSwitchClinicalNoteResponseMsg:(BOOL)timeout isDecline:(BOOL)decline switchAction:(NSInteger)switchAction;
-- (void)onClinicalNoteChanged;
-- (void)onCNPatientDataSaved:(BOOL)isSuccess;
 - (void)onCreateClinicalNoteSessionFailed:(NSInteger)errCode;
 - (void)onAICompanionTokenReceived:(BOOL)isSuccess reqId:(NSString*)reqId token:(NSString *)token;
 

@@ -6,3 +6,5 @@ NSCalendarsFullAccessUsageDescription= "이벤트를 표시하려면 Zoom Workpl
 NSLocalNetworkUsageDescription= "이 프로세스는 Zoom 클라이언트에서 AirPlay 및 피어 투 피어 회의를 활성화하는 데 필요합니다.";
 NSBluetoothAlwaysUsageDescription= "이렇게 하면 Zoom Workplace에서 근처의 Zoom Rooms를 찾을 수 있습니다.";
 NSAudioCaptureUsageDescription = "다른 앱에서 재생되는 오디오를 이용하려면 접근 권한을 허용하세요.";
+
+CFBundleDisplayName = "Zoom";

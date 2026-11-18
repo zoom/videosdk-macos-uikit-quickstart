@@ -285,6 +285,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
+@import Prism;
 #endif
 
 #import <zVideoUIBridge/zVideoUIBridge.h>
@@ -375,6 +376,17 @@ SWIFT_CLASS_NAMED("MediaInfoModel")
 - (nonnull instancetype)initWithTimestamp:(uint64_t)timestamp speed:(CGFloat)speed OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class NSEvent;
+@class NSCoder;
+SWIFT_RESILIENT_CLASS("_TtC14zVideoUIBridge20ZMMTPrismTooltipView")
+@interface ZMMTPrismTooltipView : PZMView
+@property (nonatomic, readonly) BOOL propagatesKeyEvents;
+@property (nonatomic) BOOL acceptsFirstMouse;
+- (BOOL)acceptsFirstMouse:(NSEvent * _Nullable)event SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class NSImage;

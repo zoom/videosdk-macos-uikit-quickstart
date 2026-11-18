@@ -9,7 +9,6 @@
 // In this header, you should import all the public headers of your framework using statements like #import <ZoomUnit/PublicHeader.h>
 
 //Bridge
-#import <ZoomUnit/ZMUIInterfaceBridge.h>
 #import <ZoomUnit/ZMPPTDataProtocol.h>
 #import <ZoomUnit/ZMPConfDataProtocol.h>
 #import <ZoomUnit/ZPUICommonDef.h>
@@ -44,6 +43,7 @@
 
 //Download
 #import <ZoomUnit/ZMDownloader.h>
+#import <ZoomUnit/ZMOndemandProtocol.h>
 
 //preview
 //#import <ZoomUnit/ZMVideoPreViewItem.h>
@@ -90,7 +90,6 @@
 #import <ZoomUnit/ZMPopoverController.h>
 #import <ZoomUnit/ZMPopupSelectViewController.h>
 #import <ZoomUnit/ZMPopupAlertViewController.h>
-#import <ZoomUnit/ZMDisclaimerPanel.h>
 #import <ZoomUnit/ZMBlockAlert.h>
 #import <ZoomUnit/ZMDialogue.h>
 #import <ZoomUnit/ZMAlertObject.h>
@@ -130,6 +129,7 @@
 //Util
 #import <ZoomUnit/ZMAuthentication.h>
 #import <ZoomUnit/ZMMetalHelper.h>
+#import <ZoomUnit/ZMWindowHelper.h>
 
 
 //ZMGiftPanel
@@ -179,6 +179,12 @@
 #import <ZoomUnit/ZMZAppToastView.h>
 #import <ZoomUnit/ZPZAppAdapter.h>
 #import <ZoomUnit/ZMMTPopOutWindow.h>
+#import <ZoomUnit/ZMZappPTProtocol.h>
+#import <ZoomUnit/ZMZappConfProtocol.h>
+#import <ZoomUnit/ZMZappVirtualEffectsProtocol.h>
+#import <ZoomUnit/ZMZappStatusProtocol.h>
+#import <ZoomUnit/IZMZappAppTabs.h>
+#import <ZoomUnit/ZMZappInstanceEventsProtocol.h>
 
 
 //SidePanel
@@ -188,6 +194,7 @@
 
 //ProfileFloat
 #import <ZoomUnit/ZMProfileConfig.h>
+#import <ZoomUnit/ZMMTVCardCallProtocol.h>
 
 //Mail
 #import <ZoomUnit/ZPZMailAdapter.h>
@@ -201,20 +208,36 @@
 #import <ZoomUnit/ZMIPCProtocol.h>
 #import <ZoomUnit/ZMIPCMessage.h>
 
+//XProcEvent (cross-process URL relay between Meeting and PT)
+#import <ZoomUnit/ZMXProcEventBus.h>
+
+//XProcEvent global-notification relay built on ZMXProcEventBus
+#import <ZoomUnit/ZMXProcEventDefines.h>
+#import <ZoomUnit/ZMXProcEventPoster.h>
+
+//Cached value with direct, uniquely addressed cross-process reads.
+#import <ZoomUnit/ZMXProcValue.h>
+
 //ZMThemeMgr
+#import <ZoomUnit/IZMMTTheme.h>
 #import <ZoomUnit/IZMThemeMgr.h>
 
 //MeetingSDK
 #import <ZoomUnit/IZoomSDKMemoryHelper.h>
 
-#import <ZoomUnit/ZMAppProtocol.h>
 #import <ZoomUnit/ZMBuddyUpdateProtocol.h>
+#import <ZoomUnit/IZMMTVideoProtocol.h>
+#import <ZoomUnit/ZMMTAudioProtocol.h>
+#import <ZoomUnit/ZMMTRecordProtocol.h>
 #import <ZoomUnit/IZMAudioSettingViewProtocol.h>
+#import <ZoomUnit/IZMSpacesZRServiceHubHelper.h>
 #import <ZoomUnit/ZMLoginProtocol.h>
-#import <ZoomUnit/ZMInviteCoordinatorProtocol.h>
+#import <ZoomUnit/ZMInviteProtocol.h>
+#import <ZoomUnit/ZZHostHIDControlProtocol.h>
 #import <ZoomUnit/IZMMTUserChatProtocol.h>
 #import <ZoomUnit/IZMDeviceProtocol.h>
 #import <ZoomUnit/ZMMeetingProtocol.h>
+#import <ZoomUnit/ZMMeetingStatusProtocol.h>
 #import <ZoomUnit/ZMMemLogAdapter.h>
 #import <ZoomUnit/ZMZUISettingProtocol.h>
 
@@ -244,11 +267,18 @@
 
 //Debug
 #import <ZoomUnit/ZMDebugToolProtocol.h>
+#import <ZoomUnit/ZPLogHelper.h>
 
-#import <ZoomUnit/ZMAppProtocol.h>
 #import <ZoomUnit/ZMAppReopenProtocol.h>
 #import <ZoomUnit/CmmModuleProtocol.h>
-#import <ZoomUnit/ZMMTMgrInterface.h>
+#import <ZoomUnit/ZMMicrophoneUsageInfo.h>
 #import <ZoomUnit/IZMVoiceNotesMgr.h>
+#import <ZoomUnit/IZMStatusBarMgr.h>
+#import <ZoomUnit/IZMInviteChatUIProtocol.h>
+#import <ZoomUnit/IZMWallpaperDownloadProtocol.h>
+#import <ZoomUnit/ZPCMDWindowProtocol.h>
 #import <ZoomUnit/ZMHTextField.h>
 #import <ZoomUnit/ZMAVPlayerView.h>
+
+//URLInvocation
+#import <ZoomUnit/ZMURLInvocation.h>

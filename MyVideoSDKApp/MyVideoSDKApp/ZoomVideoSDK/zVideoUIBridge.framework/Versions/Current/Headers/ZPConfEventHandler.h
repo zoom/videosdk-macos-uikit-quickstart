@@ -144,7 +144,6 @@ extern NSString* kNoti_ClosedCaptionUser_Changed;
 extern NSString* kNoti_Conf_ConfirmVanityURLSelect; //ZOOM-100649
 
 //video device
-extern NSString* kNoti_Selected_Camera_WillChange;
 extern NSString* kNoti_Selected_Camera_Changed;
 extern NSString* kParam_Device_Id;
 extern NSString* kParam_Device_Name;

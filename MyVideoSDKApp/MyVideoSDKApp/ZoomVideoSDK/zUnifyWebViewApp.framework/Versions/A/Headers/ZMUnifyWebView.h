@@ -38,8 +38,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)hideUnifyErrorViewIfNeeded;
 - (void)recycleUnifyWebView;
 - (void)restoreUnifyWebView;
+- (BOOL)beforeWebViewRestore;
+- (void)onMeetingEnd;
 
-- (BOOL)isUnifyWebViewVisible;
 - (long long)getIntervalSecondSinceInactive;
 
 @end

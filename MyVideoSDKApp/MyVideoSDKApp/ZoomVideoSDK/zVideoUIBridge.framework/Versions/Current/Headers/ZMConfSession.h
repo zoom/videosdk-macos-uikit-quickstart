@@ -38,9 +38,14 @@ NS_ASSUME_NONNULL_BEGIN
 @class ZMMTShareHelper;
 @class ZMMTMeetingInfoHelper;
 @class ZMMTGRHelper;
+@class ZMMTRemoteControlHelper;
+@class ZMMTSlideControlHelper;
+@class ZMMTRemoteSupportHelper;
+@class ZMMTAnnotationHelper;
 @class ZMMTNewTranscriptHelper;
 @class ZMMTOnlineBusinessHelper;
 @class ZMMTCameraControlHelper;
+@class ZMDocHelper;
 
 @interface ZMConfSession : NSObject <NSCopying>
 
@@ -77,10 +82,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,readonly, weak) ZMMTAudioUUIHelper* audioUUIHelper;
 @property(nonatomic,readonly, weak) ZMMTArchiveHelper* archiveHelper;
 @property(nonatomic,readonly, weak) ZMMTShareHelper* shareHelper;
+@property(nonatomic,readonly, weak) ZMMTRemoteControlHelper* rcHelper;
+@property(nonatomic,readonly, weak) ZMMTSlideControlHelper* scHelper;
+@property(nonatomic,readonly, weak) ZMMTRemoteSupportHelper* rsHelper;
+@property(nonatomic,readonly, weak) ZMMTAnnotationHelper* annoHelper;
 @property(nonatomic,readonly, weak) ZMMTMeetingInfoHelper* meetingInfoHelper;
 @property(nonatomic,readonly, weak) ZMMTGRHelper* grHelper;
 @property(nonatomic,readonly, weak) ZMMTOnlineBusinessHelper* onlineBusinessHelper;
 @property(nonatomic,readonly, weak) ZMMTCameraControlHelper *cameraControlHelper;
+@property(nonatomic,readonly, weak) ZMDocHelper *zmDocHelper;
 
 - (void)startSession;
 - (void)stopSession;

@@ -19,12 +19,16 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol IZMMTBillingNoticeMgr <ZMRoutableObject>
 @property (nonatomic, assign, readonly) BOOL isCommonCoachmarkShowing;
 
+- (void)hideAllZpnsCoachmarks;
+- (BOOL)isZpnsCoachmarkShowingForEntry:(NSString *)entry NS_SWIFT_NAME(isZpnsCoachmarkShowing(forEntry:));
+- (void)hideZpnsCoachmarksForEntry:(NSString *)entry NS_SWIFT_NAME(hideZpnsCoachmarks(forEntry:));
 - (BOOL)requestToReportAICMarketInfoWithEventType:(NSString *)eventType;
 
 // upsell
 #ifdef __cplusplus
 - (ZMMTBillingNotice * _Nullable)getUpSellToolBarNoticeWithType:(ZUUI::LargeMeetingUpsellPrompt)type;
 - (void)onPlistBannerShow:(BOOL)show type:(ZUUI::OnlineBusinessBannerType)type;
+- (void)showCmmZpnsToast:(const CmmZpnsToast&)toast;
 #endif
 - (ZMTagView *)getPlistBannerView;
 

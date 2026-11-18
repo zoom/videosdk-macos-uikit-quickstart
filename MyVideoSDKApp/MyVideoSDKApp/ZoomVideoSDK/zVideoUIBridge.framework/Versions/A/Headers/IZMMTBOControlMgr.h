@@ -7,9 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <zVideoUIBridge/ZMMultiConfEventDelegate.h>
 
 @class ZMMTBORoomModel, ZMMTBOUserModel, ZMMTBOConfigModel, ZMMTBOUserListDataManager, ZMMTRosterList;
 @protocol IZMMTBOHandlerChainProtocol;
+
+typedef NS_ENUM(NSUInteger, ZMMTBOType) {
+    ZMMTBOTypeDefault = 0,
+    ZMMTBOTypeNextBO,
+};
 
 typedef NS_ENUM(NSInteger, ZMMTBOEntryType) {
     ZMMTBOEntryTypeNone = 0,
@@ -49,6 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol IZMMTBOControlMgr <ZMRoutableObject>
 
 - (void)onFeatureReady;
+- (void)refreshUIAfterDelayedFeatureReady;
 
 - (void)show;
 - (void)close;
@@ -76,22 +83,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)saveBOWithName:(NSString *)name forFutureUse:(BOOL)useInFuture;
 
 - (void)broadcastMessage:(NSString *)message;
-- (void)broadcastVoiceToBo:(BOOL)start;
-- (BOOL)isBroadcastSpeaking;
-- (NSString *)broadcastVoiceNoticeString;
-- (void)onVoiceToBOStatusChanged:(BOOL)start;
 - (BOOL)isBroadcastMessageEnabled;
-- (BOOL)isBroadcastBOVoiceMsgEnabled;
-- (BOOL)haveBroadcastVoiceCapacity;
-- (void)startBroadcastVoiceByShortcut;
-- (void)stopBroadcastVoiceByShortcut;
-- (BOOL)checkIsMyBroadcastSpeaking;
-- (NSInteger)checkBroadcastVoiceStatus;
-- (void)onBOBroadcastVoice;
 
 - (BOOL)canShowBOEntry;
 - (ZMMTBOEntryType)getBOEntryType;
 - (void)onBOEntryClicked:(id)sender;
+- (BOOL)isBOPanelShowing;
 - (NSInteger)getUnassignedUserCount;
 
 - (void)onUserRosterChanged:(ZMMTRosterList *)roster session:(ZMConfSession*)session;
@@ -176,6 +173,9 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 - (void)onBuildFromPoll;
 
+@end
+
+@protocol ZMBreakoutRoomEventDelegate <ZMMultiConfEventDelegate>
 @end
 
 NS_ASSUME_NONNULL_END

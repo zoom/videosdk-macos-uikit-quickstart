@@ -37,6 +37,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, retain) NSString *lottieName;
 @property (nonatomic, retain) ZMButton *liveButton;
 @property (nonatomic, retain) ZMButton *requestShareButton;
+// Self-tile-only hover button entry point into "Minimize self view" -- see
+// ZMMTVideoCellView+VideoUI.mm's -initSubviews/-relayoutButtonUI/-updateMinimizeSelfViewButton.
+@property (nonatomic, retain) ZMButton *minimizeSelfViewButton;
 @property (nonatomic, retain) ZMCustomEmojiView *customEmojiView;
 @property (nonatomic, retain) ZMMTTimeLabelView *timeLabelView;
 @property (nonatomic, retain) ZMMTTopTipBarView *topTipBarView;

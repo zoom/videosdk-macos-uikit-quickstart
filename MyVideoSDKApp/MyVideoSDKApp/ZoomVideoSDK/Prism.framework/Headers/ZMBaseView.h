@@ -40,6 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSRectCorner cornerMask;
 @property (nonatomic, nullable, retain) ZMPigment* pigment;
 @property (nonatomic, assign) BOOL ignoreEffectiveChange;
+@property (nonatomic, assign) BOOL adjustBorderAutomaticallyWhenEqualToWindowContentView;//default is YES.
 @end
 
 @interface ZMNonLayerBaseView : ZMBaseView

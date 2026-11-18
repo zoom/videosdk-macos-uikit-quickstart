@@ -143,60 +143,6 @@ typedef enum{
 
 //Zoom client interfaces:
 
-typedef enum
-{
-    Evt_PT_SubType_None,
-    Evt_PT_SubType_ToggleMeetingControls,
-    Evt_PT_SubType_Setting_Close_For_Video,
-    Evt_PT_SubType_IsLogin,
-    Evt_PT_SubType_Login,
-    Evt_PT_SubType_Logout,
-    Evt_PT_SubType_Switch_Account,
-    Evt_PT_SubType_Start_Video_Meeting,
-    Evt_PT_SubType_Start_NoVideo_Meeting,
-    Evt_PT_SubType_Join_Meeting,
-    Evt_PT_SubType_EnterFullscreen,
-    Evt_PT_SubType_ExitFullscreen,
-    Evt_PT_SubType_CMRStorageInfo,//ZOOM-5534
-    Evt_PT_SubType_Status,
-    Evt_PT_SubType_BOFollowFullscreen,//ZOOM-183814
-    Evt_PT_SubType_Enable,
-    Evt_PT_SubType_Device_Changed,
-    Evt_PT_Audio_Wizard_Show,//ZOOM-38961
-    Evt_PT_SubType_Event_Track,//[Zoom-46054]
-    Evt_PT_SubType_updateOriginalSoundSetting,//ZOOM-50116
-    Evt_PT_SubType_BandWidth_Limit_Info_Changed,//ZOOM-82229
-    Evt_PT_SubType_Did_Leave_Meeting,
-    Evt_PT_SubType_Report_Problem,//ZOOM-118634
-    Evt_PT_SubType_Upload_Avatar,//ZOOM-123364
-    Evt_PT_SubType_DownloadAOM_Share_Doc,//ZOOM-90578
-    Evt_PT_SubType_DownloadAOM_Presenter_Layout,//ZOOM-90578
-    Evt_PT_SubType_Allow_Unmute_Audio_List_Change,//ZOOM-169862
-    Evt_PT_SubType_DownloadAOM_Share_Video,//ZOOM-201098
-    Evt_PT_SubType_IsAomhostDownloaded,//ZOOM-257648
-    Evt_PT_SubType_IsJoinOnlyUser,//ZOOM-315763
-    Evt_PT_Zapp_Join_Meeting,
-    Evt_PT_Zapp_IsLatest,
-    Evt_PT_Zapp_Login,
-    Evt_PT_Zapp_Loaded,
-    Evt_PT_Zapp_SetMTTimer,
-} EVENT_SUBTYPE_PT;
-
-typedef enum
-{
-    Evt_PT_None,
-//    Evt_PT_Accessibility,
-    Evt_PT_Setting,
-    Evt_PT_Account,
-    Evt_PT_Quit,
-    Evt_PT_Meeting,
-    Evt_PT_Schedule,
-    Evt_PT_Direct_Share,
-    Evt_PT_Fullscreen_Changed,
-    Evt_PT_CMR,//ZOOM-5534
-    Evt_PT_MainWindowId,
-    Evt_PT_Zapp
-}EVENT_TYPE_PT;
 
 typedef enum
 {//[Zoom-20918]
@@ -208,11 +154,6 @@ typedef enum
 }EVENT_PT_STATUS;
 
 @optional
-- (void)eventChangedWithType:(int)inType subType:(int)inSubType param:(id)inParam;
-- (id)getEventValueForType:(int)inType subType:(int)inSubType;
-- (id)getEventValueForType:(int)inType subType:(int)inSubType param:(id)inParam;
-- (NSString *)getPolicyLink;
-- (NSString *)getTermServiceLink;
 #endif
 
 @end

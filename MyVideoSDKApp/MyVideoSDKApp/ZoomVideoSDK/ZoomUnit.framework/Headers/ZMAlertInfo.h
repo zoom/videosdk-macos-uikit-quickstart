@@ -10,7 +10,10 @@
 #import <Prism/Prism.h>
 #import <Prism/Prism-Swift.h>
 #ifdef __cplusplus
-#include <zPTApp/SaasBeePTAppInterface.h>
+struct CmmZpnsToast_s;
+typedef struct CmmZpnsToast_s CmmZpnsToast;
+struct CmmZpnsCoachmark_s;
+typedef struct CmmZpnsCoachmark_s CmmZpnsCoachmark;
 #endif
 
 
@@ -19,6 +22,7 @@ typedef NS_ENUM(NSUInteger, ZMAlertType) {
     ZMAlertTypeBubble,
     ZMAlertTypeDialog,
     ZMAlertTypeBanner,
+    ZMAlertTypeHudToast,
 };
 typedef NS_ENUM(NSUInteger, ZMAlertButtonType) {
     ZMAlertButtonTypeNone,
@@ -45,6 +49,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,weak) id target;
 @property (nonatomic,assign) SEL action;
 
+//using in toast
+@property (nonatomic,assign) BOOL closeAfterAction;//default is true
+@property (nonatomic,copy) void (^customerAction)(void);
 @end
 
 @interface ZMAlertInfo : NSObject
@@ -65,6 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) ZMAlertButtonInfo *primaryBtn;
 @property (nonatomic,strong) ZMAlertButtonInfo *secondaryBtn;
 @property (nonatomic,strong) ZMAlertButtonInfo *leftLinkBtn;
+@property (nonatomic,strong,nullable) ZMAlertButtonInfo *checkboxAction;
 
 @property (nonatomic,assign) BOOL isCoachmark;
 @property (nonatomic,copy) NSString *coachmarkID;
@@ -93,6 +101,7 @@ NS_ASSUME_NONNULL_BEGIN
 // Dismiss timer from CmmZpnsNoticeDismiss.timer (milliseconds)
 @property (nonatomic,assign) int64_t dismissTimer;
 
+- (BOOL)isECMSCoachmark;
 - (void)assign:(ZMAlertInfo *)info;
 @end
 

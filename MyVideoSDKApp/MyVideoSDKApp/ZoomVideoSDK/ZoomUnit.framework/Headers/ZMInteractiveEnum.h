@@ -36,24 +36,17 @@ extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ZoomApplicationWillResignAct
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ZoomApplicationDidResignActive;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ZoomApplicationDidBecomeActive;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ConferenceEndedEvent;
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ConferenceObjectDidCreate;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ConferenceUIDidCreate;
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ConferenceObjectWillDestroy;
+extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ConferenceObjectDidCreate;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ConferenceObjectDidDestroy;
 
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ConfNotifyPTSendFeedback;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_ConfNotifyPTSendFeedback;
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_PTAskConfToLeaveBeforeTerm;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_PTAskConfForLeaveNeedConfirm;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ConfLeavingReasonForPT;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_WillShowAttitudeFeedbackForPT;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_StopPreLoadingConference;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_PTForceToLeaveCurConf;
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ConfWindowHandleChanged;
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_ConfWindowHandleChanged;
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_BOInprogressing;//ZOOM-183814
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_BOJoinByClick;//ZOOM-183814
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_BOJoinSessionName;//ZOOM-183814
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ConfNotifyUpdateWindow;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_MBRequestPTConfStatus;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_PTReplyMBConfStatus;
@@ -62,7 +55,6 @@ extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_PTReplyMBConfStatus;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Device_cam;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_Device_Info_Ret;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Device_CamErr;
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ConfStartLoginWindow;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_ActivateZoomApplicationExternally;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_ActivateZoomApplicationExternally;
 
@@ -117,7 +109,6 @@ extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Conf_Param3;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Conf_ErrorNumber;
 
 
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Selected_Camera_WillChange;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kNoti_Selected_Camera_Changed;
 
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_MaxParticipantCount;
@@ -128,6 +119,7 @@ extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_Device_Name;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_MeetingURL;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_LiveSteamViewUrl;//ZOOM-158179
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_IsWebinar;
+extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_WebinarRegUrl;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_MeetingWindowFrame;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_MeetingReportProblemType;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_MeetingReportProblemType_Audio;
@@ -135,6 +127,7 @@ extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_MeetingAudioLogDir;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_ErrorTitle;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_ErrorDesc;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_ErrorDescLink;
+extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kParam_ErrorPrimaryButton;
 
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kIMUserStatus;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kIMUserCustomMessage;
@@ -143,12 +136,6 @@ extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*    kIMUserStatusChanged;
 #define kZoomAppearanceDidChange @"ZoomAppearanceDidChange"
 #define kZoomProcessAppearanceDidChange @"ZoomProcessAppearanceDidChange"
 #define kZoomProcessUserAppearance @"ZoomProcessUserAppearance"
-
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString* kNoti_Components_Download_Finished;
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString* kNoti_Components_Download_Failed;
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString* kNoti_Components_Download_Begin;
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString* kNoti_Components_Installed;
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString* kNoti_Components_Not_Need_Download;
 
 // Zoom Apps
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString* kNoti_PTProcessWillTerminate; // ZOOM-241091
@@ -164,9 +151,6 @@ extern _ZP_MODULE_EXPORT_SYMBOL_ NSString*  kNoti_ConfMcmWillTerm;
 
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString *kIM_JSHuddleViewHandle;
 
-//aomhost
-extern _ZP_MODULE_EXPORT_SYMBOL_ NSString *kNoti_Aomhost_Download_Success;
-
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString* kIM_JSWebVcardFrameChanged;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString* kIM_JSCloseWebVcard;
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString* kIM_JSWebResourceReady;
@@ -178,4 +162,3 @@ extern _ZP_MODULE_EXPORT_SYMBOL_ NSString* kSetting_ClosedCaptionTranslationColo
 
 //Spaces
 extern _ZP_MODULE_EXPORT_SYMBOL_ NSString* kNoti_Spaces_Installed;
-

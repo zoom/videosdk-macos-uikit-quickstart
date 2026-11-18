@@ -21,10 +21,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@class ZPShareSelectWindowModel;
+
 @protocol ZPShareSelectWindowModelDelegate <NSObject>
 
 @optional
 - (NSArray<NSNumber *> *)filterOutWinIDsForDS;
+- (NSArray<NSNumber *> *)filterOutPIDsForDS;
+- (void)onDesktopThumbnailDidChange:(ZPShareSelectWindowModel *)model;
 
 @end
 
@@ -54,14 +58,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property(retain)NSArray<NSNumber *> *winIDsForPS;
 @property(weak) id<ZPShareSelectWindowModelDelegate> delegate;
 @property(retain, readonly)NSArray<NSNumber *> *filterOutWinIDsForDS;
+@property(retain, readonly)NSArray<NSNumber *> *filterOutPIDsForDS;
 @property(retain)NSDictionary<NSNumber *, NSString *> *moreMenus;
 @property(assign)BOOL disabled;
 @property(copy)NSString* appId;
-@property(assign)BOOL canCollaborate;
 @property(retain) ZPShareSelectThirdPartyInfo *docInfo;
 @property(assign)BOOL hasBadge;
 @property(assign)BOOL showWarningIcon;
 @property(assign)ZMShareSelectItemBrowserTabType tabType;
+@property(nonatomic, retain)NSImage* processImage;
+/// Glyph for a static share source. A nonnull value selects the Share Picker card rendering path.
+@property(nonatomic, strong, nullable)NSImage* staticContentGlyphImage;
+/// Uses the narrow 100x110 tile layout for externally supplied content without a static glyph.
+@property(nonatomic, assign)BOOL narrowTile;
 
 + (id)modelWithCaptureModel:(ZMCaptureModel*)model;
 - (id)initWithCaptureModel:(ZMCaptureModel*)model;
@@ -123,10 +132,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (ZPShareSelectWindowModel*)getVideoModel;
 + (ZPShareSelectWindowModel*)getChromeTabModel;
 + (ZPShareSelectWindowModel*)getEdgeTabModel;
-+ (ZPShareSelectWindowModel*)getZoomNotesModel;
 + (ZPShareSelectWindowModel*)getZoomDocsModel;
-+ (ZPShareSelectWindowModel*)getZoomHubModel;
 + (ZPShareSelectWindowModel*)getZoomClipsModel;
++ (ZPShareSelectWindowModel*)getIcebreakersModel;
 @end
 
 @interface ZPAppShareSelectWindowModel : ZPShareSelectWindowModel

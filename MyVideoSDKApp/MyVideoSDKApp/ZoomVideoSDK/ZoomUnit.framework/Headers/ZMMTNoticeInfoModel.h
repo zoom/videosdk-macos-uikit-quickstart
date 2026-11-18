@@ -23,6 +23,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithMTNoticeInfo:(NS_ZOOM_DATA::UnLimitedMeetingNoticeInfo &)noticeInfo;
 
+#pragma mark - Cross-process serialization
+
+/// Flatten into a JSON-safe NSDictionary for IPC transport
+/// (e.g. ZMXProcEventPoster userInfo).
+- (NSDictionary *)zm_toDictionary;
+
+/// Rebuild a ZMMTNoticeInfoModel from the dictionary produced by
+/// -zm_toDictionary. Returns nil only if @c dict is nil.
++ (nullable instancetype)zm_fromDictionary:(nullable NSDictionary *)dict;
 
 @end
 

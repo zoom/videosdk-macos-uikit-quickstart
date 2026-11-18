@@ -6,16 +6,23 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		b4Pli3hFsCvu0+kA5oapa1ezcTY=
+		mnUG0+AsgvEuqODlRkG3GYAS8QQ=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Headers/CmmOsDef.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			poXfjOwnvJZ+evTPhOZIqjap53/boFhQcv+uy6qR3xk=
+			</data>
+		</dict>
 		<key>Headers/NSBundle+ZoomKit.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			gMLivXZ633FpfsftTDu0MFZs1dGZG3n6SCMIYVinUJA=
+			yajGJnC8LtNqkJN1tu0kcjIBfH9fWO8I28fmk1/OrgE=
 			</data>
 		</dict>
 		<key>Headers/NSView+ZMKFlexbox.h</key>
@@ -30,6 +37,13 @@
 			<key>hash2</key>
 			<data>
 			fz1o+OegXPWDpBeOeh1NNk80HmHkQUn/Uc+lf4mpJsk=
+			</data>
+		</dict>
+		<key>Headers/ZMAppProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			MjWCf7W5vqoVIxt4DuIRB4kO+cj8cEv9jCG7sDqvGwg=
 			</data>
 		</dict>
 		<key>Headers/ZMKFlexboxNode.h</key>
@@ -71,14 +85,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zgWG+0OoTpctPzC/HicuqmsyWreXCsLy20ORGK10IZ4=
+			O6uVKGXlu8oHSHYtHTQL67bIs7QMD6h6+BTojA/nSl0=
+			</data>
+		</dict>
+		<key>Headers/ZPLogHelper.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6nYw68IDR/G4JzISXwHvuO1c8iq+JeRngU3pmWappdU=
 			</data>
 		</dict>
 		<key>Headers/ZoomKit.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			dyt7WAhcJIxBK0jsNZUP+fjCGTWYfrwYKtqZqieURlg=
+			uIVgK0P3OmHjlXS/CEYskRIGXxPBiCSg7DGvJVBhb34=
 			</data>
 		</dict>
 		<key>Headers/buildtime_client_config.h</key>
@@ -106,7 +127,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ArAzxuuR9M29U7wCE0o6ruNdGGMw9a5/8X6XNoLKDuQ=
+			s2+mXuuU1WMeuQNxiK8gwWVXzLp2jaBG1e2bi5KljOE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -127,7 +148,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nSWaVmwp9TDIjMdTPLQ4vHjNS9GsSJ/B0lcnjMHxq34=
+			z+59AkGDhmzA4dBPEjrH0gwfuKPR9Y6nrAVALDNe0Qg=
 			</data>
 		</dict>
 	</dict>

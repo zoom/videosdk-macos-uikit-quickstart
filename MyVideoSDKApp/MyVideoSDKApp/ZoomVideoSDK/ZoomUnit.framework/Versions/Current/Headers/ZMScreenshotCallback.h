@@ -28,6 +28,8 @@
 - (void)willCaptureRecord;
 - (void)recordDidSucceed;
 - (void)recordFailed;
+- (void)capturePinned;
+- (void)captureAddedToNote;
 @end
 
 #endif /* ZMScreenshotCallback_h */

@@ -44,9 +44,10 @@ class IZoomQABuddy;
 @property(nullable,copy) NSString* specificUserName;
 
 ///may be return nil, eg: attendee in webinar bo
-@property(readonly,assign) ZMUser* defaultUser;
-@property(readonly,assign,nullable) ZMUser* masterUser;
-@property(readonly,assign,nullable) ZMUser* viewOnlyUser;//cmmuser transfer to QAbuddy
+@property(nullable,readonly) ZMUser* defaultUser;
+@property(nullable,readonly) ZMUser* masterUser;
+@property(nullable,readonly) ZMUser* viewOnlyUser;//cmmuser transfer to QAbuddy
+@property(nullable,readonly) ZMUser* parentUser;
 
 @property(readonly,assign)BOOL         isLeftUser;
 @property(readonly,assign)BOOL         isMasterUser;
@@ -55,6 +56,7 @@ class IZoomQABuddy;
 @property(readonly,assign)BOOL         isFreeWayIndexUser;
 @property(readonly,assign)BOOL         isMultistreamUser;
 @property(readonly,assign)BOOL         isPairedZRUser;
+@property(readonly,assign)BOOL         isSharedZRUser;
 @property(readonly,assign)BOOL         isSmartGalleryVideoUser;
 @property(readonly,assign)BOOL         isMyself;
 @property(readonly,assign)BOOL         isSupportSilentMode;
@@ -72,6 +74,7 @@ class IZoomQABuddy;
 @property(readonly,assign)BOOL         isPSLProducer;
 @property(readonly,assign)BOOL         isVideoSceneUser;
 @property(readonly,assign)BOOL         isActiveVideoSceneUser;
+@property(readonly,assign)BOOL         isAISalesAssistStarted;//ZOOM-1242563
 
 @property(readonly,assign)BOOL         isViewOnlyInDefaultSession;
 @property(readonly,assign)BOOL         isSupportProctoringMode;
@@ -84,6 +87,9 @@ class IZoomQABuddy;
 @property(readonly,assign)NSUInteger   raiseHandIndex;
 @property(readonly,assign)BOOL         isInPBO;
 @property(readonly,assign)BOOL         isPhotorealisticAvatarInUse;
+@property(readonly,assign)BOOL         isPoseCorrectionInUse;
+@property(readonly,assign)BOOL         isBotUser;
+@property(readonly,assign)ZMUserID     authorizerUserID; // bot user's owner id
 
 #ifdef __cplusplus
 + (instancetype)userWithCmmUser:(ICmmUser*)user;
@@ -107,7 +113,9 @@ class IZoomQABuddy;
 - (nullable IZoomQABuddy*)getBuddyUser;
 #endif
 
+/// Returns avatar image and triggers on-demand download if is cmmUser and not yet downloaded.
 - (nullable NSImage *)avatarWithSize:(NSSize)size;
+- (nullable NSImage *)avatarWithSize:(NSSize)size downloadIfNeeded:(BOOL)downloadIfNeeded;
 
 - (NSString *)originalName;//without change TWFlag
 - (NSString *)masterUserName;

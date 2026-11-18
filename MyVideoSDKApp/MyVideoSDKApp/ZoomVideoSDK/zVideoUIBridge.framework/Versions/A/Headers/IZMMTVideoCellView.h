@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 - (BOOL)enableShowButtonsForVideoCellView:(ZMMTBaseVideoCellView<IZMMTVideoCellView> *)cellView;
 - (BOOL)enableShowMuteButtonForVideoCellView:(ZMMTBaseVideoCellView<IZMMTVideoCellView> *)cellView;
+- (BOOL)enableShowMinimizeSelfViewButtonForVideoCellView:(ZMMTBaseVideoCellView<IZMMTVideoCellView> *)cellView;
 - (BOOL)enableShowLiveTagForVideoCellView:(ZMMTBaseVideoCellView<IZMMTVideoCellView> *)cellView;
 - (BOOL)enableShowProducerLiveTagForVideoCellView:(ZMMTBaseVideoCellView<IZMMTVideoCellView> *)cellView;
 
@@ -30,6 +31,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<ZMMTVideoCellViewDelegate> delegate;
 @property (nonatomic, nullable, retain) PZMMenu* moreMenu;
 - (BOOL)enableShowMoreButton;
+
+@optional
+// The cell's hover-button hooks, implemented in ZMMTVideoCellView+VideoUI.mm:
+// -updateButtonUI decides which buttons show, then hands off to
+// -relayoutButtonUI for their placement. Declared here so subclasses that add
+// buttons of their own can override them and still reach super -- optional,
+// since cells that don't have a button row have nothing to implement.
+- (void)updateButtonUI;
+- (void)relayoutButtonUI;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -199,7 +199,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @brief Gets the frame height in pixels sent by the current user.
  */
-@property(nonatomic, assign, readonly) int sendFrameHeigh;
+@property(nonatomic, assign, readonly) int sendFrameHeight;
 
 /**
  * @brief Gets the frame rate in FPS sent by the current user.
@@ -214,7 +214,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @brief Gets the video jitter (change in latency) experienced by the current user while sending data.
  */
-@property(nonatomic, assign, readonly) int sendJitte;
+@property(nonatomic, assign, readonly) int sendJitter;
 
 /**
  * @brief Gets the average video packet loss sent by the current user.
@@ -234,7 +234,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @brief Gets the frame height in pixels received by the current user.
  */
-@property(nonatomic, assign, readonly) int recvFrameHeigh;
+@property(nonatomic, assign, readonly) int recvFrameHeight;
 
 /**
  * @brief Gets the frame rate in FPS received by the current user.
@@ -249,7 +249,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @brief Gets the video jitter (change in latency) experienced by the current user while receiving data.
  */
-@property(nonatomic, assign, readonly) int recvJitte;
+@property(nonatomic, assign, readonly) int recvJitter;
 
 /**
  * @brief Gets the video average packet loss received by the current user.
@@ -295,7 +295,6 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @brief Gets the session ID.
  * @return The session ID. Otherwise, this function fails and returns nil.
- * @note Only the host can get the session ID.
  */
 - (NSString* _Nullable)getSessionID;
 

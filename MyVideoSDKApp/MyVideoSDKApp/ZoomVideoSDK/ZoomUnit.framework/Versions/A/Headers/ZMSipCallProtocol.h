@@ -13,6 +13,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#define kZMSipPhoneWebFeatureVersionDidChangeNotification @"kZMSipPhoneWebFeatureVersionDidChangeNotification"
+
 @class ZMBuddyAdapter;
 @class ZMSipCloudPBX;
 @class ZMSipRingtoneCallerIDSettings;
@@ -21,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class ZMSipVerificationCodeParam;
 @class ZMPIntegrationInfo;
 @class ZMEscrowVoicemailItem;
+@class NSWindow;
 
 @protocol ZMSipCallWarningProtocol <ZMRoutableObject>
 
@@ -55,7 +58,9 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol IZMCallUpgradeDialogMgr <ZMRoutableObject>
 
 - (NSUInteger)meetingCountBeforeShowUpgradeDialog;
+- (BOOL)isPostAfterMeetingUpgradeDialogEligible;
 - (void)addMeetingCount;
+- (void)showPostAfterMeetingUpgradeDialog;
 
 @end
 
@@ -80,6 +85,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isCloudPBXEnable;
 // for CloudPBX
 - (BOOL)isAllowCallForMac;
+- (BOOL)isEnablePhoneAudioSettings;
+- (BOOL)isMeetingAndPhoneSeparateAudioEnabled;
 
 - (BOOL)isAvayaEnabled;
 
@@ -299,6 +306,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isEnableCallOut;
 
 - (BOOL)isEnableVideomail;
+- (BOOL)isVideoGreetingEnabled;
+- (BOOL)requestVideoGreetingEnabled:(BOOL)enabled;
 
 - (NSString *)getDefaultEmergencyOptionAddress;
 
@@ -337,7 +346,17 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)testLaunchExternal;
 
 - (void)showWebRTCWindowController;
+- (BOOL)isEnablePhoneWebClientExperience;
+- (BOOL)canSwitchPhoneExperience;
+- (BOOL)shouldUsePhoneWebView;
 - (void)notifyShowPhoneWebView:(BOOL)show;
+- (void)showRestoreClassicViewDialogInWindow:(NSWindow *)window
+                                   onRestore:(void (^)(void))onRestore;
+- (void)notifyPhoneWebExperienceRestoredFromSettings;
+- (void)notifyPhoneWaitRestoreToastDismissed;
+- (BOOL)isPhoneWebViewShowing;
+- (nullable NSString *)phoneWebFeatureVersion;
+- (void)resetNewUISwitchBanner;
 
 - (NSInteger)updateSipLiveTranscriptAutoTurnOnState:(BOOL)onState;
 
@@ -352,6 +371,43 @@ NS_ASSUME_NONNULL_BEGIN
 // Monitoring Call
 - (BOOL)isInMonitoringCallAndNotSupportHold;
 - (void)endMonitoringCall;
+
+// Phone MyNotes
+- (BOOL)isPhoneMyNotesEnabled;
+- (BOOL)isPhoneMyNotesAutoTurnOn;
+- (NSInteger)updatePhoneMyNotesAutoTurnOnState:(BOOL)onState;
+
+// SMS Delegation
+- (BOOL)isPhoneSettingsSMSDelegationAvailable;
+- (BOOL)isPhoneSettingsSMSDelegationReplyEnabled;
+- (NSArray<NSString *> *)phoneSettingsSMSDelegationNames;
+- (BOOL)requestPhoneSettingsSMSDelegationReplyEnabled:(BOOL)enabled;
+
+// Posted when SMS auto-reply settings are refreshed for the settings page.
+// userInfo: @"businessEnabled"/@"closedEnabled" -> NSNumber(BOOL),
+// @"businessMessage"/@"closedMessage" -> NSString.
+#ifndef kZMPhoneSMSAutoReplySettingsUpdatedNotification
+#define kZMPhoneSMSAutoReplySettingsUpdatedNotification \
+    @"kZMPhoneSMSAutoReplySettingsUpdatedNotification"
+#endif
+
+// SMS Auto Reply. actionType is zUI SmsAutoReplyActionType
+// (0 = business hours / DND, 1 = closed hours). Dispatches between the legacy
+// and hybrid phone stacks.
+- (BOOL)isPhoneSettingsSMSAutoReplyAvailable;
+- (void)requestSMSAutoReplySettingsRefresh;
+- (BOOL)requestPhoneSettingsSMSAutoReplyEnabled:(BOOL)enabled
+                                      forAction:(NSInteger)actionType;
+- (BOOL)requestDeletePhoneSettingsSMSAutoReplyForAction:(NSInteger)actionType;
+- (void)openPhoneSettingsSMSAutoReplyEditorForAction:(NSInteger)actionType
+                                            inWindow:(nullable NSWindow *)window;
+
+// Voicemail prioritization
+- (BOOL)isPhoneSettingsVoicemailTopicsAvailable;
+- (BOOL)isPhoneSettingsVoicemailTopicsEnabled;
+- (BOOL)hasPhoneSettingsVoicemailTopics;
+- (BOOL)requestPhoneSettingsVoicemailTopicsEnabled:(BOOL)enabled;
+- (BOOL)showPhoneSettingsVoicemailTopicsInWindow:(NSWindow *)window;
 
 @end
 

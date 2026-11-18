@@ -142,6 +142,14 @@ typedef NS_ENUM(NSInteger, ZMContextMenuItemTag) {
     kZMContextMenuItemBaseApplicationTag = 10000,
 };
 
+// Fullscreen state values for UnifyWebViewEvent_FullscreenStateChanged
+typedef NS_ENUM(NSInteger, UnifyWebViewFullscreenState) {
+    UnifyWebViewFullscreenState_WillEnter = 1,
+    UnifyWebViewFullscreenState_DidEnter = 2,
+    UnifyWebViewFullscreenState_WillExit = 3,
+    UnifyWebViewFullscreenState_DidExit = 4,
+};
+
 typedef NS_OPTIONS(NSUInteger, ZMWebRenderProgressEvent) {
     _WKRenderingProgressEventFirstVisuallyNonEmptyLayout = 1 << 1,
 };
@@ -198,6 +206,8 @@ API_AVAILABLE(macos(10.11))
 *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
 */
 @property (nonatomic, strong) NSString *instName;
+@property (nonatomic, assign) BOOL isThirdPartyApp;
+@property (nonatomic, assign) BOOL disableLoginCreateGate;
 
 /**
 *  For dynamic tabs, the key to configure UnifyWebView permission. Used to identify different features.
@@ -205,6 +215,14 @@ API_AVAILABLE(macos(10.11))
 *  - Default Value: Empty string
 */
 @property (nonatomic, strong) NSString *featureName;
+
+/**
+*  Define the backup WebView kernel type to use when the target WebView kernel download is not completed.
+*  - Possible Values: UnifyWebViewType_None, UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+*  - Default Value: UnifyWebViewType_None
+*  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+*/
+@property (nonatomic, assign) enum UnifyWebViewType backupWebViewType;
 
 //MARK: - Feature Controls
 
@@ -219,7 +237,7 @@ API_AVAILABLE(macos(10.11))
 /**
 *  A setting in WebKit that controls whether a web page is allowed to use the fullscreen API. When enabled, the web page can enter fullscreen, for example: Clicking the fullscreen button on an HTML5 video will enlarge it to fullscreen
 *  - Possible Values: YES, NO
-*  - Default Value: NO
+*  - Default Value: YES
 *  - Supported WebView Types: UnifyWebViewType_WKWebView
 */
 @property (nonatomic, assign) BOOL fullScreenEnabled;
@@ -255,6 +273,25 @@ API_AVAILABLE(macos(10.11))
 *  - Supported WebView Types: UnifyWebViewType_WKWebView
 */
 @property (nonatomic, assign) BOOL isWindowOpenEnabled;
+@property (nonatomic, assign) BOOL isPopup;
+
+/**
+*  Determines whether to enable Off-Screen Rendering (OSR) mode for CEF WebView.
+*  OSR mode is required for transparent background rendering in CEF.
+*  - Possible Values: YES, NO
+*  - Default Value: NO
+*  - Supported WebView Types: UnifyWebViewType_CEF
+*/
+@property (nonatomic, assign) BOOL isOsrEnabled;
+
+/**
+*  Render OSR frames at 1920×1080 (YES) or 1280×720 (NO).
+*  - Possible Values: YES, NO
+*  - Default Value: NO
+*  - Supported WebView Types: UnifyWebViewType_CEF (isOsrEnabled = YES only)
+*/
+@property (nonatomic, assign) BOOL osrHiRes;
+
 
 //MARK: - Security & Privacy Settings
 
@@ -296,6 +333,22 @@ API_AVAILABLE(macos(10.11))
 @property (nonatomic, assign) BOOL isZoomControlEnabled;
 
 /**
+*  Controls whether WebView should handle user interaction events.
+*  - Possible Values: YES, NO
+*  - Default Value: YES
+*  - Supported WebView Types: UnifyWebViewType_WKWebView
+*/
+@property (nonatomic, assign) BOOL userInteractionEnabled;
+
+/**
+*  Determines whether to track the link URL under the cursor when the context menu is triggered, exposing it via UnifyWebViewContextMenu.linkUrl.
+*  - Possible Values: YES, NO
+*  - Default Value: NO
+*  - Supported WebView Types: UnifyWebViewType_WKWebView
+*/
+@property (nonatomic, assign) BOOL isContextMenuLinkTrackingEnabled;
+
+/**
 *  Determines whether to allow non-HTTPS requests to be upgraded to HTTPS, especially when loading non-HTTPS resources on HTTPS pages.
 *  - Possible Values: YES, NO
 *  - Default Value: YES
@@ -309,7 +362,7 @@ API_AVAILABLE(macos(10.11))
 *  - Default Value: NO
 *  - Supported WebView Types: UnifyWebViewType_WKWebView
 */
-//@property (nonatomic, assign) BOOL isSpellCheckEnabled;
+@property (nonatomic, assign) BOOL isSpellCheckEnabled;
 
 /**
 *  Determines whether to keep the WebView background transparent
@@ -318,6 +371,15 @@ API_AVAILABLE(macos(10.11))
 *  - Supported WebView Types: UnifyWebViewType_WKWebView
 */
 @property (nonatomic, assign) BOOL isDrawsTransparentBackgroundEnabled;
+
+/**
+*  Controls whether the WebView should disable its default background drawing
+*  YES keeps the system default behavior, NO explicitly disables default background drawing.
+*  - Possible Values: YES, NO
+*  - Default Value: YES
+*  - Supported WebView Types: V2 for UnifyWebViewType_WKWebView
+*/
+@property (nonatomic, assign) BOOL isDrawsBackgroundEnabled;
 
 /**
 *  The loading wording below the progress indicator
@@ -352,14 +414,6 @@ API_AVAILABLE(macos(10.11))
 @property (nonatomic, assign) BOOL isBlankPageDetectionEnabled;
 
 //MARK: - Performance & Resource Management
-
-/**
-*  Determines whether to display the loading interface provided by the unified WebView.
-*  - Possible Values: YES, NO
-*  - Default Value: YES
-*  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
-*/
-@property (nonatomic, assign) BOOL isShowLoadingEnabled;
 
 /**
 *  Determines whether to hide the problem report button in the error view.
@@ -405,6 +459,14 @@ API_AVAILABLE(macos(10.11))
 @property (nonatomic, assign) BOOL isPerformDownloadInNavigationEnabled;
 
 /**
+*  A custom full user agent string to override the default WKWebView user agent.
+*  - Possible Values: Empty string or any valid user agent string
+*  - Default Value: Empty string
+*  - Supported WebView Types: UnifyWebViewType_WKWebView
+*/
+@property (nonatomic, strong) NSString *customUserAgent;
+
+/**
 *  A custom suffix for the user agent string, used to identify the WebView or additional information.
 *  - Possible Values: Empty string or custom string (e.g., @" MyApp/1.0")
 *  - Default Value: Empty string
@@ -427,6 +489,15 @@ API_AVAILABLE(macos(10.11))
 *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
 */
 @property (nonatomic, strong) NSString *cacheAndCookieIdentify;
+
+/**
+*  Determines whether the cache and cookies are shared across supported Zoom processes.
+*  !!! Cannot cover all cases, if use, please contact UnifyWebView team for details
+*  - Possible Values: YES, NO
+*  - Default Value: NO
+*  - Supported WebView Types: UnifyWebViewType_WKWebView V1
+*/
+@property (nonatomic, assign) BOOL isShareCache DEPRECATED_MSG_ATTRIBUTE("Cannot cover all cases, if use, please contact UnifyWebView team for details");
 
 /**
 *  Determines whether to enable privacy mode. Similar to Chrome's privacy mode, cookies and cache are no longer stored on the hard disk.
@@ -498,7 +569,25 @@ API_AVAILABLE(macos(10.11))
 */
 @property (nonatomic, assign) BOOL stopPreviousLoadWhenNavigate;
 
+/**
+ *  Determines whether to display the context menu (e.g., right-click options).
+ *  - Possible Values: YES, NO
+ *  - Default Value: NO
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) BOOL needShowContextMenu;
+
 //MARK: - Deprecated Properties
+
+/**
+*  Determines whether to display the loading interface provided by the unified WebView.
+*  This property is deprecated for V2. V2 always uses the unified WebView loading UI,
+*  and setting this property to NO will not disable it.
+*  - Possible Values: YES, NO
+*  - Default Value: NO
+*  - Supported WebView Types: UnifyWebViewType_WKWebView (V1 only)
+*/
+@property (nonatomic, assign) BOOL isShowLoadingEnabled DEPRECATED_MSG_ATTRIBUTE("This property is deprecated for V2 and ignored there");
 
 /**
  *  Sets the display name of the process for management and monitoring purposes. Deprecated.
@@ -533,19 +622,25 @@ API_AVAILABLE(macos(10.11))
 @property (nonatomic, strong) NSArray<id<ZMUnifyWebViewURLSchemeHandlerProtocol>> *handlerArray DEPRECATED_MSG_ATTRIBUTE("This property is deprecated");
 
 /**
-*  Determines whether to display the context menu (e.g., right-click options). Deprecated.
-*  - Possible Values: YES, NO
-*  - Default Value: YES
-*  - Supported WebView Types: UnifyWebViewType_WKWebView
-*/
-@property (nonatomic, assign) BOOL needShowContextMenu DEPRECATED_MSG_ATTRIBUTE("This property is deprecated");
-
-/**
 *  Returns an identifier string for the data store, used to distinguish between different data store instances. Deprecated.
 *  - Return Value: An identifier string for the data store.
 *  - Supported WebView Types: UnifyWebViewType_WKWebView
 */
 - (NSString *)dataStoreIdentity DEPRECATED_MSG_ATTRIBUTE("This method is deprecated");
+
+/**
+ *For WebKit
+ *  Opaque token for the WKWebViewConfiguration supplied by window.open.
+ *  Resolved internally via ZMUnifyWebViewDataHelper when creating the child webview (single-use).
+ *For CEF
+ *  WebviewGUID for window.open.
+ *  - Default Value: nil
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, copy, nullable) NSString *windowOpenToken;
+
+/// internal use only
+@property (nonatomic, copy) NSString *windowOpenHomeURL;
 
 @end
 
@@ -793,6 +888,42 @@ API_AVAILABLE(macos(10.11))
  */
 @property (nonatomic, strong, nullable) NSArray<ZMUnifyWebViewIntroImageItemPara *> *carouselItems;
 
+// ===== Retry State Configuration =====
+
+/**
+ *  Title text shown on the retry page when download fails or is cancelled
+ *  - Possible Values: Any title text for retry state
+ *  - Default Value: Uses localized "LN_UnifyWebview_Cef_Downloading_Retry_Title_1099494"
+ *  - Supported WebView Types: UnifyWebViewType_CEF
+ */
+@property (nonatomic, strong, nullable) NSString *retryTitle;
+
+/**
+ *  Subtitle text shown on the retry page when download fails or is cancelled
+ *  - Possible Values: Any subtitle/description text for retry state
+ *  - Default Value: Uses localized "LN_UnifyWebview_Cef_Downloading_Retry_SubTitle_1099494"
+ *  - Supported WebView Types: UnifyWebViewType_CEF
+ */
+@property (nonatomic, strong, nullable) NSString *retrySubtitle;
+
+/**
+ *  Label text for the retry button on the retry page
+ *  - Possible Values: Any button label text
+ *  - Default Value: Uses localized "Retry"
+ *  - Supported WebView Types: UnifyWebViewType_CEF
+ */
+@property (nonatomic, strong, nullable) NSString *retryButtonLabel;
+
+// ===== Cancel Button Behavior =====
+
+/**
+ *  Delay (in seconds) before the cancel button becomes visible after the download starts.
+ *  - Possible Values: Any non-negative number of seconds. <= 0 means show immediately.
+ *  - Default Value: 120 (cancel button shows 120s after it becomes available)
+ *  - Supported WebView Types: UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) NSTimeInterval cancelButtonShowDelay;
+
 @end
 
 
@@ -807,6 +938,95 @@ API_AVAILABLE(macos(10.11))
  *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
  */
 @property (nonatomic, strong) NSString* url;
+
+/**
+ *  Requested window width in points
+ *  - Default Value: 0 (use caller's default)
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) int width;
+
+/**
+ *  Requested window height in points
+ *  - Default Value: 0 (use caller's default)
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) int height;
+
+/**
+ *  Requested window x position in points
+ *  - Default Value: 0
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) int x;
+
+/**
+ *  Requested window y position in points
+ *  - Default Value: 0
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) int y;
+
+/**
+ *  Whether the window size was explicitly specified by the caller
+ *  - Default Value: NO
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) BOOL hasSize;
+
+/**
+ *  Whether the window position was explicitly specified by the caller
+ *  - Default Value: NO
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) BOOL hasPosition;
+
+/**
+ *  Whether the title bar should be displayed in the new window
+ *  - Default Value: YES
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) BOOL isShowTitleBar;
+
+/**
+ *  Whether the status bar should be displayed in the new window
+ *  - Default Value: NO
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) BOOL isShowStatusBar;
+
+/**
+ *  Whether the tool bars should be displayed in the new window
+ *  - Default Value: NO
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) BOOL isShowToolBars;
+
+/**
+ *  Whether the new window is resizable
+ *  - Default Value: YES
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) BOOL isAllowResize;
+
+/**
+ *  Whether the window open was triggered by a user-activated link (e.g. click)
+ *  - Default Value: NO
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) BOOL isLinkActivated;
+
+/**
+ *WebKit
+ *  Opaque token for the WKWebViewConfiguration WebKit supplied for this window.open.
+ *  Resolve with -[ZMUnifyWebViewDataHelper takeWindowOpenConfigurationForToken:] once when creating the child webview (single-use).
+ *CEF
+ *  WebviewGUID for window.open.
+ *  - Default Value: nil
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, copy, nullable) NSString *windowOpenToken;
+
 @end
 
 /// Result object for new window opening operations
@@ -828,6 +1048,14 @@ API_AVAILABLE(macos(10.11))
  *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
  */
 @property (nonatomic, assign) BOOL handled;
+
+/**
+ *  The GUID of the newly created WebView instance
+ *  - Possible Values: NSString representing the unique identifier of the new WebView, or nil if not created
+ *  - Default Value: nil
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, copy, nullable) NSString *webviewGuid;
 @end
 
 /// Parameters object for download before callback
@@ -921,6 +1149,14 @@ API_AVAILABLE(macos(10.11))
  *  - Supported WebView Types: UnifyWebViewType_WKWebView
  */
 @property (nonatomic, assign) BOOL allowsContextMenuPlugIns;
+
+/**
+ *  Link URL associated with the context menu target
+ *  - Possible Values: URL string for the clicked link, or nil/empty when not on a link
+ *  - Default Value: nil
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, strong, nullable) NSString *linkUrl;
 @end
 /// Parameters object for error page display in the WebView
 /// This class contains the information needed to display a custom error page
@@ -1071,6 +1307,50 @@ typedef NS_ENUM(NSInteger, ZMHybridPackage) {
  *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
  */
 @property (nonatomic, strong, nullable) NSString *payloadJsonString;
+
+@end
+
+/// Parameters object for permission request callbacks
+/// Contains the details of a permission request initiated by the WebView
+@interface ZMUnifyWebViewPermissionRequestParam : NSObject
+
+/**
+ *  The URL of the page requesting the permission
+ *  - Possible Values: Any valid URL string
+ *  - Default Value: nil
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, strong, nullable) NSString *url;
+
+/**
+ *  The type of permission being requested (e.g., microphone, camera)
+ *  - Possible Values: UnifyWebViewPermissionType enum values
+ *  - Default Value: UnifyWebViewPermissionType_Unknown
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) enum UnifyWebViewPermissionType permissionType;
+
+@end
+
+/// Result object for permission request callback response
+/// Contains the delegate's decision on how to handle the permission request
+@interface ZMUnifyWebViewPermissionRequestResult : NSObject
+
+/**
+ *  The permission state decision
+ *  - Possible Values: UnifyWebViewPermissionState enum values (Default, Allow, Deny)
+ *  - Default Value: UnifyWebViewPermissionState_Default
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) enum UnifyWebViewPermissionState permissionState;
+
+/**
+ *  Whether the delegate handled the permission request
+ *  - Possible Values: YES (delegate handled), NO (use default handling)
+ *  - Default Value: NO
+ *  - Supported WebView Types: UnifyWebViewType_WKWebView, UnifyWebViewType_CEF
+ */
+@property (nonatomic, assign) BOOL handled;
 
 @end
 

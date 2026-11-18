@@ -34,8 +34,12 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/ZMQuerySettingOptions.h>
 #import <zVideoUIBridge/ZMAIDynamicNotifier.h>
 #import <zVideoUIBridge/ZMMTDynamicLayoutModel.h>
+#import <zVideoUIBridge/ZMMTCustomRecordingInfo.h>
 #import <zVideoUIBridge/ZMMTMeetingInfoHelper.h>
 #import <zVideoUIBridge/ZMMTClinicalNoteHelper.h>
+#import <zVideoUIBridge/ZMDocHelper.h>
+#import <zVideoUIBridge/ZMMTDocSharePickerRecentFileItem.h>
+#import <zVideoUIBridge/ZMMTDocSharePickerEmptyStateStrings.h>
 
 #import <zVideoUIBridge/NSView+ZmmtKit.h>
 #import <zVideoUIBridge/NSWindow+ZmmtKit.h>
@@ -49,6 +53,33 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/ZMMTAudioUUIHelper.h>
 
 // CommonUI
+
+#import <zVideoUIBridge/ZMMTMultipleSelectTableView.h>
+#import <zVideoUIBridge/ZMMTMultipleSelectTextAdapter.h>
+#import <zVideoUIBridge/ZMMTMessageTextView.h>
+#import <zVideoUIBridge/ZMMTTableViewRowHeightCalculator.h>
+#import <zVideoUIBridge/ZMMTHeightCalculableProtocol.h>
+#import <zVideoUIBridge/ZMMTSelectableTextItemProtocol.h>
+#import <zVideoUIBridge/ZMMultipleSelectCellViewProtocol.h>
+
+#import <zVideoUIBridge/ZMMenu.h>
+#import <zVideoUIBridge/ZMMenuItem.h>
+#import <zVideoUIBridge/ZMMenuWindow.h>
+#import <zVideoUIBridge/ZMMTCheckboxItemView.h>
+#import <zVideoUIBridge/ZMMTSwitchItemView.h>
+#import <zVideoUIBridge/ZMStepperButton.h>
+
+#import <zVideoUIBridge/ZMMTTranscriptUser.h>
+#import <zVideoUIBridge/ZMMTTranscriptMessage.h>
+#import <zVideoUIBridge/ZMMTTranscriptViewController.h>
+#import <zVideoUIBridge/ZMMTTranscriptUserInfoCellView.h>
+#import <zVideoUIBridge/ZMMTTranscriptTextCellView.h>
+#import <zVideoUIBridge/ZMMTTranscriptStatusCellView.h>
+#import <zVideoUIBridge/ZMMTTranscriptTextSearcher.h>
+#import <zVideoUIBridge/ZMCCLanguage.h>
+#import <zVideoUIBridge/ZMCCPopupButton.h>
+#import <zVideoUIBridge/ZMCCSelectCaptionsLanguageConfig.h>
+#import <zVideoUIBridge/ZMCCSubtitlesContainer.h>
 
 #import <zVideoUIBridge/ZMMTBaseVideoCellView.h>
 #import <zVideoUIBridge/ZMMTRender.h>
@@ -73,8 +104,9 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/ZMTimerMgr.h>
 
 #import <zVideoUIBridge/ZMGuideHelpButton.h>
-#import <zVideoUIBridge/ZMMTBadgeView.h>
 #import <zVideoUIBridge/ZMMTImageView.h>
+#import <zVideoUIBridge/ZMMTAvatarViewProtocol.h>
+#import <zVideoUIBridge/ZMMTAvatarView.h>
 #import <zVideoUIBridge/ZMMTLoadingView.h>
 #import <zVideoUIBridge/ZMPlistTextField.h>
 #import <zVideoUIBridge/ZMMTCustomTextView.h>
@@ -91,23 +123,48 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/ZMConfHelper.h>
 #import <zVideoUIBridge/ZMUser+NameTag.h>
 #import <zVideoUIBridge/ZMUser+SmartTag.h>
+#import <zVideoUIBridge/ZMUser+AppTag.h>
 #import <zVideoUIBridge/ZMShareSource.h>
 #import <zVideoUIBridge/ZMSharePort.h>
 #import <zVideoUIBridge/ZMRecordHelper.h>
 #import <zVideoUIBridge/ZMVideoHelper.h>
-#import <zVideoUIBridge/ZMAvatarHelper.h>
 #import <zVideoUIBridge/ZMBOHelper.h>
 #import <zVideoUIBridge/ZMMTClipsHelper.h>
 #import <zVideoUIBridge/IZMMTStudioHelper.h>
 #import <zVideoUIBridge/ZMMTCallCenter.h>
 #import <zVideoUIBridge/ZMPBOHelper.h>
+#import <zVideoUIBridge/ZMMTRosterList.h>
+#import <zVideoUIBridge/ZMPBOUserModel.h>
 #import <zVideoUIBridge/ZMMTReactionHelper.h>
 #import <zVideoUIBridge/ZMMTShareHelper.h>
+#import <zVideoUIBridge/ZMMTRemoteControlHelper.h>
+#import <zVideoUIBridge/ZMMTSlideControlHelper.h>
+#import <zVideoUIBridge/ZMMTAnnotationHelper.h>
 #import <zVideoUIBridge/ZMMTSummaryHelper.h>
 #import <zVideoUIBridge/ZMMTCameraControlHelper.h>
 #import <zVideoUIBridge/ZMMEventTracker.h>
 #import <zVideoUIBridge/ZMMTUniversalUIProtocol.h>
 #import <zVideoUIBridge/ZMMTQAStatusProtocol.h>
+#import <zVideoUIBridge/IZMMTLiveStreamMgr.h>
+#import <zVideoUIBridge/IZMMTMediaStreamMgr.h>
+#import <zVideoUIBridge/IZMMTInterpretExMgr.h>
+#import <zVideoUIBridge/IZMMTBOControlMgr.h>
+#import <zVideoUIBridge/IZMMTBOBroadcastVoiceMgr.h>
+#import <zVideoUIBridge/IZMPBOControlMgr.h>
+#import <zVideoUIBridge/IZMBreakoutRoomMgr.h>
+#import <zVideoUIBridge/IZMPBOMgr.h>
+#import <zVideoUIBridge/IZPConfToolbarTipsMgr.h>
+#import <zVideoUIBridge/ZMMultiConfEventDelegate.h>
+#import <zVideoUIBridge/IZMMTMultiShareRequestMgr.h>
+#import <zVideoUIBridge/IZMMTStudioMgr.h>
+#import <zVideoUIBridge/IZMFitMenuHelper.h>
+#import <zVideoUIBridge/IZMMTVideoCellView.h>
+#import <zVideoUIBridge/IZMMTProductionStudioViewController.h>
+#import <zVideoUIBridge/IZMMTEventV2Tracker.h>
+#import <zVideoUIBridge/IZMMTSimuliveMgr.h>
+#import <zVideoUIBridge/IZMMTCameraControlMgr.h>
+#import <zVideoUIBridge/ZMMTUIModuleDelegate.h>
+#import <zVideoUIBridge/IZMMEventTrackerProtocol.h>
 #pragma clang diagnostic pop
 #endif
 
@@ -118,6 +175,7 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/IZMMTPinVideoMgr.h>
 #import <zVideoUIBridge/ZMMTConfigHelper.h>
 #import <zVideoUIBridge/ZPConfHelper.h>
+#import <zVideoUIBridge/ZMAvatarHelper.h>
 #import <zVideoUIBridge/ZMShareSource.h>
 #import <zVideoUIBridge/IZMMTShareViewMgr.h>
 #import <zVideoUIBridge/IZMMTSharingViewController.h>
@@ -142,11 +200,13 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/IZMMTDynamicViewMgr.h>
 #import <zVideoUIBridge/IZMMTGroupMgr.h>
 #import <zVideoUIBridge/IZMMTVideoMgr.h>
+#import <zVideoUIBridge/IZMMTWindowModeMgr.h>
 #import <zVideoUIBridge/IZMMTPlistMgr.h>
 #import <zVideoUIBridge/IZMMTWhiteboardMgr.h>
 #import <zVideoUIBridge/IZMMTNotesMgr.h>
 #import <zVideoUIBridge/IZMMTClipsShareMgr.h>
 #import <zVideoUIBridge/IZMMTCustomViewMgr.h>
+#import <zVideoUIBridge/IZMMTCustomSharePort.h>
 #import <zVideoUIBridge/IZPConfLayoutMgr.h>
 #import <zVideoUIBridge/IZMMTVideoContentProtocol.h>
 #import <zVideoUIBridge/ZMMTShareStatusProtocol.h>
@@ -159,12 +219,15 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/IZMMTIQMgr.h>
 #import <zVideoUIBridge/IZMMTCompanionZEMgr.h>
 #import <zVideoUIBridge/IZMClosedCaptionMgr.h>
+#import <zVideoUIBridge/IZMMTBreakoutSessionMgr.h>
+#import <zVideoUIBridge/IZMMTCCEventProtocol.h>
 #import <zVideoUIBridge/IZMMTTranscriptMgr.h>
 #import <zVideoUIBridge/IZMConfReactionsMgr.h>
 #import <zVideoUIBridge/IZMMTClinicalNoteMgr.h>
 #import <zVideoUIBridge/IZPAlertManager.h>
 #import <zVideoUIBridge/IZMGreenRoomMgr.h>
 #import <zVideoUIBridge/IZMMTTransitionMgr.h>
+#import <zVideoUIBridge/IZMMTConsolidatedDisclaimerMgr.h>
 #import <zVideoUIBridge/IZMMTSidePanelMgr.h>
 #import <zVideoUIBridge/ZMMTAvatarProtocol.h>
 #import <zVideoUIBridge/IZMMTNewMeetingInfoMgr.h>
@@ -173,6 +236,7 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/IZMMTVoiceTranslationMgr.h>
 #import <zVideoUIBridge/IZMMTMyNotesMgr.h>
 #import <zVideoUIBridge/IZMMTToastMgr.h>
+#import <zVideoUIBridge/IZMMTAWDLNoticeMgr.h>
 #import <zVideoUIBridge/ZMMTWindow.h>
 #import <zVideoUIBridge/IZMMTWizardMgr.h>
 #import <zVideoUIBridge/ZMMTOnlineBusinessProtocol.h>
@@ -180,9 +244,11 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/IZMMTShortcutMgr.h>
 #import <zVideoUIBridge/IZMLeaveMeetingMgr.h>
 #import <zVideoUIBridge/IZMAuxUIMgr.h>
+#import <zVideoUIBridge/IZMMTAvatarViewMgr.h>
 #import <zVideoUIBridge/IZMMTAudioMgr.h>
 #import <zVideoUIBridge/IZMLipsyncMgr.h>
 #import <zVideoUIBridge/IZMMTAIAccessibleMgr.h>
+#import <zVideoUIBridge/IZMMTArchiveMgr.h>
 #import <zVideoUIBridge/IZMMTVideoLayoutMgr.h>
 #import <zVideoUIBridge/IZMMTMiniViewMgr.h>
 #import <zVideoUIBridge/IZMMTWaitingViewMgr.h>
@@ -198,10 +264,15 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/IZMMTImprovedCompanionMgr.h>
 #import <zVideoUIBridge/IZMMTToolbarMgr.h>
 #import <zVideoUIBridge/IZMConfTipMgr.h>
+#import <zVideoUIBridge/IZMMTHostToolMgr.h>
+#import <zVideoUIBridge/IZMMTSettingMgr.h>
+#import <zVideoUIBridge/IZMTopbarMgr.h>
 #import <zVideoUIBridge/IZMSDKFeaturesMgr.h>
+#import <zVideoUIBridge/IZMSelfViewMiniViewMgr.h>
 // Video Render View Protocol (for StudioUI usage)
 #import <zVideoUIBridge/IZMMTVideoRenderView.h>
 #import <zVideoUIBridge/IZMMTVideoRenderViewFactory.h>
+#import <zVideoUIBridge/IZMMTThemeMgr.h>
 
 // Video Cell View Protocols
 #import <zVideoUIBridge/IZMThumbnailVideoCellView.h>
@@ -210,6 +281,26 @@ FOUNDATION_EXPORT const unsigned char VideoUIBridgeVersionString[];
 #import <zVideoUIBridge/IZMMTPolicyUpdateProtocol.h>
 #endif//__cplusplus
 #import <zVideoUIBridge/ZMTopbarStatusPortocol.h>
+
+//Protocols - Shared (ObjC safe)
+#import <zVideoUIBridge/IZMMTWallpaperViewController.h>
+#import <zVideoUIBridge/IZMPostMeetingMgr.h>
+#import <zVideoUIBridge/IZMMTPollingMgr.h>
+#import <zVideoUIBridge/IZMMTGalleryPlusMgr.h>
+#import <zVideoUIBridge/IZMLiveStreamToLobbyMgr.h>
+#import <zVideoUIBridge/IZMFeatureInitiator.h>
+#import <zVideoUIBridge/IZMFitMgr.h>
+#import <zVideoUIBridge/IZMFitBar.h>
+#import <zVideoUIBridge/IZMMTScreenResolutionMgr.h>
+#import <zVideoUIBridge/IZMMTZrcMgr.h>
+
+//Protocols - Protocol (ObjC safe)
+#import <zVideoUIBridge/IZMMTAnnotationEventProtocol.h>
+#import <zVideoUIBridge/ZMMTGalleryPlusUpdateProtocol.h>
+#import <zVideoUIBridge/ZMMTToolbarTipEventsProtocol.h>
+
+//Protocols - Root
+#import <zVideoUIBridge/ZMVideoUIBridgeProtocol.h>
 
 //Forward Class
 #import <zVideoUIBridge/ZMMTVideoCellView.h>

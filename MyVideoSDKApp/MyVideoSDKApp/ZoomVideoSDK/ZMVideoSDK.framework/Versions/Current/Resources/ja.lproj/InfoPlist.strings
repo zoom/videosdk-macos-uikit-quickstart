@@ -6,3 +6,5 @@ NSLocalNetworkUsageDescription= "この処理は、Zoom クライアントで Ai
 NSBluetoothAlwaysUsageDescription= "許可すると Zoom Workplace が近くの Zoom Rooms を検出できるようになります。";
 NSCameraUsageDescription = "参加者に画面を表示するには、Zoomにカメラへのアクセス権限が要求されます。";
 NSAudioCaptureUsageDescription = "他のアプリからオーディオをキャプチャするには、アクセスを許可してください。";
+
+CFBundleDisplayName = "Zoom";

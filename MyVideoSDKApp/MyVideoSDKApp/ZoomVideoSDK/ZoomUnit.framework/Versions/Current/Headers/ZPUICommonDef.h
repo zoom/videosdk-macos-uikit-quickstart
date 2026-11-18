@@ -17,6 +17,7 @@
 #define keyZoomusMeetingLeaveIsOnZoomMeeting @"keyZoomusMeetingLeaveIsOnZoomMeeting"
 #define keyZoomusMeetingLeaveConnectFailedParam @"keyZoomusMeetingLeaveConnectFailedParam"
 #define keyZoomusMeetingLeaveMeetingID @"keyZoomusMeetingLeaveMeetingID"
+#define keyZoomusMeetingLeaveNetworkErrorCode @"keyZoomusMeetingLeaveNetworkErrorCode"
 
 typedef enum
 {
@@ -67,6 +68,8 @@ typedef enum
 
 #define kMeetingAssets @"kMeetingAssets"
 #define kMTNoticeInfo @"kMTNoticeInfo"
+
+static const CGFloat kZMWorkplaceMasterWindowHeaderHeight = 52.f;
 
 #endif
 

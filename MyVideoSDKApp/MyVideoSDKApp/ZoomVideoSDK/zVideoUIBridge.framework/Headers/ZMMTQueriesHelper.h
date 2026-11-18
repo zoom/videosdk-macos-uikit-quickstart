@@ -97,7 +97,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isQueryOn;
 - (BOOL)isSmartRecordingOn;
 - (BOOL)onlySmartRecordingOnAndForbidStop;
-- (BOOL)turnOffAICompanionByHostCohost:(long long)aicOption deleteAssets:(BOOL)deleteAssets;
+- (BOOL)switchAicFeatures:(long long)aicOption deleteAssets:(BOOL)deleteAssets;
 - (BOOL)turnOffAICompanionByAttendee:(long long)aicOption deleteAssets:(BOOL)deleteAssets;
 - (BOOL)requestToSwitchAICompanion:(long long)aicOption switchAction:(NSInteger)switchAction;
 - (BOOL)isAICompanionTurnOffFlowEnabled;

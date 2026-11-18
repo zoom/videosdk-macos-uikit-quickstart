@@ -11,6 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#define ZM_MORE_PANEL_MAX_HEIGHT 500.0
+
 @class ZMMorePanel;
 @protocol ZMMorePanelKeyDownDelegate <NSObject>
 @optional
@@ -31,17 +33,21 @@ typedef NSObject<NSPasteboardWriting, NSPasteboardReading> * _Nullable (^ZMMoreP
 
 @interface ZMMorePanel : ZMBaseView
 
+/// Designated initializer. Callers must use this initializer so the scroll view is
+/// configured before the panel builds its UI; do not create ZMMorePanel with init/initWithFrame:.
+- (instancetype)initWithScrolling:(BOOL)enableScrolling NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithFrame:(NSRect)frameRect NS_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder *)coder NS_UNAVAILABLE;
+
 // Customization properties
-@property (nonatomic, assign) NSSize cellSize;  // Default: {72, 56}
 @property (nonatomic, copy) NSString *dragType;  // Default: @"us.zoom.maintabs"
-@property (nonatomic, copy) NSString *cellIdentifier;  // Default: @"ZMMorePanelCell"
 @property (nonatomic, assign) BOOL draggingEnabled;  // Default: YES (dragging enabled)
 @property (nonatomic, assign) BOOL showResetControl;  // Default: YES (show reset control)
 @property (nonatomic, strong) NSColor *dividerColor;
 
 // Color customization blocks
-@property (nonatomic, copy, nullable) NSColor * (^cellBackgroundColorProvider)(ZMTabItemData *itemData);
-
 // Pasteboard writer customization
 @property (nonatomic, copy, nullable) ZMMorePanelPasteboardWriterBlock pasteboardWriterProvider;
 
@@ -52,6 +58,9 @@ typedef NSObject<NSPasteboardWriting, NSPasteboardReading> * _Nullable (^ZMMoreP
 // Callback handlers
 @property (nonatomic, copy, nullable) void (^onResetHandler)(void);
 @property (nonatomic, copy, nullable) void (^onCellClickHandler)(ZMTabItemData *itemData);
+/// Fired when a cell is materialized for display (initial + scrolled into view).
+/// Used by hosts to lazily load per-cell resources (e.g. zApp tab icons).
+@property (nonatomic, copy, nullable) void (^onCellWillDisplayHandler)(ZMTabItemData *itemData);
 @property (nonatomic, copy, nullable) void (^onCellRightMouseClickHandler)(ZMTabItemData *itemData, NSEvent *event, NSView *cellView);
 @property (nonatomic, copy, nullable) void (^onCellsReorderedHandler)(ZMTabItemData *draggedItem, ZMTabItemData * _Nullable targetItem);
 @property (nonatomic, copy, nullable) void (^onSizeChangedHandler)(NSSize newSize);
@@ -79,6 +88,10 @@ typedef NSObject<NSPasteboardWriting, NSPasteboardReading> * _Nullable (^ZMMoreP
 
 - (void)setTopSectionData:(NSArray<ZMTabItemData *> *)dataArray;
 - (void)setBottomSectionData:(NSArray<ZMTabItemData *> *)dataArray;
+- (void)cancelIncomingDragPreview;
+
+/// Content size computed in -updateLayout; use instead of -frame when the panel is a window contentView (AppKit pins -frame to the old window rect).
+@property (nonatomic, readonly) NSSize contentFitSize;
 
 - (NSArray<ZMTabItemData *> *)topSectionData;
 - (NSArray<ZMTabItemData *> *)bottomSectionData;
@@ -86,6 +99,7 @@ typedef NSObject<NSPasteboardWriting, NSPasteboardReading> * _Nullable (^ZMMoreP
 - (void)updateLayout;
 
 // Reload/Remove/Add methods for pinned items
+- (void)reloadItem:(ZMTabItemData *)item;
 - (void)reloadTopItems:(NSArray<NSString *> *)itemIDs;
 - (void)removeTopItems:(NSArray<NSString *> *)itemIDs;
 - (void)addTopItems:(NSArray<ZMTabItemData *> *)items;
@@ -132,4 +146,3 @@ typedef NSObject<NSPasteboardWriting, NSPasteboardReading> * _Nullable (^ZMMoreP
 @end
 
 NS_ASSUME_NONNULL_END
-

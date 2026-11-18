@@ -6,3 +6,5 @@ NSCalendarsFullAccessUsageDescription= "為能顯示您的活動，Zoom Workplac
 NSLocalNetworkUsageDescription= "需要執行此程序以在Zoom用戶端中啟用AirPlay和點對點會議。";
 NSBluetoothAlwaysUsageDescription= "這將允許Zoom Workplace尋找附近的Zoom Rooms。";
 NSAudioCaptureUsageDescription = "請允許存取，以便透過其他應用程式擷取音訊。";
+
+CFBundleDisplayName = "Zoom";

@@ -107,11 +107,93 @@ typedef NS_ENUM(NSInteger, ZMSendingShareType){
 - (void)closeSyncAlert;
 @end
 
-@class ZMMTViewType;
+/// Share sending side - Slide control manager (UI only)
+@protocol IZMMTSlideControlMgr <NSObject>
+
+@property (nonatomic, weak, nullable) ZMConfSession *confSession;
+
+- (void)cleanUp;
+
+- (BOOL)slideControlWindowIsShowing;
+- (void)showSlideControlWindowWithViewFrameInScreen:(NSRect)frame inScreen:(NSScreen *)screen;
+- (void)closeSlideControlWindow;
+
+@end
+
+/// Share sending side - Remote control manager
+@protocol IZMMTRemoteControlMgr <NSObject>
+
+@property (nonatomic, weak, nullable) ZMConfSession *confSession;
+
+// Lifecycle
+- (void)cleanUp;
+
+// High-level actions
+- (void)stopRemoteControl;
+- (void)grabRemoteControl;
+- (void)allowUserRemoteControlByUser:(ZMUser *)inUser;
+- (void)forbidUserRemoteControlByUser:(ZMUser *)inUser;
+- (void)receiveEvent:(NSEvent *)inEvent;
+- (void)gainControl;
+
+// Sink adapter callbacks (B group - kept as direct calls)
+- (void)remoteControlRequestReceivedWithUser:(ZMUser *)inUser;
+- (void)remoteControlPrivilegeChangedWithUser:(ZMUser *)inUser newControlUser:(ZMUser *)inNewControlUser;
+- (void)remoteControlStatusChangedWithUser:(ZMUser *)inUser newControlUser:(ZMUser *)inNewControlUser;
+
+// UI window management
+- (BOOL)isRemoteControlWindowShowing;
+- (void)showRemoteControlWindow:(NSRect)buttonFrame withScreen:(NSScreen *)screen;
+- (void)closeRemoteControlWindow;
+
+// Filter window (C group - kept as direct calls)
+- (void)try2UpdateAllIgnoreMouseEventWindows;
+- (void)try2UpdateIgnoreMouseEventZoomWindow:(CGWindowID)winID;
+
+@end
+
+/// Share sending side - Annotation (Presenter) manager
+@protocol IZMMTAnnotationMgr <NSObject>
+
+@property (nonatomic, weak, nullable) ZMConfSession *confSession;
+
+- (void)cleanUp;
+
+- (void)showBOShareAlertWithTarge:(id)target action:(SEL)action;
+- (void)closeBOShareAlert;
+
+@end
+
+/// Share sending side - Remote support receiver (handles support requests from host)
+@protocol IZMMTRemoteSupportRecvMgr <NSObject>
+
+@property (nonatomic, weak, nullable) ZMConfSession *confSession;
+
+- (void)cleanUp;
+- (void)onSupportCenterResponseRemoteControlWithUser:(ZMUser *)inUser type:(int)inType isApproved:(BOOL)inApproved;
+- (void)supportCenterRequestRemoteControlReceivedWithUser:(ZMUser *)inUser type:(int)inType;
+- (void)supportCenterRequestRemoteControlInstallServerReceivedWithUser:(ZMUser *)inUser type:(int)inType;
+- (void)setAutoShareController:(ZMUser *)inUser;
+@end
+
+/// Remote support request sender (host sends support requests to attendees)
+@protocol IZMMTRemoteSupportRequestMgr <NSObject>
+
+@property (nonatomic, weak, nullable) ZMConfSession *confSession;
+
+- (void)cleanUp;
+- (void)hideUserListWindow;
+- (void)onSupportCenterRequestRemoteControlWithType:(int)inType;
+- (void)supportCenterResponseRemoteControlReceivedWithUser:(ZMUser *)inUser type:(int)inType isApproved:(BOOL)inApproved;
+- (void)userJoinedByUser:(ZMUser *)inUser;
+- (void)userLeftByUser:(ZMUser *)inUser;
+@end
 
 @protocol IZMSharingSendingMgr <NSObject>
 /// Whether private share is enabled
 @property (nonatomic, readonly) BOOL isPrivateShareEnabled;
+/// Window IDs currently being shared
+@property (nonatomic, readonly) NSArray<NSNumber *> *sharingWindowIDs;
 /// Send share options with private share setting
 - (void)sendShareOptionsWithPrivateShare:(BOOL)isPrivate;
 /// Assign private share receivers
@@ -143,10 +225,6 @@ typedef NS_ENUM(NSInteger, ZMSendingShareType){
 - (void)checkAndSetShareSettingType:(int)inType;
 - (BOOL)canShowShareSettingMenu;
 
-// ToolSuite
-- (void)showShareSettingWindow;
-- (void)closeShareSettingWindow;
-
 - (void)showSelectShareWindow;
 - (void)closeSelectShareWindow;
 
@@ -160,6 +238,7 @@ typedef NS_ENUM(NSInteger, ZMSendingShareType){
 - (BOOL)startShareWindowWithWindowId:(NSNumber *)windowId;
 
 - (void)onWatermarkStatusChanged;
+- (void)onHighFrameRateContentSharingStatusChanged:(BOOL)shareEnable;
 
 - (BOOL)mainWindowVisible;
 - (BOOL)mainWindowVisibleInSendingShare;
@@ -173,6 +252,9 @@ typedef NS_ENUM(NSInteger, ZMSendingShareType){
 /// @param type View type
 /// @return View controller instance
 - (nullable id<IZMMTSharingViewController>)newShareViewControllerWithType:(ZMMTType)type;
+- (nullable id<IZMMTSharingViewController>)getShareViewControllerWithType:(ZMMTType)type;
+
+@property (nonatomic, readonly, nullable) ZMShareSource *mainLastShareSource;
 
 @end
 
@@ -183,6 +265,27 @@ typedef NS_ENUM(NSInteger, ZMSendingShareType){
 
 @optional
 - (void)shareSettingTypeChanged:(int)inNewType confSession:(ZMConfSession *)confSession;
+
+@end
+
+/**
+ * @poster ZMMTEventPoster
+ */
+@protocol ZMRemoteControlRecvStatusProtocol <NSObject>
+
+@optional
+- (void)onRCRecvStatusChanged;
+
+@end
+
+/**
+ * @poster ZMMTEventPoster
+ */
+@protocol ZMSlideControlEventProtocol <NSObject>
+
+@optional
+- (void)onSlideControlBadgeChanged:(int)badgeCount;
+- (void)onSlideControlStopped;
 
 @end
 

@@ -78,6 +78,15 @@ typedef enum : NSUInteger {
 @property (nonatomic,assign) BOOL ignoreResignKeyWindowMonitor;
 @property (nonatomic,assign) BOOL temporarilyCancelAutoClosePopover;
 
+/// When YES, the popover observes NSViewFrameDidChangeNotification on the
+/// positioning view and all its ancestor views so it can reposition itself
+/// automatically when any ancestor's frame changes.
+/// The popover will also close itself when the positioning view becomes hidden
+/// or loses its window.
+/// @note Set this property BEFORE calling showRelativeToRect:ofView:...
+/// @note Defaults to NO.
+@property (nonatomic,assign) BOOL tracksPositioningViewFrame;
+
 - (void)showRelativeToRect:(NSRect)positioningRect ofView:(NSView *)positioningView preferredEdge:(NSRectEdge)preferredEdge alignment:(ZMPopoverAlignment)alignment;
 
 - (void)updatePopoverToRect:(NSRect)positioningRect ofView:(NSView *)positioningView preferredEdge:(NSRectEdge)preferredEdge alignment:(ZMPopoverAlignment)alignment;

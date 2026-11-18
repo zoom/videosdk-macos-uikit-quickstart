@@ -9,6 +9,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, ZMMTChatShortcutType) {
+    ZMMTChatShortcut_NewChat,
+    ZMMTChatShortcut_FocusLists,
+    ZMMTChatShortcut_FoucsLatestMessage,
+    ZMMTChatShortcut_FocusInput,
+};
+
 @protocol ZMMTMessageProtocol <NSObject>
 @property (nonatomic, strong, readonly) NSString *message;
 @property (nullable, nonatomic, strong, readonly) NSString *urlStr;
@@ -74,6 +81,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)markSessionRemoved:(NSString*)sessionID;
 - (void)makeInputViewFirstResponder;
 
+/// Meeting-process query for the chat "selected emoji" restriction.
+/// Uses the in-process meeting messenger. Do not call
+/// `ZMShareMessageProtocol` from the meeting process (cross-process).
+- (BOOL)isEnableSelectedChatEmojiWithSessionId:(NSString *)sessionId;
+
+// Run a meeting-chat shortcut; returns NO when meeting chat is not respondable so the caller can fall back.
+- (BOOL)runChatShortcut:(ZMMTChatShortcutType)type;
+
 #ifdef __cplusplus
 - (void)onChatShareFileInMeeting:(const ShareFileInMeetingChatParam_s&)shareFile;
 #endif
@@ -123,7 +138,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)viewDidShow;
 - (void)viewWillHide;
 
-- (void)runShortcut:(NSUInteger)type; //ZMMTChatShortcutType
+- (void)runShortcut:(ZMMTChatShortcutType)type;
 
 @optional // new chat only
 - (void)updateFontSize;

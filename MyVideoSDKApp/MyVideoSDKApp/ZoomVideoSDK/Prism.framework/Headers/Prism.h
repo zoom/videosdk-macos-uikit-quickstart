@@ -144,6 +144,8 @@ FOUNDATION_EXPORT const unsigned char PrismVersionString[];
 //invisibleShare
 #import <Prism/NSWindow+ZoomShare.h>
 #import <Prism/ZMShareWindowMonitor.h>
+#import <Prism/ZMSharePickerAttrSink.h>
+#import <Prism/ZMSharePickerAttrRegistry.h>
 
 //Timer
 #import <Prism/ZMClock.h>
@@ -219,4 +221,6 @@ FOUNDATION_EXPORT const unsigned char PrismVersionString[];
 #import <Prism/ZMToastBusinessModule.h>
 
 //Log
-#import <Prism/ZPLogHelper.h>
+//#import <Prism/ZPLogHelper.h>
+
+#import <Prism/CABackdropLayer.h>

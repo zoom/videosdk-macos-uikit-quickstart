@@ -8,6 +8,8 @@
 #import "ZMUnifyWebViewProtocol.h"
 #import <WebKit/WebKit.h>
 
+static NSString *kUnifyWebViewUAKeywordZoom = @"&Z*O*O*M&"; // use to judge if UA already has Zoom keyword
+
 @interface ZMUnifyWKWebViewBase : WKWebView
 
 @property (nonatomic, strong) ZMUnifyWebViewConfiguration *unifyConfig;
@@ -46,7 +48,6 @@
 
 - (void)addScriptMessageHandler:(id<WKScriptMessageHandler>)scriptMessageHandler name:(NSString *)name;
 - (void)removeAllUserScript;
-- (void)disableContextMenu;
 - (NSString *)getUnifyTitleStr;
 - (void)configCustomUserAgent:(NSString *)customUserAgent;
 - (void)configSafariUserAgent;
@@ -83,6 +84,8 @@
 
 - (BOOL)killGpuProcess;
 - (BOOL)killRenderProcess;
+
+- (BOOL)isWebContentProcessUnresponsive;
 
 // Get detailed renderer process state (Foreground/Background/Suspended)
 - (NSString *)getRenderProcessState;

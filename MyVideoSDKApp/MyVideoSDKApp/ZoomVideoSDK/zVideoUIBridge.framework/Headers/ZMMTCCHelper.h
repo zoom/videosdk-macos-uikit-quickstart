@@ -11,6 +11,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, ZMCCButtonShowType) {
+    ZMCCButtonShowTypeNone,
+    ZMCCButtonShowTypeShowCaptions,
+    ZMCCButtonShowTypeEnableCaptions,
+    ZMCCButtonShowTypeReuqestCaptions,
+    ZMCCButtonShowTypeAssignCCEditor,
+};
+
 #ifdef __cplusplus
 class ICmmUser;
 #endif
@@ -80,6 +88,9 @@ ZMConfSession *ZMMTCCGetCurrentConfSession(void);
 // ZOOM-524794
 - (BOOL)isAllowShowCaptions;
 - (BOOL)isAllowRequestCaptions;
+
+// Used for New LTT — CC toolbar / host tool button presentation.
+- (ZMCCButtonShowType)getCCButtonShowType;
 - (BOOL)sendStartLTTRequest:(BOOL)bEnableTranslation;
 - (BOOL)approveStartLTTRequest;
 
@@ -112,6 +123,9 @@ ZMConfSession *ZMMTCCGetCurrentConfSession(void);
 - (BOOL)isNormalASRLIDEnabled;
 - (BOOL)isHQASRLIDEnabled;
 
+//ZOOM-1200849
+- (BOOL)isASRLanguageSwitchEnabled;
+
 // ZOOM-630080
 - (BOOL)hasTranslationFreeTrial;
 - (BOOL)canShowFreeTrialTip;
@@ -127,6 +141,9 @@ ZMConfSession *ZMMTCCGetCurrentConfSession(void);
 - (BOOL)needPromptCaptionsDisclaimer;
 - (void)agreeCaptionsDisclaimer:(BOOL)bAgree;
 - (BOOL)needShowTipsForCaptions;
+
+// ZOOM-1295157
+- (BOOL)isFullCaptionsScrollbackEnabled;
 
 // ZOOM-644161
 - (ZMUserID)getZRSpeakerIDWithMsgId:(NSString *)msgId;
@@ -144,26 +161,12 @@ ZMConfSession *ZMMTCCGetCurrentConfSession(void);
 - (BOOL)canEditSpkearTagWithMsgId:(NSString *)msgId;
 @end
 
-@interface ZMMTCCColorItem : NSObject
-@property (nonatomic, strong, nullable) NSColor *color;
-@property (nonatomic, assign) BOOL isCustomized;
-@property (nonatomic, assign) NSUInteger hexColor; //RGBA
-@property (nonatomic, strong) NSString *colorName;
-@property (nonatomic, strong) NSImage *displayImage;
-@end
-
 @interface ZMMTCCHelper (CaptionsSetting)
 // ZOOM-875284
 - (nullable NSString *)captionFontName;
 - (void)setCaptionFontName:(NSString *)fontName;
 - (int)captionFontSize;
 - (void)setCaptionFontSize:(int)fontSize;
-- (nullable ZMMTCCColorItem *)captionColorItem;
-- (void)setCaptionColorItem:(ZMMTCCColorItem *)colorItem;
-- (nullable ZMMTCCColorItem *)translationColorItem;
-- (void)setTranslationColorItem:(ZMMTCCColorItem *)colorItem;
-- (nullable ZMMTCCColorItem *)backgroundColorItem;
-- (void)setBackgroundColorItem:(ZMMTCCColorItem *)colorItem;
 - (ZMMTCaptionDisplayMode)captionDisplayMode;
 - (void)setCaptionDisplayMode:(ZMMTCaptionDisplayMode)captionDisplayMode;
 + (NSArray<NSString *> *)fontTypes;

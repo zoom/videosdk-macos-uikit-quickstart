@@ -72,6 +72,8 @@ extern NSString* kNoti_ReleaseNoteForLatestVersion;
 extern NSString* kParam_ReleaseNoteForLatestVersion;
 extern NSString* kParam_ReleaseNoteForLatestNote;
 
+extern NSString* kNoti_ReceivePersistentUpgradeInfo;
+
 extern NSString* kNoti_PT_OnSendFeedback;
 extern NSString* kNoti_StartRecConverter;
 

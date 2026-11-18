@@ -6,3 +6,5 @@ NSCalendarsFullAccessUsageDescription= "Per poter mostrare i tuoi eventi, Zoom W
 NSLocalNetworkUsageDescription= "Questo processo è necessario per abilitare riunioni peer-to-peer e AirPlay nel client Zoom.";
 NSBluetoothAlwaysUsageDescription= "Ciò consentirà a Zoom Workplace di trovare Zoom Rooms nelle vicinanze.";
 NSAudioCaptureUsageDescription = "Consenti l’accesso per acquisire l’audio da altre app.";
+
+CFBundleDisplayName = "Zoom";

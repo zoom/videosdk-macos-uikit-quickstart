@@ -45,6 +45,8 @@
 
 //ZOOM-773690
 - (void)onCMRControlFlagChanged:(ZMUser *)user;
+// ZOOM-1348464: Host/cohost presence or authorized-feature roster bits changed
+- (void)onAuthorizedFeatureControlChanged:(ZMUser *)user;
 
 - (void)userVideoStatusChangedNotification:(ZMUser *)zmUser;
 

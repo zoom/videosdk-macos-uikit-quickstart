@@ -194,6 +194,10 @@ NS_ASSUME_NONNULL_BEGIN
  * @param channel The channel type. Default type is ZoomVideoSDKAudioChannel_Mono.
  * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  * @note Support sample Rate 44100, 48000, 50000, or 50400.
+ * @note
+ * 1. The size of a single input must not exceed the number of bytes corresponding to 100 ms of audio. Exceeding this limit returns ZMVideoSDKErrors_RAWDATA_SEND_TOO_MUCH_DATA_IN_SINGLE_TIME.
+ * 2. Variable-length input is supported; it is recommended to send audio data in 10 ms, 20 ms, or 30 ms chunks (not exceeding 100 ms).
+ * 3. If ZMVideoSDKErrors_RAWDATA_SEND_TOO_FREQUENTLY is returned, this is not a genuine error; please wait briefly before retrying—for example, sleep for 10 ms before attempting to send the data again.
  */
 - (ZMVideoSDKErrors)sendShareAudio:(char * _Nullable)data dataLength:(unsigned int)length sampleRate:(int)rate audioChannel:(ZMVideoSDKAudioChannel)channel;
 @end
@@ -387,31 +391,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (ZMVideoSDKErrors)startShare2ndCamera:(NSString* _Nullable)cameraID;
 
 /**
- * @brief Subscribes to the camera's raw data stream that is shared as the second camera.
- * @param dataHandler The callback sink object.
- * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
- * @deprecated Use \link ZMVideoSDKRawDataPipe::subscribe:listener: \endlink instead.
- */
-- (ZMVideoSDKErrors)subscribeMyShareCamera:(id<ZMVideoSDKRawDataPipeDelegate> _Nonnull)dataHandler DEPRECATED_MSG_ATTRIBUTE("Use [ZMVideoSDKRawDataPipe subscribe: listener:] instead");
-
-/**
- * @brief Unsubscribes to the camera's raw data stream that is shared as the second camera.
- * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
- * @deprecated Use \link ZMVideoSDKRawDataPipe::unSubscribe: \endlink instead.
- */
-- (ZMVideoSDKErrors)unSubscribeMyShareCamera DEPRECATED_MSG_ATTRIBUTE("Use [ZMVideoSDKRawDataPipe: unSubscribe:] instead");
-
-/**
- * @brief Shares an external source.
- * @param shareSource External share source.
- * @param audioSource External audio source.
- * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
- * @note If audioSource is non-null, it means share user-defined audio at the same time.
- * @deprecated Use \link ZMVideoSDKShareHelper::startSharingExternalSource:audioSource:isPlaying: \endlink instead.
- */
-- (ZMVideoSDKErrors)startSharingExternalSource:(id<ZMVideoSDKShareSource> _Nonnull)shareSource audioSource:(id<ZMVideoSDKShareAudioSource> _Nullable)audioSource DEPRECATED_MSG_ATTRIBUTE("Use -startSharingExternalSource: audioSource: isPlaying: instead");
-
-/**
  * @brief Shares an external source.
  * @param shareSource External share source.
  * @param audioSource External audio source.
@@ -420,14 +399,6 @@ NS_ASSUME_NONNULL_BEGIN
  * @note If audioSource is non-null, it means share user-defined audio at the same time.
  */
 - (ZMVideoSDKErrors)startSharingExternalSource:(id<ZMVideoSDKShareSource> _Nonnull)shareSource audioSource:(id<ZMVideoSDKShareAudioSource> _Nullable)audioSource isPlaying:(BOOL)isPlaying;
-/**
- * @brief Starts sharing the pure external audio source.
- * @param audioSource The pointer of external audio source object.
- * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
- * @deprecated Use \link ZMVideoSDKShareHelper::startSharePureAudioSource:isPlaying: \endlink instead.
- */
-- (ZMVideoSDKErrors)startSharePureAudioSource:(id<ZMVideoSDKShareAudioSource> _Nonnull)audioSource DEPRECATED_MSG_ATTRIBUTE("Use -startSharePureAudioSource: isPlaying: instead");
-
 /**
  * @brief Starts sharing the pure external audio source.
  * @param audioSource The pointer of external audio source object.
@@ -493,6 +464,14 @@ NS_ASSUME_NONNULL_BEGIN
   * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
   */
 - (ZMVideoSDKErrors)getAnnotationVanishingToolTime:(unsigned int*)displayTime vanishingTime:(unsigned int*)vanishingTime;
+
+/**
+ * @brief Sets whether the annotation window is always on top of the current application.
+ * @param alwaysOnTop YES to keep annotation window always on top, NO otherwise.
+ * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
+ * @note Available only when self-sharing, and only available after createAnnotationHelper has been called.
+ */
+- (ZMVideoSDKErrors)setAnnotationAlwaysOnTop:(BOOL)alwaysOnTop;
 
 /**
  * @brief Enables or disables local playback of shared audio raw data.

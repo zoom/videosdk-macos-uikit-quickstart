@@ -23,6 +23,7 @@ FOUNDATION_EXPORT const unsigned char ZoomKitVersionString[];
 //main
 #import <Zoomkit/ZPBundleHelper.h>
 #import <Zoomkit/ZMProductBuildMgr.h>
+#import <ZoomKit/ZMAppProtocol.h>
 //#import <Zoomkit/ZMRouterCenter.h>
 //#import <Zoomkit/ZMRouterCenterProtocols.h>
 //
@@ -173,6 +174,7 @@ FOUNDATION_EXPORT const unsigned char ZoomKitVersionString[];
 //#import <ZoomKit/ZMWeakProxy.h>
 //#import <ZoomKit/ZMDelayCall.h>
 #import <ZoomKit/ZMMessagePort.h>
+#import <ZoomKit/ZPLogHelper.h>
 //#import <ZoomKit/ZMNSRectCorner.h>
 //#import <ZoomKit/ZMDistance.h>
 //#import <ZoomKit/ZMUserInterfaceOrientation.h>

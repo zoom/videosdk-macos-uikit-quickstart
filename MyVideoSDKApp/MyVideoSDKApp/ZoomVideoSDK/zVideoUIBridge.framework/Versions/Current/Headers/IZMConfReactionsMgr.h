@@ -16,7 +16,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class ZMUser, ZMConfReactionsMenuItem, ZMMTEmojiMenuItem, ZMSysEmojiMgr, ZMMTBaseViewController, ZMWebinarReactionsModel;
+@class ZMUser, ZMConfReactionsMenuItem, ZMMTEmojiMenuItem, ZMSysEmojiMgr, ZMMTBaseViewController, ZMWebinarReactionsModel, ZMEmojiModel, ZMEmojiV2Configuration;
+@protocol ZMConfReactionsMenuItemView;
 
 typedef NS_ENUM(NSUInteger, ZMWebinarEmojiReactionType) {
     ZMWebinarEmojiReactionTypeFull,
@@ -32,6 +33,12 @@ typedef NS_ENUM(NSUInteger, ZMReactionGestureType) {
     ZMReactionGestureTypeOk = 15,
     ZMReactionGestureTypeCelebrate = 18,
     ZMReactionGestureTypeHeart = 19,
+};
+
+typedef NS_ENUM(NSUInteger, ZMMTReactionMenuKind) {
+    ZMMTReactionMenuKindUnknown = 0,
+    ZMMTReactionMenuKindReactionPanel,
+    ZMMTReactionMenuKindMoreEmojiPanel,
 };
 
 #define GESTURE_TIME    2
@@ -71,7 +78,7 @@ typedef NS_ENUM(NSUInteger, ZMReactionGestureType) {
 
 - (nullable ZMCustomEmojiModel *)customEmojiModelWithUser:(ZMUser *)user;
 
-- (ZMConfReactionsMenuItem *)getReactionsMenuItem;
+- (NSView<ZMConfReactionsMenuItemView> *)getReactionsMenuItem;
 - (ZMMTEmojiMenuItem *)getReactionsMoreEmojiMenuItem;
 /** get local skin tone reaction emojis */
 - (NSArray <NSDictionary *>*)localSkinToneEmojis;
@@ -108,6 +115,7 @@ typedef NS_ENUM(NSUInteger, ZMReactionGestureType) {
 
 // aic adoption
 - (BOOL)isNeedToShowAicAdoption;
+- (BOOL)isMyselfInAwayOrCoffeeState;
 - (void)recvdTranscriptResult:(NSString *)reportId type:(NSInteger)type result:(BOOL)result;
 - (void)startTranscriptionGeneratedTimer;
 - (void)transcriptionTimerFire;
@@ -140,6 +148,36 @@ typedef NS_ENUM(NSUInteger, ZMReactionGestureType) {
 
 //zUI meeting reaction setting call back
 - (void)ShowEnableSendReactionsConfirmDialogIfNeed;
+
+#pragma mark - Reaction redesign - DG/LOG builds only
+
+- (BOOL)isReactionRedesignEnabled;
+
+/**
+ * Called by the React-button toolbar component BEFORE popping a menu (the
+ * primary reactions menu, the more-emoji menu, or any of the sub-menus that
+ * anchor on the React button). Closes the AutoLower and Awareness windows,
+ * but does NOT cancel the AutoLower countdown timer.
+ * Implementation is a no-op when redesign is disabled.
+ */
+- (void)closeReactionFloatingWindowsForMenuOpen;
+
+/**
+ * Called from the menu's menuWillClose hook to restore the Awareness window
+ * (AutoLower self-restores via its timer's next tick).
+ * Implementation is a no-op when redesign is disabled.
+ */
+- (void)restoreReactionFloatingWindowsAfterMenuClose;
+
+/// Reports the closing reaction-menu surface for interaction telemetry.
+- (void)reactionMenuWillClose:(ZMMTReactionMenuKind)menuKind;
+
+/// Build the V2 panel configuration (visible tabs + feedback items +
+/// animated emojis) from the current meeting state. Returns nil when
+/// redesign is disabled. Exposed on the protocol so embed-mode hosts
+/// (e.g. `ZMMTEmojiMenuItemV2`) can build their own VC without taking
+/// a hard dependency on the concrete `ZMConfReactionsMgr` class.
+- (nullable ZMEmojiV2Configuration *)buildV2Configuration;
 
 @end
 

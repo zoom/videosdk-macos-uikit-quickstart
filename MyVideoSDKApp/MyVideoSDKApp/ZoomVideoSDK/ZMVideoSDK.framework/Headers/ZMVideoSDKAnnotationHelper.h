@@ -21,13 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)canDoAnnotation;
 
 /**
- * @brief Whether annotation was disabled or not by the share owner.
- * @return YES if the annotations is disabled. Otherwise, NO.
- * @deprecated Use \link ZMVideoSDKAnnotationHelper::canDoAnnotation \endlink instead.
- */
-- (BOOL)isSenderDisableAnnotation DEPRECATED_MSG_ATTRIBUTE("Use -canDoAnnotation instead");
-
-/**
  * @brief Starts annotation.
  * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
@@ -100,6 +93,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
  */
 - (ZMVideoSDKErrors)clear:(ZMVideoSDKAnnotationClearType)type;
+
 @end
 
 NS_ASSUME_NONNULL_END

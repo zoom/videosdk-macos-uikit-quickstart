@@ -49,6 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///Device
 - (void)onFeedbackErrorDetected;
+- (void)onFeedbackErrorDetectedInSameMeeting;
 - (void)checkAudioDeviceState;
 - (BOOL)isNeedShowAudioErrAlertAndTip;
 

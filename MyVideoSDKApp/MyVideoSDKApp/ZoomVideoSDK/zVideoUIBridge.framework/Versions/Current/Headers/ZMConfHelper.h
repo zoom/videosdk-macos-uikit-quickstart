@@ -14,6 +14,7 @@
 #import <zm_conf_universal_ui/zm_conf_uui_ui_collection_interface.h>
 #import <zm_conf_universal_ui/psl/zm_conf_uui_psl_api.h>
 #import <zm_conf_universal_ui/zm_conf_uui_cc_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_clinical_note_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_aic_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_transcript_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_ai_interpretation_interface.h>
@@ -28,6 +29,7 @@
 #import <zm_conf_universal_ui/zm_conf_uui_bo_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_watermark_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_leave_session_interface.h>
+#import <zm_conf_universal_ui/zm_conf_uui_meeting_info_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_chat_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_toolbar_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_dyn_layout_algo_interface.h>
@@ -35,8 +37,18 @@
 #import <zm_conf_universal_ui/zm_conf_uui_aic_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_notes_interface.h>
 #import <zm_conf_universal_ui/zm_conf_uui_voice_recorder_interface.h>
+#import <zm_conf_universal_ui/ui_collection/zm_conf_uui_conf_user_action_api.h>
+#import <zm_conf_universal_ui/ai_feature/zm_conf_uui_ai_feature_api.h>
+#import <zVideoApp/CmmPollModuleAPI.h>
+#import <zm_conf_universal_ui/disclaimer/zm_conf_uui_disclaimer_api.h>
+#import <zm_conf_universal_ui/zm_conf_uui_string_interface.h>
 #define ZUUI NS_ZM_CONF_UNIVERSAL_UI
 #define PLIST ns_uui_participant_list
+
+namespace ns_zoom_messager {
+class IZoomMessenger;
+};
+
 using namespace CmmQA;
 using namespace CmmChat;
 @interface ZMConfHelper : ZMBaseHelper
@@ -44,6 +56,7 @@ using namespace CmmChat;
 + (ICmmConfMgrAPI*)getConfApi;
 + (ICmmConfContext*)getConfContext;
 + (ICmmConfStatus*)getConfStatusObject;
++ (BOOL)isParticipantListHoverProfileCardEnabled;
 + (ICmmVideoAPI*)getVideoApi;
 + (ICmmVideoBkgndImageMgr*)getVBApi;
 + (ICmmAudioAPI*)getAudioApi;
@@ -51,7 +64,7 @@ using namespace CmmChat;
 + (IZoomQAComponent*)getQAComponent;
 + (ICmmBOMgrAPI*)getBOMgrApi;
 + (IZoomChatInWebinar*)getWebinarChatComponent;
-+ (ICmmPollAPI*)getPollApi;
++ (CmmPoll::ICmmPollAPI*)getPollApi;
 + (ICmmFeedbackMgrAPI*)getFeedbackApi;
 + (ISBMeetingItem*)getMeetingItem;
 + (ICmmChatComponent*)getChatAPIObj;//ZOOM-14788
@@ -72,6 +85,7 @@ using namespace CmmChat;
 + (ICmmWebAgentAPI*)getWebAgentAPI;
 + (ICmmConfEventTrackingAPI *)getEventTrackingAPI;
 + (ISBPTAppAPI*)getPtAppAPI;//ZOOM-381157
++ (IZoomMessenger*)getMessageAPI;
 + (ICmmConfJoiner*)getConfJoinerAPI;
 + (ICmmQAApi*)getQAApi;//jeffery add
 #pragma mark - WebinarBO
@@ -109,7 +123,7 @@ using namespace CmmChat;
 - (IZoomQAComponent*)getConfInstQAComponent;
 - (CmmQA::ICmmQAApi *)getConfInstQAApi;
 - (IZoomChatInWebinar*)getConfInstWebinarChatComponent;
-- (ICmmPollAPI*)getConfInstPollApi;
+- (CmmPoll::ICmmPollAPI*)getConfInstPollApi;
 - (ICmmFeedbackMgrAPI*)getConfInstFeedbackApi;
 - (ISBMeetingItem*)getConfInstMeetingItem;
 - (ICmmChatComponent*)getConfInstChatAPIObj;
@@ -164,7 +178,6 @@ using namespace CmmChat;
 + (ZUUI::PLIST::IParticipantPanelLogic *)getPlistLogic;
 + (ZUUI::PLIST::IUuiPlistListLogic *)getPlistListLogic;
 + (ZUUI::IUuiPlistCoachMarkLogic *)getPlistCoachMarkLogicWithType:(ZUUI::UuiPlistCoachMarkType)type;
-+ (ZUUI::PLIST::IParticipantPanelLogic *)getRemovePlistLogic;
 + (ZUUI::IUuiConfUserActionLogic *)getPlistUserActionLogic;
 + (ZUUI::IUuiConfUserActionLogic *)getPlistActionLogicWithType:(UuiPlistItemType)type;
 + (ZUUI::PLIST::IUuiPlistItemLogic *)getPlistJoinedItemLogic;
@@ -186,10 +199,15 @@ using namespace CmmChat;
 + (ZUUI::IUiCollectionUniversalUi *)getUICollectionUUI;
 + (ZUUI::IConfUserActionUniversalUi *)getUserActionUUI;
 + (ZUUI::IMeetingControlUniversalUi *)getMeetingControlUUI;
++ (ZUUI::IUuiMeetingInfoApi *)getMeetingInfoApi;
++ (ZUUI::IUuiMeetingInfoPanelLogic *)getMeetingInfoPanelLogic;
 + (ZUUI::IUuiHostToolWindowLogic *)getHostToolWindowLogic;
 + (ZUUI::IUuiHostToolPanelLogic *)getHostToolPanelLogic;
 + (ZUUI::IUuiSettingWindowLogic *)getSettingWindowLogic;
 + (ZUUI::IUuiSettingDisplayPanelLogic *)getSetingDisplayPanelLogic;
+// To receive changes, register an IUuiMeetingColorModeSink through
+// +getMeetingControlUUI.
++ (ZUUI::UuiMeetingColorMode)getMeetingColorMode;
 
 #pragma mark - Video
 + (ZUUI::IVideoPortUniversalUi *)getVideoPortUUI;
@@ -205,4 +223,17 @@ using namespace CmmChat;
 #pragma mark - VoiceRecord
 + (ZUUI::IVoiceRecorderUniversalUi *)getVoiceRecordUUI;
 + (ZUUI::IVoiceNotesMeetingProcessUi *)getVoiceNotesMeetingProcessUi;
+#pragma mark - AiFeature / Deepfake
++ (ZUUI::IUuiAiFeatureApi *)getAiFeatureApi;
++ (ZUUI::IUuiDeepfakeApi *)getDeepfakeApi;
+// YES when avatars / video filters / studio effects should be disabled,
+// i.e. deepfake gateway is running AND the disclaimer has been agreed.
+// Drives item-level `showDisable` for Avatar / VideoFilter / StudioEffect / ColorItem.
+- (BOOL)isDeepfakeEffectsDisabled;
+#pragma mark - Disclaimer
++ (ZUUI::IUuiDisclaimerApi *)getDisclaimerApi;
++ (ZUUI::IUuiCustomDisclaimerApi *)getCustomDisclaimerApi;
+
+#pragma mark - String
++ (ZUUI::IUuiStringApi *)getStringApi;
 @end

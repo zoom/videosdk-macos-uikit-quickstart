@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSAppearance (ZmmtKit)
 
 @property (class, nullable, readonly) NSAppearance *sidePanelAppearance;
+@property (class, nullable, readonly) NSAppearance *meetingAppearance;
 
 @end
 
 NS_ASSUME_NONNULL_END
-

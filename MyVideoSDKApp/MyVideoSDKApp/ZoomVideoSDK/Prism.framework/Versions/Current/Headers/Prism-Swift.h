@@ -283,8 +283,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 @import AppKit;
 @import CoreFoundation;
+@import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
+@import QuartzCore;
 #endif
 
 #import <Prism/Prism.h>
@@ -309,6 +311,56 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 
+@class NSCursor;
+@class NSString;
+/// A protocol declaring a base button interface.
+SWIFT_PROTOCOL_NAMED("BaseButton")
+@protocol PZMBaseButton
+/// The button’s action, to be invoked when the user interacts with the button.
+@property (nonatomic, copy) void (^ _Nonnull action)(id <PZMBaseButton> _Nonnull);
+/// Determines whether the button’s action will be executed on a <code>mouseDown(with:)</code> event, as opposed to
+/// <code>mouseUp(with:)</code>.
+@property (nonatomic) BOOL runActionOnMouseDown;
+/// Displays a progress indicator over the button.
+/// If the progress indicator is already running, this does nothing.
+/// important:
+/// While the progress indicator is shown, interaction with the button is disabled.
+- (void)showProgressIndicator;
+/// Hides the button’s progress indicator, if it is shown.
+/// If the progress indicator is already stopped, this does nothing.
+- (void)hideProgressIndicator;
+/// Let button show dot.
+/// enable to control whether to display dot.
+@property (nonatomic) BOOL showDot;
+/// Set button tag
+/// enable mark each button
+@property (nonatomic) NSInteger buttonTag;
+/// Whether to tint the button’s image, if any, with the content color.
+/// This typically defaults to <code>true</code>; check the relevant button implementation
+/// for more details on specific cases.
+@property (nonatomic) BOOL tintImage;
+/// Whether the button will update the cursor when it is hovered.
+@property (nonatomic) BOOL updatesCursorOnHover;
+/// The cursor to use when <code>updatesCursorOnHover</code> is set.
+/// If <code>nil</code>, the implementation’s default value is used; this may change
+/// depending on the button type. Refer to the class documentation for more
+/// details.
+@property (nonatomic, strong) NSCursor * _Nullable cursor;
+@optional
+/// The selected status for button
+@property (nonatomic) BOOL isSelected;
+@required
+/// The button type’s default cursor.
+/// This value is used if <code>updatesCursorOnHover</code> is set when <code>cursor</code> is
+/// <code>nil</code>.
+@property (nonatomic, readonly, strong) NSCursor * _Nonnull defaultCursor;
+@property (nonatomic, copy) NSString * _Nonnull keyEquivalent;
+@property (nonatomic) NSEventModifierFlags keyEquivalentModifierMask;
+@end
+
+@class PZMVisualEffect;
+@class PZMGradient;
+@class PZMShadow;
 @class PrismColor;
 enum PZMCursorState : NSInteger;
 @class PZMCursorStateBinding;
@@ -339,6 +391,15 @@ SWIFT_PROTOCOL_NAMED("BaseView")
 /// this does <em>not</em> propagate through view instances that do not inherit from <code>View</code>, but
 /// this behavior may change in the future.
 - (void)enableInteractionInSubtree;
+@property (nonatomic, strong) PZMVisualEffect * _Nullable backgroundVisualEffect;
+@property (nonatomic, strong) PZMGradient * _Nullable backgroundGradient;
+@property (nonatomic, strong) PZMGradient * _Nullable hoveredBackgroundGradient;
+@property (nonatomic, strong) PZMGradient * _Nullable clickedBackgroundGradient;
+@property (nonatomic, strong) PZMShadow * _Nullable backgroundShadow;
+/// The shadow applied when the cursor is hovered over the view.
+@property (nonatomic, strong) PZMShadow * _Nullable hoveredBackgroundShadow;
+/// The shadow applied when the view is being clicked.
+@property (nonatomic, strong) PZMShadow * _Nullable clickedBackgroundShadow;
 /// The view’s default background color.
 @property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
 /// The view’s background color, when it is hovered.
@@ -349,6 +410,8 @@ SWIFT_PROTOCOL_NAMED("BaseView")
 /// Setting <code>cornerRadius</code> to be greater than <code>min(view.height, view.width)</code> may cause it to draw
 /// unexpectedly.
 @property (nonatomic) CGFloat cornerRadius;
+/// Which corners of the view will be masked by <code>cornerRadius</code>.
+@property (nonatomic) CACornerMask maskedCorners;
 /// The width of the view’s border, drawn around the same path as its background.
 @property (nonatomic) CGFloat borderWidth;
 /// The color of the view’s border.
@@ -419,7 +482,8 @@ SWIFT_PROTOCOL("_TtP5Prism19CursorStateBindable_")
 @class NSCoder;
 @class PZMToolTip;
 @class PZMPanel;
-@class NSString;
+@class CALayer;
+@class CAShapeLayer;
 @class NSImage;
 /// Prism’s self-managing, layer-backed, base view type.
 /// <code>View</code> is a layer-backed view that manages its own layer, tracking area, and
@@ -435,8 +499,15 @@ SWIFT_CLASS_NAMED("View")
 /// \param $1 The new window the view is moving to, or <code>nil</code> if the view is being removed from a window.
 ///
 @property (nonatomic, copy) void (^ _Nullable onViewWillMoveToWindow)(id <PZMBaseView> _Nonnull, NSWindow * _Nullable);
+/// An optional closure to be invoked when the view’s effective visibility changes.
+/// \param $0 The <code>BaseView</code>-conforming instance which sent the event.
+///
+/// \param $1 <code>true</code> if the view is effectively visible; <code>false</code> otherwise.
+///
+@property (nonatomic, copy) void (^ _Nullable onVisibilityStateChange)(id <PZMBaseView> _Nonnull, BOOL);
 @property (nonatomic, readonly) BOOL propagatesKeyEvents;
 @property (nonatomic) BOOL suppressNextLayerAnimation;
+- (void)resetInteractiveBackgroundImmediately;
 /// Determines whether to enable animation in the view’s own updates (such as a fade-in/out or sliding text).
 /// Declared in <code>AnimatedView</code>; defaults to <code>true</code>.
 @property (nonatomic) BOOL enableAnimation;
@@ -454,16 +525,26 @@ SWIFT_CLASS_NAMED("View")
 /// this behavior may change in the future.
 - (void)enableInteractionInSubtree;
 @property (nonatomic, strong) ZMPigment * _Nullable pigment;
+@property (nonatomic, strong) PZMVisualEffect * _Nullable backgroundVisualEffect;
 /// The view’s default background color.
 @property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
 /// The view’s background color, when it is hovered.
 @property (nonatomic, strong) PrismColor * _Nullable hoveredBackgroundColor;
 /// The view’s background color, while the mouse is held down during a click event.
 @property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
+@property (nonatomic, readonly, strong) PZMGradient * _Nullable effectiveBackgroundGradient;
+@property (nonatomic, strong) PZMGradient * _Nullable backgroundGradient;
+@property (nonatomic, strong) PZMGradient * _Nullable hoveredBackgroundGradient;
+@property (nonatomic, strong) PZMGradient * _Nullable clickedBackgroundGradient;
+@property (nonatomic, readonly, strong) PZMShadow * _Nullable effectiveBackgroundShadow;
+@property (nonatomic, strong) PZMShadow * _Nullable backgroundShadow;
+@property (nonatomic, strong) PZMShadow * _Nullable hoveredBackgroundShadow;
+@property (nonatomic, strong) PZMShadow * _Nullable clickedBackgroundShadow;
 /// The radius of the view’s corners; higher values mean rounder corners.
 /// Setting <code>cornerRadius</code> to be greater than <code>min(view.height, view.width)</code> may cause it to draw
 /// unexpectedly.
 @property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic) CACornerMask maskedCorners;
 /// The width of the view’s border, drawn around the same path as its background.
 @property (nonatomic) CGFloat borderWidth;
 /// The color of the view’s border.
@@ -497,6 +578,8 @@ SWIFT_CLASS_NAMED("View")
 /// \param $0 The <code>BaseView</code>-conforming instance which sent the event.
 ///
 @property (nonatomic, copy) void (^ _Nullable scrollContentViewBoundsDidChange)(id <PZMBaseView> _Nonnull);
+/// An optional closure invoked when the view’s effective frame changes (own or ancestor frame).
+@property (nonatomic, copy) void (^ _Nullable effectiveFrameDidChange)(id <PZMBaseView> _Nonnull);
 /// Determines whether the view should never instantiate and maintain a tracking area <em>regardless</em> of its other set
 /// properties.
 /// Normally, <code>View</code> instances will always instantiate a <code>NSTrackingArea</code> if they have to (such as if hover and
@@ -576,6 +659,11 @@ SWIFT_CLASS_NAMED("View")
 /// attention:
 /// when overriding this, <code>super.updateLayer()</code> <em>must</em> be called.
 - (void)updateLayer;
+@property (nonatomic, readonly) BOOL useLayerCompatibilityMode;
+- (void)viewDidChangeBackingProperties;
+@property (nonatomic, readonly, strong) CALayer * _Nonnull backgroundLayer;
+@property (nonatomic, readonly, strong) CALayer * _Nullable backgroundShadowLayer;
+@property (nonatomic, readonly, strong) CAShapeLayer * _Nonnull borderLayer;
 - (void)updateTrackingAreas;
 /// Returns <code>nil</code> whenever <code>forbidInteraction</code> <code>== true</code>; otherwise, it is equal to <code>super.hitTest</code>.
 - (NSView * _Nullable)hitTest:(NSPoint)point SWIFT_WARN_UNUSED_RESULT;
@@ -610,207 +698,6 @@ SWIFT_CLASS_NAMED("View")
 ///
 - (void)setIntrinsicContentSizeOverride:(NSSize)size;
 - (NSString * _Nullable)accessibilityHelp SWIFT_WARN_UNUSED_RESULT;
-@end
-
-enum PZMAvatarBubbleViewSize : NSInteger;
-@class PZMAvatarBubbleViewItem;
-/// Figma: https://www.figma.com/design/fLGhhzkzA1tlvZOg00to2L/Prism-Desktop—Web-1.0?node-id=1008-0&p=f&m=dev
-/// Prism’s Avatar component; used to display an image that represents a user or similar entity.
-/// There are 2 recommanded sizes: 24x24px and 32x32px
-/// But other size are also supported if you restrict this view to any other sizes
-SWIFT_CLASS_NAMED("AvatarBubbleView")
-@interface PZMAvatarBubbleView : PZMView
-/// The ideal size, determined by the size parameter
-/// You can also restrict the size of this view to any size
-@property (nonatomic, readonly) NSSize intrinsicContentSize;
-/// The size of the avatar. Default is small, 24x24px.
-/// This parameter only determines the intrinsicContentSize
-/// If another size is need, please restrict this view to the size you want
-@property (nonatomic, readonly) enum PZMAvatarBubbleViewSize size;
-/// Enable and disable
-@property (nonatomic) BOOL enabled;
-@property (nonatomic, copy) NSArray<PZMAvatarBubbleViewItem *> * _Nullable items;
-/// Initialize a AvatarBubbleView with a size
-/// Only 2 sizes are supported
-/// There are only 2 options of the size parameter
-/// If you want a free-sized view, please use init and do not assign a size
-/// \param size There are only 2 options of the size parameter, The small avatar size (24x24px). The medium avatar size (32x32px).
-///
-- (nonnull instancetype)initWithSize:(enum PZMAvatarBubbleViewSize)size;
-/// Reset the AvatarViews when a new frame is set
-@property (nonatomic) NSRect frame;
-- (void)mouseUp:(NSEvent * _Nonnull)event;
-/// Called when this avatar bubble is clicked
-@property (nonatomic, copy) void (^ _Nullable onClick)(PZMAvatarBubbleView * _Nonnull);
-- (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-SWIFT_CLASS_NAMED("Item")
-@interface PZMAvatarBubbleViewItem : NSObject
-/// The abbreviation displayed on the button, composed of two letters, would be covered by avatar image if it is set
-@property (nonatomic, copy) NSString * _Nullable label;
-/// The image displayed on the avatar, the square shaped is recommended. The image will be clipped if it is not square shaped
-@property (nonatomic, strong) NSImage * _Nullable image;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-/// The avatar sizes, as defined in the design specification.
-typedef SWIFT_ENUM_NAMED(NSInteger, PZMAvatarBubbleViewSize, "Size", open) {
-/// The small avatar size (24x24px).
-  PZMAvatarBubbleViewSizeSmall = 0,
-/// The medium avatar size (32x32px).
-  PZMAvatarBubbleViewSizeMedium = 1,
-};
-
-enum PZMAvatarGroupViewSize : NSInteger;
-@class PZMAvatarGroupViewItem;
-/// Prism’s Avatar component; used to display an image that represents a user or similar entity.
-SWIFT_CLASS_NAMED("AvatarGroupView")
-@interface PZMAvatarGroupView : PZMView
-@property (nonatomic) BOOL translatesAutoresizingMaskIntoConstraints;
-/// The size of the avatar. Default is small
-@property (nonatomic, readonly) enum PZMAvatarGroupViewSize size;
-@property (nonatomic, readonly) NSInteger maxVisibleAvatarCount;
-@property (nonatomic, readonly) NSInteger visibleAvatarCount;
-/// Called when a user avatar is clicked, the AvatarGroupView self, the Item data and the index in users are revealed
-@property (nonatomic, copy) void (^ _Nullable onAvatarClick)(PZMAvatarGroupView * _Nonnull, PZMAvatarGroupViewItem * _Nonnull, NSInteger);
-/// Called when the number button is clicked, the AvatarGroupView self, and the number on this button are revealed
-@property (nonatomic, copy) void (^ _Nullable onNumberClick)(PZMAvatarGroupView * _Nonnull, NSInteger);
-/// Called when the string on number button is about to format. If you want a different way to show the number string, custom this formmater, default is “%d+”
-/// Returning “” hide the number button
-@property (nonatomic, copy) NSString * _Nonnull (^ _Nullable numberWillFormat)(NSInteger);
-/// Called when the sizeDidChange is changed. Call this closure to recontrain this view with new intrinsicContentSize. If nil, a default recontrain is performed
-@property (nonatomic, copy) void (^ _Nullable sizeDidChange)(PZMAvatarGroupView * _Nonnull, NSSize);
-/// Creates an avatar group view with given parameters.
-/// \param size The size that the avatars will be shown in.
-///
-/// \param max The max number of users to show
-///
-/// \param sizeDidChange The caller of this interface needs layout this view in sizeDidChange
-///
-- (nonnull instancetype)initWithSize:(enum PZMAvatarGroupViewSize)size max:(NSInteger)max;
-/// The users to show on this view. The users exceeds max number will be ignored
-@property (nonatomic, copy) NSArray<PZMAvatarGroupViewItem *> * _Nullable items;
-/// The label read by voiceover when voiceover focuses on the number button
-@property (nonatomic, copy) NSString * _Nullable numberButtonAccessibilityLabel;
-/// The role read by voiceover when voiceover focuses on the number button
-@property (nonatomic, copy) NSString * _Nullable numberButtonAccessibilityRole;
-/// The number displayed on the right part. If it is greater than 99, “99+” will be displayed. If it is less than 1, the number is hidden
-@property (nonatomic) NSInteger userNumber;
-/// The ideal size
-@property (nonatomic, readonly) NSSize intrinsicContentSize;
-/// Enable and disable
-@property (nonatomic) BOOL enabled;
-- (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-SWIFT_CLASS_NAMED("Item")
-@interface PZMAvatarGroupViewItem : NSObject
-/// The abbreviation displayed on the button, composed of two letters, would be covered by avatar image if it is set
-@property (nonatomic, copy) NSString * _Nullable label;
-/// The image displayed on the button, the square shaped is recommended. The image will be clipped if it is not square shaped
-@property (nonatomic, strong) NSImage * _Nullable image;
-/// The content to read if the voiceover focuses, default is “”
-@property (nonatomic, copy) NSString * _Nullable accessibilityLabel;
-/// The role to read if the voiceover focuses, default is “”
-@property (nonatomic, copy) NSString * _Nullable accessibilityRole;
-/// The external data stashed in button, AvatarGroupView does not read it
-@property (nonatomic, strong) NSObject * _Nullable userData;
-/// The identifier stashed in button, AvatarGroupView does not read it. It is used to identify an user.
-@property (nonatomic, strong) NSObject * _Nullable identifier;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-/// The avatar sizes, as defined in the design specification.
-typedef SWIFT_ENUM_NAMED(NSInteger, PZMAvatarGroupViewSize, "Size", open) {
-/// The tiny avatar size (20x20px).
-  PZMAvatarGroupViewSizeTiny = 0,
-/// The small avatar size (24x24px).
-  PZMAvatarGroupViewSizeSmall = 1,
-/// The medium avatar size (32x32px).
-  PZMAvatarGroupViewSizeMedium = 2,
-/// The large avatar size (40x40px).
-  PZMAvatarGroupViewSizeLarge = 3,
-};
-
-/// Use this class to create a blue bordered avatar group wrapper with a icon in it
-SWIFT_CLASS_NAMED("AvatarGroupWrapper")
-@interface PZMAvatarGroupWrapper : PZMView
-/// Created in init and can be exposed to externel
-@property (nonatomic, readonly, strong) PZMAvatarGroupView * _Nullable avatarGroupView;
-/// Creates an avatar group wrapper with given parameters.
-/// Also create a AvatarGroupView inside it. Can get it by the avatarGroupView property
-/// \param icon The icon shown to the left of the avatars. If nil, a blank room is reserved.
-///
-/// \param max The max number of users to show
-///
-- (nonnull instancetype)initWithIcon:(NSImage * _Nullable)icon max:(NSInteger)max;
-/// The icon to the left of the avatars, if nil, a blank room is reserved
-@property (nonatomic, strong) NSImage * _Nullable icon;
-/// The ideal size
-@property (nonatomic, readonly) NSSize intrinsicContentSize;
-/// The the blue border and the icon
-- (void)drawRect:(NSRect)dirtyRect;
-- (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-enum PZMAvatarViewSize : NSInteger;
-enum PZMPresence : NSInteger;
-@protocol NSAccessibility;
-/// Prism’s <code>AvatarView</code> component, with an added presence icon on the top-right.
-SWIFT_CLASS_NAMED("AvatarPresenceView")
-@interface PZMAvatarPresenceView : PZMView
-@property (nonatomic) enum PZMAvatarViewSize size;
-/// An optional action to be taken when the avatar is clicked.
-/// Typically, this is used for things such as opening a contact’s chat or profile.
-@property (nonatomic, copy) void (^ _Nullable onClick)(PZMAvatarPresenceView * _Nonnull);
-/// An optional action to be taken when the avatar’s cursor state is changed.
-/// Typically, this is used for things such as displaying a profile card when an avatar is hovered.
-@property (nonatomic, copy) void (^ _Nullable onCursorStateChanged)(PZMAvatarPresenceView * _Nonnull);
-@property (nonatomic) enum PZMCursorState cursorState;
-@property (nonatomic, strong) PZMToolTip * _Nullable toolTipModel;
-@property (nonatomic, copy) NSString * _Nullable toolTip;
-@property (nonatomic) BOOL wantsUpdateLayer;
-/// Sets a non-<code>nil</code> presence for the view.
-/// \param presence The new presence to be displayed.
-///
-- (void)setPresence:(enum PZMPresence)presence;
-/// Sets a <code>nil</code> presence for the view.
-- (void)removePresence;
-/// Sets the view’s label.
-/// The label is only shown when there is no image to display. If there is an image, it is displayed instead of
-/// the label.
-- (void)setLabel:(NSString * _Nonnull)label image:(NSImage * _Nullable)image;
-/// Initializes an <code>AvatarPresenceView</code> with the given arguments.
-/// \param label The starting label for the avatar.
-///
-/// \param image The image for the avatar; optional
-///
-/// \param size The size for the avatar; defaults to <code>AvatarView/Size/small</code>.
-///
-/// \param presence The starting presence for the view.
-///
-- (nonnull instancetype)initWithLabel:(NSString * _Nonnull)label image:(NSImage * _Nullable)image size:(enum PZMAvatarViewSize)size presence:(enum PZMPresence)presence;
-/// Initializes an <code>AvatarPresenceView</code> without a presence.
-/// \param label The starting label for the avatar.
-///
-/// \param image The image for the avatar; optional
-///
-/// \param size The size for the avatar; defaults to <code>AvatarView/Size/small</code>.
-///
-- (nonnull instancetype)initWithLabel:(NSString * _Nonnull)label image:(NSImage * _Nullable)image size:(enum PZMAvatarViewSize)size;
-- (void)updateConstraints;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
-- (void)updateLayer;
-@property (nonatomic, readonly) NSSize intrinsicContentSize;
-@property (nonatomic, readonly) NSEdgeInsets alignmentRectInsets;
-@property (nonatomic) BOOL forbidInteraction;
-@property (nonatomic) BOOL forbidTracking;
-@property (nonatomic, readonly, strong) id <NSAccessibility> _Nullable avatarAccessibilityElement;
-- (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
 @end
 
 @class PZMPopover;
@@ -905,6 +792,392 @@ SWIFT_CLASS_NAMED("InteractableView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+enum PZMAnchorButtonStyle : NSInteger;
+/// An anchor button with a primary action and an optional dismiss action.
+/// The dismiss action is only displayed when <code>style</code> is <code>Style/neutral</code>,
+/// <code>dismissAction</code> is non-nil, and the button has a <code>label</code>.
+/// Icon-only mode (no label) is restricted to <code>Style/neutral</code>. Setting
+/// <code>label</code> to <code>nil</code> or empty when <code>style</code> is not <code>Style/neutral</code> is a
+/// no-op. Similarly, setting <code>style</code> to a non-neutral value when the button
+/// has no label is a no-op.
+SWIFT_CLASS_NAMED("AnchorButton")
+@interface PZMAnchorButton : PZMInteractableView <PZMBaseButton>
+/// The button’s primary action, invoked when the user clicks the main part of the button.
+@property (nonatomic, copy) void (^ _Nonnull action)(id <PZMBaseButton> _Nonnull);
+/// The button’s dismiss action, invoked when the user clicks the dismiss part of the button.
+/// When non-nil, <code>style</code> is <code>Style/neutral</code>, and the button has a
+/// <code>label</code>, a dismiss button is shown. The dismiss button is hidden
+/// whenever this is <code>nil</code>, style is not <code>.neutral</code>, or there is no label.
+@property (nonatomic, copy) void (^ _Nullable dismissAction)(id <PZMBaseButton> _Nonnull);
+/// The button’s style.
+/// Setting this to a non-neutral value when the button has no label is a
+/// no-op, because icon-only mode is restricted to <code>Style/neutral</code>.
+@property (nonatomic) enum PZMAnchorButtonStyle style;
+/// The button’s label.
+/// Setting this to <code>nil</code> or an empty string when <code>style</code> is not
+/// <code>Style/neutral</code> is a no-op, because icon-only mode is restricted
+/// to the neutral style.
+@property (nonatomic, copy) NSString * _Nullable label;
+/// The icon shown in the primary area of the button.
+@property (nonatomic, strong) NSImage * _Nullable icon;
+/// The icon shown in the dismiss area of the button.
+@property (nonatomic, strong) NSImage * _Nullable dismissIcon;
+@property (nonatomic) BOOL runActionOnMouseDown;
+@property (nonatomic) BOOL showDot;
+@property (nonatomic) NSInteger buttonTag;
+@property (nonatomic) BOOL tintImage;
+@property (nonatomic, copy) NSString * _Nonnull keyEquivalent;
+@property (nonatomic) NSEventModifierFlags keyEquivalentModifierMask;
+@property (nonatomic) BOOL updatesCursorOnHover;
+@property (nonatomic, strong) NSCursor * _Nullable cursor;
+@property (nonatomic, readonly, strong) NSCursor * _Nonnull defaultCursor;
+@property (nonatomic) NSInteger dismissButtonTag;
+@property (nonatomic) BOOL dismissTintImage;
+@property (nonatomic) BOOL dismissRunActionOnMouseDown;
+@property (nonatomic, strong) PZMVisualEffect * _Nullable backgroundVisualEffect;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithLabel:(NSString * _Nullable)_ocLabel style:(enum PZMAnchorButtonStyle)style action:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))_ocAction;
+@property (nonatomic) BOOL enabled;
+@property (nonatomic) BOOL forbidInteraction;
+@property (nonatomic, strong) PZMShadow * _Nullable backgroundShadow;
+@property (nonatomic) CGFloat borderWidth;
+@property (nonatomic, strong) PrismColor * _Nullable borderColor;
+@property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic, readonly) NSSize intrinsicContentSize;
+@property (nonatomic, readonly) BOOL canBecomeKeyView;
+@property (nonatomic, readonly) BOOL acceptsFirstResponder;
+- (void)showProgressIndicator;
+- (void)hideProgressIndicator;
+- (NSView * _Nullable)hitTest:(NSPoint)point SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isAccessibilityElement SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isAccessibilityEnabled SWIFT_WARN_UNUSED_RESULT;
+- (void)setAccessibilityIdentifier:(NSString * _Nullable)accessibilityIdentifier;
+- (void)setPrimaryButtonAccessibilityIdentifier:(NSString * _Nullable)accessibilityIdentifier;
+- (void)setDismissButtonAccessibilityIdentifier:(NSString * _Nullable)accessibilityIdentifier;
+- (void)setDismissButtonAccessibilityTitle:(NSString * _Nullable)accessibilityTitle;
+- (void)setDismissButtonAccessibilityLabel:(NSString * _Nullable)accessibilityLabel;
+- (void)setDismissButtonAccessibilityRole:(NSAccessibilityRole _Nullable)accessibilityRole;
+- (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
+@end
+
+/// The button styles, as defined in the design specification.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMAnchorButtonStyle, "Style", open) {
+/// The default button style, using primary colors.
+  PZMAnchorButtonStyleDefault = 0,
+/// The alert button style, using error colors.
+  PZMAnchorButtonStyleAlert = 1,
+/// The neutral button style.
+  PZMAnchorButtonStyleNeutral = 2,
+};
+
+enum PZMIconButtonSize : NSInteger;
+SWIFT_CLASS_NAMED("ToggleButton")
+@interface PZMToggleButton : PZMInteractableView
+/// The button’s action, to be invoked when the user interacts with the button.
+@property (nonatomic, copy) void (^ _Nonnull action)(id <PZMBaseButton> _Nonnull);
+/// The label shown on the button; optional.
+@property (nonatomic, copy) NSString * _Nullable label;
+- (void)updateConstraints;
+/// Determines whether the button’s action will be executed on a <code>mouseDown(with:)</code> event, as opposed to
+/// <code>mouseUp(with:)</code>. Defaults to <code>true</code>.
+@property (nonatomic) BOOL runActionOnMouseDown;
+/// Handles the mouse down event.
+/// If <code>runActionOnMouseDown</code> is set, the action is executed.
+- (void)mouseDown:(NSEvent * _Nonnull)event;
+/// Handles the mouse up event.
+/// If <code>runActionOnMouseDown</code> is not set, the action is executed.
+- (void)mouseUp:(NSEvent * _Nonnull)event;
+/// Handles the key up event and sets the cursor state accordingly.
+- (void)keyDown:(NSEvent * _Nonnull)event;
+@property (nonatomic) BOOL updatesCursorOnHover;
+@property (nonatomic, strong) NSCursor * _Nullable cursor;
+@property (nonatomic, readonly, strong) NSCursor * _Nonnull defaultCursor;
+- (void)viewDidChangeEffectiveAppearance;
+@property (nonatomic, readonly) NSSize intrinsicContentSize;
+- (void)showProgressIndicator;
+- (void)hideProgressIndicator;
+@property (nonatomic) NSInteger buttonTag;
+@property (nonatomic, copy) NSString * _Nonnull keyEquivalent;
+@property (nonatomic) NSEventModifierFlags keyEquivalentModifierMask;
+/// The icon shown in the button.
+@property (nonatomic, strong) NSImage * _Nullable image;
+@property (nonatomic) BOOL tintImage;
+@property (nonatomic) BOOL showDot;
+/// The button’s current selection state.
+@property (nonatomic) BOOL boolValue;
+@property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
+@property (nonatomic, strong) PrismColor * _Nullable hoveredBackgroundColor;
+@property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
+@property (nonatomic) CGFloat borderWidth;
+@property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic) BOOL enabled;
+@property (nonatomic, readonly) CGFloat focusRingSpacing;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nullable)coder SWIFT_UNAVAILABLE;
+- (void)updateLayer;
+- (nonnull instancetype)initWithImage:(NSImage * _Nullable)_ocImage label:(NSString * _Nullable)_ocLabel size:(enum PZMIconButtonSize)size boolValue:(BOOL)boolValue action:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))_ocAction;
+- (nonnull instancetype)initWithImage:(NSImage * _Nullable)_ocImage size:(enum PZMIconButtonSize)size boolValue:(BOOL)boolValue action:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))_ocAction;
+- (BOOL)performKeyEquivalent:(NSEvent * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, copy) NSString * _Nullable accessibilityTitleOverride;
+- (NSString * _Nullable)accessibilityTitle SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
+- (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)accessibilityPerformPress SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
+@end
+
+/// A circular icon button with an AI-themed sparkle icon that toggles between
+/// inactive and active states. When triggered, a gradient-stroked ring spins
+/// around the button and then fades out.
+/// The button is a self-contained toggle: clicking it alternates between the two states.
+/// The gradient ring animation can be started externally via <code>startBorderAnimation()</code>.
+/// There is only one size variant (32 px diameter).
+SWIFT_CLASS_NAMED("AnimatedGradientButton")
+@interface PZMAnimatedGradientButton : PZMToggleButton
+/// Creates an <code>AnimatedGradientButton</code>.
+/// \param action A closure invoked when the button is clicked.
+///
+- (nonnull instancetype)initWithAction:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))action OBJC_DESIGNATED_INITIALIZER;
+/// The button’s active/toggle state, proxied to <code>boolValue</code>.
+/// When <code>true</code>, the button displays the AI gradient background and the filled
+/// sparkle icon. When <code>false</code>, the button shows a solid light-gray background
+/// and the outlined sparkle icon.
+@property (nonatomic) BOOL selected;
+@property (nonatomic) BOOL boolValue;
+/// The sparkle icon sourced from the asset bundle.
+/// The setter is a no-op; this button always displays its built-in icon.
+@property (nonatomic, strong) NSImage * _Nullable image;
+/// Always <code>nil</code> — this button has no text label.
+/// The setter is a no-op.
+@property (nonatomic, copy) NSString * _Nullable label;
+@property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic, readonly) CGFloat focusRingSpacing;
+@property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
+@property (nonatomic, strong) PrismColor * _Nullable hoveredBackgroundColor;
+@property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
+- (void)updateLayer;
+/// Starts (or restarts) the gradient ring spin animation around the button.
+/// The ring spins for 3 seconds, then fades out over 1 second.
+/// If the button is selected or pressed, the call is ignored.
+- (void)startBorderAnimation;
+@end
+
+enum PZMAvatarBubbleViewSize : NSInteger;
+@class PZMAvatarBubbleViewItem;
+/// Figma: https://www.figma.com/design/fLGhhzkzA1tlvZOg00to2L/Prism-Desktop—Web-1.0?node-id=1008-0&p=f&m=dev
+/// Prism’s Avatar component; used to display an image that represents a user or similar entity.
+/// There are 2 recommanded sizes: 24x24px and 32x32px
+/// But other size are also supported if you restrict this view to any other sizes
+SWIFT_CLASS_NAMED("AvatarBubbleView")
+@interface PZMAvatarBubbleView : PZMInteractableView
+/// The ideal size, determined by the size parameter
+/// You can also restrict the size of this view to any size
+@property (nonatomic, readonly) NSSize intrinsicContentSize;
+/// The size of the avatar. Default is small, 24x24px.
+/// This parameter only determines the intrinsicContentSize
+/// If another size is need, please restrict this view to the size you want
+@property (nonatomic, readonly) enum PZMAvatarBubbleViewSize size;
+/// Enable and disable
+@property (nonatomic) BOOL enabled;
+@property (nonatomic, copy) NSArray<PZMAvatarBubbleViewItem *> * _Nullable items;
+/// Initialize a AvatarBubbleView with a size
+/// Only 2 sizes are supported
+/// There are only 2 options of the size parameter
+/// If you want a free-sized view, please use init and do not assign a size
+/// \param size There are only 2 options of the size parameter, The small avatar size (24x24px). The medium avatar size (32x32px).
+///
+- (nonnull instancetype)initWithSize:(enum PZMAvatarBubbleViewSize)size;
+/// Reset the AvatarViews when a new frame is set
+@property (nonatomic) NSRect frame;
+- (void)mouseUp:(NSEvent * _Nonnull)event;
+- (BOOL)isAccessibilityElement SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly) BOOL canBecomeKeyView;
+@property (nonatomic, readonly) BOOL acceptsFirstResponder;
+/// Announces the bubble’s members, e.g. “Group with Ada Lovelace and Alan Turing”.
+/// The group type is spelled into the label rather than left to the role announcement, so
+/// <code>accessibilityRoleDescription()</code> is suppressed to keep VoiceOver from repeating it.
+/// Only the displayed avatars are announced — <code>items</code> counts other than 2 or 3 render no
+/// avatars, and such a bubble reads “Group”.
+- (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
+/// Suppressed: the label already opens with “Group”, so letting VoiceOver append the role
+/// description would read it twice (“Group with …, group”).
+- (NSString * _Nullable)accessibilityRoleDescription SWIFT_WARN_UNUSED_RESULT;
+- (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
+/// The avatars, in the same order they are laid out, so VoiceOver steps through them as they
+/// appear on screen.
+/// Publishing real children is what lets VoiceOver interact with the bubble (VO + Shift + Down)
+/// and then move between the avatars (VO + arrows); each child announces itself and can be
+/// activated with VO + Space.
+- (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
+/// Called when this avatar bubble is clicked
+@property (nonatomic, copy) void (^ _Nullable onClick)(PZMAvatarBubbleView * _Nonnull);
+- (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS_NAMED("Item")
+@interface PZMAvatarBubbleViewItem : NSObject
+/// The name of the user or entity this avatar stands for, e.g. “Ada Lovelace”. It is what
+/// voiceover announces, and it is displayed as the two-letter initials derived from it —
+/// which the avatar image covers when one is set
+@property (nonatomic, copy) NSString * _Nullable label;
+/// The image displayed on the avatar, the square shaped is recommended. The image will be clipped if it is not square shaped
+@property (nonatomic, strong) NSImage * _Nullable image;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+/// The avatar sizes, as defined in the design specification.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMAvatarBubbleViewSize, "Size", open) {
+/// The small avatar size (24x24px).
+  PZMAvatarBubbleViewSizeSmall = 0,
+/// The medium avatar size (32x32px).
+  PZMAvatarBubbleViewSizeMedium = 1,
+};
+
+enum PZMAvatarGroupViewSize : NSInteger;
+@class PZMAvatarGroupViewItem;
+/// Prism’s Avatar component; used to display an image that represents a user or similar entity.
+SWIFT_CLASS_NAMED("AvatarGroupView")
+@interface PZMAvatarGroupView : PZMInteractableView
+@property (nonatomic) BOOL translatesAutoresizingMaskIntoConstraints;
+/// The size of the avatar. Default is small
+@property (nonatomic, readonly) enum PZMAvatarGroupViewSize size;
+@property (nonatomic, readonly) NSInteger maxVisibleAvatarCount;
+@property (nonatomic, readonly) NSInteger visibleAvatarCount;
+/// Called when a user avatar is clicked, the AvatarGroupView self, the Item data and the index in users are revealed
+@property (nonatomic, copy) void (^ _Nullable onAvatarClick)(PZMAvatarGroupView * _Nonnull, PZMAvatarGroupViewItem * _Nonnull, NSInteger);
+/// Called when the number button is clicked, the AvatarGroupView self, and the number on this button are revealed
+@property (nonatomic, copy) void (^ _Nullable onNumberClick)(PZMAvatarGroupView * _Nonnull, NSInteger);
+/// Called when the string on number button is about to format. If you want a different way to show the number string, custom this formmater, default is “%d+”
+/// Returning “” hide the number button
+@property (nonatomic, copy) NSString * _Nonnull (^ _Nullable numberWillFormat)(NSInteger);
+/// Called when the sizeDidChange is changed. Call this closure to recontrain this view with new intrinsicContentSize. If nil, a default recontrain is performed
+@property (nonatomic, copy) void (^ _Nullable sizeDidChange)(PZMAvatarGroupView * _Nonnull, NSSize);
+/// Creates an avatar group view with given parameters.
+/// \param size The size that the avatars will be shown in.
+///
+/// \param max The max number of users to show
+///
+/// \param sizeDidChange The caller of this interface needs layout this view in sizeDidChange
+///
+- (nonnull instancetype)initWithSize:(enum PZMAvatarGroupViewSize)size max:(NSInteger)max;
+/// The users to show on this view. The users exceeds max number will be ignored
+@property (nonatomic, copy) NSArray<PZMAvatarGroupViewItem *> * _Nullable items;
+/// The number displayed on the right part. If it is greater than 99, “99+” will be displayed. If it is less than 1, the number is hidden
+@property (nonatomic) NSInteger userNumber;
+/// The ideal size
+@property (nonatomic, readonly) NSSize intrinsicContentSize;
+/// Enable and disable
+@property (nonatomic) BOOL enabled;
+- (BOOL)isAccessibilityElement SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly) BOOL canBecomeKeyView;
+@property (nonatomic, readonly) BOOL acceptsFirstResponder;
+/// Announces the group’s members followed by the overflow count, e.g.
+/// “Group with Ada Lovelace, Alan Turing, and 99+ more”.
+/// The group type is spelled into the label rather than left to the role announcement, so
+/// <code>accessibilityRoleDescription()</code> is suppressed to keep VoiceOver from repeating it.
+/// The overflow component reuses the badge’s own <code>countString</code>, so it matches what is displayed
+/// — including the “99+” cap and any custom <code>numberWillFormat</code>. Components that are absent are
+/// dropped: a group with no overflow reads “Group with Ada Lovelace and Alan Turing”, and an
+/// empty group reads “Group”.
+- (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
+/// Suppressed: the label already opens with “Group”, so letting VoiceOver append the role
+/// description would read it twice (“Group with …, group”).
+- (NSString * _Nullable)accessibilityRoleDescription SWIFT_WARN_UNUSED_RESULT;
+- (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
+/// The avatars, followed by the overflow badge when it is visible — in the same left-to-right
+/// order they are laid out, so VoiceOver steps through them as they appear on screen.
+/// Publishing real children is what lets VoiceOver interact with the group (VO + Shift + Down)
+/// and then move between the avatars (VO + arrows); each child announces itself and can be
+/// activated with VO + Space.
+- (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
+- (void)setAccessibilityIdentifier:(NSString * _Nullable)accessibilityIdentifier;
+- (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS_NAMED("Item")
+@interface PZMAvatarGroupViewItem : NSObject
+/// The name of the user or entity this avatar stands for, e.g. “Ada Lovelace”. It is what
+/// voiceover announces, and it is displayed as the two-letter initials derived from it —
+/// which the avatar image covers when one is set
+@property (nonatomic, copy) NSString * _Nullable label;
+/// The image displayed on the button, the square shaped is recommended. The image will be clipped if it is not square shaped
+@property (nonatomic, strong) NSImage * _Nullable image;
+/// The external data stashed in button, AvatarGroupView does not read it
+@property (nonatomic, strong) NSObject * _Nullable userData;
+/// The identifier stashed in button, AvatarGroupView does not read it. It is used to identify an user.
+@property (nonatomic, strong) NSObject * _Nullable identifier;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+/// The avatar sizes, as defined in the design specification.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMAvatarGroupViewSize, "Size", open) {
+/// The tiny avatar size (20x20px).
+  PZMAvatarGroupViewSizeTiny = 0,
+/// The small avatar size (24x24px).
+  PZMAvatarGroupViewSizeSmall = 1,
+/// The medium avatar size (32x32px).
+  PZMAvatarGroupViewSizeMedium = 2,
+/// The large avatar size (40x40px).
+  PZMAvatarGroupViewSizeLarge = 3,
+};
+
+enum PZMAvatarViewSize : NSInteger;
+enum PZMPresence : NSInteger;
+@protocol NSAccessibility;
+/// Prism’s <code>AvatarView</code> component, with an added presence icon on the top-right.
+SWIFT_CLASS_NAMED("AvatarPresenceView")
+@interface PZMAvatarPresenceView : PZMView
+@property (nonatomic) enum PZMAvatarViewSize size;
+/// An optional action to be taken when the avatar is clicked.
+/// Typically, this is used for things such as opening a contact’s chat or profile.
+@property (nonatomic, copy) void (^ _Nullable onClick)(PZMAvatarPresenceView * _Nonnull);
+/// An optional action to be taken when the avatar’s cursor state is changed.
+/// Typically, this is used for things such as displaying a profile card when an avatar is hovered.
+@property (nonatomic, copy) void (^ _Nullable onCursorStateChanged)(PZMAvatarPresenceView * _Nonnull);
+@property (nonatomic) enum PZMCursorState cursorState;
+@property (nonatomic, strong) PZMToolTip * _Nullable toolTipModel;
+@property (nonatomic, copy) NSString * _Nullable toolTip;
+@property (nonatomic) BOOL wantsUpdateLayer;
+/// Sets a non-<code>nil</code> presence for the view.
+/// \param presence The new presence to be displayed.
+///
+- (void)setPresence:(enum PZMPresence)presence;
+/// Sets a <code>nil</code> presence for the view.
+- (void)removePresence;
+/// Sets the view’s label.
+/// The label is only shown when there is no image to display. If there is an image, it is displayed instead of
+/// the label.
+- (void)setLabel:(NSString * _Nonnull)label image:(NSImage * _Nullable)image;
+/// Initializes an <code>AvatarPresenceView</code> with the given arguments.
+/// \param label The starting label for the avatar.
+///
+/// \param image The image for the avatar; optional
+///
+/// \param size The size for the avatar; defaults to <code>AvatarView/Size/small</code>.
+///
+/// \param presence The starting presence for the view.
+///
+- (nonnull instancetype)initWithLabel:(NSString * _Nonnull)label image:(NSImage * _Nullable)image size:(enum PZMAvatarViewSize)size presence:(enum PZMPresence)presence;
+/// Initializes an <code>AvatarPresenceView</code> without a presence.
+/// \param label The starting label for the avatar.
+///
+/// \param image The image for the avatar; optional
+///
+/// \param size The size for the avatar; defaults to <code>AvatarView/Size/small</code>.
+///
+- (nonnull instancetype)initWithLabel:(NSString * _Nonnull)label image:(NSImage * _Nullable)image size:(enum PZMAvatarViewSize)size;
+- (void)updateConstraints;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+@property (nonatomic, readonly) NSSize intrinsicContentSize;
+@property (nonatomic, readonly) NSEdgeInsets alignmentRectInsets;
+@property (nonatomic) BOOL forbidInteraction;
+@property (nonatomic) BOOL forbidTracking;
+@property (nonatomic, readonly, strong) id <NSAccessibility> _Nullable avatarAccessibilityElement;
+- (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
+@end
+
 /// Prism’s Avatar component; used to display an image that represents a user or similar entity.
 SWIFT_CLASS_NAMED("AvatarView")
 @interface PZMAvatarView : PZMInteractableView
@@ -912,7 +1185,7 @@ SWIFT_CLASS_NAMED("AvatarView")
 @property (nonatomic) BOOL drawsImageBackground;
 /// An optional action to be taken when the avatar is clicked.
 @property (nonatomic, copy) void (^ _Nullable onClick)(PZMAvatarView * _Nonnull);
-/// An optional action to be taken when the avatar’s cursor state is changed.21
+/// An optional action to be taken when the avatar’s cursor state is changed.
 /// Typically, this is used for things such as displaying a profile card when an avatar is hovered.
 @property (nonatomic, copy) void (^ _Nullable onCursorStateChanged)(PZMAvatarView * _Nonnull);
 /// The size of the avatar.
@@ -1043,46 +1316,9 @@ SWIFT_CLASS_NAMED("_PrismOCBridge_Decoration")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class NSCursor;
-/// A protocol declaring a base button interface.
-SWIFT_PROTOCOL_NAMED("BaseButton")
-@protocol PZMBaseButton
-/// The button’s action, to be invoked when the user interacts with the button.
-@property (nonatomic, copy) void (^ _Nonnull action)(id <PZMBaseButton> _Nonnull);
-/// Determines whether the button’s action will be executed on a <code>mouseDown(with:)</code> event, as opposed to
-/// <code>mouseUp(with:)</code>.
-@property (nonatomic) BOOL runActionOnMouseDown;
-/// Displays a progress indicator over the button.
-/// If the progress indicator is already running, this does nothing.
-/// important:
-/// While the progress indicator is shown, interaction with the button is disabled.
-- (void)showProgressIndicator;
-/// Hides the button’s progress indicator, if it is shown.
-/// If the progress indicator is already stopped, this does nothing.
-- (void)hideProgressIndicator;
-/// Let button show dot.
-/// enable to control whether to display dot.
-@property (nonatomic) BOOL showDot;
-/// Set button tag
-/// enable mark each button
-@property (nonatomic) NSInteger buttonTag;
-/// Whether to tint the button’s image, if any, with the content color.
-/// This typically defaults to <code>true</code>; check the relevant button implementation
-/// for more details on specific cases.
-@property (nonatomic) BOOL tintImage;
-/// Whether the button will update the cursor when it is hovered.
-@property (nonatomic) BOOL updatesCursorOnHover;
-/// The cursor to use when <code>updatesCursorOnHover</code> is set.
-/// If <code>nil</code>, the implementation’s default value is used; this may change
-/// depending on the button type. Refer to the class documentation for more
-/// details.
-@property (nonatomic, strong) NSCursor * _Nullable cursor;
-/// The button type’s default cursor.
-/// This value is used if <code>updatesCursorOnHover</code> is set when <code>cursor</code> is
-/// <code>nil</code>.
-@property (nonatomic, readonly, strong) NSCursor * _Nonnull defaultCursor;
-@property (nonatomic, copy) NSString * _Nonnull keyEquivalent;
-@property (nonatomic) NSEventModifierFlags keyEquivalentModifierMask;
+SWIFT_PROTOCOL_NAMED("BaselineOffsetProvider")
+@protocol PZMBaselineOffsetProvider <PZMBaseView>
+@property (nonatomic, readonly) NSPoint baselineOffset;
 @end
 
 /// <code>Invertible</code> declares a protocol for views that have special styles
@@ -1130,12 +1366,12 @@ SWIFT_CLASS_NAMED("Button")
 @property (nonatomic, strong) NSImage * _Nullable image;
 @property (nonatomic) BOOL tintImage;
 @property (nonatomic) enum PZMCursorState cursorState;
-@property (nonatomic) CGFloat borderWidth;
 @property (nonatomic) CGFloat cornerRadius;
 @property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
 @property (nonatomic, strong) PrismColor * _Nullable hoveredBackgroundColor;
 @property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
 @property (nonatomic) BOOL wantsLayer;
+- (void)updateLayer;
 @property (nonatomic) BOOL enabled;
 @property (nonatomic, strong) PrismColor * _Nullable borderColor;
 @property (nonatomic, strong) PrismColor * _Nullable hoveredBorderColor;
@@ -1274,16 +1510,21 @@ SWIFT_CLASS_NAMED("Button")
 typedef SWIFT_ENUM_NAMED(NSInteger, PZMButtonStyle, "Style", open) {
 /// The primary button style.
   PZMButtonStylePrimary = 0,
-/// The secondary button style.
+/// The secondary button style and an alternative neutral style.
   PZMButtonStyleSecondary = 1,
+/// The secondary button style and an alternative neutral style.
+  PZMButtonStyleSecondaryNeutral = 2,
 /// The tertiary button style.
-  PZMButtonStyleTertiary = 2,
+  PZMButtonStyleTertiary = 3,
 /// The primary button style that indicates danger, for destructive actions.
-  PZMButtonStylePrimaryDestructive = 3,
+  PZMButtonStylePrimaryDestructive = 4,
 /// The secondary button style that indicates danger, for destructive actions.
-  PZMButtonStyleSecondaryDestructive = 4,
+  PZMButtonStyleSecondaryDestructive = 5,
 /// The tertiary button style that indicates danger, for destructive actions.
-  PZMButtonStyleTertiaryDestructive = 5,
+  PZMButtonStyleTertiaryDestructive = 6,
+/// An overlay button which displays a dark background with a
+/// high-contrast foreground color.
+  PZMButtonStyleOverlay = 7,
 };
 
 /// The available button sizes.
@@ -1294,24 +1535,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMButtonSize, "Size", open) {
   PZMButtonSizeMedium = 1,
 /// The large button size.
   PZMButtonSizeLarge = 2,
-/// The extra large button size.
   PZMButtonSizeExtraLarge = 3,
 };
-
-@interface PZMButton (SWIFT_EXTENSION(Prism))
-/// Sets custom border color for normal state
-/// \param color Custom border color, pass nil to restore style-based automatic calculation
-///
-- (void)updateBorderColor:(PrismColor * _Nullable)color;
-/// Sets custom border color for hovered state
-/// \param color Custom border color, pass nil to restore default behavior
-///
-- (void)updateHoveredBorderColor:(PrismColor * _Nullable)color;
-/// Sets custom border color for clicked state
-/// \param color Custom border color, pass nil to restore default behavior
-///
-- (void)updateClickedBorderColor:(PrismColor * _Nullable)color;
-@end
 
 SWIFT_PROTOCOL_NAMED("ButtonDelegate")
 @protocol PZMButtonDelegate
@@ -1648,6 +1873,24 @@ SWIFT_CLASS_NAMED("Theme")
 + (PrismColor * _Nonnull)colorWithTokenName:(NSString * _Nonnull)tokenName SWIFT_WARN_UNUSED_RESULT;
 @end
 
+@interface PrismColor (SWIFT_EXTENSION(Prism))
+/// Creates a color by name using dynamic property access.
+/// This method allows for runtime color resolution by name, which is useful for dynamic theming
+/// and configuration-driven color selection.
+/// note:
+/// only for ZUI now
+/// \param name The name of the color property to resolve. If nil, returns the error color.
+///
+///
+/// returns:
+/// The resolved color, or the error color if the name is invalid or not found.
++ (PrismColor * _Nonnull)colorWithName:(NSString * _Nullable)name SWIFT_WARN_UNUSED_RESULT;
+/// Clears the color name cache.
+/// This method should be called when the theme system is reset or when memory optimization is needed.
+/// It is thread-safe and can be called from any thread.
++ (void)clearColorCache;
+@end
+
 @class NSNumber;
 @interface PrismColor (SWIFT_EXTENSION(Prism))
 /// Creates a color with RGB integer and alpha values for light and dark themes.
@@ -1714,6 +1957,8 @@ SWIFT_CLASS_NAMED("Theme")
 /// returns:
 /// A <code>ThemeColor</code> instance with the given colors.
 + (PrismColor * _Nonnull)colorWithLightHex:(NSUInteger)lightHex darkHex:(NSUInteger)darkHex themes:(NSDictionary<NSNumber *, NSColor *> * _Nonnull)themes SWIFT_WARN_UNUSED_RESULT;
++ (PrismColor * _Nonnull)colorWithHex:(NSUInteger)hex themes:(NSDictionary<NSNumber *, NSColor *> * _Nonnull)themes SWIFT_WARN_UNUSED_RESULT;
++ (PrismColor * _Nonnull)colorWithColor:(NSColor * _Nonnull)color themes:(NSDictionary<NSNumber *, NSColor *> * _Nonnull)themes SWIFT_WARN_UNUSED_RESULT;
 /// Creates a color from a ZMPigment object.
 /// \param pigment The ZMPigment object to create the color from.
 ///
@@ -1724,31 +1969,13 @@ SWIFT_CLASS_NAMED("Theme")
 @end
 
 @interface PrismColor (SWIFT_EXTENSION(Prism))
-/// Creates a color by name using dynamic property access.
-/// This method allows for runtime color resolution by name, which is useful for dynamic theming
-/// and configuration-driven color selection.
-/// note:
-/// only for ZUI now
-/// \param name The name of the color property to resolve. If nil, returns the error color.
-///
-///
-/// returns:
-/// The resolved color, or the error color if the name is invalid or not found.
-+ (PrismColor * _Nonnull)colorWithName:(NSString * _Nullable)name SWIFT_WARN_UNUSED_RESULT;
-/// Clears the color name cache.
-/// This method should be called when the theme system is reset or when memory optimization is needed.
-/// It is thread-safe and can be called from any thread.
-+ (void)clearColorCache;
-@end
-
-@interface PrismColor (SWIFT_EXTENSION(Prism))
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull prismClear;)
 + (PrismColor * _Nonnull)prismClear SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull backgroundDarkerNeutral SWIFT_DEPRECATED_MSG("Use Color.color(tokenName: \"BackgroundDarkerNeutral\") directly");)
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull backgroundDarkerNeutral;)
 + (PrismColor * _Nonnull)backgroundDarkerNeutral SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull backgroundDefault SWIFT_DEPRECATED_MSG("Use Color.color(tokenName: \"BackgroundDefault\") directly");)
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull backgroundDefault;)
 + (PrismColor * _Nonnull)backgroundDefault SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull backgroundNeutral SWIFT_DEPRECATED_MSG("Use Color.color(tokenName: \"BackgroundNeutral\") directly");)
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull backgroundNeutral;)
 + (PrismColor * _Nonnull)backgroundNeutral SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull borderComplementary;)
 + (PrismColor * _Nonnull)borderComplementary SWIFT_WARN_UNUSED_RESULT;
@@ -2104,6 +2331,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor *
 + (PrismColor * _Nonnull)invalidTokenColor SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull badgeTextNeutral;)
 + (PrismColor * _Nonnull)badgeTextNeutral SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull badgeBackgroundDefault;)
++ (PrismColor * _Nonnull)badgeBackgroundDefault SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull badgeTextDefault;)
++ (PrismColor * _Nonnull)badgeTextDefault SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull badgeBackgroundAlert;)
++ (PrismColor * _Nonnull)badgeBackgroundAlert SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor * _Nonnull badgeTextAlert;)
++ (PrismColor * _Nonnull)badgeTextAlert SWIFT_WARN_UNUSED_RESULT;
 @end
 
 /// Prism’s color edit view component, typically used to edit a existing color or add a new color.
@@ -2254,6 +2489,7 @@ SWIFT_CLASS_NAMED("ColorPickerView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+enum PZMCounterViewStyle : NSInteger;
 enum PZMCounterViewColor : NSInteger;
 enum PZMCounterViewSize : NSInteger;
 /// Prism’s counter view, typically used for unread message or notification counts.
@@ -2270,7 +2506,11 @@ SWIFT_CLASS_NAMED("CounterView")
 @interface PZMCounterView : PZMView <PZMInvertible>
 /// The count to be displayed on the view.
 @property (nonatomic) NSUInteger count;
-@property (nonatomic) enum PZMCounterViewColor color;
+/// The visual style of the counter, controlling badge colors.
+/// Defaults to <code>Style/default</code>. Changing this property updates the badge
+/// colors immediately.
+@property (nonatomic) enum PZMCounterViewStyle style;
+@property (nonatomic) enum PZMCounterViewColor color SWIFT_DEPRECATED_MSG("", "style");
 /// An optional string to be read out by voiceover, to specify what is being counted by the view.
 /// By default, this view reads out as <code>"\(countString) unread"</code>. In the event that we must specify
 /// “unread <em>messages</em>”, for instance, we should set <code>accessibilityCountDescription</code> <code>= "messages"</code>.
@@ -2302,15 +2542,18 @@ SWIFT_CLASS_NAMED("CounterView")
 /// returns:
 /// A <code>CounterView</code> instance with the given count.
 - (nonnull instancetype)initWithCount:(NSUInteger)count;
+- (nonnull instancetype)initWithCount:(NSUInteger)count size:(enum PZMCounterViewSize)size;
 /// Creates a counter view with a given count and size.
 /// \param count The starting count for the counter view.
 ///
 /// \param size The size of the counter view. Defaults to <code>.medium</code>.
 ///
+/// \param style The style of the counter view. Defaults to <code>.default</code>.
+///
 ///
 /// returns:
 /// A <code>CounterView</code> instance with the given count and size.
-- (nonnull instancetype)initWithCount:(NSUInteger)count size:(enum PZMCounterViewSize)size OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCount:(NSUInteger)count size:(enum PZMCounterViewSize)size style:(enum PZMCounterViewStyle)style OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 - (void)encodeWithCoder:(NSCoder * _Nonnull)coder;
 /// Utility function that returns a counter view with a given count.
@@ -2332,10 +2575,20 @@ SWIFT_CLASS_NAMED("CounterView")
 @end
 
 typedef SWIFT_ENUM_NAMED(NSInteger, PZMCounterViewSize, "Size", open) {
-/// The small counter size (15pt).
+/// The small counter size.
   PZMCounterViewSizeSmall = 0,
-/// The medium counter size (20pt). This is the default.
+/// The medium counter size. This is the default.
   PZMCounterViewSizeMedium = 1,
+};
+
+/// The visual style of the counter, controlling its background and text colors.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMCounterViewStyle, "Style", open) {
+/// The default counter style, using primary badge colors.
+  PZMCounterViewStyleDefault = 0,
+/// The alert counter style, using error/danger colors.
+  PZMCounterViewStyleAlert = 1,
+/// The neutral counter style, using subdued neutral colors.
+  PZMCounterViewStyleNeutral = 2,
 };
 
 typedef SWIFT_ENUM_NAMED(NSInteger, PZMCounterViewColor, "ColorCombo", open) {
@@ -2370,6 +2623,7 @@ SWIFT_CLASS_NAMED("CursorStateBinding")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class ZMButtonCompositePigments;
 /// A custom button utility, used to implement button or button-like controls with
 /// custom styles and/or layout.
 /// By default, this implementation reuses the layout from <code>Button</code> or <code>IconButton</code>,
@@ -2408,7 +2662,11 @@ SWIFT_CLASS_NAMED("CustomButton")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 /// The button’s action, to be invoked when the user interacts with the button.
 @property (nonatomic, copy) void (^ _Nonnull action)(id <PZMBaseButton> _Nonnull);
+@property (nonatomic) BOOL isSelected;
 @property (nonatomic) BOOL enabled;
+@property (nonatomic, strong) ZMButtonCompositePigments * _Nullable pigments;
+@property (nonatomic) BOOL needsDisplay;
+@property (nonatomic, strong) ZMPigment * _Nullable pigment;
 /// Determines whether the button’s action will be executed on a <code>InteractableView/mouseDown(with:)</code> event, as
 /// opposed to <code>InteractableView/mouseUp(with:)</code>. Defaults to <code>true</code>.
 @property (nonatomic) BOOL runActionOnMouseDown;
@@ -2437,6 +2695,7 @@ SWIFT_CLASS_NAMED("CustomButton")
 @property (nonatomic, readonly, strong) NSCursor * _Nonnull defaultCursor;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 @property (nonatomic) BOOL wantsLayer;
+- (void)updateLayer;
 @property (nonatomic) BOOL showDot;
 @property (nonatomic) NSInteger buttonTag;
 @property (nonatomic, copy) NSString * _Nonnull keyEquivalent;
@@ -2444,7 +2703,9 @@ SWIFT_CLASS_NAMED("CustomButton")
 - (void)viewDidChangeEffectiveAppearance;
 @property (nonatomic, readonly) CGFloat focusRingSpacing;
 - (BOOL)performKeyEquivalent:(NSEvent * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (void)setAccessibilityRole:(NSAccessibilityRole _Nullable)accessibilityRole;
 - (NSAccessibilityRole _Nonnull)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)accessibilityRoleDescription SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)accessibilityTitle SWIFT_WARN_UNUSED_RESULT;
 - (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)accessibilityPerformPress SWIFT_WARN_UNUSED_RESULT;
@@ -2452,30 +2713,30 @@ SWIFT_CLASS_NAMED("CustomButton")
 @end
 
 @class PZMDateViewShortcut;
-/// Prism’s implementation of an DateView, useful for showing a selected date and time, also a portal of date, time selecting.
-/// There can are 6 compounents are shown and editable, year, month, day, hour, minute and second
-/// It looks like a text field, but it is not able to edit, only supports date and time picking
+/// Prism’s implementation of a <code>DateTimeView</code>, useful for showing a selected date and time and presenting date-time selection.
+/// There are 6 components shown and editable: year, month, day, hour, minute, and second.
+/// It looks like a text field, but it is not editable and only supports date-time picking.
 /// The supported time is from 1970.1.1 00:00:00 to 2069.12.31 23:59:59
-/// Do <em>not</em> attempt to manually change the height of a <code>DateTimeView</code>, but the width is able to resize
-/// The  intrinsic height is 32.0
-/// If some shortcuts are need, please prepare some DateViewShortcut
+/// Do <em>not</em> attempt to manually change the height of a <code>DateTimeView</code>, but the width can be resized.
+/// The intrinsic height is 32.0
+/// If shortcuts are needed, please prepare <code>DateViewShortcut</code> values.
 /// If a today button is needed, please offer a localized today string
 /// <h2>Reference</h2>
 /// <a href="https://vueui.zoomdev.us/vue3/en-US/components/date-picker.html"><em>Figma</em>: Design Specification</a>
 SWIFT_CLASS_NAMED("DateTimeView")
 @interface PZMDateTimeView : PZMInteractableView
 @property (nonatomic, readonly, getter=isFlipped) BOOL flipped;
-/// It is used to init a DateTimeView with no selected components but the placeholder, the placeholder must be localized
-/// If the placeholder is nil or with a zero length, a blank view is created
-/// \param placeholder A string to show on the DateTimeView when no date and time is selected
+/// Initializes a <code>DateTimeView</code> with a placeholder and no selected components.
+/// If the placeholder is nil or empty, a blank view is created.
+/// \param placeholder A string shown on the <code>DateTimeView</code> when no date and time are selected.
 ///
-/// \param secondEnabled Whether the second compounent is selectable. If false, selectedSecond must be 0
+/// \param secondEnabled Whether the second component is selectable. If false, <code>selectedSecond</code> must be 0.
 ///
-/// \param todayString The localized string, used to show on the today button. Can be nil if the today button is not needed
+/// \param todayString The localized string shown on the today button. Can be nil if the today button is not needed.
 ///
-/// \param OKString The localized string, used to show on the OK button which means confirm. Can not be nil
+/// \param OKString The localized string shown on the OK button for confirmation. It cannot be nil.
 ///
-/// \param weekAppellations A array with 7 or 14 localized strings. Can not be nil, must have 7 or 14 elements of strings, or a blank view is created.
+/// \param weekdaySymbols An array with 7 or 14 localized strings. It cannot be nil, and must contain exactly 7 or 14 elements, or a blank view is created.
 /// Index 0 represents Sunday
 /// Index 1 represents Monday
 /// Index 6 represents Saturday
@@ -2483,31 +2744,40 @@ SWIFT_CLASS_NAMED("DateTimeView")
 /// Index 8 represents the short name of Monday, typically “M”
 /// Index 13 represents the short name of Saturday, typically “S”
 ///
-/// \param monthAppellations A array with 12 localized strings. Can not be nil, must have 12 elements of strings, or a blank view is created.
+/// \param monthSymbols An array with 12 localized strings. It cannot be nil, and must contain exactly 12 elements, or a blank view is created.
 /// Index 0 represents January
 /// Index 11 represents December
 ///
-/// \param shortcuts Shortcuts of the DateTimeView. By shortcuts, no need to pick the date from the calendar. Can be nil if no shortcuts are needed
+/// \param shortcuts Shortcuts used by the <code>DateTimeView</code>. They allow users to avoid picking from the calendar. Can be nil if no shortcuts are needed.
 ///
-/// \param dateTimeDidSelect Called when a date and a time are selected. Even if the initial date and time are selected, this is also called. Can be nil if no calling is needed
+/// \param dateTimeDidSelect Called when a date and time are selected. Even when the initial date and time are selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the DateTimeView self
 /// $2 $3 $4 the new selected year(1970 - 2069), month(1 - 12), day(1 - 31)
 /// $5 $6 $7 the new selected hour(0 - 23), minute(1 - 12), second(0 - 59). Please ignore $7 if secondEnabled is false
 ///
-- (nonnull instancetype)initWithPlaceholder:(NSString * _Nullable)placeholder secondEnabled:(BOOL)secondEnabled todayString:(NSString * _Nullable)todayString OKString:(NSString * _Nonnull)OKString weekAppellations:(NSArray<NSString *> * _Nullable)weekAppellations monthAppellations:(NSArray<NSString *> * _Nullable)monthAppellations shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts dateTimeDidSelect:(void (^ _Nullable)(PZMDateTimeView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))dateTimeDidSelect;
-/// It is used to init a DateTimeView with selected components, the selected date will show on the view rather than the placeholder
-/// If the date calculated from selected components is not valid or not in the range of 1970.1.1 to 2069.12.31, a blank view is created
-/// \param selectedYear selectedMonth, selectedDay, the components to represent the date
+- (nonnull instancetype)initWithPlaceholder:(NSString * _Nullable)placeholder secondEnabled:(BOOL)secondEnabled todayString:(NSString * _Nullable)todayString OKString:(NSString * _Nonnull)OKString weekdaySymbols:(NSArray<NSString *> * _Nullable)weekdaySymbols monthSymbols:(NSArray<NSString *> * _Nullable)monthSymbols shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts dateTimeDidSelect:(void (^ _Nullable)(PZMDateTimeView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))dateTimeDidSelect;
+/// Initializes a <code>DateTimeView</code> with selected date-time components.
+/// The selected date is shown on the view instead of placeholders.
+/// If the date calculated from selected components is not valid, or not in the range of 1970.1.1 to 2069.12.31, a blank view is created.
+/// \param selectedYear The selected year.
 ///
-/// \param selectedHour selectedMinute, selectedSecond, the components to represent the time of a day
+/// \param selectedMonth The selected month.
 ///
-/// \param secondEnabled Whether the second compounent is selectable. If false, selectedSecond must be 0
+/// \param selectedDay The selected day.
 ///
-/// \param todayString The localized string, used to show on the today button. Can be nil if the today button is not needed
+/// \param selectedHour The selected hour.
 ///
-/// \param OKString The localized string, used to show on the OK button which means confirm. Can not be nil
+/// \param selectedMinute The selected minute.
 ///
-/// \param weekAppellations A array with 7 or 14 localized strings. Can not be nil, must have 7 or 14 elements of strings, or a blank view is created.
+/// \param selectedSecond The selected second.
+///
+/// \param secondEnabled Whether the second component is selectable. If false, <code>selectedSecond</code> must be 0.
+///
+/// \param todayString The localized string shown on the today button. Can be nil if the today button is not needed.
+///
+/// \param OKString The localized string shown on the OK button for confirmation. It cannot be nil.
+///
+/// \param weekdaySymbols An array with 7 or 14 localized strings. It cannot be nil, and must contain exactly 7 or 14 elements, or a blank view is created.
 /// Index 0 represents Sunday
 /// Index 1 represents Monday
 /// Index 6 represents Saturday
@@ -2515,52 +2785,55 @@ SWIFT_CLASS_NAMED("DateTimeView")
 /// Index 8 represents the short name of Monday, typically “M”
 /// Index 13 represents the short name of Saturday, typically “S”
 ///
-/// \param monthAppellations A array with 12 localized strings. Can not be nil, must have 12 elements of strings, or a blank view is created.
+/// \param monthSymbols An array with 12 localized strings. It cannot be nil, and must contain exactly 12 elements, or a blank view is created.
 /// Index 0 represents January
 /// Index 11 represents December
 ///
-/// \param shortcuts Shortcuts of the DateTimeView. By shortcuts, no need to pick the date from the calendar. Can be nil if no shortcuts are needed
+/// \param shortcuts Shortcuts used by the <code>DateTimeView</code>. They allow users to avoid picking from the calendar. Can be nil if no shortcuts are needed.
 ///
-/// \param dateTimeDidSelect Called when a date and a time are selected. Even if the initial date and time are selected, this is also called. Can be nil if no calling is needed
+/// \param dateTimeDidSelect Called when a date and time are selected. Even when the initial date and time are selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the DateTimeView self
 /// $2 $3 $4 the new selected year(1970 - 2069), month(1 - 12), day(1 - 31)
 /// $5 $6 $7 the new selected hour(0 - 23), minute(1 - 12), second(0 - 59). Please ignore $7 if secondEnabled is false
 ///
-- (nonnull instancetype)initWithSelectedYear:(NSInteger)selectedYear selectedMonth:(NSInteger)selectedMonth selectedDay:(NSInteger)selectedDay selectedHour:(NSInteger)selectedHour selectedMinute:(NSInteger)selectedMinute selectedSecond:(NSInteger)selectedSecond secondEnabled:(BOOL)secondEnabled todayString:(NSString * _Nullable)todayString OKString:(NSString * _Nullable)OKString weekAppellations:(NSArray<NSString *> * _Nullable)weekAppellations monthAppellations:(NSArray<NSString *> * _Nullable)monthAppellations shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts dateTimeDidSelect:(void (^ _Nullable)(PZMDateTimeView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))dateTimeDidSelect;
+- (nonnull instancetype)initWithSelectedYear:(NSInteger)selectedYear selectedMonth:(NSInteger)selectedMonth selectedDay:(NSInteger)selectedDay selectedHour:(NSInteger)selectedHour selectedMinute:(NSInteger)selectedMinute selectedSecond:(NSInteger)selectedSecond secondEnabled:(BOOL)secondEnabled todayString:(NSString * _Nullable)todayString OKString:(NSString * _Nullable)OKString weekdaySymbols:(NSArray<NSString *> * _Nullable)weekdaySymbols monthSymbols:(NSArray<NSString *> * _Nullable)monthSymbols shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts dateTimeDidSelect:(void (^ _Nullable)(PZMDateTimeView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))dateTimeDidSelect;
+- (void)keyDown:(NSEvent * _Nonnull)event;
 - (void)mouseUp:(NSEvent * _Nonnull)event;
 - (void)drawRect:(NSRect)dirtyRect;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 - (void)mouseEntered:(NSEvent * _Nonnull)event;
 - (void)mouseExited:(NSEvent * _Nonnull)event;
+@property (nonatomic, copy) NSString * _Nullable AXBusinessPrefix;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @interface PZMDateTimeView (SWIFT_EXTENSION(Prism))
 - (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
 - (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
 @end
 
-/// Prism’s implementation of an DateView, useful for showing a selected date and a portal of date selecting.
-/// There are only 3 compounents are shown and editable, year, month and day
-/// It looks like a text field, but it is not able to edit, only supports date picking
+/// Prism’s implementation of a <code>DateView</code>, useful for showing a selected date and presenting date selection.
+/// There are 3 components shown and editable: year, month, and day.
+/// It looks like a text field, but it is not editable and only supports date picking.
 /// The supported date is from 1970.1.1 to 2069.12.31
-/// Do <em>not</em> attempt to manually change the height of a <code>DateView</code>, but the width is able to resize
-/// The  intrinsic height is 32.0
-/// If some shortcuts are need, please prepare some DateViewShortcut
+/// Do <em>not</em> attempt to manually change the height of a <code>DateView</code>, but the width can be resized.
+/// The intrinsic height is 32.0
+/// If shortcuts are needed, please prepare <code>DateViewShortcut</code> values.
 /// If a today button is needed, please offer a localized today string
 /// <h2>Reference</h2>
 /// <a href="https://vueui.zoomdev.us/vue3/en-US/components/date-picker.html"><em>Figma</em>: Design Specification</a>
 SWIFT_CLASS_NAMED("DateView")
 @interface PZMDateView : PZMInteractableView
 @property (nonatomic, readonly, getter=isFlipped) BOOL flipped;
-/// It is used to init a DateView with no selected components but the placeholder, the placeholder must be localized
-/// If the placeholder is nil or with a zero length, a blank view is created
-/// \param placeholder A string to show on the dateView when no date is selected
+/// Initializes a <code>DateView</code> with placeholders and no selected date.
+/// If the placeholder is nil or empty, a blank view is created.
+/// \param placeholder A string shown on the <code>DateView</code> when no date is selected.
 ///
-/// \param todayString The localized string, used to show on the today button. Can be nil if the today button is not needed
+/// \param todayString The localized string shown on the today button. Can be nil if the today button is not needed.
 ///
-/// \param weekAppellations A array with 7 or 14 localized strings. Can not be nil, must have 7 or 14 elements of strings, or a blank view is created.
+/// \param weekdaySymbols An array with 7 or 14 localized strings. It cannot be nil, and must contain exactly 7 or 14 elements, or a blank view is created.
 /// Index 0 represents Sunday
 /// Index 1 represents Monday
 /// Index 6 represents Saturday
@@ -2568,24 +2841,29 @@ SWIFT_CLASS_NAMED("DateView")
 /// Index 8 represents the short name of Monday, typically “M”
 /// Index 13 represents the short name of Saturday, typically “S”
 ///
-/// \param monthAppellations A array with 12 localized strings. Can not be nil, must have 12 elements of strings, or a blank view is created.
+/// \param monthSymbols An array with 12 localized strings. It cannot be nil, and must contain exactly 12 elements, or a blank view is created.
 /// Index 0 represents January
 /// Index 11 represents December
 ///
-/// \param shortcuts Shortcuts of the DateTimeView. By shortcuts, no need to pick the date from the calendar. Can be nil if no shortcuts are needed
+/// \param shortcuts Shortcuts used by the <code>DateView</code>. They allow users to avoid picking from the calendar. Can be nil if no shortcuts are needed.
 ///
-/// \param dateDidSelect Called when a date is selected. Even if the initial date is selected, this is also called. Can be nil if no calling is needed
+/// \param dateDidSelect Called when a date is selected. Even when the initial date is selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the DateView self
 /// $2 $3 $4 the new selected year(1970 - 2069), month(1 - 12), day(1 - 31)
 ///
-- (nonnull instancetype)initWithPlaceholder:(NSString * _Nullable)placeholder todayString:(NSString * _Nullable)todayString weekAppellations:(NSArray<NSString *> * _Nullable)weekAppellations monthAppellations:(NSArray<NSString *> * _Nullable)monthAppellations shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts dateDidSelect:(void (^ _Nullable)(PZMDateView * _Nonnull, NSInteger, NSInteger, NSInteger))dateDidSelect;
-/// It is used to init a DateView with selected components, the selected date will show on the view rather than the placeholder
-/// If the date calculated from selected components is not valid or not in the range of 1970.1.1 to 2069.12.31, a blank view is created
-/// \param selectedYear selectedMonth, selectedDay, the components to represent the date
+- (nonnull instancetype)initWithPlaceholder:(NSString * _Nullable)placeholder todayString:(NSString * _Nullable)todayString enabledString:(NSString * _Nullable)enabledString roleString:(NSString * _Nullable)roleString weekdaySymbols:(NSArray<NSString *> * _Nullable)weekdaySymbols monthSymbols:(NSArray<NSString *> * _Nullable)monthSymbols shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts dateDidSelect:(void (^ _Nullable)(PZMDateView * _Nonnull, NSInteger, NSInteger, NSInteger))dateDidSelect;
+/// Initializes a <code>DateView</code> with selected date components.
+/// The selected date is shown on the view instead of placeholders.
+/// If the date calculated from selected components is not valid, or not in the range of 1970.1.1 to 2069.12.31, a blank view is created.
+/// \param selectedYear The selected year.
 ///
-/// \param todayString The localized string, used to show on the today button. Can be nil if the today button is not needed
+/// \param selectedMonth The selected month.
 ///
-/// \param weekAppellations A array with 7 or 14 localized strings. Can not be nil, must have 7 or 14 elements of strings, or a blank view is created.
+/// \param selectedDay The selected day.
+///
+/// \param todayString The localized string shown on the today button. Can be nil if the today button is not needed.
+///
+/// \param weekdaySymbols An array with 7 or 14 localized strings. It cannot be nil, and must contain exactly 7 or 14 elements, or a blank view is created.
 /// Index 0 represents Sunday
 /// Index 1 represents Monday
 /// Index 6 represents Saturday
@@ -2593,29 +2871,32 @@ SWIFT_CLASS_NAMED("DateView")
 /// Index 8 represents the short name of Monday, typically “M”
 /// Index 13 represents the short name of Saturday, typically “S”
 ///
-/// \param monthAppellations A array with 12 localized strings. Can not be nil, must have 12 elements of strings, or a blank view is created.
+/// \param monthSymbols An array with 12 localized strings. It cannot be nil, and must contain exactly 12 elements, or a blank view is created.
 /// Index 0 represents January
 /// Index 11 represents December
 ///
-/// \param shortcuts Shortcuts of the DateTimeView. By shortcuts, no need to pick the date from the calendar. Can be nil if no shortcuts are needed
+/// \param shortcuts Shortcuts used by the <code>DateView</code>. They allow users to avoid picking from the calendar. Can be nil if no shortcuts are needed.
 ///
-/// \param dateDidSelect Called when a date is selected. Even if the initial date is selected, this is also called. Can be nil if no calling is needed
+/// \param dateDidSelect Called when a date is selected. Even when the initial date is selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the DateView self
 /// $2 $3 $4 the new selected year(1970 - 2069), month(1 - 12), day(1 - 31)
 ///
-- (nonnull instancetype)initWithSelectedYear:(NSInteger)selectedYear selectedMonth:(NSInteger)selectedMonth selectedDay:(NSInteger)selectedDay todayString:(NSString * _Nullable)todayString weekAppellations:(NSArray<NSString *> * _Nullable)weekAppellations monthAppellations:(NSArray<NSString *> * _Nullable)monthAppellations shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts dateDidSelect:(void (^ _Nullable)(PZMDateView * _Nonnull, NSInteger, NSInteger, NSInteger))dateDidSelect;
+- (nonnull instancetype)initWithSelectedYear:(NSInteger)selectedYear selectedMonth:(NSInteger)selectedMonth selectedDay:(NSInteger)selectedDay todayString:(NSString * _Nullable)todayString enabledString:(NSString * _Nullable)enabledString roleString:(NSString * _Nullable)roleString weekdaySymbols:(NSArray<NSString *> * _Nullable)weekdaySymbols monthSymbols:(NSArray<NSString *> * _Nullable)monthSymbols shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts dateDidSelect:(void (^ _Nullable)(PZMDateView * _Nonnull, NSInteger, NSInteger, NSInteger))dateDidSelect;
+- (void)keyDown:(NSEvent * _Nonnull)event;
 - (void)mouseUp:(NSEvent * _Nonnull)event;
 - (void)drawRect:(NSRect)dirtyRect;
 - (void)mouseEntered:(NSEvent * _Nonnull)event;
 - (void)mouseExited:(NSEvent * _Nonnull)event;
 /// The intrinsic Size
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
+@property (nonatomic, copy) NSString * _Nullable AXBusinessPrefix;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @interface PZMDateView (SWIFT_EXTENSION(Prism))
 - (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
 - (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -2635,29 +2916,29 @@ SWIFT_CLASS_NAMED("DateViewShortcut")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-/// Prism’s implementation of an DayPickerView, useful for date selecting.
-/// There are only 3 compounents to select, year, month and day
+/// Prism’s implementation of a <code>DayPickerView</code>, useful for date selection.
+/// There are 3 components to select: year, month, and day.
 /// It looks like a calendar for date picking
 /// The supported date is from 1970.1.1 to 2069.12.31
 /// Do <em>not</em> attempt to manually change the size of a <code>DayPickerView</code>
 /// Call intrinsicContentSize to get the intrinsic size
-/// If some shortcuts are need, please prepare some DateViewShortcut
+/// If shortcuts are needed, please prepare <code>DateViewShortcut</code> values.
 /// If a today button is needed, please offer a localized today string
 /// <h2>Reference</h2>
 /// <a href="https://vueui.zoomdev.us/vue3/en-US/components/date-picker.html"><em>Figma</em>: Design Specification</a>
 SWIFT_CLASS_NAMED("DayPickerView")
 @interface PZMDayPickerView : PZMView
-/// The intrinsic Size, do not resize this view
+/// The intrinsic size. Do not resize this view.
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 @property (nonatomic, readonly, getter=isFlipped) BOOL flipped;
 - (void)drawRect:(NSRect)dirtyRect;
-/// It is used to init a DayPickerView with no selected components.
+/// Initializes a <code>DayPickerView</code> with no selected components.
 /// There is no blue-backgrounded date button initially
 /// \param visualYear visualMonth, the year and month to preview, can not be nil, must be assigned
 ///
 /// \param todayString The localized string, used to show on the today button. Can be nil if the today button is not needed
 ///
-/// \param weekAppellations A array with 7 or 14 localized strings. Can not be nil, must have 7 or 14 elements of strings, or a blank view is created.
+/// \param weekdaySymbols An array with 7 or 14 localized strings. It cannot be nil, and must contain exactly 7 or 14 elements, or a blank view is created.
 /// Index 0 represents Sunday
 /// Index 1 represents Monday
 /// Index 6 represents Saturday
@@ -2665,7 +2946,7 @@ SWIFT_CLASS_NAMED("DayPickerView")
 /// Index 8 represents the short name of Monday, typically “M”
 /// Index 13 represents the short name of Saturday, typically “S”
 ///
-/// \param monthAppellations A array with 12 localized strings. Can not be nil, must have 12 elements of strings, or a blank view is created.
+/// \param monthSymbols An array with 12 localized strings. It cannot be nil, and must contain exactly 12 elements, or a blank view is created.
 /// Index 0 represents January
 /// Index 11 represents December
 ///
@@ -2675,12 +2956,12 @@ SWIFT_CLASS_NAMED("DayPickerView")
 ///
 /// \param monthDidClick Called when the month button is clicked. If nil, the month button is disabled. The parameters are Selected Year, Visual Year, Visual month, -1 of Selected Year stands for no year is selected
 ///
-/// \param dateDidSelect Called when a date is selected. Even if the initial date is selected, this is also called. Can be nil if no calling is needed
+/// \param dateDidSelect Called when a date is selected. Even when the initial date is selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the CalendarView self
 /// $2 $3 $4 the new selected year(1970 - 2069), month(1 - 12), day(1 - 31)
 ///
-- (nonnull instancetype)initWithVisualYear:(NSInteger)visualYear visualMonth:(NSInteger)visualMonth todayString:(NSString * _Nullable)todayString weekAppellations:(NSArray<NSString *> * _Nullable)weekAppellations monthAppellations:(NSArray<NSString *> * _Nullable)monthAppellations shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts yearDidClick:(void (^ _Nullable)(PZMDayPickerView * _Nonnull, NSInteger, NSInteger, NSInteger))yearDidClick monthDidClick:(void (^ _Nullable)(PZMDayPickerView * _Nonnull, NSInteger, NSInteger, NSInteger))monthDidClick dateDidSelect:(void (^ _Nonnull)(PZMDayPickerView * _Nonnull, NSInteger, NSInteger, NSInteger))dateDidSelect;
-/// It is used to init a DayPickerView with selected components, the selected date will show on the view with a blue background
+- (nonnull instancetype)initWithVisualYear:(NSInteger)visualYear visualMonth:(NSInteger)visualMonth todayString:(NSString * _Nullable)todayString weekdaySymbols:(NSArray<NSString *> * _Nullable)weekdaySymbols monthSymbols:(NSArray<NSString *> * _Nullable)monthSymbols shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts yearDidClick:(void (^ _Nullable)(PZMDayPickerView * _Nonnull, NSInteger, NSInteger, NSInteger))yearDidClick monthDidClick:(void (^ _Nullable)(PZMDayPickerView * _Nonnull, NSInteger, NSInteger, NSInteger))monthDidClick dateDidSelect:(void (^ _Nonnull)(PZMDayPickerView * _Nonnull, NSInteger, NSInteger, NSInteger))dateDidSelect;
+/// Initializes a <code>DayPickerView</code> with selected components. The selected date is shown on the view with a blue background.
 /// If the date calculated from selected components is not valid or not in the range of 1970.1.1 to 2069.12.31, a blank view is created
 /// \param selectedYear selectedMonth, selectedDay, the components to represent the date
 ///
@@ -2688,7 +2969,7 @@ SWIFT_CLASS_NAMED("DayPickerView")
 ///
 /// \param todayString The localized string, used to show on the today button. Can be nil if the today button is not needed
 ///
-/// \param weekAppellations A array with 7 or 14 localized strings. Can not be nil, must have 7 or 14 elements of strings, or a blank view is created.
+/// \param weekdaySymbols An array with 7 or 14 localized strings. It cannot be nil, and must contain exactly 7 or 14 elements, or a blank view is created.
 /// Index 0 represents Sunday
 /// Index 1 represents Monday
 /// Index 6 represents Saturday
@@ -2696,7 +2977,7 @@ SWIFT_CLASS_NAMED("DayPickerView")
 /// Index 8 represents the short name of Monday, typically “M”
 /// Index 13 represents the short name of Saturday, typically “S”
 ///
-/// \param monthAppellations A array with 12 localized strings. Can not be nil, must have 12 elements of strings, or a blank view is created.
+/// \param monthSymbols An array with 12 localized strings. It cannot be nil, and must contain exactly 12 elements, or a blank view is created.
 /// Index 0 represents January
 /// Index 11 represents December
 ///
@@ -2706,22 +2987,22 @@ SWIFT_CLASS_NAMED("DayPickerView")
 ///
 /// \param monthDidClick Called when the month button is clicked. If nil, the month button is disabled. The parameters are Selected Year, Visual Year, Visual month, -1 of Selected Year stands for no year is selected
 ///
-/// \param dateDidSelect Called when a date is selected. Even if the initial date is selected, this is also called. Can be nil if no calling is needed
+/// \param dateDidSelect Called when a date is selected. Even when the initial date is selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the CalendarView self
 /// $2 $3 $4 the new selected year(1970 - 2069), month(1 - 12), day(1 - 31)
 ///
-- (nonnull instancetype)initWithSelectedYear:(NSInteger)selectedYear selectedMonth:(NSInteger)selectedMonth selectedDay:(NSInteger)selectedDay visualYear:(NSInteger)visualYear visualMonth:(NSInteger)visualMonth todayString:(NSString * _Nullable)todayString weekAppellations:(NSArray<NSString *> * _Nullable)weekAppellations monthAppellations:(NSArray<NSString *> * _Nullable)monthAppellations shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts yearDidClick:(void (^ _Nullable)(PZMDayPickerView * _Nonnull, NSInteger, NSInteger, NSInteger))yearDidClick monthDidClick:(void (^ _Nullable)(PZMDayPickerView * _Nonnull, NSInteger, NSInteger, NSInteger))monthDidClick dateDidSelect:(void (^ _Nonnull)(PZMDayPickerView * _Nonnull, NSInteger, NSInteger, NSInteger))dateDidSelect;
+- (nonnull instancetype)initWithSelectedYear:(NSInteger)selectedYear selectedMonth:(NSInteger)selectedMonth selectedDay:(NSInteger)selectedDay visualYear:(NSInteger)visualYear visualMonth:(NSInteger)visualMonth todayString:(NSString * _Nullable)todayString weekdaySymbols:(NSArray<NSString *> * _Nullable)weekdaySymbols monthSymbols:(NSArray<NSString *> * _Nullable)monthSymbols shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts yearDidClick:(void (^ _Nullable)(PZMDayPickerView * _Nonnull, NSInteger, NSInteger, NSInteger))yearDidClick monthDidClick:(void (^ _Nullable)(PZMDayPickerView * _Nonnull, NSInteger, NSInteger, NSInteger))monthDidClick dateDidSelect:(void (^ _Nonnull)(PZMDayPickerView * _Nonnull, NSInteger, NSInteger, NSInteger))dateDidSelect;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-/// Prism’s implementation of an DayTimePickerView, useful for date and time selecting.
-/// There are only 6 compounents to select, year, month, day, hour, minute and second
+/// Prism’s implementation of a <code>DayTimePickerView</code>, useful for date-time selection.
+/// There are 6 components to select: year, month, day, hour, minute, and second.
 /// It looks like a calendar for date picking with a time scroller to the right of it
 /// The supported date is from 1970.1.1 to 2069.12.31
 /// Do <em>not</em> attempt to manually change the size of a <code>DayTimePickerView</code>
 /// Call intrinsicContentSize to get the intrinsic size
-/// If some shortcuts are need, please prepare some DateViewShortcut
+/// If shortcuts are needed, please prepare <code>DateViewShortcut</code> values.
 /// If a today button is needed, please offer a localized today string
 /// <h2>Reference</h2>
 /// <a href="https://vueui.zoomdev.us/vue3/en-US/components/date-picker.html"><em>Figma</em>: Design Specification</a>
@@ -2730,7 +3011,8 @@ SWIFT_CLASS_NAMED("DayTimePickerView")
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 @property (nonatomic, readonly, getter=isFlipped) BOOL flipped;
 - (void)drawRect:(NSRect)dirtyRect;
-/// It is used to init a DayTimePickerView with selected components, the selected date and time will show on the view with a blue background
+/// Initializes a <code>DayTimePickerView</code> with selected components.
+/// The selected date and time are shown on the view with a blue background.
 /// If the date and timecalculated from selected components is not valid or not in the range of 1970.1.1 00:00:00 to 2069.12.31 23:59:59, a blank view is created
 /// \param selectedYear selectedMonth, selectedDay: the components to represent the date
 ///
@@ -2738,13 +3020,13 @@ SWIFT_CLASS_NAMED("DayTimePickerView")
 ///
 /// \param selectedHour selectedMinute, selectedSecond: the components to represent the time
 ///
-/// \param secondEnabled Whether the second compounent is selectable. If false, selectedSecond must be 0
+/// \param secondEnabled Whether the second component is selectable. If false, <code>selectedSecond</code> must be 0.
 ///
 /// \param todayString The localized string, used to show on the today button. Can be nil if the today button is not needed
 ///
-/// \param OKString The localized string, used to show on the OK button which means confirm. Can not be nil
+/// \param OKString The localized string shown on the OK button for confirmation. It cannot be nil.
 ///
-/// \param weekAppellations A array with 7 or 14 localized strings. Can not be nil, must have 7 or 14 elements of strings, or a blank view is created.
+/// \param weekdaySymbols An array with 7 or 14 localized strings. It cannot be nil, and must contain exactly 7 or 14 elements, or a blank view is created.
 /// Index 0 represents Sunday
 /// Index 1 represents Monday
 /// Index 6 represents Saturday
@@ -2752,7 +3034,7 @@ SWIFT_CLASS_NAMED("DayTimePickerView")
 /// Index 8 represents the short name of Monday, typically “M”
 /// Index 13 represents the short name of Saturday, typically “S”
 ///
-/// \param monthAppellations A array with 12 localized strings. Can not be nil, must have 12 elements of strings, or a blank view is created.
+/// \param monthSymbols An array with 12 localized strings. It cannot be nil, and must contain exactly 12 elements, or a blank view is created.
 /// Index 0 represents January
 /// Index 11 represents December
 ///
@@ -2762,24 +3044,24 @@ SWIFT_CLASS_NAMED("DayTimePickerView")
 ///
 /// \param monthDidClick Called when the month button is clicked. If nil, the month button is disabled. The parameters are Selected Year, Visual Year, Visual month, -1 of Selected Year stands for no year is selected
 ///
-/// \param dateTimeDidSelect Called when a date is selected. Even if the initial date and time are selected, this is also called. Can be nil if no calling is needed
+/// \param dateTimeDidSelect Called when a date is selected. Even when the initial date and time are selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the DayTimePickerView self
 /// $2 $3 $4 the new selected year(1970 - 2069), month(1 - 12), day(1 - 31)
 /// $5 $6 $7 the new selected hour(0 - 23), minute(1 - 12), second(0 - 59). Please ignore $7 if secondEnabled is false
 ///
-- (nonnull instancetype)initWithSelectedYear:(NSInteger)selectedYear selectedMonth:(NSInteger)selectedMonth selectedDay:(NSInteger)selectedDay visualYear:(NSInteger)visualYear visualMonth:(NSInteger)visualMonth visualDay:(NSInteger)visualDay selectedHour:(NSInteger)selectedHour selectedMinute:(NSInteger)selectedMinute selectedSecond:(NSInteger)selectedSecond secondEnabled:(BOOL)secondEnabled todayString:(NSString * _Nullable)todayString OKString:(NSString * _Nullable)OKString weekAppellations:(NSArray<NSString *> * _Nullable)weekAppellations monthAppellations:(NSArray<NSString *> * _Nullable)monthAppellations shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts yearDidClick:(void (^ _Nullable)(PZMDayTimePickerView * _Nonnull, NSInteger, NSInteger, NSInteger))yearDidClick monthDidClick:(void (^ _Nullable)(PZMDayTimePickerView * _Nonnull, NSInteger, NSInteger, NSInteger))monthDidClick dateTimeDidSelect:(void (^ _Nonnull)(PZMDayTimePickerView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))dateTimeDidSelect;
-/// It is used to init a DayTimePickerView without selected components, the selected date and time will show on the view with a blue background
-/// The visualYear and visualMonth are the compounents for previewing, rather than selected ones
+- (nonnull instancetype)initWithSelectedYear:(NSInteger)selectedYear selectedMonth:(NSInteger)selectedMonth selectedDay:(NSInteger)selectedDay visualYear:(NSInteger)visualYear visualMonth:(NSInteger)visualMonth visualDay:(NSInteger)visualDay selectedHour:(NSInteger)selectedHour selectedMinute:(NSInteger)selectedMinute selectedSecond:(NSInteger)selectedSecond secondEnabled:(BOOL)secondEnabled todayString:(NSString * _Nullable)todayString OKString:(NSString * _Nullable)OKString weekdaySymbols:(NSArray<NSString *> * _Nullable)weekdaySymbols monthSymbols:(NSArray<NSString *> * _Nullable)monthSymbols shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts yearDidClick:(void (^ _Nullable)(PZMDayTimePickerView * _Nonnull, NSInteger, NSInteger, NSInteger))yearDidClick monthDidClick:(void (^ _Nullable)(PZMDayTimePickerView * _Nonnull, NSInteger, NSInteger, NSInteger))monthDidClick dateTimeDidSelect:(void (^ _Nonnull)(PZMDayTimePickerView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))dateTimeDidSelect;
+/// Initializes a <code>DayTimePickerView</code> without selected components.
+/// The <code>visualYear</code> and <code>visualMonth</code> values are used for previewing rather than selected values.
 /// If the date and timecalculated from selected components is not valid or not in the range of 1970.1.1 00:00:00 to 2069.12.31 23:59:59, a blank view is created
 /// \param visualYear visualMonth, the year and month to preview, can not be nil, must be assigned
 ///
-/// \param secondEnabled Whether the second compounent is selectable. If false, selectedSecond must be 0
+/// \param secondEnabled Whether the second component is selectable. If false, <code>selectedSecond</code> must be 0.
 ///
 /// \param todayString The localized string, used to show on the today button. Can be nil if the today button is not needed
 ///
-/// \param OKString The localized string, used to show on the OK button which means confirm. Can not be nil
+/// \param OKString The localized string shown on the OK button for confirmation. It cannot be nil.
 ///
-/// \param weekAppellations A array with 7 or 14 localized strings. Can not be nil, must have 7 or 14 elements of strings, or a blank view is created.
+/// \param weekdaySymbols An array with 7 or 14 localized strings. It cannot be nil, and must contain exactly 7 or 14 elements, or a blank view is created.
 /// Index 0 represents Sunday
 /// Index 1 represents Monday
 /// Index 6 represents Saturday
@@ -2787,7 +3069,7 @@ SWIFT_CLASS_NAMED("DayTimePickerView")
 /// Index 8 represents the short name of Monday, typically “M”
 /// Index 13 represents the short name of Saturday, typically “S”
 ///
-/// \param monthAppellations A array with 12 localized strings. Can not be nil, must have 12 elements of strings, or a blank view is created.
+/// \param monthSymbols An array with 12 localized strings. It cannot be nil, and must contain exactly 12 elements, or a blank view is created.
 /// Index 0 represents January
 /// Index 11 represents December
 ///
@@ -2797,12 +3079,12 @@ SWIFT_CLASS_NAMED("DayTimePickerView")
 ///
 /// \param monthDidClick Called when the month button is clicked. If nil, the month button is disabled. The parameters are Selected Year, Visual Year, Visual month, -1 of Selected Year stands for no year is selected
 ///
-/// \param dateTimeDidSelect Called when a date is selected. Even if the initial date and time are selected, this is also called. Can be nil if no calling is needed
+/// \param dateTimeDidSelect Called when a date is selected. Even when the initial date and time are selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the DayTimePickerView self
 /// $2 $3 $4 the new selected year(1970 - 2069), month(1 - 12), day(1 - 31)
 /// $5 $6 $7 the new selected hour(0 - 23), minute(1 - 12), second(0 - 59). Please ignore $7 if secondEnabled is false
 ///
-- (nonnull instancetype)initWithVisualYear:(NSInteger)visualYear visualMonth:(NSInteger)visualMonth visualDay:(NSInteger)visualDay secondEnabled:(BOOL)secondEnabled todayString:(NSString * _Nullable)todayString OKString:(NSString * _Nullable)OKString weekAppellations:(NSArray<NSString *> * _Nullable)weekAppellations monthAppellations:(NSArray<NSString *> * _Nullable)monthAppellations shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts yearDidClick:(void (^ _Nullable)(PZMDayTimePickerView * _Nonnull, NSInteger, NSInteger, NSInteger))yearDidClick monthDidClick:(void (^ _Nullable)(PZMDayTimePickerView * _Nonnull, NSInteger, NSInteger, NSInteger))monthDidClick dateTimeDidSelect:(void (^ _Nonnull)(PZMDayTimePickerView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))dateTimeDidSelect;
+- (nonnull instancetype)initWithVisualYear:(NSInteger)visualYear visualMonth:(NSInteger)visualMonth visualDay:(NSInteger)visualDay secondEnabled:(BOOL)secondEnabled todayString:(NSString * _Nullable)todayString OKString:(NSString * _Nullable)OKString weekdaySymbols:(NSArray<NSString *> * _Nullable)weekdaySymbols monthSymbols:(NSArray<NSString *> * _Nullable)monthSymbols shortcuts:(NSArray<PZMDateViewShortcut *> * _Nullable)shortcuts yearDidClick:(void (^ _Nullable)(PZMDayTimePickerView * _Nonnull, NSInteger, NSInteger, NSInteger))yearDidClick monthDidClick:(void (^ _Nullable)(PZMDayTimePickerView * _Nonnull, NSInteger, NSInteger, NSInteger))monthDidClick dateTimeDidSelect:(void (^ _Nonnull)(PZMDayTimePickerView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))dateTimeDidSelect;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -2856,6 +3138,7 @@ SWIFT_CLASS_NAMED("DialPad")
 @property (nonatomic, readonly) BOOL canBecomeKeyView;
 - (BOOL)isAccessibilityElement SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)accessibilityRoleDescription SWIFT_WARN_UNUSED_RESULT;
+- (void)setAccessibilityIdentifier:(NSString * _Nullable)accessibilityIdentifier;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
 @end
 
@@ -2971,15 +3254,52 @@ SWIFT_CLASS("_TtC5Prism6Dialog")
 /// of your view and the edges of the Dialog, since that space is already
 /// part of the Dialog layout.
 @property (nonatomic, strong) NSView * _Nullable contentView;
+/// An action to be run when the <code>Dialog</code>’s primary <code>Button</code> is clicked.
+/// To display the primary button in a <code>Dialog</code>, use <code>primaryAction</code> <code>!= nil</code>.
 @property (nonatomic, strong) PZMDialogAction * _Nullable primaryAction;
+/// An action to be run when the <code>Dialog</code>’s secondary <code>Button</code> is clicked.
+/// To display the secondary button in a <code>Dialog</code>, use <code>secondaryAction</code> <code>!= nil</code>.
 @property (nonatomic, strong) PZMDialogAction * _Nullable secondaryAction;
+/// An action to be run when the <code>Dialog</code>’s tertiary <code>Button</code> is clicked.
+/// To display the tertiary button in a <code>Dialog</code>, use <code>tertiaryAction</code> <code>!= nil</code>.
 @property (nonatomic, strong) PZMDialogAction * _Nullable tertiaryAction;
+/// An action to be run when the <code>Dialog</code>’s <code>Link</code> is clicked.
+/// To display the link in a <code>Dialog</code>, use <code>linkAction</code> <code>!= nil</code>.
+@property (nonatomic, strong) PZMDialogAction * _Nullable linkAction;
+/// An action to be run when the <code>Dialog</code>’s <code>CheckboxView</code> is toggled.
+/// To display the checkbox in a <code>Dialog</code>, use <code>checkboxAction</code> <code>!= nil</code>.
 @property (nonatomic, strong) PZMDialogAction * _Nullable checkboxAction;
+/// The state of the <code>Dialog</code>’s <code>CheckboxView</code>, if any.
+/// note:
+/// This value is unused when <code>checkboxAction</code> is <code>nil</code>.
 @property (nonatomic) enum PZMCheckboxViewState checkboxState;
-/// A function to be invoked when the close button is clicked.
-/// To dipslay a “back” button in the dialog, set <code>onClose != nil</code>.
+/// A function to be invoked when the <code>Dialog</code>’s “close” <code>IconButton</code> is
+/// clicked.
+/// To display a “close” button in the dialog, set <code>onClose != nil</code>.
 @property (nonatomic, copy) void (^ _Nullable onClose)(void);
-/// A function to be invoked when the “back” button is clicked.
+/// An optional number of steps to display in the <code>Dialog</code>.
+/// To display a number of steps, use <code>stepLimit</code> <code>> 0</code> and <code>currentStep</code> <code>> 0</code>.
+/// note:
+/// This value is unused if <code>currentStep</code> <code><= 0</code>.
+@property (nonatomic) NSInteger stepLimit;
+/// The current step to be displayed in the step counter.
+/// To display a number of steps, use <code>stepLimit</code> <code>> 0</code> and <code>currentStep</code> <code>> 0</code>.
+/// note:
+/// This value is unused if <code>stepLimit</code> <code><= 0</code>.
+@property (nonatomic) NSInteger currentStep;
+/// Some optional, additional text to be displayed next to the title.
+/// note:
+/// if <code>title</code> is not set, this value is unused.
+@property (nonatomic, copy) NSString * _Nullable additionalText;
+/// An optional image to be displayed next to <code>additionalText</code>.
+/// note:
+/// if <code>additionalText</code> is not displayed, this value is unused.
+@property (nonatomic, strong) NSImage * _Nullable additionalTextIcon;
+/// An optional <code>Popover</code> to be displayed from a <code>HelpButton</code> instance next to <code>additionalText</code>.
+/// note:
+/// if <code>title</code> is not set, this value is unused.
+@property (nonatomic, strong) PZMPopover * _Nullable informationIconPopover;
+/// A function to be invoked when the “back” <code>IconButton</code> is clicked.
 /// To display a “back” button in the dialog, set <code>onBack != nil</code>.
 /// note:
 /// A <code>title</code> is required for the back button to be displayed.
@@ -3004,6 +3324,7 @@ SWIFT_CLASS_NAMED("Action")
 SWIFT_CLASS("_TtC5Prism10DialogView")
 @interface DialogView : PZMView
 @property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
+- (void)viewDidChangeEffectiveAppearance;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nullable)coder SWIFT_UNAVAILABLE;
 - (void)updateConstraints;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
@@ -3058,6 +3379,7 @@ SWIFT_CLASS_NAMED("InputField")
 @property (nonatomic, copy) NSString * _Nullable errorMessage;
 /// Whether the input field is enabled or not.
 @property (nonatomic) BOOL enabled;
+@property (nonatomic) BOOL showBorder;
 /// Whether the input field is in read-only mode.
 @property (nonatomic) BOOL readOnly;
 /// An optional closure to be invoked when the view’s first responder state is changed.
@@ -3071,6 +3393,7 @@ SWIFT_CLASS_NAMED("InputField")
 - (void)updateConstraints;
 - (void)updateLayer;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
+- (void)setElementAccessibilityIdentifier:(NSString * _Nullable)accessibilityIdentifier;
 @property (nonatomic, copy) NSString * _Nullable accessibilityLabelOverride;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
 @end
@@ -3115,6 +3438,7 @@ SWIFT_CLASS_NAMED("_PrismOCBridge_Decoration")
 @protocol PZMTextInputFieldDelegate;
 @class NSFormatter;
 @class NSText;
+@class PZMComboOption;
 @class NSNotification;
 @class NSTextView;
 @class PZMTextInputFieldPredicate;
@@ -3133,8 +3457,16 @@ SWIFT_CLASS_NAMED("TextInputField")
 - (NSText * _Nullable)currentEditor SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED;
 @property (nonatomic) BOOL readOnly;
 @property (nonatomic) BOOL enabled;
+/// The prefix combo option, displayed before the editable area.
+@property (nonatomic, strong) PZMComboOption * _Nullable prefix;
+/// The suffix combo option, displayed after the editable area.
+@property (nonatomic, strong) PZMComboOption * _Nullable suffix;
+/// Returns the composed value including effective prefix, user text,
+/// and effective suffix.
+@property (nonatomic, readonly, copy) NSString * _Nonnull composedStringValue;
 - (BOOL)makeFirstResponderIfPossible SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic) BOOL clearFieldButtonFocusable;
+@property (nonatomic) BOOL showBorder;
 - (void)updateLayer;
 @property (nonatomic) BOOL usesSingleLineMode;
 /// Whether to update bubbleViewHeightConstraint in setFrameSize
@@ -3177,7 +3509,7 @@ SWIFT_CLASS_NAMED("TextInputField")
 ///
 /// \param prefix The prefix to be displayed in the view.
 ///
-- (nonnull instancetype)initWithHeader:(NSString * _Nullable)header placeholder:(NSString * _Nullable)placeholder decorations:(NSArray<PZMInputFieldDecoration *> * _Nullable)ocDecorations prefix:(NSString * _Nullable)prefix;
+- (nonnull instancetype)initWithHeader:(NSString * _Nullable)header placeholder:(NSString * _Nullable)placeholder decorations:(NSArray<PZMInputFieldDecoration *> * _Nullable)ocDecorations prefix:(NSString * _Nullable)prefix SWIFT_DEPRECATED_MSG("Use the prefix property with a ComboOption instead.");
 /// Instantiates a basic text field with the given options.
 /// \param header The header to be displayed above the bubble.
 ///
@@ -3221,7 +3553,7 @@ SWIFT_CLASS_NAMED("TextInputField")
 ///
 /// \param prefix The prefix to be displayed in the view.
 ///
-- (nonnull instancetype)initWithHeader:(NSString * _Nullable)header placeholder:(NSString * _Nullable)placeholder size:(enum PZMInputFieldSize)size decorations:(NSArray<PZMInputFieldDecoration *> * _Nullable)ocDecorations prefix:(NSString * _Nullable)prefix;
+- (nonnull instancetype)initWithHeader:(NSString * _Nullable)header placeholder:(NSString * _Nullable)placeholder size:(enum PZMInputFieldSize)size decorations:(NSArray<PZMInputFieldDecoration *> * _Nullable)ocDecorations prefix:(NSString * _Nullable)prefix SWIFT_DEPRECATED_MSG("Use the prefix property with a ComboOption instead.");
 /// Instantiates a basic text field with the given options.
 /// \param header The header to be displayed above the bubble.
 ///
@@ -3238,12 +3570,20 @@ SWIFT_CLASS_NAMED("TextInputField")
 ///
 - (void)setTextFieldTextColor:(NSColor * _Nonnull)textColor;
 - (void)setTextFieldSelectable:(BOOL)selectable;
-/// Sets the border width for the bubble view.
-/// \param borderWidth The border width to apply to the bubble view.
-///
-- (void)setBubbleViewBorderWidth:(CGFloat)borderWidth;
-- (void)setBubbleViewBackgroundColor:(PrismColor * _Nonnull)backgroundColor;
-- (void)setBubbleViewHoverBackgroundColor:(PrismColor * _Nonnull)hoveredBackgroundColor;
+/// ❄️ snowflake configuration ❄️
+/// !! DO NOT USE BEFORE CONTACTING OWNER !!
+/// <ul>
+///   <li>
+///     Owner team: ZUI
+///   </li>
+///   <li>
+///     Contact: Neko Chen
+///   </li>
+/// </ul>
+@property (nonatomic) BOOL snf_forbidEditing;
+- (void)setBubbleViewBorderWidth:(CGFloat)borderWidth SWIFT_DEPRECATED_MSG("Custom bubble view border width is no longer supported.");
+- (void)setBubbleViewBackgroundColor:(PrismColor * _Nonnull)backgroundColor SWIFT_DEPRECATED_MSG("Custom bubble view background color is no longer supported.");
+- (void)setBubbleViewHoverBackgroundColor:(PrismColor * _Nonnull)hoveredBackgroundColor SWIFT_DEPRECATED_MSG("Custom bubble view hover background color is no longer supported.");
 - (CGFloat)getBasicTextFieldFitHeight SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -3253,6 +3593,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMTextInputFieldKeyAction, "KeyAction", ope
   PZMTextInputFieldKeyActionInsertNewline = 2,
   PZMTextInputFieldKeyActionTab = 3,
   PZMTextInputFieldKeyActionBackTab = 4,
+  PZMTextInputFieldKeyActionEscape = 5,
 };
 
 /// A predicate that can be applied to a string and returns success or failure.
@@ -3273,6 +3614,34 @@ SWIFT_CLASS_NAMED("Predicate")
 /// returns:
 /// A new <code>TextInputField/Predicate</code>.
 + (PZMTextInputFieldPredicate * _Nonnull)predicate:(NSString * _Nonnull)errorText :(BOOL (^ _Nonnull)(NSString * _Nonnull))predicate SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class PZMDropdownViewItem;
+/// An option for a combo-style prefix or suffix on a <code>TextInputField</code>.
+/// A <code>ComboOption</code> can hold either a static text string or an array of
+/// <code>DropdownInputField/Item</code> instances that the user can select from.
+/// note:
+/// The <code>value</code> is immutable. To change the text or items, create
+/// a new <code>ComboOption</code> instance. The <code>selectedIndex</code> is mutable and
+/// updated at runtime when the user selects a dropdown item.
+SWIFT_CLASS_NAMED("ComboOption")
+@interface PZMComboOption : NSObject
+/// The currently effective display text.
+/// For <code>.text</code>, returns the string directly. For <code>.items</code>, returns the
+/// selected item’s <code>selectedLabel</code> or <code>label</code>.
+@property (nonatomic, readonly, copy) NSString * _Nonnull effectiveText;
+/// Creates a combo option with static text.
+/// \param text The text to display.
+///
+- (nonnull instancetype)initWithText:(NSString * _Nonnull)text OBJC_DESIGNATED_INITIALIZER;
+/// Creates a combo option with selectable items.
+/// \param items The items the user can choose from.
+///
+/// \param selectedIndex The index of the initially selected item.
+///
+- (nonnull instancetype)initWithItems:(NSArray<PZMDropdownViewItem *> * _Nonnull)items selectedIndex:(NSInteger)selectedIndex OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -3451,14 +3820,25 @@ SWIFT_PROTOCOL_NAMED("TextInputFieldDelegate")
 - (BOOL)textInputField:(PZMTextInputField * _Nonnull)sender shouldProcessKeyAction:(enum PZMTextInputFieldKeyAction)keyAction SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class PZMDropdownViewItem;
+enum PZMDropdownInputFieldSelectionMode : NSInteger;
 /// Prism’s Input Field component that displays a <code>Menu</code> when clicked.
 /// <code>DropdownInputField</code> instances contain <code>MenuItem</code> instances, which are used to construct a
 /// <code>Menu</code> instance which, in turn, displays a <code>MenuWindow</code>.
 /// This is a one-step solution to create a dropdown menu with arbitrary content, but for cases
 /// where a dropdown menu must be created from another event (such as a left-click), see <code>Menu</code>.
 SWIFT_CLASS_NAMED("DropdownInputField")
-@interface PZMDropdownInputField : PZMInputField <PZMMenuDelegate>
+@interface PZMDropdownInputField : PZMInputField <NSTextViewDelegate, PZMMenuDelegate>
+/// The selection mode for this dropdown.
+/// When <code>SelectionMode/single</code>, the dropdown behaves as a traditional
+/// single-selection picker. When <code>SelectionMode/multiple</code>, the menu
+/// displays checkbox-style items and the input field shows a <code>TagView</code>
+/// for each selected item.
+/// The default value is <code>SelectionMode/single</code>.
+@property (nonatomic) enum PZMDropdownInputFieldSelectionMode selectionMode;
+/// Placeholder text shown inside the bubble when no items are selected
+/// in <code>SelectionMode/multiple</code> mode.
+/// This property has no effect in <code>SelectionMode/single</code> mode.
+@property (nonatomic, copy) NSString * _Nullable placeholder;
 @property (nonatomic) BOOL readOnly;
 @property (nonatomic, getter=isHidden) BOOL hidden;
 @property (nonatomic) BOOL enabled;
@@ -3470,8 +3850,27 @@ SWIFT_CLASS_NAMED("DropdownInputField")
 /// <code>MenuItem/checkmark(_:direction:boolValue:decorations:action:)</code>.
 /// This value is <code>Direction/left</code> by default.
 @property (nonatomic) enum PZMDirection checkmarkDirection;
+/// The ordered list of currently selected indices.
+/// In <code>SelectionMode/single</code> mode, this returns a single-element array
+/// containing <code>selectedIndex</code>. In <code>SelectionMode/multiple</code> mode, the
+/// indices are ordered by the time of selection.
+@property (nonatomic, readonly, copy) NSArray<NSNumber *> * _Nonnull selectedIndices;
 /// The currently selected index.
+/// In <code>SelectionMode/multiple</code> mode, this property returns <code>-1</code>.
 @property (nonatomic) NSInteger selectedIndex;
+/// Toggles the selection state of the item at <code>index</code>.
+/// In <code>SelectionMode/multiple</code> mode, if the item is not selected it will
+/// be appended to the selection; if it is already selected it will be
+/// removed. In <code>SelectionMode/single</code> mode, this method is a no-op.
+/// \param index The index of the item to toggle.
+///
+- (void)toggleWithIndex:(NSInteger)index;
+/// Removes all selections.
+/// In <code>SelectionMode/multiple</code> mode, all items are deselected and the
+/// tag display is cleared. In <code>SelectionMode/single</code> mode, this method
+/// is a no-op.
+- (void)deselectAll;
+- (void)updateConstraints;
 @property (nonatomic, copy) void (^ _Nullable onFirstResponderStateChange)(id <PZMBaseView> _Nonnull, BOOL);
 @property (nonatomic) NSRect frame;
 - (void)keyDown:(NSEvent * _Nonnull)event;
@@ -3486,18 +3885,35 @@ SWIFT_CLASS_NAMED("DropdownInputField")
 ///
 - (nonnull instancetype)initWithHeader:(NSString * _Nullable)header size:(enum PZMInputFieldSize)size _ocItems:(NSArray<PZMDropdownViewItem *> * _Nullable)_ocItems selectedIndex:(NSInteger)selectedIndex _ocDecorations:(NSArray<PZMInputFieldDecoration *> * _Nullable)decorations;
 /// Selects the item at <code>index</code>.
-/// If <code>index</code> is out of bounds or is already selected, this is a no-op.
+/// In <code>SelectionMode/single</code> mode, this selects the item and deselects
+/// the previously selected item. In <code>SelectionMode/multiple</code> mode, this
+/// delegates to <code>toggle(index:)</code>.
+/// If <code>index</code> is out of bounds, this is a no-op. In single mode, if
+/// <code>index</code> is already selected, this is also a no-op.
 /// \param index The index of the item to be selected.
 ///
 - (void)selectWithIndex:(NSInteger)index;
+- (void)deselect;
 - (void)viewDidMoveToWindow;
 - (void)viewDidMoveToSuperview;
 - (void)dropdownMenuWillDismiss:(PZMMenu * _Nonnull)sender;
 - (void)dropdownMenuDidDismiss:(PZMMenu * _Nonnull)sender;
 - (void)dropdownMenu:(PZMMenu * _Nonnull)sender didSelectItemAt:(NSInteger)index;
+- (NSDictionary<NSAttributedStringKey, id> * _Nonnull)textView:(NSTextView * _Nonnull)textView shouldChangeTypingAttributes:(NSDictionary<NSString *, id> * _Nonnull)oldTypingAttributes toAttributes:(NSDictionary<NSAttributedStringKey, id> * _Nonnull)newTypingAttributes SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly) NSSize intrinsicContentSize;
+- (void)setAccessibilityIdentifier:(NSString * _Nullable)accessibilityIdentifier;
 - (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)accessibilityTitle SWIFT_WARN_UNUSED_RESULT;
 @end
+
+/// The selection mode for a <code>DropdownInputField</code>.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMDropdownInputFieldSelectionMode, "SelectionMode", open) {
+/// Only one item may be selected at a time. This is the default.
+  PZMDropdownInputFieldSelectionModeSingle = 0,
+/// Multiple items may be selected simultaneously. Selected items are
+/// displayed as <code>TagView</code> instances inside the input field.
+  PZMDropdownInputFieldSelectionModeMultiple = 1,
+};
 
 enum PZMGravity : NSInteger;
 @class PZMMenuDecoration;
@@ -3554,6 +3970,31 @@ SWIFT_CLASS_NAMED("Item")
 - (void)removeDecorationsInGravity:(enum PZMGravity)gravity;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// A visual effect view that uses <code>CABackdropLayer</code> to provide real-time
+/// frosted glass rendering with configurable blur, saturation, and brightness.
+/// Unlike <code>NSVisualEffectView</code> with standard materials, <code>EffectView</code> provides
+/// direct control over individual effect parameters and supports tint colors,
+/// compositing filters, and per-corner masking.
+SWIFT_CLASS("_TtC5Prism10EffectView")
+@interface EffectView : NSVisualEffectView
+@property (nonatomic) NSVisualEffectState state;
+@property (nonatomic, strong) NSImage * _Nullable maskImage;
+@property (nonatomic) NSVisualEffectBlendingMode blendingMode;
+@property (nonatomic) NSVisualEffectMaterial material;
+@property (nonatomic, readonly) BOOL wantsUpdateLayer;
+- (nonnull instancetype)initWithFrame:(NSRect)frame SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nullable)coder SWIFT_UNAVAILABLE;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (void)layout;
+- (void)viewDidChangeEffectiveAppearance;
+- (void)viewDidChangeBackingProperties;
+- (void)viewWillMoveToWindow:(NSWindow * _Nullable)newWindow;
+- (void)viewDidMoveToWindow;
+- (void)updateLayer;
+@property (nonatomic, readonly, copy) NSString * _Nonnull debugDescription;
 @end
 
 SWIFT_CLASS_NAMED("ErrorView")
@@ -3725,11 +4166,18 @@ SWIFT_CLASS_NAMED("FloatingActionButton")
 /// The button’s action, to be invoked when the user interacts with the button.
 @property (nonatomic, copy) void (^ _Nonnull action)(id <PZMBaseButton> _Nonnull);
 @property (nonatomic, strong) NSImage * _Nullable image;
+@property (nonatomic, strong) PZMGradient * _Nullable backgroundGradient;
+@property (nonatomic, strong) PZMGradient * _Nullable hoveredBackgroundGradient;
+@property (nonatomic, strong) PZMGradient * _Nullable clickedBackgroundGradient;
 @property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
 @property (nonatomic, strong) PrismColor * _Nullable hoveredBackgroundColor;
 @property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
 @property (nonatomic) CGFloat cornerRadius;
 @property (nonatomic, readonly) BOOL wantsUpdateLayer;
+@property (nonatomic, strong) PZMShadow * _Nullable backgroundShadow;
+@property (nonatomic, strong) PZMShadow * _Nullable hoveredBackgroundShadow;
+@property (nonatomic, strong) PZMShadow * _Nullable clickedBackgroundShadow;
+@property (nonatomic, readonly) NSEdgeInsets alignmentRectInsets;
 - (nonnull instancetype)initWithImage:(NSImage * _Nullable)image action:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))action;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 + (PZMFloatingActionButton * _Nonnull)plusButtonWithAction:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))action SWIFT_WARN_UNUSED_RESULT;
@@ -3739,6 +4187,7 @@ SWIFT_CLASS_NAMED("FloatingActionButton")
 @property (nonatomic) NSInteger buttonTag;
 - (void)showProgressIndicator;
 - (void)hideProgressIndicator;
+- (void)updateLayer;
 @property (nonatomic) BOOL runActionOnMouseDown;
 /// Handles the mouse down event.
 /// If <code>runActionOnMouseDown</code> is set, the action is executed.
@@ -3752,7 +4201,6 @@ SWIFT_CLASS_NAMED("FloatingActionButton")
 @property (nonatomic, strong) NSCursor * _Nullable cursor;
 @property (nonatomic, readonly, strong) NSCursor * _Nonnull defaultCursor;
 - (NSView * _Nullable)hitTest:(NSPoint)point SWIFT_WARN_UNUSED_RESULT;
-- (void)viewDidChangeEffectiveAppearance;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 @property (nonatomic, readonly) CGFloat focusRingSpacing;
 - (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
@@ -3761,6 +4209,70 @@ SWIFT_CLASS_NAMED("FloatingActionButton")
 @property (nonatomic) NSEventModifierFlags keyEquivalentModifierMask;
 - (BOOL)performKeyEquivalent:(NSEvent * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
+@end
+
+/// A compact, borderless dropdown input with transparent background, optional
+/// leading icon, and placeholder text when no item is selected.
+/// <code>GhostDropdownInputField</code> supports Small and Medium sizes only.
+/// It has no header, no decorations, and no visible border (focus ring only).
+SWIFT_CLASS_NAMED("GhostDropdownInputField")
+@interface PZMGhostDropdownInputField : PZMDropdownInputField
+/// Text shown when no item is selected.
+@property (nonatomic, copy) NSString * _Nullable placeholder;
+/// Optional icon displayed before the text in the bubble.
+@property (nonatomic, strong) NSImage * _Nullable leadingIcon;
+/// The maximum width for the dropdown bubble. The intrinsic content size
+/// will not exceed this value. Defaults to <code>180.0</code>.
+@property (nonatomic) CGFloat maximumBubbleWidth;
+@property (nonatomic) BOOL enabled;
+@property (nonatomic) BOOL readOnly;
+/// Whether the dropdown is currently displaying the placeholder text
+/// rather than a selected item’s label.
+@property (nonatomic, readonly) BOOL isShowingPlaceholder;
+/// The string currently displayed in the text field.
+/// When <code>isShowingPlaceholder</code> is <code>true</code>, returns the <code>placeholder</code>
+/// (or a default localized string). Otherwise returns the selected item’s
+/// <code>selectedLabel</code> or <code>label</code>.
+@property (nonatomic, readonly, copy) NSString * _Nonnull effectiveStringValue;
+/// The currently selected index. <code>-1</code> when no item is selected.
+@property (nonatomic) NSInteger selectedIndex;
+- (void)selectWithIndex:(NSInteger)index;
+- (void)viewDidChangeEffectiveAppearance;
+@property (nonatomic, readonly) NSSize intrinsicContentSize;
+@end
+
+@class PZMGradientStyle;
+/// A declarative gradient configuration that maps to <code>CAGradientLayer</code>.
+/// Gradients can be assigned to any <code>BaseView</code> via the <code>backgroundGradient</code>,
+/// <code>hoveredBackgroundGradient</code>, and <code>clickedBackgroundGradient</code> properties.
+/// Use the <code>Style</code> class to choose between axial (linear) and radial gradients.
+SWIFT_CLASS_NAMED("Gradient")
+@interface PZMGradient : NSObject
+@property (nonatomic, readonly, copy) NSArray<PrismColor *> * _Nullable colors;
+@property (nonatomic, readonly, copy) NSArray<NSNumber *> * _Nullable locations;
+@property (nonatomic, readonly, strong) PZMGradientStyle * _Nonnull style;
+@property (nonatomic, readonly) float opacity;
+@property (nonatomic, readonly) CGPoint startPoint;
+@property (nonatomic, readonly) CGPoint endPoint;
+@property (nonatomic, readonly) CAGradientLayerType _Nonnull type;
+- (nonnull instancetype)initWithColors:(NSArray<PrismColor *> * _Nullable)colors locations:(NSArray<NSNumber *> * _Nullable)locations opacity:(float)opacity style:(PZMGradientStyle * _Nonnull)style OBJC_DESIGNATED_INITIALIZER;
++ (PZMGradient * _Nonnull)gradientWithColors:(NSArray<PrismColor *> * _Nullable)colors locations:(NSArray<NSNumber *> * _Nullable)locations opacity:(float)opacity style:(PZMGradientStyle * _Nonnull)style SWIFT_WARN_UNUSED_RESULT;
++ (PZMGradient * _Nonnull)clearWithColors:(NSArray<PrismColor *> * _Nullable)colors locations:(NSArray<NSNumber *> * _Nullable)locations style:(PZMGradientStyle * _Nonnull)style SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// The gradient rendering style, controlling direction and shape.
+SWIFT_CLASS_NAMED("Style")
+@interface PZMGradientStyle : NSObject
+/// Creates an axial (linear) gradient style between two points.
+/// \param startPoint The start point in unit coordinate space (0–1).
+///
+/// \param endPoint The end point in unit coordinate space (0–1).
+///
++ (PZMGradientStyle * _Nonnull)axialWithStartPoint:(CGPoint)startPoint endPoint:(CGPoint)endPoint SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 typedef SWIFT_ENUM_NAMED(NSInteger, PZMGravity, "Gravity", open) {
@@ -3772,8 +4284,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMGravity, "Gravity", open) {
 };
 
 enum PZMIconButtonStyle : NSInteger;
+@class PZMIconButtonAccessory;
 enum PZMIconDotStyle : NSInteger;
-enum PZMIconButtonSize : NSInteger;
 /// Prism’s implementation of an icon-only button, useful for contextual menus and other actions.
 /// This view manages its own size and style. Do <em>not</em> attempt to manually change the size or style of a <code>IconButton</code>
 /// instance.
@@ -3783,13 +4295,19 @@ SWIFT_CLASS_NAMED("IconButton")
 @interface PZMIconButton : PZMInteractableView <PZMInvertible>
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum PZMIconButtonStyle PZMIconButtonStyleDanger SWIFT_DEPRECATED_MSG("", "PZMIconButtonStyleDangerPrimary");)
 + (enum PZMIconButtonStyle)PZMIconButtonStyleDanger SWIFT_WARN_UNUSED_RESULT;
+/// An optional badge accessory (notifier dot or counter) overlaid on the button.
+@property (nonatomic, strong) PZMIconButtonAccessory * _Nullable accessory;
+@property (nonatomic, readonly) NSEdgeInsets alignmentRectInsets;
 /// The button’s action, to be invoked when the user interacts with the button.
 @property (nonatomic, copy) void (^ _Nonnull action)(id <PZMBaseButton> _Nonnull);
 /// The button’s style.
 @property (nonatomic) enum PZMIconButtonStyle style;
 /// The icon shown in the button.
 @property (nonatomic, strong) NSImage * _Nullable image;
-@property (nonatomic) BOOL tintImage SWIFT_DEPRECATED_MSG("", "isImageTinted");
+/// Whether the button will draw its image in the color specified by the design system.
+/// To prevent the button from changing the color of an icon that needs to draw in its
+/// original colors, set this property to <code>false</code>.
+@property (nonatomic) BOOL tintImage;
 /// Whether the button will draw its image in the color specified by the design system.
 /// To prevent the button from changing the color of an icon that needs to draw in its
 /// original colors, set this property to <code>false</code>.
@@ -3802,9 +4320,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum PZMIconButtonSt
 @property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
 @property (nonatomic, strong) PrismColor * _Nullable borderColor;
 @property (nonatomic) CGFloat borderWidth;
-@property (nonatomic) BOOL showDot;
+@property (nonatomic) BOOL showDot SWIFT_DEPRECATED_MSG("Use `accessory` instead.");
 @property (nonatomic) NSInteger buttonTag;
-@property (nonatomic) enum PZMIconDotStyle dotStyle;
+@property (nonatomic) enum PZMIconDotStyle dotStyle SWIFT_DEPRECATED_MSG("Use `accessory` instead.");
 /// Initializes a new <code>IconButton</code> instance.
 /// \param image The icon to be shown in the button.
 ///
@@ -3820,6 +4338,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum PZMIconButtonSt
 - (nonnull instancetype)initWithImage:(NSImage * _Nullable)image style:(enum PZMIconButtonStyle)style size:(enum PZMIconButtonSize)size action:(void (^ _Nonnull)(id <PZMBaseButton> _Nonnull))action;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (nonnull instancetype)initWithFrame:(NSRect)_ SWIFT_UNAVAILABLE;
+- (void)updateConstraints;
 - (void)showProgressIndicator;
 - (void)hideProgressIndicator;
 @property (nonatomic) BOOL inverted;
@@ -3841,6 +4360,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum PZMIconButtonSt
 - (NSView * _Nullable)hitTest:(NSPoint)point SWIFT_WARN_UNUSED_RESULT;
 - (void)viewDidChangeEffectiveAppearance;
 - (void)updateLayer;
+- (void)viewDidChangeBackingProperties;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 @property (nonatomic, readonly) CGFloat focusRingSpacing;
 - (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
@@ -3868,9 +4388,6 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMIconButtonStyle, "Style", open) {
 /// The overlay icon button styles.
 /// Buttons of this style are typically used in transparent or translucent overlays.
   PZMIconButtonStyleOverlay = 6,
-/// The overlay icon button styles.
-/// Buttons of this style are typically used in transparent or translucent overlays.
-  PZMIconButtonStyleDangerOverlay = 7,
 };
 
 /// The possible icon button sizes.
@@ -3881,11 +4398,27 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMIconButtonSize, "Size", open) {
   PZMIconButtonSizeMedium = 1,
 /// The large button size.
   PZMIconButtonSizeLarge = 2,
-/// The extra large button size.
   PZMIconButtonSizeExtraLarge = 3,
 };
 
-/// The possible icon button dot style.
+enum PZMNotifierViewStyle : NSInteger;
+/// A badge accessory displayed on an <code>IconButton</code>, such as a notification dot or counter.
+SWIFT_CLASS_NAMED("Accessory")
+@interface PZMIconButtonAccessory : NSObject
+/// Creates an accessory that displays a <code>NotifierView</code> dot on the button.
+/// \param style The notifier style. Defaults to <code>NotifierView/Style/default</code>.
+///
++ (PZMIconButtonAccessory * _Nonnull)notifierWithStyle:(enum PZMNotifierViewStyle)style SWIFT_WARN_UNUSED_RESULT;
+/// Creates an accessory that displays a <code>CounterView</code> badge on the button.
+/// \param style The counter style. Defaults to <code>CounterView/Style/default</code>.
+///
+/// \param count The initial count to display.
+///
++ (PZMIconButtonAccessory * _Nonnull)counterWithStyle:(enum PZMCounterViewStyle)style count:(NSUInteger)count SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 typedef SWIFT_ENUM_NAMED(NSInteger, PZMIconDotStyle, "DotStyle", open) {
 /// The icon button dot remind style.
   PZMIconDotStyleRemind = 0,
@@ -3904,7 +4437,88 @@ SWIFT_CLASS_NAMED("HelpButton")
 - (void)drawFocusRingMask;
 @end
 
-enum PZMBaseButtonStyle : NSInteger;
+@class PZMHeroActionButtonAccessory;
+enum PZMHeroActionButtonSize : NSInteger;
+/// A hero action button used to present prominent, contextual actions.
+/// This button displays a text label with an optional leading icon, using a neutral
+/// background that responds to hover, press, and disabled states.
+/// important:
+/// This view manages its own style. Do <em>not</em> attempt to manually change the style of a
+/// <code>HeroActionButton</code> instance.
+/// <h2>Reference</h2>
+/// <a href="https://www.figma.com/design/OWKBE2BJBBanezKhapWx2Y/Prism-Desktop---Web-2.5?node-id=169297-12474&m=dev"><em>Figma</em>: Hero Action Button Design Specification</a>
+SWIFT_CLASS_NAMED("HeroActionButton")
+@interface PZMHeroActionButton : PZMInteractableView
+/// An optional accessory displayed on the button, such as a <code>TextBadge</code>.
+@property (nonatomic, strong) PZMHeroActionButtonAccessory * _Nullable accessory;
+@property (nonatomic, readonly) NSEdgeInsets alignmentRectInsets;
+@property (nonatomic, copy) void (^ _Nonnull action)(id <PZMBaseButton> _Nonnull);
+@property (nonatomic) BOOL runActionOnMouseDown;
+@property (nonatomic, copy) NSString * _Nullable label;
+@property (nonatomic, strong) NSImage * _Nullable image;
+@property (nonatomic) BOOL tintImage;
+@property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
+@property (nonatomic, strong) PrismColor * _Nullable hoveredBackgroundColor;
+@property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
+@property (nonatomic) BOOL wantsLayer;
+- (void)updateLayer;
+@property (nonatomic) BOOL enabled;
+@property (nonatomic, strong) PrismColor * _Nullable borderColor;
+@property (nonatomic, strong) PrismColor * _Nullable hoveredBorderColor;
+@property (nonatomic, strong) PrismColor * _Nullable clickedBorderColor;
+@property (nonatomic, readonly) CGFloat focusRingSpacing;
+@property (nonatomic) BOOL showDot;
+@property (nonatomic) NSInteger buttonTag;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nullable)coder OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithFrame:(NSRect)_ SWIFT_UNAVAILABLE;
+/// Creates a hero action button with the given parameters.
+- (nonnull instancetype)initWithLabel:(NSString * _Nullable)_ocLabel size:(enum PZMHeroActionButtonSize)size image:(NSImage * _Nullable)_ocImage action:(void (^ _Nonnull)(id <PZMBaseButton> _Nonnull))action;
+- (void)showProgressIndicator;
+- (void)hideProgressIndicator;
+- (void)mouseDown:(NSEvent * _Nonnull)event;
+- (void)mouseUp:(NSEvent * _Nonnull)event;
+- (void)keyDown:(NSEvent * _Nonnull)event;
+@property (nonatomic) BOOL updatesCursorOnHover;
+@property (nonatomic, strong) NSCursor * _Nullable cursor;
+@property (nonatomic, readonly, strong) NSCursor * _Nonnull defaultCursor;
+- (NSView * _Nullable)hitTest:(NSPoint)point SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly) NSSize intrinsicContentSize;
+- (void)viewDidChangeEffectiveAppearance;
+@property (nonatomic, readonly) BOOL wantsUpdateLayer;
+- (void)updateConstraints;
+- (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, copy) NSString * _Nullable accessibilityTitleOverride;
+- (NSString * _Nullable)accessibilityTitle SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)accessibilityPerformPress SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, copy) NSString * _Nonnull keyEquivalent;
+@property (nonatomic) NSEventModifierFlags keyEquivalentModifierMask;
+- (BOOL)performKeyEquivalent:(NSEvent * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+@end
+
+/// The available sizes for a hero action button.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMHeroActionButtonSize, "Size", open) {
+/// The small hero action button size.
+  PZMHeroActionButtonSizeSmall = 0,
+/// The medium hero action button size.
+  PZMHeroActionButtonSizeMedium = 1,
+};
+
+enum PZMTextBadgeStyle : NSInteger;
+SWIFT_CLASS_NAMED("Accessory")
+@interface PZMHeroActionButtonAccessory : NSObject
+/// Creates an accessory that displays a <code>TextBadge</code> on the button.
+/// \param text The text to display in the badge.
+///
+/// \param style The badge style.
+///
++ (PZMHeroActionButtonAccessory * _Nonnull)textBadgeWithText:(NSString * _Nonnull)text style:(enum PZMTextBadgeStyle)style SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+enum PZMHomeButtonStyle : NSInteger;
 /// Prism’s implementation of the home buttons, to be displayed on a home screen or similar primary display.
 SWIFT_CLASS_NAMED("HomeButton")
 @interface PZMHomeButton : PZMInteractableView <PZMBaseButton>
@@ -3916,12 +4530,19 @@ SWIFT_CLASS_NAMED("HomeButton")
 @property (nonatomic) BOOL updatesCursorOnHover;
 @property (nonatomic, strong) NSCursor * _Nullable cursor;
 @property (nonatomic, readonly, strong) NSCursor * _Nonnull defaultCursor;
+/// An optional action invoked when the dropdown chevron is clicked.
+/// When set, a dropdown chevron button is displayed alongside the main button.
+/// Setting this to <code>nil</code> hides the dropdown button.
+@property (nonatomic, copy) void (^ _Nullable dropdownAction)(id <PZMBaseButton> _Nonnull);
 @property (nonatomic) BOOL forbidTracking;
 @property (nonatomic, readonly) BOOL canBecomeKeyView;
 @property (nonatomic, readonly) BOOL acceptsFirstResponder;
 @property (nonatomic) BOOL enabled;
 @property (nonatomic) BOOL showDot;
 @property (nonatomic) NSInteger buttonTag;
+/// The preferred maximum width for the button’s text label before it wraps or truncates.
+/// Defaults to <code>84.0</code>.
+@property (nonatomic) CGFloat labelPreferredMaxLayoutWidth;
 /// Initializes a new <code>HomeButton</code> instance.
 /// \param label The label to be shown under the button.
 ///
@@ -3934,27 +4555,21 @@ SWIFT_CLASS_NAMED("HomeButton")
 ///
 /// returns:
 /// A new <code>HomeButton</code> instance with the given options.
-- (nonnull instancetype)initWithLabel:(NSString * _Nullable)_ocLabel style:(enum PZMBaseButtonStyle)style image:(NSImage * _Nullable)_ocImage action:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))_ocAction;
+- (nonnull instancetype)initWithLabel:(NSString * _Nullable)_ocLabel style:(enum PZMHomeButtonStyle)style image:(NSImage * _Nullable)_ocImage action:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))_ocAction;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (void)showProgressIndicator;
 - (void)hideProgressIndicator;
 - (BOOL)isAccessibilityElement SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isAccessibilityEnabled SWIFT_WARN_UNUSED_RESULT;
-- (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly) NSSize intrinsicContentSize;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
 @end
 
 /// The available button styles.
-typedef SWIFT_ENUM_NAMED(NSInteger, PZMBaseButtonStyle, "Style", open) {
-/// The normal home button style.
-/// This style commonly takes a primary button role.
-  PZMBaseButtonStyleNormal = 0,
-/// The highlighted home button style.
-/// This style usually displays an important action that needs to be emphasized.
-  PZMBaseButtonStyleHighlighted = 1,
-/// The destructive home button style.
-/// This style usually displays irreversible actions.
-  PZMBaseButtonStyleDestructive = 2,
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMHomeButtonStyle, "Style", open) {
+  PZMHomeButtonStylePrimary = 0,
+  PZMHomeButtonStyleSecondary = 1,
+  PZMHomeButtonStyleDestructive = 2,
 };
 
 enum PZMIconTextButtonStyle : NSInteger;
@@ -3963,7 +4578,7 @@ enum PZMIconTextButtonSize : NSInteger;
 /// This view manages its own size and style. The button displays an icon above a text label in a vertical layout.
 /// <h2>Reference</h2>
 /// <a href="https://www.figma.com/file/fLGhhzkzA1tlvZOg00to2L/Prism-Component-Library-(MVP)?type=design&node-id=3-1"><em>Figma</em>: Button Design Specification</a>
-SWIFT_CLASS_NAMED("IconTextButton")
+SWIFT_CLASS_NAMED("IconTextButton") SWIFT_DEPRECATED_MSG("Use CustomButton instead.")
 @interface PZMIconTextButton : PZMInteractableView <PZMInvertible>
 - (void)showProgressIndicator;
 - (void)hideProgressIndicator;
@@ -4117,16 +4732,94 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMIconTextButtonSize, "Size", open) {
   PZMIconTextButtonSizeLarge = 2,
 };
 
-enum ZMLinkHandlerType : NSInteger;
+enum PZMInfoButtonSize : NSInteger;
+/// An information button that displays an ⓘ icon, typically used to present
+/// additional context through a <code>Popover</code>.
+/// <code>InfoButton</code> uses a <em>no-action interaction model</em>: clicking or pressing the
+/// button does not invoke an action closure. Instead, the button shows a <code>Popover</code>
+/// configured at initialization time.
+/// <h2>Sizes</h2>
+/// Three sizes are available via <code>Size</code>:
+/// | Size   | Button | Icon |
+/// |––––|––––|——|
+/// | Small  | 16 pt  | 12 pt|
+/// | Medium | 18 pt  | 14 pt|
+/// | Large  | 20 pt  | 16 pt|
+/// <h2>Usage</h2>
+/// \code
+/// // From a string:
+/// let infoButton = InfoButton("Helpful details here.")
+///
+/// // From a Popover:
+/// let popover = Popover(body: "Rich content", arrowStyle: .bottom)
+/// let infoButton = InfoButton(popover: popover, size: .large)
+///
+/// \endcode<h2>Reference</h2>
+/// <a href="https://www.figma.com/design/OWKBE2BJBBanezKhapWx2Y/Prism-Desktop---Web-2.5?node-id=182540-277795&m=dev"><em>Figma</em>: Info Button Properties</a>
+/// <a href="https://www.figma.com/design/OWKBE2BJBBanezKhapWx2Y/Prism-Desktop---Web-2.5?node-id=182545-48144&m=dev"><em>Figma</em>: Info Button Behaviors</a>
+SWIFT_CLASS_NAMED("InfoButton")
+@interface PZMInfoButton : PZMCustomButton
+/// Creates a new info button from a plain-text string.
+/// A <code>Popover</code> is created automatically with the given string as its body.
+/// \param body The text to display in the popover.
+///
+/// \param size The button size. Defaults to <code>Size/medium</code>.
+///
+- (nonnull instancetype)init:(NSString * _Nonnull)body size:(enum PZMInfoButtonSize)size;
+/// Creates a new info button with an existing <code>Popover</code>.
+/// \param popover The popover to display when the user hovers over the button.
+///
+/// \param size The button size. Defaults to <code>Size/medium</code>.
+///
+- (nonnull instancetype)initWithPopover:(PZMPopover * _Nonnull)popover size:(enum PZMInfoButtonSize)size OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
+@property (nonatomic, strong) PrismColor * _Nullable hoveredBackgroundColor;
+@property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
+- (BOOL)becomeFirstResponder SWIFT_WARN_UNUSED_RESULT;
+- (void)keyDown:(NSEvent * _Nonnull)event;
+- (NSString * _Nullable)accessibilityTitle SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithLabel:(NSString * _Nullable)label image:(NSImage * _Nullable)image action:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))action SWIFT_UNAVAILABLE;
+@end
+
+/// The possible info button sizes.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMInfoButtonSize, "Size", open) {
+  PZMInfoButtonSizeSmall = 0,
+  PZMInfoButtonSizeMedium = 1,
+  PZMInfoButtonSizeLarge = 2,
+};
+
+enum PZMLinkTriggerType : NSInteger;
 @class NSValue;
 SWIFT_CLASS_NAMED("Label")
 @interface PZMLabel : PZMInteractableView
+@property (nonatomic) NSFocusRingType focusRingType;
 /// For override
 @property (nonatomic, readonly, getter=isFlipped) BOOL flipped;
 /// Do not call this init
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 /// Create a Label with default parameters
 - (nonnull instancetype)initWithFrame:(NSRect)frame OBJC_DESIGNATED_INITIALIZER;
+/// Reset the selected link range when this view loses first responder status.
+/// Mirrors the behavior of ZMLinkTextField’s resignFirstResponder, which resets
+/// _lastSelectedGiyphRange to (0, 0). This ensures the focus ring starts fresh
+/// the next time the view gains focus, rather than resuming at the previous position.
+- (BOOL)resignFirstResponder SWIFT_WARN_UNUSED_RESULT;
+/// When becoming first responder via a Tab key press, immediately select the
+/// appropriate link so the focus ring appears on it right away.
+/// Controls surrounding Label use the standard AppKit key view chain
+/// (NSWindow.selectPreviousKeyView: / selectNextKeyView:) rather than the
+/// custom zmSelectPreviousKeyView / zmSelectNextKeyView. The standard AppKit
+/// path does not invoke the ZMkeyViewProtocal callbacks
+/// (didSelectNextBecomeFirstResponse / didSelectPreviousBecomeFirstResponse),
+/// which would leave no link selected and cause the focus ring to be drawn
+/// around the entire control instead of a specific link.
+/// To fix this, we inspect NSApp.currentEvent in becomeFirstResponder to detect
+/// whether focus was gained via a Tab key press, and if so, whether Shift was
+/// held. Based on the direction, the first or last link is selected immediately.
+/// This ensures correct behavior regardless of which navigation path is used.
+- (BOOL)becomeFirstResponder SWIFT_WARN_UNUSED_RESULT;
 - (void)keyDown:(NSEvent * _Nonnull)event;
 - (BOOL)accessibilityPerformPress SWIFT_WARN_UNUSED_RESULT;
 /// The text color
@@ -4164,7 +4857,39 @@ SWIFT_CLASS_NAMED("Label")
 @property (nonatomic) BOOL disableUserInteraction;
 /// Default is false
 @property (nonatomic) BOOL isSelectable;
-@property (nonatomic, copy) BOOL (^ _Nullable linkHandler)(id _Nonnull, enum ZMLinkHandlerType);
+/// Optional callback invoked when the user activates a hyperlink in attributed text.
+/// Assign a closure to receive structured metadata for each activation. This is the preferred API
+/// with richer link context and trigger source.
+/// <h3>Closure parameters (in order)</h3>
+/// <ul>
+///   <li>
+///     <em>linkIndex</em> (<code>Int</code>): Zero-based index of the activated link among all non-empty <code>.link</code> spans in
+///     <em>document order</em> (same ordering as <code>getAllLinkRanges()</code>). The first link is <code>0</code>.
+///   </li>
+///   <li>
+///     <em>range</em> (<code>NSRange</code>): UTF-16 range in <code>NSTextStorage</code> covering the link’s visible characters.
+///   </li>
+///   <li>
+///     <em>plainText</em> (<code>String</code>): Substring of the backing string over <code>range</code> (no attributes).
+///   </li>
+///   <li>
+///     <em>url</em> (<code>URL?</code>): Parsed navigation target when the <code>.link</code> attribute can be interpreted as
+///     <code>URL</code> / <code>NSURL</code> or a URL-like string; <code>nil</code> if the attribute is missing, non-URL, or not parseable.
+///     Keyboard and accessibility paths may still deliver <code>nil</code> here while other fields are valid.
+///   </li>
+///   <li>
+///     <em>trigger</em> (<code>LinkTriggerType</code>): How the link was activated—typically mouse click, Return key,
+///     or Space key (including accessibility default actions that mirror Space); see <code>LinkTriggerType</code>.
+///   </li>
+/// </ul>
+/// <h3>Return value</h3>
+/// Return <em><code>true</code></em> if you consumed the activation. Return <em><code>false</code></em> to allow default behavior—for
+/// example, on <em>Return / Space</em> in <code>keyDown(with:)</code>, <code>false</code> forwards the event to <code>super</code>; for
+/// <em>mouse</em> in <code>NSTextViewDelegate/textView(_:clickedOnLink:at:)</code>, <code>false</code> can allow AppKit’s default
+/// link handling where applicable; for <em>accessibility</em> in <code>accessibilityPerformPress()</code>, <code>false</code>
+/// reports that the default press action was not performed.
+/// Set to <code>nil</code> to remove the callback. Clearing is also applied when switching away from link-backed text.
+@property (nonatomic, copy) BOOL (^ _Nullable linkDidTrigger)(NSInteger, NSRange, NSString * _Nonnull, NSURL * _Nullable, enum PZMLinkTriggerType);
 /// Default is the same with LabelTextField
 @property (nonatomic, strong) NSFont * _Nullable font;
 @property (nonatomic) NSRect frame;
@@ -4183,19 +4908,61 @@ SWIFT_CLASS_NAMED("Label")
 - (void)setContentHuggingPriority:(NSLayoutPriority)priority forOrientation:(NSLayoutConstraintOrientation)orientation;
 - (void)setContentCompressionResistancePriority:(NSLayoutPriority)priority forOrientation:(NSLayoutConstraintOrientation)orientation;
 @property (nonatomic) BOOL truncatesLastVisibleLine;
+/// When the text contains links, the Label exposes one accessibility element per text
+/// segment — every link, and every stretch of prose around them — so the VoiceOver
+/// cursor stops on each in document order instead of on the Label as a whole. Two links
+/// embedded in a sentence therefore publish five elements: prose, link, prose, link,
+/// prose. Without links there is nothing to descend into and the Label stays a single
+/// leaf element.
 - (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic) BOOL isAccessibilityElementOverride;
 - (BOOL)isAccessibilityElement SWIFT_WARN_UNUSED_RESULT;
-@property (nonatomic) BOOL roleAsLink;
+/// <code>AXGroup</code> while the Label holds per-segment children — it is a container then, and
+/// the segments carry the roles that matter. Otherwise the Label is the element itself
+/// and reports <code>AXStaticText</code>, with <code>accessibilityRoleDescription()</code> supplying the
+/// spoken word.
 - (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
+/// The word VoiceOver speaks in place of the role, chosen by how the text was assigned:
+/// <ul>
+///   <li>
+///     <code>attributedStringValue</code> without links → “rich text”.
+///   </li>
+///   <li>
+///     <code>stringValue</code> → the system word for static text (“text”).
+///   </li>
+/// </ul>
+/// Link-bearing attributed text never reaches here: the Label is a container then, and
+/// each segment element carries its own role description (see
+/// <code>makeLinkAccessibilityElement(for:)</code> and <code>makeProseAccessibilityElement(for:)</code>).
+- (NSString * _Nullable)accessibilityRoleDescription SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
+- (NSRect)accessibilityFrame SWIFT_WARN_UNUSED_RESULT;
+/// While a link holds the keyboard focus ring, that link — not the Label — is what the
+/// accessibility system should regard as focused, so the VoiceOver cursor settles on it
+/// rather than on the container.
+@property (nonatomic, readonly) id _Nullable accessibilityFocusedUIElement;
 - (void)drawFocusRingMask;
+@property (nonatomic, readonly) NSRect focusRingMaskBounds;
 - (NSArray<NSValue *> * _Nonnull)getAllLinkRanges SWIFT_WARN_UNUSED_RESULT;
+/// Called by the window’s key view navigation system when focus enters this
+/// Label via a forward Tab press. Automatically selects the first link so
+/// the focus ring appears on it immediately.
+/// Corresponds to ZMLinkTextField’s didSelectNextBecomeFirstResponse.
+/// Note: If becomeFirstResponder has already initialized _lastSelectedLinkRange
+/// (detected via NSApp.currentEvent), this method is a no-op to avoid selecting
+/// a link twice, which would cause the first link to be skipped.
+- (void)didSelectNextBecomeFirstResponse;
+/// Called by the window’s key view navigation system when focus enters this
+/// Label via a backward Shift+Tab press. Automatically selects the last link
+/// so the focus ring appears on it immediately.
+/// Corresponds to ZMLinkTextField’s didSelectPreviousBecomeFirstResponse.
+/// Note: Same as above — skipped if becomeFirstResponder already handled
+/// the initialization.
+- (void)didSelectPreviousBecomeFirstResponse;
 @end
 
 @interface PZMLabel (SWIFT_EXTENSION(Prism))
 + (PZMLabel * _Nonnull)labelWith:(NSString * _Nullable)string SWIFT_WARN_UNUSED_RESULT;
-- (CGFloat)getHeightToFitWithWidth:(CGFloat)width SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("There are some bugs in this interface");
 - (NSSize)sizeToFitWithWidth:(CGFloat)width SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -4215,6 +4982,14 @@ SWIFT_CLASS_NAMED("Line")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+/// Describes how a hyperlink on <code>Label</code> was activated for the <code>linkDidTrigger</code> callback.
+/// Case names and raw values are stable for Objective-C interoperability.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMLinkTriggerType, "LinkTriggerType", open) {
+  PZMLinkTriggerTypeMouseClick = 0,
+  PZMLinkTriggerTypeEnterKeyDown = 1,
+  PZMLinkTriggerTypeSpaceKeyDown = 2,
+};
+
 enum PZMLinkViewStyle : NSInteger;
 @class NSLayoutYAxisAnchor;
 /// Prism’s Link component, which displays some text and allows the user to open a URL.
@@ -4229,6 +5004,7 @@ SWIFT_CLASS_NAMED("LinkView")
 @property (nonatomic) NSAccessibilityRole _Nullable accessibilityRoleOverride;
 /// Custom accessibility title for this link view. If set, overrides the default title.
 @property (nonatomic, copy) NSString * _Nullable accessibilityTitleOverride;
+- (void)setLabel:(NSString * _Nullable)label;
 /// Creates a new <code>LinkView</code> instance with some text, a URL, and optionally a <code>Style</code>.
 /// Returns: A new <code>LinkView</code> instance.
 /// \param text The label to be displayed.
@@ -4310,16 +5086,26 @@ SWIFT_CLASS_NAMED("TableCellView")
 /// this does <em>not</em> propagate through view instances that do not inherit from <code>View</code>, but
 /// this behavior may change in the future.
 - (void)enableInteractionInSubtree;
+@property (nonatomic, strong) PZMVisualEffect * _Nullable backgroundVisualEffect;
 /// The view’s default background color.
 @property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
 /// The view’s background color, when it is hovered.
 @property (nonatomic, strong) PrismColor * _Nullable hoveredBackgroundColor;
 /// The view’s background color, while the mouse is held down during a click event.
 @property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
+@property (nonatomic, readonly, strong) PZMGradient * _Nullable effectiveBackgroundGradient;
+@property (nonatomic, strong) PZMGradient * _Nullable backgroundGradient;
+@property (nonatomic, strong) PZMGradient * _Nullable hoveredBackgroundGradient;
+@property (nonatomic, strong) PZMGradient * _Nullable clickedBackgroundGradient;
+@property (nonatomic, readonly, strong) PZMShadow * _Nullable effectiveBackgroundShadow;
+@property (nonatomic, strong) PZMShadow * _Nullable backgroundShadow;
+@property (nonatomic, strong) PZMShadow * _Nullable hoveredBackgroundShadow;
+@property (nonatomic, strong) PZMShadow * _Nullable clickedBackgroundShadow;
 /// The radius of the view’s corners; higher values mean rounder corners.
 /// Setting <code>cornerRadius</code> to be greater than <code>min(view.height, view.width)</code> may cause it to draw
 /// unexpectedly.
 @property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic) CACornerMask maskedCorners;
 /// The width of the view’s border, drawn around the same path as its background.
 @property (nonatomic) CGFloat borderWidth;
 /// The color of the view’s border.
@@ -4401,6 +5187,11 @@ SWIFT_CLASS_NAMED("TableCellView")
 /// attention:
 /// when overriding this, <code>super.updateLayer()</code> <em>must</em> be called.
 - (void)updateLayer;
+@property (nonatomic, readonly) BOOL useLayerCompatibilityMode;
+- (void)viewDidChangeBackingProperties;
+@property (nonatomic, readonly, strong) CALayer * _Nonnull backgroundLayer;
+@property (nonatomic, readonly, strong) CALayer * _Nullable backgroundShadowLayer;
+@property (nonatomic, readonly, strong) CAShapeLayer * _Nonnull borderLayer;
 - (void)updateTrackingAreas;
 /// Returns <code>nil</code> whenever <code>forbidInteraction</code> <code>== true</code>; otherwise, it is equal to <code>super.hitTest</code>.
 - (NSView * _Nullable)hitTest:(NSPoint)point SWIFT_WARN_UNUSED_RESULT;
@@ -4485,6 +5276,8 @@ SWIFT_CLASS_NAMED("TableCellView")
 /// \param $0 The <code>BaseView</code>-conforming instance which sent the event.
 ///
 @property (nonatomic, copy) void (^ _Nullable scrollContentViewBoundsDidChange)(id <PZMBaseView> _Nonnull);
+/// An optional closure invoked when the view’s effective frame changes (own or ancestor frame).
+@property (nonatomic, copy) void (^ _Nullable effectiveFrameDidChange)(id <PZMBaseView> _Nonnull);
 @property (nonatomic, readonly) BOOL acceptsFirstResponder;
 - (BOOL)becomeFirstResponder SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)resignFirstResponder SWIFT_WARN_UNUSED_RESULT;
@@ -4680,6 +5473,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor *
 /// If <code>appearanceOverride</code> is <code>nil</code>, the menu window will inherit its
 /// appearance from the anchor view.
 @property (nonatomic, strong) NSAppearance * _Nullable appearanceOverride;
+/// Whether the menu uses a frosted glass visual effect for its background.
+/// When enabled, the menu renders with a translucent, blurred backdrop instead of
+/// an opaque background. Defaults to <code>false</code>.
+@property (nonatomic) BOOL useGlassEffect;
+/// The tint color applied to the glass effect background.
+/// Only used when <code>useGlassEffect</code> is <code>true</code>. When <code>nil</code>, falls back to
+/// the menu’s <code>backgroundColor</code>.
+@property (nonatomic, strong) PrismColor * _Nullable glassBackgroundColor;
 /// Instantiates a menu with the given items.
 /// \param items The items in the menu.
 ///
@@ -4736,6 +5537,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor *
 /// \param verticalOffset A vertical offset for the menu’s starting position.
 ///
 - (void)appearAdjacentToEdge:(enum PZMRectEdge)edge ofView:(NSView * _Nonnull)view pinnedBy:(enum PZMRectEdge)pinnedBy inDirection:(enum PZMDirection)inDirection horizontalOffset:(double)horizontalOffset verticalOffset:(double)verticalOffset;
+/// Updates a visible menu’s content and anchor without dismissing and reopening its panel.
+/// Use this when the view that anchors the menu has moved or resized while the menu stays open,
+/// such as when a toggle inside the menu changes the surrounding layout.
+- (void)updateItems:(NSArray<PZMMenuItem *> * _Nullable)newItems adjacentToEdge:(enum PZMRectEdge)edge ofView:(NSView * _Nonnull)view pinnedBy:(enum PZMRectEdge)pinnedBy inDirection:(enum PZMDirection)inDirection horizontalOffset:(double)horizontalOffset verticalOffset:(double)verticalOffset;
 /// Displays the menu with its current items on the screen, positioned relative to a view.
 /// \param rect The positioning rect  based on view coordinate system
 ///
@@ -4789,6 +5594,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PrismColor *
 /// If this is invoked while the <code>Menu</code> is closed or closing, this is a no-op. Before and
 /// after closing, the <code>Menu</code> instance will notify its delegate accordingly (if applicable).
 - (void)close;
+/// Resizes a <code>Menu</code> to fit its content size.
+/// If the <code>Menu</code> is closing or otherwise not visible, this is a
+/// no-op.
+/// note:
+/// if the <code>Menu</code>’s window is larger than the size required
+/// to fit its content, this does nothing.
+- (void)resize;
 - (void)panelWillDismiss:(PZMPanel * _Nonnull)panel;
 - (void)panelDidDismiss:(PZMPanel * _Nonnull)panel;
 - (NSSize)intrinsicContentSizeWithScreen:(NSScreen * _Nonnull)screen SWIFT_WARN_UNUSED_RESULT;
@@ -4866,8 +5678,53 @@ SWIFT_CLASS_NAMED("MenuItem")
 + (PZMMenuItem * _Nonnull)radioButtonItemWithLabel:(NSString * _Nullable)_ocLabel direction:(enum PZMDirection)direction boolValue:(BOOL)boolValue decorations:(NSDictionary<PZMMenuItemDecorationGravity *, NSArray<PZMMenuDecoration *> *> * _Nullable)_ocDecorations action:(void (^ _Nullable)(PZMMenuEvent * _Nonnull))action SWIFT_WARN_UNUSED_RESULT;
 + (PZMMenuItem * _Nonnull)parentItemWithLabel:(NSString * _Nullable)_ocLabel children:(NSArray<PZMMenuItem *> * _Nullable)_ocChildren decorations:(NSDictionary<PZMMenuItemDecorationGravity *, NSArray<PZMMenuDecoration *> *> * _Nullable)_ocDecorations SWIFT_WARN_UNUSED_RESULT;
 + (PZMMenuItem * _Nullable)parentItemWithLabel:(NSString * _Nullable)_ocLabel subpanelProvider:(id <PZMMenuItemSubpanelProvider> _Nullable)_ocSubpanelProvider decorations:(NSDictionary<PZMMenuItemDecorationGravity *, NSArray<PZMMenuDecoration *> *> * _Nullable)_ocDecorations SWIFT_WARN_UNUSED_RESULT;
+/// An item that displays a custom view.
+/// Use this item to insert a custom view within a menu item in
+/// place of its regular stack layout. To customize the layout
+/// of the menu item itself, see <code>Menu/Item/LayoutManager</code>.
+/// important:
+/// <code>updateView</code> <em>must</em> return <code>true</code> when
+/// invoked with a view instance created by
+/// <code>makeView</code>.
+/// note:
+/// <code>makeView</code> should return a view that implements
+/// <code>intrinsicContentSize</code>.
+/// \param makeView a function that constructs the custom view.
+///
+/// \param updateView an optional function that updates the custom view and returns <code>true</code> for success, <code>false</code> for failure.
+///
+/// \param action the menu item action.
+///
++ (PZMMenuItem * _Nullable)customItemWithBlock:(NSView * _Nonnull (^ _Nullable)(void))_ocMakeView updateView:(BOOL (^ _Nullable)(NSView * _Nonnull))_ocUpdateView action:(void (^ _Nullable)(PZMMenuEvent * _Nonnull))action SWIFT_WARN_UNUSED_RESULT;
+/// An item that displays a custom view.
+/// Use this item to insert a custom view within a menu item in
+/// place of its regular stack layout. To customize the layout
+/// of the menu item itself, see <code>Menu/Item/LayoutManager</code>.
+/// important:
+/// <code>updateView</code> <em>must</em> return <code>true</code> when
+/// invoked with a view instance created by
+/// <code>makeView</code>.
+/// note:
+/// <code>makeView</code> should return a view that implements
+/// <code>intrinsicContentSize</code>.
+/// \param makeView a function that constructs the custom view.
+///
+/// \param updateView an optional function that updates the custom view and returns <code>true</code> for success, <code>false</code> for failure.
+///
+/// \param alignment the <code>Gravity</code> to align the view to; must be one of
+/// <code>Gravity/center</code>, <code>Gravity/leading</code>, or
+/// <code>Gravity/trailing</code>.
+///
+/// \param action the menu item action.
+///
++ (PZMMenuItem * _Nullable)customItemWithBlock:(NSView * _Nonnull (^ _Nullable)(void))_ocMakeView updateView:(BOOL (^ _Nullable)(NSView * _Nonnull))_ocUpdateView alignment:(enum PZMGravity)alignment action:(void (^ _Nullable)(PZMMenuEvent * _Nonnull))action SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+SWIFT_PROTOCOL_NAMED("CursorStateListener")
+@protocol PZMMenuItemCursorStateListener
+- (void)menuItemCursorStateDidChangeTo:(enum PZMCursorState)state;
 @end
 
 @interface PZMMenuItem (SWIFT_EXTENSION(Prism))
@@ -4914,8 +5771,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMModifierKey, "ModifierKey", open) {
   PZMModifierKeyControl = 0b1000,
 };
 
-/// Prism’s implementation of an MonthPickerView, useful as a portal of month selecting.
-/// There is only 1 compounent to edit: the month
+/// Prism’s implementation of a <code>MonthPickerView</code>, useful as an entry point for month selection.
+/// There is 1 editable component: month.
 /// The supported year is from 1970 to 2069
 /// The supported month is from 1 to 12
 /// Do <em>not</em> attempt to manually change the size of a <code>MonthPickerView</code>
@@ -4925,7 +5782,7 @@ SWIFT_CLASS_NAMED("MonthPickerView")
 @interface PZMMonthPickerView : PZMView
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 - (void)drawRect:(NSRect)dirtyRect;
-/// It is used to init a MonthPickerView with a selected year and a selected month
+/// Initializes a <code>MonthPickerView</code> with a selected year and month.
 /// selectedYear and visualYear must be between 1970 and 2069
 /// selectedMonth must be between 1 and 12
 /// A blank view is created if the year or the month is not in the supported range
@@ -4940,13 +5797,13 @@ SWIFT_CLASS_NAMED("MonthPickerView")
 /// $2 the selected year(1970 - 2069)  -1 of Selected Year stands for no year is selected
 /// $3 the selected month(1 - 12)  -1 of Selected Month stands for no month is selected
 ///
-/// \param monthDidSelect Called when a month is selected. Even if the initial month is selected, this is also called. Can be nil if no calling is needed
+/// \param monthDidSelect Called when a month is selected. Even when the initial month is selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the MonthPickerView self
 /// $2 the new selected year(1970 - 2069)
 /// $3 the new selected month(1 - 12).
 ///
 - (nonnull instancetype)initWithSelectedYear:(NSInteger)selectedYear selectedMonth:(NSInteger)selectedMonth visualYear:(NSInteger)visualYear yearDidClick:(void (^ _Nullable)(PZMMonthPickerView * _Nonnull, NSInteger, NSInteger, NSInteger))yearDidClick monthDidSelect:(void (^ _Nullable)(PZMMonthPickerView * _Nonnull, NSInteger, NSInteger))monthDidSelect;
-/// It is used to init a MonthPickerView without a selected year nor a selected month
+/// Initializes a <code>MonthPickerView</code> without a selected year or month.
 /// visualYear must be between 1970 and 2069
 /// A blank view is created if the visualYear is not in the supported range
 /// \param visualYear The year for previewing.
@@ -4956,7 +5813,7 @@ SWIFT_CLASS_NAMED("MonthPickerView")
 /// $2 the selected year(1970 - 2069)  -1 of Selected Year stands for no year is selected
 /// $3 the selected month(1 - 12)  -1 of Selected Month stands for no month is selected
 ///
-/// \param monthDidSelect Called when a month is selected. Even if the initial month is selected, this is also called. Can be nil if no calling is needed
+/// \param monthDidSelect Called when a month is selected. Even when the initial month is selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the MonthPickerView self
 /// $2 the new selected year(1970 - 2069)
 /// $3 the new selected month(1 - 12).
@@ -5152,10 +6009,19 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) NSColor * _N
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) NSColor * _Nonnull zmFocusBlueColor;)
 + (NSColor * _Nonnull)zmFocusBlueColor SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, readonly) NSUInteger hexRGB;
+@property (nonatomic, readonly) NSUInteger hexARGB;
 @end
 
 @interface NSEvent (SWIFT_EXTENSION(Prism))
 @property (nonatomic, readonly) NSEventModifierFlags deviceIndependentModifierFlags;
+@end
+
+@interface NSFont (SWIFT_EXTENSION(Prism))
++ (NSFont * _Nonnull)interFontWithSize:(CGFloat)size weight:(NSFontWeight)weight italic:(BOOL)italic SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)PZMFontOfSize:(CGFloat)size SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)PZMBoldFontOfSize:(CGFloat)size SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)PZMFontOfSize:(CGFloat)size weight:(NSFontWeight)weight italic:(BOOL)italic SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)PZMFontOfSize:(CGFloat)size italic:(BOOL)italic bold:(BOOL)bold SWIFT_WARN_UNUSED_RESULT;
 @end
 
 enum PZMTypograph : NSInteger;
@@ -5171,8 +6037,23 @@ enum PZMTypograph : NSInteger;
 + (NSFont * _Nonnull)subtitle SWIFT_WARN_UNUSED_RESULT;
 + (NSFont * _Nonnull)caption SWIFT_WARN_UNUSED_RESULT;
 + (NSFont * _Nonnull)label SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)display SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)headline1 SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)headline2 SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)title1Emphasis SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)title1 SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)title2Emphasis SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)title2 SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)title3Emphasis SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)title3 SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)body1Emphasis SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)body1 SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)body2Emphasis SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)body2 SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)captionEmphasis SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)captionP2 SWIFT_WARN_UNUSED_RESULT;
++ (NSFont * _Nonnull)labelP2 SWIFT_WARN_UNUSED_RESULT;
 + (NSFont * _Nonnull)fontWithTypograph:(enum PZMTypograph)typograph italic:(BOOL)italic SWIFT_WARN_UNUSED_RESULT;
-+ (NSFont * _Nullable)customizedFontOfSize:(CGFloat)size weight:(CGFloat)weight SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @interface NSImage (SWIFT_EXTENSION(Prism))
@@ -5330,7 +6211,7 @@ enum PZMRectCorners : NSInteger;
 ///
 /// returns:
 /// The frame view of the window
-- (NSView * _Nullable)zmFrameView SWIFT_WARN_UNUSED_RESULT;
+- (NSView * _Nullable)getNSFrameView SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @interface NSWindow (SWIFT_EXTENSION(Prism)) <ZMAppearanceCustomization>
@@ -5340,7 +6221,6 @@ enum PZMRectCorners : NSInteger;
 @end
 
 enum PZMNotifierViewSize : NSInteger;
-enum PZMNotifierViewStyle : NSInteger;
 /// Prism’s notifier view, typically used as a small indicator of unseen activity.
 /// <code>NotifierView</code> instances are always the same size. Do <em>not</em> attempt to resize a <code>NotifierView</code> instance.
 /// <h2>Reference</h2>
@@ -5371,19 +6251,19 @@ SWIFT_CLASS_NAMED("NotifierView")
 - (nonnull instancetype)initWithSize:(enum PZMNotifierViewSize)size style:(enum PZMNotifierViewStyle)style OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 @property (nonatomic) NSSize intrinsicContentSize;
-- (void)updateLayer;
 @end
 
 typedef SWIFT_ENUM_NAMED(NSInteger, PZMNotifierViewSize, "Size", open) {
-  PZMNotifierViewSizeSmall = 0,
-  PZMNotifierViewSizeMedium = 1,
-  PZMNotifierViewSizeLarge = 2,
-  PZMNotifierViewSizeExtraLarge = 3,
+  PZMNotifierViewSizeExtraSmall = 0,
+  PZMNotifierViewSizeSmall = 1,
+  PZMNotifierViewSizeMedium = 2,
+  PZMNotifierViewSizeLarge = 3,
+  PZMNotifierViewSizeExtraLarge = 4,
 };
 
 typedef SWIFT_ENUM_NAMED(NSInteger, PZMNotifierViewStyle, "Style", open) {
-  PZMNotifierViewStyleRed = 0,
-  PZMNotifierViewStyleBlue = 1,
+  PZMNotifierViewStyleDefault = 0,
+  PZMNotifierViewStyleAlert = 1,
 };
 
 @class NSControl;
@@ -5399,6 +6279,7 @@ SWIFT_CLASS_NAMED("NumberInputField")
 @property (nonatomic, copy) void (^ _Nullable onUpdate)(PZMNumberInputField * _Nonnull, NSInteger);
 /// Whether to hide the arrow buttons to increment/decrement; defaults to <code>false</code>.
 @property (nonatomic) BOOL hideArrowButtons;
+@property (nonatomic, copy) NSString * _Nullable unitSuffix;
 /// Instantiates a new <code>NumberInputField</code> with the given options.
 /// \param header The header to be displayed above the bubble.
 ///
@@ -5430,8 +6311,8 @@ SWIFT_CLASS_NAMED("NumberInputField")
 ///
 - (nonnull instancetype)initWithHeader:(NSString * _Nonnull)header decorations:(NSArray<PZMInputFieldDecoration *> * _Nonnull)decorations startingValue:(NSInteger)startingValue onUpdate:(void (^ _Nullable)(PZMNumberInputField * _Nonnull, NSInteger))onUpdate;
 - (void)updateLayer;
-- (void)controlTextDidChange:(NSNotification * _Nonnull)obj;
 - (BOOL)control:(NSControl * _Nonnull)control textView:(NSTextView * _Nonnull)textView doCommandBySelector:(SEL _Nonnull)commandSelector SWIFT_WARN_UNUSED_RESULT;
+- (void)controlTextDidChange:(NSNotification * _Nonnull)obj;
 - (void)controlTextDidEndEditing:(NSNotification * _Nonnull)obj;
 - (void)control:(NSControl * _Nonnull)control didFailToValidatePartialString:(NSString * _Nonnull)string errorDescription:(NSString * _Nullable)error;
 @end
@@ -5474,11 +6355,6 @@ SWIFT_CLASS("_TtC5Prism14PZMIconManager")
 - (void)keyDown:(NSEvent * _Nonnull)event;
 @end
 
-typedef SWIFT_ENUM(NSInteger, PZMToastButtonAligned, open) {
-  PZMToastButtonAlignedLetf = 0,
-  PZMToastButtonAlignedRight = 1,
-};
-
 enum PZMLevel : NSInteger;
 /// Prism’s panel type.
 /// <code>Panel</code> is based off of <code>Window</code> and behaves similarly to <code>NSPanel</code> instances. <code>Panel</code>
@@ -5509,6 +6385,12 @@ SWIFT_CLASS_NAMED("Panel")
 /// \param completionHandler A function to be invoked after the completion of the animation.
 ///
 - (void)appearAtPoint:(CGPoint)point pinnedBy:(enum PZMRectEdge)pinnedBy inDirection:(enum PZMDirection)inDirection superwindow:(NSWindow * _Nullable)superwindow screen:(NSScreen * _Nullable)screen animation:(BOOL)animate completionHandler:(void (^ _Nullable)(void))completionHandler;
+/// Dismisses the menu window.
+/// The panel instance animates itself off the screen and closes itself; no further action is
+/// required by the caller.
+/// \param completionHandler A function to be invoked after the completion of the animation.
+///
+- (void)dismissWithCompletionHandler:(void (^ _Nullable)(void))completionHandler;
 - (void)close;
 /// Sets the frame size and adjusts the position of the <code>Panel</code>, around one of its <code>RectEdge</code>s.
 /// Use this function to resize a <code>Panel</code> around one of its edges without having
@@ -5525,6 +6407,13 @@ SWIFT_CLASS_NAMED("Panel")
 /// returns:
 /// The frame origin offset used to reposition the panel during the size change.
 - (NSSize)setFrameSize:(NSSize)size pinnedBy:(enum PZMRectEdge)corner animate:(BOOL)animate;
+/// Invoked when the <code>Panel</code> instance’s anchor view changes its effective
+/// appearance.
+/// This method can be freely overridden.
+/// note:
+/// This function is never invoked unless the <code>Panel</code> instance was
+/// anchored to a view with the view-based <code>appear</code> declarations.
+- (void)anchorViewDidChangeEffectiveAppearanceTo:(NSAppearance * _Nonnull)effectiveAppearance;
 - (nonnull instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)style backing:(NSBackingStoreType)backingStoreType defer:(BOOL)flag SWIFT_UNAVAILABLE;
 @end
 
@@ -5603,6 +6492,12 @@ SWIFT_CLASS_NAMED("Popover")
 @property (nonatomic) CGFloat maximumWidth;
 @property (nonatomic) CGFloat maximumContentHeight;
 @property (nonatomic) BOOL displayAutomatically;
+/// Whether the popover auto-shows when the anchor view becomes first responder
+/// (e.g. on Tab focus under Full Keyboard Access). Defaults to <code>true</code> to preserve
+/// existing behavior. Set to <code>false</code> for AX cases that want focus to be silent
+/// and require an explicit Enter/Space to open the popover. Mouse-hover auto-show
+/// is still controlled by <code>displayAutomatically</code>.
+@property (nonatomic) BOOL displayAutomaticallyOnFocus;
 /// The body of the modal; required, unless <code>contentView</code> is not nil.
 @property (nonatomic, readonly, copy) NSString * _Nullable body;
 /// The appearance of popover view is following the interactable view or not
@@ -5734,6 +6629,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMPopoverArrowStyle, "ArrowStyle", open) {
   PZMPopoverArrowStyleRightTop = 10,
 /// An arrow on the right of the bubble, near its bottom-right edge.
   PZMPopoverArrowStyleRightBottom = 11,
+/// No arrow; the popover is displayed as a plain rounded rectangle.
   PZMPopoverArrowStyleNone = 12,
 };
 
@@ -5788,6 +6684,8 @@ SWIFT_CLASS_NAMED("PresenceIconView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (void)updateConstraints;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
+@property (nonatomic, readonly) BOOL wantsUpdateLayer;
+- (void)updateLayer;
 - (NSString * _Nullable)accessibilityRoleDescription SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)accessibilityTitle SWIFT_WARN_UNUSED_RESULT;
 - (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
@@ -5922,8 +6820,8 @@ SWIFT_CLASS_NAMED("ProgressIndicatorSegment")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-/// Prism’s implementation of an QuarterPickerView, useful as a portal of quarter selecting.
-/// There can are 2 compounents are shown and editable, year and quarter
+/// Prism’s implementation of a <code>QuarterPickerView</code>, useful as an entry point for quarter selection.
+/// There are 2 components shown and editable: year and quarter.
 /// The supported quarter is from 1970.Q1 to 2069.Q4
 /// Do <em>not</em> attempt to manually change the size of a <code>QuarterPickerView</code>
 /// <h2>Reference</h2>
@@ -5932,7 +6830,7 @@ SWIFT_CLASS_NAMED("QuarterPickerView")
 @interface PZMQuarterPickerView : PZMView
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 - (void)drawRect:(NSRect)dirtyRect;
-/// It is used to init a QuarterPickerView with selected year and the selected quarter
+/// Initializes a <code>QuarterPickerView</code> with a selected year and quarter.
 /// \param selectedYear The selected year
 ///
 /// \param selectedQuarter The selected quarter
@@ -5941,17 +6839,17 @@ SWIFT_CLASS_NAMED("QuarterPickerView")
 ///
 /// \param yearDidClick Called when the year button is clicked, the parameters are Selected Year , Visual Year , Selected Quarter, -1 of Selected Year or  Selected Quarter stands for no Year or Quarter is selected
 ///
-/// \param quarterDidSelect Called when a quarter is selected. Even if the initial year and quarter are selected, this is also called. Can be nil if no calling is needed
+/// \param quarterDidSelect Called when a quarter is selected. Even when the initial year and quarter are selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the QuarterPickerView self
 /// $2 $3  the new selected year(1970 - 2069), quarter(1 - 4)
 ///
 - (nonnull instancetype)initWithSelectedYear:(NSInteger)selectedYear selectedQuarter:(NSInteger)selectedQuarter visualYear:(NSInteger)visualYear yearDidClick:(void (^ _Nullable)(PZMQuarterPickerView * _Nonnull, NSInteger, NSInteger, NSInteger))yearDidClick quarterDidSelect:(void (^ _Nullable)(PZMQuarterPickerView * _Nonnull, NSInteger, NSInteger))quarterDidSelect;
-/// It is used to init a QuarterPickerView with no selected year nor the selected quarter
+/// Initializes a <code>QuarterPickerView</code> without a selected year or quarter.
 /// \param visualYear The year to preview, can not be nil, must be assigned
 ///
 /// \param yearDidClick Called when the year button is clicked, the parameters are Selected Year , Visual Year , Selected Quarter, -1 of Selected Year or  Selected Quarter stands for no Year or Quarter is selected
 ///
-/// \param quarterDidSelect Called when a quarter is selected. Even if the initial year and quarter are selected, this is also called. Can be nil if no calling is needed
+/// \param quarterDidSelect Called when a quarter is selected. Even when the initial year and quarter are selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the QuarterPickerView self
 /// $2 $3  the new selected year(1970 - 2069), quarter(1 - 4)
 ///
@@ -5960,47 +6858,50 @@ SWIFT_CLASS_NAMED("QuarterPickerView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-/// Prism’s implementation of an QuarterView, useful for showing a selected quarter, also a portal of quarter selecting.
-/// There can are 2 compounents are shown and editable, year and quarter
-/// It looks like a text field, but it is not able to edit, only supports year and quarter picking
+/// Prism’s implementation of a <code>QuarterView</code>, useful for showing a selected quarter and presenting quarter selection.
+/// There are 2 components shown and editable: year and quarter.
+/// It looks like a text field, but it is not editable and only supports year-quarter picking.
 /// The supported quarter is from 1970.Q1 to 2069.Q4
-/// Do <em>not</em> attempt to manually change the height of a <code>QuarterView</code>, but the width is able to resize
-/// The  intrinsic height is 32.0
+/// Do <em>not</em> attempt to manually change the height of a <code>QuarterView</code>, but the width can be resized.
+/// The intrinsic height is 32.0
 /// <h2>Reference</h2>
 /// <a href="https://vueui.zoomdev.us/vue3/en-US/components/date-picker.html"><em>Figma</em>: Design Specification</a>
 SWIFT_CLASS_NAMED("QuarterView")
 @interface PZMQuarterView : PZMInteractableView
 @property (nonatomic, readonly, getter=isFlipped) BOOL flipped;
-/// It is used to init a QuarterView with no selected year nor the selected quarter  but the placeholder, the placeholder must be localized
-/// If the placeholder is nil or with a zero length, a blank view is created
-/// \param placeholder A string to show on the QuarterView when no date and time is selected
+/// Initializes a <code>QuarterView</code> with a placeholder and no selected year-quarter.
+/// If the placeholder is nil or empty, a blank view is created.
+/// \param placeholder A string shown on the <code>QuarterView</code> when no year-quarter is selected.
 ///
-/// \param quarterDidSelect Called when a date is selected. Even if the initial year and quarter are selected, this is also called. Can be nil if no calling is needed
+/// \param quarterDidSelect Called when a year-quarter is selected. Even when the initial year and quarter are selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the QuarterView self
 /// $2 $3  the new selected year(1970 - 2069), quarter(1 - 4)
 ///
 - (nonnull instancetype)initWithPlaceholder:(NSString * _Nullable)placeholder quarterDidSelect:(void (^ _Nullable)(PZMQuarterView * _Nonnull, NSInteger, NSInteger))quarterDidSelect;
-/// It is used to init a QuarterView with a selected year and a selected quarter
+/// Initializes a <code>QuarterView</code> with a selected year and quarter.
 /// \param selectedYear The selected year
 ///
 /// \param selectedQuarter The selected quarter
 ///
-/// \param quarterDidSelect Called when a date is selected. Even if the initial year and quarter are selected, this is also called. Can be nil if no calling is needed
+/// \param quarterDidSelect Called when a year-quarter is selected. Even when the initial year and quarter are selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the QuarterView self
 /// $2 $3  the new selected year(1970 - 2069), quarter(1 - 4)
 ///
 - (nonnull instancetype)initWithSelectedYear:(NSInteger)selectedYear selectedQuarter:(NSInteger)selectedQuarter quarterDidSelect:(void (^ _Nullable)(PZMQuarterView * _Nonnull, NSInteger, NSInteger))quarterDidSelect;
+- (void)keyDown:(NSEvent * _Nonnull)event;
 - (void)mouseUp:(NSEvent * _Nonnull)event;
 - (void)drawRect:(NSRect)dirtyRect;
 - (void)mouseEntered:(NSEvent * _Nonnull)event;
 - (void)mouseExited:(NSEvent * _Nonnull)event;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
+@property (nonatomic, copy) NSString * _Nullable AXBusinessPrefix;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @interface PZMQuarterView (SWIFT_EXTENSION(Prism))
 - (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
 - (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -6024,11 +6925,13 @@ SWIFT_CLASS_NAMED("RadioButton")
 /// A closure to be invoked when one of the 4 arrow keys is pressed, return handled
 @property (nonatomic, copy) BOOL (^ _Nullable arrowKeysDidPress)(PZMRadioButton * _Nonnull, enum PZMDirection);
 /// The target for radio button aciton.
-@property (nonatomic, weak) id _Nullable target;
+@property (nonatomic, weak) id _Nullable target SWIFT_DEPRECATED_MSG("Use the closure-based API instead.", "onSelect");
 /// The actoion of radio button.
-@property (nonatomic) SEL _Nullable action;
+@property (nonatomic) SEL _Nullable action SWIFT_DEPRECATED_MSG("Use the closure-based API instead.", "onSelect");
 /// The text label to be shown next to the circle.
 @property (nonatomic, copy) NSString * _Nullable text;
+/// An optional description to be displayed under the label.
+@property (nonatomic, copy) NSString * _Nullable descriptionText;
 /// The title label to be shown next to the circle.
 @property (nonatomic, copy) NSString * _Nullable title;
 @property (nonatomic) NSInteger state;
@@ -6055,7 +6958,7 @@ SWIFT_CLASS_NAMED("RadioButton")
 ///
 /// returns:
 /// a new instance of <code>RadioButton</code>.
-- (nonnull instancetype)initWithText:(NSString * _Nonnull)text isSelected:(BOOL)isSelected;
+- (nonnull instancetype)initWithText:(NSString * _Nullable)text isSelected:(BOOL)isSelected;
 /// Creates a radio button with the given parameters.
 /// \param text The text to be shown in the button.
 ///
@@ -6064,7 +6967,7 @@ SWIFT_CLASS_NAMED("RadioButton")
 ///
 /// returns:
 /// a new instance of <code>RadioButton</code>.
-- (nonnull instancetype)initWithAttributedText:(NSAttributedString * _Nonnull)attributedText isSelected:(BOOL)isSelected;
+- (nonnull instancetype)initWithAttributedText:(NSAttributedString * _Nullable)attributedText isSelected:(BOOL)isSelected;
 /// Creates a radio button with the given parameters.
 /// \param item A radio group item to display in the button.
 ///
@@ -6073,10 +6976,11 @@ SWIFT_CLASS_NAMED("RadioButton")
 ///
 /// returns:
 /// A new <code>RadioButton</code> instance.
-- (nonnull instancetype)initWithItem:(PZMRadioButtonItem * _Nullable)item attributedText:(NSAttributedString * _Nullable)attributedText isSelected:(BOOL)isSelected OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithItem:(PZMRadioButtonItem * _Nullable)item attributedText:(NSAttributedString * _Nullable)attributedText isSelected:(BOOL)isSelected SWIFT_DEPRECATED_MSG("", "initWithItem:isSelected:");
+- (nonnull instancetype)initWithItem:(PZMRadioButtonItem * _Nonnull)item isSelected:(BOOL)isSelected OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic) BOOL shouldUpdateConstraint;
 - (void)setFrameSize:(NSSize)newSize;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nullable)coder SWIFT_UNAVAILABLE;
 @property (nonatomic) BOOL enabled;
 - (void)mouseDown:(NSEvent * _Nonnull)event;
 - (void)keyDown:(NSEvent * _Nonnull)event;
@@ -6102,6 +7006,8 @@ SWIFT_CLASS_NAMED("Item")
 @interface PZMRadioButtonItem : NSObject
 /// The radio button’s text.
 @property (nonatomic, copy) NSString * _Nonnull text;
+/// Some description text to be shown under the label; optional.
+@property (nonatomic, copy) NSString * _Nullable descriptionText;
 /// The radio button’s trailing icon, if any.
 @property (nonatomic, strong) NSImage * _Nullable icon;
 /// The popover that is shown when the button’s icon is hovered.
@@ -6125,7 +7031,7 @@ SWIFT_CLASS_NAMED("Item")
 ///
 /// returns:
 /// A new <code>Item</code> instance.
-- (nonnull instancetype)initWithText:(NSString * _Nullable)_ocText icon:(NSImage * _Nullable)_ocIcon iconPopover:(PZMPopover * _Nonnull)iconPopover;
+- (nonnull instancetype)initWithText:(NSString * _Nullable)_ocText icon:(NSImage * _Nullable)_ocIcon iconPopover:(PZMPopover * _Nullable)iconPopover;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -6380,6 +7286,25 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMSentiment, "Sentiment", open) {
   PZMSentimentSystem = 8,
 };
 
+/// A declarative shadow configuration for use with <code>BaseView</code>.
+/// Shadows can be assigned to any <code>BaseView</code> via the <code>backgroundShadow</code>,
+/// <code>hoveredBackgroundShadow</code>, and <code>clickedBackgroundShadow</code> properties.
+SWIFT_CLASS_NAMED("Shadow")
+@interface PZMShadow : NSObject
+@property (nonatomic, readonly, strong) PrismColor * _Nullable color;
+@property (nonatomic, readonly) float opacity;
+@property (nonatomic, readonly) CGFloat radius;
+@property (nonatomic, readonly) CGSize offset;
+@property (nonatomic, readonly) CGPathRef _Nullable path;
+- (nonnull instancetype)initWithColor:(PrismColor * _Nullable)color opacity:(float)opacity radius:(CGFloat)radius offset:(CGSize)offset path:(CGPathRef _Nullable)path OBJC_DESIGNATED_INITIALIZER;
+/// Creates a shadow with the given parameters.
++ (PZMShadow * _Nonnull)shadowWithColor:(PrismColor * _Nullable)color opacity:(float)opacity radius:(CGFloat)radius offset:(CGSize)offset path:(CGPathRef _Nullable)path SWIFT_WARN_UNUSED_RESULT;
+/// Returns a transparent, zero-radius shadow that effectively removes any shadow.
++ (PZMShadow * _Nonnull)clear SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @class PZMSliderViewDecoration;
 /// Prism’s slider control.
 /// <code>SliderView</code> instances may display a continuous or discrete slider control. By default,
@@ -6430,10 +7355,17 @@ SWIFT_CLASS_NAMED("SliderView")
 /// A new <code>SliderView</code> instance.
 - (nonnull instancetype)initWithValue:(double)value decorations:(NSArray<PZMSliderViewDecoration *> * _Nonnull)decorations onValueChange:(void (^ _Nullable)(PZMSliderView * _Nonnull, BOOL))onValueChange;
 - (void)updateConstraints;
+- (void)viewDidMoveToSuperview;
 - (void)mouseUp:(NSEvent * _Nonnull)event;
 - (void)mouseExited:(NSEvent * _Nonnull)event;
 - (void)mouseDown:(NSEvent * _Nonnull)event;
 - (void)mouseDragged:(NSEvent * _Nonnull)event;
+/// An optional closure that provides a custom string representation for a given slider value.
+/// When set, this closure is called instead of the default formatting when computing <code>valueString</code>.
+@property (nonatomic, copy) NSString * _Nonnull (^ _Nullable getValueString)(NSInteger);
+/// The current slider value, formatted in a human-readable string, meant for display to the user.
+/// Typically, this is used in the tooltip displayed above the slider circle during a drag operation.
+@property (nonatomic, readonly, copy) NSString * _Nonnull valueString;
 - (void)viewWillMoveToWindow:(NSWindow * _Nullable)newWindow;
 - (void)viewWillMoveToSuperview:(NSView * _Nullable)newSuperview;
 - (void)keyDown:(NSEvent * _Nonnull)event;
@@ -6477,9 +7409,9 @@ SWIFT_PROTOCOL_NAMED("SliderViewDelegate")
 - (NSString * _Nullable)accessibilityValueDescriptionForSliderView:(PZMSliderView * _Nonnull)sliderView SWIFT_WARN_UNUSED_RESULT;
 @end
 
-/// Prism’s implementation of an SpanPickerView, useful for showing a selected date pan and a portal of date span selecting.
-/// There are 6 compounents are shown and editable, the starting year, month, day and the ending year, month, day
-/// It looks like a combinded calendars , it supports date span picking
+/// Prism’s implementation of a <code>SpanPickerView</code>, useful for showing a selected date span and presenting date span selection.
+/// There are 6 components shown and editable: the starting year, month, day, and the ending year, month, day.
+/// It looks like combined calendars and supports date span picking.
 /// The supported dates are from 1970.1.1 to 2069.12.31
 /// The first selected date is not always the starting date
 /// Instead, the earlier date is the starting date
@@ -6488,13 +7420,16 @@ SWIFT_PROTOCOL_NAMED("SliderViewDelegate")
 /// <a href="https://vueui.zoomdev.us/vue3/en-US/components/date-picker.html"><em>Figma</em>: Design Specification</a>
 SWIFT_CLASS_NAMED("SpanPickerView")
 @interface PZMSpanPickerView : PZMView
+/// The default intrinsic size of <code>SpanPickerView</code>.
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 @property (nonatomic, readonly, getter=isFlipped) BOOL flipped;
 - (void)drawRect:(NSRect)dirtyRect;
-/// It is used to init a SpanPickerView with no starting date nor ending date
-/// \param visualYear visualYear: the compounents for previewing rather than selected
+/// Initializes a <code>SpanPickerView</code> with no starting date and no ending date.
+/// \param visualYear The year component used for previewing rather than selected.
 ///
-/// \param weekAppellations A array with 7 or 14 localized strings. Can not be nil, must have 7 or 14 elements of strings, or a blank view is created.
+/// \param visualMonth The month component used for previewing rather than selected.
+///
+/// \param weekdaySymbols An array with 7 or 14 localized strings. It cannot be nil, and must contain exactly 7 or 14 elements, or a blank view is created.
 /// Index 0 represents Sunday
 /// Index 1 represents Monday
 /// Index 6 represents Saturday
@@ -6502,26 +7437,36 @@ SWIFT_CLASS_NAMED("SpanPickerView")
 /// Index 8 represents the short name of Monday, typically “M”
 /// Index 13 represents the short name of Saturday, typically “S”
 ///
-/// \param monthAppellations A array with 12 localized strings. Can not be nil, must have 12 elements of strings, or a blank view is created.
+/// \param monthSymbols An array with 12 localized strings. It cannot be nil, and must contain exactly 12 elements, or a blank view is created.
 /// Index 0 represents January
 /// Index 11 represents December
 ///
-/// \param spanDidSelect Called when a date span is selected. Even if the initial date span is selected, this is also called. Can be nil if no calling is needed
+/// \param spanDidSelect Called when a date span is selected. Even when the initial date span is selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the SpanPickerView self
 /// $2 $3 $4 the starting year(1970 - 2069), month(1 - 12), day(1 - 31)
 /// $5 $6 $7 the ending year(1970 - 2069), month(1 - 12), day(1 - 31)
 /// The ending date must not be earlier than the starting date
 ///
-- (nonnull instancetype)initWithVisualYear:(NSInteger)visualYear visualMonth:(NSInteger)visualMonth weekAppellations:(NSArray<NSString *> * _Nullable)weekAppellations monthAppellations:(NSArray<NSString *> * _Nullable)monthAppellations spanDidSelect:(void (^ _Nonnull)(PZMSpanPickerView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))spanDidSelect;
-/// It is used to init a SpanPickerView with starting and ending components
-/// If the date calculated from selected components is not valid or not in the range of 1970.1.1 to 2069.12.31, a blank view is created
-/// \param selectedYearStart selectedMonthStart, selectedDayStart, the components to represent the starting date span
+- (nonnull instancetype)initWithVisualYear:(NSInteger)visualYear visualMonth:(NSInteger)visualMonth weekdaySymbols:(NSArray<NSString *> * _Nullable)weekdaySymbols monthSymbols:(NSArray<NSString *> * _Nullable)monthSymbols spanDidSelect:(void (^ _Nonnull)(PZMSpanPickerView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))spanDidSelect;
+/// Initializes a <code>SpanPickerView</code> with starting and ending date components.
+/// If the date calculated from selected components is not valid, or not in the range of 1970.1.1 to 2069.12.31, a blank view is created.
+/// \param selectedYearStart The year component for the starting date span.
 ///
-/// \param selectedYearEnd selectedMonthEnd, selectedDayEnd, the components to represent the ending date span
+/// \param selectedMonthStart The month component for the starting date span.
 ///
-/// \param visualYear visualmonth, the compounents used for previewing rather than selected
+/// \param selectedDayStart The day component for the starting date span.
 ///
-/// \param weekAppellations A array with 7 or 14 localized strings. Can not be nil, must have 7 or 14 elements of strings, or a blank view is created.
+/// \param selectedYearEnd The year component for the ending date span.
+///
+/// \param selectedMonthEnd The month component for the ending date span.
+///
+/// \param selectedDayEnd The day component for the ending date span.
+///
+/// \param visualYear The year component used for previewing rather than selected.
+///
+/// \param visualMonth The month component used for previewing rather than selected.
+///
+/// \param weekdaySymbols An array with 7 or 14 localized strings. It cannot be nil, and must contain exactly 7 or 14 elements, or a blank view is created.
 /// Index 0 represents Sunday
 /// Index 1 represents Monday
 /// Index 6 represents Saturday
@@ -6529,39 +7474,41 @@ SWIFT_CLASS_NAMED("SpanPickerView")
 /// Index 8 represents the short name of Monday, typically “M”
 /// Index 13 represents the short name of Saturday, typically “S”
 ///
-/// \param monthAppellations A array with 12 localized strings. Can not be nil, must have 12 elements of strings, or a blank view is created.
+/// \param monthSymbols An array with 12 localized strings. It cannot be nil, and must contain exactly 12 elements, or a blank view is created.
 /// Index 0 represents January
 /// Index 11 represents December
 ///
-/// \param spanDidSelect Called when a date span is selected. Even if the initial date span is selected, this is also called. Can be nil if no calling is needed
+/// \param spanDidSelect Called when a date span is selected. Even when the initial date span is selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the SpanPickerView self
 /// $2 $3 $4 the starting year(1970 - 2069), month(1 - 12), day(1 - 31)
 /// $5 $6 $7 the ending year(1970 - 2069), month(1 - 12), day(1 - 31)
 /// The ending date must not be earlier than the starting date
 ///
-- (nonnull instancetype)initWithSelectedYearStart:(NSInteger)selectedYearStart selectedMonthStart:(NSInteger)selectedMonthStart selectedDayStart:(NSInteger)selectedDayStart selectedYearEnd:(NSInteger)selectedYearEnd selectedMonthEnd:(NSInteger)selectedMonthEnd selectedDayEnd:(NSInteger)selectedDayEnd visualYear:(NSInteger)visualYear visualMonth:(NSInteger)visualMonth weekAppellations:(NSArray<NSString *> * _Nullable)weekAppellations monthAppellations:(NSArray<NSString *> * _Nullable)monthAppellations spanDidSelect:(void (^ _Nonnull)(PZMSpanPickerView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))spanDidSelect;
+- (nonnull instancetype)initWithSelectedYearStart:(NSInteger)selectedYearStart selectedMonthStart:(NSInteger)selectedMonthStart selectedDayStart:(NSInteger)selectedDayStart selectedYearEnd:(NSInteger)selectedYearEnd selectedMonthEnd:(NSInteger)selectedMonthEnd selectedDayEnd:(NSInteger)selectedDayEnd visualYear:(NSInteger)visualYear visualMonth:(NSInteger)visualMonth weekdaySymbols:(NSArray<NSString *> * _Nullable)weekdaySymbols monthSymbols:(NSArray<NSString *> * _Nullable)monthSymbols spanDidSelect:(void (^ _Nonnull)(PZMSpanPickerView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))spanDidSelect;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-/// Prism’s implementation of an SpanView, useful for showing a selected date pan and a portal of date span selecting.
-/// There are 6 compounents are shown and editable, the starting year, month, day and the ending year, month, day
-/// It looks like a text field, but it is not able to edit, only supports date span picking
+/// Prism’s implementation of a <code>SpanView</code>, useful for showing a selected date span and presenting a date span picker.
+/// There are 6 components shown and editable: the starting year, month, day, and the ending year, month, day.
+/// It looks like a text field, but it is not editable and only supports date span picking.
 /// The supported dates are from 1970.1.1 to 2069.12.31
 /// The first selected date is not always the starting date
 /// Instead, the earlier date is the starting date
-/// Do <em>not</em> attempt to manually change the height of a <code>SpanView</code>, but the width is able to resize
-/// The  intrinsic height is 32.0
+/// Do <em>not</em> attempt to manually change the height of a <code>SpanView</code>, but the width can be resized.
+/// The intrinsic height is 32.0
 /// <h2>Reference</h2>
 /// <a href="https://vueui.zoomdev.us/vue3/en-US/components/date-picker.html"><em>Figma</em>: Design Specification</a>
 SWIFT_CLASS_NAMED("SpanView")
 @interface PZMSpanView : PZMInteractableView
 @property (nonatomic, readonly, getter=isFlipped) BOOL flipped;
-/// It is used to init a SpanView with no starting date nor ending date but the placeholder, the placeholders must be localized
-/// If the placeholders are nil or with zero lengthes, a blank view is created
-/// \param placeholderStart placeholderEnd,  the strings to show on the SpanView when no date span is selected
+/// Initializes a <code>SpanView</code> with placeholders and no selected date span.
+/// If either placeholder is nil or empty, a blank view is created.
+/// \param placeholderStart The leading placeholder string shown when no date span is selected.
 ///
-/// \param weekAppellations A array with 7 or 14 localized strings. Can not be nil, must have 7 or 14 elements of strings, or a blank view is created.
+/// \param placeholderEnd The trailing placeholder string shown when no date span is selected.
+///
+/// \param weekdaySymbols An array with 7 or 14 localized strings. It cannot be nil, and must contain exactly 7 or 14 elements, or a blank view is created.
 /// Index 0 represents Sunday
 /// Index 1 represents Monday
 /// Index 6 represents Saturday
@@ -6569,24 +7516,33 @@ SWIFT_CLASS_NAMED("SpanView")
 /// Index 8 represents the short name of Monday, typically “M”
 /// Index 13 represents the short name of Saturday, typically “S”
 ///
-/// \param monthAppellations A array with 12 localized strings. Can not be nil, must have 12 elements of strings, or a blank view is created.
+/// \param monthSymbols An array with 12 localized strings. It cannot be nil, and must contain exactly 12 elements, or a blank view is created.
 /// Index 0 represents January
 /// Index 11 represents December
 ///
-/// \param spanDidSelect Called when a date span is selected. Even if the initial date span is selected, this is also called. Can be nil if no calling is needed
+/// \param spanDidSelect Called when a date span is selected. Even when the initial date span is selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the SpanView self
 /// $2 $3 $4 the starting year(1970 - 2069), month(1 - 12), day(1 - 31)
 /// $5 $6 $7 the ending year(1970 - 2069), month(1 - 12), day(1 - 31)
 /// The ending date must not be earlier than the starting date
 ///
-- (nonnull instancetype)initWithPlaceholderStart:(NSString * _Nullable)placeholderStart placeholderEnd:(NSString * _Nullable)placeholderEnd weekAppellations:(NSArray<NSString *> * _Nullable)weekAppellations monthAppellations:(NSArray<NSString *> * _Nullable)monthAppellations spanDidSelect:(void (^ _Nullable)(PZMSpanView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))spanDidSelect;
-/// It is used to init a SpanView with starting and ending components, the selected date span will show on the view rather than the placeholder
-/// If the date calculated from selected components is not valid or not in the range of 1970.1.1 to 2069.12.31, a blank view is created
-/// \param selectedYearStart selectedMonthStart, selectedDayStart, The components to represent the starting date span
+- (nonnull instancetype)initWithPlaceholderStart:(NSString * _Nullable)placeholderStart placeholderEnd:(NSString * _Nullable)placeholderEnd weekdaySymbols:(NSArray<NSString *> * _Nullable)weekdaySymbols monthSymbols:(NSArray<NSString *> * _Nullable)monthSymbols spanDidSelect:(void (^ _Nullable)(PZMSpanView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))spanDidSelect;
+/// Initializes a <code>SpanView</code> with starting and ending date components.
+/// The selected date span is shown on the view instead of placeholders.
+/// If the date calculated from selected components is not valid, or not in the range of 1970.1.1 to 2069.12.31, a blank view is created.
+/// \param selectedYearStart The year component for the starting date span.
 ///
-/// \param selectedYearEnd selectedMonthEnd: selectedDayEnd, The components to represent the ending date span
+/// \param selectedMonthStart The month component for the starting date span.
 ///
-/// \param weekAppellations A array with 7 or 14 localized strings. Can not be nil, must have 7 or 14 elements of strings, or a blank view is created.
+/// \param selectedDayStart The day component for the starting date span.
+///
+/// \param selectedYearEnd The year component for the ending date span.
+///
+/// \param selectedMonthEnd The month component for the ending date span.
+///
+/// \param selectedDayEnd The day component for the ending date span.
+///
+/// \param weekdaySymbols An array with 7 or 14 localized strings. It cannot be nil, and must contain exactly 7 or 14 elements, or a blank view is created.
 /// Index 0 represents Sunday
 /// Index 1 represents Monday
 /// Index 6 represents Saturday
@@ -6594,31 +7550,38 @@ SWIFT_CLASS_NAMED("SpanView")
 /// Index 8 represents the short name of Monday, typically “M”
 /// Index 13 represents the short name of Saturday, typically “S”
 ///
-/// \param monthAppellations A array with 12 localized strings. Can not be nil, must have 12 elements of strings, or a blank view is created.
+/// \param monthSymbols An array with 12 localized strings. It cannot be nil, and must contain exactly 12 elements, or a blank view is created.
 /// Index 0 represents January
 /// Index 11 represents December
 ///
-/// \param spanDidSelect Called when a date span is selected. Even if the initial date span is selected, this is also called. Can be nil if no calling is needed
+/// \param spanDidSelect Called when a date span is selected. Even when the initial date span is selected, this closure is also called. It can be nil if no callback is needed.
 /// $1 the SpanView self
 /// $2 $3 $4 the starting year(1970 - 2069), month(1 - 12), day(1 - 31)
 /// $5 $6 $7 the ending year(1970 - 2069), month(1 - 12), day(1 - 31)
 /// The ending date must not be earlier than the starting date
 ///
-- (nonnull instancetype)initWithSelectedYearStart:(NSInteger)selectedYearStart selectedMonthStart:(NSInteger)selectedMonthStart selectedDayStart:(NSInteger)selectedDayStart selectedYearEnd:(NSInteger)selectedYearEnd selectedMonthEnd:(NSInteger)selectedMonthEnd selectedDayEnd:(NSInteger)selectedDayEnd weekAppellations:(NSArray<NSString *> * _Nullable)weekAppellations monthAppellations:(NSArray<NSString *> * _Nullable)monthAppellations spanDidSelect:(void (^ _Nullable)(PZMSpanView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))spanDidSelect;
+- (nonnull instancetype)initWithSelectedYearStart:(NSInteger)selectedYearStart selectedMonthStart:(NSInteger)selectedMonthStart selectedDayStart:(NSInteger)selectedDayStart selectedYearEnd:(NSInteger)selectedYearEnd selectedMonthEnd:(NSInteger)selectedMonthEnd selectedDayEnd:(NSInteger)selectedDayEnd weekdaySymbols:(NSArray<NSString *> * _Nullable)weekdaySymbols monthSymbols:(NSArray<NSString *> * _Nullable)monthSymbols spanDidSelect:(void (^ _Nullable)(PZMSpanView * _Nonnull, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger, NSInteger))spanDidSelect;
+- (void)keyDown:(NSEvent * _Nonnull)event;
 - (void)mouseUp:(NSEvent * _Nonnull)event;
 - (void)drawRect:(NSRect)dirtyRect;
 - (void)mouseEntered:(NSEvent * _Nonnull)event;
 - (void)mouseExited:(NSEvent * _Nonnull)event;
+/// The default intrinsic size of <code>SpanView</code>.
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
-@property (nonatomic, copy) NSString * _Nullable accessibilityLabelPrefix;
-- (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
-- (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
-- (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
+/// Optional accessibility label prefix for business-specific context.
+@property (nonatomic, copy) NSString * _Nullable AXBusinessPrefix;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@interface PZMSpanView (SWIFT_EXTENSION(Prism))
+- (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
+- (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
+@end
+
 enum PZMSplitButtonStyle : NSInteger;
+enum ZMSplitButtonPrimaryLabelOverflow : NSInteger;
 enum PZMSplitButtonSize : NSInteger;
 /// A split button that has a primary action on the left and a secondary action on the right.
 /// The secondary action is typically used to show additional options or a menu.
@@ -6632,14 +7595,12 @@ SWIFT_CLASS_NAMED("SplitButton")
 @property (nonatomic) enum PZMSplitButtonStyle style;
 /// The button’s label.
 @property (nonatomic, copy) NSString * _Nullable label;
+@property (nonatomic) enum ZMSplitButtonPrimaryLabelOverflow primaryLabelOverflow SWIFT_DEPRECATED_MSG("No longer used.");
 @property (nonatomic, strong) NSImage * _Nullable primaryIcon;
 /// The Objective-C compatible secondary icon property.
 @property (nonatomic, strong) NSImage * _Nullable secondaryIcon;
-/// Custom divider color. If nil, uses the default color based on style and border settings.
-@property (nonatomic, strong) PrismColor * _Nullable customDividerColor;
-/// Custom border color. If nil, uses the default color based on style.
-/// When set, this color will also be used for the divider if customDividerColor is not set.
-@property (nonatomic, strong) PrismColor * _Nullable customBorderColor;
+@property (nonatomic, strong) PrismColor * _Nullable customDividerColor SWIFT_DEPRECATED_MSG("No longer supported");
+@property (nonatomic, strong) PrismColor * _Nullable customBorderColor SWIFT_DEPRECATED_MSG("No longer supported");
 @property (nonatomic) BOOL runActionOnMouseDown;
 @property (nonatomic) BOOL showDot;
 @property (nonatomic) NSInteger buttonTag;
@@ -6657,6 +7618,14 @@ SWIFT_CLASS_NAMED("SplitButton")
 @property (nonatomic) BOOL secondaryUpdatesCursorOnHover;
 @property (nonatomic, strong) NSCursor * _Nullable secondaryCursor;
 @property (nonatomic, readonly, strong) NSCursor * _Nonnull secondaryDefaultCursor;
+/// The main action area. The split button retains ownership of this view;
+/// callers may configure its public <code>CustomButton</code> properties but must not
+/// replace it.
+@property (nonatomic, readonly, strong) PZMCustomButton * _Nonnull primaryButton;
+/// The secondary action area. The split button retains ownership of this
+/// view; callers may configure its public <code>CustomButton</code> properties but
+/// must not replace it.
+@property (nonatomic, readonly, strong) PZMCustomButton * _Nonnull secondaryButton;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (nonnull instancetype)initWithLabel:(NSString * _Nullable)_ocLabel style:(enum PZMSplitButtonStyle)style size:(enum PZMSplitButtonSize)size secondaryIcon:(NSImage * _Nullable)_ocSecondaryIcon action:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))_ocAction secondaryAction:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))_ocSecondaryAction;
 @property (nonatomic) BOOL enabled;
@@ -6672,13 +7641,18 @@ SWIFT_CLASS_NAMED("SplitButton")
 @property (nonatomic, readonly) BOOL acceptsFirstResponder;
 - (void)showProgressIndicator;
 - (void)hideProgressIndicator;
+- (NSView * _Nullable)hitTest:(NSPoint)point SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isAccessibilityElement SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isAccessibilityEnabled SWIFT_WARN_UNUSED_RESULT;
+- (void)setAccessibilityIdentifier:(NSString * _Nullable)accessibilityIdentifier;
 - (void)setPrimaryButtonAccessibilityIdentifier:(NSString * _Nullable)accessibilityIdentifier;
 - (void)setSecondaryButtonAccessibilityIdentifier:(NSString * _Nullable)accessibilityIdentifier;
 - (void)setSecondaryButtonAccessibilityTitle:(NSString * _Nullable)accessibilityTitle;
 - (void)setSecondaryButtonAccessibilityLabel:(NSString * _Nullable)accessibilityLabel;
 - (void)setSecondaryButtonAccessibilityRole:(NSAccessibilityRole _Nullable)accessibilityRole;
+@property (nonatomic) BOOL isSelected;
+@property (nonatomic, strong) ZMButtonCompositePigments * _Nullable pigments;
+@property (nonatomic, strong) ZMPigment * _Nullable pigment;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
 @end
 
@@ -6688,6 +7662,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMSplitButtonStyle, "Style", open) {
   PZMSplitButtonStylePrimary = 0,
 /// The secondary button style.
   PZMSplitButtonStyleSecondary = 1,
+/// A caller-configured style with no preset visual values.
+  PZMSplitButtonStylePigment = 2,
 };
 
 /// The available button sizes.
@@ -6721,16 +7697,26 @@ SWIFT_CLASS_NAMED("SplitView")
 /// this does <em>not</em> propagate through view instances that do not inherit from <code>View</code>, but
 /// this behavior may change in the future.
 - (void)enableInteractionInSubtree;
+@property (nonatomic, strong) PZMVisualEffect * _Nullable backgroundVisualEffect;
 /// The view’s default background color.
 @property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
 /// The view’s background color, when it is hovered.
 @property (nonatomic, strong) PrismColor * _Nullable hoveredBackgroundColor;
 /// The view’s background color, while the mouse is held down during a click event.
 @property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
+@property (nonatomic, readonly, strong) PZMGradient * _Nullable effectiveBackgroundGradient;
+@property (nonatomic, strong) PZMGradient * _Nullable backgroundGradient;
+@property (nonatomic, strong) PZMGradient * _Nullable hoveredBackgroundGradient;
+@property (nonatomic, strong) PZMGradient * _Nullable clickedBackgroundGradient;
+@property (nonatomic, readonly, strong) PZMShadow * _Nullable effectiveBackgroundShadow;
+@property (nonatomic, strong) PZMShadow * _Nullable backgroundShadow;
+@property (nonatomic, strong) PZMShadow * _Nullable hoveredBackgroundShadow;
+@property (nonatomic, strong) PZMShadow * _Nullable clickedBackgroundShadow;
 /// The radius of the view’s corners; higher values mean rounder corners.
 /// Setting <code>cornerRadius</code> to be greater than <code>min(view.height, view.width)</code> may cause it to draw
 /// unexpectedly.
 @property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic) CACornerMask maskedCorners;
 /// The width of the view’s border, drawn around the same path as its background.
 @property (nonatomic) CGFloat borderWidth;
 /// The color of the view’s border.
@@ -6793,6 +7779,8 @@ SWIFT_CLASS_NAMED("SplitView")
 /// \param $0 The <code>BaseView</code>-conforming instance which sent the event.
 ///
 @property (nonatomic, copy) void (^ _Nullable scrollContentViewBoundsDidChange)(id <PZMBaseView> _Nonnull);
+/// An optional closure invoked when the view’s effective frame changes (own or ancestor frame).
+@property (nonatomic, copy) void (^ _Nullable effectiveFrameDidChange)(id <PZMBaseView> _Nonnull);
 /// The popover model for the view; used to display a popover when the view is hovered.
 /// This value can be safely set to <code>nil</code> if there is no popover to display.
 @property (nonatomic, strong) PZMPopover * _Nullable popoverModel;
@@ -6862,6 +7850,11 @@ SWIFT_CLASS_NAMED("SplitView")
 /// attention:
 /// when overriding this, <code>super.updateLayer()</code> <em>must</em> be called.
 - (void)updateLayer;
+@property (nonatomic, readonly) BOOL useLayerCompatibilityMode;
+- (void)viewDidChangeBackingProperties;
+@property (nonatomic, readonly, strong) CALayer * _Nonnull backgroundLayer;
+@property (nonatomic, readonly, strong) CALayer * _Nullable backgroundShadowLayer;
+@property (nonatomic, readonly, strong) CAShapeLayer * _Nonnull borderLayer;
 - (void)updateTrackingAreas;
 /// Returns <code>nil</code> whenever <code>forbidInteraction</code> <code>== true</code>; otherwise, it is equal to <code>super.hitTest</code>.
 - (NSView * _Nullable)hitTest:(NSPoint)point SWIFT_WARN_UNUSED_RESULT;
@@ -7037,6 +8030,7 @@ SWIFT_CLASS_NAMED("TabView")
 /// This view does not create a tab content view
 /// Parameters:
 /// size: determines the intrinsic height of this view, 48.0 in large mode, 32.0 in regular mode
+/// itemHorizontalMargin: The horizontal margin on each side of a tab item’s content.
 /// leftAXString: What to read by voice over when the focus is moved onto the left arrow. The string passed has to be localized by extenal
 /// rightAXString: What to read by voice over when the focus is moved onto the right arrow. The string passed has to be localized by extenal
 /// overallAXString: What to read by voice over when the focus is moved onto the overall scrollview.
@@ -7045,6 +8039,7 @@ SWIFT_CLASS_NAMED("TabView")
 /// The initialSelectedIndex in the new tabItems is not selectable
 /// zmTheme: Can be assigned with ZMTheme.base or ZMTheme.unspecified
 /// dataSource: The data source which offers the arry of Tab Items, can not be nil, nor zero size
+- (nonnull instancetype)initWithSize:(enum PZMTabViewSize)size itemHorizontalMargin:(CGFloat)itemHorizontalMargin leftAXString:(NSString * _Nullable)leftAXString rightAXString:(NSString * _Nullable)rightAXString overallAXString:(NSString * _Nullable)overallAXString initialSelectedIndex:(NSInteger)initialSelectedIndex zmTheme:(ZMTheme * _Nonnull)zmTheme dataSource:(id <PZMTabViewDataSource> _Nullable)dataSource;
 - (nonnull instancetype)initWithSize:(enum PZMTabViewSize)size leftAXString:(NSString * _Nullable)leftAXString rightAXString:(NSString * _Nullable)rightAXString overallAXString:(NSString * _Nullable)overallAXString initialSelectedIndex:(NSInteger)initialSelectedIndex zmTheme:(ZMTheme * _Nonnull)zmTheme dataSource:(id <PZMTabViewDataSource> _Nullable)dataSource;
 - (nonnull instancetype)initWithSize:(enum PZMTabViewSize)size leftAXString:(NSString * _Nullable)leftAXString rightAXString:(NSString * _Nullable)rightAXString initialSelectedIndex:(NSInteger)initialSelectedIndex zmTheme:(ZMTheme * _Nonnull)zmTheme dataSource:(id <PZMTabViewDataSource> _Nullable)dataSource;
 /// reload the tabs according to the tabItems from the dataSource
@@ -7135,27 +8130,51 @@ SWIFT_CLASS_NAMED("TableView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+enum PZMTagViewSentiment : NSInteger;
 enum PZMTagViewSize : NSInteger;
 SWIFT_CLASS_NAMED("TagView")
-@interface PZMTagView : PZMInteractableView
+@interface PZMTagView : PZMInteractableView <PZMBaselineOffsetProvider>
 @property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
 @property (nonatomic, strong) PrismColor * _Nullable hoveredBackgroundColor;
 @property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
+@property (nonatomic, strong) PrismColor * _Nullable borderColor;
+@property (nonatomic) CGFloat borderWidth;
 @property (nonatomic) CGFloat cornerRadius;
 @property (nonatomic) BOOL requiresTracking;
+@property (nonatomic) enum PZMTagViewSentiment sentiment;
 @property (nonatomic) enum PZMTagViewSize size;
 @property (nonatomic) BOOL enabled;
+/// The text shown in the tag.
 @property (nonatomic, copy) NSString * _Nullable text;
+/// The avatar image; when set (and size permits), the avatar is shown.
+@property (nonatomic, strong) NSImage * _Nullable avatarImage;
+/// The avatar label (initials source); used when <code>avatarImage</code> is nil.
+@property (nonatomic, copy) NSString * _Nullable avatarLabel;
 @property (nonatomic, copy) void (^ _Nullable onClose)(PZMTagView * _Nonnull);
 @property (nonatomic, copy) void (^ _Nullable onClick)(PZMTagView * _Nonnull);
-- (nonnull instancetype)initWithTitle:(NSString * _Nonnull)title onClose:(void (^ _Nullable)(PZMTagView * _Nonnull))onClose showCloseButton:(BOOL)showCloseButton;
-- (nonnull instancetype)initWithTitle:(NSString * _Nonnull)title onClose:(void (^ _Nullable)(PZMTagView * _Nonnull))onClose showCloseButton:(BOOL)showCloseButton onClick:(void (^ _Nullable)(PZMTagView * _Nonnull))onClick OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic) BOOL showCloseButton;
+- (nonnull instancetype)initWithTitle:(NSString * _Nonnull)title onClose:(void (^ _Nullable)(PZMTagView * _Nonnull))onClose showCloseButton:(BOOL)showCloseButton onClick:(void (^ _Nullable)(PZMTagView * _Nonnull))onClick SWIFT_DEPRECATED_MSG("Specify `size` explicitly with the new initializer", "initWithTitle:size:sentiment:onClose:showCloseButton:onClick:");
+- (nonnull instancetype)initWithTitle:(NSString * _Nonnull)title size:(enum PZMTagViewSize)size onClose:(void (^ _Nullable)(PZMTagView * _Nonnull))onClose showCloseButton:(BOOL)showCloseButton;
+- (nonnull instancetype)initWithTitle:(NSString * _Nonnull)title size:(enum PZMTagViewSize)size sentiment:(enum PZMTagViewSentiment)sentiment onClose:(void (^ _Nullable)(PZMTagView * _Nonnull))onClose showCloseButton:(BOOL)showCloseButton onClick:(void (^ _Nullable)(PZMTagView * _Nonnull))onClick OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (void)updateConstraints;
 - (void)mouseDown:(NSEvent * _Nonnull)event;
-- (void)updateLayer;
+- (void)viewDidChangeEffectiveAppearance;
+/// The maximum width of the tag. If zero, no maximum width is enforced.
+@property (nonatomic) CGFloat maximumWidth;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
+- (void)setAccessibilityIdentifier:(NSString * _Nullable)accessibilityIdentifier;
+- (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
+- (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<id <NSAccessibilityElement>> * _Nullable)accessibilityChildrenInNavigationOrder SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly) NSPoint baselineOffset;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
 @end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMTagViewSentiment, "Sentiment", open) {
+  PZMTagViewSentimentNeutral = 0,
+  PZMTagViewSentimentDanger = 1,
+};
 
 typedef SWIFT_ENUM_NAMED(NSInteger, PZMTagViewSize, "Size", open) {
   PZMTagViewSizeSmall = 0,
@@ -7175,18 +8194,19 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMTextAlignment, "TextAlignment", open) {
   PZMTextAlignmentBottomRight = 8,
 };
 
-enum PZMTextBadgeStyle : NSInteger;
+enum PZMTextBadgeSize : NSInteger;
 /// Prism’s text Badge component, commonly used for “beta” and “new” labels.
-/// <code>TextBadge</code> instances resize themselves to fit their content by default.
-/// Optionally, you can set <code>customWidth</code> and <code>customHeight</code> to specify a fixed size.
-/// When custom size is set, the font will automatically adjust to fit the text,
-/// and text will be truncated in “A…B” format if it becomes too small to read.
+/// <code>TextBadge</code> instances resize themselves to fit their content. Do not manually
+/// resize these instances.
 /// <h2>Reference</h2>
 /// <a href="https://www.figma.com/file/fLGhhzkzA1tlvZOg00to2L/Prism-Component-Library-(MVP)?type=design&node-id=683-0"><em>Figma</em>: Badge Design Specification</a>
 SWIFT_CLASS_NAMED("TextBadge")
 @interface PZMTextBadge : PZMView <PZMInvertible>
-/// The button’s style.
 @property (nonatomic) enum PZMTextBadgeStyle style;
+/// The size of the badge. Defaults to <code>Size/medium</code>.
+/// When set to <code>Size/small</code>, the badge icon (if any) is hidden.
+@property (nonatomic) enum PZMTextBadgeSize size;
+@property (nonatomic) CGFloat customHeight SWIFT_DEPRECATED_MSG("No longer supported");
 /// ❄️ snowflake configuration ❄️
 /// !! DO NOT USE BEFORE CONTACTING OWNER !!
 /// <ul>
@@ -7198,12 +8218,12 @@ SWIFT_CLASS_NAMED("TextBadge")
 ///   </li>
 /// </ul>
 @property (nonatomic) CGFloat snf_marginOffset;
-/// Custom width. When set to a value > 0, uses fixed width instead of auto-sizing.
-@property (nonatomic) CGFloat customWidth;
-/// Custom height. When set to a value > 0, uses fixed height instead of auto-sizing.
-@property (nonatomic) CGFloat customHeight;
 /// The label contents.
 @property (nonatomic, copy) NSString * _Nonnull text;
+/// An optional icon displayed alongside the badge text.
+/// The icon is automatically tinted to match the badge’s text color.
+/// Icons are hidden when <code>size</code> is <code>Size/small</code>.
+@property (nonatomic, strong) NSImage * _Nullable icon;
 @property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
 @property (nonatomic, strong) PrismColor * _Nullable borderColor;
 /// The corner radius for the label.
@@ -7223,13 +8243,10 @@ SWIFT_CLASS_NAMED("TextBadge")
 /// returns:
 /// A <code>TextBadge</code> instance with the specified parameters.
 - (nonnull instancetype)initWithText:(NSString * _Nullable)text style:(enum PZMTextBadgeStyle)style;
-/// Creates an empty label with default colors.
-/// \param frame A frame for the view; this is ignored.
-///
-///
-/// returns:
-/// A <code>TextBadge</code> instance.
-- (nonnull instancetype)initWithFrame:(NSRect)_ SWIFT_UNAVAILABLE;
+/// Creates a label with given text, style, size, and optional icon (Objective-C).
+- (nonnull instancetype)initWithText:(NSString * _Nullable)text style:(enum PZMTextBadgeStyle)style size:(enum PZMTextBadgeSize)size;
+/// Creates a label with given text, style, size, and optional icon (Objective-C).
+- (nonnull instancetype)initWithText:(NSString * _Nullable)text style:(enum PZMTextBadgeStyle)style size:(enum PZMTextBadgeSize)size icon:(NSImage * _Nullable)icon;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (void)encodeWithCoder:(NSCoder * _Nonnull)coder;
 - (void)updateConstraints;
@@ -7250,11 +8267,11 @@ SWIFT_CLASS_NAMED("TextBadge")
 + (PZMTextBadge * _Nonnull)makeTrialBadge SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, readonly) NSSize intrinsicContentSize;
 @property (nonatomic, readonly) BOOL propagatesKeyEvents;
-- (void)updateLayer;
 - (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)accessibilityTitle SWIFT_WARN_UNUSED_RESULT;
 - (NSArray<id <NSAccessibilityElement>> * _Nullable)accessibilityChildrenInNavigationOrder SWIFT_WARN_UNUSED_RESULT;
 - (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
 @end
 
 /// The available styles of badge.
@@ -7267,6 +8284,12 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMTextBadgeStyle, "Style", open) {
   PZMTextBadgeStyleTeal = 5,
   PZMTextBadgeStyleBlue = 6,
   PZMTextBadgeStylePurple = 7,
+};
+
+/// The available sizes of badge.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMTextBadgeSize, "Size", open) {
+  PZMTextBadgeSizeSmall = 0,
+  PZMTextBadgeSizeMedium = 1,
 };
 
 @interface PrismColorTheme (SWIFT_EXTENSION(Prism))
@@ -7423,17 +8446,22 @@ SWIFT_CLASS_NAMED("TimePickerView")
 - (void)dropdownMenuDidDismiss:(PZMMenu * _Nonnull)sender;
 @end
 
-typedef SWIFT_ENUM(NSInteger, ToastButtonType, open) {
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMToastButtonAligned, "ToastButtonAligned", open) {
+  PZMToastButtonAlignedLetf = 0,
+  PZMToastButtonAlignedRight = 1,
+};
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMToastButtonType, "ToastButtonType", open) {
 /// toast button primary type.
-  ToastButtonTypePrimary = 0,
+  PZMToastButtonTypePrimary = 0,
 /// toast button secondary type.
-  ToastButtonTypeSecondary = 1,
+  PZMToastButtonTypeSecondary = 1,
 /// toast button openLink type.
-  ToastButtonTypeOpenLink = 2,
+  PZMToastButtonTypeOpenLink = 2,
 /// toast button close type.
-  ToastButtonTypeClose = 3,
+  PZMToastButtonTypeClose = 3,
 /// toast button none type.
-  ToastButtonTypeNone = 4,
+  PZMToastButtonTypeNone = 4,
 };
 
 @class ZMToast;
@@ -7479,7 +8507,7 @@ SWIFT_CLASS_NAMED("ToastCoordinator")
 @class PZMToastPanel;
 @interface PZMToastCoordinator (SWIFT_EXTENSION(Prism))
 - (BOOL)isShowToastWithIdentifier:(NSString * _Nullable)identifier SWIFT_WARN_UNUSED_RESULT;
-- (void)panelPerformClose:(PZMToastPanel * _Nullable)panel autoDisappear:(BOOL)autoDisappear buttonType:(enum ToastButtonType)buttonType;
+- (void)panelPerformClose:(PZMToastPanel * _Nullable)panel autoDisappear:(BOOL)autoDisappear buttonType:(enum PZMToastButtonType)buttonType;
 - (void)relayout;
 - (void)relayoutAfterAddAnimation;
 - (void)relayoutIfNeededWhenWindowBecomeShowing;
@@ -7511,11 +8539,13 @@ SWIFT_CLASS_NAMED("ToastCoordinator")
 - (ZMToast * _Nullable)fetchBussniessToastWithBlock:(BOOL (^ _Nonnull)(ZMToast * _Nonnull))block SWIFT_WARN_UNUSED_RESULT;
 @end
 
+@class PZMUserNotification;
 SWIFT_CLASS_NAMED("ToastPanel")
 @interface PZMToastPanel : ZMUnsharablePanel
+@property (nonatomic, strong) ZMToast * _Nonnull toast;
+@property (nonatomic, strong) PZMUserNotification * _Nonnull prismToast;
 - (BOOL)isAccessibilityElement SWIFT_WARN_UNUSED_RESULT;
 - (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
-- (void)becomeKeyWindow;
 - (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, copy) NSString * _Nonnull title;
 - (nonnull instancetype)initWithContentRect:(NSRect)rect OBJC_DESIGNATED_INITIALIZER;
@@ -7527,7 +8557,6 @@ SWIFT_CLASS_NAMED("ToastPanel")
 - (nonnull instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)style backing:(NSBackingStoreType)backingStoreType defer:(BOOL)flag OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class PZMUserNotification;
 @interface PZMToastPanel (SWIFT_EXTENSION(Prism))
 - (void)relayout;
 - (void)appear;
@@ -7544,6 +8573,29 @@ SWIFT_CLASS_NAMED("ToastPanel")
 - (void)secondaryButtonClicked;
 @end
 
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMToastPosition, "ToastPosition", open) {
+  PZMToastPositionChatClient = 0,
+  PZMToastPositionClipsAIAvatar = 1,
+};
+
+/// Prism’s notification old type.
+/// <code>Toast</code> instances are <code>Type</code> instances that contain an additional <code>sentiment</code> field.
+/// Typical use cases include client old toasts.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMToastType, "ToastType", open) {
+  PZMToastTypeInformation = 0,
+  PZMToastTypeConfirmation = 1,
+  PZMToastTypeAdvisory = 2,
+  PZMToastTypeWarning = 3,
+  PZMToastTypeError = 4,
+  PZMToastTypeImage = 5,
+  PZMToastTypeAi = 6,
+  PZMToastTypeCustom = 7,
+  PZMToastTypePlain = 8,
+  PZMToastTypeNew = 9,
+  PZMToastTypeBeta = 10,
+  PZMToastTypeSystem = 11,
+};
+
 /// Prism’s view for a toast notification.
 /// important:
 /// Do <em>not</em> attempt to use this outside of Prism.
@@ -7553,6 +8605,7 @@ SWIFT_CLASS_NAMED("ToastPanel")
 /// <a href="https://www.figma.com/file/fLGhhzkzA1tlvZOg00to2L/Prism-Component-Library-(MVP)?type=design&node-id=683-8"><em>Figma</em>: Notification Design Specification</a>
 SWIFT_CLASS_NAMED("ToastView")
 @interface PZMToastView : PZMInteractableView
+@property (nonatomic, readonly, strong) CALayer * _Nonnull backgroundLayer;
 @property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
 @property (nonatomic, strong) PrismColor * _Nullable borderColor;
 @property (nonatomic) CGFloat borderWidth;
@@ -7565,65 +8618,14 @@ SWIFT_CLASS_NAMED("ToastView")
 - (BOOL)isAccessibilityEnabled SWIFT_WARN_UNUSED_RESULT;
 - (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)accessibilityTitle SWIFT_WARN_UNUSED_RESULT;
 - (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, readonly) BOOL acceptsFirstResponder;
+@property (nonatomic, readonly) BOOL canBecomeKeyView;
 @property (nonatomic) NSSize intrinsicContentSize;
 - (void)mouseDown:(NSEvent * _Nonnull)event;
 - (void)viewDidMoveToWindow;
-- (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
-@end
-
-SWIFT_CLASS_NAMED("ToggleButton")
-@interface PZMToggleButton : PZMInteractableView
-/// The button’s action, to be invoked when the user interacts with the button.
-@property (nonatomic, copy) void (^ _Nonnull action)(id <PZMBaseButton> _Nonnull);
-/// The label shown on the button; optional.
-@property (nonatomic, copy) NSString * _Nullable label;
-- (void)updateConstraints;
-/// Determines whether the button’s action will be executed on a <code>mouseDown(with:)</code> event, as opposed to
-/// <code>mouseUp(with:)</code>. Defaults to <code>true</code>.
-@property (nonatomic) BOOL runActionOnMouseDown;
-/// Handles the mouse down event.
-/// If <code>runActionOnMouseDown</code> is set, the action is executed.
-- (void)mouseDown:(NSEvent * _Nonnull)event;
-/// Handles the mouse up event.
-/// If <code>runActionOnMouseDown</code> is not set, the action is executed.
-- (void)mouseUp:(NSEvent * _Nonnull)event;
-/// Handles the key up event and sets the cursor state accordingly.
-- (void)keyDown:(NSEvent * _Nonnull)event;
-@property (nonatomic) BOOL updatesCursorOnHover;
-@property (nonatomic, strong) NSCursor * _Nullable cursor;
-@property (nonatomic, readonly, strong) NSCursor * _Nonnull defaultCursor;
-- (void)viewDidChangeEffectiveAppearance;
-@property (nonatomic, readonly) NSSize intrinsicContentSize;
-- (void)showProgressIndicator;
-- (void)hideProgressIndicator;
-@property (nonatomic) NSInteger buttonTag;
-@property (nonatomic, copy) NSString * _Nonnull keyEquivalent;
-@property (nonatomic) NSEventModifierFlags keyEquivalentModifierMask;
-/// The icon shown in the button.
-@property (nonatomic, strong) NSImage * _Nullable image;
-@property (nonatomic) BOOL tintImage;
-@property (nonatomic) BOOL showDot;
-/// The button’s current selection state.
-@property (nonatomic) BOOL boolValue;
-@property (nonatomic, strong) PrismColor * _Nullable backgroundColor;
-@property (nonatomic, strong) PrismColor * _Nullable hoveredBackgroundColor;
-@property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
-@property (nonatomic) CGFloat borderWidth;
-@property (nonatomic) CGFloat cornerRadius;
-@property (nonatomic) BOOL enabled;
-@property (nonatomic, readonly) CGFloat focusRingSpacing;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nullable)coder SWIFT_UNAVAILABLE;
-- (nonnull instancetype)initWithImage:(NSImage * _Nullable)_ocImage label:(NSString * _Nullable)_ocLabel size:(enum PZMIconButtonSize)size boolValue:(BOOL)boolValue action:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))_ocAction;
-- (nonnull instancetype)initWithImage:(NSImage * _Nullable)_ocImage size:(enum PZMIconButtonSize)size boolValue:(BOOL)boolValue action:(void (^ _Nullable)(id <PZMBaseButton> _Nonnull))_ocAction;
-- (BOOL)performKeyEquivalent:(NSEvent * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
-- (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
-@property (nonatomic, copy) NSString * _Nullable accessibilityTitleOverride;
-- (NSString * _Nullable)accessibilityTitle SWIFT_WARN_UNUSED_RESULT;
-- (NSString * _Nullable)accessibilityLabel SWIFT_WARN_UNUSED_RESULT;
-- (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
-- (BOOL)accessibilityPerformPress SWIFT_WARN_UNUSED_RESULT;
+- (void)layout;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
 @end
 
@@ -7652,6 +8654,8 @@ SWIFT_CLASS_NAMED("ToggleView")
 /// The toggle’s clicked background color, calculated with <code>boolValue</code>.
 /// This is a design constant, but may be overridden in a subclass.
 @property (nonatomic, strong) PrismColor * _Nullable clickedBackgroundColor;
+@property (nonatomic) CGFloat borderWidth;
+@property (nonatomic, strong) PrismColor * _Nullable borderColor;
 /// Whether to show a progressIndicator over the circle
 @property (nonatomic) BOOL loading;
 @property (nonatomic, readonly) CGFloat focusRingSpacing;
@@ -7712,7 +8716,13 @@ SWIFT_CLASS_NAMED("ToolTip")
 @property (nonatomic, copy) NSString * _Nullable key;
 /// The tooltip’s super view enable status
 @property (nonatomic) BOOL superviewEnable;
+/// An optional window level override for the tooltip panel.
+/// The value is the raw value of <code>NSWindow.Level</code> and is represented as
+/// <code>NSNumber</code> so it can be configured from Objective-C.
+/// The override is applied after the panel is attached to its super window.
+@property (nonatomic, strong) NSNumber * _Nullable windowLevel;
 @property (nonatomic, strong) NSAppearance * _Nullable appearance;
+@property (nonatomic, strong) ZMAppearance * _Nullable zmAppearance;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) CGFloat preferredTextFieldLayoutWidth;)
 + (CGFloat)preferredTextFieldLayoutWidth SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) CGFloat textFieldFontSize;)
@@ -7783,6 +8793,22 @@ typedef SWIFT_ENUM_NAMED(NSInteger, PZMTypograph, "Typograph", open) {
   PZMTypographSubtitle = 8,
   PZMTypographCaption = 9,
   PZMTypographLabel = 10,
+  PZMTypographDisplay = 11,
+  PZMTypographHeadline1 = 12,
+  PZMTypographHeadline2 = 13,
+  PZMTypographTitle1Emphasis = 14,
+  PZMTypographTitle1 = 15,
+  PZMTypographTitle2Emphasis = 16,
+  PZMTypographTitle2 = 17,
+  PZMTypographTitle3Emphasis = 18,
+  PZMTypographTitle3 = 19,
+  PZMTypographBody1Emphasis = 20,
+  PZMTypographBody1 = 21,
+  PZMTypographBody2Emphasis = 22,
+  PZMTypographBody2 = 23,
+  PZMTypographCaptionEmphasis = 24,
+  PZMTypographCaptionP2 = 25,
+  PZMTypographLabelP2 = 26,
 };
 
 @class PZMUserNotificationDecoration;
@@ -7831,6 +8857,8 @@ SWIFT_CLASS_NAMED("UserNotification")
 @property (nonatomic, copy) NSString * _Nullable checkboxLabel;
 /// The appearance
 @property (nonatomic, strong) NSAppearance * _Nullable appearance;
+/// The Prism appearance customization.
+@property (nonatomic, strong) ZMAppearance * _Nullable zmAppearance;
 /// checkbox  status callback
 @property (nonatomic, copy) void (^ _Nullable onCheckBoxStateChange)(PZMCheckboxView * _Nullable, BOOL);
 /// checkbox  checked status
@@ -7857,10 +8885,14 @@ SWIFT_CLASS_NAMED("UserNotification")
 @property (nonatomic, copy) NSString * _Nullable (^ _Nullable informationTiming)(void);
 /// showLoading
 @property (nonatomic) BOOL showLoading;
+/// Whether to show the auto-disappear progress bar.
+@property (nonatomic) BOOL showAutoDisappearProgress;
 /// The content image displayed on the left side of the toast (default size: 100x60)
 @property (nonatomic, strong) NSImage * _Nullable image;
 /// The size of the content image (default: 100x60)
 @property (nonatomic) NSSize imageSize;
+/// The custom leading icon for standard toast style (20x20 points)
+@property (nonatomic, strong) NSImage * _Nullable leadingIcon;
 /// The custom icon for system notification style (24x24 points)
 @property (nonatomic, strong) NSImage * _Nullable customIcon;
 /// The system notification buttons array (Objective-C compatible, max 2 buttons)
@@ -7964,6 +8996,69 @@ SWIFT_PROTOCOL("_TtP5Prism32VerificationCodeInputBoxDelegate_")
 - (void)enterKeyPressedWith:(NSString * _Nonnull)StringValue;
 @end
 
+SWIFT_CLASS_NAMED("ViewTextAttachmentCell")
+@interface PZMViewTextAttachmentCell : NSTextAttachmentCell
+- (nonnull instancetype)initWithView:(NSView * _Nonnull)view OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)drawWithFrame:(NSRect)cellFrame inView:(NSView * _Nullable)controlView;
+- (NSSize)cellSize SWIFT_WARN_UNUSED_RESULT;
+- (NSPoint)cellBaselineOffset SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)accessibilityTitle SWIFT_WARN_UNUSED_RESULT;
+- (NSArray * _Nullable)accessibilityChildren SWIFT_WARN_UNUSED_RESULT;
+- (NSAccessibilityRole _Nullable)accessibilityRole SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (nonnull instancetype)initTextCell:(NSString * _Nonnull)string SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initImageCell:(NSImage * _Nullable)image SWIFT_UNAVAILABLE;
+@end
+
+enum PZMVisualEffectFilter : NSInteger;
+/// A backdrop visual effect configuration controlling blur, saturation, brightness, and tinting.
+/// Assign a <code>VisualEffect</code> to a <code>BaseView</code> via the <code>BaseView/backgroundVisualEffect</code>
+/// property to render a frosted glass backdrop behind the view.
+SWIFT_CLASS_NAMED("VisualEffect")
+@interface PZMVisualEffect : NSObject
+/// The scale factor for the backdrop layer. Defaults to <code>0.25</code>.
+@property (nonatomic) CGFloat scale;
+/// The Gaussian blur radius applied to the backdrop. Defaults to <code>0.0</code> (no blur).
+@property (nonatomic) CGFloat blurRadius;
+/// The color saturation multiplier, clamped to 0–4. A value of <code>1.0</code> is unchanged.
+@property (nonatomic) CGFloat saturation;
+/// The brightness adjustment, clamped to -1–1. A value of <code>0.0</code> is unchanged.
+@property (nonatomic) CGFloat brightness;
+/// An optional tint color overlaid on the blurred backdrop.
+@property (nonatomic, strong) PrismColor * _Nullable tintColor;
+/// The overall opacity of the effect layer. Defaults to <code>1.0</code>.
+@property (nonatomic) float opacity;
+/// The compositing blend mode filter applied to the effect. Defaults to <code>Filter/none</code>.
+@property (nonatomic) enum PZMVisualEffectFilter compositingFilter;
+- (nonnull instancetype)initWithBlurRadius:(CGFloat)blurRadius tintColor:(PrismColor * _Nullable)tintColor OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// A compositing filter wrapping Core Animation blend modes for use with <code>VisualEffect</code>.
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMVisualEffectFilter, "Filter", open) {
+  PZMVisualEffectFilterNone = 0,
+  PZMVisualEffectFilterDarkenBlendMode = 1,
+  PZMVisualEffectFilterLightenBlendMode = 2,
+  PZMVisualEffectFilterColorBurnBlendMode = 3,
+  PZMVisualEffectFilterColorDodgeBlendMode = 4,
+  PZMVisualEffectFilterLinearBurnBlendMode = 5,
+  PZMVisualEffectFilterLinearDodgeBlendMode = 6,
+  PZMVisualEffectFilterOverlayBlendMode = 7,
+  PZMVisualEffectFilterSoftLightBlendMode = 8,
+  PZMVisualEffectFilterHardLightBlendMode = 9,
+  PZMVisualEffectFilterLinearLightBlendMode = 10,
+  PZMVisualEffectFilterPinLightBlendMode = 11,
+  PZMVisualEffectFilterDifferenceBlendMode = 12,
+  PZMVisualEffectFilterExclusionBlendMode = 13,
+  PZMVisualEffectFilterMultiplyBlendMode = 14,
+  PZMVisualEffectFilterSubtractBlendMode = 15,
+  PZMVisualEffectFilterDivideBlendMode = 16,
+  PZMVisualEffectFilterScreenBlendMode = 17,
+};
+
 @class PZMVolumeBarSegment;
 SWIFT_CLASS_NAMED("VolumeBar")
 @interface PZMVolumeBar : PZMView
@@ -8043,6 +9138,29 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) ZMAppearance * _Nonnul
 + (ZMAppearance * _Nonnull)appearanceWithProvider:(id <NSAppearanceCustomization> _Nonnull)provider SWIFT_WARN_UNUSED_RESULT;
 @end
 
+SWIFT_CLASS("_TtC5Prism15ZMButtonPigment")
+@interface ZMButtonPigment : ZMPigment
+@property (nonatomic, strong) NSColor * _Nullable title;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS("_TtC5Prism16ZMButtonPigments")
+@interface ZMButtonPigments : ZMButtonPigment
+@property (nonatomic, strong) ZMButtonPigment * _Nullable normal;
+@property (nonatomic, strong) ZMButtonPigment * _Nullable hover;
+@property (nonatomic, strong) ZMButtonPigment * _Nullable press;
+@property (nonatomic, strong) ZMButtonPigment * _Nullable disable;
+@property (nonatomic, strong) ZMButtonPigment * _Nullable select;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS("_TtC5Prism25ZMButtonCompositePigments")
+@interface ZMButtonCompositePigments : ZMButtonPigments
+@property (nonatomic, strong) ZMButtonPigments * _Nullable selected;
+@property (nonatomic, strong) ZMButtonPigments * _Nullable inverted;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 /// Base theme class that represents a visual theme in the Prism system.
 SWIFT_CLASS("_TtC5Prism7ZMTheme")
 @interface ZMTheme : NSObject
@@ -8073,11 +9191,8 @@ SWIFT_CLASS("_TtC5Prism14ZMDynamicTheme")
 - (nonnull instancetype)initWithName:(enum ZMThemeName)name SWIFT_UNAVAILABLE;
 @end
 
-/// A custom SplitButton subclass that fixes the first-click issue on secondaryAction
-/// by ensuring hit test returns the button itself instead of child views (like ImageView)
-SWIFT_CLASS("_TtC5Prism18ZMFixedSplitButton")
+SWIFT_CLASS("_TtC5Prism18ZMFixedSplitButton") SWIFT_DEPRECATED_MSG("", "PZMSplitButton")
 @interface ZMFixedSplitButton : PZMSplitButton
-- (NSView * _Nullable)hitTest:(NSPoint)point SWIFT_WARN_UNUSED_RESULT;
 @end
 
 SWIFT_CLASS("_TtC5Prism7ZMHLine")
@@ -8085,6 +9200,7 @@ SWIFT_CLASS("_TtC5Prism7ZMHLine")
 @property (nonatomic) ZMUserInterfaceOrientation orientation;
 @property (nonatomic) CGFloat lineWidth;
 @property (nonatomic, strong) NSColor * _Nonnull lineColor;
+@property (nonatomic) CGFloat innerSpacing;
 - (nonnull instancetype)initWithFrame:(NSRect)frameRect OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 + (ZMHLine * _Nonnull)horizontalLineWithFrame:(NSRect)frame SWIFT_WARN_UNUSED_RESULT;
@@ -8094,10 +9210,69 @@ SWIFT_CLASS("_TtC5Prism7ZMHLine")
 - (void)drawRect:(NSRect)dirtyRect;
 @end
 
-typedef SWIFT_ENUM(NSInteger, ZMLinkHandlerType, open) {
-  ZMLinkHandlerTypeMouseClick = 0,
-  ZMLinkHandlerTypeEnterKeyDown = 1,
-  ZMLinkHandlerTypeSpaceKeyDown = 2,
+@protocol ZMPlaybarViewControllerDelegate;
+enum PZMPlaybarItemType : NSInteger;
+SWIFT_CLASS("_TtC5Prism23ZMPlaybarViewController")
+@interface ZMPlaybarViewController : NSViewController
+@property (nonatomic, weak) id <ZMPlaybarViewControllerDelegate> _Nullable delegate;
+@property (nonatomic) BOOL isPlaying;
+@property (nonatomic) double volume;
+@property (nonatomic) double speed;
+@property (nonatomic, readonly) BOOL canHide;
+- (nonnull instancetype)init;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (void)loadView;
+- (void)viewDidLoad;
+- (void)viewWillDisappear;
+- (void)makeFirstResponderIfPossible;
+- (NSView * _Nullable)itemViewFor:(enum PZMPlaybarItemType)type SWIFT_WARN_UNUSED_RESULT;
+- (void)updateTimestampWithMillisecond:(double)millisecond;
+- (void)updateTotalDurationWithMillisecond:(double)millisecond;
+- (void)updatePlayEnded;
+- (nonnull instancetype)initWithNibName:(NSNibName _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PZMPlaybarItemType, "PlaybarItemType", open) {
+  PZMPlaybarItemTypePlay = 0,
+  PZMPlaybarItemTypeDurationLabel = 1,
+  PZMPlaybarItemTypeVolume = 2,
+  PZMPlaybarItemTypeSetting = 3,
+  PZMPlaybarItemTypeSpeed = 4,
+  PZMPlaybarItemTypeClosedCaption = 5,
+  PZMPlaybarItemTypeSliderView = 6,
+};
+
+@interface ZMPlaybarViewController (SWIFT_EXTENSION(Prism)) <PZMSliderViewDelegate>
+- (NSString * _Nullable)accessibilityValueDescriptionForSliderView:(PZMSliderView * _Nonnull)sliderView SWIFT_WARN_UNUSED_RESULT;
+@end
+
+SWIFT_PROTOCOL("_TtP5Prism27ZMPlaybarVolumeViewDelegate_")
+@protocol ZMPlaybarVolumeViewDelegate <NSObject>
+- (void)playbarVolumeViewValueChangedWithVolume:(double)volume;
+@end
+
+@interface ZMPlaybarViewController (SWIFT_EXTENSION(Prism)) <ZMPlaybarVolumeViewDelegate>
+- (void)playbarVolumeViewValueChangedWithVolume:(double)volume;
+@end
+
+SWIFT_PROTOCOL("_TtP5Prism31ZMPlaybarViewControllerDelegate_")
+@protocol ZMPlaybarViewControllerDelegate <NSObject>
+- (void)playbarButtonClicked:(ZMPlaybarViewController * _Nonnull)playbar itemType:(enum PZMPlaybarItemType)itemType;
+- (void)playbarVolumeChanged:(ZMPlaybarViewController * _Nonnull)playbar volume:(double)volume;
+- (void)playbarPlayingTimeChanged:(ZMPlaybarViewController * _Nonnull)playbar timestamp:(NSTimeInterval)timestamp;
+@optional
+- (void)playbarSpeakAccessibility:(ZMPlaybarViewController * _Nonnull)playbar text:(NSString * _Nonnull)text;
+@end
+
+SWIFT_CLASS("_TtC5Prism19ZMPlaybarVolumeView")
+@interface ZMPlaybarVolumeView : PZMView
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithFrame:(NSRect)frameRect SWIFT_UNAVAILABLE;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, ZMSplitButtonPrimaryLabelOverflow, "ZMSplitButtonPrimaryLabelOverflow", open) {
+  ZMSplitButtonPrimaryLabelOverflowExpands = 0,
+  ZMSplitButtonPrimaryLabelOverflowTruncatesMiddle = 1,
 };
 
 @interface ZMTheme (SWIFT_EXTENSION(Prism))
@@ -8121,11 +9296,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) ZMTheme * _N
 + (ZMTheme * _Nonnull)zoom SWIFT_WARN_UNUSED_RESULT;
 @end
 
-enum ZMToastType : NSInteger;
-enum ZMToastPosition : NSInteger;
 SWIFT_CLASS("_TtC5Prism7ZMToast")
 @interface ZMToast : NSObject
-@property (nonatomic) enum ZMToastType type;
+@property (nonatomic) enum PZMToastType type;
 @property (nonatomic, copy) NSString * _Nullable information;
 @property (nonatomic, strong) NSAttributedString * _Nullable attributedInformation;
 @property (nonatomic, copy) NSString * _Nullable (^ _Nullable informationTiming)(ZMToast * _Nonnull, NSTimeInterval);
@@ -8150,20 +9323,23 @@ SWIFT_CLASS("_TtC5Prism7ZMToast")
 @property (nonatomic, copy) NSString * _Nullable identifier;
 @property (nonatomic) BOOL state;
 @property (nonatomic) BOOL showLoading;
+@property (nonatomic) BOOL showAutoDisappearProgress;
 @property (nonatomic) BOOL actionShowPanel;
 @property (nonatomic) BOOL hideCloseButton;
 @property (nonatomic, strong) NSAppearance * _Nullable appearance;
+@property (nonatomic, strong) ZMAppearance * _Nullable zmAppearance;
 @property (nonatomic, strong) NSView * _Nullable view;
 @property (nonatomic) BOOL linkButtonDisplayInPrimary;
 @property (nonatomic, copy) NSString * _Nullable checkboxLabel;
 @property (nonatomic, copy) void (^ _Nullable onCheckBoxStateChange)(PZMCheckboxView * _Nullable, BOOL);
 @property (nonatomic) BOOL checkBoxChecked;
 @property (nonatomic, copy) void (^ _Nullable onAppear)(void);
-@property (nonatomic, copy) void (^ _Nullable onDisappear)(BOOL, enum ToastButtonType);
+@property (nonatomic, copy) void (^ _Nullable onDisappear)(BOOL, enum PZMToastButtonType);
 @property (nonatomic) BOOL isVisible;
-@property (nonatomic) enum ZMToastPosition postion;
+@property (nonatomic) enum PZMToastPosition postion;
 @property (nonatomic) ZMToastBusinessModule businessModule;
 @property (nonatomic) BOOL ignoreWindowVisibility;
+@property (nonatomic, strong) NSImage * _Nullable leadingIcon;
 @property (nonatomic, strong) NSImage * _Nullable customIcon;
 @property (nonatomic, copy) NSArray<PZMSystemNotificationButton *> * _Nullable systemNotificationButtonsOC;
 @property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nullable extraDict;
@@ -8171,12 +9347,12 @@ SWIFT_CLASS("_TtC5Prism7ZMToast")
 @end
 
 @interface ZMToast (SWIFT_EXTENSION(Prism))
-- (nonnull instancetype)initWithType:(enum ZMToastType)type;
+- (nonnull instancetype)initWithType:(enum PZMToastType)type;
 - (nonnull instancetype)initWithCustomView:(NSView * _Nullable)customView;
-+ (ZMToast * _Nonnull)toastWithType:(enum ZMToastType)type information:(NSString * _Nonnull)information SWIFT_WARN_UNUSED_RESULT;
-+ (ZMToast * _Nonnull)toastWithType:(enum ZMToastType)type title:(NSString * _Nonnull)title information:(NSString * _Nonnull)information SWIFT_WARN_UNUSED_RESULT;
-+ (ZMToast * _Nonnull)temporaryToastWithType:(enum ZMToastType)type information:(NSString * _Nullable)information SWIFT_WARN_UNUSED_RESULT;
-+ (ZMToast * _Nonnull)timingToastWithType:(enum ZMToastType)type informationTiming:(NSString * _Nullable (^ _Nonnull)(ZMToast * _Nonnull, NSTimeInterval))informationTiming SWIFT_WARN_UNUSED_RESULT;
++ (ZMToast * _Nonnull)toastWithType:(enum PZMToastType)type information:(NSString * _Nonnull)information SWIFT_WARN_UNUSED_RESULT;
++ (ZMToast * _Nonnull)toastWithType:(enum PZMToastType)type title:(NSString * _Nonnull)title information:(NSString * _Nonnull)information SWIFT_WARN_UNUSED_RESULT;
++ (ZMToast * _Nonnull)temporaryToastWithType:(enum PZMToastType)type information:(NSString * _Nullable)information SWIFT_WARN_UNUSED_RESULT;
++ (ZMToast * _Nonnull)timingToastWithType:(enum PZMToastType)type informationTiming:(NSString * _Nullable (^ _Nonnull)(ZMToast * _Nonnull, NSTimeInterval))informationTiming SWIFT_WARN_UNUSED_RESULT;
 - (void)makeClickableText:(NSString * _Nonnull)text url:(NSString * _Nonnull)url linkText:(NSString * _Nonnull)linkText;
 /// Set attributed information from HTML string with automatic link support
 /// This method processes HTML strings and creates attributed strings with clickable links
@@ -8200,29 +9376,6 @@ SWIFT_PROTOCOL("_TtP5Prism26ZMToastCoordinatorProvider_")
 @protocol ZMToastCoordinatorProvider
 @property (nonatomic, readonly, strong) id <ZMToastCoordinatorProtocol> _Nullable toastCoordinator;
 @end
-
-typedef SWIFT_ENUM(NSInteger, ZMToastPosition, open) {
-  ZMToastPositionChatClient = 0,
-  ZMToastPositionClipsAIAvatar = 1,
-};
-
-/// Prism’s notification old type.
-/// <code>Toast</code> instances are <code>Type</code> instances that contain an additional <code>sentiment</code> field.
-/// Typical use cases include client old toasts.
-typedef SWIFT_ENUM(NSInteger, ZMToastType, open) {
-  ZMToastTypeInformation = 0,
-  ZMToastTypeConfirmation = 1,
-  ZMToastTypeAdvisory = 2,
-  ZMToastTypeWarning = 3,
-  ZMToastTypeError = 4,
-  ZMToastTypeImage = 5,
-  ZMToastTypeAi = 6,
-  ZMToastTypeCustom = 7,
-  ZMToastTypePlain = 8,
-  ZMToastTypeNew = 9,
-  ZMToastTypeBeta = 10,
-  ZMToastTypeSystem = 11,
-};
 
 @class NSMutableAttributedString;
 @interface ZMUtil (SWIFT_EXTENSION(Prism))

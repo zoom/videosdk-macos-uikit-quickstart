@@ -22,6 +22,8 @@
 @property (retain, nonatomic) NSArray <ZMBaseMenuItem *> *menuItemList;
 @property (readonly) BOOL mouseInside;
 @property (nonatomic) NSEdgeInsets paddings;
+@property (nonatomic, assign) BOOL hoverToSelect;
+@property (nonatomic, assign) BOOL showsFocusRingMask;
 
 @property (readonly) ZMBaseMenuItem *selectedItem;
 - (void)selectMenuItem:(__kindof ZMBaseMenuItem *)menuItem;
@@ -41,4 +43,7 @@
 - (void)mouseExistListView:(ZMHMenuListView *)listView;
 
 - (void)tableColumnViewDidCreated:(ZMBaseMenuItem *)item;
+
+@optional
+- (void)listView:(ZMHMenuListView *)listView didHoverItem:(nullable ZMBaseMenuItem *)item;
 @end

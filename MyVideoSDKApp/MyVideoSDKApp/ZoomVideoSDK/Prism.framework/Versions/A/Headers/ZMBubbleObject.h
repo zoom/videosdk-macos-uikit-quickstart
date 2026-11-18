@@ -41,6 +41,7 @@ typedef NS_ENUM(NSUInteger, ZMBubbleArrowSizeMode) {
     ZMBubbleArrowSizeModeCustom,
 };
 
+@class ZMAppearance;
 @interface ZMBubbleConfig : NSObject
 @property(nonatomic, assign) ZMBubbleArrowSizeMode arrowSizeMode;
 @property(assign) NSSize arrowSize;
@@ -56,6 +57,7 @@ typedef NS_ENUM(NSUInteger, ZMBubbleArrowSizeMode) {
 
 @property(nonatomic, assign) ZMBubbleAppearance appearance;//default ZMBubbleAppearanceSystem
 @property(nonatomic, strong) NSAppearance* windowAppearance;//default is nil option<nil, zm_dark, zm_light>
+@property(nonatomic, strong) ZMAppearance* zmAppearance;//default is nil
 @property(nullable, copy) NSColor* backgroundColor;
 @property(nullable, copy) NSColor* borderColor;
 @property(assign) CGFloat borderWidth;
@@ -109,6 +111,11 @@ typedef NS_ENUM(NSUInteger, ZMBubbleArrowSizeMode) {
 
 @property(copy) void (^escAction)(ZMBubbleObject* bubbleObj);
 @property(copy) void (^mouseEventAction)(ZMBubbleObject* bubbleObj,NSEvent* event);
+
+/// When YES, mouseExited events are validated against the window frame before the last resize.
+/// If the mouse is still within the pre-resize frame or the positioning view, the event is suppressed
+/// to prevent false closure caused by tracking area recreation during content resize.
+@property(nonatomic, assign) BOOL validateMouseExit;
 
 @property(copy) NSString* (^accessibilityBlock)(void);
 

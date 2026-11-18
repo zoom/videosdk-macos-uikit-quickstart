@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @class ZMUser;
 @class ZMConfSession;
 
+typedef void (^ZMMTAudioDeviceReadyCompletion)(BOOL ready);
+
 /**
  * @router ZMMTShared
  */
@@ -74,9 +76,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark ZMSettingAudioShareMgr
 - (BOOL)isAudioDeviceInstalled;
-- (BOOL)needInstallAudioDeviceForShare;
 - (BOOL)installAudioDevice;
 - (BOOL)isCoreAudioRestart;
+// The completion is called once after an install request has either made the
+// audio device ready or the bounded readiness check has failed.
+// Multiple callers may wait for the same in-flight install operation.
+// Default waits for CoreAudio restart; pass waitForCoreAudio:NO to only wait until the device is installed.
+- (void)ensureAudioDeviceReadyWithCompletion:(ZMMTAudioDeviceReadyCompletion _Nullable)completion;
+- (void)ensureAudioDeviceReadyWithCompletion:(ZMMTAudioDeviceReadyCompletion _Nullable)completion
+                            waitForCoreAudio:(BOOL)waitForCoreAudio;
 
 #pragma mark audio tip
 - (BOOL)needShowJoinAudioTip;

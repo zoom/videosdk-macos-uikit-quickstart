@@ -21,6 +21,10 @@ public:
 
     virtual void OnUltraSoundDetect_PairCode(CmmBool is_timeout, const CAString& pair_code);
     virtual void OnDeviceStatelessButtonDown(const CString& device_id);
+    virtual void OnPairedUSBAudioDeviceDetected(const CmmAudioUSBDeviceBriefInfo& info, CmmBool is_device_found);
+    
+    virtual void OnDocumentCameraShareButtonPressed(const CString& deviceId);
+    virtual void OnCameraDisplayNameUpdated(const CString& deviceId);
     
 private:
     ZMConfBaseSinkAdapter *_sinkAdapter;

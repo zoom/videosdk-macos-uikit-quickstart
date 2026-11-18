@@ -185,6 +185,8 @@ public:
     virtual void OnShareObjCreated();
     virtual void OnRecordObjCreated();
     virtual void OnLTTObjCreated();
+    virtual void OnVideoAppPollObjCreated() override;
+    virtual void OnVideoAppPollObjDestroyed() override;
     
     //ZOOM-298093
     void OnUploadGalleryVideoOrderResult(CmmBool succ) override;
@@ -270,6 +272,7 @@ public:
     virtual void OnIndicatorAppStatusUpdated(const CString& notice_id, const CmmIndicatorAppItem& indicator_app) override;
     virtual void OnIndicatorTabReceived(const CString& tab_id, const CmmIndicatorTab& indicator_tab) override;
     virtual void OnToastStatusUpdated(const CString& notice_id, CmmInt32 notice_status, const CmmToast& toast) override;
+    virtual void OnCommonNoticeReceived(const CmmNoticeSet& cmm_notice) override;
     virtual void OnCommonNoticeDeleted(const CmmNoticeSet& cmm_notice) override;
     virtual void OnIndicatorTabDeleted(const CString& tab_id) override;
     virtual void OnZoomStreamingServiceSwitchChanged(CmmBool new_switch) override;
@@ -285,6 +288,14 @@ public:
     virtual void OnClinicalNoteStatusChanged(const CmmGwInstInfo& cn_info) override;
     virtual void OnCreateClinicalNoteSessionFailed(CMM_CN_ERROR_CODE err_code) override;
     virtual void OnAICompanionTokenReceived(CmmBool success, const CString& req_id, const CString& token) override;
+
+    //MARK: Deepfake
+    virtual void OnDeepfakeSwitchChanged(CmmBool is_enabled) override;
+    virtual void OnDeepfakeStatusChanged(const CmmGwInstInfo& deepfake_info) override;
+    virtual void OnDeepfakeResultUpdated(CMM_USERID user_id, CMM_DEEPFAKE_RESULT result, CmmInt32 confidence) override;
+    // disabled == true means avatars / video filters / studio effects should be disabled,
+    // i.e. deepfake gateway is running AND the disclaimer has been agreed.
+    virtual void OnVideoEffectsDisabledForDeepfakeChanged(CmmBool disabled) override;
 
     //MARK: RTMS
     virtual void OnRTMSGwStatusChanged(const CmmGwInstInfo& rtms_info) override;
@@ -317,7 +328,9 @@ public:
     
     //MARK: Screen Resolution
     virtual void CanSupport4KDisplay(CmmBool& can_support) override;
+    virtual void OnHighFrameRateContentSharingStatusChanged(CmmBool share_enable) override;
     virtual void OnEnhancedMediaFeatureStatusChanged(CmmBool enable) override;
+    virtual void OnHighQualityVideoLayoutStatusChanged(CmmBool enable) override;
     
     //MARK: avatar
     virtual void OnAvatarDataUpdate(const CString& jid) override;
@@ -338,7 +351,6 @@ public:
     virtual void OnAudioDeviceControlGroupOneRemoved(CMM_USERID sender_id, CmmBool ret) override;
     virtual void OnAudioDeviceControlGroupOneAdded(CMM_USERID sender_id, CmmBool ret) override;
     virtual void OnUserAudioDeviceControlAutoAcceptStatusChanged(CMM_USERID sender_id, CmmBool allow) override;
-    virtual void OnUseMicrophoneAppsChange(const SSB_MC_MICROPHONE_USAGE_INFO& data) override;
     
     virtual void OnHandGestureDetected(const SSB_MC_DATA_BLOCK_HAND_POSE_INFO& info) override;
 

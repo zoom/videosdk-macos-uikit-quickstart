@@ -116,6 +116,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)zmSelectPreviousKeyView:(BOOL)allowCycle
                    relativeView:(NSView* _Nullable)relativeView;
 
+@property (nonatomic, assign) BOOL isTabGroupView;
+- (BOOL)zmSelectNextGroupView:(BOOL)allowCycle;
+- (BOOL)zmSelectPreviousGroupView:(BOOL)allowCycle;
+- (void)viewWillBecomeKeyTabGroupView;
+
 - (void)moveByDistance:(ZMDistance)distance;
 
 - (BOOL)convertPointToScreenIfAvailable:(NSPoint *)pPointInView;//return NO, if view is not install on a window

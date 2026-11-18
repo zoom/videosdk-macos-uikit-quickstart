@@ -18,10 +18,59 @@
 //#define BUILD_FOR_ZHUMU
 //#define BUILD_FOR_ZHUMU
 
-// #ifndef ANDROID
 #include "buildtime_client_config.h"
 #include "common_def.h"
-// #endif
+#include "CmmOsDef.h"
+
+// Feature gate for the SafeLogic OpenSSL FIPS migration work.
+#if defined(BUILD_FOR_CLIENT_SDK)
+// Temporarily disable the FIPS migration flows for SDK 7.2.5.
+#undef ENABLE_SAFELOGIC_OPENSSL_FIPS
+#elif !defined(BUILD_FOR_ZPCONTROLLER_IOS) && !defined(__IOS__)
+#ifndef ENABLE_SAFELOGIC_OPENSSL_FIPS
+#define ENABLE_SAFELOGIC_OPENSSL_FIPS
+#endif
+#endif
+
+#if defined(ENABLE_SAFELOGIC_OPENSSL_FIPS)
+// Shared state for the PT-owned Gov-meeting one-time FIPS flow.
+#define KEY_SAFELOGIC_FIPS_PENDING_GOV_MEETING_URL \
+    "com.zoom.client.safelogic.fips.pending_gov_meeting_url"
+#define KEY_SAFELOGIC_FIPS_PENDING_GOV_MEETING_WAIT_FOR_LOGIN \
+    "com.zoom.client.safelogic.fips.pending_gov_meeting_wait_for_login"
+#define KEY_SAFELOGIC_FIPS_GOV_MEETING_RESTART_BYPASS \
+    "com.zoom.client.safelogic.fips.gov_meeting_restart_bypass"
+#define KEY_SAFELOGIC_FIPS_GOV_MEETING_REPLAY_REQUESTED \
+    "com.zoom.client.safelogic.fips.gov_meeting_replay_requested"
+#define SAFELOGIC_FIPS_GOV_MEETING_RESTART_REASON \
+    "SafeLogicFipsGovMeetingRestart"
+#define VALUE_SAFELOGIC_FIPS_GOV_MEETING_RESTART_BYPASS "1"
+#define VALUE_SAFELOGIC_FIPS_GOV_MEETING_REPLAY_REQUESTED "1"
+
+// Meeting-scoped FIPS transition state.  These values live in the meeting's
+// LCP and are intentionally not app-global pending-URL state.  The LCP is
+// carried across Video replacement/failover and is removed when the meeting
+// ends.
+#define KEY_SAFELOGIC_FIPS_MEETING_NEED_FIPS \
+    "com.zoom.client.safelogic.fips.meeting.need_fips"
+#define KEY_SAFELOGIC_FIPS_MEETING_TARGET_DOMAIN \
+    "com.zoom.client.safelogic.fips.meeting.target_domain"
+// Single-process restart recovery must preserve an authenticated join.
+#define KEY_SAFELOGIC_FIPS_MEETING_WAIT_FOR_LOGIN \
+    "com.zoom.client.safelogic.fips.meeting.wait_for_login"
+#define VALUE_SAFELOGIC_FIPS_MEETING_NEED_FIPS "1"
+#endif
+
+// IOS_NSURLSESSION_SUPPORT gates the iOS NSURLSession upload/transport path.
+// Scope intentionally narrowed: BUILD_FOR_MIMO and BUILD_FOR_ZPCONTROLLER (iPad ZR/ZRC)
+// builds were observed to crash on this path (see crash in zNetHttpRequestEmitter::DoCallback)
+// and are excluded until that issue is fully understood.
+#if defined(__IOS__) && !defined(__WATCHOS__) && (!defined BUILD_FOR_MIMO) && (!defined BUILD_FOR_ZPCONTROLLER)
+#ifndef IOS_NSURLSESSION_SUPPORT
+#define IOS_NSURLSESSION_SUPPORT
+#endif
+#endif
+
 #ifndef  BUILD_FOR_CLIENT_SDK
 //temp solution for Zoom Apps, currently only support in Mac/Win. ENABLE_ZAPP will be removed in future. // 1/12/2021
 
@@ -181,7 +230,7 @@
 #define ENABLE_VOICE_COMMAND_SERVICE
 #endif
 
-#if (!defined CMM_ANDROID) && (!defined __ZOOM_NO_CLIENT_LOG)
+#if (!defined CMM_ANDROID) && (defined(ZOOM_DEBUG) || defined(BUILD_FOR_MIMO) || defined(BUILD_FOR_ZPCONTROLLER) || defined(BUILD_FOR_CLIENT_SDK))
 #define ENABLE_NET_COMPOUND_ABILITY
 #endif
 
@@ -200,7 +249,7 @@
 #endif
 #endif
 
-#if !defined(BUILD_FOR_MIMO) && !defined(BUILD_FOR_ZPCONTROLLER) && !defined(BUILD_FOR_VDI) && !defined(BUILD_FOR_CLIENT_SDK)
+#if !defined(BUILD_FOR_MIMO) && !defined(BUILD_FOR_ZPCONTROLLER) && !defined(BUILD_FOR_VDI) && !defined(BUILD_FOR_CLIENT_SDK) && !defined(BUILD_FOR_ZP_PLUGIN)
 #if (defined WIN32) || (defined __MACOS__)
 #define ENABLE_BACKGROUND_UPDATE_SCHEDULE
 // Async proxy resolution feature - only available on Windows and Mac
@@ -209,10 +258,21 @@
 #endif
 #endif
 
-#if (defined __ZOOM_NO_CLIENT_LOG) || (defined __zoom_no_client_log_zr) || (defined BUILD_FOR_CLIENT_SDK)
-#else
-#if !defined(BUILD_FOR_MIMO) && !defined(BUILD_FOR_ZPCONTROLLER) && !defined(BUILD_FOR_VDI) && !defined(BUILD_FOR_CLIENT_SDK)
+#if defined(ZOOM_DEBUG) && !defined(BUILD_FOR_CLIENT_SDK)
+#if !defined(BUILD_FOR_MIMO) && !defined(BUILD_FOR_ZPCONTROLLER) && !defined(BUILD_FOR_VDI)
 #define BUILD_FOR_TA
+#endif
+#endif
+
+// Unified compile-time gate for the web request rate-limit v2 popup/test-hook
+// workflow. Keep the semantic identical to the pre-existing scattered guards
+// so this refactor changes only how the feature is expressed, not where it
+// builds.
+#if !defined(BUILD_FOR_MIMO) && \
+    (defined(ZOOM_DEBUG) || defined(BUILD_FOR_DOGFOOD)) && \
+    !defined(BUILD_FOR_CLIENT_SDK)
+#ifndef ENABLE_ZOOM_RATELIMIT_V2
+#define ENABLE_ZOOM_RATELIMIT_V2
 #endif
 #endif
 
@@ -236,11 +296,11 @@
 #define DISABLE_ZMDB_STORAGE
 #endif
 
-#ifndef BUILD_FOR_ZPA
+#if defined(ZOOM_DEBUG) && !defined(BUILD_FOR_ZPA) && !defined(BUILD_FOR_FLYWEIGHT_VSDK)
 #define ENABLE_EVENT_LOGGER
 #endif
 
-#if (!defined(__ZOOM_NO_CLIENT_LOG) && !defined(__zoom_no_client_log_zr)) || (defined BUILD_FOR_DOGFOOD)
+#if defined(ZOOM_DEBUG) || defined(BUILD_FOR_CLIENT_SDK) || defined(BUILD_FOR_DOGFOOD)
 #define ENABLE_WRITE_EVENT_LOG_TO_FILE
 #endif
 
@@ -272,9 +332,15 @@
 #define BUILD_FOR_ANDROID_VR
 #endif
 
+#if (defined(__MACOS__)) && (defined BUILD_FOR_NORMAL_CLIENT)
+#define ENABLE_DELAY_ON_CALL_STATUS_IDLE
+#endif
+
+#if (defined(CMM_WIN) || defined(__MACOS__)) && defined(BUILD_FOR_NORMAL_CLIENT)
+#define ENABLE_UNIFIED_SETTING
+#endif
 
 #if defined(CMM_WIN) && defined(BUILD_FOR_NORMAL_CLIENT)
-#define ENABLE_UNIFIED_SETTING
 #define ENABLE_MCM_SERVICE
 #endif
 
@@ -294,11 +360,11 @@
 #define ENABLE_VIDEO_AUTO_FRAMING_FOR_CLIENT
 #endif
 
-#if !(defined DISABLE_ZMDB_STORAGE) && (defined(BUILD_FOR_DOGFOOD) || defined(ZOOM_DEBUG))
+#if !(defined DISABLE_ZMDB_STORAGE)
 #define ENABLE_DYNAMIC_QUERY_TIMEZONE
 #endif
 
-#if ((defined CMM_WIN ) || (defined __MACOS__) || (defined __LINUX_CLIENT__)) && defined(BUILD_FOR_NORMAL_CLIENT)
+#if defined(BUILD_FOR_NORMAL_CLIENT) || defined(BUILD_FOR_VDI)
 #define ENABLE_ZOOM_PROCESS_INFO_COLLECTOR
 #endif
 
@@ -306,7 +372,7 @@
 #define ENABLE_ZOOM_PERFORMANCE_INFO_COLLECTOR
 #endif
 
-#if (defined (CMM_WIN) || defined (__MACOS__)) && (defined (BUILD_FOR_NORMAL_CLIENT) || defined (BUILD_FOR_VDI))
+#if (defined (CMM_WIN) || defined (__MACOS__) || defined (__LINUX_CLIENT__)) && (defined (BUILD_FOR_NORMAL_CLIENT) || defined (BUILD_FOR_VDI))
 #define ENABLE_WEBVIEW_RECYCLE
 #endif
 
@@ -322,13 +388,38 @@
 #define ENABLE_PHOTOREALISTIC_AVATAR
 #endif
 
-#if (defined BUILD_FOR_DOGFOOD || defined ZOOM_DEBUG) && !defined BUILD_FOR_CLIENT_SDK
+#if (defined BUILD_FOR_DOGFOOD || defined ZOOM_DEBUG) && !defined BUILD_FOR_CLIENT_SDK && !defined __WATCHOS__
 #define ENABLE_MCP_TOOL
+#endif
+
+#if ((defined BUILD_FOR_DOGFOOD || defined ZOOM_DEBUG) && defined(BUILD_FOR_NORMAL_CLIENT))
+#define ENABLE_RUNTIME_MONITOR
 #endif
 
 #if ((defined(CMM_WIN) || defined(__MACOS__) || defined(CMM_ANDROID)) && defined(BUILD_FOR_NORMAL_CLIENT)) 
 #define SUPPORT_ONDEMAND_DOWNLOAD_PLUGIN
 #endif
+
+#if defined(CMM_WIN) && (defined(BUILD_FOR_NORMAL_CLIENT) || defined(BUILD_FOR_VDI)) && (defined(BUILD_FOR_DOGFOOD) || defined(ZOOM_DEBUG))
+#define ENABLE_MSI_BIN_PAYLOAD
+#endif
+
+#if (defined __MACOS__ || defined CMM_WIN) && (defined BUILD_FOR_NORMAL_CLIENT)
+#define ENABLE_POSE_CORRECTION
+#endif
+
+// Macro for Snac  ----------------------------------------- Begin
+#if (defined(_WIN32) || defined(__MACOS__))     \
+    && !defined(BUILD_FOR_MIMO)                 \
+    && !defined(BUILD_FOR_VDI)                  \
+    && !defined(BUILD_FOR_CLIENT_SDK)           \
+    && !defined(BUILD_FOR_ZPA)
+
+    #define ENABLE_SNAC_MCM                             1
+    #define SNAC_DEBUG_MCM                              0
+    #define SNAC_PAYLOAD_TYPE_LOWBANDWIDTH_TCP          121
+#endif
+// Macro for Snac  ----------------------------------------- End
 
 // dont define the macro after this line!!!
 #endif //ZOOM_CLIENT_CONFIGURATION_H_

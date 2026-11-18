@@ -35,6 +35,32 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+/// Re-broadcast doc events; thumbnail updates carry the affected doc ID.
+@protocol ZMMTDocNotifyEventProtocol <NSObject>
+
+@optional
+
+/// Re-read via ZMDocHelper.allRecentFileItems / recentFileListEmptyStateStrings.
+- (void)onRecentFileListUpdated;
+
+/// Recent-file-list request errored out (alert is presented by the mgr). Listeners re-read
+/// `ZMDocHelper.isRecentFileListInRequest` to exit any loading state they're showing.
+- (void)onRecentFileListRequestFailed;
+
+/// Re-read via ZMDocHelper.hasCreatePermissionForFileType:; distinct from onDocPermissionChanged.
+- (void)onZoomDocsPermissionSettingUpdated;
+
+/// Search results updated (kSearchFileListUpdate). Re-read via ZMDocHelper.searchFileItems.
+- (void)onSearchFileListUpdated;
+
+/// Search request failed (kApiRequestError / kSearchFileList); result is empty → no-result state.
+- (void)onSearchFileListRequestFailed;
+
+/// Thumbnail request/download state changed for the supplied doc; re-read its local path via ZMDocHelper.
+- (void)onFileThumbnailUpdated:(NSString *)docId;
+
+@end
+
 @protocol IZMMTDocMgr <ZMRoutableObject>
 
 - (void)registerSink;
@@ -47,6 +73,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)shareDocWithAttachment:(nullable id)attachment;
 - (void)showDashboardIfNeededWithFromShare:(BOOL)fromShare;
+- (void)showDashboardIfNeededWithFromShare:(BOOL)fromShare Query:(nullable NSString *)query;
+- (void)showDashboardIfNeededWithFromShare:(BOOL)fromShare ShowTemplates:(BOOL)showTemplates;
 - (void)closeDashboard;
 
 - (void)showSettingPanel;
@@ -60,8 +88,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (ZMMTBaseViewController<IZMMTDocViewController> *)newViewControllerWithType:(ZMMTType)type;
 
 - (void)showDocDeferShareAlert:(_Nullable dispatch_block_t)completionHandler;
+- (void)showDocDeferShareAlert:(_Nullable dispatch_block_t)completionHandler
+                   cancelAction:(_Nullable dispatch_block_t)cancelAction;
 - (void)showDocBlockShareAlert;
 - (void)showDocBlockGeneralAlert;
+- (void)showDocBlockGeneralAlertWithCancelAction:(_Nullable dispatch_block_t)cancelAction;
 
 - (BOOL)canControlDoc;
 - (nullable NSString *)getWebviewIdWithViewType:(ZMMTType)viewType;

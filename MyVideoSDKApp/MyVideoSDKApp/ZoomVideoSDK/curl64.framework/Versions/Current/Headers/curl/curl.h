@@ -646,7 +646,7 @@ typedef enum {
   CURLE_TOO_LARGE,               /* 100 - a value/data met its maximum */
   CURLE_ECH_REQUIRED,            /* 101 - ECH tried but failed */
 //@@zoom_changes_insert_point_begin
-  CURLE_DNS_RESOLVE_TIMEOUT = 998, /* 998 - timed out resolving the host's name */
+  CURLE_DNS_RESOLVE_TIMEOUT = 198, /* 198 - timed out resolving the host's name */
 //@@zoom_changes_insert_point_end
   CURL_LAST /* never use! */
 } CURLcode;

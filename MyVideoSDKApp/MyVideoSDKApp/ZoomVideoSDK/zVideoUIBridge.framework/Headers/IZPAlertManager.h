@@ -69,7 +69,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showWhiteboardBlockShareAlert;
 - (void)showWhiteboardBlockGeneralAlertWithContinueAction:(nullable dispatch_block_t)continueAction
                                              cancelAction:(nullable dispatch_block_t)cancelAction;
-- (void)showWhiteboardOpenAlertWithCompeletion:(void (^)(void))compeletion;
+- (void)showWhiteboardOpenAlertWithCreate:(BOOL)isCreate completion:(void (^)(void))completion;
+- (BOOL)showWhiteboardOpenAlertWithCreate:(BOOL)isCreate
+                               completion:(void (^)(void))completion
+                             cancelAction:(nullable dispatch_block_t)cancelAction;
 
 - (void)showRecordingHostNotInMeetingAlert;
 
@@ -99,6 +102,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showLivestreamedOnNDIAlertIfNeeded;
 
 - (void)showAudioDeviceErrorAlert:(NSString*)tipString;
+- (void)closeAudioDeviceErrorAlert;
 - (void)showCoreAudioErrorAlert;
 
 - (void)showAudioControlDisclaimer:(ZMUser *)user;
@@ -127,6 +131,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showBestLayoutConfirmationAlert;
 - (void)closeBestLayoutConfirmationAlert;
 
+- (void)showUnableSaveBORoomsAlertWithCode:(uint32_t)code;
+- (void)autoCloseAttendeePromotedToPanelistAlert;
+
 #pragma mark - Camera control
 - (void)showRevokeCameraControllerAlertWithUserID:(ZMUserID)userID;
 - (void)closeRevokeCameraControllerAlert;
@@ -150,6 +157,50 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showAICCannotStartAlert:(NSString *)message;
 - (void)closeAICCannotStartAlert;
 
+// Closed caption / live transcript alerts
+- (void)showLiveTranscriptRequestAlert;
+- (void)closeLiveTranscriptRequestAlert;
+- (void)showDeclineLiveTranscriptRequestAlert;
+- (void)closeDeclineLiveTranscriptRequestAlert;
+- (BOOL)isLiveTranscriptResponseAlertShowing;
+- (void)showLiveTranscriptResponseAlertWithFromUser:(ZMUser *)fromUser bAnonymous:(BOOL)bAnonymous;
+- (void)closeLiveTranscriptResponseAlert;
+
+#pragma mark - Remote Support
+- (void)showRequestControlAlertWithUser:(ZMUser *)inUser type:(int)inType;
+- (void)closeRequestControlAlert;
+
+#pragma mark - Remote Control
+- (void)showRemoteControlRequestReceiveAlertWithUser:(ZMUser *)inUser
+                                        approveBlock:(void(^)(void))approveBlock
+                                        declineBlock:(void(^)(void))declineBlock;
+- (BOOL)isRemoteControlRequestReceiveAlertShowing;
+- (void)closeRemoteControlRequestReceiveAlert;
+- (void)showAccessibilityPrivilegeGrantAlert;
+
+- (void)showChangeCCEditorAlertWithNewUser:(ZMUser *)theUser
+                             newEditorName:(nullable NSString *)newEditorName
+                             oldEditorName:(nullable NSString *)oldEditorName;
+- (void)closeChangeCCEditorAlert;
+
+#pragma mark - Avatar Apply / VideoModel Download
+- (void)showAvatarApplyFailedAlert;
+- (void)closeAvatarApplyFailedAlert;
+- (void)showVideoModelDownloadingAlert;
+- (void)closeVideoModelDownloadingAlert;
+
+#pragma mark - Audio Echo Dialog (ZOOM-1119777)
+- (void)showAudioEchoSameMeetingDialogWithConnectAction:(nullable dispatch_block_t)connectAction
+                                       useComputerAction:(nullable dispatch_block_t)useComputerAction
+                                          dismissAction:(nullable dispatch_block_t)dismissAction;
+- (void)showAudioEchoGeneralDialogWithUseComputerAction:(nullable dispatch_block_t)useComputerAction
+                                              gotItAction:(nullable dispatch_block_t)gotItAction;
+- (void)dismissAudioEchoDialogIfShowing;
+
+#pragma mark - Voice Translator
+- (void)showAIInterpretationSimulateVoiceDisclaimer;
+- (void)showAIInterpretationSimulateVoiceDisclaimerByUser;
+- (void)closeAIInterpretationSimulateVoiceDisclaimer;
 @end
 
 NS_ASSUME_NONNULL_END

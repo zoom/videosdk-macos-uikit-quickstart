@@ -20,18 +20,30 @@
 #define HybridAppIndex_Phone           60
 #define HybridAppIndex_NewHomePage     62
 #define HybridAppIndex_MeetingApp      63
+#define HybridAppIndex_PhoneAICW       66
+#define HybridAppIndex_ActivityCenter  67
+#define HybridAppIndex_OfflineNotes    69
+#define HybridAppIndex_Contacts        73
+#define HybridAppIndex_ZoomRNBundleIOS     74
+#define HybridAppIndex_ZoomRNBundleAndroid 76
+
+
+#define HybridAppIndex_SearchApp_SubAppType    9999  // only for search app's sub app type, used for APM data collection
 
 #define IS_INVALID_HYBRID_APP_IDX(index) ((index) < 0)
 
 // HybridAppInfo.extraInfo extra info key string define
-// home url like: https://[app_domain]/[url_home_path]/[history_route]/index.html#[hash_route]
-#define HybridAppExtraInfo_HashRoute    _T("hash_route")    //  <--> GetAppContextExTraParaType_AppResourceHashRoute
-#define HybridAppExtraInfo_UrlHomePath  _T("url_home_path") //  <--> GetAppContextExTraParaType_UrlHomePath
-#define HybridAppExtraInfo_HistoryRoute _T("history_route") //  <--> GetAppContextExTraParaType_AppResourceHistoryRoute
-#define HybridAppExtraInfo_RegionId     _T("region_id")     //  <--> GetAppContextExTraParaType_AppResourceRegionId
+// home url like: https://[app_local_domain]/[url_home_path] or https://[app_local_domain]/index.html[hash_route]
+#define HybridAppExtraInfo_HashRoute    "hash_route"    //  <--> GetAppContextExTraParaType_AppResourceHashRoute
+#define HybridAppExtraInfo_UrlHomePath  "url_home_path" //  <--> GetAppContextExTraParaType_UrlHomePath
+#define HybridAppExtraInfo_HistoryRoute "history_route" //  <--> GetAppContextExTraParaType_AppResourceHistoryRoute
+#define HybridAppExtraInfo_RegionId     "region_id"     //  <--> GetAppContextExTraParaType_AppResourceRegionId
+#define HybridAppExtraInfo_DeeplinkUrl  "deeplink_url"  // open app with this url directly; higher priority than other path extras
 
 
-#define HybridApp_Default_RegionId _T("___default_region___")
+#define HybridApp_Default_RegionId "___default_region___"
+
+#define UnifyWebView_WindowOpenDialogIdQueryKey _T("zm_dialogId")
 
 #define FeatureName_ReleaseNote           _T("ReleaseNote")
 #define FeatureName_UserUpgrade           _T("UserUpgrade")
@@ -64,6 +76,7 @@
 #define FeatureName_SdkMeetingFeature     _T("SdkMeetingFeature")
 #define FeatureName_WebRTCServer          _T("WebRTCServer")
 #define FeatureName_InAppPurchases        _T("InAppPurchases")
+#define FeatureName_Billing               _T("Billing")
 #define FeatureName_Tasks                 _T("Tasks")
 #define FeatureName_FLWToday              _T("FLWToday")
 #define FeatureName_FLWShifts             _T("FLWShifts")
@@ -99,6 +112,7 @@
 #define FeatureName_StudioRecording       _T("StudioRecording")
 #define FeatureName_PhoneMediaDiagnostic  _T("PhoneMediaDiagnostic")
 #define FeatureName_PhoneWebClient        _T("PhoneWebClient")
+#define FeatureName_PhonePriority         _T("PhonePriority")
 #define FeatureName_DocumentPreview       _T("DocumentPreview")
 #define FeatureName_Contacts              _T("Contacts")
 #define FeatureName_NewHomePage           _T("NewHomePage")
@@ -107,6 +121,29 @@
 #define FeatureName_FaxDocumentPreview    _T("FaxDocumentPreview")
 #define FeatureName_MyNotes               _T("MyNotes")
 #define FeatureName_PhoneAnalytics        _T("PhoneAnalytics")
+#define FeatureName_ActivityCenter        _T("ActivityCenter")
+#define FeatureName_PhoneOnboarding       _T("PhoneOnboarding")
+#define FeatureName_HomeAIC3Panel         _T("HomeAIC3Panel")
+#define FeatureName_PhonePurchase         _T("PhonePurchase")
+#define FeatureName_PhoneMessageShaft     _T("PhoneMessageShaft")
+#define FeatureName_PhoneCallQueueManager _T("PhoneCallQueueManager")
+#define FeatureName_CalendarSidebar       _T("CalendarSidebar")
+#define FeatureName_CalendarEventCard     _T("CalendarEventCard")
+#define FeatureName_ClinicalNoteTab       _T("ClinicalNoteTab")
+#define FeatureName_PhoneWhatsAppTemplate _T("PhoneWhatsAppTemplate")
+#define FeatureName_RTMP                  _T("RTMP")
+#define FeatureName_SideCar               _T("SideCar")
+#define FeatureName_MediaStream           _T("MediaStream")
+#define FeatureName_FilePicker            _T("FilePicker")
+#define FeatureName_PSL                   _T("PSL")
+#define FeatureName_WebSurvey             _T("WebSurvey")
+#define FeatureName_AICredit              _T("AICredit")
+#define FeatureName_OnlineBusiness        _T("OnlineBusiness")
+#define FeatureName_AiAssist              _T("AiAssist")
+#define FeatureName_PhoneSMSAutoReply     _T("PhoneSMSAutoReply")
+#define FeatureName_PreCreateWebview      _T("PreCreateWebview")
+#define FeatureName_ZRKiosk               _T("ZRKiosk")
+#define FeatureName_MeetingAIC3           _T("MeetingAIC3")
 
 enum UnifyWebViewAppType
 {
@@ -186,6 +223,28 @@ enum UnifyWebViewAppType
     UnifyWebViewAppType_FaxDocumentPreview = 74,
     UnifyWebViewAppType_MyNotes = 75,
     UnifyWebViewAppType_PhoneAnalytics = 76,
+    UnifyWebViewAppType_ActivityCenter = 77,
+    UnifyWebViewAppType_PhonePriority = 78,
+    UnifyWebViewAppType_PhoneOnboarding = 79,
+    UnifyWebViewAppType_HomeAIC3Panel = 80,
+    UnifyWebViewAppType_PhonePurchase = 81,
+    UnifyWebViewAppType_PhoneMessageShaft = 82,
+    UnifyWebViewAppType_CalendarSidebar = 83,
+    UnifyWebViewAppType_CalendarEventCard = 84,
+    UnifyWebViewAppType_ClinicalNoteTab = 85,
+    UnifyWebViewAppType_PhoneWhatsAppTemplate = 86,
+    UnifyWebViewAppType_PSL = 87,
+    UnifyWebViewAppType_Billing = 88,
+    UnifyWebViewAppType_WebSurvey = 89,
+    UnifyWebViewAppType_AICredit = 90,
+    UnifyWebViewAppType_OnlineBusiness = 91,
+    UnifyWebViewAppType_AiAssist = 92,
+    UnifyWebViewAppType_PhoneCallQueueManager = 93,
+    UnifyWebViewAppType_PhoneSMSAutoReply = 94,
+    UnifyWebViewAppType_PreCreate = 95,
+    UnifyWebViewAppType_ZRKiosk = 96,
+    UnifyWebViewAppType_MeetingAIC3 = 97,
+    UnifyWebViewAppType_Max,  // sentinel: keep last, used for range validation
 };
 
 typedef int UnifyWebViewAppSubType;
@@ -310,6 +369,8 @@ enum UnifyWebViewError
     UnifyWebViewError_RecoveryFailed                    = 53,
     UnifyWebViewError_NavigationStaysInvalid            = 54,
     UnifyWebViewError_OpenAppFailed                     = 55,
+    UnifyWebViewError_CreateBlockedByLoginGate          = 56,
+    UnifyWebViewError_GpuProcessUnusable                = 57,
 };
 
 enum UnifyWebViewWarning
@@ -340,6 +401,8 @@ enum UnifyWebviewHybridAppError
     UnifyWebviewHybridAppError_NotUseLocalResource         = 7006,
     UnifyWebviewHybridAppError_DownloadPkgTimeout          = 7007,
     UnifyWebviewHybridAppError_AppDisabled                 = 7008,
+    UnifyWebviewHybridAppError_LoadBundleFailed            = 7009,
+    UnifyWebviewHybridAppError_UseBuiltInPackage           = 7010,
 };
 
 enum UnifyWebviewAPMError
@@ -351,6 +414,18 @@ enum UnifyWebviewAPMError
     UnifyWebviewAPMError_NavigationTimeout,
     UnifyWebviewAPMError_TaskSyncException,
     UnifyWebviewAPMError_ZipLoadFailed,
+    UnifyWebviewAPMError_NetConnectionError,
+    UnifyWebviewAPMError_HighMemoryRecycle,
+    UnifyWebviewAPMError_HybridAPIError,
+};
+
+enum UnifyWebViewPermissionType
+{
+    UnifyWebViewPermissionType_Unknown = 0,
+    UnifyWebViewPermissionType_Microphone,
+    UnifyWebViewPermissionType_Camera,
+    UnifyWebViewPermissionType_Location,
+    UnifyWebViewPermissionType_ShareScreen,
 };
 
 enum UnifyWebViewPermissionState
@@ -480,6 +555,11 @@ enum UnifyWebviewDownloadType {
     UnifyWebviewDownloadType_Cancel = 1,
     UnifyWebviewDownloadType_ShowDialog = 2,
     UnifyWebviewDownloadType_SystemDownloadPath = 3
+};
+
+enum DialogWindowLevel {
+    DialogWindowLevel_Default = 0,
+    DialogWindowLevel_Floating,
 };
 
 enum UnifyWebViewEventBusTopic

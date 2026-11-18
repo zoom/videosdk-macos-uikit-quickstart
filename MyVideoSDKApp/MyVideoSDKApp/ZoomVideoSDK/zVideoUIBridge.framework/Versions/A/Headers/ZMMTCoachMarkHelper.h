@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)isCoachMarkAvailableWithIdentifier:(NSString *)identifier;
 
+- (void)unregisterCoachMarkWithIdentifier:(NSString *)identifier;
+
 - (void)markCoachMarkShownOnRegisterWithIdentifier:(NSString *)identifier;
 
 - (void)onCoachMarkShowingWithIdentifier:(NSString *)identifier;

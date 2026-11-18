@@ -8,21 +8,57 @@
 #ifndef IZMClosedCaptionMgr_h
 #define IZMClosedCaptionMgr_h
 
+#import <zVideoUIBridge/ZMMTCCHelper.h>
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class ZMMTBaseViewController;
 @class ZMUser;
-@class ZMMenu;
 @class ZMMenuItem;
 @class PZMMenuItem;
 @class ZMCCLanguage;
 @class ZMCCSelectCaptionsLanguageConfig;
-@class ZMCCSubtitlesMessage;
 @protocol ZMCCSubtitlesContainer;
+@protocol IZMCCSubtitlesMessage;
+
+// New Subtitles
+#define ZMCCSubtitlesMargin 16
+#define ZMCCSubtitlesResizeMargin 12
+#define ZMCCSubtitlesContainerHInset 10
+#define ZMCCSubtitlesContainerVInset 8
+#define ZMCCSubtitlesCellVSpacing 6
+#define ZMCCSubtitlesAvatarRightSpacing 8
+#define ZMCCSubtitlesAvatarRatio 1.5
+#define ZMCCSubtitlesLineHeightMultiple 1.2
+#define ZMCCSubtitlesSettingIconSize 24
+#define ZMCCSubtitlesSettingIconRightMargin 4
+#define ZMCCSubtitlesContentLeftMargin 12
+
+#define ZMCCSubtitlesAutoHideSeconds 10
+
+#define ZMCCCaptionsBoxDefaultWidth 525
+#define ZMCCCaptionsBoxMinWidth 300
+#define ZMCCCaptionsBoxMaxWidth 1080
+#define ZMCCCaptionsBoxDefaultHeight 116
+#define ZMCCCaptionsBoxMinHeight 116
+#define ZMCCCaptionsBoxMaxHeight 502
+
+#define ZMCCRealtimeMessageIdPrifix @"ccInput-"
+
+typedef NS_OPTIONS(NSInteger, ZMCCSubtitlesDisplayStatus) {
+    ZMCCSubtitlesDisplayStatusOnlyTitle     = 0,
+    ZMCCSubtitlesDisplayStatusNoTranslation = 1,
+    ZMCCSubtitlesDisplayStatusTranslated    = 1 << 1,
+    ZMCCSubtitlesDisplayStatusSubtitles     = ZMCCSubtitlesDisplayStatusNoTranslation | ZMCCSubtitlesDisplayStatusTranslated,
+};
 
 @protocol ZMCCSubtitlesMgrDelegate <NSObject>
 @optional
-- (void)didReceiveSubtitlesMessage:(ZMCCSubtitlesMessage *)message;
+- (void)didReceiveSubtitlesMessage:(id<IZMCCSubtitlesMessage>)message;
+@end
+
+@protocol IZMCCSubtitlesMessage <NSObject>
+@property (nonatomic, assign, readonly) int operationType;
 @end
 
 @protocol IZMCCSubtitlesMgr <NSObject>
@@ -33,13 +69,6 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol IZMClosedCaptionUIHelper <NSObject>
 - (void)closeAllWindow;
 - (void)closeAllWindowWhenCaptionDisabled;
-
-// ZOOM-254515
-- (ZMMenu *)showCCOptionMenuWithTargetView:(NSView *)sender
-                                targetRect:(NSRect)targetRect
-                                isInFitBar:(BOOL)isInFitBar;
-- (void)closeCCOptionMenu;
-- (BOOL)isCCOptionMenuShowing;
 
 - (NSArray<ZMMenuItem *> *)speakingLanguageMenuItems;
 - (NSArray<PZMMenuItem *> *)speakingLanguagePMenuItems;
@@ -78,20 +107,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showApproveCaptionRequestPanel:(BOOL)bEnableTranslation;
 - (void)closeApproveCaptionRequestPanel;
 
-#pragma mark - Host Control Settings
-// ZOOM-561362
-- (void)showHostControlSettingsPanel;
-- (void)closeHostControlSettingsPanel;
-
 @end
-
-typedef NS_ENUM(NSInteger, ZMCCButtonShowType) {
-    ZMCCButtonShowTypeNone,
-    ZMCCButtonShowTypeShowCaptions,
-    ZMCCButtonShowTypeEnableCaptions,
-    ZMCCButtonShowTypeReuqestCaptions,
-    ZMCCButtonShowTypeAssignCCEditor,
-};
 
 typedef NS_ENUM(int, ZMCCOperationType) {
     ZMCCOperationTypeNone = 0,
@@ -103,13 +119,24 @@ typedef NS_ENUM(int, ZMCCOperationType) {
     ZMCCOperationTypeZRSpeakerID, //ZOOM-819049
     ZMCCOperationTypeSessionStart, //ZOOM-1125586
     ZMCCOperationTypeSessionStop, //ZOOM-1125586
+    ZMCCOperationTypeZRSpeakerTag,
 };//copy of cmmchatmoduleapi.h
+
+typedef NS_ENUM(NSInteger, ZMCCTranslationPromptEntry) {
+    ZMCCTranslationPromptEntryUnknown = 0,
+    ZMCCTranslationPromptEntryFromSettings = 1,
+    ZMCCTranslationPromptEntryFromShowCaptions = 2,
+    ZMCCTranslationPromptEntryFromRequestStartApproval = 3,
+    ZMCCTranslationPromptEntryFromViewFullTranscript = 4,
+    ZMCCTranslationPromptEntryFromBackstageShowCaptions = 5,
+};
 
 /**
  * @router ZMMTShared
  */
 @protocol IZMClosedCaptionMgr <ZMRoutableObject>
 
+@property (nonatomic, assign, readonly) BOOL isReady;
 @property (nonatomic, assign) BOOL hasMessageReceived;
 @property (nonatomic, assign) BOOL shouldTryToShowCCTipWhenBOHostAvailable;
 @property (nonatomic, assign) BOOL isChangeLanguageTipShowed;
@@ -230,6 +257,14 @@ typedef NS_ENUM(int, ZMCCOperationType) {
 // ZOOM-423978
 - (void)onMeetingSpeakingLanguageUpdatedByUser:(ZMCCLanguage *)newLanguage;
 - (void)onTextTranslationStart;
+- (void)onShowOriginalAndTranslatedUpdated:(BOOL)isOn;
+- (void)onSecondaryLanguageUpdated:(NSInteger)languageID;
+- (void)onTranslationPromptConfirmed;
+- (void)onTranslationPromptConfirmedFromShowCaptions;
+- (void)onTranslationPromptConfirmedFromBackstageShowCaptions;
+- (void)onTranslationPromptConfirmedFromViewFullTranscript;
+- (void)onTranslationPromptConfirmedFromRequestStartApproval;
+- (void)onTranslationPromptConfirmedDefault;
 
 //ZOOM-484107
 - (BOOL)canChangeSpeakingLanguageForUser:(ZMUser *)user;
@@ -250,7 +285,7 @@ typedef NS_ENUM(int, ZMCCOperationType) {
 @property (nonatomic, assign) BOOL hasShownLIDTipAutomatically;
 @property (nonatomic, strong) ZMCCLanguage *recommendedSpeakingLanguage;
 - (void)onASRIdentifiedSpeakingLanguage:(ZMCCLanguage *)language;
-- (void)onMeetingSpeakingLanguageUpdatedByRoster:(ZMCCLanguage *)language;
+- (void)onMeetingSpeakingLanguageUpdatedByRoster;
 - (void)setSpeakingLanguage:(ZMCCLanguage *)language isForAll:(BOOL)isForAll;
 
 //ZOOM-607475

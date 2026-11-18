@@ -5,6 +5,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import <ZMVideoSDK/ZMVideoSDKDef.h>
 
 @class ZMVideoSDKUser;
 NS_ASSUME_NONNULL_BEGIN
@@ -22,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief Gets the subsession user's GUID.
  */
 @property(nonatomic, copy, readonly)NSString* userGUID;
+/** @brief Gets the session containing this user. */
+@property(nonatomic, assign, readonly)ZMVideoSDKSubSessionUserType userType;
 @end
 
 /**
@@ -128,6 +131,12 @@ NS_ASSUME_NONNULL_BEGIN
  * @note 'onSubSessionUserHelpRequestResult'is the corresponding callback notification.
  */
 - (ZMVideoSDKErrors)requestForHelp;
+
+/**
+ * @brief Gets lightweight users in the main session.
+ * @return A snapshot of the current main-session user list, or nil when unavailable.
+ */
+- (NSArray<ZMVideoSDKSubSessionUser*>* _Nullable)getMainSessionUserList;
 @end
 
 

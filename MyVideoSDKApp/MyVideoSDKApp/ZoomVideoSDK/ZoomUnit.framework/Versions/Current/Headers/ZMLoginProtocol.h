@@ -36,6 +36,7 @@
 - (void)willLogout;
 - (void)didLogout;
 - (void)loginWindowWillClose;
+- (void)loginWindowDidShow;
 - (void)webLoginNotification:(NSInteger)result;
 
 - (BOOL)shouldSignOutWithContext:(nullable id<ZMSignOutModel>)context;

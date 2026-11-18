@@ -34,8 +34,6 @@ APPKIT_EXTERN NSImage * NSTemplateImage(NSString * name);//!<Images provided by 
 
 + (void)registerResBundle:(NSBundle *)bundle;
 
-+ (void)registerRetinaBundle:(NSBundle *)bundle;
-
 + (void)registerDataImagePath:(NSString *)path;
 
 + (NSString *)getDataImagePath;
@@ -57,6 +55,8 @@ APPKIT_EXTERN NSImage * NSTemplateImage(NSString * name);//!<Images provided by 
 + (NSImage*)threeDotImage:(NSSize)size tintColor:(NSColor*)tintColor;
 
 @property (readonly) NSImage * templatedImage;//!< self make template and return
+/// Estimated memory cost in bytes (width × height × 4). Computed once and cached.
+@property (readonly) NSUInteger zmCacheCost;
 
 + (BOOL)isImagePath:(NSString *)imagePath;
 + (BOOL)isValidImagePath:(NSString *)imagePath;
@@ -102,8 +102,6 @@ APPKIT_EXTERN NSImage * NSTemplateImage(NSString * name);//!<Images provided by 
 + (nullable NSImage *)getDarkImageByName:(NSString *)resName;
 
 + (NSImage*)getNormalImageByName:(NSString*)resName;
-
-+ (NSImage*)getRetinaImageByName:(NSString*)resName;
 
 + (NSString *)getImagePathByImage:(NSImage*)inImage;
 

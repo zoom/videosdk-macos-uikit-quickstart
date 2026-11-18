@@ -91,6 +91,10 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief YES if joining the session, play a greeting prompt tone. NO Otherwise.
  */
 @property (nonatomic, assign) BOOL bGreeting;
+/**
+ * @brief YES if machine-answer detection is enabled for this callout. Otherwise, NO.
+ */
+@property (nonatomic, assign) BOOL bDetectMachine;
 
 /**
  * @brief Optional: The welcome message's language code, such as "en-US", "zh-CN".
@@ -138,16 +142,6 @@ NS_ASSUME_NONNULL_BEGIN
  * @return If the function succeeds, it returns the country information array. Otherwise, this function fails and returns nil.
  */
 - (NSArray<ZMVideoSDKPhoneSupportCountryInfo*>* _Nullable)getSupportCountryInfo;
-
-/**
- * @brief Invite the specified user to join the session by phone.
- * @param countryCode The country code of the specified user must be in the support list.
- * @param phoneNumber The phone number of specified user.
- * @param name The specified's screen name in the session.
- * @return If the function succeeds, it returns @c ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
- * @deprecated Use \link ZMVideoSDKPhoneHelper::invitePhoneUser: \endlink instead.
- */
-- (ZMVideoSDKErrors)inviteByPhone:(NSString*)countryCode phoneNumber:(NSString*)phoneNumber name:(NSString*)name DEPRECATED_MSG_ATTRIBUTE("Use -invitePhoneUser: instead");
 
 /**
  * @brief Invite the specified user to join the session by phone.

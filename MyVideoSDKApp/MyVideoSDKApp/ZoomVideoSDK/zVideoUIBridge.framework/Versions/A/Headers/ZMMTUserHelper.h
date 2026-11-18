@@ -89,6 +89,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable NSMutableArray<ZMUser*>*)getWaitingUsersArray;
 - (nullable NSMutableArray<ZMUser*>*)getWaitingUsersArrayWithoutLeaving;
+// Top-level waiting-room people, matching the Participants panel header.
+// Nested companion bots are excluded; independent bots remain.
+- (NSArray<ZMUser *> *)topLevelWaitingUsersFromUsers:(NSArray<ZMUser *> *)waitingUsers;
 - (NSInteger)getWaitingUserCount;
 - (int)getUserCountWithoutWaiting;
 - (int)getFirstWaitingUserId;
@@ -137,6 +140,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSInteger)legalParticipantCount;
 - (NSInteger)legalAttendeCount;
+// Panelist-only count: matches the visible panelist rows (Webinar + Backstage groups).
+// Mirrors legalParticipantCount's companion-aware membership (so cross-group companion
+// pairs are counted consistently) and the shared visible-user base excludes
+// silent/waiting-room users. Unlike legalParticipantCount, this never adds attendees.
+- (NSInteger)legalPanelistCount;
 - (int)getParticipantUserCount;//from MMR calculated every second
 
 #ifdef __cplusplus
@@ -192,9 +200,14 @@ NS_ASSUME_NONNULL_BEGIN
 //ZOOM-10609
 - (BOOL)isEnableParticipantID;
 
+- (nullable NSArray<ZMUser *> *)getBotUsersForAuthorizer:(ZMUser *)authorizer;
+- (BOOL)hasBotUsersForAuthorizer:(ZMUser *)authorizer;
+- (BOOL)isNestedWaitingRoomBot:(ZMUser *)user;
+
 #ifdef __cplusplus
 //jeffery add
 - (nullable ICmmUser*)getCmmUserByConfUserId:(NSString*)ZoomId;
+- (std::vector<CMM_USERID>)nestedBotIDsForAuthorizer:(ZMUser *)authorizer;
 #endif
 
 - (nullable NSString *)getUserEmail:(ZMUser *)zmUser;

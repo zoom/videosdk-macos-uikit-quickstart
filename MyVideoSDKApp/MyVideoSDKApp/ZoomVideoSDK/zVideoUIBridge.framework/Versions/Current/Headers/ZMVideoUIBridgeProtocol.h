@@ -22,6 +22,7 @@
 #import <zVideoUIBridge/IZMLipsyncMgr.h>
 #import <zVideoUIBridge/IZMMainUIMgr.h>
 #import <zVideoUIBridge/IZMMTAIAccessibleMgr.h>
+#import <zVideoUIBridge/IZMMTArchiveMgr.h>
 #import <zVideoUIBridge/IZMMTAudioCompanionMgr.h>
 #import <zVideoUIBridge/IZMMTAudioMgr.h>
 #import <zVideoUIBridge/IZMMTAudioUIMgr.h>
@@ -85,7 +86,6 @@
 //#import <zVideoUIBridge/IZMFitMenuHelper.h>
 //#import <zVideoUIBridge/IZMMEventTrackerProtocol.h>
 //#import <zVideoUIBridge/IZMMTAnnotationEventProtocol.h>
-#import <zVideoUIBridge/IZMMTEventV2Tracker.h>
 //#import <zVideoUIBridge/IZMMTStudioHelper.h>
 #import <zVideoUIBridge/IZMMTUserStatusProtocol.h>
 //#import <zVideoUIBridge/IZMMTVideoCellView.h>
@@ -104,6 +104,7 @@
 #import <zVideoUIBridge/ZMTopbarStatusPortocol.h>
 #ifdef __cplusplus
 #import <zVideoUIBridge/IZMMTPolicyUpdateProtocol.h>
+#import <zVideoUIBridge/IZMMTEventV2Tracker.h>
 #endif
 
 // MARK: - Model
@@ -111,9 +112,6 @@
 #import <zVideoUIBridge/IZMMTSharingViewController.h>
 #import <zVideoUIBridge/IZMMTVideoRenderView.h>
 #import <zVideoUIBridge/IZMMTVideoRenderViewFactory.h>
-
-// MARK: - Other
-//#import <zVideoUIBridge/ZMMeetingStatusProtocol.h>
 
 #endif // __OBJC__
 

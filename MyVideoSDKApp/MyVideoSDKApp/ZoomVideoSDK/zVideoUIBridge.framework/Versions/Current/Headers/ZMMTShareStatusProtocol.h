@@ -72,6 +72,10 @@
 // on share zoom windows options changed
 - (void)onShareZoomWindowsStatusChanged:(ZMConfSession *)confSession;
 
+// slide permission
+- (void)onSlidePermissionAdded;
+- (void)onSlidePermissionRemoved;
+
 @end
 
 

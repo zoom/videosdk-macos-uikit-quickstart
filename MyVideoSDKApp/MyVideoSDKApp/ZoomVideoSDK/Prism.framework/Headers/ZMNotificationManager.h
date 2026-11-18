@@ -16,7 +16,8 @@ typedef NS_ENUM(NSUInteger, ZMUserNotificationActivationType)
     ZMUserNotificationActivationTypeDismiss,
     ZMUserNotificationActivationTypeContentsClicked,
     ZMUserNotificationActivationTypeOtherButtonClicked,
-    ZMUserNotificationActivationTypeActionButtonClicked
+    ZMUserNotificationActivationTypeActionButtonClicked,
+    ZMUserNotificationActivationTypeSecondButtonClicked
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -40,6 +41,7 @@ typedef void(^ZMNotfCallbackBlock)(ZMUserNotification *notification, BOOL *remov
 @property (nonatomic, assign) BOOL hasReplyButton;// default NO
 @property (nonatomic, assign) BOOL hasActionButton;// default NO
 @property (nonatomic, retain,nullable) NSString *actionButtonTitle;// if hasActionButton = YES, need set this property
+@property (nonatomic, retain,nullable) NSString *secondButtonTitle;// optional; 10.15+ only, inserted between action and other
 @property (nonatomic, retain,nullable) NSString *otherButtonTitle;
 @property (nonatomic, retain) NSArray *customActions;
 @property (nonatomic, copy) NSString *customActionIdentifier;

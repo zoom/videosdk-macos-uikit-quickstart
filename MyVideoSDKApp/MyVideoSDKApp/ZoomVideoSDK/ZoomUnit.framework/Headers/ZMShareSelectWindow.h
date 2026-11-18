@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class ZPShareSelectWindowModel;
 @class ZMSharePaddingMgr;
-@class ZMZAppShareScreenInfo;
 
 typedef NS_ENUM(NSInteger, ZMShareSelectOptionsDesign) {
     ZMShareSelectOptionsDesign_Linear,
@@ -31,11 +30,15 @@ typedef NS_ENUM(NSInteger, ZMShareSelectOptionsDesign) {
 @property (readonly) BOOL hasShareSoundToBOFeature;
 
 @optional
+@property (nonatomic, readonly) BOOL isShareVideoOnForClipsShare;
+@property (nonatomic, readonly) BOOL isShareFilterSwitchEnabled;
+@property (nonatomic, readonly) BOOL canShowWatermarkOption;
+@property (nonatomic, readonly) BOOL canEditWatermarkOption;
+@property (nonatomic, readonly) BOOL isPreventCaptureZoomWindowEnabled;
 //control action
 - (void)onSegmentSelected:(NSUInteger)selectedIndex;
 - (void)onStartShare:(NSArray<ZPShareSelectWindowModel *> * )selectedItems
              options:(ZMShareSelectOptions *)options;
-- (void)onStartCollaborate:(nullable NSString *)appId;
 
 - (void)onShowZoomWindowCheckBoxClicked:(NSControlStateValue)state;
 - (void)onShowToolbarCheckBoxClicked:(NSControlStateValue)state;
@@ -44,10 +47,9 @@ typedef NS_ENUM(NSInteger, ZMShareSelectOptionsDesign) {
 - (void)onShowWatermarkCheckBoxClicked:(NSControlStateValue)state;
 - (void)onShowWatermarkCheckBoxStateChanged:(NSControlStateValue)state;
 
-- (BOOL)isShareVideoOnForClipsShare;
-
 //item state
 - (void)onItemSelected:(ZPShareSelectWindowModel *)item;
+- (void)onItemSelected:(ZPShareSelectWindowModel *)item index:(NSInteger)index;
 - (void)onItemSelectByInputEvent:(ZPShareSelectWindowModel *)item;
 
 //window state
@@ -63,14 +65,6 @@ typedef NS_ENUM(NSInteger, ZMShareSelectOptionsDesign) {
 //sidepanel
 - (void)sidePanelStatusChanged;
 
-//Zapp
-- (BOOL)isAppCollaborateEnable:(NSString *)appId;
-- (void)onShareButtonClick;
-- (BOOL)isShareFilterSwitchEnabled;
-
-//watermark
-- (BOOL)canShowWatermarkOption;
-- (BOOL)canEditWatermarkOption;
 @end
 
 @interface ZMShareSelectWindow : ZMPanel
@@ -108,13 +102,10 @@ typedef NS_ENUM(NSInteger, ZMShareSelectOptionsDesign) {
 @property (nonatomic, assign) BOOL showWatermark;
 
 //options - full HD & high fps
-@property (nonatomic, assign) BOOL supportVideoQualityOption;
 @property (nonatomic, assign) ZMShareSelectVideoQuality defaultVideoQualityOption;
-@property (nonatomic, assign) BOOL supportFullHD;
-@property (nonatomic, assign) BOOL supportFullHD60FPS;
+@property (nonatomic, copy, nullable) NSArray<NSNumber *> *supportedVideoQualities;
 //button
 @property (nonatomic, copy, nullable) NSString *shareButtonTitle;
-@property (nonatomic, assign) BOOL collaborateButtonHidden;
 // customize string
 @property (nonatomic, copy, nullable) NSString *audioShareCheckBoxTitle;
 @property (nonatomic, copy, nullable) NSString *videoShareCheckBoxTitle;
@@ -146,16 +137,31 @@ typedef NS_ENUM(NSInteger, ZMShareSelectOptionsDesign) {
 - (void)showWithPostion:(NSPoint)position;
 - (void)switchNormalWindowLevel:(BOOL)bNormal;
 
-- (void)updateCheckBoxForZapp:(ZMZAppShareScreenInfo *)shareInfo;
-- (void)setCollaborateBGBtnEnable:(BOOL)enable;
+- (void)updateCheckBoxForZappWithAudioShare:(BOOL)audioShare
+                                 videoShare:(BOOL)videoShare
+                                    boShare:(BOOL)boShare;
 
 - (void)bindCollectionOverlayView:(NSView *)overlayView segmentId:(NSUInteger)segmentId;
 - (void)unbindCollectionOverlayView:(NSUInteger)segmentId;
 
+/// Update groups for one segment, then refresh only those collection sections
+/// (`reloadSections:`, or insert/delete if the section count changed). Other
+/// segments are not reloaded. Pass `@[]` to remove the segment's sections.
+- (void)updateSegmentContent:(NSArray<ZMShareSelectWindowModelGroup *> *)groups
+                   segmentId:(NSUInteger)segmentId;
+
+/// Update the custom-view section height for `segmentId` and invalidate collection
+/// layout. Does not reload data or other segments.
+- (void)updateCustomContentSize:(CGSize)size segmentId:(NSUInteger)segmentId;
+
 - (void)scrollToSection:(NSUInteger)sectionIndex;
+- (void)scrollToCurrentSegment;
+- (void)scrollToSelectedIndexPaths;
+- (void)recaptureDesktopThumbnails;
 
 - (void)updateCheckBox;
 - (void)setCollectionViewSelectedIndexPathsSilently:(NSSet<NSIndexPath *> *)indexPaths;
+- (void)setCollectionViewSelectedIndexPaths:(NSSet<NSIndexPath *> *)indexPaths shouldAutoScroll:(BOOL)shouldAutoScroll;
 @end
 
 NS_ASSUME_NONNULL_END

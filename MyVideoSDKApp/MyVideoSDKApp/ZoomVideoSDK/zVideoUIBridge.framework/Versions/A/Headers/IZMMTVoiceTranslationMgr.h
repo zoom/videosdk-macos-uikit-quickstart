@@ -17,10 +17,6 @@
 - (void)closeVoiceTranslateSidepanel;
 - (void)popupWindowEnabled:(BOOL)enable;
 - (BOOL)isPopupWindowEnabled;
-- (void)startTranslation;
-- (void)stopTranslation;
-- (void)startOrStopTranslation;
-- (void)startOrStopTranslationWithAnnouncement:(BOOL)shouldAnnounce;
 - (BOOL)hasReceivedAIInterpretationFirstFrame;
 @end
 

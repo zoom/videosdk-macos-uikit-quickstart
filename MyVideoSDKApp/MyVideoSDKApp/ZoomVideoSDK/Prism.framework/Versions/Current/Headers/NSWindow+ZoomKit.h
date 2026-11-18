@@ -65,6 +65,7 @@ extern NSString *const KZMJoinMeetingFlowAnchor;
 
 //MARK: anchor
 - (void)anchor:(NSString *)anchorId;
+- (NSPoint)anchorPoint:(NSString *)anchorId;
 - (void)adjustFrameToAnchor:(NSString *)anchorId;
 - (void)setFrame:(NSRect)frame atAnchor:(NSString *)anchorId;
 
@@ -98,6 +99,9 @@ APPKIT_EXTERN NSString * const kNSWindowAlertViewWillBeReplace;
 #pragma mark - tab/shift+tab
 - (BOOL)zmSelectNextKeyView;
 - (BOOL)zmSelectPreviousKeyView;
+@property(nonatomic, assign) BOOL supportTabGroup;
+- (BOOL)zmSelectNextGroupView;
+- (BOOL)zmSelectPreviousGroupView;
 
 #pragma mark - resize
 @property(assign) BOOL zm_inLiveResize;

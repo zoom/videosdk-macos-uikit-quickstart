@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (ZMBubbleObject *)getNewSimuliveBubble;
 - (BOOL)isSimuliveBubbleShowing;
+- (BOOL)isSimuliveStartMenuShowing;
 - (void)closeSimuliveBubble;
 - (NSString *)getCountDownString;
 - (BOOL)isImmediateGoLive;

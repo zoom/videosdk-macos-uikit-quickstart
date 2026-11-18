@@ -12,5 +12,7 @@
 @interface ZMHMenuItemView : NSView
 
 @property (weak) ZMBaseMenuItem *representedItem;
+@property (nonatomic, assign) BOOL showsFocusRingMask;
+@property (nonatomic, assign) BOOL canBecomeFirstResponder;
 
 @end

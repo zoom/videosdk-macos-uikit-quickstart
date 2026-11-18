@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)submitReport:(NSString *)description
             ticketId:(NSString *)ticketId
           includeLog:(BOOL)includeLog
+    userExperinceBug:(BOOL)userExperinceBug
            moduleInt:(NSInteger)moduleInt
            issueType:(NSInteger)issueType
          audioLogDir:(NSString *)audioLogDir
@@ -54,6 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)submitReport:(NSString *)description
             ticketId:(NSString *)ticketId
           includeLog:(BOOL)includeLog
+    userExperinceBug:(BOOL)userExperinceBug
            moduleInt:(NSInteger)moduleInt
            issueType:(NSInteger)issueType
          audioLogDir:(NSString *)audioLogDir
@@ -95,6 +97,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSInteger)currentFeatureTab;
 
 + (BOOL)disableReportProblemGPO;
+
++ (BOOL)isShowReportProblemUXCheckbox;
 
 + (BOOL)inCall;
 

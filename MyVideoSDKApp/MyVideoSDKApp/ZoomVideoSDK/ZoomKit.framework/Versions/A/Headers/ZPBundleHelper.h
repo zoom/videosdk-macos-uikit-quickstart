@@ -77,7 +77,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)getCodesignTeamIdentifer;
 + (NSString *)getCodesignAuthority;
 
-+ (NSBundle*)retinaImageBundle;
+/// Return the versioned plugins directory for storing app-version-specific resources
+/// Path: ~/Library/Application Support/zoom.us/Plugins/{appVersion}/
+/// Used by various modules to store version-specific files (bundles, markers, etc.)
++ (nullable NSString *)versionedPluginsDirectory;
 
 @end
 

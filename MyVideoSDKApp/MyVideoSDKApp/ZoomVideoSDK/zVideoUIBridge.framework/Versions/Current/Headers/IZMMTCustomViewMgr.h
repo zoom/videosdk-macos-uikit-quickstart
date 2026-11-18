@@ -9,14 +9,26 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class ZMMTCustomViewController;
+@class ZMMTCustomRecordingInfo;
+@class ZMMTCustomFloatData;
+
+@protocol IZMMTCustomViewController <NSObject>
+
+- (BOOL)isViewSharing;
+- (BOOL)isInRemoteControllingOther;
+- (BOOL)isHideTurnPage;
+- (NSArray<ZMMTCustomRecordingInfo *> *)getRecordingInfoArray;
+
+@end
 
 /**
  * @router ZMMTShared
  */
 @protocol IZMMTCustomViewMgr <ZMRoutableObject>
+@property (nonatomic, readonly) BOOL isReady;
 
-- (ZMMTCustomViewController*)newViewControllerWithType:(ZMMTType)type;
+- (ZMMTVideoViewController<IZMMTCustomViewController> *)newViewControllerWithType:(ZMMTType)type;
+- (ZMMTCustomFloatData*)newFloatData;
 
 - (BOOL)isCustomModeOn;
 - (BOOL)isCustomModeOnForSession:(ZMConfSession*)session;
@@ -113,6 +125,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateVideoUser;
 
 - (NSMutableArray<ZMUser*> *)obtainCustomViewUsersWithSelf:(BOOL)withSelf;
+
+//MARK: SharePort helpers (decouple VideoUI from VideoLayoutUI internals)
+- (NSRect)recordRectForSharePortView:(NSView *)view;
+- (NSRect)recordRectForResolution:(NSSize)resolution;
+- (CGFloat)shareBottomMarginInView;
 
 @end
 

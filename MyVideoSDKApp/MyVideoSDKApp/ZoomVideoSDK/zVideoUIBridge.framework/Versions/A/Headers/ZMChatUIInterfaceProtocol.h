@@ -169,13 +169,17 @@
 - (BOOL)isCalendarUILoaded;
 - (void)closeScheudlerWnd;
 - (void)openCalendarTab;
+- (void)createUnifySchedulerWnd:(NSValue *)pointerValue;
 - (void)expandQuickSchedule;
 - (void)closeScheduler;
 - (void)closeUnifyScheduler;
-- (void)switch2FindTime;
 - (void)schedulerOptionsHaveChanged;
 - (void)showScheduler:(bool)show;
 - (id<ZMUnifyScheduleProtocol>)unifyScheduler;
+- (NSWindow *)getUnifySchedulerWnd;
+
+@optional
+- (void)evaluateJavaScriptOnCalendarUIScheduler:(NSString *)js;
 @end
 
 //@protocol ZMChatUIActivityCenterInterfaceProtocol <NSObject>

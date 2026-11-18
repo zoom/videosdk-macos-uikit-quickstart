@@ -44,8 +44,8 @@ APPKIT_EXTERN struct ZMVoiceOverInfo globalZMVoiceOverInfo;
 
 @property (readonly, getter=isVoiceOverRunning) BOOL voiceOverRunning;//!< for tab control, use 'fullKeyboardAccessEnabled'
 
-@property (nonatomic, assign) BOOL retinaBundleNotReady;
 @property (readonly) BOOL isDarkMode;
+@property (readonly) BOOL isZoomDarkMode;
 @property (readonly) BOOL isLayoutRTL;
 @property (assign) NSInteger fontSizeRate;
 @property (assign) NSInteger lastFontSizeRate;
@@ -62,7 +62,11 @@ APPKIT_EXTERN struct ZMVoiceOverInfo globalZMVoiceOverInfo;
  */
 + (BOOL)isStageManagerMode;
 
+- (BOOL)isRunAsZoomApp;
+
 - (BOOL)isRunAsHuddle;
+
+- (BOOL)isRunAsStandaloneMeeting;
 
 //- (void)swizzledSendEvent:(NSEvent*)event;
 @end

@@ -6,3 +6,5 @@ NSLocalNetworkUsageDescription= "Ten proces jest potrzebny, aby włączyć AirPl
 NSBluetoothAlwaysUsageDescription= "Umożliwi to Zoom Workplace znalezienie pobliskich Zoom Rooms.";
 NSCameraUsageDescription = "Aby inni uczestnicy mogli Cię zobaczyć, Zoom potrzebuje dostępu do Twojej kamery.";
 NSAudioCaptureUsageDescription = "Zezwalaj na dostęp, aby przechwytywać dźwięk z innych aplikacji.";
+
+CFBundleDisplayName = "Zoom";

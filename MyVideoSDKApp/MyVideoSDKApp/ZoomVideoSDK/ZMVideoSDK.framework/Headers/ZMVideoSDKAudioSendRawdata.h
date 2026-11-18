@@ -25,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
  *             - Stereo: 8000, 16000, 32000, 44100, 48000, 50000, 50400, 96000, 192000
  * @param channel Identifies the audio data channel type. default is ZMVideoSDKAudioChannel_Mono.
  * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
+ * @note
+ * 1. The size of a single input must not exceed the number of bytes corresponding to 100 ms of audio. Exceeding this limit returns ZMVideoSDKErrors_RAWDATA_SEND_TOO_MUCH_DATA_IN_SINGLE_TIME.
+ * 2. Variable-length input is supported; it is recommended to send audio data in 10 ms, 20 ms, or 30 ms chunks (not exceeding 100 ms).
+ * 3. If ZMVideoSDKErrors_RAWDATA_SEND_TOO_FREQUENTLY is returned, this is not a genuine error; please wait briefly before retrying—for example, sleep for 10 ms before attempting to send the data again.
  */
 - (ZMVideoSDKErrors)send:(char*)data dataLength:(unsigned int)length sampleRate:(int)rate channel:(ZMVideoSDKAudioChannel)channel;
 @end

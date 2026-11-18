@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol IZMMTMediaStreamMgr <ZMRoutableObject>
 
 @property (nonatomic, strong, readonly) NSArray *servers;
+@property (nonatomic, strong, readonly) NSArray *serversForMediaStreamTopBar;
 
 - (BOOL)canShowEntrance;
 - (BOOL)isCurrentSessionSupport;
@@ -38,6 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onToastStatusUpdated:(NSString *)noticeId status:(int)noticeStatus;
 - (void)onIndicatorTabReceived:(NSString *)tabId;
 - (void)onIndicatorAppStatusUpdated:(NSString *)noticeId app:(const CmmIndicatorAppItem&)indicator_app;
+- (void)onCommonNoticeReceived:(const CmmNoticeSet&)cmm_notice;
 - (void)onIndicatorTabDeleted:(NSString *)tabID;
 - (void)onCommonNoticeDeleted:(const CmmNoticeSet&)cmm_notice;
 - (void)onZoomStreamingServiceSwitchChanged:(BOOL)newSwitch;

@@ -6,3 +6,5 @@ NSCalendarsFullAccessUsageDescription= "Etkinliklerinizi gösterebilmek için Zo
 NSLocalNetworkUsageDescription= "Bu işlem, Zoom istemcisinde AirPlay'i ve eşler arası toplantıları etkinleştirmek için gereklidir.";
 NSBluetoothAlwaysUsageDescription= "Bu, Zoom Workplace'in yakındaki Zoom Rooms ögelerini bulmasını sağlar.";
 NSAudioCaptureUsageDescription = "Diğer uygulamalardan ses kaydı almak için lütfen erişime izin verin.";
+
+CFBundleDisplayName = "Zoom";

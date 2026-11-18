@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		TQYKipjChS5/demkc2GidEAnEBk=
+		IWuNdYpZPunlTf9RFK4FWxeCk7I=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -18,25 +18,32 @@
 			CVjxJTHk+RxAWLwvEUCt5wcTAoaq+DBkeoyqifMU4A8=
 			</data>
 		</dict>
+		<key>Headers/IZMBreakoutRoomMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3ELb5yXZKa27FKGLECqhjV+UTxjaXHIuezzya9hm9/E=
+			</data>
+		</dict>
 		<key>Headers/IZMClosedCaptionMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1O+yOamBZLmfgBugOLD8il5QNV4PzFaWOGLtYaea5o0=
+			ax44awP//xtxz1gcd45qnI785++Iwgd5YDGibgiHIws=
 			</data>
 		</dict>
 		<key>Headers/IZMConfReactionsMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yJATekiqi+my6ROJFgHUJUbba1OUfLShm6VcdVku5u8=
+			A4lsYcAb1vw2se4pwCZb7wNrp4MoGS7fnVwP1gfT9oM=
 			</data>
 		</dict>
 		<key>Headers/IZMConfTipMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Mcoxl0jZyrvsqE93F43WwE/DcUOomGukr5LBja9Ol/A=
+			3UYhnmP0YBxaN/ZOvp1MmgzXZ1zvI04Whpjqp7pDvtE=
 			</data>
 		</dict>
 		<key>Headers/IZMFeatureInitiator.h</key>
@@ -64,7 +71,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/onWg0sxCpppctOyl9q0nYBRRNF3IouQX9AHREFiocE=
+			5nTgVr7qmcHlisYHtJu0u1pIbhsi14myLHogqwkUifI=
 			</data>
 		</dict>
 		<key>Headers/IZMGreenRoomMgr.h</key>
@@ -109,11 +116,25 @@
 			gs+E0vs/zg3g0KDaFcJrUDu9+WebhoKHWP5wG7JFNr8=
 			</data>
 		</dict>
+		<key>Headers/IZMMTAWDLNoticeMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			idmmZRUVXLn1rT9rcTyqYmbjZVoec+/17ZKSaK9Szdo=
+			</data>
+		</dict>
 		<key>Headers/IZMMTAnnotationEventProtocol.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			h/nP9IrR5CNkZtDCHo/MhcMKr5vapteWdxhxn3bY71k=
+			</data>
+		</dict>
+		<key>Headers/IZMMTArchiveMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			IEtNkYwQ4O9xSJljwekGIiQf9c+gww55A0qmWWUM+dg=
 			</data>
 		</dict>
 		<key>Headers/IZMMTAudioCompanionMgr.h</key>
@@ -127,35 +148,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BtYf7rbwQDuM0srQ7+YCx3ntVwVym5lyCnj9/T/OQSg=
+			p2hwElh1+lkKJMa9bFF7G6tAUdpzOU6Fex4VqLZfhT0=
 			</data>
 		</dict>
 		<key>Headers/IZMMTAudioUIMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Unu381X4Tw0eJA/YUg+Vadz3UaqCmeYteJomVSB/OKA=
+			/XdFja/4nzW6JDOalGN272sEvMq7KfePrClwXhnGH9s=
+			</data>
+		</dict>
+		<key>Headers/IZMMTAvatarViewMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yD8rskpfgOTlabzf7CJ1O0tyUo/DZAmR2V5XdpJuWc4=
+			</data>
+		</dict>
+		<key>Headers/IZMMTBOBroadcastVoiceMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			rfM4BddaDuaO4W14cdWyERLMjDmAzZPLczapWEAnO3E=
 			</data>
 		</dict>
 		<key>Headers/IZMMTBOControlMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			431PtaBJeVfsAxh2dan1BgVCv+iTAViueR9pEp9sWjM=
+			vj4H0BbFgT3w/N2VMigbD5VAnWzFYHeFKtPu3LoRne4=
 			</data>
 		</dict>
 		<key>Headers/IZMMTBillingMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			OYCdJazI9fUaGi2ykYe8TnAT1nX8WuRWVajbv5d76Dk=
+			4eJmPa6Bz0TdsGh6F6ygydQvOj4LTfU/gJWjrKv93Bo=
 			</data>
 		</dict>
 		<key>Headers/IZMMTBillingNoticeMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			g8k+Alme0/fK+nEnsI5DKTLGKOIhJGhh3m99Q8OY+7k=
+			4JOyKK9s016DDaOCrhGoY4bBKOb3yTs30oDVz0imWwA=
+			</data>
+		</dict>
+		<key>Headers/IZMMTBreakoutSessionMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			JIm+vskzQWr3HN693lLwmMT5VuLsjMjH+8Sm/O0IIGQ=
+			</data>
+		</dict>
+		<key>Headers/IZMMTCCChangeLanguageView.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			UMGIZUMmVuYcQmSUUcNxqQz2ovAFH/zTK1ly+7tUAhU=
+			</data>
+		</dict>
+		<key>Headers/IZMMTCCEventProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VhhVmzobsMrmDw23GSqOFCi3iZD2VmgSVpQk/s1kITw=
 			</data>
 		</dict>
 		<key>Headers/IZMMTCameraControlMgr.h</key>
@@ -169,14 +225,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			48UPCBLHNgvJ2OA3pI18z89k8JU7RNM4Q8w7h76LR1Q=
+			Nu6eM4NIkucHNwkU6YeqQaQQ+pdcMDPa70AUSj/XzqA=
 			</data>
 		</dict>
 		<key>Headers/IZMMTClinicalNoteMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mu5flSth3uoTp7KeyrC559kVfmudVypJQBz42XeX0uQ=
+			/F3CQ6AAGlfExbN+j3R83vvcKd6w1gg4xF+g0VPmxvc=
 			</data>
 		</dict>
 		<key>Headers/IZMMTClipsShareMgr.h</key>
@@ -190,7 +246,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			S4RC5ds8zRFn5ktzg1Nv3aJGoBoNR0+VcSKW8++GR+k=
+			eNJR2W7Hrp4dZ6ODU5ohB7Qf5EDq4i577dbF9T6ObPM=
 			</data>
 		</dict>
 		<key>Headers/IZMMTCompanionZEMgr.h</key>
@@ -200,18 +256,32 @@
 			95TWzZK2lm0BTT4azg+DutS6Hg5rON0AkDzFYE6t2GU=
 			</data>
 		</dict>
+		<key>Headers/IZMMTConsolidatedDisclaimerMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/SIFjwxFN7e42b++0IWefA/WEnT/rbtMrZ+uRtlNF+8=
+			</data>
+		</dict>
+		<key>Headers/IZMMTCustomSharePort.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8r/62qfpLp+5eMLNiViCp4yShTCryng+l7I/sOzDPd4=
+			</data>
+		</dict>
 		<key>Headers/IZMMTCustomViewMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QAqM74iOHWHdU9XIvjLzuzDhsdoNdJh71cqVIL89Y+I=
+			Q+o72WFdzhOHcUwfsdAgZWPEDU+4eyW1hnOBoQ/0eyI=
 			</data>
 		</dict>
 		<key>Headers/IZMMTDocMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			54vKvIJFQfl4ot1zmFaPee4Py6MkNSwhqA8gl5dGOs0=
+			NDg/qifTXfz31m88FDwV/onSzs3aO2Zai7Q1N3HWFDI=
 			</data>
 		</dict>
 		<key>Headers/IZMMTDynamicViewMgr.h</key>
@@ -225,14 +295,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			RIODDtGmOUOYxS0LXgrTVmV1SgKpTjOO5q8GaHmeCOM=
+			9rnMzsXY2S/ht55FNfctre2M52EzVdDB9giJVeWmSe0=
 			</data>
 		</dict>
 		<key>Headers/IZMMTFallbackMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			javVaB+upDfAzHY/MDgrTURhCHW7BkWKN2AxHW4pOcc=
+			G6iYBme7/LMfCYDl2n+eZe5nYnkN7O50Stg5PS5/7Pw=
 			</data>
 		</dict>
 		<key>Headers/IZMMTGalleryPlusMgr.h</key>
@@ -249,11 +319,18 @@
 			7ljLxu05SW4HD8OV/OuoclYQqCSSNjSLPCiyCtzFFmw=
 			</data>
 		</dict>
+		<key>Headers/IZMMTHostToolMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1938v7mrtvv7bPl1EHrhZYFjf1O4CMJnZxU4w5/p834=
+			</data>
+		</dict>
 		<key>Headers/IZMMTIQMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kUCml5rLHwML+80K64dLdPgasePiIxYXxfPC02kPzEM=
+			c3SAwzHwU/h2tSqIgzbpz0BGN+BbC8ccgrAFnWC12yE=
 			</data>
 		</dict>
 		<key>Headers/IZMMTImprovedCompanionMgr.h</key>
@@ -281,14 +358,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			WFUteOR1P8BUxERcmY/OKuNZYMsHQFCSHyyAB6lDD+s=
+			5U158DkN7VzW6JUzqkE2Z56YhQJucN1rLcBzGg9MsL0=
 			</data>
 		</dict>
 		<key>Headers/IZMMTMediaStreamMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			H8ftOOZyaF+ECVGHInHSDaoxAM/wu39fneloHWZul0w=
+			yoLk5YpK/MdTHqBdZgyCa1NRB3ih6jZ4PPGE5aptXcI=
 			</data>
 		</dict>
 		<key>Headers/IZMMTMiniViewMgr.h</key>
@@ -309,14 +386,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			i0cVhUVDevre9Quws+mjwz0lKpan/QTvbxY7wd7Lvs0=
+			xdUEcBxLhuWm/zc9dmT6zhlM2vwtj4mzOLDWxguKAao=
 			</data>
 		</dict>
 		<key>Headers/IZMMTNewMeetingInfoMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mLOqjo5x4D7vy3N/K6yUHGs7bPIvQP5Z/tq4mP7gjw4=
+			Od4KW5WYW4/dXnPDUdOGxLCGrJeGUb9+olnYrlqfGHw=
 			</data>
 		</dict>
 		<key>Headers/IZMMTNotesMgr.h</key>
@@ -337,7 +414,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CIcdFFUhmQC6iFjZHmXBnbIYdvAjVMygQ/QRmVQMgfU=
+			Cu3o4TWD87sq14u8X/xeqxIHElfXQdxChObPolVzbvU=
 			</data>
 		</dict>
 		<key>Headers/IZMMTPolicyUpdateProtocol.h</key>
@@ -386,7 +463,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KLssmtOyqrvLQlr2X0s0CKV5zW/EZSB+0/IStqhjReg=
+			kFla0RC1DyiQT9FVfeo9LMW4cwCbbnjP82AsbTNMuY8=
 			</data>
 		</dict>
 		<key>Headers/IZMMTSessionLifeMgr.h</key>
@@ -394,6 +471,13 @@
 			<key>hash2</key>
 			<data>
 			SA9ooxBPsizzDzJQx65nCJ7VmxNRTpxEmHtxcMLBCXQ=
+			</data>
+		</dict>
+		<key>Headers/IZMMTSettingMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ZAR5njq25nsrVmaj3bG58rhy1zhgSDKu0tqU9H65Cgw=
 			</data>
 		</dict>
 		<key>Headers/IZMMTShareViewMgr.h</key>
@@ -407,7 +491,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			r5QmdOSKmLckDctGPXeS2fkdy8EMJ5W8syKxn892sBo=
+			vtOBT87/1WASZEjx+xRxxlXAsvp+Yq9N/Fby+VkdRhc=
 			</data>
 		</dict>
 		<key>Headers/IZMMTShortcutMgr.h</key>
@@ -435,7 +519,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			id6P36AvQMFKDCP8tu6UJnOyX+HiOLijFuoQCzsh6iU=
+			1hC0zE/Ejutzt79zZUfqb1o0gH0Q/1zzcaZZ5+YgLjQ=
 			</data>
 		</dict>
 		<key>Headers/IZMMTSimuliveViewMgr.h</key>
@@ -459,25 +543,32 @@
 			UdC8zTU2RHOfPx2lbs00iX3WWcp3+nspb50tzIUj/zM=
 			</data>
 		</dict>
+		<key>Headers/IZMMTThemeMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/PU7aSBEZ2kFJCHcPrxIJDXDmPm8fdUdyyYUUnJDTHI=
+			</data>
+		</dict>
 		<key>Headers/IZMMTToastMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			OhUey81ANMF7aW+TzUEzzLzZ9Bv+wx5fkM2jnB9SpYU=
+			3aijOvfJpAnTpqdEzgFSi6FpeVSo5Tb63f45qT3dJtE=
 			</data>
 		</dict>
 		<key>Headers/IZMMTToolbarMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zwONjjE2VaqCzlIr2TSlPh76jzCCL+O5Qf+mBhCkxwQ=
+			w6oEPott1VVrmpwM6gWIVRo8vV1yzeHbH7O1R++Wq8c=
 			</data>
 		</dict>
 		<key>Headers/IZMMTTranscriptMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kisUIlGzn0TAE4Kq8rA8kofP/1T7PwswSj1sdnOdbWY=
+			F4TXncCaWSJfULGiSQyJSijPuhcGxhnaMMxy8QcYqDY=
 			</data>
 		</dict>
 		<key>Headers/IZMMTTransitionMgr.h</key>
@@ -491,21 +582,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			faqvYKZcfXLDuysmMpk5T9ZehWoD43IqawKs6fhhAXo=
+			Ru+S+rPm9WLpqEHE2wSfZ6V3HW7ntCx7Va/Y45tXOq0=
 			</data>
 		</dict>
 		<key>Headers/IZMMTVcardMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			M63fxfix5VrHEbVDpLLVjJaCDoOFO/eYndkFHEq+nRM=
+			bSHzVQaTb3zxis6wkcmx0pIYvJk+2cr1Y2juXSczreY=
 			</data>
 		</dict>
 		<key>Headers/IZMMTVideoCellView.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lHrg0EHuOhPEoerQLLqzNeBSkl63+NUmFFKPahqNvrI=
+			alToiNdhXSiVyrvnbZD7k3ve9SuQwX9lSso5twmEj7M=
 			</data>
 		</dict>
 		<key>Headers/IZMMTVideoContentProtocol.h</key>
@@ -526,7 +617,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5jV7RQUlawWyvZiFjmkGEcpzYh0WxkbTvtxLqpPGzhU=
+			Yotbee8G1rQCRqUWos++tfzTLupaVDCEdG3Yc1Lky4I=
 			</data>
 		</dict>
 		<key>Headers/IZMMTVideoRenderView.h</key>
@@ -547,7 +638,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			iAH5zzshkZMqxz5q/eJxXQPjS1iwBnjLuMywhVNAYQ8=
+			zJGJZiMdzpROL/7dFS8IiQZKJ3KP7d1kK95p53GdVlw=
 			</data>
 		</dict>
 		<key>Headers/IZMMTWaitingViewMgr.h</key>
@@ -575,7 +666,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4nFAnD/jotpx824jocuQLw4EPR4u5KRxsltFMIaLxgs=
+			Bxor2G2bcrF3vqIv3OqvkMAfBvKHQv3aXjUP0m/SmuE=
+			</data>
+		</dict>
+		<key>Headers/IZMMTWindowModeMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8+r+fGLdeL2RQOBJIkJqA0P4WRUiLam31KNR2KFWEv4=
 			</data>
 		</dict>
 		<key>Headers/IZMMTWizardMgr.h</key>
@@ -585,25 +683,46 @@
 			kFyzilUPu5n6OKNfEfAgpE+XKcDSiwG08VHLI3dNLN0=
 			</data>
 		</dict>
+		<key>Headers/IZMMTZrcMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			nf+89lSYjAQOhmaRUD2OGRuVsLTAEdWAqPfhRO5Hh2M=
+			</data>
+		</dict>
 		<key>Headers/IZMMainUIMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BZ7/e8p6HjhE9KxcpVV26JCalhsj3i7bf9jK55JkmGM=
+			7jeQTh1jaV/qUj2Bd/farmY/9kTegHdoH0ERCNq6MY4=
+			</data>
+		</dict>
+		<key>Headers/IZMPBOControlMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			79VD0dHPz3I0LnT2xuSa3CZT6JVdfW6t1OLd7lis1kg=
+			</data>
+		</dict>
+		<key>Headers/IZMPBOMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			F6iC07ulj0XMx/YwxMAej9EYdj8grLmDve6JmwbQ7qM=
 			</data>
 		</dict>
 		<key>Headers/IZMPostMeetingMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			u0/YTsrH/aCdHYtAEyHOXNl9SoxbFopSXRLzFPWmwIc=
+			tIclPz2+WyEKCoSZC2+18rMOGBdwSXJ5S/4ZyxekPWw=
 			</data>
 		</dict>
 		<key>Headers/IZMRecordMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yA3jEdVcR/Z4HoRNJXyMQFoM/QTQQfGwLJiCUOwzQjU=
+			ovK4sW6R7xLlND4cerLmtECAqNCyhM8Aw9CqyNVIDnc=
 			</data>
 		</dict>
 		<key>Headers/IZMSDKFeaturesMgr.h</key>
@@ -613,18 +732,25 @@
 			7B2gWGf6ig7MCJSN59Hbo5kUKTPsP7VYW3JKONyizic=
 			</data>
 		</dict>
+		<key>Headers/IZMSelfViewMiniViewMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xOljx6G3/X/yFAA5A//eL4G4BnKLbILMbKII17+RBTE=
+			</data>
+		</dict>
 		<key>Headers/IZMShareMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HcIgwtrpd+N/Chtbn7CLYCUDAUnjG1TY8fT0ei4DKQE=
+			fqYGw9zZ21sv7vvoyvsHuTcfJkYecI8W2LILqqP1EcA=
 			</data>
 		</dict>
 		<key>Headers/IZMSummaryMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AinKpD217znouVVGFNiBnHNdZAPr3sXdYFQOS+pLC3M=
+			iVlWE2RKHzEid2VmcWIWRsYkp8OS0HG6agu9Dm9t5xs=
 			</data>
 		</dict>
 		<key>Headers/IZMThumbnailVideoCellView.h</key>
@@ -634,11 +760,18 @@
 			Jz8eFoq76Nujm24DQd7uEC6F5b0dqbh0hpLlWifXcKU=
 			</data>
 		</dict>
+		<key>Headers/IZMTopbarMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			WuxopzpXHIALADl5E1ICSxjEG44LxGrxl9+K7DCx9zM=
+			</data>
+		</dict>
 		<key>Headers/IZPAlertManager.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			thf5bxf8xHXaOYsOXBM1XxnT42HXSO8sUfDBqckvt2Y=
+			WpvsFP/8DCZAl0c9KCtk6fxKWC2WMURQTjoRcsEtJCg=
 			</data>
 		</dict>
 		<key>Headers/IZPConfLayoutMgr.h</key>
@@ -648,18 +781,25 @@
 			8qQAkd+8BxFEb9ulnP4RGzrgETsoKbHVZh+sDXEeOVw=
 			</data>
 		</dict>
+		<key>Headers/IZPConfToolbarTipsMgr.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			v37OL6zaPEhlvLHlLxEAMgrcR86f3U64E8d7jcpae/Y=
+			</data>
+		</dict>
 		<key>Headers/IZPConfUIMgr.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			MKPXA1f8fKYyKXPwvv63vXJkU2yNWeLtMxzlLnDXiLs=
+			SFcVGkLUbFW1SE9jsFD2caKnlf2/KpsRtzr0kRWbLPg=
 			</data>
 		</dict>
 		<key>Headers/NSAppearance+ZmmtKit.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			J1p7tJzkDa4YURr05WkNmzuVFk1uzS4nsZAHWUQirY4=
+			14h0S0oWB8wHQaqAmsnvBDBo5hC1IW2n2Qq0CT/m/h0=
 			</data>
 		</dict>
 		<key>Headers/NSColor+ZmmtKit.h</key>
@@ -680,14 +820,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			aorrjzub1tKDPzsH1KDKNglKcxFSNOho8bPTwHNIGbI=
+			Neb3eAPX22mWEKfTVIhr8cNcJhyLGot7oc9ZOxVBR/M=
 			</data>
 		</dict>
 		<key>Headers/NSView+ZmmtKit.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			eiu585XHUAceuRyTwLxkDM3fJIwxbJ8F2tXEKrshoHE=
+			nFYNSMSJrkrj1s+weR4UCu7nYqE7iQyAoU/0Z5G1Vmg=
 			</data>
 		</dict>
 		<key>Headers/NSWindow+ZmmtKit.h</key>
@@ -708,14 +848,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BvQH2FZySROF2Gi96ZKSaj7kXfCvlu7g/H1EqzNvd5I=
+			s3hmRswHp1Q0zSPoiQlaS2qIhXI6kYPxxsY9LvGDWVE=
 			</data>
 		</dict>
 		<key>Headers/ZMBOHelper.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mtkKs8/BESh9hWgielQOIi/Fy09avc8ioxP7sHvKb3I=
+			HhDfN4f85C8A+rjjso3tSuyVkNQN/R5BLPrwlwgKAOs=
 			</data>
 		</dict>
 		<key>Headers/ZMBaseHelper.h</key>
@@ -725,11 +865,39 @@
 			JprrcAEwaL8HpRKHhPK/eZ46WhEKgdl8IEmvq4sQ2FM=
 			</data>
 		</dict>
+		<key>Headers/ZMCCLanguage.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			7ekYntDFitwMS/ddkGKWCwGp0fSm3j5g8m/sZNpRKcQ=
+			</data>
+		</dict>
+		<key>Headers/ZMCCPopupButton.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KDsNf37YUro06Ot8bAg3fs7BgmINnsVgu+rBuuMgWIQ=
+			</data>
+		</dict>
+		<key>Headers/ZMCCSelectCaptionsLanguageConfig.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			I0SbQUX8ttZWCr/hg1uxOfCJWcrwj7sxj1xw2wuUbZQ=
+			</data>
+		</dict>
+		<key>Headers/ZMCCSubtitlesContainer.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			aE6+uR32SCR6E9reiKPEmU75Xn730EAZG+f5OIiC/ss=
+			</data>
+		</dict>
 		<key>Headers/ZMChatUIInterfaceProtocol.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			OucIUw7zTVKkd4nToWfSd2KBewqD9dgyzA2jP1SGqTA=
+			wTJ8xEM02BlDlvEbpWf0JS1H4D5q8QIh9B9SEA2YbTQ=
 			</data>
 		</dict>
 		<key>Headers/ZMClinicalNoteInfo.h</key>
@@ -743,14 +911,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rWmO/cxr8p9JdhqpJVwclrgjKspvKVqR1M1wLkQo0Dc=
+			J9KY1LUUYhIwQWZPz0io/MvPFKpvqHd7zYDKii/j5jg=
 			</data>
 		</dict>
 		<key>Headers/ZMConfBaseSinkAdapter.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rSBKYbB2eKzJI/63qfFNLcd3hVOlbMK9IHQZCPkZRug=
+			cysFVPBWLiqfc1alCcWJngj+KKIridngpDC43DW3fqM=
 			</data>
 		</dict>
 		<key>Headers/ZMConfCallbackDispatcherHelper.h</key>
@@ -764,14 +932,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xagHxujA/wpjnhyp0BSatTfTG/6Chiapq7H9E7vXDyM=
+			xV39e2vOkdvR/Xc87MXQ4RcWf785+JbIM/uKm93Cvk8=
 			</data>
 		</dict>
 		<key>Headers/ZMConfSession.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ziBKjo3WkVQQfM9s22qKLk4b1MVmGlWark+6vBUaXgU=
+			AJqx7mSJVZxz4bAfbfrlh5JAFJ1r5dhLV7W+C+Au+is=
+			</data>
+		</dict>
+		<key>Headers/ZMDocHelper.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3sxEbh1QJPKHlLp3eIXS+KoE3w2mtTY/xCpd1HfjsOI=
 			</data>
 		</dict>
 		<key>Headers/ZMDocShareSource.h</key>
@@ -820,7 +995,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Y9o7zn/zx4aOGkvCImVV+GGoo3IfiXch98BrkRZHoQ8=
+			6Eh2h18fvoKypvCA9w6oSbxmkf24CYlVlrJynv7GvRc=
 			</data>
 		</dict>
 		<key>Headers/ZMInterpreter.h</key>
@@ -844,6 +1019,13 @@
 			qb0MnQV+6fOSFbmEvtuX6Wq2EtokDrkuBMF3/5sFI5M=
 			</data>
 		</dict>
+		<key>Headers/ZMMTAnnotationHelper.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			je60E9X93WJiqB589Yt3yYmI0coHXQMqYJMzmNd0Eos=
+			</data>
+		</dict>
 		<key>Headers/ZMMTArchiveHelper.h</key>
 		<dict>
 			<key>hash2</key>
@@ -855,7 +1037,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			y39OUM/5+HBHvaSoNRE4JX8Umcg/Q9bWFjvy0irR+zw=
+			P0HPfkJd6XWb2HCb7mXqQlNqY7MAZLDOTV6cot8q2j0=
 			</data>
 		</dict>
 		<key>Headers/ZMMTAudioUUIHelper.h</key>
@@ -872,18 +1054,39 @@
 			WeO8T/s3MwFqGiM9bv2vKhvrm3MQDhv04+5qbniOBwo=
 			</data>
 		</dict>
-		<key>Headers/ZMMTBadgeView.h</key>
+		<key>Headers/ZMMTAvatarView.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			T4KrCwtrJFVAD5EBlBLllkuZg0o/4g6fWgHFHNWO60k=
+			jPi+/J0eOLmK0Yuo/mbo5h7hKmPCBXUi3YKS0jOgME4=
+			</data>
+		</dict>
+		<key>Headers/ZMMTAvatarViewProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qL85Vp7dkQ2g6OaKDMCr0pnfe0NStfZ1J52oYrBUS2Y=
+			</data>
+		</dict>
+		<key>Headers/ZMMTBOBroadcastVioceButton.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			rIJzBpOKgoSesm0eG1b86q+OU5/JkmEIl2oq67qBciI=
+			</data>
+		</dict>
+		<key>Headers/ZMMTBORoomModel.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			pHVopTku8RLI3szvzsvyNrgkOktesajEQzsmMISspzc=
 			</data>
 		</dict>
 		<key>Headers/ZMMTBaseVideoCellView.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			j1208wVDZy0he2QVV4oJrOAWPS33gnOKUagtDMzPN1E=
+			l8w4f4jv+HyXoVIk/6vmtkTlkxScxAb/nQuFa19OiL0=
 			</data>
 		</dict>
 		<key>Headers/ZMMTBaseView.h</key>
@@ -904,7 +1107,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+7kG6Ev1Z9PFJuitbsr9O/deY1UEDp5YsWZu0cDpU44=
+			ILjlSu5gjwsyAH+HE6djC9oHWTJj1c+bVAHNV70BBiA=
 			</data>
 		</dict>
 		<key>Headers/ZMMTCallCenter.h</key>
@@ -925,7 +1128,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bp0dg0fiFyM2X9yEHrr/7tenbtcgIR3Mq95thctFfqs=
+			c4pmUJSODQ7uqJhHR9EsEhpk+WxYjsgW/NBRBHxHZSU=
+			</data>
+		</dict>
+		<key>Headers/ZMMTCheckboxItemView.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			eKWMyh90eTd/WWft1Q3ZM7Xq+G53+X9k84lOw40LmFU=
 			</data>
 		</dict>
 		<key>Headers/ZMMTClinicalNoteHelper.h</key>
@@ -946,14 +1156,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8gL8GHMDb1fl3oQcJZG6852VwKshVCEq/FCBhqK0pQ8=
+			oE1GMPec+IETqwReQZXpFOCX6yBpUyqWHb2ZDERhY0M=
 			</data>
 		</dict>
 		<key>Headers/ZMMTConfInstSink.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fCbwwDtpgHODh70ORYG5IxVdhP9QpGNQDbYlBkZq+K0=
+			j3FLO0NsHYc3vo8bO9ZR5lSomdzMPPWMo6jHBHv1xYo=
 			</data>
 		</dict>
 		<key>Headers/ZMMTConfMgrEventSink.h</key>
@@ -967,7 +1177,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			89OA2FW/QOnkTLwgYp3jDx43PWmEJVItrRxdoBrC+Fs=
+			Z30vTCehs6Gw9FcIeJ7lRR4LYQ4OYkKwvWmGUx8KZuM=
 			</data>
 		</dict>
 		<key>Headers/ZMMTConfUniversalUISink.h</key>
@@ -981,14 +1191,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			95mPwXeNnRupI/wzAf04VMxt854OwW+v3nklZWeCjt4=
+			Gydaw3kcRuZPDeM1q3oxHF2FeM/JhThXg7gTORekedk=
 			</data>
 		</dict>
 		<key>Headers/ZMMTConstants.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6klZBQUm49kKOV555usXFpV+1TVypIDfXGL/ASzKfW8=
+			NEVjxnY3P5FV+BMFxCWmF6OLVI0qMLIMXMQmh8BjsD0=
+			</data>
+		</dict>
+		<key>Headers/ZMMTCustomRecordingInfo.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			RiNxGiEm2QjDa5shcprOQWyT/hQmDDSsZ56t6on9qgA=
 			</data>
 		</dict>
 		<key>Headers/ZMMTCustomTextView.h</key>
@@ -1002,7 +1219,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nMHfaG27NfmnGqPlsdzSeFyWX2HrurA8fmS0+g0SBZI=
+			D4s0J+G+WO8eZrbqEaStLzwZHQE6xrRtv9cb1tWOHMY=
+			</data>
+		</dict>
+		<key>Headers/ZMMTDisclaimerSink.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0bhz7DkhiMR2UM/fDNzfm7dVd9usrWmXlwqzn6+tDUI=
+			</data>
+		</dict>
+		<key>Headers/ZMMTDisclaimerStringSink.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1lkfRlVnRAuRVWVW+oLoHIQRKhF6HvWdMVob94NRL+c=
+			</data>
+		</dict>
+		<key>Headers/ZMMTDocSharePickerEmptyStateStrings.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Ok7LhraRnQvBQUmbsf2Yo8wHHtuq8sKTvwM2xadNOjg=
+			</data>
+		</dict>
+		<key>Headers/ZMMTDocSharePickerRecentFileItem.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ZDnFxUcDhQEnerlaxbQvRIwDvQNN21hD6UwbNjVx5oI=
 			</data>
 		</dict>
 		<key>Headers/ZMMTDynamicLayoutModel.h</key>
@@ -1016,7 +1261,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			2iJV6QDJRQkxqsJ5ICEICNfE/5icGRs1UFqG3t1z6Ts=
+			70Cu3sFwrKBzZ2DBFCXcMo3cHTO8xVYDbPjmdH9lGYE=
 			</data>
 		</dict>
 		<key>Headers/ZMMTFeatureMgrSink.h</key>
@@ -1058,7 +1303,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+Bzf2z5dvKIEQNiO9BfMKlKoAxQBwEkQTCfSEA5djBc=
+			r0qJFrgjeoBZqUm0qGBRbbG4Dh+sAw8fW/eoSbrvnDw=
+			</data>
+		</dict>
+		<key>Headers/ZMMTHeightCalculableProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6/E++ftm3wz3V500hoDGz4XyLTVRnUTVe9FUSBfRaC4=
 			</data>
 		</dict>
 		<key>Headers/ZMMTImageView.h</key>
@@ -1096,6 +1348,13 @@
 			QvWv9p/EEGMdVzXpp7/scFFP+H4L5tfcPjjBIYnKsAk=
 			</data>
 		</dict>
+		<key>Headers/ZMMTMessageTextView.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qtcJ11s2Qg2EPMwrrMwl+jXBbF58OQheRjkz+giPoyg=
+			</data>
+		</dict>
 		<key>Headers/ZMMTModuleProtocol.h</key>
 		<dict>
 			<key>hash2</key>
@@ -1103,18 +1362,32 @@
 			aaFsiJs0uRduFFE/MkVBHVjQmNpjhEOp+GNKRv7x5m8=
 			</data>
 		</dict>
+		<key>Headers/ZMMTMultipleSelectTableView.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9hIT4T1s74uQm96+T6N7idIsOwrG70yStZZIRVkA8Uk=
+			</data>
+		</dict>
+		<key>Headers/ZMMTMultipleSelectTextAdapter.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			lwHAyEZ/ITcuMeK0VswfwULou/fm1RwjD7veTHKBrtU=
+			</data>
+		</dict>
 		<key>Headers/ZMMTNewTranscriptHelper.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EpFrxBsYHxiqWR2CdzSvtELxvlx5rJ1GeDUTsEr3wRA=
+			6gvQHWYyn31IPBPBf50TdYHyKVvxZNGbRkO47356TaQ=
 			</data>
 		</dict>
 		<key>Headers/ZMMTOnlineBusinessHelper.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			gdYh5qYqeLSmYM0lkCZIdiERYIQsA/Q0zk6bPIuTKKM=
+			NOjUnUd8/xFiTyZQCNPp0a19mya/Tz54HxNIemqCkeU=
 			</data>
 		</dict>
 		<key>Headers/ZMMTOnlineBusinessProtocol.h</key>
@@ -1122,6 +1395,13 @@
 			<key>hash2</key>
 			<data>
 			v52CsHkNI7iBCHJZG2kOL5QKPiEEc9N5CTCV7Q0kfuM=
+			</data>
+		</dict>
+		<key>Headers/ZMMTPageButton.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			krYvDRswCFcUtQXHNX+sV3ouAgNr8X9JVaAVyXYAr18=
 			</data>
 		</dict>
 		<key>Headers/ZMMTPageVideoView.h</key>
@@ -1149,7 +1429,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			OPPmeDnj8zIZ71XNF/d0/jeelZTIPtwahIHTJnPk/Qg=
+			2DpHiNfnqj8QLhjbByAmosaDdfME0502eFEJ+Xnac9Y=
 			</data>
 		</dict>
 		<key>Headers/ZMMTReactionHelper.h</key>
@@ -1157,6 +1437,20 @@
 			<key>hash2</key>
 			<data>
 			k/UeBNa04cZUminuI629Hm4OIM4TOzZX8FOPEa7EvQQ=
+			</data>
+		</dict>
+		<key>Headers/ZMMTRemoteControlHelper.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			o4erDbQHCXzr4BLWhw603NZAnDi3kt/w9UTtY8XHlhk=
+			</data>
+		</dict>
+		<key>Headers/ZMMTRemoteSupportHelper.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			FTTsQFaS+riINV7uSP8UbuYAPFFs5Q0jp3UAiyLq8Aw=
 			</data>
 		</dict>
 		<key>Headers/ZMMTRender.h</key>
@@ -1180,6 +1474,13 @@
 			sd/lm0f4j8jCp07nThJ5DFGFTbX061FNARrM2dpVLyY=
 			</data>
 		</dict>
+		<key>Headers/ZMMTSelectableTextItemProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			H4rq3RzEgYGrhfJvCU0VZHbVnE/5xbFXeXyLGfnRzNc=
+			</data>
+		</dict>
 		<key>Headers/ZMMTSessionManager.h</key>
 		<dict>
 			<key>hash2</key>
@@ -1191,28 +1492,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			iQevnchyc4PqS9Ko32x+IHqPh1VCjbgHL1GF7og1xeA=
+			j8zg+RxWWjFN+qN72bN5nxH8CCUKyto5nNZb6nU6y68=
 			</data>
 		</dict>
 		<key>Headers/ZMMTSettingProtocol.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			E2znp/CW+q/nYlbHoPc1YpNRQ+i4SGm+c2OAyVO8vRY=
+			nirBpFq/fUjjSSL6+FJ5A8lhn7vR/Una4s+3v4Ncjs4=
 			</data>
 		</dict>
 		<key>Headers/ZMMTShareHelper.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3HV1gF+X5lGBsY5fv/WMBWejMdN5Bv6zsdGCu6VtjF0=
+			KNJBrc8wWpzECWbWBSXF1TEMJpjuvQZR+GQ2SuI4p20=
 			</data>
 		</dict>
 		<key>Headers/ZMMTShareStatusProtocol.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mn2RrjpP4d9B/GxTZF+fos3wd+SDeS1ZMYgtW41i++o=
+			y/bAIH+qQiAOAstdbf9L6xFWGVOPCjVLrVOeIOIJVCo=
 			</data>
 		</dict>
 		<key>Headers/ZMMTShareWatermarkOption.h</key>
@@ -1233,7 +1534,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9YSAp1v68vDryneXjQe9dJDSe7WLTw2Z5TmhXyluDYU=
+			JB40HRAtHYbHYxf2nAKfOwAktpZIQ1DMqLXfEA/btu0=
+			</data>
+		</dict>
+		<key>Headers/ZMMTSlideControlHelper.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			wIyyy4unFuNYV+WDUg/1O2QrFEAzMJz2zyZrOVwAZm8=
 			</data>
 		</dict>
 		<key>Headers/ZMMTSummaryHelper.h</key>
@@ -1243,18 +1551,32 @@
 			OOfp8jw1DQRYGc980uk21tWuByxqKRmvDt2zXQxNcSg=
 			</data>
 		</dict>
+		<key>Headers/ZMMTSwitchItemView.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			rTuIS3ehA2M+Y7U/QQZIrWqgXFt0eXixBzHXioO3NfE=
+			</data>
+		</dict>
+		<key>Headers/ZMMTTableViewRowHeightCalculator.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yjvbw2rScmHF6dmbYUIZ/1U9rRFylR9uAFr6E3JSPfM=
+			</data>
+		</dict>
 		<key>Headers/ZMMTThumbnailView.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			+eZQnDguwOFLh2gTM357Vqlrno36FUoAhsqWx1RHa4U=
+			WAbuMroUEhmsKby9lbBG89iJ2YMe4ICsTylRCmOuu0I=
 			</data>
 		</dict>
 		<key>Headers/ZMMTToolbarTipEventsProtocol.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Q6Tltdyc9F4eEcltRuQ2jcfalulHU21FHjDoeb08Km4=
+			t3Gw5jwhJwYv7O8vxy3yBAu7iwaP38LfYT1gZbGPu7s=
 			</data>
 		</dict>
 		<key>Headers/ZMMTTrackingView.h</key>
@@ -1269,6 +1591,55 @@
 			<key>hash2</key>
 			<data>
 			be6HtJp+JnfmLcboIN2eyp/XZqBFEc9DWU2icHTobVc=
+			</data>
+		</dict>
+		<key>Headers/ZMMTTranscriptMessage.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			nlkObPbz0AZae5ieHn/LSydjGQczXoMRUduJWoIZ5YY=
+			</data>
+		</dict>
+		<key>Headers/ZMMTTranscriptStatusCellView.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ib7c32oC0EmAKpQnoKG3OHAJiXAb2DvyI7VbP/OqOZw=
+			</data>
+		</dict>
+		<key>Headers/ZMMTTranscriptTextCellView.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			a4hxHgnamEXj4kpnWPOqFum1g0ZmyF7SbuZQOlKrGOw=
+			</data>
+		</dict>
+		<key>Headers/ZMMTTranscriptTextSearcher.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KS5xSUXf8CuTyE7F0LE8uSrO4AeJh9dpP5MDbF15bqI=
+			</data>
+		</dict>
+		<key>Headers/ZMMTTranscriptUser.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			f4hwchvPansS1r/+mc4uQygmbKJ+uiDolDoCOx7nVrI=
+			</data>
+		</dict>
+		<key>Headers/ZMMTTranscriptUserInfoCellView.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kT/PyHWSrrR7LGQ2O/ugrRgJiHkHsTUbZGQrcks95fA=
+			</data>
+		</dict>
+		<key>Headers/ZMMTTranscriptViewController.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			OhivBrCC0D9COZvQDqanf7jhZtAe9yxy/PtkIPG3/pU=
 			</data>
 		</dict>
 		<key>Headers/ZMMTTransitionMgr.h</key>
@@ -1303,14 +1674,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yaoN40bVd8UTT6WJoaMFlvuu85jv/XCFkB8pHwoZjNg=
+			7nhjgDe/r5wXEi357hD//4pZv6eVNpMXLpa8uq8evD0=
 			</data>
 		</dict>
 		<key>Headers/ZMMTVideoCellView.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7NZ9A5AqXyHlvn94Rf3TvrqjFjE8noRTBBLv5qAP2Xs=
+			mbom4jnjvYsGrJYm3ySZGHw2CF+GUT8thLX9CTwEP0A=
 			</data>
 		</dict>
 		<key>Headers/ZMMTVideoPlayControl.h</key>
@@ -1324,7 +1695,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			z/1aO4y1mgKr2aIs4n8Hfho4NEPk6CAzX1L0yh1ms5E=
+			aai4V0oR8buEHI0xOhcxbBgPx3WhsMdG9uVvROztkb8=
 			</data>
 		</dict>
 		<key>Headers/ZMMTVideoView.h</key>
@@ -1366,7 +1737,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			wtbg93CaNE2VXc6pJnqUx2qHQILpLCT0CGbkkJt+mPU=
+			2ev6hhjiAB8w6oelBgOOuhT0DFsZlmzhTyqvUioAOMk=
 			</data>
 		</dict>
 		<key>Headers/ZMMTWindow.h</key>
@@ -1383,11 +1754,39 @@
 			ZCkPc3K3GZVSleNIgTMRsAGS4HwLyeYN1PTz7QpgHEs=
 			</data>
 		</dict>
-		<key>Headers/ZMMeetingStatusProtocol.h</key>
+		<key>Headers/ZMMenu.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fEhY/cZl0ELVnV60Y/R90BHEReIkTraLDKRa62TipDQ=
+			PYtJZ5U9d2sO5QGXjFB2wN5U24enUJEhh9SWyLVc25g=
+			</data>
+		</dict>
+		<key>Headers/ZMMenuItem.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			pajqB1F5Fti4qYZ4jpA+9p50eieKTxg4PzmZTAz/eB8=
+			</data>
+		</dict>
+		<key>Headers/ZMMenuWindow.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			com2HOsfVdPFL8ontoIzi/Dokm+/zePd31OIVpgFqAM=
+			</data>
+		</dict>
+		<key>Headers/ZMMultiConfEventDelegate.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HRXSBuV/CU7n9secExsNbzbgs3EoEAMXm/FmM+a09sM=
+			</data>
+		</dict>
+		<key>Headers/ZMMultipleSelectCellViewProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			XcxJ0TzsC/ube3HousBaDZT2EaoEDykeVuBJMreo7TM=
 			</data>
 		</dict>
 		<key>Headers/ZMNsMenu.h</key>
@@ -1425,6 +1824,13 @@
 			F51NsG0dQgtcbU8EO41Pd+Vj2YAQD+w0YHtg9C9txU0=
 			</data>
 		</dict>
+		<key>Headers/ZMPollingProtocol.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			h8VJ8h36It2ENLnzIqNnMBhVoz/hYNXLH/Z2ABBvlEQ=
+			</data>
+		</dict>
 		<key>Headers/ZMQueryResponse.h</key>
 		<dict>
 			<key>hash2</key>
@@ -1443,7 +1849,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9awsZMc8nqd0ab3fGlujUdUQt9mbayU5K6PSwWc2BdE=
+			IW0rN2WTxdU4fQlMIpwZGcyf9zF+FM2Wm2DU7TPnuLg=
 			</data>
 		</dict>
 		<key>Headers/ZMSharePort.h</key>
@@ -1488,6 +1894,13 @@
 			vlDYI0ktiTgr1aRVkqIr+0uLH07shuvnMzYPX5HeoL4=
 			</data>
 		</dict>
+		<key>Headers/ZMStepperButton.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			JOH9RqNM5+tLmi4AAvDMERDoYQKCnSbOrEdXYHa4a+c=
+			</data>
+		</dict>
 		<key>Headers/ZMTimerMgr.h</key>
 		<dict>
 			<key>hash2</key>
@@ -1513,14 +1926,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			elv0tig5SKaTMWZVtu7Etc0bsgThqoe1SBvWUVs68j4=
+			hqIA2HEttvOVCtDkRlXCztxnp6oSeTh13mlAD03Nmj0=
 			</data>
 		</dict>
 		<key>Headers/ZMUIConstants.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2+CYWqkM6fPk1AWGz59iEOLGjsDzb0xkfXM6aMntpFs=
+			vzgyOsd+gqrVo2EbBnYWb2DQI5Jx90jFwyqCu3CRjdw=
+			</data>
+		</dict>
+		<key>Headers/ZMUser+AppTag.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9V+XXIyT41ERrxZ4mwUkN9IOYi1wuA8XGFW/tJOiOYI=
 			</data>
 		</dict>
 		<key>Headers/ZMUser+Clips.h</key>
@@ -1548,42 +1968,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FZWKrIaaqrignb+ct7MM9EgJhFLNOh1aFGMQafVZGW4=
+			HAia/MRdTVpxwGv8o1hyeEn+NIENVzXY41U66RPlENM=
 			</data>
 		</dict>
 		<key>Headers/ZMUser.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xLSlSw+RrTxZ7cRmj2Fa4NHvCBeR/wKnn6aaFc4rvD4=
+			/SaVwH60iy9eKyoZxpyXJn4zcUZJ06oxw5qRbifV4bE=
 			</data>
 		</dict>
 		<key>Headers/ZMVideoHelper.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			bz6I8GdBdTqjJ3Y0H7YuZFCwRW/AYHpEQvp+tYfBSfc=
+			/Z/tQbD4l7DYcclKM/g58WngIZtD0/5lrs07YOoRR8Q=
 			</data>
 		</dict>
 		<key>Headers/ZMVideoUIBridgeProtocol.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TJYR1fZCl1vKM8ssR2Vvldg6wuWQaKjiElAfc4VPZaA=
+			eNkzj6nRSeyMs78KmV2A7obPeXlmoOdnPPRhKoewT30=
 			</data>
 		</dict>
 		<key>Headers/ZPConfEventHandler.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FcrvWRCiSUA+FY0lQDlazjUdiYQp8Zdnalzp/YLkujQ=
+			dVAR6TaQOmoWgENGSyCzwucgKCupW90Y4+12KWbV5O8=
 			</data>
 		</dict>
 		<key>Headers/ZPConfHelper.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/T0OTxyw2pPhlD/P+vnCNsG68tnUq69KH2kIj2bnqNk=
+			+RQpVSKzgEaLoGob55nbCMzMg/j6i//1qtMhfYgP/iQ=
 			</data>
 		</dict>
 		<key>Headers/ZPConfUIConstants.h</key>
@@ -1597,14 +2017,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PMulij/Yx7RZULpyZdguKuIWZWx6EVajpYeIUeZk4X0=
+			w3leOVhGHpYp2PJriOSNYZhfkLIcN0WJaqrM3kQLNFo=
 			</data>
 		</dict>
 		<key>Headers/zVideoUIBridge.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Lmbj2u1Bltkf6PjOAOKg3d5jsHcPo2FbqT+3kcj719s=
+			Zd376bM31VqZ55NcL2hFYHl3EYFIiu9snIz0FWsvDSU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -1632,14 +2052,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			POAVsOlbcSAnrGY0UHYzjzAa55lpzfTTQKseB1fUA1g=
+			Jem7KUNFvyAPqbFjCP2sMJvRB0q1LI46CtIoIw//F70=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			dorSR3edFmTivf2fohhxFv16yNWjhp4gkvBAVO1vR30=
+			vgiuwoLsKFQAAr9iAl67DSIXZu6NCDbiqXQk5KjFti4=
 			</data>
 		</dict>
 	</dict>

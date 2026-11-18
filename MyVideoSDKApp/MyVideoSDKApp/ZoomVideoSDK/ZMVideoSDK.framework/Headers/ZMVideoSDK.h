@@ -31,9 +31,12 @@
 #import <ZMVideoSDK/ZMVideoSDKCRCHelper.h>
 #import <ZMVideoSDK/ZMVideoSDKAnnotationHelper.h>
 #import <ZMVideoSDK/ZMVideoSDKLiveTranscriptionHelper.h>
+#import <ZMVideoSDK/ZMVideoSDKVoiceInterpretationHelper.h>
 #import <ZMVideoSDK/ZMVideoSDKSubSessionHelper.h>
 #import <ZMVideoSDK/ZMVideoSDKBroadcastStreamingController.h>
 #import <ZMVideoSDK/ZMVideoSDKBroadcastStreamingViewer.h>
+#import <ZMVideoSDK/ZMVideoSDKEmojiReactionHelper.h>
+#import <ZMVideoSDK/ZMVideoSDKOnHoldHelper.h>
 #import <ZMVideoSDK/ZMVideoSDKRTMSHelper.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -208,6 +211,23 @@ NS_ASSUME_NONNULL_BEGIN
  * @brief Whether to automatically load multi streams when entering a session, default value is YES, optional.
  */
 @property (nonatomic, assign, readwrite) BOOL autoLoadMutliStream;
+/**
+ * @brief [Optional] The frame data format used for external video source initialization.
+ * @note Effective when externalVideoSource is set. Default is ZMVideoSDKFrameDataFormat_I420_Full.
+ */
+@property (nonatomic, assign, readwrite) ZMVideoSDKFrameDataFormat externalVideoSourceDataFormat;
+@end
+
+/**
+ * @class ZMVideoSDKPreJoinParam
+ * @brief Pre-join parameters for the two-step join flow.
+ * @note When timeoutInterval is 0, the SDK defaults to 30 seconds. Valid non-zero values are 1 to 60 seconds.
+ */
+@interface ZMVideoSDKPreJoinParam : NSObject
+/**
+ * @brief The prepare join wait time in seconds. 0 uses the SDK default.
+ */
+@property (nonatomic, assign) NSUInteger timeoutInterval;
 @end
 
 
@@ -256,7 +276,29 @@ NS_ASSUME_NONNULL_BEGIN
  * @return If the function succeeds, it returns the session object. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKSession* _Nullable)joinSession:(ZMVideoSDKSessionContext*)params;
-    
+
+/**
+ * @brief Pre-joins a session in the two-step join flow. Call commitJoin to confirm or cancelPrepareJoin to cancel.
+ * @param params The session context parameters.
+ * @param preJoinParam The pre-join parameters. Do not pass nil; set timeoutInterval to 0 to use the SDK default. Valid non-zero values are 1 to 60 seconds.
+ * @return If the function succeeds, it returns a ZMVideoSDKSession object. Otherwise, this function fails and returns nil.
+ * @note This API is intended for joining a session that has already been started by a host. If no host has started the session, this call fails.
+ */
+- (ZMVideoSDKSession* _Nullable)prepareJoin:(ZMVideoSDKSessionContext*)params preJoinParam:(ZMVideoSDKPreJoinParam*)preJoinParam;
+
+/**
+ * @brief Confirms the join after prepareJoin:preJoinParam:. Valid in the two-step join flow.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
+ * @note If the commit fails asynchronously, onError is triggered.
+ */
+- (ZMVideoSDKErrors)commitJoin;
+
+/**
+ * @brief Cancels the prepare join. Valid in the two-step join flow.
+ * @return If the function succeeds, it returns ZMVideoSDKErrors_Success. Otherwise, this function returns an error.
+ */
+- (ZMVideoSDKErrors)cancelPrepareJoin;
+
 /**
  * @brief Leaves a session previously joined through joinSession method call. When successful, the SDK attempts to leave a session. Use the callbacks in the listener to confirm whether the SDK actually left.
  * @param end YES if the host should end the entire session, or NO if the host should just leave the session.
@@ -391,6 +433,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (ZMVideoSDKLiveTranscriptionHelper*)getLiveTranscriptionHelper;
 
 /**
+ * @brief Gets voice interpretation helper object.
+ * @return If the function succeeds, it returns a ZMVideoSDKVoiceInterpretationHelper instance. Otherwise, this function fails and returns nil.
+ */
+- (ZMVideoSDKVoiceInterpretationHelper*)getVoiceInterpretationHelper;
+
+/**
  * @brief Gets incoming live stream helper object.
  * @return If the function succeeds, it returns a ZMVideoSDKIncomingLiveStreamHelper instance. Otherwise, this function fails and returns nil.
  */
@@ -414,6 +462,18 @@ NS_ASSUME_NONNULL_BEGIN
  * @return The broadcast streaming viewer object if available. Otherwise, this function fails and returns nil.
  */
 - (ZMVideoSDKBroadcastStreamingViewer* _Nullable)getBroadcastStreamingViewer;
+
+/**
+ * @brief Gets the emoji reaction helper object.
+ * @return The emoji reaction helper object if available. Otherwise, this function fails and returns nil.
+ */
+- (ZMVideoSDKEmojiReactionHelper* _Nullable)getEmojiReactionHelper;
+
+/**
+ * @brief Gets the OnHold helper.
+ * @return The OnHold helper if available. Otherwise, this function fails and returns nil.
+ */
+- (ZMVideoSDKOnHoldHelper* _Nullable)getOnHoldHelper;
 
 /**
  * @brief Returns an instance to manage RTMS (Real-Time Media Streams) during a video SDK session.

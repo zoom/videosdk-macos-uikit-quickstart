@@ -11,50 +11,50 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Frameworks/libavcodec.59.dylib</key>
+		<key>Frameworks/libavcodec.61.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			mJGzx9Q3em0/OsNSM8AkUvjBHAo=
+			NfJQrDHjjX/lk92aT1H4VASaWeQ=
 			</data>
 			<key>requirement</key>
-			<string>identifier "libavcodec.59" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
+			<string>identifier "libavcodec.61" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
 		</dict>
-		<key>Frameworks/libavformat.59.dylib</key>
+		<key>Frameworks/libavformat.61.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			pe8O8iyfHA7rOC2nxM4TX+VUlrk=
+			d4I4CVi9fG5hzr4yDTtbpRVZ/zw=
 			</data>
 			<key>requirement</key>
-			<string>identifier "libavformat.59" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
+			<string>identifier "libavformat.61" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
 		</dict>
-		<key>Frameworks/libavutil.57.dylib</key>
+		<key>Frameworks/libavutil.59.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			FLFbm8Zs3TNxIaok90ogPlPtIyg=
+			AlK3PEcE+a2xSk0uM+oNDbTgI8Y=
 			</data>
 			<key>requirement</key>
-			<string>identifier "libavutil.57" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
+			<string>identifier "libavutil.59" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
 		</dict>
-		<key>Frameworks/libswresample.4.dylib</key>
+		<key>Frameworks/libswresample.5.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			5RKbDG8CrdVqv6GWchJ6ejRlm5A=
+			Zh3jab8wa9eft1Y9AqVC2TYxvZ4=
 			</data>
 			<key>requirement</key>
-			<string>identifier "libswresample.4" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
+			<string>identifier "libswresample.5" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
 		</dict>
-		<key>Frameworks/libswscale.6.dylib</key>
+		<key>Frameworks/libswscale.8.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			XLtHJXeqtEYyAB6RhDodNM5I23w=
+			bhJ8mgcNFjCRbhLgwmgb4S8V4eU=
 			</data>
 			<key>requirement</key>
-			<string>identifier "libswscale.6" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
+			<string>identifier "libswscale.8" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = BJ4HAAB9B3</string>
 		</dict>
 		<key>Resources/default.metallib</key>
 		<dict>

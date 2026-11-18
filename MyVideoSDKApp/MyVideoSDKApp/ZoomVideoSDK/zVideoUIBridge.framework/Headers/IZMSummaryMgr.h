@@ -45,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onSummaryFeatureOnStatusChanged:(BOOL)summaryEnabled;
 
 - (void)showSmartSummaryDisclaimerIfNeed;
+- (void)showSmartSummaryDisclaimerIfNeedSkipAICStartTip:(BOOL)skipAICStartTip;
 - (void)showSmartSummaryDisclaimer;
 - (void)closeSmartSummaryDisclaimer;
 - (void)closeAllPanel;

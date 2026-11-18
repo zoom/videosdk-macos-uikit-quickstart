@@ -19,6 +19,7 @@ API_AVAILABLE(macos(10.13))
 
 @property (nonatomic, copy) NSString *urlScheme;
 @property (nonatomic, assign) NSInteger appType;
+@property (nonatomic, assign) BOOL enableStreamMode;
 @property (nonatomic, strong) NSMutableDictionary* storedRequestBodies;
 @property (nonatomic, strong) NSURLSession *session;
 

@@ -45,6 +45,21 @@
 
 @property (nonatomic, strong, readonly, nullable) NSImageView *imageView;
 @property (nonatomic, strong, readonly, nullable) NSTextField *nameField;
+@property (nonatomic, strong, nullable) NSImage *staticContentGlyphImage;
+/// Uses the 100x110 narrow tile layout instead of the regular wide tile layout.
+@property (nonatomic, assign) BOOL narrowTile;
+
+/// Optional 16×16pt prefix icon shown on the leading side of the label row
+/// (e.g. host-app icon for Windows tiles). `nil` collapses the slot so the
+/// label centers as a single column. KVO-compliant — cells bind it via
+/// `[selectView bind:@"prefixIcon" toObject:model withKeyPath:@"…"]`.
+///
+/// Why not expose `prefixIconView` for direct `bind:NSValueBinding`? Cocoa
+/// Binding on `NSImageView.image` updates the ivar through a private
+/// `_NSObservedObject` channel that bypasses `setImage:`, so the host view
+/// has no hook to refresh stack visibility. Routing through this property's
+/// setter is the only reliable trigger.
+@property (nonatomic, copy, nullable) NSImage *prefixIcon;
 
 @property (nonatomic, assign, readwrite) BOOL selected;
 @property (nonatomic, assign, getter=isValid)   BOOL valid;
@@ -52,6 +67,8 @@
 @property (nonatomic, weak, nullable) id<ZPShareSelectViewDelegate> viewDelegate;
 
 - (void)cleanUp;
+- (BOOL)isOverlayMenuVisible;
+- (void)closeOverlayMenuIfNeeded;
 - (void)setMoreButtonAccessibilityTitle:(NSString *_Nullable)accessibilityTitle;
 - (void)setHelpString:(NSString *_Nullable)helpString;
 - (void)setHelpAttributedString:(NSAttributedString *_Nullable)helpAttributedString;

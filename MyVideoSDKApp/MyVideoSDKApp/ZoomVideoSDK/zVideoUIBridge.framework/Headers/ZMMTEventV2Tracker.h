@@ -29,6 +29,14 @@ typedef NS_ENUM(NSInteger, ZMMTFeatureName) {
     ZMMTFeatureNameMeetingJoinFlow,
     ZMMTFeatureNameProductionStudio,
     ZMMTFeatureNameTheme,
+    // MARK: - Audio Echo Dialog (ZOOM-1119777)
+    ZMMTFeatureNameZrCompanion,
+    // MARK: - Reaction Redesign Telemetry
+    ZMMTFeatureNameReactions,
+    // MARK: - Breakout Rooms Right Panel (ZOOM-1272351)
+    ZMMTFeatureNameBreakoutRooms,
+    // MARK: - AWDL in-meeting toast (ZOOM-1242332)
+    ZMMTFeatureNameNotice,
 };
 
 typedef NS_ENUM(NSInteger, ZMMTEventType) {
@@ -37,6 +45,8 @@ typedef NS_ENUM(NSInteger, ZMMTEventType) {
     ZMMTEventTypeScreenDisplayed,
     ZMMTEventTypeDragged,
     ZMMTEventTypeKeyboardShortcut,
+    // MARK: - Reaction Redesign Telemetry
+    ZMMTEventTypePageLoad,
 };
 
 typedef NS_ENUM(NSInteger, ZMMTSubFeatureName) {
@@ -44,6 +54,8 @@ typedef NS_ENUM(NSInteger, ZMMTSubFeatureName) {
     ZMMTSubFeatureNameClipsShare,
     ZMMTSubFeatureNameAppDiscovery,
     ZMMTSubFeatureNameLogin,
+    // MARK: - Breakout Rooms Right Panel (ZOOM-1272351)
+    ZMMTSubFeatureNameRightPanel,
 };
 
 typedef NS_ENUM(NSInteger, ZMMTEventSource) {
@@ -63,6 +75,21 @@ typedef NS_ENUM(NSInteger, ZMMTEventSource) {
     ZMMTEventSourcePsCloseConfirmWindow,
     ZMMTEventSourcePsTakeoverConfirmWindow,
     ZMMTEventSourceTopBadgeBar,
+    // MARK: - Audio Echo Dialog (ZOOM-1119777)
+    ZMMTEventSourceUltrasoundFeedbackZrEchoDialog,
+    ZMMTEventSourceUltrasoundFeedbackSameMeetingWithZrDialog,
+    // MARK: - Reaction Redesign Telemetry
+    ZMMTEventSourceQuickReactionPanel,
+    // MARK: - Share Picker Refresh (ZOOM-1235865)
+    ZMMTEventSourcePermissionSettingWindow,
+    ZMMTEventSourceReactionPanel,
+    ZMMTEventSourceMorePanel,
+    ZMMTEventSourceEffectiveMorePanel,
+    // MARK: - Breakout Rooms Right Panel (ZOOM-1272351)
+    ZMMTEventSourceBreakoutRoomsPanel,
+    // MARK: - AWDL in-meeting toast (ZOOM-1242332)
+    ZMMTEventSourceTopRightToast,
+    ZMMTEventSourceVideoPort,
 };
 
 typedef NS_ENUM(NSInteger, ZMMTEventLocation) {
@@ -97,7 +124,45 @@ typedef NS_ENUM(NSInteger, ZMMTEventLocation) {
     ZMMTEventLocationTakeOverFirstConfirmButton,
     ZMMTEventLocationTakeOverSecondConfirmButton,
     ZMMTEventLocationViewButton,
+    ZMMTEventLocationVideoMenuButton,
+    ZMMTEventLocationSelfViewControlButton,
     ZMMTEventLocationAppsDropdown,
+    ZMMTEventLocationAccountInfo,
+    ZMMTEventLocationAccountInfoJoinButton,
+    ZMMTEventLocationAccountInfoMenuJoinAsAnotherAccount,
+    ZMMTEventLocationAccountInfoMenuJoinWithoutSignIn,
+    // MARK: - Audio Echo Dialog (ZOOM-1119777)
+    ZMMTEventLocationPrimaryButton,
+    ZMMTEventLocationSecondaryButton,
+    ZMMTEventLocationCloseButton,
+    // MARK: - Reaction Redesign Telemetry
+    ZMMTEventLocationReactionEmojiButtons,
+    ZMMTEventLocationReactionPanel,
+    ZMMTEventLocationAudibleClapButton,
+    ZMMTEventLocationRaiseHandButton,
+    ZMMTEventLocationBeRightBackButton,
+    ZMMTEventLocationReactionEffectiveEmojiButtons,
+    ZMMTEventLocationMixedTab,
+    ZMMTEventLocationCoffeeFeedbackButton,
+    ZMMTEventLocationAnimatedEmojis,
+    ZMMTEventLocationSkinToneButton,
+    ZMMTEventLocationFeedbackButtons,
+    ZMMTEventLocationFrequentlyUsedEmojis,
+    ZMMTEventLocationPopularCustomEmojis,
+    ZMMTEventLocationEmojiTab,
+    // MARK: - Breakout Rooms Right Panel (ZOOM-1272351)
+    ZMMTEventLocationPopoutButton,
+    ZMMTEventLocationPopinButton,
+    // MARK: - Share Picker Refresh (ZOOM-1283469 / ZOOM-1281387 / ZOOM-1286349)
+    ZMMTEventLocationShareSelectTile,
+    ZMMTEventLocationViewAllButton,
+    ZMMTEventLocationCreateButton,
+    // MARK: - Files search telemetry (ZOOM-1359130)
+    ZMMTEventLocationSearchButton,
+    ZMMTEventLocationTemplateEntry,
+    ZMMTEventLocationShareSelectSearchBox,
+    // MARK: - AWDL in-meeting toast (ZOOM-1242332)
+    ZMMTEventLocationLinkButton,
 };
 
 typedef NS_ENUM(NSInteger, ZMMTEventName) {
@@ -106,6 +171,7 @@ typedef NS_ENUM(NSInteger, ZMMTEventName) {
     ZMMTEventNameStartShare,
     ZMMTEventNameStartPlay,
     ZMMTEventNameStartShareScreen,
+    ZMMTEventNameShareSelectContentDisplayed,
     ZMMTEventNamePlayShare,
     ZMMTEventNamePauseShare,
     ZMMTEventNameChangeProgress,
@@ -115,6 +181,7 @@ typedef NS_ENUM(NSInteger, ZMMTEventName) {
     ZMMTEventNameStopShare,
     ZMMTEventNameThemeConfig,
     ZMMTEventNameVideoLayoutPreference,
+    ZMMTEventNameChangeSelfViewOption,
     ZMMTEventNameChangeShowZoomWindows,
     ZMMTEventNameChangeShowSpecificWindows,
     ZMMTEventNameChangePreventRepeatingWindow,
@@ -142,12 +209,56 @@ typedef NS_ENUM(NSInteger, ZMMTEventName) {
     ZMMTEventNameTakeOverFirstConfirm,
     ZMMTEventNameTakeOverSecondConfirm,
     ZMMTEventNameAppSelected,
+    ZMMTEventNameShowAccountInfo,
+    ZMMTEventNameJoinMeeting,
+    ZMMTEventNameJoinAsAnotherAccount,
+    ZMMTEventNameJoinWithoutSignIn,
+    // MARK: - Audio Echo Dialog (ZOOM-1119777)
+    ZMMTEventNameConnectAsCompanion,
+    ZMMTEventNameJoinAudio,
+    ZMMTEventNamePrimaryButtonClicked,
+    ZMMTEventNameCloseButtonClick,
+    // MARK: - Reaction Redesign Telemetry
+    ZMMTEventNameChooseEmoji,
+    ZMMTEventNameRaiseHand,
+    ZMMTEventNameLowerHand,
+    ZMMTEventNameBeRightBack,
+    ZMMTEventNameIAmBack,
+    ZMMTEventNameChooseEffectiveEmoji,
+    ZMMTEventNameClosePanel,
+    ZMMTEventNameCloseEmojiPanel,
+    ZMMTEventNameReactMorePanelShow,
+    ZMMTEventNameChooseFeedback,
+    ZMMTEventNameDeselectFeedback,
+    ZMMTEventNameChangeSkinTone,
+    // MARK: - Share Picker Refresh (ZOOM-1235865)
+    ZMMTEventNamePermissionSettingWindowDisplayed,
+    ZMMTEventNameReactionPanelShow,
+    ZMMTEventNameAudibleClap,
+    // MARK: - Breakout Rooms Right Panel (ZOOM-1272351)
+    ZMMTEventNamePopOut,
+    ZMMTEventNamePopIn,
+    ZMMTEventNameOpen,
+    // MARK: - Share Picker Refresh (ZOOM-1283469 / ZOOM-1281387 / ZOOM-1286349)
+    ZMMTEventNameShareTileSelected,
+    ZMMTEventNameOpenHubModal,
+    ZMMTEventNameOpenCreateMenu,
+    // MARK: - Files search telemetry (ZOOM-1359130)
+    ZMMTEventNameOpenSearch,
+    ZMMTEventNameSearchFiles,
+    ZMMTEventNameCloseSearch,
+    // MARK: - AWDL in-meeting toast (ZOOM-1242332)
+    ZMMTEventNameShowToast,
+    ZMMTEventNameLinkButtonClick,
 };
 
 typedef NS_ENUM(NSInteger, ZMMTEventStatus) {
     ZMMTEventStatusNotSet = 0,
     ZMMTEventStatusCheck,
     ZMMTEventStatusUncheck,
+    // MARK: - Breakout Rooms Right Panel (ZOOM-1272351)
+    ZMMTEventStatusFloating,
+    ZMMTEventStatusDocked,
 };
 
 typedef NS_ENUM(NSInteger, ZMMTShareContentType) {
@@ -177,6 +288,19 @@ typedef NS_ENUM(NSInteger, ZMMTShareContentType) {
     ZMMTShareContentTypePptShare,
     ZMMTShareContentTypeBrowserTabChrome,
     ZMMTShareContentTypeBrowserTabEdge,
+    // MARK: - Share Picker Refresh (ZOOM-1235865)
+    ZMMTShareContentTypeZoomExistingCanvasDocs,
+    ZMMTShareContentTypeZoomExistingSlides,
+    ZMMTShareContentTypeZoomExistingSheets,
+    ZMMTShareContentTypeZoomExistingPaper,
+    ZMMTShareContentTypeZoomNewCanvasDocs,
+    ZMMTShareContentTypeZoomNewSlides,
+    ZMMTShareContentTypeZoomNewSheets,
+    ZMMTShareContentTypeZoomNewPaper,
+    // MARK: - Icebreakers (ZOOM-1264296)
+    ZMMTShareContentTypeIcebreakers,
+    ZMMTShareContentTypeZoomExistingWhiteboard,
+    ZMMTShareContentTypeZoomNewWhiteboard,
 };
 
 typedef NS_ENUM(NSInteger, ZMMTShareResult) {
@@ -238,7 +362,15 @@ typedef NS_ENUM(NSInteger, ZMMTShareResult) {
 
 + (void)trackMeetingEvent:(ZMMTV2Telemetry *)meetingEvent;
 
++ (void)trackMeetingEventWithTelemetryID:(NSString *)telemetryID;
+
 #ifdef __cplusplus
+// ZOOM-1227620: extension point — caller can mutate the underlying C++ params
+// (e.g. set per-call entity fields that don't belong on the generic
+// ZMMTV2Telemetry payload class) right before the event is submitted.
++ (void)trackMeetingEvent:(ZMMTV2Telemetry *)meetingEvent
+                 addition:(nullable void(^)(MeetingsV2InteractionTelemetryParams &params))addition;
+
 + (e_Interaction_feature_name)convertFeatureName:(ZMMTFeatureName)name;
 + (e_Interaction_event_type)convertEventType:(ZMMTEventType)type;
 + (e_Interaction_sub_feature_name)convertSubFeatureName:(ZMMTSubFeatureName)name;

@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)initSubviews;
 - (void)initTitle;
 - (void)updateTitle:(NSString*)title;
+- (void)updateTitle:(NSString*)title toolTip:(nullable NSString*)toolTip;
+- (void)updateTitleLineBreakMode:(NSLineBreakMode)mode;
 // update the trailing and leading of the title, the default value is 40
 - (void)updateTitleSideInset:(CGFloat)inset;
 - (void)onActionButtonClicked:(ZMButton*)sender;
@@ -41,6 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSView*)generateHeadView;//for override
 
 - (void)updateTitle:(NSString*)title;
+
+- (void)updateTitle:(NSString*)title toolTip:(nullable NSString*)toolTip;
 
 - (void)updateBoldTitle:(NSString*)title;
 
